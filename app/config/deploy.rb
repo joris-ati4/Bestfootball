@@ -23,5 +23,7 @@ set :update_vendors, true
 
 default_run_options[:pty] = true
 
+set :clear_controllers, false
+
 # Be more verbose by uncommenting the following line
 logger.level = Logger::MAX_LEVEL
