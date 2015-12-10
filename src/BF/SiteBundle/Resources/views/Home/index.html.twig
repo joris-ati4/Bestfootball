@@ -10,7 +10,7 @@
 <div class="row">
 	<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8"> {# Video of the latest challenge #}
 		<video width="100%" controls autoplay>
-		  <source src="/Foot/web/uploads/challenges/{{ latestChallenge.0.id }}.{{ latestChallenge.0.videoUrl }}" type="video/webm" autoplay>
+		  <source src="/Bestfootball/web/uploads/challenges/{{ latestChallenge.0.id }}.{{ latestChallenge.0.videoUrl }}" type="video/webm" autoplay>
 		Your browser does not support the video tag.
 		</video>
 
@@ -66,7 +66,7 @@
 				{# here we make the little thumbnails for every video #}
 			<div class="row jumbotron" style="background-color:rgba(0, 120, 204,1);padding:5px;margin:5px;">
 				<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 vcenter"> {# the picture #}
-					<a href="{{ path('bf_site_video', { 'id': video.id }) }}" style="color:white"><img src="/Foot/web/uploads/videos/thumbnail/{{ video.id}}.jpg" alt="{{ video.thumbAlt }}" class="img-responsive"></a>
+					<a href="{{ path('bf_site_video', { 'id': video.id }) }}" style="color:white"><img src="/Bestfootball/web/uploads/videos/thumbnail/{{ video.id}}.jpg" alt="{{ video.thumbAlt }}" class="img-responsive"></a>
 				</div><!--
 				--><div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 vcenter">  {# the description of the video #}
 					<h4 style="font-size:18px;color:white;">{{ video.title }}</h4>
