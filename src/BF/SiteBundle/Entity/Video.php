@@ -137,7 +137,7 @@ class Video
       $this->source = 'webm';
       // Et on génère l'attribut alt de la balise <img>, à la valeur du nom du fichier sur le PC de l'internaute
       $this->thumbAlt = $this->file->getClientOriginalName();
-      $this->thumbUrl = '/Foot/web/uploads/videos/thumbnail/'.$this->id.'.jpg';
+      $this->thumbUrl = '/var/www/bestfootball/shared/web/uploads/img'.$this->id.'.jpg';
     }
 
     /**
@@ -171,8 +171,8 @@ class Video
 
       //this is the code to convert the file we receive into webm and mp4. We need to change to accept all file sizes.
         $ffmpeg = FFMpeg::create(array(
-            'ffmpeg.binaries'  => 'ffmpeg\bin\ffmpeg',
-            'ffprobe.binaries' => 'ffmpeg\bin\ffprobe',
+            'ffmpeg.binaries'  => '/home/joris/bin/ffmpeg',
+            'ffprobe.binaries' => '/home/joris/bin/ffprobe',
             'timeout'          => 3600, // The timeout for the underlying process
             'ffmpeg.threads'   => 12,   // The number of threads that FFMpeg should use
         ));
@@ -182,7 +182,7 @@ class Video
 
         $video
             ->frame( TimeCode::fromSeconds(1))
-            ->save('C:\wamp\www\Foot\web\uploads\videos\thumbnail/'.$this->id.'.jpg');
+            ->save('/var/www/bestfootball/shared/web/uploads/videos/thumbnail/'.$this->id.'.jpg');
         // Resize to 1280x720 to compact the video ! 
         $video
             ->filters()
@@ -192,7 +192,7 @@ class Video
         // Start transcoding and save video
             if($this->source != 'webm')
             {
-                 $video->save(new webm(),'C:\wamp\www\Foot\web\uploads\videos/'.$this->id.'.webm');
+                 $video->save(new webm(),'/var/www/bestfootball/shared/web/uploads/videos/'.$this->id.'.webm');
             }
        
     }
@@ -227,7 +227,7 @@ class Video
     protected function getUploadRootDir()
     {
       // On retourne le chemin relatif vers l'image pour notre code PHP
-      return __DIR__.'/../../../../web/'.$this->getUploadDir();
+      return '/var/www/bestfootball/shared/web/'.$this->getUploadDir();
     }
 
 

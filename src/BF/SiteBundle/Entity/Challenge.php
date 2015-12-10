@@ -173,8 +173,8 @@ class Challenge
 
       //this is the code to convert the file we receive into webm and mp4. We need to change to accept all file sizes.
         $ffmpeg = FFMpeg::create(array(
-            'ffmpeg.binaries'  => 'ffmpeg\bin\ffmpeg',
-            'ffprobe.binaries' => 'ffmpeg\bin\ffprobe',
+            'ffmpeg.binaries'  => '/home/joris/bin/ffmpeg',
+            'ffprobe.binaries' => '/home/joris/bin/ffprobe',
             'timeout'          => 3600, // The timeout for the underlying process
             'ffmpeg.threads'   => 12,   // The number of threads that FFMpeg should use
         ));
@@ -184,7 +184,7 @@ class Challenge
 
         $video
             ->frame( TimeCode::fromSeconds(1))
-            ->save('C:\wamp\www\Foot\web\uploads\challenges\thumbnail/'.$this->id.'.jpg');
+            ->save('/var/www/bestfootball/shared/web/uploads/challenges/thumbnail/'.$this->id.'.jpg');
         // Resize to 1280x720 to compact the video ! 
         $video
             ->filters()
@@ -194,7 +194,7 @@ class Challenge
         // Start transcoding and save video
             if($this->videoUrl != 'webm')
             {
-                 $video->save(new webm(),'C:\wamp\www\Foot\web\uploads\challenges/'.$this->id.'.webm');
+                 $video->save(new webm(),'/var/www/bestfootball/shared/web/uploads/challenges/'.$this->id.'.webm');
             }
        
     }
@@ -229,7 +229,7 @@ class Challenge
     protected function getUploadRootDir()
     {
       // On retourne le chemin relatif vers l'image pour notre code PHP
-      return __DIR__.'/../../../../web/'.$this->getUploadDir();
+      return '/var/www/bestfootball/shared/web/'.$this->getUploadDir();
     }
 
 
