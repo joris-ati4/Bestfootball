@@ -1,0 +1,58 @@
+{% extends "::layout.html.twig" %}
+
+{% block nav %}
+  {% if app.user %} {# Here the user is connected to the site #}
+   
+    <li><a href="{{ path('bf_site_challenges')}}">Participe to Challenges</a></li>
+    <li class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ app.user.username }}<span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <li><a href="{{ path('bf_site_profile', { 'username': app.user.username }) }}">My Profile</a></li>
+        <li><a href="{{ path('bf_site_videos') }}">My Videos</a></li>
+        <li role="separator" class="divider"></li>
+        <li><a href="{{ path('bf_site_settings') }}">Settings</a></li>
+          {% if app.user and is_granted('ROLE_ADMIN') %}
+            <li><a href="{{ path('bf_site_admin') }}">Admin section</a></li>
+          {% endif %}
+        <li role="separator" class="divider"></li>
+        <li><a href="logout">Deconnect</a></li>
+      </ul>
+    </li>
+
+  {% else %} {# Here the user is NOT connected to the site #}
+    <li><a href="register">S'inscrire</a></li>
+    <li><a href="login">Se connecter</a></li>
+ {% endif %}
+{% endblock %}
+
+{% block body %}
+
+  <nav class="navbar navbar-default" style="background-color:rgba(0, 120, 204,1);">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar1" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div id="navbar1" class="navbar-collapse collapse">
+          <ul class="nav nav-justified">
+             <li><a style="color:white;" href="{{ path('bf_site_homepage') }}">Home</a></li>
+             <li><a style="color:white;" href="{{ path('bf_site_about') }}">About</a></li>
+             <li><a style="color:white;" href="{{ path('bf_site_challenges') }}">Challenges</a></li>
+             <li><a style="color:white;" href="{{ path('bf_site_ranking') }}">Rankings</a></li>
+             <li><a style="color:white;" href="{{ path('bf_site_rules') }}">Rules</a></li>
+             <li><a style="color:white;" href="{{ path('bf_site_contact') }}">Contact</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+
+{% block content %}
+{% endblock %}
+
+ 
+{% endblock %}

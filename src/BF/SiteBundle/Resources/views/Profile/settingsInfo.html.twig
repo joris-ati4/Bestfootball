@@ -1,0 +1,90 @@
+{% extends "BFSiteBundle::base.html.twig" %}
+
+{% block title %}
+  My Settings - {{ parent() }}
+{% endblock %}
+
+
+{% block content %}
+<div class="row">
+  {# This is the content section of our page, here the user will be able to view all the challenges with the different niveau's! #}
+  <h1>My Settings</h1>
+
+  <form action="{{ path('bf_site_settings_info')}}" method="post">
+  	<div class="row">
+	  	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 vcenter">
+		  	<div class="form-group">
+			    {{ form_label(form.name, "Name:", {'label_attr': {'class': 'col-xs-12 col-sm-4 col-md-4 col-lg-4 control-label'}}) }}
+			    {{ form_errors(form.name) }}
+			    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+			      {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+				</div>
+			</div>
+			<div class="form-group">
+			    {{ form_label(form.firstname, "Firstname:", {'label_attr': {'class': 'col-xs-12 col-sm-4 col-md-4 col-lg-4 control-label'}}) }}
+			    {{ form_errors(form.firstname) }}
+			    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+			      {{ form_widget(form.firstname, {'attr': {'class': 'form-control'}}) }}
+				</div>
+			</div>
+			<div class="form-group">
+			    {{ form_label(form.birthday, "Birthday:", {'label_attr': {'class': 'col-xs-12 col-sm-4 col-md-4 col-lg-4 control-label'}}) }}
+			    {{ form_errors(form.birthday) }}
+			    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+			      {{ form_widget(form.birthday, {'attr': {'class': 'form-control'}}) }}
+				</div>
+			</div>
+			<div class="form-group">
+			    {{ form_label(form.city, "City:", {'label_attr': {'class': 'col-xs-12 col-sm-4 col-md-4 col-lg-4 control-label'}}) }}
+			    {{ form_errors(form.city) }}
+			    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+			      {{ form_widget(form.city, {'attr': {'class': 'form-control'}}) }}
+				</div>
+			</div>
+			<div class="form-group">
+			    {{ form_label(form.country, "Country:", {'label_attr': {'class': 'col-xs-12 col-sm-4 col-md-4 col-lg-4 control-label'}}) }}
+			    {{ form_errors(form.country) }}
+			    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+			      {{ form_widget(form.country, {'attr': {'class': 'form-control'}}) }}
+				</div>
+			</div>
+			<div class="form-group">
+			    {{ form_label(form.gender, "Gender:", {'label_attr': {'class': 'col-xs-12 col-sm-4 col-md-4 col-lg-4 control-label'}}) }}
+			    {{ form_errors(form.gender) }}
+			    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+			      {{ form_widget(form.gender, {'attr': {'class': 'form-control'}}) }}
+				</div>
+			</div>
+
+		</div><!--
+	--><div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 vcenter">
+		  	<div class="form-group">
+			    {{ form_label(form.footballClub, "Football Club:", {'label_attr': {'class': 'col-xs-12 col-sm-4 col-md-4 col-lg-4 control-label'}}) }}
+			    {{ form_errors(form.footballClub) }}
+			    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+			      {{ form_widget(form.footballClub, {'attr': {'class': 'form-control'}}) }}
+				</div>
+			</div>
+			<div class="form-group">
+			    {{ form_label(form.fieldPosition, "Field Position:", {'label_attr': {'class': 'col-xs-12 col-sm-4 col-md-4 col-lg-4 control-label'}}) }}
+			    {{ form_errors(form.fieldPosition) }}
+			    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+			      {{ form_widget(form.fieldPosition, {'attr': {'class': 'form-control'}}) }}
+				</div>
+			</div>
+			<div class="form-group">
+			    {{ form_label(form.foot, "Foot:", {'label_attr': {'class': 'col-xs-12 col-sm-4 col-md-4 col-lg-4 control-label'}}) }}
+			    {{ form_errors(form.foot) }}
+			    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+			      {{ form_widget(form.foot, {'attr': {'class': 'form-control'}}) }}
+				</div>
+			</div>
+
+		</div>
+		 {{ form_rest(form) }}
+      <input type="submit" value="Modify" class="btn btn-success text-center" />
+	</div>
+  </form>
+	  
+</div>
+{% endblock %}

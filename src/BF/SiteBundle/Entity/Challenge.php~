@@ -1,0 +1,334 @@
+<?php
+
+namespace BF\SiteBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Challenge
+ *
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="BF\SiteBundle\Entity\ChallengeRepository")
+ */
+class Challenge
+{
+    /**
+    * @ORM\OneToMany(targetEntity="BF\SiteBundle\Entity\Video", mappedBy="challenge")
+    */
+    private $videos; // Notez le « s », une annonce est liée à plusieurs candidatures
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="title", type="string", length=255)
+     */
+    private $title;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="string", length=255)
+     */
+    private $description;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="video_url", type="string", length=255, nullable=true)
+     */
+    private $videoUrl;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="image_url", type="string", length=255, nullable=true)
+     */
+    private $imageUrl;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="image_alt", type="string", length=255, nullable=true)
+     */
+    private $imageAlt;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="gold", type="string", length=255)
+     */
+    private $gold;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="silver", type="string", length=255)
+     */
+    private $silver;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="bronze", type="string", length=255)
+     */
+    private $bronze;
+
+    /**
+    * @ORM\Column(name="date", type="datetime")
+    */
+    private $date;
+
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     *
+     * @return Challenge
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return Challenge
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set videoUrl
+     *
+     * @param string $videoUrl
+     *
+     * @return Challenge
+     */
+    public function setVideoUrl($videoUrl)
+    {
+        $this->videoUrl = $videoUrl;
+
+        return $this;
+    }
+
+    /**
+     * Get videoUrl
+     *
+     * @return string
+     */
+    public function getVideoUrl()
+    {
+        return $this->videoUrl;
+    }
+
+    /**
+     * Set imageUrl
+     *
+     * @param string $imageUrl
+     *
+     * @return Challenge
+     */
+    public function setImageUrl($imageUrl)
+    {
+        $this->imageUrl = $imageUrl;
+
+        return $this;
+    }
+
+    /**
+     * Get imageUrl
+     *
+     * @return string
+     */
+    public function getImageUrl()
+    {
+        return $this->imageUrl;
+    }
+
+    /**
+     * Set imageAlt
+     *
+     * @param string $imageAlt
+     *
+     * @return Challenge
+     */
+    public function setImageAlt($imageAlt)
+    {
+        $this->imageAlt = $imageAlt;
+
+        return $this;
+    }
+
+    /**
+     * Get imageAlt
+     *
+     * @return string
+     */
+    public function getImageAlt()
+    {
+        return $this->imageAlt;
+    }
+
+    /**
+     * Set gold
+     *
+     * @param string $gold
+     *
+     * @return Challenge
+     */
+    public function setGold($gold)
+    {
+        $this->gold = $gold;
+
+        return $this;
+    }
+
+    /**
+     * Get gold
+     *
+     * @return string
+     */
+    public function getGold()
+    {
+        return $this->gold;
+    }
+
+    /**
+     * Set silver
+     *
+     * @param string $silver
+     *
+     * @return Challenge
+     */
+    public function setSilver($silver)
+    {
+        $this->silver = $silver;
+
+        return $this;
+    }
+
+    /**
+     * Get silver
+     *
+     * @return string
+     */
+    public function getSilver()
+    {
+        return $this->silver;
+    }
+
+    /**
+     * Set bronze
+     *
+     * @param string $bronze
+     *
+     * @return Challenge
+     */
+    public function setBronze($bronze)
+    {
+        $this->bronze = $bronze;
+
+        return $this;
+    }
+
+    /**
+     * Get bronze
+     *
+     * @return string
+     */
+    public function getBronze()
+    {
+        return $this->bronze;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->date = new \Datetime();
+        $this->videos = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add video
+     *
+     * @param \BF\SiteBundle\Entity\Video $video
+     *
+     * @return Challenge
+     */
+    public function addVideo(\BF\SiteBundle\Entity\Video $video)
+    {
+        $this->videos[] = $video;
+
+        return $this;
+    }
+
+    /**
+     * Remove video
+     *
+     * @param \BF\SiteBundle\Entity\Video $video
+     */
+    public function removeVideo(\BF\SiteBundle\Entity\Video $video)
+    {
+        $this->videos->removeElement($video);
+    }
+
+    /**
+     * Get videos
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getVideos()
+    {
+        return $this->videos;
+    }
+}

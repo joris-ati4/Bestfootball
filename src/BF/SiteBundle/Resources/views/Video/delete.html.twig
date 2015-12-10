@@ -1,0 +1,23 @@
+{% extends "BFSiteBundle::base.html.twig" %}
+
+{% block title %}
+  Delete video - {{ parent() }}
+{% endblock %}
+
+{% block content %}
+
+  <h2>Delete your video</h2>
+
+  <p>
+    Are you sure you want to delete the video "{{ video.title }}" ?
+  </p>
+
+  {# On met l'id de l'annonce dans la route de l'action du formulaire #}
+  <form action="{{ path('bf_site_video_delete', {'id': video.id}) }}" method="post">
+    {# Ici j'ai écrit le bouton de soumission à la main #}
+    <input type="submit" value="Delete" class="btn btn-danger" />
+    {# Ceci va générer le champ CSRF #}
+    {{ form_rest(form) }}
+  </form>
+
+{% endblock %}

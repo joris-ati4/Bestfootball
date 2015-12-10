@@ -1,0 +1,40 @@
+{% extends "BFSiteBundle::base.html.twig" %}
+
+{% block title %}
+  Modify video - {{ parent() }}
+{% endblock %}
+
+{% block content %}
+
+  <h2>Modify your video</h2>
+<div class="row">
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 vcenter">
+   <img src="/Foot/web/uploads/videos/thumbnail/{{ video.id }}.jpg" alt="{{ video.thumbAlt }}" class="img-responsive"/>
+  </div><!--
+--><div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 vcenter">
+    <form action="{{ path('bf_site_video_modify', {'id': video.id}) }}" method="post">
+      <p>
+        Challenge : {{ video.challenge.title }} </br>
+        Points earned: {{ video.score }}
+      </p>
+      <div class="form-group">
+        {{ form_label(form.title, "Title:", {'label_attr': {'class': 'col-xs-12 col-sm-4 col-md-4 col-lg-4 control-label'}}) }}
+        {{ form_errors(form.title) }}
+        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+          {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
+        </div>
+      </div>
+      <div class="form-group">
+        {{ form_label(form.description, "Description:", {'label_attr': {'class': 'col-xs-12 col-sm-4 col-md-4 col-lg-4 control-label'}}) }}
+        {{ form_errors(form.description) }}
+        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+          {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+        </div>
+      </div>
+      <input type="submit" value="Modify" class="btn btn-success" />
+      {{ form_rest(form) }}
+    </form>
+  </div>
+</div>
+
+{% endblock %}

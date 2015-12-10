@@ -1,0 +1,15 @@
+bf_rest_api:
+    resource: "@BFRestApiBundle/Resources/config/routing.yml"
+    prefix:   /api
+    type: rest
+
+bf_user:
+    resource: "@BFUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
+bf_site:
+    resource: "@BFSiteBundle/Resources/config/routing.yml"
+    prefix:   /
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"

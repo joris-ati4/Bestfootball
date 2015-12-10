@@ -1,0 +1,103 @@
+bf_site_homepage:
+    path:     /
+    defaults: { _controller: BFSiteBundle:Home:index }
+
+bf_site_challenges:
+    path:     /challenges
+    defaults: { _controller: BFSiteBundle:Home:challenges }
+
+bf_site_challengeview:
+    path:     /challenge/{id}
+    defaults: { _controller: BFSiteBundle:Home:challengeView }
+    requirements:
+        id: -?\d+
+
+bf_site_ranking:
+    path:     /ranking
+    defaults: { _controller: BFSiteBundle:Home:ranking }
+
+bf_site_about:
+    path:     /about
+    defaults: { _controller: BFSiteBundle:Home:about }
+
+bf_site_rules:
+    path:     /rules
+    defaults: { _controller: BFSiteBundle:Home:rules }
+
+bf_site_contact:
+    path:     /contact
+    defaults: { _controller: BFSiteBundle:Home:contact }
+
+#this section does all the routes for the video section
+
+bf_site_video:
+    path:     /view/{id}
+    defaults: { _controller: BFSiteBundle:Video:view, id: null }
+    requirements:
+        id: -?\d+
+
+bf_site_upload:
+    path:     /upload/{id}
+    defaults: { _controller: BFSiteBundle:Video:upload }
+    requirements:
+        id: -?\d+
+
+bf_site_video_delete:
+    path:     /deletevideo/{id}
+    defaults: { _controller: BFSiteBundle:Video:delete }
+    requirements:
+        id: -?\d+
+
+bf_site_video_modify:
+    path:     /modifyvideo/{id}
+    defaults: { _controller: BFSiteBundle:Video:modify }
+    requirements:
+        id: -?\d+
+#this section does all the routes for the profile section
+
+bf_site_profile:
+    path:     /profile/{username}
+    defaults: { _controller: BFSiteBundle:Profile:view }
+
+bf_site_videos:
+    path:     /myvideos
+    defaults: { _controller: BFSiteBundle:Profile:videos }
+
+bf_site_settings:
+    path:     /settings
+    defaults: { _controller: BFSiteBundle:Profile:settings }
+
+bf_site_settings_info:
+    path:     /settings/info
+    defaults: { _controller: BFSiteBundle:Profile:settingsInfo }
+
+bf_site_settings_picture:
+    path:     /settings/picture
+    defaults: { _controller: BFSiteBundle:Profile:settingsPicture }
+
+#this section does all the routes for the admin section
+bf_site_admin_challenges:
+    path:     /admin/challenges
+    defaults: { _controller: BFSiteBundle:Admin:challenges }
+
+bf_site_admin_addChallenge:
+    path:     /admin/addchallenge
+    defaults: { _controller: BFSiteBundle:Admin:addChallenge }
+
+bf_site_admin_challenge_modify:
+    path:     /admin/modchallenge
+    defaults: { _controller: BFSiteBundle:Admin:modChallenge }
+
+bf_site_admin_challenge_delete:
+    path:     /admin/delchallenge
+    defaults: { _controller: BFSiteBundle:Admin:delChallenge }
+
+bf_site_admin_users:
+    path:     /admin/users
+    defaults: { _controller: BFSiteBundle:Admin:users }
+
+bf_site_admin:
+    path:     /admin
+    defaults: { _controller: BFSiteBundle:Admin:index }
+
+

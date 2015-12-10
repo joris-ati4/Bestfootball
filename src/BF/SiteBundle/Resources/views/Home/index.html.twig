@@ -1,0 +1,82 @@
+{% extends "BFSiteBundle::base.html.twig" %}
+
+{% block title %}
+  Home Page - {{ parent() }}
+{% endblock %}
+
+
+{% block content %}
+  {# This is the content section of our page ! #}
+<div class="row">
+	<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8"> {# Video of the latest challenge #}
+		<video width="100%" controls autoplay>
+		  <source src="/Foot/web/uploads/challenges/{{ latestChallenge.0.id }}.{{ latestChallenge.0.videoUrl }}" type="video/webm" autoplay>
+		Your browser does not support the video tag.
+		</video>
+
+	</div>
+	<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4"> {# sidebar with the other challenges #}
+		<h3 class="text-center" style="color:rgb(0, 45, 77);">Latest Challenges</h3>
+		{% for challenge in listChallenges %}
+		  	<a href="{{ path('bf_site_challengeview', { 'id': challenge.id }) }}"><div class="jumbotron" style="background-color:rgba(0, 120, 204,1);padding:5px;">
+		   		<h4 style="color:white" >{{ challenge.title }}</h4>
+		   		
+		    </div></a>
+		{% endfor %}
+	</div>
+</div>
+<div class="row text-center">
+	<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 "> {# sidebar with the other challenges #}
+		<h3 style="color:rgb(0, 45, 77);"> Easy</h3>
+	</div>
+	<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"> {# sidebar with the other challenges #}
+		<h3 style="color:rgb(0, 45, 77);"> Easy</h3>
+	</div>
+	<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"> {# sidebar with the other challenges #}
+		<h3 style="color:rgb(0, 45, 77);"> Easy</h3>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6"> {# sidebar with the rankings #}
+		<h3 class="text-center" style="color:rgb(0, 45, 77);">Global ranking</h3>
+		{% set i = 1 %}
+			{% for user in listUsers %}
+				{# here we make the little thumbnails for every video #}
+
+				<a href=", { 'id': user.id }) }}"></a>
+			<div class="row jumbotron text-center" style="background-color:rgba(0, 120, 204,1);padding:5px;margin:5px;">
+				<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 vcenter">  {# Username #}
+					<p style="color:white">{{ i }}</p>
+				</div><!--
+				--><div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 vcenter">  {# Username #}
+					<p style="color:white">{{ user.username }}</p>
+				</div><!--
+				--><div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 vcenter">  {# points #}
+					<p style="color:white">{{ user.points }}</p>
+				</div>
+			</div>
+		{% set i= i+1 %}
+			{% endfor %}
+	</div>
+
+	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6"> {# sidebar with the other challenges #}
+		<h3 class="text-center" style="color:rgb(0, 45, 77);">The last videos of our users</h3>
+			{% for video in listVideos %}
+				{# here we make the little thumbnails for every video #}
+			<div class="row jumbotron" style="background-color:rgba(0, 120, 204,1);padding:5px;margin:5px;">
+				<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 vcenter"> {# the picture #}
+					<a href="{{ path('bf_site_video', { 'id': video.id }) }}" style="color:white"><img src="/Foot/web/uploads/videos/thumbnail/{{ video.id}}.jpg" alt="{{ video.thumbAlt }}" class="img-responsive"></a>
+				</div><!--
+				--><div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 vcenter">  {# the description of the video #}
+					<h4 style="font-size:18px;color:white;">{{ video.title }}</h4>
+					<p style="font-size:14px; color:white; ">
+						by <a href="{{ path('bf_site_profile', { 'username': video.user.username }) }}" style="color:white;"> {{ video.user.username }} </a>
+						on {{ video.date|date('d-m-Y')}}
+					</p>
+				</div>
+			</div>
+			{% endfor %}
+	</div>
+</div>
+{% endblock %}

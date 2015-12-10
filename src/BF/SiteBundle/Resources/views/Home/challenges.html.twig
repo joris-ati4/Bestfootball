@@ -1,0 +1,46 @@
+{% extends "BFSiteBundle::base.html.twig" %}
+
+{% block title %}
+  Challenges - {{ parent() }}
+{% endblock %}
+
+
+{% block content %}
+<div class="row">
+  {# This is the content section of our page, here the user will be able to view all the challenges with the different niveau's! #}
+  <h1>Challenges on Bestfootball</h1>
+  	
+	  {% for challenge in listChallenges %}
+
+	<div class="col-xs-6 col-sm-4 col-md-4 col-lg-4 ">
+	  	<div class="jumbotron text-center container" style="background-color:rgba(0, 120, 204,1);height:430px;padding:5px;">
+	  	
+	   		<h3 style="color:white;">{{ challenge.title }}</h3>
+	   			<img src="/Foot/web/uploads/challenges/thumbnail/{{challenge.id}}.{{ challenge.imageUrl }}" alt="{{ challenge.imageAlt }}" class="img-responsive"/></br>
+	   		<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 vcenter">
+				<img src="/Foot/web/uploads/challenges/thumbnail/{{challenge.id}}.{{ challenge.imageUrl }}" alt="{{ challenge.imageAlt }}" style="height:80px;width:80px;border-radius:40px;"/>
+			</div><!--
+			--><div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 vcenter">
+				<img src="/Foot/web/uploads/challenges/thumbnail/{{challenge.id}}.{{ challenge.imageUrl }}" alt="{{ challenge.imageAlt }}" style="height:70px;width:70px;border-radius:35px;"/>
+			</div><!--
+			--><div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 vcenter">
+				<img src="/Foot/web/uploads/challenges/thumbnail/{{challenge.id}}.{{ challenge.imageUrl }}" alt="{{ challenge.imageAlt }}" style="height:60px;width:60px;border-radius:30px;"/>
+			</div>
+
+		   		{# {% for video in challenge.videos|slice(0, 1) %}
+
+		   			{{ loop.index }} - {{ video.user.username }}, {{ video.repetitions }}x</br>
+
+		   		{% endfor %} #}
+		   	</br>
+		   	</br>
+		   		<a href="{{ path('bf_site_challengeview', { 'id': challenge.id }) }}" class="btn btn-success" role="button">More info!</a>
+	   			<a href="{{ path('bf_site_upload', { 'id': challenge.id }) }}" class="btn btn-warning" role="button">Participate !</a>
+		</div>
+	</div>
+	  {% endfor %}
+</div>
+
+
+
+{% endblock %}

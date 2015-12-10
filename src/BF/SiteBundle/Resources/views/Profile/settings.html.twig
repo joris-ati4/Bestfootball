@@ -1,0 +1,17 @@
+{% extends "BFSiteBundle::base.html.twig" %}
+
+{% block title %}
+  My Settings - {{ parent() }}
+{% endblock %}
+
+
+{% block content %}
+<div class="row">
+  {# This is the content section of our page, here the user will be able to view all the challenges with the different niveau's! #}
+  <h1>My Settings</h1>
+
+  Links to change to change personal informations, profile picture, password and e-mail adress.
+  <a href="{{ path('bf_site_settings_info')}}"> Click here to modifie your personal informations </a>
+	  
+</div>
+{% endblock %}

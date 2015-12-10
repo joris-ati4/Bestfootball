@@ -1,0 +1,57 @@
+{% extends "BFSiteBundle::Adminbase.html.twig" %}
+
+
+{% block meta %}
+  <meta name="description" content="Bla bla bla concernant l'upload.">
+  <meta name="keywords" content="soccer,football ">
+{% endblock %}
+
+
+{% block title %}
+  Admin Section- challenges - {{ parent() }} 
+{% endblock %}
+
+{% block content %}
+
+ 
+<h3>Ajouter un nouveau Challenge</h3>
+
+<div class="well">
+	<a href="{{ path('bf_site_admin_addChallenge') }}" class="btn btn-success">Add a new challenge</a>
+	<table>
+		<tr>
+			<th>Title</th>
+			<th>Description</th>
+			<th>Minimum Gold</th>
+			<th>Minimum Silver</th>
+			<th>Minimum Bronze<th>
+			<th>Delete</th>
+			<th>Modify</th>
+ 	{% for challenge in listChallenges %}
+		<tr>
+			<td>{{ challenge.title }}</td>
+			<td>{{ challenge.description }}</td>
+			<td>{{ challenge.gold }}</td>
+			<td>{{ challenge.silver }}</td>
+			<td>{{ challenge.bronze }}</td>
+			<td>
+			<a href="{{ path('bf_site_admin_challenge_modify', {'id': challenge.id}) }}" class="btn btn-default">
+		      <i class="glyphicon glyphicon-edit"></i>
+		      Modify
+		    </a>
+		</td>
+		<td>
+   			<a href="{{ path('bf_site_admin_challenge_delete', {'id': challenge.id}) }}" class="btn btn-danger">
+		      <i class="glyphicon glyphicon-trash"></i>
+		      Delete
+		    </a>
+		</td>
+		</tr>
+	{% endfor %}
+</table>
+</div>
+  
+
+  <hr>
+
+{% endblock %}

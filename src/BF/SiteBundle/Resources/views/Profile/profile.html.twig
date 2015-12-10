@@ -1,0 +1,58 @@
+{% extends "::base.html.twig" %}
+
+
+{% block meta %}
+	<meta name="description" content="Bla bla bla concernant le profil.">
+	<meta name="keywords" content="soccer,football, {{ profile.name }}, ">
+{% endblock %}
+
+
+{% block title %}
+  Profile - {{ parent() }} sur BestFootball.com 
+{% endblock %}
+
+{% block body %}
+
+  {# On définit un sous-titre commun à toutes les pages du bundle, par exemple #}
+  <h1>La page des profiles</h1>
+  	Hello {{ profile.username }}!
+
+	Ceci serait votre page de profil ! 
+	{{ profile.name }}
+	{{ profile.city }}
+	{{ profile.country }}
+	{{ profile.birthday|date('Y-m-d') }}
+
+
+
+	<h2>Mes dernières videos</h2>
+
+
+	{% if listVideos|length > 0 %}
+      {% for video in listVideos %}
+      	<div class="col-md-3">
+      		<div class="row text-center">
+
+				
+
+        		<a href="{{ path('bf_platform_view', {'id': video.id}) }}">
+        			
+        			<img src="{{ video.thumbUrl }}" alt="{{ video.thumbUrl }}" style="width:90%;border-radius:10px;">
+        			<h4>{{ video.title }}</h4>
+        		</a>
+        	</div>
+        </div>
+
+      {% endfor %}
+  {% endif %}
+
+
+
+
+	
+
+  <hr>
+
+  {# On définit un nouveau bloc, que les vues du bundle pourront remplir #}
+
+{% endblock %}

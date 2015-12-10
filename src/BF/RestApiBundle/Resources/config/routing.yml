@@ -1,0 +1,95 @@
+# challenges rest api routes
+bf_rest_api_challenges_get:
+    type: rest
+    path: /challenges/get/{id}
+    defaults: { _controller: BFRestApiBundle:Challenge:get, _format: json}
+    requirements:
+        id: -?\d+
+
+bf_rest_api_challenges_getAll:
+    type: rest
+    path: /challenges/getAll
+    defaults: { _controller: BFRestApiBundle:Challenge:getAll }
+
+bf_rest_api_challenges_put:
+    type: rest
+    path: /challenges/put/{id}
+    defaults: { _controller: BFRestApiBundle:Challenge:put }
+    requirements:
+        id: -?\d+
+
+bf_rest_api_challenges_post:
+    type: rest
+    path: /challenges/post
+    defaults: { _controller: BFRestApiBundle:Challenge:post }
+
+bf_rest_api_challenge_delete:
+    type: rest
+    path: /challenges/delete/{id}
+    defaults: { _controller: BFRestApiBundle:Challenge:delete }
+    requirements:
+        id: -?\d+
+
+# videos rest api routes
+bf_rest_api_videos_get:
+    type: rest
+    path: /videos/get/{id}
+    defaults: { _controller: BFRestApiBundle:Video:get, _format: json }
+    requirements:
+        id: -?\d+
+
+bf_rest_api_videos_getAll:
+    type: rest
+    path: /videos/getAll
+    defaults: { _controller: BFRestApiBundle:Video:getAll }
+
+bf_rest_api_videos_put:
+    type: rest
+    path: /videos/put/{id}
+    defaults: { _controller: BFRestApiBundle:Video:put }
+    requirements:
+        id: -?\d+
+
+bf_rest_api_videos_post:
+    type: rest
+    path: /videos/post
+    defaults: { _controller: BFRestApiBundle:Video:post }
+
+bf_rest_api_videos_delete:
+    type: rest
+    path: /videos/delete/{id}
+    defaults: { _controller: BFRestApiBundle:Video:delete }
+    requirements:
+        id: -?\d+
+
+# users rest api routes
+bf_rest_api_users_get:
+    type: rest
+    path: /users/get/{id}
+    defaults: { _controller: BFRestApiBundle:User:get, _format: json}
+    requirements:
+        id: -?\d+
+
+bf_rest_api_users_getAll:
+    type: rest
+    path: /users/getAll
+    defaults: { _controller: BFRestApiBundle:User:getAll }
+
+bf_rest_api_users_put:
+    type: rest
+    path: /users/put/{id}
+    defaults: { _controller: BFRestApiBundle:User:put }
+    requirements:
+        id: -?\d+
+
+bf_rest_api_users_post:
+    type: rest
+    path: /users/post
+    defaults: { _controller: BFRestApiBundle:User:post }
+
+bf_rest_api_users_delete:
+    type: rest
+    path: /users/delete/{id}
+    defaults: { _controller: BFRestApiBundle:User:delete }
+    requirements:
+        id: -?\d+

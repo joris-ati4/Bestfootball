@@ -1,0 +1,63 @@
+{% extends "BFSiteBundle::base.html.twig" %}
+
+
+{% block meta %}
+	<meta name="description" content="Bla bla bla concernant le profil.">
+	<meta name="keywords" content="soccer,football, ">
+{% endblock %}
+
+
+{% block title %}
+  Profile de {{ user.username }}- {{ parent() }} sur BestFootball.com 
+{% endblock %}
+
+{% block body %}
+  <div class="row">
+
+  {# On définit un sous-titre commun à toutes les pages du bundle, par exemple #}
+  
+<div class="row">
+  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-center vcenter">
+    <img src="/Foot/web/uploads/img/{{ user.picture.src }}" alt="{{ user.picture.alt }}" class="img-responsive" style="max-height:300px;margin:0 auto;"/>
+  </div><!--
+  --><div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 vcenter">
+    <h1>{{user.username}}</h1>
+    <p>
+      Age : {{ user.birthday|date('Y') }}</br>
+      City : {{ user.city }}</br>
+      Country: {{ user.country }}</br>
+      </br>
+      My club : {{ user.footballClub }}</br>
+      Field Position : {{ user.fieldPosition }}</br>
+      Foot : {{ user.foot }}
+    </p>
+  </div>  
+</div>
+
+
+
+	<h2>My last challenges</h2>
+
+<div class="row">
+
+	{% if listVideos|length > 0 %}
+      {% for video in listVideos %}
+        
+      	<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 container text-center" style="margin:5px;{% if video.score == 300 %}background-color:yellow{% endif %}{% if video.score == 200 %}background-color:grey{% endif %}{% if video.score == 100 %}background-color:brown{% endif %};border-radius: 15px 50px;height:250px;">
+      	
+            <h4 style>{{ video.challenge.title }}</h4>
+            <a href="{{ path('bf_site_video', { 'id': video.id }) }}">
+        		  <img src="/Foot/web/uploads/videos/thumbnail/{{ video.id}}.jpg" alt="{{ video.thumbAlt }}" class="img-responsive"></a>
+              <h5>{{video.title}}</h5>
+        </div>
+        
+
+      {% endfor %}
+  {% endif %}
+</div>
+
+  <hr>
+
+  {# On définit un nouveau bloc, que les vues du bundle pourront remplir #}
+</div>
+{% endblock %}
