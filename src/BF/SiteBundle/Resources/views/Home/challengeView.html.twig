@@ -11,7 +11,7 @@
   <h1 style="font-size:24px;">{{ challenge.title }}</h1>
   	<div class="col-xs-10 col-sm-8 col-md-8 col-lg-8">
   		<video width="100%" controls autoplay>
-		  <source src="/Bestfootball/web/uploads/challenges/{{ challenge.id }}.{{ challenge.videoUrl }}" type="video/webm" autoplay>
+		  <source src="/uploads/challenges/{{ challenge.id }}.{{ challenge.videoUrl }}" type="video/webm" autoplay>
 		Your browser does not support the video tag.
 		</video>
 		<p>description</br>
@@ -28,7 +28,7 @@
   				{# here we make the little thumbnails for every video #}
 			<div class="row jumbotron" style="background-color:green;padding:5px;">
 				<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 vcenter"> {# the picture #}
-					<a href="{{ path('bf_site_video', { 'id': video.id }) }}"><img src="/Bestfootball/web/uploads/videos/thumbnail/{{ video.id}}.jpg" alt="{{ video.thumbAlt }}" class="img-responsive"></a>
+					<a href="{{ path('bf_site_video', { 'id': video.id }) }}"><img src="/uploads/videos/thumbnail/{{ video.id}}.jpg" alt="{{ video.thumbAlt }}" class="img-responsive"></a>
 				</div><!--
     			--><div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 vcenter">  {# the description of the video #}
 					<h4 style="font-size:18px;">{{ video.title }}</h4>

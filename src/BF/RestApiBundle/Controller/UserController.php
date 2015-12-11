@@ -74,7 +74,8 @@ class UserController extends Controller
     {
         $user = new User();
         $form = $this->createForm(new UserType(), $user, array('csrf_protection' => false));
-        $form->bind($request);
+        $json_data = json_decode($request->getContent(),true);//get the response data as array
+        $form->submit($json_data);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
@@ -103,7 +104,8 @@ class UserController extends Controller
     {
         $user = $this->getEntity($id);
         $form = $this->createForm(new UserType(), $user, array('csrf_protection' => false));
-        $form->bind($request);
+        $json_data = json_decode($request->getContent(),true);//get the response data as array
+        $form->submit($json_data);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();

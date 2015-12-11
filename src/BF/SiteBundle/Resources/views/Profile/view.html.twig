@@ -18,7 +18,7 @@
   
 <div class="row">
   <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-center vcenter">
-    <img src="/Bestfootball/web/uploads/img/{{ user.picture.src }}" alt="{{ user.picture.alt }}" class="img-responsive" style="max-height:300px;margin:0 auto;"/>
+    <img src="/uploads/img/{{ user.picture.src }}" alt="{{ user.picture.alt }}" class="img-responsive" style="max-height:300px;margin:0 auto;"/>
   </div><!--
   --><div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 vcenter">
     <h1>{{user.username}}</h1>
@@ -47,7 +47,7 @@
       	
             <h4 style>{{ video.challenge.title }}</h4>
             <a href="{{ path('bf_site_video', { 'id': video.id }) }}">
-        		  <img src="/Bestfootball/web/uploads/videos/thumbnail/{{ video.id}}.jpg" alt="{{ video.thumbAlt }}" class="img-responsive"></a>
+        		  <img src="/uploads/videos/thumbnail/{{ video.id}}.jpg" alt="{{ video.thumbAlt }}" class="img-responsive"></a>
               <h5>{{video.title}}</h5>
         </div>
         

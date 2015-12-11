@@ -10,19 +10,22 @@
 <div class="row">
 	<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8"> {# Video of the latest challenge #}
 		<video width="100%" controls autoplay>
-		  <source src="/Bestfootball/web/uploads/challenges/{{ latestChallenge.0.id }}.{{ latestChallenge.0.videoUrl }}" type="video/webm" autoplay>
+		  <source src="/uploads/challenges/{{ latestChallenge.0.id }}.{{ latestChallenge.0.videoUrl }}" type="video/webm" autoplay>
 		Your browser does not support the video tag.
 		</video>
 
 	</div>
 	<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4"> {# sidebar with the other challenges #}
 		<h3 class="text-center" style="color:rgb(0, 45, 77);">Latest Challenges</h3>
+	{% if listChallenges|length > 0 %}
 		{% for challenge in listChallenges %}
-		  	<a href="{{ path('bf_site_challengeview', { 'id': challenge.id }) }}"><div class="jumbotron" style="background-color:rgba(0, 120, 204,1);padding:5px;">
-		   		<h4 style="color:white" >{{ challenge.title }}</h4>
-		   		
-		    </div></a>
+		  	<a href="{{ path('bf_site_challengeview', { 'id': challenge.id }) }}">
+		  		<div class="jumbotron" style="background-color:rgba(0, 120, 204,1);padding:5px;">
+		   			<h4 style="color:white" >{{ challenge.title }}</h4>
+		   		</div>
+		   	</a>
 		{% endfor %}
+	{% endif %}
 	</div>
 </div>
 <div class="row text-center">
@@ -62,6 +65,7 @@
 
 	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6"> {# sidebar with the other challenges #}
 		<h3 class="text-center" style="color:rgb(0, 45, 77);">The last videos of our users</h3>
+		{% if listVideos|length > 0 %}
 			{% for video in listVideos %}
 				{# here we make the little thumbnails for every video #}
 			<div class="row jumbotron" style="background-color:rgba(0, 120, 204,1);padding:5px;margin:5px;">
@@ -77,6 +81,7 @@
 				</div>
 			</div>
 			{% endfor %}
+		{% endif %}
 	</div>
 </div>
 {% endblock %}
