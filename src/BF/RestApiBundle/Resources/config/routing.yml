@@ -65,10 +65,8 @@ bf_rest_api_videos_delete:
 # users rest api routes
 bf_rest_api_users_get:
     type: rest
-    path: /users/get/{id}
+    path: /users/get/{username}
     defaults: { _controller: BFRestApiBundle:User:get, _format: json}
-    requirements:
-        id: -?\d+
 
 bf_rest_api_users_getAll:
     type: rest

@@ -24,7 +24,14 @@ class ChallengeController extends Controller
     public function getAllAction(Request $request)
     {
         $repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Challenge');
-        $challenges = $repository->findAll();
+        $listChallenges = $repository->findAll();
+        $i = 0;
+        foreach ($listChallenges as $challenge) {
+         $id = $challenge->getId();
+         $title = $challenge->getTitle();
+         $challenges[$i]=array('id' => $id, 'title' => $title);
+         $i++;
+        }
 
         return array(
             'challenges' => $challenges,

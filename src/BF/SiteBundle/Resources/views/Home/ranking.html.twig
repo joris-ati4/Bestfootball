@@ -31,10 +31,12 @@
 			{% endfor %}
 	</div>
 	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6"> {# sidebar with the rankings #}
+
+		{% if listUsersCountry is defined %}
 		<h3 class="text-center" style="color:rgb(0, 45, 77);">{{ country }} ranking</h3>
 		{% set i = 1 %}
 
-		{% if listUsersCountry|length > 0 %}
+		
 			{% for user in listUsersCountry %}
 				{# here we make the little thumbnails for every video #}
 
@@ -54,7 +56,7 @@
 			{% endfor %}
 		{% else %}
 			<div class="row jumbotron text-center" style="background-color:rgba(0, 120, 204,1);padding:5px;margin:5px;">
-				<p>Please select a country in you account settings.
+				<p>Please select a country in your account settings.
 			</div>
 		{% endif %}
 		</div>

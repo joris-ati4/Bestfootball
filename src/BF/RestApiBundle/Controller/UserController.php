@@ -36,14 +36,14 @@ class UserController extends Controller
      * @var integer $id Id of the user
      * @return User
      */
-    protected function getEntity($id)
+    protected function getEntity($username)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('BFUserBundle:User')->find($id);
+        $entity = $em->getRepository('BFUserBundle:User')->findByUsername($username);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find user entity with id '.$id);
+            throw $this->createNotFoundException('Unable to find user entity with username '.$username);
         }
 
         return $entity;
@@ -56,13 +56,22 @@ class UserController extends Controller
      *
      * @Rest\View()
      */
-    public function getAction($id)
+    public function getAction($username)
     {
-        $user = $this->getEntity($id);
+        $user = $this->getEntity($username);
 
-        return array(
-                'user' => $user,
-                );
+        $id=$user[0]->getId();
+        $username=$user[0]->getUsername();
+        $salt=$user[0]->getSalt();
+        $password=$user[0]->getPassword();
+
+        $user =array('id' => $id,'username' => $username,'password' => $password,'salt' => $salt);
+
+
+
+        return  array(
+            'user' => $user,
+        );
     }
 
     /**

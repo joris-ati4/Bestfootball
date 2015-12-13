@@ -64,19 +64,38 @@ class HomeController extends Controller
     }
     public function rankingAction()
     {
-        $user = $this->container->get('security.context')->getToken()->getUser();
-        $country = $user->getCountry();
 
-        $repository = $this->getDoctrine()->getManager()->getRepository('BFUserBundle:User');
-        $listUsersGlobal = $repository->findBy(array(),array('points' => 'desc'),10,0);
-        $listUsersCountry = $repository->findBy(array('country' => $country),array('points' => 'desc'),10,0);
+        if( $this->container->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY') ){
+            $user = $this->container->get('security.context')->getToken()->getUser();
+            $country = $user->getCountry();
+
+            $repository = $this->getDoctrine()->getManager()->getRepository('BFUserBundle:User');
+            $listUsersGlobal = $repository->findBy(array(),array('points' => 'desc'),10,0);
+            $listUsersCountry = $repository->findBy(array('country' => $country),array('points' => 'desc'),10,0);
 
 
-    	return $this->render('BFSiteBundle:Home:ranking.html.twig',array(
-            'listUsersGlobal' => $listUsersGlobal,
-            'listUsersCountry' => $listUsersCountry,
-            'country' => $country
-            ));
+            return $this->render('BFSiteBundle:Home:ranking.html.twig',array(
+                'listUsersGlobal' => $listUsersGlobal,
+                'listUsersCountry' => $listUsersCountry,
+                'country' => $country
+                ));
+        }
+        else{
+            $repository = $this->getDoctrine()->getManager()->getRepository('BFUserBundle:User');
+            $listUsersGlobal = $repository->findBy(array(),array('points' => 'desc'),10,0);
+           
+
+
+            return $this->render('BFSiteBundle:Home:ranking.html.twig',array(
+                'listUsersGlobal' => $listUsersGlobal,
+                ));
+
+
+
+
+
+        }
+        
     }
     public function aboutAction()
     {
