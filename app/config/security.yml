@@ -26,7 +26,7 @@ security:
                 failure_path:      /login
 
                 oauth_user_provider:
-                    service: hwi_oauth.user.provider
+                    service: my_user_provider
             logout:       true
             anonymous:    true
         dev:
