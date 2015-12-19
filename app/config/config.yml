@@ -131,8 +131,8 @@ hwi_oauth:
     resource_owners:
         facebook:
             type:                facebook
-            client_id:           "%facebook_app_id%"
-            client_secret:       "%facebook_app_secret%"
+            client_id:           694354014040156
+            client_secret:       55d4070a9dfa588b63027fe51bd7010e
             scope:               ""
         #google:
          #   type:                google
