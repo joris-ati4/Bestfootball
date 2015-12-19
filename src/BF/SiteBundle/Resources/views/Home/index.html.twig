@@ -6,82 +6,118 @@
 
 
 {% block content %}
-  {# This is the content section of our page ! #}
-<div class="row">
-	<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8"> {# Video of the latest challenge #}
-		<video width="100%" controls autoplay>
-		  <source src="/uploads/challenges/{{ latestChallenge.0.id }}.{{ latestChallenge.0.videoUrl }}" type="video/webm" autoplay>
-		Your browser does not support the video tag.
-		</video>
+	<section class="header text-center">
+        <div class="row" style="margin-top:50px;">
+          <div class="col-xs-10 col-sm-8 col-md-6 col-lg-6 col-xs-offset-1 col-sm-offset-2 col-md-offset-3 col-lg-offset-3">
+            <h1 style="color:white;">Reach your dreams when other dream to reach you</h1>
+            <p style="color:white;">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at neque velit. Praesent malesuada risus a libero commodo, ac malesuada lectus varius. Aliquam tempus volutpat odio, et molestie elit laoreet quis. Nullam cursus ipsum odio, pharetra varius massa varius sit amet. Donec at tincidunt urna, quis faucibus quam. Phasellus sit amet urna vitae risus ornare maximus quis vel massa. Ut id nunc hendrerit, consectetur ex nec, ullamcorper lectus. Donec vel neque convallis, cursus sem non, tempus risus.
+                </p>
+          </div>
+        </div>
+      </section>
 
-	</div>
-	<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4"> {# sidebar with the other challenges #}
-		<h3 class="text-center" style="color:rgb(0, 45, 77);">Latest Challenges</h3>
-	{% if listChallenges|length > 0 %}
-		{% for challenge in listChallenges %}
-		  	<a href="{{ path('bf_site_challengeview', { 'id': challenge.id }) }}">
-		  		<div class="jumbotron" style="background-color:rgba(0, 120, 204,1);padding:5px;">
-		   			<h4 style="color:white" >{{ challenge.title }}</h4>
-		   		</div>
-		   	</a>
-		{% endfor %}
-	{% endif %}
-	</div>
-</div>
-<div class="row text-center">
-	<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 "> {# sidebar with the other challenges #}
-		<h3 style="color:rgb(0, 45, 77);"> Easy</h3>
-	</div>
-	<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"> {# sidebar with the other challenges #}
-		<h3 style="color:rgb(0, 45, 77);"> Easy</h3>
-	</div>
-	<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"> {# sidebar with the other challenges #}
-		<h3 style="color:rgb(0, 45, 77);"> Easy</h3>
-	</div>
-</div>
-
-<div class="row">
-	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6"> {# sidebar with the rankings #}
-		<h3 class="text-center" style="color:rgb(0, 45, 77);">Global ranking</h3>
-		{% set i = 1 %}
-			{% for user in listUsers %}
-				{# here we make the little thumbnails for every video #}
-
-				<a href=", { 'id': user.id }) }}"></a>
-			<div class="row jumbotron text-center" style="background-color:rgba(0, 120, 204,1);padding:5px;margin:5px;">
-				<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 vcenter">  {# Username #}
-					<p style="color:white">{{ i }}</p>
-				</div><!--
-				--><div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 vcenter">  {# Username #}
-					<p style="color:white">{{ user.username }}</p>
-				</div><!--
-				--><div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 vcenter">  {# points #}
-					<p style="color:white">{{ user.points }}</p>
-				</div>
-			</div>
-		{% set i= i+1 %}
-			{% endfor %}
-	</div>
-
-	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6"> {# sidebar with the other challenges #}
-		<h3 class="text-center" style="color:rgb(0, 45, 77);">The last videos of our users</h3>
-		{% if listVideos|length > 0 %}
-			{% for video in listVideos %}
-				{# here we make the little thumbnails for every video #}
-			<div class="row jumbotron" style="background-color:rgba(0, 120, 204,1);padding:5px;margin:5px;">
-				<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 vcenter"> {# the picture #}
-					<a href="{{ path('bf_site_video', { 'id': video.id }) }}" style="color:white"><img src="/Bestfootball/web/uploads/videos/thumbnail/{{ video.id}}.jpg" alt="{{ video.thumbAlt }}" class="img-responsive"></a>
-				</div><!--
-				--><div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 vcenter">  {# the description of the video #}
-					<h4 style="font-size:18px;color:white;">{{ video.title }}</h4>
-					<p style="font-size:14px; color:white; ">
-						by <a href="{{ path('bf_site_profile', { 'username': video.user.username }) }}" style="color:white;"> {{ video.user.username }} </a>
-						on {{ video.date|date('d-m-Y')}}
-					</p>
-				</div>
-			</div>
-			{% endfor %}
-		{% endif %}
-	</div>
-</div>
+      <section class="info text-center">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">  
+          <h2 style="margin-top:50px;">How does it work ?</h1>
+          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 slide-left">
+            <div class="row">
+              <div class="col-xs-6 col-sm-12 col-md-12 col-lg-12 vcenter">
+                <img src="../img/trophee.jpg" alt="" class="img-responsive" style="margin: 0 auto;max-height:150px;"/>
+              </div><!--
+              --><div class="col-xs-6 col-sm-12 col-md-12 col-lg-12 vcenter">
+                <h3>Connect to the site</h3>
+                <p class="justify">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at neque velit. Praesent malesuada risus a libero commodo, ac malesuada lectus varius. Aliquam tempus volutpat odio, et molestie elit laoreet quis. Nullam cursus ipsum odio, pharetra varius massa varius sit amet. Donec at tincidunt urna, quis faucibus quam. Phasellus sit amet urna vitae risus ornare maximus quis vel massa. Ut id nunc hendrerit, consectetur ex nec, ullamcorper lectus. Donec vel neque convallis, cursus sem non, tempus risus.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 slide-left">
+            <div class="row">
+              <div class="col-xs-6 col-sm-12 col-md-12 col-lg-12 vcenter">
+                <img src="../img/trophee.jpg" alt="" class="img-responsive" style="margin: 0 auto;max-height:150px;"/>
+              </div><!--
+              --><div class="col-xs-6 col-sm-12 col-md-12 col-lg-12 vcenter">
+                <h3>Connect to the site</h3>
+                <p class="justify">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at neque velit. Praesent malesuada risus a libero commodo, ac malesuada lectus varius. Aliquam tempus volutpat odio, et molestie elit laoreet quis. Nullam cursus ipsum odio, pharetra varius massa varius sit amet. Donec at tincidunt urna, quis faucibus quam. Phasellus sit amet urna vitae risus ornare maximus quis vel massa. Ut id nunc hendrerit, consectetur ex nec, ullamcorper lectus. Donec vel neque convallis, cursus sem non, tempus risus.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 slide-left">
+            <div class="row">
+              <div class="col-xs-6 col-sm-12 col-md-12 col-lg-12 vcenter">
+                <img src="../img/trophee.jpg" alt="" class="img-responsive" style="margin: 0 auto;max-height:150px;"/>
+              </div><!--
+              --><div class="col-xs-6 col-sm-12 col-md-12 col-lg-12 vcenter">
+                <h3>Connect to the site</h3>
+                <p class="justify">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at neque velit. Praesent malesuada risus a libero commodo, ac malesuada lectus varius. Aliquam tempus volutpat odio, et molestie elit laoreet quis. Nullam cursus ipsum odio, pharetra varius massa varius sit amet. Donec at tincidunt urna, quis faucibus quam. Phasellus sit amet urna vitae risus ornare maximus quis vel massa. Ut id nunc hendrerit, consectetur ex nec, ullamcorper lectus. Donec vel neque convallis, cursus sem non, tempus risus.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </section>
+      
+      <section class="rank">
+        <div class="row">
+          <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5 vcenter slide-left">
+            <h3 class="text-center">Get your own ranking and become the best</h3>
+          </br>
+        </br>
+            <p class="justify">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at neque velit. Praesent malesuada risus a libero commodo, ac malesuada lectus varius. Aliquam tempus volutpat odio, et molestie elit laoreet quis. Nullam cursus ipsum odio, pharetra varius massa varius sit amet. Donec at tincidunt urna, quis faucibus quam. Phasellus sit amet urna vitae risus ornare maximus quis vel massa. Ut id nunc hendrerit, consectetur ex nec, ullamcorper lectus. Donec vel neque convallis, cursus sem non, tempus risus.
+            </p>
+          </div><!--
+          --><div class="col-xs-12 col-sm-7 col-md-7 col-lg-7 vcenter slide-right" style="margin: 0 auto; height:50vh;">
+              <table class="table table-striped">
+              	{% set i = 1 %}
+					{% for user in listUsers %}
+						{# here we make the little thumbnails for every video #}
+						<tr style="height:10vh;">
+		                  <td>{{ i }}</td>
+		                  <td style="height:10vh;"><img src="img/profile.png" alt="" style="height:101%;border-radius:50%"/></td>
+		                  <td>{{ user.username }}</td>
+		                  <td>{{ user.points }}</td>
+		                </tr>
+						
+						{% set i= i+1 %}
+					{% endfor %}              
+              </table>
+          </div>
+        </div>
+      </section>
+      <section class="map">
+          <div class="col-xs-12 col-sm-7 col-md-7 col-lg-7 vcenter slide-left" style="margin: 0 auto; height:50vh;">
+            <img src="../img/map.jpg" alt="" style="height:100%;"/>
+          </div><!--
+       --><div class="col-xs-12 col-sm-5 col-md-5 col-lg-5 vcenter slide-right" style="background-color:white;height:100%">
+            <h3 class="text-center">Compete with players from over the whole world</h3>
+            </br>
+            </br>
+            <p class="justify">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at neque velit. Praesent malesuada risus a libero commodo, ac malesuada lectus varius. Aliquam tempus volutpat odio, et molestie elit laoreet quis. Nullam cursus ipsum odio, pharetra varius massa varius sit amet. Donec at tincidunt urna, quis faucibus quam. Phasellus sit amet urna vitae risus ornare maximus quis vel massa. Ut id nunc hendrerit, consectetur ex nec, ullamcorper lectus. Donec vel neque convallis, cursus sem non, tempus risus.
+            </p> 
+          </div>
+      </section>
+      <section class="partner text-center">
+          <h3 class="text-center">Partners</h3>
+          <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+            partner 1
+          </div>
+         <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+            partner 2
+          </div>
+          <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+            partner 3
+          </div>
+          <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+            partner 4
+          </div>
+      </section>
 {% endblock %}

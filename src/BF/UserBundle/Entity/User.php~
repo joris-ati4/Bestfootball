@@ -81,7 +81,6 @@ class User extends BaseUser
     private $points;
 
 
-
     public function __construct()
     {
         parent::__construct();
@@ -360,5 +359,53 @@ class User extends BaseUser
     public function getPoints()
     {
         return $this->points;
+    }
+
+    /**
+     * Set picture
+     *
+     * @param \BF\SiteBundle\Entity\Picture $picture
+     *
+     * @return User
+     */
+    public function setPicture(\BF\SiteBundle\Entity\Picture $picture = null)
+    {
+        $this->picture = $picture;
+
+        return $this;
+    }
+
+    /**
+     * Get picture
+     *
+     * @return \BF\SiteBundle\Entity\Picture
+     */
+    public function getPicture()
+    {
+        return $this->picture;
+    }
+
+    /**
+     * Set facebookId
+     *
+     * @param integer $facebookId
+     *
+     * @return User
+     */
+    public function setFacebookId($facebookId)
+    {
+        $this->facebookId = $facebookId;
+
+        return $this;
+    }
+
+    /**
+     * Get facebookId
+     *
+     * @return integer
+     */
+    public function getFacebookId()
+    {
+        return $this->facebookId;
     }
 }

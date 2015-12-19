@@ -18,7 +18,15 @@ security:
             form_login:
                 provider: fos_userbundle
                 csrf_provider: security.csrf.token_manager # Use form.csrf_provider instead for Symfony <2.4
+            oauth:
+                resource_owners:
+                    facebook:           "/login/check-facebook"
+                login_path:        /login
+                use_forward:       false
+                failure_path:      /login
 
+                oauth_user_provider:
+                    service: hwi_oauth.user.provider
             logout:       true
             anonymous:    true
         dev:

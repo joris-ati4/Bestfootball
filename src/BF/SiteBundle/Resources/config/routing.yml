@@ -28,6 +28,9 @@ bf_site_contact:
     path:     /contact
     defaults: { _controller: BFSiteBundle:Home:contact }
 
+bf_site_connect:
+    path:     /connection
+    defaults: { _controller: BFSiteBundle:Home:connect }
 #this section does all the routes for the video section
 
 bf_site_video:

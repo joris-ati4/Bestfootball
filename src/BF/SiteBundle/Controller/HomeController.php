@@ -94,8 +94,7 @@ class HomeController extends Controller
 
 
 
-        }
-        
+        }    
     }
     public function aboutAction()
     {
@@ -108,5 +107,9 @@ class HomeController extends Controller
     public function contactAction()
     {
 		return $this->render('BFSiteBundle:Home:contact.html.twig');
+    }
+    public function connectAction()
+    {
+        return $this->render('BFSiteBundle:Home:connect.html.twig');
     }
 }
