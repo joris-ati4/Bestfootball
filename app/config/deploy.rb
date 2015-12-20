@@ -3,6 +3,9 @@ set :domain,      "bestfootball.ezwebcreation.fr"
 set :deploy_to,   "/var/www/bestfootball"
 set :app_path,    "app"
 
+set :user, "joris"
+set :use_sudo, true
+
 set :repository,  "https://github.com/jojotjebaby/Bestfootball"
 set :scm,         :git
 set :deploy_via,  :copy
