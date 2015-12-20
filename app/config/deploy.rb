@@ -3,8 +3,8 @@ set :domain,      "bestfootball.ezwebcreation.fr"
 set :deploy_to,   "/var/www/bestfootball"
 set :app_path,    "app"
 
-set :user, "joris"
-set :use_sudo, true
+set   :use_sudo,      false
+# To prompt the sudo password
 
 set :repository,  "https://github.com/jojotjebaby/Bestfootball"
 set :scm,         :git
@@ -25,6 +25,12 @@ set :use_composer, true
 set :update_vendors, true
 
 default_run_options[:pty] = true
+
+set :use_set_permissions, true
+
+set :writable_dirs,     ["app/cache", "app/logs"]
+set :webserver_user,    "www-data"
+set :permission_method, :acl
 
 set :clear_controllers, false
 
