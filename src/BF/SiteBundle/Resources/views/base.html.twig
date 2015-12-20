@@ -24,16 +24,16 @@
 {% endblock %}
 
 {% block body %}
-        {% for flash_message in app.session.flashbag.get('warning') %}
-          <p class="bg-danger text-center" style="margin-top:100px;"> {{ flash_message }} </p>
-        {% endfor %}
+  <div class="row" style="margin-top:50px;">
+    {% for flash_message in app.session.flashbag.get('warning') %}
+      <p class="bg-danger text-center" style="margin-top:100px;"> {{ flash_message }} </p>
+    {% endfor %}
 
-        {% for flash_message in app.session.flashbag.get('success') %}
-          <p class="bg-success text-center" style="margin-top:100px;"> {{ flash_message }} </p>
-        {% endfor %}
-
-<div class="row" style="margin-top:50px;">
-  {% block content %}
-  {% endblock %}
-</div>
+    {% for flash_message in app.session.flashbag.get('success') %}
+      <p class="bg-success text-center" style="margin-top:100px;"> {{ flash_message }} </p>
+    {% endfor %}
+    {% block content %}
+      {# here will come all the content of every page #}
+    {% endblock %}
+  </div>
 {% endblock %}
