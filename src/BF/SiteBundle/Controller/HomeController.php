@@ -33,17 +33,8 @@ class HomeController extends Controller
     	$repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Challenge');
         $listChallenges = $repository->findBy(array(),array('date' => 'desc'));
 
-        //Here we get the 3 videos with the most repetitions
-
-        foreach ($listChallenges as $challenge) {
-          // $advert est une instance d'Advert dans notre exemple
-          $repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video');
-          $listVideos = $repository->findBy(array('challenge' => $challenge),array('repetitions' => 'desc'),3,0);
-        }
-
 		return $this->render('BFSiteBundle:Home:challenges.html.twig', array(
 	      'listChallenges' => $listChallenges,
-          'listVideos' => $listVideos,
 	    ));
     }
     public function challengeViewAction($id)
