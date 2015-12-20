@@ -8,54 +8,45 @@
 {% block content %}
   {# This is the content section of our page ! #}
   <h1>Rankings of Bestfootball</h1>
-<div class="row">
 	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6"> {# sidebar with the rankings #}
 		<h3 class="text-center" style="color:rgb(0, 45, 77);">Global ranking</h3>
-		{% set i = 1 %}
-			{% for user in listUsersGlobal %}
-				{# here we make the little thumbnails for every video #}
-
-				<a href=", { 'id': user.id }) }}"></a>
-			<div class="row jumbotron text-center" style="background-color:rgba(0, 120, 204,1);padding:5px;margin:5px;">
-				<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 vcenter">  {# Username #}
-					<p style="color:white">{{ i }}</p>
-				</div><!--
-				--><div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 vcenter">  {# Username #}
-					<p style="color:white">{{ user.username }}</p>
-				</div><!--
-				--><div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 vcenter">  {# points #}
-					<p style="color:white">{{ user.points }}</p>
-				</div>
-			</div>
-				{% set i= i+1 %}
-			{% endfor %}
+              <table class="table table-striped">
+              	{% set i = 1 %}
+					{% for user in listUsers %}
+						{# here we make the little thumbnails for every video #}
+						<tr style="height:10vh;">
+		                  <td>{{ i }}</td>
+		                  <td style="height:10vh;"><img src="img/profile.png" alt="" style="height:101%;border-radius:50%"/></td>
+		                  <td>{{ user.username }}</td>
+		                  <td>{{ user.points }}</td>
+		                </tr>
+						
+						{% set i= i+1 %}
+					{% endfor %}              
+              </table>
+          </div>
+        </div>
 	</div>
 	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6"> {# sidebar with the rankings #}
 
 		{% if listUsersCountry is defined %}
 		<h3 class="text-center" style="color:rgb(0, 45, 77);">{{ country }} ranking</h3>
-		{% set i = 1 %}
-
-		
-			{% for user in listUsersCountry %}
-				{# here we make the little thumbnails for every video #}
-
-				<a href=", { 'id': user.id }) }}"></a>
-			<div class="row jumbotron text-center" style="background-color:rgba(0, 120, 204,1);padding:5px;margin:5px;">
-				<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 vcenter">  {# Username #}
-					<p style="color:white">{{ i }}</p>
-				</div><!--
-				--><div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 vcenter">  {# Username #}
-					<p style="color:white">{{ user.username }}</p>
-				</div><!--
-				--><div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 vcenter">  {# points #}
-					<p style="color:white">{{ user.points }}</p>
-				</div>
-			</div>
-				{% set i= i+1 %}
-			{% endfor %}
+		<table class="table table-striped">
+              	{% set i = 1 %}
+					{% for user in listUsersCountry %}
+						{# here we make the little thumbnails for every video #}
+						<tr style="height:10vh;">
+		                  <td>{{ i }}</td>
+		                  <td style="height:10vh;"><img src="img/profile.png" alt="" style="height:101%;border-radius:50%"/></td>
+		                  <td>{{ user.username }}</td>
+		                  <td>{{ user.points }}</td>
+		                </tr>
+						
+						{% set i= i+1 %}
+					{% endfor %}              
+              </table>
 		{% else %}
-			<div class="row jumbotron text-center" style="background-color:rgba(0, 120, 204,1);padding:5px;margin:5px;">
+			<div class="row jumbotron text-center" style="background-color:rgba(255, 255, 255,1);padding:5px;margin:5px;">
 				<p>Please select a country in your account settings.
 			</div>
 		{% endif %}

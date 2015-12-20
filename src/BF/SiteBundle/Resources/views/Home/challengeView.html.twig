@@ -1,7 +1,7 @@
 {% extends "BFSiteBundle::base.html.twig" %}
 
 {% block title %}
-  Challenge {{ challenge.title }} - {{ parent() }}
+  Challenge - {{ challenge.title }} - {{ parent() }}
 {% endblock %}
 	
 
@@ -18,33 +18,27 @@
   		</div>
   		<div class="col-xs-10 col-sm-4 col-md-4 col-lg-4">
   		{# button to call to participate #}
-  			<a href="{{ path('bf_site_upload', { 'id': challenge.id }) }}" class="btn btn-info" role="button">Participate !</a>
+  			<a href="{{ path('bf_site_upload', { 'id': challenge.id }) }}" class="btn btn-warning" role="button">Participate !</a>
 
-  		<h2 style="font-size:20px;">The last videos of our users</h2>
-  			{% for video in listVideos %}
-  				{# here we make the little thumbnails for every video #}
-			<div class="row jumbotron" style="background-color:green;padding:5px;">
-				<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 vcenter"> {# the picture #}
-					<a href="{{ path('bf_site_video', { 'id': video.id }) }}"><img src="/uploads/videos/thumbnail/{{ video.id}}.jpg" alt="{{ video.thumbAlt }}" class="img-responsive"></a>
-				</div><!--
-    			--><div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 vcenter">  {# the description of the video #}
-					<h4 style="font-size:18px;">{{ video.title }}</h4>
-					<p style="font-size:14px;">
-						by <a href="{{ path('bf_site_profile', { 'username': video.user.username }) }}"> {{ video.user.username }} </a>
-						on {{ video.date|date('d-m-Y')}}
-					</p>
-				</div>
-			</div>
-			{% endfor %}
-  	</div>
+
+  			{# a display with all the videos of the challenge #}
+  			<div class="listvideos">
+  				<h2 style="font-size:20px;">The last videos of our users</h2>
+  				{% for video in listVideos %}
+  					<div class="video">
+  						<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 vcenter"> {# the picture #}
+							<a href="{{ path('bf_site_video', { 'id': video.id }) }}"><img src="/uploads/videos/thumbnail/{{ video.id}}.jpg" alt="{{ video.thumbAlt }}" class="img-responsive"></a>
+						</div><!--
+		    			--><div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 vcenter">  {# the description of the video #}
+							<h4 style="font-size:18px;">{{ video.title }}</h4>
+							<p style="font-size:14px;">
+								by <a href="{{ path('bf_site_profile', { 'username': video.user.username }) }}"> {{ video.user.username }} </a>
+								on {{ video.date|date('d-m-Y')}}
+							</p>
+						</div>
+  					</div>
+  				{% endfor %}
+  			</div>
+  		</div>
 	</section>
-
-
-
-
-
-  
-
-	
-
 {% endblock %}
