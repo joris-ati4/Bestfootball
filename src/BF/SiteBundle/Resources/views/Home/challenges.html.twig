@@ -8,14 +8,16 @@
 {% block content %}
 	<section class="header text-center">
 		{% for challenge in listChallenges %}
-			<div class="col-xs-6 col-sm-4 col-md-4 col-lg-4 challenge">
-				<div class="row">
-					<img src="/uploads/challenges/thumbnail/{{challenge.id}}.{{ challenge.imageUrl}}" alt"{{ challenge.imageAlt}}"/>
-				</br>
-				  	<h3>{{ challenge.title }}</h3>
-				  	{% for video in listVideos %}
-				  		{{ video.user.username }}
-				  	{% endfor %}
+			<div class="col-xs-6 col-sm-4 col-md-4 col-lg-4" style="padding: 5px;">
+				<div class="challenge">
+					<div class="row">
+						<img src="/uploads/challenges/thumbnail/{{challenge.id}}.{{ challenge.imageUrl}}" alt"{{ challenge.imageAlt}}"/>
+					</br>
+					  	<h3>{{ challenge.title }}</h3>
+					  	{% for video in listVideos %}
+					  		{{ video.user.username }}
+					  	{% endfor %}
+					</div>
 				</div>
 			</div>
 		{% endfor %}
