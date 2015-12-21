@@ -133,14 +133,11 @@ hwi_oauth:
             type:                facebook
             client_id:           694354014040156
             client_secret:       55d4070a9dfa588b63027fe51bd7010e
-            scope:               "email, user_about_me, user_birthday"
-            infos_url:           "https://graph.facebook.com/me?fields=id,name,birthday,email,first_name,last_name"
+            scope:               "email, public_profile"
+            infos_url:           "https://graph.facebook.com/me?fields=id,name,email"
             paths:
-                email:          email
-                birthday:       birthday
                 name:           name
-                firstname:      first_name
-                lastname:       last_name
+                email:          email
         #google:
          #   type:                google
           #  client_id:           "%google_app_id%"
