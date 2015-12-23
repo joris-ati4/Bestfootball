@@ -23,6 +23,7 @@ class ChallengeController extends Controller
      */
     public function getAllAction(Request $request)
     {
+
         $repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Challenge');
         $listChallenges = $repository->findAll();
         $i = 0;
@@ -45,6 +46,7 @@ class ChallengeController extends Controller
      */
     protected function getEntity($id)
     {
+
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('BFSiteBundle:Challenge')->find($id);
@@ -65,6 +67,7 @@ class ChallengeController extends Controller
      */
     public function getAction($id)
     {
+
         $challenge = $this->getEntity($id);
 
         return array(
@@ -79,6 +82,7 @@ class ChallengeController extends Controller
      */
     public function postAction(Request $request)
     {
+
         $challenge = new Challenge();
         $form = $this->createForm(new ChallengeType(), $challenge, array('csrf_protection' => false));
         $json_data = json_decode($request->getContent(),true);//get the response data as array
@@ -109,6 +113,7 @@ class ChallengeController extends Controller
      */
     public function putAction(Request $request, $id)
     {
+
         $challenge = $this->getEntity($id);
         $form = $this->createForm(new ChallengeType(), $challenge, array('csrf_protection' => false));
         $json_data = json_decode($request->getContent(),true);//get the response data as array
@@ -134,6 +139,7 @@ class ChallengeController extends Controller
      */
     public function deleteAction($id)
     {
+
         $challenge = $this->getEntity($id);
 
         $em = $this->getDoctrine()->getManager();

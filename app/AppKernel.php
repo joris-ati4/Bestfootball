@@ -17,13 +17,14 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new BF\SiteBundle\BFSiteBundle(),
-            new FOS\UserBundle\FOSUserBundle(),
             new BF\UserBundle\BFUserBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle(),
             new FOS\RestBundle\FOSRestBundle(),
+            new FOS\UserBundle\FOSUserBundle(),
+            new FOS\OAuthServerBundle\FOSOAuthServerBundle(),
+            new Nelmio\ApiDocBundle\NelmioApiDocBundle(),
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
-            new BF\RestApiBundle\BFRestApiBundle(),
-            new HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
+            new BF\RestApiBundle\BFRestApiBundle()
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

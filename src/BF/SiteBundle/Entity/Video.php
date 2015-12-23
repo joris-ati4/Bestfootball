@@ -117,7 +117,7 @@ class Video
         // On réinitialise les valeurs des attributs url et alt
         $this->source = null;
         $this->thumbUrl = null;
-        $this->thumnAlt = null;
+        $this->thumbAlt = null;
         }
     }
 

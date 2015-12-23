@@ -23,6 +23,7 @@ class UserController extends Controller
      */
     public function getAllAction(Request $request)
     {
+
         $repository = $this->getDoctrine()->getManager()->getRepository('BFUserBundle:User');
         $users = $repository->findAll();
 
@@ -38,6 +39,7 @@ class UserController extends Controller
      */
     protected function getEntity($username)
     {
+
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('BFUserBundle:User')->findByUsername($username);
@@ -58,6 +60,7 @@ class UserController extends Controller
      */
     public function getAction($username)
     {
+
         $user = $this->getEntity($username);
 
         $id=$user[0]->getId();
@@ -81,6 +84,7 @@ class UserController extends Controller
      */
     public function postAction(Request $request)
     {
+
         $user = new User();
         $form = $this->createForm(new UserType(), $user, array('csrf_protection' => false));
         $json_data = json_decode($request->getContent(),true);//get the response data as array
@@ -111,6 +115,7 @@ class UserController extends Controller
      */
     public function putAction(Request $request, $id)
     {
+
         $user = $this->getEntity($id);
         $form = $this->createForm(new UserType(), $user, array('csrf_protection' => false));
         $json_data = json_decode($request->getContent(),true);//get the response data as array
@@ -136,6 +141,7 @@ class UserController extends Controller
      */
     public function deleteAction($id)
     {
+
         $user = $this->getEntity($id);
 
         $em = $this->getDoctrine()->getManager();

@@ -1,14 +1,3 @@
-hwi_oauth_redirect:
-    resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"
-    prefix:   /login
-
-hwi_oauth_login:
-    resource: "@HWIOAuthBundle/Resources/config/routing/login.xml"
-    prefix:   /login
-
-facebook_login:
-    path: /login/check-facebook
-
 bf_rest_api:
     resource: "@BFRestApiBundle/Resources/config/routing.yml"
     prefix:   /api
@@ -24,3 +13,10 @@ bf_site:
 
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+# FOSAuthServerBundle
+fos_oauth_server_token:
+    resource: "@FOSOAuthServerBundle/Resources/config/routing/token.xml"
+
+fos_oauth_server_authorize:
+    resource: "@FOSOAuthServerBundle/Resources/config/routing/authorize.xml"
