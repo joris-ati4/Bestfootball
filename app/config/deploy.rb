@@ -40,8 +40,8 @@ logger.level = Logger::MAX_LEVEL
 default_run_options[:pty] = true
 
 # Et enfin, si jamais vous rencontrez des erreurs de permissions, vous pouvez rajouter ces lignes suivantes :
-after "deploy:finalize_update" do
-run "chown -R dizda:www-data #{latest_release}"
-run "sudo chmod -R 777 #{latest_release}/#{cache_path}"
-run "sudo chmod -R 777 #{latest_release}/#{log_path}"
-end
+#after "deploy:finalize_update" do
+#run "chown -R joris:www-data #{latest_release}"
+#run "sudo chmod -R 777 #{latest_release}/#{cache_path}"
+#run "sudo chmod -R 777 #{latest_release}/#{log_path}"
+#end
