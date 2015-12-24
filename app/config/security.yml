@@ -13,23 +13,21 @@ security:
             id: fos_user.user_provider.username
 
     firewalls:
+        oauth_token:
+            pattern:    ^/oauth/v2/token
+            security:   false
+        api:
+            pattern:    ^/api/.*
+            fos_oauth:  true
+            stateless:  true
+            anonymous:  false
         main:
             pattern: ^/
             form_login:
                 provider: fos_userbundle
                 csrf_provider: security.csrf.token_manager # Use form.csrf_provider instead for Symfony <2.4
             logout:       true
-            anonymous:    true 
-
-        oauth_token:
-            pattern:    ^/oauth/v2/token
-            security:   false
-
-        api:
-            pattern:    ^/api
-            fos_oauth:  true
-            stateless:  true
-            anonymous:  false # Needed to allow access to oauth pages
+            anonymous:    true
 
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -42,7 +40,7 @@ security:
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_ADMIN }
         - { path: ^/oauth/v2/, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/api/, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/api, roles: IS_AUTHENTICATED_FULLY }
 
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
     providers:
