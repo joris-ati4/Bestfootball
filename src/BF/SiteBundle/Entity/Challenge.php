@@ -184,7 +184,7 @@ class Challenge
 
         $video
             ->frame( TimeCode::fromSeconds(1))
-            ->save('/var/www/bestfootball/shared/web/uploads/challenges/thumbnail/'.$this->id.'.jpg');
+            ->save('/var/www/bestfootball.fr/shared/web/uploads/challenges/thumbnail/'.$this->id.'.jpg');
         // Resize to 1280x720 to compact the video ! 
         $video
             ->filters()
@@ -194,7 +194,7 @@ class Challenge
         // Start transcoding and save video
             if($this->videoUrl != 'webm')
             {
-                 $video->save(new webm(),'/var/www/bestfootball/shared/web/uploads/challenges/'.$this->id.'.webm');
+                 $video->save(new webm(),'/var/www/bestfootball.fr/shared/web/uploads/challenges/'.$this->id.'.webm');
             }
        
     }
@@ -229,7 +229,7 @@ class Challenge
     protected function getUploadRootDir()
     {
       // On retourne le chemin relatif vers l'image pour notre code PHP
-      return '/var/www/bestfootball/shared/web/'.$this->getUploadDir();
+      return '/var/www/bestfootball.fr/shared/web/'.$this->getUploadDir();
     }
 
 

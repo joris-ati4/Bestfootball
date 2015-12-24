@@ -137,7 +137,7 @@ class Video
       $this->source = 'webm';
       // Et on génère l'attribut alt de la balise <img>, à la valeur du nom du fichier sur le PC de l'internaute
       $this->thumbAlt = $this->file->getClientOriginalName();
-      $this->thumbUrl = '/var/www/bestfootball/shared/web/uploads/img'.$this->id.'.jpg';
+      $this->thumbUrl = '/var/www/bestfootball.fr/shared/web/uploads/img'.$this->id.'.jpg';
     }
 
     /**
@@ -182,7 +182,7 @@ class Video
 
         $video
             ->frame( TimeCode::fromSeconds(1))
-            ->save('/var/www/bestfootball/shared/web/uploads/videos/thumbnail/'.$this->id.'.jpg');
+            ->save('/var/www/bestfootball.fr/shared/web/uploads/videos/thumbnail/'.$this->id.'.jpg');
         // Resize to 1280x720 to compact the video ! 
         $video
             ->filters()
@@ -192,7 +192,7 @@ class Video
         // Start transcoding and save video
             if($this->source != 'webm')
             {
-                 $video->save(new webm(),'/var/www/bestfootball/shared/web/uploads/videos/'.$this->id.'.webm');
+                 $video->save(new webm(),'/var/www/bestfootball.fr/shared/web/uploads/videos/'.$this->id.'.webm');
             }
        
     }
@@ -227,7 +227,7 @@ class Video
     protected function getUploadRootDir()
     {
       // On retourne le chemin relatif vers l'image pour notre code PHP
-      return '/var/www/bestfootball/shared/web/'.$this->getUploadDir();
+      return '/var/www/bestfootball.fr/shared/web/'.$this->getUploadDir();
     }
 
 
