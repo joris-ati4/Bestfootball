@@ -73,6 +73,11 @@ bf_rest_api_users_getAll:
     path: /users/getAll
     defaults: { _controller: BFRestApiBundle:User:getAll }
 
+bf_rest_api_users_getCurrent:
+    type: rest
+    path: /users/getCurrent
+    defaults: { _controller: BFRestApiBundle:User:getCurrent }
+
 bf_rest_api_users_put:
     type: rest
     path: /users/put/{id}

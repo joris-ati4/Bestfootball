@@ -111,6 +111,19 @@ class VideoController extends Controller
         $silver = $challenge->getSilver();
         $bronze = $challenge->getBronze();
 
+        //if the user already uploaded a video to the same challenge we take the points of the last video.
+        $repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video');
+        $oldVideo = $repository->checkChallenge($user, $challenge);
+        if($oldVideo != null){
+            //The user alreday has a video in the directory.
+            $oldScore=$oldVideo->getScore();
+            $points = $user->getPoints() - $oldScore;
+            $user->setPoints($points);
+        }
+        else{
+            //this is the first video off the user.
+        }
+
         if($video->getRepetitions() >= $gold){$video->setScore('300');}
         if($gold > $video->getRepetitions() && $video->getRepetitions() >= $silver){$video->setScore('200');}
         if($silver > $video->getRepetitions() && $video->getRepetitions() >= $bronze){$video->setScore('100');}
@@ -119,6 +132,7 @@ class VideoController extends Controller
         //retrieving the points from the video and updating the points off the user.
         $points = $video->getScore() + $user->getPoints();
         $user->setPoints($points);
+        $score = $video->getScore();
 
         //all the informations are set, we now proceed to convert the video etc.
         $em = $this->getDoctrine()->getManager();
@@ -130,7 +144,7 @@ class VideoController extends Controller
             'bf_rest_api_videos_get',
             array('id' => $video->getId())
         );
-        return View::createRedirect($url, Response::HTTP_CREATED);
+        return View::create($score,Response::HTTP_CREATED);
     }
 
     /**

@@ -78,6 +78,24 @@ class UserController extends Controller
     }
 
     /**
+     * Get action
+     * @var integer $id Id of the user
+     * @return array
+     *
+     * @Rest\View()
+     */
+    public function getCurrentAction()
+    {
+
+        $user = $this->container->get('security.context')->getToken()->getUser();
+        $user = array('id' => $user->getId(),'username' => $user->getUsername());
+
+        return  array(
+            'user' => $user,
+        );
+    }
+
+    /**
      * Collection post action
      * @var Request $request
      * @return View|array
