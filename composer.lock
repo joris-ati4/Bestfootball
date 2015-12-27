@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "2d0eb2a2b0b4d87a10ef397e0a1a441d",
-    "content-hash": "1915bec3e0a9a596b0679d2efd0ad4f1",
+    "hash": "ed386fe23a579a2391feb92f1e9755f2",
+    "content-hash": "15c5b27f82a3c22e2f65eac8b19690ff",
     "packages": [
         {
             "name": "alchemy/binary-driver",
@@ -270,16 +270,16 @@
         },
         {
             "name": "doctrine/common",
-            "version": "v2.5.2",
+            "version": "v2.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/common.git",
-                "reference": "311001fd9865a4d0d59efff4eac6d7dcb3f5270c"
+                "reference": "a579557bc689580c19fee4e27487a67fe60defc0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/common/zipball/311001fd9865a4d0d59efff4eac6d7dcb3f5270c",
-                "reference": "311001fd9865a4d0d59efff4eac6d7dcb3f5270c",
+                "url": "https://api.github.com/repos/doctrine/common/zipball/a579557bc689580c19fee4e27487a67fe60defc0",
+                "reference": "a579557bc689580c19fee4e27487a67fe60defc0",
                 "shasum": ""
             },
             "require": {
@@ -288,20 +288,20 @@
                 "doctrine/collections": "1.*",
                 "doctrine/inflector": "1.*",
                 "doctrine/lexer": "1.*",
-                "php": ">=5.3.2"
+                "php": "~5.5|~7.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "~3.7"
+                "phpunit/phpunit": "~4.8|~5.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.5.x-dev"
+                    "dev-master": "2.7.x-dev"
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "Doctrine\\Common\\": "lib/"
+                "psr-4": {
+                    "Doctrine\\Common\\": "lib/Doctrine/Common"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -339,7 +339,7 @@
                 "persistence",
                 "spl"
             ],
-            "time": "2015-12-04 12:49:42"
+            "time": "2015-12-25 13:18:31"
         },
         {
             "name": "doctrine/data-fixtures",
@@ -400,20 +400,20 @@
         },
         {
             "name": "doctrine/dbal",
-            "version": "v2.5.2",
+            "version": "v2.5.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "01dbcbc5cd0a913d751418e635434a18a2f2a75c"
+                "reference": "2fbcea96eae34a53183377cdbb0b9bec33974648"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/01dbcbc5cd0a913d751418e635434a18a2f2a75c",
-                "reference": "01dbcbc5cd0a913d751418e635434a18a2f2a75c",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/2fbcea96eae34a53183377cdbb0b9bec33974648",
+                "reference": "2fbcea96eae34a53183377cdbb0b9bec33974648",
                 "shasum": ""
             },
             "require": {
-                "doctrine/common": ">=2.4,<2.6-dev",
+                "doctrine/common": ">=2.4,<2.7-dev",
                 "php": ">=5.3.2"
             },
             "require-dev": {
@@ -467,7 +467,7 @@
                 "persistence",
                 "queryobject"
             ],
-            "time": "2015-09-16 16:29:33"
+            "time": "2015-12-25 16:28:24"
         },
         {
             "name": "doctrine/doctrine-bundle",
@@ -868,22 +868,22 @@
         },
         {
             "name": "doctrine/orm",
-            "version": "v2.5.2",
+            "version": "v2.5.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/doctrine2.git",
-                "reference": "464b5fdbfbbeb4a65465ac173c4c5d90960f41ff"
+                "reference": "d9fc5388f1aa1751a0e148e76b4569bd207338e9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/464b5fdbfbbeb4a65465ac173c4c5d90960f41ff",
-                "reference": "464b5fdbfbbeb4a65465ac173c4c5d90960f41ff",
+                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/d9fc5388f1aa1751a0e148e76b4569bd207338e9",
+                "reference": "d9fc5388f1aa1751a0e148e76b4569bd207338e9",
                 "shasum": ""
             },
             "require": {
                 "doctrine/cache": "~1.4",
                 "doctrine/collections": "~1.2",
-                "doctrine/common": ">=2.5-dev,<2.6-dev",
+                "doctrine/common": ">=2.5-dev,<2.7-dev",
                 "doctrine/dbal": ">=2.5-dev,<2.6-dev",
                 "doctrine/instantiator": "~1.0.1",
                 "ext-pdo": "*",
@@ -941,7 +941,7 @@
                 "database",
                 "orm"
             ],
-            "time": "2015-11-23 12:44:25"
+            "time": "2015-12-25 15:50:05"
         },
         {
             "name": "evenement/evenement",
@@ -1112,12 +1112,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSRestBundle.git",
-                "reference": "94a152d7e748462bab42bb72f13b55a38aeedb50"
+                "reference": "933a2a02caa9c9d2226859514688ead94088657b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/94a152d7e748462bab42bb72f13b55a38aeedb50",
-                "reference": "94a152d7e748462bab42bb72f13b55a38aeedb50",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/933a2a02caa9c9d2226859514688ead94088657b",
+                "reference": "933a2a02caa9c9d2226859514688ead94088657b",
                 "shasum": ""
             },
             "require": {
@@ -1188,7 +1188,7 @@
             "keywords": [
                 "rest"
             ],
-            "time": "2015-12-21 15:25:13"
+            "time": "2015-12-26 22:32:42"
         },
         {
             "name": "friendsofsymfony/user-bundle",
@@ -1669,16 +1669,16 @@
         },
         {
             "name": "michelf/php-markdown",
-            "version": "1.5.1",
+            "version": "1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/michelf/php-markdown.git",
-                "reference": "155287e4222d2dd69b6a21221617b50668d5892e"
+                "reference": "156e56ee036505ec637d761ee62dc425d807183c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/michelf/php-markdown/zipball/155287e4222d2dd69b6a21221617b50668d5892e",
-                "reference": "155287e4222d2dd69b6a21221617b50668d5892e",
+                "url": "https://api.github.com/repos/michelf/php-markdown/zipball/156e56ee036505ec637d761ee62dc425d807183c",
+                "reference": "156e56ee036505ec637d761ee62dc425d807183c",
                 "shasum": ""
             },
             "require": {
@@ -1716,7 +1716,7 @@
             "keywords": [
                 "markdown"
             ],
-            "time": "2015-12-22 18:18:12"
+            "time": "2015-12-24 01:37:31"
         },
         {
             "name": "monolog/monolog",
@@ -1921,16 +1921,16 @@
         },
         {
             "name": "php-ffmpeg/php-ffmpeg",
-            "version": "0.5.1",
+            "version": "0.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHP-FFMpeg/PHP-FFMpeg.git",
-                "reference": "c8949fe3df89edd7692368cc110a51a27971f28a"
+                "reference": "6e3134e4ecc96852b1205e6c88ceffdb8cf17d34"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHP-FFMpeg/PHP-FFMpeg/zipball/c8949fe3df89edd7692368cc110a51a27971f28a",
-                "reference": "c8949fe3df89edd7692368cc110a51a27971f28a",
+                "url": "https://api.github.com/repos/PHP-FFMpeg/PHP-FFMpeg/zipball/6e3134e4ecc96852b1205e6c88ceffdb8cf17d34",
+                "reference": "6e3134e4ecc96852b1205e6c88ceffdb8cf17d34",
                 "shasum": ""
             },
             "require": {
@@ -1986,7 +1986,7 @@
                 "video",
                 "video processing"
             ],
-            "time": "2014-08-26 08:46:56"
+            "time": "2015-01-30 19:07:38"
         },
         {
             "name": "phpcollection/phpcollection",
@@ -2125,47 +2125,6 @@
                 "psr-3"
             ],
             "time": "2012-12-21 11:40:51"
-        },
-        {
-            "name": "pulse00/ffmpeg-bundle",
-            "version": "0.5.2",
-            "target-dir": "Dubture/FFmpegBundle",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/pulse00/ffmpeg-bundle.git",
-                "reference": "1169100c5f7e577abdab16506e2104aa2b54de86"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/pulse00/ffmpeg-bundle/zipball/1169100c5f7e577abdab16506e2104aa2b54de86",
-                "reference": "1169100c5f7e577abdab16506e2104aa2b54de86",
-                "shasum": ""
-            },
-            "require": {
-                "php-ffmpeg/php-ffmpeg": "0.5.*@dev"
-            },
-            "type": "symfony-bundle",
-            "autoload": {
-                "psr-0": {
-                    "Dubture\\FFmpegBundle": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Robert Gruendler",
-                    "email": "r.gruendler@gmail.com"
-                }
-            ],
-            "description": "Symfony bundle to provide PHP-FFmpeg as a Symfony service (https://github.com/alchemy-fr/PHP-FFmpeg)",
-            "keywords": [
-                "ffmpeg",
-                "multimedia"
-            ],
-            "time": "2014-08-27 19:29:04"
         },
         {
             "name": "sensio/distribution-bundle",
@@ -2325,6 +2284,52 @@
             ],
             "description": "A security checker for your composer.lock",
             "time": "2015-11-07 08:07:40"
+        },
+        {
+            "name": "sujayjaju/ffmpeg-bundle",
+            "version": "dev-master",
+            "target-dir": "sujayjaju/FFmpegBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sujayjaju/ffmpeg-bundle.git",
+                "reference": "cd33f207f65848b32a4c91c402c93b780c10ae91"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sujayjaju/ffmpeg-bundle/zipball/cd33f207f65848b32a4c91c402c93b780c10ae91",
+                "reference": "cd33f207f65848b32a4c91c402c93b780c10ae91",
+                "shasum": ""
+            },
+            "require": {
+                "php-ffmpeg/php-ffmpeg": "0.6.*@dev"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-0": {
+                    "sujayjaju\\FFmpegBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Robert Gruendler",
+                    "email": "r.gruendler@gmail.com"
+                },
+                {
+                    "name": "Sujay Jaju",
+                    "email": "sujay.jaju@gmail.com"
+                }
+            ],
+            "description": "Symfony bundle to provide PHP-FFmpeg (https://github.com/PHP-FFmpeg/PHP-FFmpeg) as a Symfony service",
+            "keywords": [
+                "ffmpeg",
+                "multimedia",
+                "php-ffmpeg"
+            ],
+            "time": "2015-06-11 11:10:31"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -2567,16 +2572,16 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "v2.7.7",
+            "version": "v2.7.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "cc69dbd24b4b2e6de60b2414ef95da2794f459a2"
+                "reference": "ad264021e44a5aaa132f16aef69f92e56795683e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/cc69dbd24b4b2e6de60b2414ef95da2794f459a2",
-                "reference": "cc69dbd24b4b2e6de60b2414ef95da2794f459a2",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/ad264021e44a5aaa132f16aef69f92e56795683e",
+                "reference": "ad264021e44a5aaa132f16aef69f92e56795683e",
                 "shasum": ""
             },
             "require": {
@@ -2687,7 +2692,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2015-11-23 11:58:08"
+            "time": "2015-12-26 15:02:06"
         },
         {
             "name": "twig/twig",
@@ -2891,16 +2896,16 @@
         },
         {
             "name": "symfony/phpunit-bridge",
-            "version": "v2.8.0",
+            "version": "v2.8.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/phpunit-bridge.git",
-                "reference": "fb79ac646c342fdff19864619943a6c58bb28893"
+                "reference": "2deb2ccbe184948ae4e85e7b99e962738d3d2d69"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/phpunit-bridge/zipball/fb79ac646c342fdff19864619943a6c58bb28893",
-                "reference": "fb79ac646c342fdff19864619943a6c58bb28893",
+                "url": "https://api.github.com/repos/symfony/phpunit-bridge/zipball/2deb2ccbe184948ae4e85e7b99e962738d3d2d69",
+                "reference": "2deb2ccbe184948ae4e85e7b99e962738d3d2d69",
                 "shasum": ""
             },
             "require": {
@@ -2942,7 +2947,7 @@
             ],
             "description": "Symfony PHPUnit Bridge",
             "homepage": "https://symfony.com",
-            "time": "2015-11-27 22:51:43"
+            "time": "2015-12-11 08:57:52"
         }
     ],
     "aliases": [],
@@ -2953,7 +2958,8 @@
         "friendsofsymfony/rest-bundle": 20,
         "doctrine/doctrine-fixtures-bundle": 20,
         "friendsofsymfony/oauth-server-bundle": 20,
-        "nelmio/api-doc-bundle": 20
+        "nelmio/api-doc-bundle": 20,
+        "sujayjaju/ffmpeg-bundle": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
