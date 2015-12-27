@@ -146,9 +146,9 @@ swiftmailer:
     password:  "%mailer_password%"
     spool:     { type: memory }
 
-#ffmpeg bundle 
-php_ffmpeg:
-    ffmpeg_binary: /home/joris/bin/ffmpeg
-    ffprobe_binary: /home/joris/bin/ffprobe
-    binary_timeout: 300 # Use 0 for infinite
-    threads_count: 4
+#Pulse 000 - ffmpeg bundle
+#dubture_f_fmpeg:
+#    ffmpeg_binary: /home/joris/bin/ffmpeg
+#    ffprobe_binary: /home/joris/bin/ffprobe
+#    binary_timeout: 300 # Use 0 for infinite
+#    threads_count: 4

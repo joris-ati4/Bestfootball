@@ -134,7 +134,7 @@ class Video
 
       // Le nom du fichier est son id, on doit juste stocker également son extension
       // Pour faire propre, on devrait renommer cet attribut en « extension », plutôt que « url »
-      $this->source = 'webm';
+      $this->source = 'mp4';
       // Et on génère l'attribut alt de la balise <img>, à la valeur du nom du fichier sur le PC de l'internaute
       $this->thumbAlt = $this->file->getClientOriginalName();
       $this->thumbUrl = '/var/www/bestfootball.fr/shared/web/uploads/img'.$this->id.'.jpg';
@@ -170,13 +170,18 @@ class Video
       //the file is stocked in /Foot/web/uploads/videos/ + filename
 
       //this is the code to convert the file we receive into webm and mp4. We need to change to accept all file sizes.
-        $ffmpeg = this->get('php_ffmpeg.ffmpeg');
+        $ffmpeg = FFMpeg::create(array(
+            'ffmpeg.binaries'  => '/home/joris/bin/ffmpeg',
+            'ffprobe.binaries' => '/home/joris/bin/ffprobe',
+            'timeout'          => 3600, // The timeout for the underlying process
+            'ffmpeg.threads'   => 12,   // The number of threads that FFMpeg should use
+        ));
 
         // Open video
         $video = $ffmpeg->open($this->getUploadRootDir().'/'.$this->id.'.'.$this->source);
 
         $video
-            ->frame(FFMpeg\Coordinate\TimeCode::fromSeconds(2))
+            ->frame( TimeCode::fromSeconds(1))
             ->save('/var/www/bestfootball.fr/shared/web/uploads/videos/thumbnail/'.$this->id.'.jpg');
         // Resize to 1280x720 to compact the video ! 
         $video
@@ -187,7 +192,7 @@ class Video
         // Start transcoding and save video
             if($this->source != 'mp4')
             {
-                 $video->save(new FFMpeg\Format\Video\X264(),'/var/www/bestfootball.fr/shared/web/uploads/videos/'.$this->id.'.mp4');
+                 $video->save(new X264(),'/var/www/bestfootball.fr/shared/web/uploads/videos/'.$this->id.'.mp4');
             }
        
     }

@@ -19,12 +19,12 @@
         "sensio/framework-extra-bundle": "^3.0.2",
         "incenteev/composer-parameter-handler": "~2.0",
         "friendsofsymfony/user-bundle": "~2.0@dev",
+        "pulse00/ffmpeg-bundle": "~0.5",
         "jms/serializer-bundle": "dev-master",
         "friendsofsymfony/rest-bundle": "dev-master",
         "doctrine/doctrine-fixtures-bundle": "dev-master",
         "friendsofsymfony/oauth-server-bundle": "dev-master",
-        "nelmio/api-doc-bundle": "dev-master",
-        "sujayjaju/ffmpeg-bundle": "dev-master"
+        "nelmio/api-doc-bundle": "dev-master"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3",
