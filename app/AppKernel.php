@@ -24,7 +24,8 @@ class AppKernel extends Kernel
             new FOS\OAuthServerBundle\FOSOAuthServerBundle(),
             new Nelmio\ApiDocBundle\NelmioApiDocBundle(),
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
-            new BF\RestApiBundle\BFRestApiBundle()
+            new BF\RestApiBundle\BFRestApiBundle(),
+            new Dubture\FFmpegBundle\DubtureFFmpegBundle()
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

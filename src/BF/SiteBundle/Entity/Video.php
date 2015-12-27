@@ -190,9 +190,9 @@ class Video
             ->synchronize();
 
         // Start transcoding and save video
-            if($this->source != 'webm')
+            if($this->source != 'mp4')
             {
-                 $video->save(new webm(),'/var/www/bestfootball.fr/shared/web/uploads/videos/'.$this->id.'.webm');
+                 $video->save(new X264(),'/var/www/bestfootball.fr/shared/web/uploads/videos/'.$this->id.'.mp4');
             }
        
     }

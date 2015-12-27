@@ -84,7 +84,7 @@ body{
 /* header */
 .header{
     height:100vh;
-    background-image: url(../img/header.jpg);
+    background-image: url('../img/header.jpg');
     background-attachment: relative;
     background-size: cover;    
     padding-top: 50px;
