@@ -6,6 +6,10 @@ bf_site_challenges:
     path:     /challenges
     defaults: { _controller: BFSiteBundle:Home:challenges }
 
+bf_site_partnerChallenges:
+    path:     /partnerChallenges
+    defaults: { _controller: BFSiteBundle:Home:partnerChallenges }
+
 bf_site_challengeview:
     path:     /challenge/{id}
     defaults: { _controller: BFSiteBundle:Home:challengeView }

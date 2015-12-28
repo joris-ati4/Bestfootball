@@ -37,6 +37,15 @@ class HomeController extends Controller
 	      'listChallenges' => $listChallenges,
 	    ));
     }
+    public function partnerChallengesAction()
+    {
+        $repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Challenge');
+        $listChallenges = $repository->findBy(array('partner' => '1'),array('date' => 'desc'));
+
+        return $this->render('BFSiteBundle:Home:challenges.html.twig', array(
+          'listChallenges' => $listChallenges,
+        ));
+    }
     public function challengeViewAction($id)
     {
     	$repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Challenge');
