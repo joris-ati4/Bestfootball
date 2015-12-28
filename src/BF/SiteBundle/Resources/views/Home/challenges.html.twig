@@ -8,12 +8,14 @@
 {% block content %}
 	<section class="header text-center">
 		{% for challenge in listChallenges %}
-			<div class="col-xs-6 col-sm-4 col-md-4 col-lg-4" style="padding: 5px;">
+			<div class="col-xs-6 col-sm-4 col-md-4 col-lg-4" style="padding:5px;height:50vh;">
 				<div class="challenge">
 					<div class="row">
-						
 					</br>
+					<img src="/uploads/challenges/thumbnail/{{ challenge.title }}.jpg" alt="thumbnail of {{ challenge.title }}">
 					  	<h3>{{ challenge.title }}</h3>
+					  	<button onclick="location.href='{{ path('bf_site_challengeview', {'id': challenge.id}) }}'" class="btn btn-success" type="submit">More info !</button>
+					  	<button onclick="location.href='{{ path('bf_site_upload', {'id': challenge.id}) }}'" class="btn btn-warning" type="submit">Participate !</button>
 					</div>
 				</div>
 			</div>
