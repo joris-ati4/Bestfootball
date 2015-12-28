@@ -128,6 +128,14 @@ body{
     padding: 15px 15px;
 }
 
+.bgchallenge{
+    height:100vh;
+    background-image: url('../img/header.jpg');
+    background-attachment: fixed;
+    background-size: cover;    
+    padding-top: 50px;
+}
+
 
 /* layout for the video list */
 .listvideos{
