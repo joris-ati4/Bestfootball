@@ -8,37 +8,58 @@
 {% block content %}
 	<section class="header text-center">
 		<h1 style="font-size:24px;color:white;">{{ challenge.title }}</h1>
-		<div class="col-xs-10 col-sm-8 col-md-8 col-lg-8">
+		<div class="col-xs-12 col-sm-7 col-md-8 col-lg-8">
 	  		<video width="100%" controls autoplay>
 			  <source src="/uploads/challenges/{{ challenge.id }}.{{ challenge.videoUrl }}" type="video/mp4" autoplay>
 			Your browser does not support the video tag.
 			</video>
 			<p>description</br>
-			{{ challenge.description }}</p>
+			</p>
   		</div>
-  		<div class="col-xs-10 col-sm-4 col-md-4 col-lg-4">
-  		{# button to call to participate #}
-  			<a href="{{ path('bf_site_upload', { 'id': challenge.id }) }}" class="btn btn-warning" role="button">Participate !</a>
+  		<div class="col-xs-12 col-sm-5 col-md-4 col-lg-4" style="background-color:rgba(255,255,255,0.8)">
+  			<div class="row">
+  				<p> {{ challenge.description }} </p>
+	  			{# button to call to participate #}
+	  			<a href="{{ path('bf_site_upload', { 'id': challenge.id }) }}" class="btn btn-warning" role="button">Participate !</a>
+  			</div>
+  		</div>
 
 
-  			{# a display with all the videos of the challenge #}
+
+  		{# a display with all the videos of the challenge #}
+  		<div class="col-xs-12 col-sm-5 col-md-4 col-lg-4" style="background-color:rgba(255,255,255,0.8)">
   			<div class="listvideos">
-  				<h2 style="font-size:20px;">The last videos of our users</h2>
+  				<h2 style="font-size:20px;">The last videos</h2>
   				{% for video in listVideos %}
   					<div class="video">
   						<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 vcenter"> {# the picture #}
 							<a href="{{ path('bf_site_video', { 'id': video.id }) }}"><img src="/uploads/videos/thumbnail/{{ video.id}}.jpg" alt="{{ video.thumbAlt }}" class="img-responsive"></a>
 						</div><!--
 		    			--><div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 vcenter">  {# the description of the video #}
-							<h4 style="font-size:18px;">{{ video.title }}</h4>
-							<p style="font-size:14px;">
-								by <a href="{{ path('bf_site_profile', { 'username': video.user.username }) }}"> {{ video.user.username }} </a>
+							<h4 style="font-size:18px;color:white;">{{ video.title }}</h4>
+							<p style="font-size:14px;color:white;">
+								by <a href="{{ path('bf_site_profile', { 'username': video.user.username }) }}" style="color:white;"> {{ video.user.username }} </a>
 								on {{ video.date|date('d-m-Y')}}
 							</p>
 						</div>
   					</div>
   				{% endfor %}
   			</div>
+  		</div>
+  		<div class="col-xs-12 col-sm-5 col-md-4 col-lg-4" style="background-color:rgba(255,255,255,0.8)">
+  			<table class="table table-striped">
+              	{% set i = 1 %}
+					{% for user in rankUsers %}
+						{# here we make the little thumbnails for every video #}
+						<tr>
+		                  <td>{{ i }}</td>
+		                  <td><img src="img/profile.png" alt="" style="height:50px;border-radius:50%"/></td>
+		                  <td>{{ user.username }}</td>
+		                  <td>{{ user.points }}</td>
+		                </tr>
+						{% set i= i+1 %}
+					{% endfor %}              
+              </table>
   		</div>
 	</section>
 {% endblock %}
