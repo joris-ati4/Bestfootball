@@ -53,6 +53,11 @@ class HomeController extends Controller
     	$repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video');
         $listVideos = $repository->findBy(
             array('challenge' => $challenge),
+            array('date' => 'desc'),
+            5,
+            0);
+        $rankUsers = $repository->findBy(
+            array('challenge' => $challenge),
             array('repetitions' => 'desc'),
             5,
             0);
@@ -60,6 +65,7 @@ class HomeController extends Controller
 		return $this->render('BFSiteBundle:Home:challengeView.html.twig', array(
 	      'listVideos' => $listVideos,
 	      'challenge'  => $challenge,
+          'rankUsers' => $rankUsers,
 	    ));
     }
     public function rankingAction()
