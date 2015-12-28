@@ -129,7 +129,6 @@ body{
 }
 
 .bgchallenge{
-    height:100vh;
     background-image: url('../img/header.jpg');
     background-attachment: fixed;
     background-size: cover;    
