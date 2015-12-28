@@ -24,9 +24,12 @@ class ProfileController extends Controller
     	$repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video');
     	$listVideos = $repository->findByUser($user);
 
+      $lastVideo = $repository->findBy(array('user' => $user),array('date' => 'desc'),1,0);
+
     		return $this->render('BFSiteBundle:Profile:view.html.twig', array(
     	      'user' => $user,
     	      'listVideos' => $listVideos,
+            'lastVideo' => $lastVideo,
     	    ));
     }
     public function videosAction()
