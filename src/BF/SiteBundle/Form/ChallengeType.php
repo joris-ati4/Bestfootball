@@ -20,6 +20,7 @@ class ChallengeType extends AbstractType
             ->add('gold', 'text')
             ->add('silver', 'text')
             ->add('bronze', 'text')
+            ->add('partner','checkbox')
             ->add('file', 'file')
             ->add('save', 'submit')
         ;

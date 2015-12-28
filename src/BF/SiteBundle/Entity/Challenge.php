@@ -96,6 +96,11 @@ class Challenge
     */
     private $date;
 
+    /**
+    * @ORM\Column(name="partner", type="boolean")
+    */
+    private $partner;
+
      private $file;
 
     // On ajoute cet attribut pour y stocker le nom du fichier temporairement
@@ -503,5 +508,29 @@ class Challenge
     public function getDate()
     {
         return $this->date;
+    }
+
+    /**
+     * Set partner
+     *
+     * @param boolean $partner
+     *
+     * @return Challenge
+     */
+    public function setPartner($partner)
+    {
+        $this->partner = $partner;
+
+        return $this;
+    }
+
+    /**
+     * Get partner
+     *
+     * @return boolean
+     */
+    public function getPartner()
+    {
+        return $this->partner;
     }
 }
