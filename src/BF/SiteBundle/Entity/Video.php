@@ -162,7 +162,7 @@ class Video
       // On déplace le fichier envoyé dans le répertoire de notre choix
       $this->file->move(
         $this->getUploadRootDir(), // Le répertoire de destination
-        $this->id.'.'.$this->source  // Le nom du fichier à créer, ici « id.extension »
+        $this->id.'.'.$extension  // Le nom du fichier à créer, ici « id.extension »
       );
 
       //here we will convert the video to mp4 and webm and save the thumbnail.
