@@ -18,7 +18,7 @@
 							<img src="/uploads/challenges/thumbnail/{{ challenge.id }}.jpg" alt="thumbnail of {{ challenge.title }}" style="width:90%">
 							  	<h3>{{ challenge.title }}</h3>
 							  	<button onclick="location.href='{{ path('bf_site_challengeview', {'id': challenge.id}) }}'" class="btn btn-success" type="submit">More info !</button>
-							  	<button onclick="location.href='{{ path('bf_site_upload', {'id': challenge.id}) }}'" class="btn btn-warning" type="submit">Participate !</button>
+							  	<button onclick="location.href='{{ path('bf_site_upload', {'id': challenge.id, 'type': 'challenge'}) }}'" class="btn btn-warning" type="submit">Participate !</button>
 							</div>
 						</div>
 					</div>

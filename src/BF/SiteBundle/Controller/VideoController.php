@@ -33,74 +33,138 @@ class VideoController extends Controller
 	      'video'           => $video
 	    ));
     }
-    public function uploadAction(request $request, $id)
+    public function uploadAction(request $request, $id, $type)
     {
-
-    	$repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Challenge');
-    	$challenge = $repository->findOneBy(array('id' => $id));
+    	//we get the user entity
     	$user = $this->container->get('security.context')->getToken()->getUser();
+    	// On crée un objet Video
+    	$video = new Video();
+    	$video->setType($type);
+    	//the upload is for a challenge video
+    	if($type == 'challenge')
+    	{
+	    	$repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Challenge');
+	    	$challenge = $repository->findOneBy(array('id' => $id));
 
-    	//we verify if the user already uploaded a video.
-    	$repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video');
-    	$check = $repository->checkChallenge($user, $challenge);
-    	if (null != $check) {
-    		 $this->addFlash('warning','You already participated at this challenge. You will have to delete your old video before uploading a new one.');
-	       return $this->redirectToRoute('bf_site_challenges');
-	    }
+	    	//we verify if the user already uploaded a video.
+    		$repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video');
+    		$check = $repository->checkChallenge($user, $challenge);
 
-    	$gold = $challenge->getGold();
-    	$silver = $challenge->getSilver();
-    	$bronze = $challenge->getBronze();
+    		if (null != $check) {
+    		 	$this->addFlash('warning','You already participated at this challenge. You will have to delete your old video before uploading a new one.');
+	       		return $this->redirectToRoute('bf_site_challenges');
+	    	}
 
+	    	$gold = $challenge->getGold();
+	    	$silver = $challenge->getSilver();
+	    	$bronze = $challenge->getBronze();
 
-	    // On crée un objet Video
-	    $video = new Video();
-	    $video
+	    	$video
 	    	->setDate(new \Datetime())
 	    	->setUser($user)
-	    	->setChallenge($challenge)
-	    ;
+	    	->setChallenge($challenge);
+	    	;
 
-	    $form = $this->get('form.factory')->create(new VideoType, $video);
+	    	$form = $this->get('form.factory')->create(new VideoType, $video);
 	    
-	    if ($form->handleRequest($request)->isValid()) {
-	      $em = $this->getDoctrine()->getManager();
+		    if ($form->handleRequest($request)->isValid()) {
+			      $em = $this->getDoctrine()->getManager();
 
-	      if($video->getRepetitions() >= $gold)
-	      {
-	      		$video->setScore('300');
-	      }
-	      if($gold > $video->getRepetitions() && $video->getRepetitions() >= $silver)
-	      {
-	      		$video->setScore('200');
-	      }
-	      if($silver > $video->getRepetitions() && $video->getRepetitions() >= $bronze)
-	      {
-	      		$video->setScore('100');
-	      }
-	      if($bronze > $video->getRepetitions())
-	      {
-	      		$video->setScore('0');
-	      }
+			      if($video->getRepetitions() >= $gold)
+			      {
+			      		$video->setScore('300');
+			      }
+			      if($gold > $video->getRepetitions() && $video->getRepetitions() >= $silver)
+			      {
+			      		$video->setScore('200');
+			      }
+			      if($silver > $video->getRepetitions() && $video->getRepetitions() >= $bronze)
+			      {
+			      		$video->setScore('100');
+			      }
+			      if($bronze > $video->getRepetitions())
+			      {
+			      		$video->setScore('0');
+			      }
+			      //now we update the points of the user
+			      $points = $video->getScore() + $user->getPoints();
+			      $user->setPoints($points);
+			      $em->persist($user);
+			      $em->persist($video);
+			      $em->flush();
 
-	      //now we update the points of the user
+			      $this->addFlash('success', 'Your video was uploaded to our servers and you received '.$video->getScore().' points for this video.');
 
-	      $points = $video->getScore() + $user->getPoints();
-	      $user->setPoints($points);
+			      return $this->redirect($this->generateUrl('bf_site_video', array('id' => $video->getId())));
+			    }
 
-	      $em->persist($user);
-	      $em->persist($video);
-	      $em->flush();
+		    return $this->render('BFSiteBundle:Video:upload.html.twig', array(
+		      'form' => $form->createView(),
+		    ));
+    	}
+    	//the upload is for a duel video
+    	if($type == 'duel')
+    	{
+    		//we check if the user has the right to upload his video for this duel. (if it is his duel)
+	    	$repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Duel');
+	    	$duel = $repository->findOneBy(array('id' => $id));
+	    	if($duel->getHost() != $user->getId() OR $duel->getHost() != $user->getId()){ //We verify if the user and duel correspond
+	    		$this->addFlash('warning','You are not allowed to post a video to this Duel because it is not your duel');
+	       		return $this->redirectToRoute('bf_site_challenges');
+	    	}
 
+	    	$video
+	    	->setDate(new \Datetime())
+	    	->setDuel($duel)
+	    	->setUser($user)
+	    	->setScore('0')
+	    	;
+	    	//the user is the guest for the duel
+	    	if($duel->getGuest() == $user->getId()){ 
+	    		//check if he already uploaded a file. In that case we redirect him to the challenges page.
+	    		if($duel->getGuestCompleted() == '1'){
+	    			$this->addFlash('warning','You already uploaded a video for this duel. You can only upload one video/duel.');
+	       			return $this->redirectToRoute('bf_site_challenges');
+	    		}
+	    		else{
+	    			$duel->setGuestCompleted('1');
+	    		}	    		
+	    	}
+	    	//the user is the Host for the duel
+    		if($duel->getHost() == $user->getId()){ 
+    			//check if he already uploaded a file. In that case we redirect him to the challenges page.
+    			if($duel->getHostCompleted() == '1'){
+	    			$this->addFlash('warning','You already uploaded a video for this duel. You can only upload one video/duel.');
+	       			return $this->redirectToRoute('bf_site_challenges');
+	    		}
+	    		else{
+	    			$duel->setHostCompleted('1');
+	    		}
+    		}
+    		if($duel->getHostCompleted() == '1' && $duel->getGuestCompleted() == '1'){
+    			//both the players uploaded their video. We can now set the complete off the duel to 1
+    			$duel->setCompleted('1');
+    		}
 
-	      $this->addFlash('success', 'Your video was uploaded to our servers and you received '.$video->getScore().' points for this video.');
+	    	$form = $this->get('form.factory')->create(new VideoType, $video);
+	    	if ($form->handleRequest($request)->isValid()) {
+			      $em = $this->getDoctrine()->getManager();
+			      //now we update the points of the user
+			      $em->persist($video);
+			      $em->persist($duel);
+			      $em->flush();
 
-	      return $this->redirect($this->generateUrl('bf_site_video', array('id' => $video->getId())));
-	    }
+			      $this->addFlash('success', 'Your video was uploaded to our servers.');
 
-	    return $this->render('BFSiteBundle:Video:upload.html.twig', array(
-	      'form' => $form->createView(),
-	    ));
+			      return $this->redirect($this->generateUrl('bf_site_video', array('id' => $video->getId())));
+			    }
+
+		    return $this->render('BFSiteBundle:Video:upload.html.twig', array(
+		      'form' => $form->createView(),
+		    ));
+    	}
+
+	    
     }
     public function deleteAction(request $request, $id)
     {

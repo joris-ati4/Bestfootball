@@ -44,7 +44,7 @@ bf_site_video:
         id: -?\d+
 
 bf_site_upload:
-    path:     /upload/{id}
+    path:     /upload/{type}/{id}
     defaults: { _controller: BFSiteBundle:Video:upload }
     requirements:
         id: -?\d+

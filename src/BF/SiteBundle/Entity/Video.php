@@ -30,9 +30,15 @@ class Video
 
     /**
     * @ORM\ManyToOne(targetEntity="BF\SiteBundle\Entity\Challenge", inversedBy="videos")
-    * @ORM\JoinColumn(nullable=false)
+    * @ORM\JoinColumn(nullable=true)
     */
     private $challenge;
+
+    /**
+    * @ORM\ManyToOne(targetEntity="BF\SiteBundle\Entity\Duel", inversedBy="videos")
+    * @ORM\JoinColumn(nullable=true)
+    */
+    private $duel;
 
     /**
      * @var integer
@@ -92,6 +98,11 @@ class Video
     * @ORM\Column(name="score", type="integer", length=10, nullable=true)
     */
     private $score;
+
+    /**
+    * @ORM\Column(name="type", type="string", length=20, nullable=false)
+    */
+    private $type;
 
     private $file;
 
@@ -487,5 +498,53 @@ class Video
     public function getScore()
     {
         return $this->score;
+    }
+
+    /**
+     * Set type
+     *
+     * @param string $type
+     *
+     * @return Video
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * Set duel
+     *
+     * @param \BF\SiteBundle\Entity\Duel $duel
+     *
+     * @return Video
+     */
+    public function setDuel(\BF\SiteBundle\Entity\Duel $duel = null)
+    {
+        $this->duel = $duel;
+
+        return $this;
+    }
+
+    /**
+     * Get duel
+     *
+     * @return \BF\SiteBundle\Entity\Duel
+     */
+    public function getDuel()
+    {
+        return $this->duel;
     }
 }

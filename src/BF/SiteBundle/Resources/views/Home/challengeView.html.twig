@@ -21,7 +21,7 @@
 			  			<div class="row">
 			  				<p> {{ challenge.description }} </p>
 				  			{# button to call to participate #}
-				  			<a href="{{ path('bf_site_upload', { 'id': challenge.id }) }}" class="btn btn-warning" role="button">Participate !</a>
+				  			<a href="{{ path('bf_site_upload', { 'id': challenge.id, 'type': 'challenge' }) }}" class="btn btn-warning" role="button">Participate !</a>
 			  			</div>
 			  		</div>
 			  	</div>
