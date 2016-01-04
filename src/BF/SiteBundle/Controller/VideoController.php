@@ -108,63 +108,63 @@ class VideoController extends Controller
     		//we check if the user has the right to upload his video for this duel. (if it is his duel)
 	    	$repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Duel');
 	    	$duel = $repository->findOneBy(array('id' => $id));
-	    	if($duel->getHost() != $user->getId() OR $duel->getHost() != $user->getId()){ //We verify if the user and duel correspond
+	    	if($duel->getHost() == $user->getId() OR $duel->getGuest() == $user->getId()){ //We verify if the user and duel correspond
+	    			$video
+			    	->setDate(new \Datetime())
+			    	->setDuel($duel)
+			    	->setUser($user)
+			    	->setScore('0')
+			    	;
+			    	//the user is the guest for the duel
+			    	if($duel->getGuest() == $user->getId()){ 
+			    		//check if he already uploaded a file. In that case we redirect him to the challenges page.
+			    		if($duel->getGuestCompleted() == '1'){
+			    			$this->addFlash('warning','You already uploaded a video for this duel. You can only upload one video/duel.');
+			       			return $this->redirectToRoute('bf_site_challenges');
+			    		}
+			    		else{
+			    			$duel->setGuestCompleted('1');
+			    		}	    		
+			    	}
+			    	//the user is the Host for the duel
+		    		if($duel->getHost() == $user->getId()){ 
+		    			//check if he already uploaded a file. In that case we redirect him to the challenges page.
+		    			if($duel->getHostCompleted() == '1'){
+			    			$this->addFlash('warning','You already uploaded a video for this duel. You can only upload one video/duel.');
+			       			return $this->redirectToRoute('bf_site_challenges');
+			    		}
+			    		else{
+			    			$duel->setHostCompleted('1');
+			    		}
+		    		}
+		    		if($duel->getHostCompleted() == '1' && $duel->getGuestCompleted() == '1'){
+		    			//both the players uploaded their video. We can now set the complete off the duel to 1
+		    			$duel->setCompleted('1');
+		    		}
+
+			    	$form = $this->get('form.factory')->create(new VideoType, $video);
+			    	if ($form->handleRequest($request)->isValid()) {
+					      $em = $this->getDoctrine()->getManager();
+					      //now we update the points of the user
+					      $em->persist($video);
+					      $em->persist($duel);
+					      $em->flush();
+
+					      $this->addFlash('success', 'Your video was uploaded to our servers.');
+
+					      return $this->redirect($this->generateUrl('bf_site_video', array('id' => $video->getId())));
+					    }
+
+				    return $this->render('BFSiteBundle:Video:upload.html.twig', array(
+				      'form' => $form->createView(),
+				    ));
+		    	}
+
+	    	else{
 	    		$this->addFlash('warning','You are not allowed to post a video to this Duel because it is not your duel');
 	       		return $this->redirectToRoute('bf_site_challenges');
 	    	}
-
-	    	$video
-	    	->setDate(new \Datetime())
-	    	->setDuel($duel)
-	    	->setUser($user)
-	    	->setScore('0')
-	    	;
-	    	//the user is the guest for the duel
-	    	if($duel->getGuest() == $user->getId()){ 
-	    		//check if he already uploaded a file. In that case we redirect him to the challenges page.
-	    		if($duel->getGuestCompleted() == '1'){
-	    			$this->addFlash('warning','You already uploaded a video for this duel. You can only upload one video/duel.');
-	       			return $this->redirectToRoute('bf_site_challenges');
-	    		}
-	    		else{
-	    			$duel->setGuestCompleted('1');
-	    		}	    		
-	    	}
-	    	//the user is the Host for the duel
-    		if($duel->getHost() == $user->getId()){ 
-    			//check if he already uploaded a file. In that case we redirect him to the challenges page.
-    			if($duel->getHostCompleted() == '1'){
-	    			$this->addFlash('warning','You already uploaded a video for this duel. You can only upload one video/duel.');
-	       			return $this->redirectToRoute('bf_site_challenges');
-	    		}
-	    		else{
-	    			$duel->setHostCompleted('1');
-	    		}
-    		}
-    		if($duel->getHostCompleted() == '1' && $duel->getGuestCompleted() == '1'){
-    			//both the players uploaded their video. We can now set the complete off the duel to 1
-    			$duel->setCompleted('1');
-    		}
-
-	    	$form = $this->get('form.factory')->create(new VideoType, $video);
-	    	if ($form->handleRequest($request)->isValid()) {
-			      $em = $this->getDoctrine()->getManager();
-			      //now we update the points of the user
-			      $em->persist($video);
-			      $em->persist($duel);
-			      $em->flush();
-
-			      $this->addFlash('success', 'Your video was uploaded to our servers.');
-
-			      return $this->redirect($this->generateUrl('bf_site_video', array('id' => $video->getId())));
-			    }
-
-		    return $this->render('BFSiteBundle:Video:upload.html.twig', array(
-		      'form' => $form->createView(),
-		    ));
-    	}
-
-	    
+		} 
     }
     public function deleteAction(request $request, $id)
     {
