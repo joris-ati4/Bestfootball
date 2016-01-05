@@ -26,7 +26,6 @@ a,p,button{
 }
 body{
     overflow-x: hidden;
-    min-height: 100vh;
 }
 
 /* the layout for the navbar */

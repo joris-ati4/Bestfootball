@@ -17,7 +17,7 @@
 <section class="profile">
   <div class="row">
     <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">
-      <div class="challengedescription text-center">
+      <div class="challengedescription text-center" style="margin:150px 0;">
         <div class="challengetitle">
           <h3 style="color:white;">Upload your video.</h3>
         </div>
@@ -60,9 +60,9 @@
               {{ form_widget(form.file, {'attr': {'class': 'form-control'}}) }}
             </div>
           </div>
+          <input type="submit" value="Upload" class="btn btn-warning" />
         {# Pour le bouton, pas de label ni d'erreur, on affiche juste le widget #}
         {{ form_rest(form) }}
-        
         {# Fermeture de la balise <form> du formulaire HTML #}
         {{ form_end(form) }}
         </div>

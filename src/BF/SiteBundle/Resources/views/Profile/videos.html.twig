@@ -10,11 +10,12 @@
   <div class="row">
     <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">
   {# This is the content section of our page, here the user will be able to view all the challenges with the different niveau's! #}
- 		<div class="challengedescription row" style="margin-botom:100px;">
+ 		<div class="challengedescription row" style="margin-bottom:100px;">
         	<div class="challengetitle">
           		<h3 class="text-center" style="color:white;">My videos</h3>
         	</div>
-        	<div class="challengecontent">
+        	<div class="challengecontent" style="min-height:440px;">
+        		{% if listVideos|length > 0 %}
 				  {% for video in listVideos %}
 					<div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
 					  	<div class="jumbotron text-center" style="background-color:rgba(255, 255, 255,0.8);padding:10px;">
@@ -34,11 +35,12 @@
 					    </div>
 					</div>
 				  {% endfor %}
+				{% else %}
+                    <p> You don't have any videos !</p>
+                {% endif %}
 			</div>
 		</div>
 	</div>
   </div>
 </section>
-
-
 {% endblock %}

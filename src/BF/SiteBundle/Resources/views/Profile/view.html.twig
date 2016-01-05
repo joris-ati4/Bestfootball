@@ -40,7 +40,7 @@
             <!-- The last video section of thez profile-->
           {% if listVideos|length > 0 %}
             <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 vcenter">
-                <video width="100%" controls>
+                <video width="100%" id="video" controls>
                   <source src="/uploads/videos/{{lastVideo.id}}.{{ lastVideo.source }}" type="video/mp4">
                 Your browser does not support the video tag.
                 </video>
@@ -51,16 +51,22 @@
                     <h3 style="color:white;">My videos </h3>
                   </div>
                   <div class="challengecontent">
+                    <ul id="playlist" style="list-style-type:none;padding-left:0px;" >
                       {% for video in listVideos %}
-                        <div class="videotab row">
-                          <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 vcenter">
-                            <img src="/uploads/videos/thumbnail/{{ video.id }}.jpg" alt="" style="height:50px;"/>
-                          </div><!--
-                       --><div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 vcenter">
-                            <p style="font-size:14px;">{{ video.title }},</br> {{ video.date|date('d-m-Y')}}</p>
-                          </div>
-                        </div>
+                        <li>
+                          <a href="/uploads/videos/{{ video.id }}.mp4">
+                            <div class="videotab row">
+                              <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 vcenter">
+                                <img src="/uploads/videos/thumbnail/{{ video.id }}.jpg" alt="" style="height:50px;"/>
+                              </div><!--
+                           --><div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 vcenter">
+                                <p style="font-size:14px;">{{ video.title }},</br> {{ video.date|date('d-m-Y')}}</p>
+                              </div>
+                            </div>
+                          </a>
+                        </li>
                       {% endfor %}
+                    </ul>
                   </div>
                 </div>
             </div>
@@ -90,4 +96,48 @@
           </div>
         </div>
       </section>
+{% endblock %}
+
+
+{% block javascripts %}
+  <script>
+      var video;
+      var playlist;
+      var tracks;
+      var current;
+
+      init();
+      function init(){
+          current = 0;
+          video = $('#video');
+          playlist = $('#playlist');
+          tracks = playlist.find('li a');
+          len = tracks.length - 1;
+          video[0].volume = .90;
+          //video[0].play();
+          playlist.find('a').click(function(e){
+              e.preventDefault();
+              link = $(this);
+              current = link.parent().index();
+              run(link, video[0]);
+          });
+          video[0].addEventListener('ended',function(e){
+              current++;
+              if(current == len){
+                  current = 0;
+                  link = playlist.find('a')[0];
+              }else{
+                  link = playlist.find('a')[current];    
+              }
+              run($(link),video[0]);
+          });
+      }
+      function run(link, player){
+              player.src = link.attr('href');
+              par = link.parent();
+              par.addClass('active').siblings().removeClass('active');
+              video[0].load();
+              video[0].play();
+      }
+    </script>
 {% endblock %}

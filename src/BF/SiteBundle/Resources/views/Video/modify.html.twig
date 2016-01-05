@@ -5,36 +5,46 @@
 {% endblock %}
 
 {% block content %}
-
-  <h2>Modify your video</h2>
-<div class="row">
-  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 vcenter">
-   <img src="/uploads/videos/thumbnail/{{ video.id }}.jpg" alt="{{ video.thumbAlt }}" class="img-responsive"/>
-  </div><!--
---><div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 vcenter">
-    <form action="{{ path('bf_site_video_modify', {'id': video.id}) }}" method="post">
-      <p>
-        Challenge : {{ video.challenge.title }} </br>
-        Points earned: {{ video.score }}
-      </p>
-      <div class="form-group">
-        {{ form_label(form.title, "Title:", {'label_attr': {'class': 'col-xs-12 col-sm-4 col-md-4 col-lg-4 control-label'}}) }}
-        {{ form_errors(form.title) }}
-        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
-          {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
-        </div>
+<section class="profile">
+  <div class="row">
+    <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">
+  {# This is the content section of our page, here the user will be able to view all the challenges with the different niveau's! #}
+    <div class="challengedescription row" style="margin-bottom:100px;">
+      <div class="challengetitle">
+        <h3 class="text-center" style="color:white;">Modify your video</h3>
       </div>
-      <div class="form-group">
-        {{ form_label(form.description, "Description:", {'label_attr': {'class': 'col-xs-12 col-sm-4 col-md-4 col-lg-4 control-label'}}) }}
-        {{ form_errors(form.description) }}
-        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
-          {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
-        </div>
+      <div class="challengecontent" style="min-height:440px;">
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 vcenter">
+         <img src="/uploads/videos/thumbnail/{{ video.id }}.jpg" alt="{{ video.thumbAlt }}" class="img-responsive"/>
+        </div><!--
+     --><div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 vcenter">
+          <form action="{{ path('bf_site_video_modify', {'id': video.id}) }}" method="post">
+            <p>
+              Challenge : {{ video.challenge.title }} </br>
+              Points earned: {{ video.score }}
+            </p>
+            <div class="form-group">
+              {{ form_label(form.title, "Title:", {'label_attr': {'class': 'col-xs-12 col-sm-4 col-md-4 col-lg-4 control-label'}}) }}
+              {{ form_errors(form.title) }}
+              <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
+              </div>
+            </div>
+            <div class="form-group">
+              {{ form_label(form.description, "Description:", {'label_attr': {'class': 'col-xs-12 col-sm-4 col-md-4 col-lg-4 control-label'}}) }}
+              {{ form_errors(form.description) }}
+              <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+              </div>
+            </div>
+            <input type="submit" value="Modify" class="btn btn-success" />
+            {{ form_rest(form) }}
+          </form>
+        </div> 
       </div>
-      <input type="submit" value="Modify" class="btn btn-success" />
-      {{ form_rest(form) }}
-    </form>
+    </div>
   </div>
-</div>
+  </div>
+</section>
 
 {% endblock %}
