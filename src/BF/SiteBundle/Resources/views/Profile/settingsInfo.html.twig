@@ -25,13 +25,6 @@
 				</div>
 			</div>
 			<div class="form-group">
-			    {{ form_label(form.city, "City:", {'label_attr': {'class': 'col-xs-12 col-sm-4 col-md-4 col-lg-4 control-label'}}) }}
-			    {{ form_errors(form.city) }}
-			    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
-			      {{ form_widget(form.city, {'attr': {'class': 'form-control'}}) }}
-				</div>
-			</div>
-			<div class="form-group">
 			    {{ form_label(form.country, "Country:", {'label_attr': {'class': 'col-xs-12 col-sm-4 col-md-4 col-lg-4 control-label'}}) }}
 			    {{ form_errors(form.country) }}
 			    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
@@ -39,15 +32,33 @@
 				</div>
 			</div>
 			<div class="form-group">
+			    {{ form_label(form.state, "State:", {'label_attr': {'class': 'col-xs-12 col-sm-4 col-md-4 col-lg-4 control-label'}}) }}
+			    {{ form_errors(form.state) }}
+			    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 row" id="statefield">
+			      {{ form_widget(form.state, {'attr': {'class': 'form-control'}}) }}
+				</div>
+				<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 row" style="display: none;" id="loading-image">
+			      <img src="/img/loading.gif" alt="" id="loading-image" style="height:30px;margin:2px" />
+				</div>
+				
+			</div>
+		</br>
+			<div class="form-group">
+			    {{ form_label(form.city, "City:", {'label_attr': {'class': 'col-xs-12 col-sm-4 col-md-4 col-lg-4 control-label'}}) }}
+			    {{ form_errors(form.city) }}
+			    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+			      {{ form_widget(form.city, {'attr': {'class': 'form-control'}}) }}
+				</div>
+			</div>
+		</div><!--
+	--><div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 vcenter">
+			<div class="form-group">
 			    {{ form_label(form.gender, "Gender:", {'label_attr': {'class': 'col-xs-12 col-sm-4 col-md-4 col-lg-4 control-label'}}) }}
 			    {{ form_errors(form.gender) }}
 			    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
 			      {{ form_widget(form.gender, {'attr': {'class': 'form-control'}}) }}
 				</div>
 			</div>
-
-		</div><!--
-	--><div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 vcenter">
 		  	<div class="form-group">
 			    {{ form_label(form.footballClub, "Football Club:", {'label_attr': {'class': 'col-xs-12 col-sm-4 col-md-4 col-lg-4 control-label'}}) }}
 			    {{ form_errors(form.footballClub) }}

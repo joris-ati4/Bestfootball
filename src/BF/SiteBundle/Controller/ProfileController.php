@@ -22,7 +22,7 @@ class ProfileController extends Controller
     	$repository = $this->getDoctrine()->getManager()->getRepository('BFUserBundle:User');
     	$user = $repository->findOneByUsername($username);
     	$repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video');
-    	$listVideos = $repository->findByUser($user);
+    	$listVideos = $repository->findBy(array('user' => $user),array('date' => 'desc'));
 
       //here we get the rank + points of the user
       $points = $user->getPoints();

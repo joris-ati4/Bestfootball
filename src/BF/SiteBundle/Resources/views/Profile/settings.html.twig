@@ -10,7 +10,7 @@
   <section class="profile">
         <div class="row text-center" style="margin-top:50px;">
           <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">
-            <div style="background-color:rgba(255,255,255,0.8); margin-botom:100px;">
+            <div style="background-color:rgba(255,255,255,0.8); margin-bottom:100px;">
 			  <!-- Nav tabs -->
 			  <ul class="nav nav-tabs" role="tablist">
 			    <li role="presentation" class="active" style="width:50%;"><a href="#info" aria-controls="info" role="tab" data-toggle="tab">information</a></li>
@@ -34,4 +34,36 @@
         </div>
       </section> 
 </div>
+{% endblock %}
+
+{% block javascripts %}
+<script>
+	var $country = $('#bf_userbundle_user_country');
+	// When sport gets selected ...
+	$country.change(function() {
+	  // ... retrieve the corresponding form.
+	  var $form = $(this).closest('form');
+	  // Simulate form data, but only include the selected sport value.
+	  var data = {};
+	  data[$country.attr('name')] = $country.val();
+	  // Submit data via AJAX to the form's action path.
+	  $('#loading-image').show();
+	  $('#statefield').hide();
+	  $.ajax({
+	    url : $form.attr('action'),
+	    type: $form.attr('method'),
+	    data : data,
+	    success: function(html) {
+	      // Replace current position field ...
+	      $('#bf_userbundle_user_state').replaceWith(
+	        // ... with the returned one from the AJAX response.
+	        $(html).find('#bf_userbundle_user_state')
+	      );
+	      // Position field now displays the appropriate positions.
+	      $('#loading-image').hide();
+	      $('#statefield').show();
+	    }
+	  });
+	});
+</script>
 {% endblock %}

@@ -12,6 +12,18 @@ use Doctrine\ORM\Mapping as ORM;
 class User extends BaseUser
 {
     /**
+    * @ORM\ManyToOne(targetEntity="BF\SiteBundle\Entity\Country", inversedBy="users")
+    * @ORM\JoinColumn(nullable=true)
+    */
+    private $country;
+
+    /**
+    * @ORM\ManyToOne(targetEntity="BF\SiteBundle\Entity\State", inversedBy="users")
+    * @ORM\JoinColumn(nullable=true)
+    */
+    private $state;
+
+    /**
     * @ORM\OneToOne(targetEntity="BF\SiteBundle\Entity\Picture", cascade={"persist"})
     */
     private $picture;
@@ -49,11 +61,6 @@ class User extends BaseUser
     * @ORM\Column(name="city", type="string", length=255, nullable=true)
     */
     private $city;
-
-    /**
-    * @ORM\Column(name="country", type="string", length=255, nullable=true)
-    */
-    private $country;
 
     /**
     * @ORM\Column(name="gender", type="string", length=10, nullable=true)
@@ -436,5 +443,29 @@ class User extends BaseUser
     public function getFacebookAccessToken()
     {
         return $this->facebook_access_token;
+    }
+
+    /**
+     * Set state
+     *
+     * @param \BF\SiteBundle\Entity\State $state
+     *
+     * @return User
+     */
+    public function setState(\BF\SiteBundle\Entity\State $state = null)
+    {
+        $this->state = $state;
+
+        return $this;
+    }
+
+    /**
+     * Get state
+     *
+     * @return \BF\SiteBundle\Entity\State
+     */
+    public function getState()
+    {
+        return $this->state;
     }
 }
