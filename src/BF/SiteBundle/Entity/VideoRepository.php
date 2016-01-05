@@ -29,4 +29,21 @@ class VideoRepository extends \Doctrine\ORM\EntityRepository
 	    ->getOneOrNullResult()
 	  ;
 	}
+	public function lastVideo($user)
+	{
+	  $qb = $this->createQueryBuilder('v');
+
+	  $qb->where('v.user = :user')
+	       ->setParameter('user', $user)
+	     ->andWhere('v.type = :challenge')
+	       ->setParameter('challenge', 'challenge')
+	     ->orderBy('v.date', 'DESC')
+	     ->setMaxResults(1);
+	  ;
+
+	  return $qb
+	    ->getQuery()
+	    ->getOneOrNullResult()
+	  ;
+	}
 }
