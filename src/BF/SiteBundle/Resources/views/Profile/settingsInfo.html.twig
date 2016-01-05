@@ -1,15 +1,5 @@
-{% extends "BFSiteBundle::base.html.twig" %}
-
-{% block title %}
-  My Settings - {{ parent() }}
-{% endblock %}
-
-
-{% block content %}
 <div class="row">
   {# This is the content section of our page, here the user will be able to view all the challenges with the different niveau's! #}
-  <h1>My Settings</h1>
-
   <form action="{{ path('bf_site_settings_info')}}" method="post">
   	<div class="row">
 	  	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 vcenter">
@@ -87,4 +77,3 @@
   </form>
 	  
 </div>
-{% endblock %}
