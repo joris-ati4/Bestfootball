@@ -27,6 +27,11 @@ class Challenge
     private $videos; // Notez le « s », une annonce est liée à plusieurs candidatures
 
     /**
+    * @ORM\OneToMany(targetEntity="BF\SiteBundle\Entity\Duel", mappedBy="challenge")
+    */
+    private $duels; // Notez le « s », une annonce est liée à plusieurs candidatures
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")
@@ -532,5 +537,39 @@ class Challenge
     public function getPartner()
     {
         return $this->partner;
+    }
+
+    /**
+     * Add duel
+     *
+     * @param \BF\SiteBundle\Entity\Duel $duel
+     *
+     * @return Challenge
+     */
+    public function addDuel(\BF\SiteBundle\Entity\Duel $duel)
+    {
+        $this->duels[] = $duel;
+
+        return $this;
+    }
+
+    /**
+     * Remove duel
+     *
+     * @param \BF\SiteBundle\Entity\Duel $duel
+     */
+    public function removeDuel(\BF\SiteBundle\Entity\Duel $duel)
+    {
+        $this->duels->removeElement($duel);
+    }
+
+    /**
+     * Get duels
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDuels()
+    {
+        return $this->duels;
     }
 }

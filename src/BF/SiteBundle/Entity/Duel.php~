@@ -13,6 +13,27 @@ use Doctrine\ORM\Mapping as ORM;
 class Duel
 {
     /**
+    * @ORM\ManyToMany(targetEntity="BF\UserBundle\Entity\User", inversedBy="duels")
+    */
+    private $users;
+
+    /**
+    * @ORM\ManyToOne(targetEntity="BF\SiteBundle\Entity\Challenge", inversedBy="duels")
+    * @ORM\JoinColumn(nullable=false)
+    */
+    private $challenge;
+
+    /**
+    * @ORM\OneToMany(targetEntity="BF\SiteBundle\Entity\Video", mappedBy="duel")
+    */
+    private $videos; // Notez le « s », une annonce est liée à plusieurs candidatures
+
+    /**
+    * @ORM\OneToMany(targetEntity="BF\SiteBundle\Entity\Notification", mappedBy="duel")
+    */
+    private $notifications; // Notez le « s », une annonce est liée à plusieurs candidatures
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")
@@ -42,19 +63,6 @@ class Duel
      */
     private $accepted;
 
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="host", type="integer")
-     */
-    private $host;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="guest", type="integer")
-     */
-    private $guest;
 
     /**
      * @var boolean
@@ -77,6 +85,19 @@ class Duel
      */
     private $completed;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="host", type="string", length=255)
+     */
+    private $host;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="guest", type="string", length=255)
+     */
+    private $guest;
 
     /**
      * Get id
@@ -278,5 +299,140 @@ class Duel
     public function getGuest()
     {
         return $this->guest;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->users = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->videos = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->notifications = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add user
+     *
+     * @param \BF\UserBundle\Entity\User $user
+     *
+     * @return Duel
+     */
+    public function addUser(\BF\UserBundle\Entity\User $user)
+    {
+        $this->users[] = $user;
+
+        return $this;
+    }
+
+    /**
+     * Remove user
+     *
+     * @param \BF\UserBundle\Entity\User $user
+     */
+    public function removeUser(\BF\UserBundle\Entity\User $user)
+    {
+        $this->users->removeElement($user);
+    }
+
+    /**
+     * Get users
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getUsers()
+    {
+        return $this->users;
+    }
+
+    /**
+     * Set challenge
+     *
+     * @param \BF\SiteBundle\Entity\Challenge $challenge
+     *
+     * @return Duel
+     */
+    public function setChallenge(\BF\SiteBundle\Entity\Challenge $challenge)
+    {
+        $this->challenge = $challenge;
+
+        return $this;
+    }
+
+    /**
+     * Get challenge
+     *
+     * @return \BF\SiteBundle\Entity\Challenge
+     */
+    public function getChallenge()
+    {
+        return $this->challenge;
+    }
+
+    /**
+     * Add video
+     *
+     * @param \BF\SiteBundle\Entity\Video $video
+     *
+     * @return Duel
+     */
+    public function addVideo(\BF\SiteBundle\Entity\Video $video)
+    {
+        $this->videos[] = $video;
+
+        return $this;
+    }
+
+    /**
+     * Remove video
+     *
+     * @param \BF\SiteBundle\Entity\Video $video
+     */
+    public function removeVideo(\BF\SiteBundle\Entity\Video $video)
+    {
+        $this->videos->removeElement($video);
+    }
+
+    /**
+     * Get videos
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getVideos()
+    {
+        return $this->videos;
+    }
+
+    /**
+     * Add notification
+     *
+     * @param \BF\SiteBundle\Entity\Notification $notification
+     *
+     * @return Duel
+     */
+    public function addNotification(\BF\SiteBundle\Entity\Notification $notification)
+    {
+        $this->notifications[] = $notification;
+
+        return $this;
+    }
+
+    /**
+     * Remove notification
+     *
+     * @param \BF\SiteBundle\Entity\Notification $notification
+     */
+    public function removeNotification(\BF\SiteBundle\Entity\Notification $notification)
+    {
+        $this->notifications->removeElement($notification);
+    }
+
+    /**
+     * Get notifications
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getNotifications()
+    {
+        return $this->notifications;
     }
 }

@@ -24,6 +24,8 @@ class ProfileController extends Controller
     	$repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video');
     	$listVideos = $repository->findBy(array('user' => $user),array('date' => 'desc'));
 
+      $listChallenges = $repository->listChallenges($user);
+
       //here we get the rank + points of the user
       $points = $user->getPoints();
       if( '0'<= $points && $points < '600'){$level = 'Incognito'; $percent=($points/600)*100;$min=0;$max=600;$style='progress-bar-success';} //incognito
@@ -38,6 +40,7 @@ class ProfileController extends Controller
     	      'user' => $user,
     	      'listVideos' => $listVideos,
             'lastVideo' => $lastVideo,
+            'listChallenges' => $listChallenges,
             'level' => $level,
             'percent' => $percent,
             'min' => $min,

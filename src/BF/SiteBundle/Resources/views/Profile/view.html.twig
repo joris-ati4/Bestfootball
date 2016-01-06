@@ -31,19 +31,27 @@
                     {{ user.points }} Points
                   </div>
                 </div>
-                <ul style="">
+                <ul style="padding:0px 0px;">
                   <li><img src="img/profile.png" alt="" style="width:10px;"/><p> 1st </p></li>
                   <li><img src="img/profile.png" alt="" style="width:10px;"/><p> 15nd </p></li>
                 </ul>
+                {% if user.username != app.user.username %}
+                  <a href="{{ path('bf_site_duel_create', {'username': user.username }) }}" class="btn btn-success">
+                    <i class="glyphicon glyphicon-ok"></i>
+                       Duel me !
+                  </a>
+                {% endif %}
               </div>
             </div>
             <!-- The last video section of thez profile-->
           {% if listVideos|length > 0 %}
             <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 vcenter">
+              {% if lastVideo|length > 0 %}
                 <video width="100%" id="video" controls>
                   <source src="/uploads/videos/{{lastVideo.id}}.{{ lastVideo.source }}" type="video/mp4">
                 Your browser does not support the video tag.
                 </video>
+              {% endif %}
             </div><!--
          --><div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 vcenter"> 
                 <div class="videotabback">
@@ -78,13 +86,13 @@
                     <h3 class="text-center" style="color:white;">My Challenges</h3>
                   </div>
                   <div class="challengecontent">
-                    {% if listVideos|length > 0 %}
-                      {% for video in listVideos %}
+                    {% if listChallenges|length > 0 %}
+                      {% for challenge in listChallenges %}
                         <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 container text-center" style="margin:5px;{% if video.score == 300 %}background-color:yellow{% endif %}{% if video.score == 200 %}background-color:grey{% endif %}{% if video.score == 100 %}background-color:brown{% endif %};border-radius: 15px 50px;height:250px;">
-                          <h4 style>{{ video.challenge.title }}</h4>
+                          <h4 style>{{ challenge.title }}</h4>
                           <a href="{{ path('bf_site_video', { 'id': video.id }) }}">
                           <img src="/uploads/videos/thumbnail/{{ video.id}}.jpg" alt="{{ video.thumbAlt }}" class="img-responsive"></a>
-                          <p>{{video.title}}</p>
+                          <p>{{ challenge.video.title}}</p>
                         </div>
                       {% endfor %}
                     {% else %}

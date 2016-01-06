@@ -108,7 +108,7 @@ class VideoController extends Controller
     		//we check if the user has the right to upload his video for this duel. (if it is his duel)
 	    	$repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Duel');
 	    	$duel = $repository->findOneBy(array('id' => $id));
-	    	if($duel->getHost() == $user->getId() OR $duel->getGuest() == $user->getId()){ //We verify if the user and duel correspond
+	    	if($duel->getHost() == $user->getUsername() OR $duel->getGuest() == $user->getUsername()){ //We verify if the user and duel correspond
 	    			$video
 			    	->setDate(new \Datetime())
 			    	->setDuel($duel)
@@ -116,7 +116,7 @@ class VideoController extends Controller
 			    	->setScore('0')
 			    	;
 			    	//the user is the guest for the duel
-			    	if($duel->getGuest() == $user->getId()){ 
+			    	if($duel->getGuest() == $user->getUsername()){ 
 			    		//check if he already uploaded a file. In that case we redirect him to the challenges page.
 			    		if($duel->getGuestCompleted() == '1'){
 			    			$this->addFlash('warning','You already uploaded a video for this duel. You can only upload one video/duel.');
@@ -127,7 +127,7 @@ class VideoController extends Controller
 			    		}	    		
 			    	}
 			    	//the user is the Host for the duel
-		    		if($duel->getHost() == $user->getId()){ 
+		    		if($duel->getHost() == $user->getUsername()){ 
 		    			//check if he already uploaded a file. In that case we redirect him to the challenges page.
 		    			if($duel->getHostCompleted() == '1'){
 			    			$this->addFlash('warning','You already uploaded a video for this duel. You can only upload one video/duel.');
@@ -140,6 +140,10 @@ class VideoController extends Controller
 		    		if($duel->getHostCompleted() == '1' && $duel->getGuestCompleted() == '1'){
 		    			//both the players uploaded their video. We can now set the complete off the duel to 1
 		    			$duel->setCompleted('1');
+		    			//now we look at the video with the highest repitions and we give 50 points to the winner.
+
+
+		    			//We send a notification to the winner and the loser.
 		    		}
 
 			    	$form = $this->get('form.factory')->create(new VideoType, $video);

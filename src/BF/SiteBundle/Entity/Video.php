@@ -12,6 +12,10 @@ use FFMpeg\Filters\Video\ResizeFilter;
 use FFMpeg\Format\Video\X264;
 use FFMpeg\Coordinate\TimeCode;
 
+//declaration de la variable extension
+$extension = null;
+
+
 /**
  * Video
  *
@@ -145,6 +149,7 @@ class Video
       // Le nom du fichier est son id, on doit juste stocker également son extension
       // Pour faire propre, on devrait renommer cet attribut en « extension », plutôt que « url »
       $this->source = 'mp4';
+      global $extension;
       $extension = $this->file->guessExtension();
       // Et on génère l'attribut alt de la balise <img>, à la valeur du nom du fichier sur le PC de l'internaute
       $this->thumbAlt = $this->file->getClientOriginalName();
@@ -171,6 +176,7 @@ class Video
       }
 
       // On déplace le fichier envoyé dans le répertoire de notre choix
+      global $extension;
       $this->file->move(
         $this->getUploadRootDir(), // Le répertoire de destination
         $this->id.'.'.$extension  // Le nom du fichier à créer, ici « id.extension »

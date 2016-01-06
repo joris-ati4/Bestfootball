@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class State
 {
     /**
-    * @ORM\OneToMany(targetEntity="BF\UserBundle\Entity\User", mappedBy="country")
+    * @ORM\OneToMany(targetEntity="BF\UserBundle\Entity\User", mappedBy="state")
     */
     private $users; // Notez le « s », une annonce est liée à plusieurs candidatures
 

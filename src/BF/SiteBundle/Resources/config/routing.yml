@@ -70,6 +70,10 @@ bf_site_videos:
     path:     /myvideos
     defaults: { _controller: BFSiteBundle:Profile:videos }
 
+bf_site_profile_duels:
+    path:     /myduels
+    defaults: { _controller: BFSiteBundle:Duel:myduels }
+
 bf_site_settings:
     path:     /settings
     defaults: { _controller: BFSiteBundle:Profile:settings }
@@ -108,3 +112,21 @@ bf_site_admin:
     defaults: { _controller: BFSiteBundle:Admin:index }
 
 
+#this section does all the routes for the duel section
+
+bf_site_duel_create:
+    path:     /duel/create/{username}
+    defaults: { _controller: BFSiteBundle:Duel:create }
+
+bf_site_duel_accept:
+    path:     /duel/accept/{id}
+    defaults: { _controller: BFSiteBundle:Duel:accept }
+
+bf_site_duel_decline:
+    path:     /duel/decline/{id}
+    defaults: { _controller: BFSiteBundle:Duel:decline }
+
+
+bf_site_duel_view:
+    path:     /duel/view/{id}
+    defaults: { _controller: BFSiteBundle:Duel:view }

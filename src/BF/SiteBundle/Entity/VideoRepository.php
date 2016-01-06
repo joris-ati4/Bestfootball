@@ -46,4 +46,20 @@ class VideoRepository extends \Doctrine\ORM\EntityRepository
 	    ->getOneOrNullResult()
 	  ;
 	}
+	public function listChallenges($user)
+	{
+	  $qb = $this->createQueryBuilder('v');
+
+	  $qb->where('v.user = :user')
+	       ->setParameter('user', $user)
+	     ->andWhere('v.type = :challenge')
+	       ->setParameter('challenge', 'challenge')
+	     ->orderBy('v.date', 'DESC')
+	  ;
+
+	  return $qb
+	    ->getQuery()
+	    ->getResult()
+	  ;
+	}
 }

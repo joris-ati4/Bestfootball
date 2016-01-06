@@ -1,0 +1,64 @@
+{% extends "BFSiteBundle::base.html.twig" %}
+
+{% block title %}
+  My duels - {{ parent() }}
+{% endblock %}
+
+
+{% block content %}
+<section class="profile">
+  <div class="row">
+    <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">
+  {# This is the content section of our page, here the user will be able to view all the challenges with the different niveau's! #}
+ 		<div class="challengedescription row" style="margin-bottom:100px;">
+        	<div class="challengetitle">
+          		<h3 class="text-center" style="color:white;">My duels</h3>
+        	</div>
+        	<div class="challengecontent" style="min-height:440px;">
+        		{% if listDuels|length > 0 %}
+				  {% for duel in listDuels %}
+					<div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
+					  	<div class="jumbotron text-center" style="background-color:rgba(255, 255, 255,0.8);padding:10px;">
+					   		<p> {{ duel.challenge.title }}</p>
+							</br>
+
+
+						{% if duel.completed == 0 %}
+							{% if duel.accepted == 0 %}
+								{% if duel.host != user.username %}
+									{# accept or decline the duel #}
+									<a href="{{ path('bf_site_duel_accept', {'id': duel.id}) }}" class="btn btn-success">
+										<i class="glyphicon glyphicon-ok"></i>
+										    Accept
+									</a>
+								    <a href="{{ path('bf_site_duel_decline', {'id': duel.id}) }}" class="btn btn-danger">
+										<i class="glyphicon glyphicon-trash"></i>
+										    Decline
+									</a>
+								{% else %}
+									<p> wait for {{ duel.guest }} to accept your duel.
+								{% endif %}
+							{% else %}
+								<a href="{{ path('bf_site_upload', {'id': duel.id, 'type':'duel'}) }}" class="btn btn-warning">
+									<i class="glyphicon glyphicon-upload"></i>
+									    Upload your video
+								</a>
+							{% endif %}
+						{% else %}
+							<a href="{{ path('bf_site_duel_view', {'id': duel.id}) }}" class="btn btn-success">
+									<i class="glyphicon glyphicon-upload"></i>
+									    View the duel
+								</a>
+						{% endif %}
+					    </div>
+					</div>
+				  {% endfor %}
+				{% else %}
+                    <p> You don't have any duels !</p>
+                {% endif %}
+			</div>
+		</div>
+	</div>
+  </div>
+</section>
+{% endblock %}

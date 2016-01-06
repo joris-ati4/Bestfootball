@@ -12,6 +12,11 @@ use Doctrine\ORM\Mapping as ORM;
 class User extends BaseUser
 {
     /**
+    * @ORM\ManyToMany(targetEntity="BF\SiteBundle\Entity\Duel", mappedBy="users")
+    */
+    private $duels; // Notez le « s », une annonce est liée à plusieurs candidatures
+
+    /**
     * @ORM\ManyToOne(targetEntity="BF\SiteBundle\Entity\Country", inversedBy="users")
     * @ORM\JoinColumn(nullable=true)
     */
@@ -32,6 +37,11 @@ class User extends BaseUser
     * @ORM\OneToMany(targetEntity="BF\SiteBundle\Entity\Video", mappedBy="user")
     */
     private $videos; // Notez le « s », une annonce est liée à plusieurs candidatures
+
+    /**
+    * @ORM\OneToMany(targetEntity="BF\SiteBundle\Entity\Notification", mappedBy="user")
+    */
+    private $notifications; // Notez le « s », une annonce est liée à plusieurs candidatures
 
     /**
      * @ORM\Id
@@ -467,5 +477,73 @@ class User extends BaseUser
     public function getState()
     {
         return $this->state;
+    }
+
+    /**
+     * Add duel
+     *
+     * @param \BF\SiteBundle\Entity\Duel $duel
+     *
+     * @return User
+     */
+    public function addDuel(\BF\SiteBundle\Entity\Duel $duel)
+    {
+        $this->duels[] = $duel;
+
+        return $this;
+    }
+
+    /**
+     * Remove duel
+     *
+     * @param \BF\SiteBundle\Entity\Duel $duel
+     */
+    public function removeDuel(\BF\SiteBundle\Entity\Duel $duel)
+    {
+        $this->duels->removeElement($duel);
+    }
+
+    /**
+     * Get duels
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDuels()
+    {
+        return $this->duels;
+    }
+
+    /**
+     * Add notification
+     *
+     * @param \BF\SiteBundle\Entity\Notification $notification
+     *
+     * @return User
+     */
+    public function addNotification(\BF\SiteBundle\Entity\Notification $notification)
+    {
+        $this->notifications[] = $notification;
+
+        return $this;
+    }
+
+    /**
+     * Remove notification
+     *
+     * @param \BF\SiteBundle\Entity\Notification $notification
+     */
+    public function removeNotification(\BF\SiteBundle\Entity\Notification $notification)
+    {
+        $this->notifications->removeElement($notification);
+    }
+
+    /**
+     * Get notifications
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getNotifications()
+    {
+        return $this->notifications;
     }
 }
