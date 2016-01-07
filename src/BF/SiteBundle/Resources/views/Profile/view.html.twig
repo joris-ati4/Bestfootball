@@ -31,10 +31,44 @@
                     {{ user.points }} Points
                   </div>
                 </div>
-                <ul style="padding:0px 0px;">
-                  <li><img src="img/profile.png" alt="" style="width:10px;"/><p> 1st </p></li>
-                  <li><img src="img/profile.png" alt="" style="width:10px;"/><p> 15nd </p></li>
-                </ul>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row">
+                  <h3 class="text-center">Ranking</h3>
+                  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 row">
+                    <img src="/img/globe.png" alt="globe ranking" style="width:25px;"/><!--globe -->
+                  </div><!--
+                  --><div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 row">
+                    <p> {{ ranking.0 }}</p>
+                  </div>
+                  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 row"><!--country -->
+                    {% if user.country.name == 'France' %}
+                      <img src="/img/fr.jpg" alt="" style="width:25px;"/>
+                    {% elseif user.country.name == 'United States' %}
+                      <img src="/img/usa.jpg" alt="" style="width:25px;"/>
+                    {% elseif user.country.name == 'Belgium' %}
+                      <img src="/img/be.jpg" alt="" style="width:25px;"/>
+                    {% endif %}
+                     
+                  </div><!--
+                  --><div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 row">
+                    <p> {{ ranking.1 }} </p>
+                  </div>
+                  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 row">
+                    <p>{{ app.user.state.name }} <!--State -->
+                  </div><!--
+                  --><div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 row">
+                    <p> {{ ranking.2 }} </p>
+                  </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
                 {% if user.username != app.user.username %}
                   <a href="{{ path('bf_site_duel_create', {'username': user.username }) }}" class="btn btn-success">
                     <i class="glyphicon glyphicon-ok"></i>

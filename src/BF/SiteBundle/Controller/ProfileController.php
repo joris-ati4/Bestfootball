@@ -35,6 +35,17 @@ class ProfileController extends Controller
       if( '1900'<= $points && $points < '2500'){$level = 'Confirmed Star';$percent=(($points-1900)/600)*100;$min=1900;$max=2500;$style='progress-bar-warning';}
       if( '2500'<= $points){$level = 'Legend';$percent=(($points-2500)/2500)*100;$min=2500;$max=5000;$style='progress-bar-danger';}
 
+      //now we are going to determine the place of the user.
+
+        $repository = $this->getDoctrine()->getManager()->getRepository('BFUserBundle:User');
+        $globalRank = $repository->globalRanking();
+        $countryRank = $repository->countryRanking($user->getCountry());
+        $stateRank = $repository->stateRanking($user->getState());
+
+        $globalRank = array_search($user, $globalRank) + 1;
+        $countryRank = array_search($user, $countryRank) + 1;
+        $stateRank = array_search($user, $stateRank) + 1;
+        $ranking = array($globalRank,$countryRank,$stateRank);
       
 
     		return $this->render('BFSiteBundle:Profile:view.html.twig', array(
@@ -47,6 +58,7 @@ class ProfileController extends Controller
             'min' => $min,
             'max' => $max,
             'style' => $style,
+            'ranking' => $ranking,
     	    ));
     }
     public function videosAction()

@@ -4,6 +4,18 @@ namespace BF\SiteBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
+//Les entités
+use BF\SiteBundle\Entity\Video;
+use BF\SiteBundle\Entity\Challenge;
+use BF\UserBundle\Entity\User;
+use BF\UserBundle\Entity\UserRepository;
+use BF\SiteBundle\Entity\VideoRepository;
+//les types
+use BF\SiteBundle\Form\VideoType;
+use BF\SiteBundle\Form\VideoEditType;
+use BF\SiteBundle\Form\ChallengeType;
+
+
 class HomeController extends Controller
 {
     public function indexAction()
@@ -32,8 +44,7 @@ class HomeController extends Controller
               'listUsers' => $listUsers,
               'latestChallenge' => $latestChallenge
             ));
-        }
-        
+        }  
     }
     public function challengesAction()
     {
@@ -134,9 +145,36 @@ class HomeController extends Controller
         $repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video');
         $listVideos = $repository->listHomeVideos();
 
+        $points = $user->getPoints();
+          if( '0'<= $points && $points < '600'){$level = 'Incognito'; $percent=($points/600)*100;$min=0;$max=600;$style='progress-bar-success';} //incognito
+          if( '600'<= $points && $points < '1200'){$level = 'Promising Star';$percent=(($points-600)/600)*100;$min=600;$max=1200;$style='progress-bar-success';}
+          if( '1200'<= $points && $points < '1900'){$level = 'Rising Star';$percent=(($points-1200)/700)*100;$min=1200;$max=1900;$style='progress-bar-info';}
+          if( '1900'<= $points && $points < '2500'){$level = 'Confirmed Star';$percent=(($points-1900)/600)*100;$min=1900;$max=2500;$style='progress-bar-warning';}
+          if( '2500'<= $points){$level = 'Legend';$percent=(($points-2500)/2500)*100;$min=2500;$max=5000;$style='progress-bar-danger';}
+
+
+        //now we are going to determine the place of the user.
+
+        $repository = $this->getDoctrine()->getManager()->getRepository('BFUserBundle:User');
+        $globalRank = $repository->globalRanking();
+        $countryRank = $repository->countryRanking($user->getCountry());
+        $stateRank = $repository->stateRanking($user->getState());
+
+        $globalRank = array_search($user, $globalRank) + 1;
+        $countryRank = array_search($user, $countryRank) + 1;
+        $stateRank = array_search($user, $stateRank) + 1;
+        $ranking = array($globalRank,$countryRank,$stateRank);
+        
         return $this->render('BFSiteBundle:Home:logged.html.twig', array(
           'listVideos' => $listVideos,
           'listNotifications' => $listNotifications,
+          'user' => $user,
+          'level' => $level,
+          'percent' => $percent,
+          'min' => $min,
+          'max' => $max,
+          'style' => $style,
+          'ranking'=> $ranking,
         ));
     }
 }

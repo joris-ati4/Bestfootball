@@ -12,14 +12,14 @@
         <div class="col-xs-4 col-sm-4 col-md-3 col-lg-3 row">
           
             <a data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-              <div class="challengetitle text-center row">
+              <div class="challengetitle text-center row" style="position:relative;">
                 <h3 style="color:white;">Notifications</h3>
               </div>
             </a>
 
             
               <div class="collapse" id="collapseExample">
-                <div class="videotabback">
+                <div class="videotabback row" style="min-height:0px;">
                   <div class="challengecontent" style="margin: 0px 10px; margin-bottom:10px;">
                     {% for notification in listNotifications %}
                       <div class="well" style="margin-bottom:10px;">
@@ -34,20 +34,45 @@
             <div class="challengetitle text-center row">
                 <h3 style="color:white;">{{ app.user.username }}</h3>
             </div>
-            <div class="videotabback">
-              <div class="challengecontent" style="margin: 0px 10px; margin-bottom:10px;">
-                Profile info
+            <div class="videotabback" style="min-height:210px;">
+              <div class="challengecontent row" style="margin: 0px 10px; margin-bottom:10px;">
+                <h2 class="text-center">{{ level }}</h2>
+                <p>{{ user.points }} Points</p>
+                <div class="progress class="text-center"">
+                  <div class="progress-bar {{ style }} progress-bar-striped active" role="progressbar" aria-valuenow="{{ user.points }}" aria-valuemin="{{min}}" aria-valuemax="{{max}}" style="width:{{percent}}%;">
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row">
+                  <h3 class="text-center">Ranking</h3>
+                  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 row">
+                    <img src="../img/globe.png" alt="globe ranking" style="width:25px;"/><!--globe -->
+                  </div><!--
+                  --><div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 row">
+                    <p> {{ ranking.0 }}</p>
+                  </div>
+                  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 row"><!--country -->
+                    {% if app.user.country.name == 'France' %}
+                      <img src="/img/fr.jpg" alt="" style="width:25px;"/>
+                    {% elseif app.user.country.name == 'United States' %}
+                      <img src="/img/usa.jpg" alt="" style="width:25px;"/>
+                    {% elseif app.user.country.name == 'Belgium' %}
+                      <img src="/img/be.jpg" alt="" style="width:25px;"/>
+                    {% endif %}
+                     
+                  </div><!--
+                  --><div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 row">
+                    <p> {{ ranking.1 }} </p>
+                  </div>
+                  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 row">
+                    <p>{{ app.user.state.name }} <!--State -->
+                  </div><!--
+                  --><div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 row">
+                    <p> {{ ranking.2 }} </p>
+                  </div>
+                </div>
+              </div>
               </div>
             </div>
-
-
-
-          </div>
-    
-          
-    
-
-
 
         <div class="col-xs-5 col-sm-5 col-md-7 col-lg-7 row">
           {% for video in listVideos %}
