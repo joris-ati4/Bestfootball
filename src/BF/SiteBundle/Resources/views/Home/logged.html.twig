@@ -79,7 +79,15 @@
 
             {% if video.type == 'freestyle' %}
               <div class="well row" style="margin-bottom:10px;">
-                <p> {{ video.user.username }} uploaded a new video to the freestyle section </p>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row">
+                  <div class="col-xs-4 col-sm-4 col-md-4 col-lg-2 vcenter row">
+                    <img src="{{ video.user.picture.src }}" alt="{{ video.user.picture.src }}" style="width:100%" id="{{ video.user.username }}">
+                  </div><!--
+               --><div class="col-xs-8 col-sm-8 col-md-8 col-lg-10 vcenter row">
+                    <a href="{{ path('bf_site_profile', { 'username': video.user.username }) }}">{{ video.user.username }}
+                  </div>
+                </div>
+                <p>{{ video.title }}</p>
                 <video width="100%" id="video" controls>
                   <source src="/uploads/videos/{{ video.id}}.{{ video.source }}" type="video/mp4">
                     Your browser does not support the video tag.
@@ -87,13 +95,20 @@
               </div>
             {% elseif video.type == 'challenge' %}
               <div class="well row" style="margin-bottom:10px;">
-                <p> {{ video.user.username }} uploaded a new video to the {{ video.challenge.title}} challenge </p>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row">
+                  <div class="col-xs-4 col-sm-4 col-md-4 col-lg-2 vcenter row">
+                    <img src="{{ video.user.picture.src }}" alt="{{ video.user.picture.src }}" style="width:100%" id="{{ video.user.username }}">
+                  </div><!--
+               --><div class="col-xs-8 col-sm-8 col-md-8 col-lg-10 vcenter row">
+                    <a href="{{ path('bf_site_profile', { 'username': video.user.username }) }}">{{ video.user.username }}
+                  </div>
+                </div>
+                <p>{{ video.title }} to the {{ video.challenge.title }} challenge.</p>
                 <video width="100%" id="video" controls>
                   <source src="/uploads/videos/{{ video.id}}.{{ video.source }}" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
               </div>
-
             {% endif %}
 
           {% endfor %}
