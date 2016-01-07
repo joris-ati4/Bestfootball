@@ -2,6 +2,10 @@ bf_site_homepage:
     path:     /
     defaults: { _controller: BFSiteBundle:Home:index }
 
+bf_site_logged_home:
+    path:     /home
+    defaults: { _controller: BFSiteBundle:Home:logged }
+
 bf_site_challenges:
     path:     /challenges
     defaults: { _controller: BFSiteBundle:Home:challenges }

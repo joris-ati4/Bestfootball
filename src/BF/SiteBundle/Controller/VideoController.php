@@ -168,6 +168,9 @@ class VideoController extends Controller
 	    		$this->addFlash('warning','You are not allowed to post a video to this Duel because it is not your duel');
 	       		return $this->redirectToRoute('bf_site_challenges');
 	    	}
+		}
+		if( $type == 'freestyle'){
+			
 		} 
     }
     public function deleteAction(request $request, $id)

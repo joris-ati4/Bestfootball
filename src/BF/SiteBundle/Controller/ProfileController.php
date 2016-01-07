@@ -22,9 +22,10 @@ class ProfileController extends Controller
     	$repository = $this->getDoctrine()->getManager()->getRepository('BFUserBundle:User');
     	$user = $repository->findOneByUsername($username);
     	$repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video');
-    	$listVideos = $repository->findBy(array('user' => $user),array('date' => 'desc'));
+    	$listVideos = $repository->listVideos($user);
 
       $listChallenges = $repository->listChallenges($user);
+      $lastVideo = $repository->lastVideo($user);
 
       //here we get the rank + points of the user
       $points = $user->getPoints();
@@ -34,7 +35,7 @@ class ProfileController extends Controller
       if( '1900'<= $points && $points < '2500'){$level = 'Confirmed Star';$percent=(($points-1900)/600)*100;$min=1900;$max=2500;$style='progress-bar-warning';}
       if( '2500'<= $points){$level = 'Legend';$percent=(($points-2500)/2500)*100;$min=2500;$max=5000;$style='progress-bar-danger';}
 
-      $lastVideo = $repository->lastVideo($user);
+      
 
     		return $this->render('BFSiteBundle:Profile:view.html.twig', array(
     	      'user' => $user,

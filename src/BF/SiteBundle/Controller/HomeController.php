@@ -8,25 +8,32 @@ class HomeController extends Controller
 {
     public function indexAction()
     {
-        $repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Challenge');
-        $listChallenges = $repository->findBy(array(),array('date' => 'desc'),5,0);
+        //if the user is connected we redirect him to the logged page
+        if($this->container->get('security.context')->isGranted('IS_AUTHENTICATED_REMEMBERED') OR $this->container->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY')){
+            return $this->redirect($this->generateUrl('bf_site_logged_home'));
+        }
+        elseif( $this->container->get('security.context')->isGranted('IS_AUTHENTICATED_ANONYMOUSLY')){
+            $repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Challenge');
+            $listChallenges = $repository->findBy(array(),array('date' => 'desc'),5,0);
 
-        $repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Challenge');
-        $latestChallenge = $repository->findBy(array(),array('date' => 'desc'),1,0);
+            $repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Challenge');
+            $latestChallenge = $repository->findBy(array(),array('date' => 'desc'),1,0);
 
-        $repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video');
-        $listVideos = $repository->findBy(array(),array('date' => 'desc'),5,0);
+            $repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video');
+            $listVideos = $repository->findBy(array(),array('date' => 'desc'),5,0);
 
-        $repository = $this->getDoctrine()->getManager()->getRepository('BFUserBundle:User');
-        $listUsers = $repository->findBy(array(),array('points' => 'desc'),10,0);
+            $repository = $this->getDoctrine()->getManager()->getRepository('BFUserBundle:User');
+            $listUsers = $repository->findBy(array(),array('points' => 'desc'),10,0);
 
 
-        return $this->render('BFSiteBundle:Home:index.html.twig', array(
-          'listChallenges' => $listChallenges,
-          'listVideos' => $listVideos,
-          'listUsers' => $listUsers,
-          'latestChallenge' => $latestChallenge
-        ));
+            return $this->render('BFSiteBundle:Home:index.html.twig', array(
+              'listChallenges' => $listChallenges,
+              'listVideos' => $listVideos,
+              'listUsers' => $listUsers,
+              'latestChallenge' => $latestChallenge
+            ));
+        }
+        
     }
     public function challengesAction()
     {
@@ -117,5 +124,19 @@ class HomeController extends Controller
     public function connectAction()
     {
         return $this->render('BFSiteBundle:Home:connect.html.twig');
+    }
+    public function loggedAction()
+    {
+        $user = $this->container->get('security.context')->getToken()->getUser();
+
+        $listNotifications = $user->getNotifications();
+
+        $repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video');
+        $listVideos = $repository->listHomeVideos();
+
+        return $this->render('BFSiteBundle:Home:logged.html.twig', array(
+          'listVideos' => $listVideos,
+          'listNotifications' => $listNotifications,
+        ));
     }
 }
