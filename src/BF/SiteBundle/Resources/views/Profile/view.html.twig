@@ -22,7 +22,7 @@
               </div><!--
               --><div class="col-xs-8 col-sm-6 col-md-6 col-lg-6 vcenter">
                 <h1 class="text-center">{{user.username}}</h1>
-                <p>{{ user.birthday|date('Y') }} Years</br>{{ user.city }}, {{ user.country.name }}</br>{{ user.footballClub }}</br>{{ user.foot }} foot</br>Position: {{ user.fieldPosition }}</p>
+                <p>{{ age }} Years</br>{{ user.city }}, {{ user.country.name }}</br>{{ user.footballClub }}</br>{{ user.foot }} foot</br>Position: {{ user.fieldPosition }}</p>
               </div><!--
               --><div class="col-xs-2 col-sm-3 col-md-3 col-lg-3 vcenter">
                 <h2 class="text-center">{{ level }}</h2>
@@ -129,11 +129,11 @@
                   <div class="challengecontent">
                     {% if listChallenges|length > 0 %}
                       {% for challenge in listChallenges %}
-                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 container text-center" style="margin:5px;{% if video.score == 300 %}background-color:yellow{% endif %}{% if video.score == 200 %}background-color:grey{% endif %}{% if video.score == 100 %}background-color:brown{% endif %};border-radius: 15px 50px;height:250px;">
+                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 container text-center" style="margin:5px;{% if challenge.score == 300 %}background-color:yellow{% endif %}{% if challenge.score == 200 %}background-color:grey{% endif %}{% if challenge.score == 100 %}background-color:brown{% endif %};border-radius: 15px 50px;height:250px;">
                           <h4 style>{{ challenge.title }}</h4>
                           <a href="{{ path('bf_site_video', { 'id': challenge.id }) }}">
                           <img src="/uploads/videos/thumbnail/{{ challenge.id}}.jpg" alt="{{ challenge.thumbAlt }}" class="img-responsive"></a>
-                          <p>{{ challenge.video.title}}</p>
+                          <p>{{ challenge.title}}</p>
                         </div>
                       {% endfor %}
                     {% else %}

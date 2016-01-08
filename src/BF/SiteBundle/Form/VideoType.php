@@ -19,7 +19,6 @@ class VideoType extends AbstractType
             ->add('description', 'textarea')
             ->add('repetitions', 'text')
             ->add('file', 'file')
-            ->add('save', 'submit')
         ;
     }
     

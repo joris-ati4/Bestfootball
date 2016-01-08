@@ -21,10 +21,10 @@ class UserType extends AbstractType
         $builder
             ->add('name', 'text')
             ->add('firstname', 'text')
-            ->add('birthday', 'date')
+            ->add('birthday', 'birthday')
             ->add('city', 'text')
             ->add('gender', 'choice', array('choices' => array('Male' => 'Male', 'Female' => 'Female'),'choices_as_values' => true))
-            ->add('footballClub', 'text')
+            ->add('footballClub', 'text',array('required' => false))
             ->add('fieldPosition', 'choice', array('choices' => array('Goal Keeper' => 'Goal Keeper', 'Defensive' => 'Defensive', 'Mid-field' => 'Mid-field', 'Attack' => 'Attack'),'choices_as_values' => true))
             ->add('foot', 'choice', array('choices' => array('Left' => 'Left', 'Right' => 'Right', 'Both feet' => 'Both Feet'),'choices_as_values' => true))
             ->add('country', 'entity', array(

@@ -12,7 +12,7 @@
 		<h3 class="text-center" style="color:rgb(0, 45, 77);">Global ranking</h3>
               <table class="table table-striped">
               	{% set i = 1 %}
-					{% for user in listUsers %}
+					{% for user in listUsersGlobal %}
 						{# here we make the little thumbnails for every video #}
 						<tr style="height:10vh;">
 		                  <td>{{ i }}</td>
@@ -30,7 +30,7 @@
 	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6"> {# sidebar with the rankings #}
 
 		{% if listUsersCountry is defined %}
-		<h3 class="text-center" style="color:rgb(0, 45, 77);">{{ country }} ranking</h3>
+		<h3 class="text-center" style="color:rgb(0, 45, 77);">{{ country.name }} ranking</h3>
 		<table class="table table-striped">
               	{% set i = 1 %}
 					{% for user in listUsersCountry %}

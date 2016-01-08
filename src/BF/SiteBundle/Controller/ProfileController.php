@@ -46,10 +46,17 @@ class ProfileController extends Controller
         $countryRank = array_search($user, $countryRank) + 1;
         $stateRank = array_search($user, $stateRank) + 1;
         $ranking = array($globalRank,$countryRank,$stateRank);
+
+        //calculating the age of the user.
+        $birthday = $user->getBirthday();
+        $now = new \Datetime();
+        $interval = date_diff($now, $birthday);
+        $age = $interval->y;
       
 
     		return $this->render('BFSiteBundle:Profile:view.html.twig', array(
     	      'user' => $user,
+            'age' => $age,
     	      'listVideos' => $listVideos,
             'lastVideo' => $lastVideo,
             'listChallenges' => $listChallenges,

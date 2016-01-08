@@ -61,6 +61,11 @@
             </div>
           </div>
           <input type="submit" value="Upload" class="btn btn-warning" />
+
+          <a href="{{ path('bf_site_homepage') }}" class="btn btn-danger">
+            <i class="glyphicon glyphicon-edit"></i>
+              Cancel
+            </a>
         {# Pour le bouton, pas de label ni d'erreur, on affiche juste le widget #}
         {{ form_rest(form) }}
         {# Fermeture de la balise <form> du formulaire HTML #}

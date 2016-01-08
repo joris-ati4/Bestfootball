@@ -7,6 +7,16 @@ use FOS\UserBundle\Controller\RegistrationController as BaseController;
 use Symfony\Component\HttpFoundation\Request;
 use BF\SiteBundle\Entity\Picture;
 
+//FOSUSERBUNDLE USES
+use FOS\UserBundle\FOSUserEvents;
+use FOS\UserBundle\Event\FormEvent;
+use FOS\UserBundle\Event\GetResponseUserEvent;
+use FOS\UserBundle\Event\FilterUserResponseEvent;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use FOS\UserBundle\Model\UserInterface;
+
 /**
  * Controller managing the registration
  *
@@ -24,11 +34,11 @@ class RegistrationController extends BaseController
         /** @var $dispatcher \Symfony\Component\EventDispatcher\EventDispatcherInterface */
         $dispatcher = $this->get('event_dispatcher');
 
-        ///we set the picture of the user to the default picture.
+        //we set the picture of the user to the default picture.
         $picture = new Picture();
         $picture
-            ->setSrc('/img/profile.png')
-            ->setAlt('default profile picture on bestfootball')
+          ->setSrc('/img/profile.png')
+          ->setAlt('default profile picture on bestfootball')
         ;
         $user = $userManager->createUser();
         $user

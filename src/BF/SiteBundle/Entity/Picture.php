@@ -94,7 +94,7 @@ class Picture
 
         // On déplace le fichier envoyé dans le répertoire de notre choix
         $this->file->move(
-          '/var/www/bestfootball/shared/web/uploads/img', // Le répertoire de destination
+          '/var/www/bestfootball.fr/shared/web/uploads/img', // Le répertoire de destination
           $this->src   // Le nom du fichier à créer, ici « id.extension »
         );
       }
@@ -129,7 +129,7 @@ class Picture
       protected function getUploadRootDir()
       {
         // On retourne le chemin relatif vers l'image pour notre code PHP
-        return '/var/www/bestfootball/shared/web/'.$this->getUploadDir();
+        return '/var/www/bestfootball.fr/shared/web/'.$this->getUploadDir();
       }
 
     /**
