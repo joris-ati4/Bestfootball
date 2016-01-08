@@ -17,10 +17,13 @@ class ChallengeType extends AbstractType
         $builder
             ->add('title', 'text')
             ->add('description', 'text')
-            ->add('gold', 'text')
-            ->add('silver', 'text')
-            ->add('bronze', 'text')
-            ->add('partner','checkbox')
+            ->add('one', 'integer')
+            ->add('two', 'integer')
+            ->add('three', 'integer')
+            ->add('four', 'integer')
+            ->add('five', 'integer')
+            ->add('six', 'text')
+            ->add('partner','checkbox',array('required' => false))
             ->add('file', 'file')
             ->add('save', 'submit')
         ;

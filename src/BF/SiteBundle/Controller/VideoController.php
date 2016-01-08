@@ -55,9 +55,12 @@ class VideoController extends Controller
 	       		return $this->redirectToRoute('bf_site_challenges');
 	    	}
 
-	    	$gold = $challenge->getGold();
-	    	$silver = $challenge->getSilver();
-	    	$bronze = $challenge->getBronze();
+	    	$one = $challenge->getOne();
+	    	$two = $challenge->getTwo();
+	    	$three = $challenge->getThree();
+	    	$four = $challenge->getFour();
+	    	$five = $challenge->getFive();
+	    	$six = $challenge->getSix();
 
 	    	$video
 	    	->setDate(new \Datetime())
@@ -70,22 +73,35 @@ class VideoController extends Controller
 		    if ($form->handleRequest($request)->isValid()) {
 			      $em = $this->getDoctrine()->getManager();
 
-			      if($video->getRepetitions() >= $gold)
+			      if($video->getRepetitions() >= $six)
 			      {
 			      		$video->setScore('300');
 			      }
-			      if($gold > $video->getRepetitions() && $video->getRepetitions() >= $silver)
+			      if($six > $video->getRepetitions() && $video->getRepetitions() >= $five)
+			      {
+			      		$video->setScore('250');
+			      }
+			      if($five > $video->getRepetitions() && $video->getRepetitions() >= $four)
 			      {
 			      		$video->setScore('200');
 			      }
-			      if($silver > $video->getRepetitions() && $video->getRepetitions() >= $bronze)
+			      if($four > $video->getRepetitions() && $video->getRepetitions() >= $three)
+			      {
+			      		$video->setScore('150');
+			      }
+			      if($three > $video->getRepetitions() && $video->getRepetitions() >= $two)
 			      {
 			      		$video->setScore('100');
 			      }
-			      if($bronze > $video->getRepetitions())
+			      if($two > $video->getRepetitions() && $video->getRepetitions() >= $one)
+			      {
+			      		$video->setScore('100');
+			      }
+			      if($one > $video->getRepetitions())
 			      {
 			      		$video->setScore('0');
 			      }
+
 			      //now we update the points of the user
 			      $points = $video->getScore() + $user->getPoints();
 			      $user->setPoints($points);

@@ -51,42 +51,83 @@
 
     <div class="form-group">
       {# Génération du label. #}
-      {{ form_label(form.gold, "Minimum value Gold:", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+      {{ form_label(form.one, "Minimum value first level:", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
 
       {# Affichage des erreurs pour ce champ précis. #}
-      {{ form_errors(form.gold) }}
+      {{ form_errors(form.one) }}
 
       <div class="col-sm-4">
         {# Génération de l'input. #}
-        {{ form_widget(form.gold, {'attr': {'class': 'form-control'}}) }}
+        {{ form_widget(form.one, {'attr': {'class': 'form-control'}}) }}
       </div>
     </div>
 
     <div class="form-group">
       {# Génération du label. #}
-      {{ form_label(form.silver, "Minimum value Silver:", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+      {{ form_label(form.two, "Minimum value second level:", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
 
       {# Affichage des erreurs pour ce champ précis. #}
-      {{ form_errors(form.silver) }}
+      {{ form_errors(form.two) }}
 
       <div class="col-sm-4">
         {# Génération de l'input. #}
-        {{ form_widget(form.silver, {'attr': {'class': 'form-control'}}) }}
+        {{ form_widget(form.two, {'attr': {'class': 'form-control'}}) }}
       </div>
     </div>
 
     <div class="form-group">
       {# Génération du label. #}
-      {{ form_label(form.bronze, "Minimum value Bronze:", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+      {{ form_label(form.three, "Minimum value third level:", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
 
       {# Affichage des erreurs pour ce champ précis. #}
-      {{ form_errors(form.bronze) }}
+      {{ form_errors(form.three) }}
 
       <div class="col-sm-4">
         {# Génération de l'input. #}
-        {{ form_widget(form.bronze, {'attr': {'class': 'form-control'}}) }}
+        {{ form_widget(form.three, {'attr': {'class': 'form-control'}}) }}
       </div>
     </div>
+    
+    <div class="form-group">
+      {# Génération du label. #}
+      {{ form_label(form.four, "Minimum value fourth level:", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+      {# Affichage des erreurs pour ce champ précis. #}
+      {{ form_errors(form.four) }}
+
+      <div class="col-sm-4">
+        {# Génération de l'input. #}
+        {{ form_widget(form.four, {'attr': {'class': 'form-control'}}) }}
+      </div>
+    </div>
+
+    <div class="form-group">
+      {# Génération du label. #}
+      {{ form_label(form.five, "Minimum value fifth level:", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+      {# Affichage des erreurs pour ce champ précis. #}
+      {{ form_errors(form.five) }}
+
+      <div class="col-sm-4">
+        {# Génération de l'input. #}
+        {{ form_widget(form.five, {'attr': {'class': 'form-control'}}) }}
+      </div>
+    </div>
+
+    <div class="form-group">
+      {# Génération du label. #}
+      {{ form_label(form.six, "Minimum value highest level:", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+      {# Affichage des erreurs pour ce champ précis. #}
+      {{ form_errors(form.six) }}
+
+      <div class="col-sm-4">
+        {# Génération de l'input. #}
+        {{ form_widget(form.six, {'attr': {'class': 'form-control'}}) }}
+      </div>
+    </div>
+
+
 
 
   {# Pour le bouton, pas de label ni d'erreur, on affiche juste le widget #}

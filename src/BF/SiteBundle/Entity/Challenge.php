@@ -12,6 +12,8 @@ use FFMpeg\Format\Video\X264;
 use FFMpeg\Format\Video\WebM;
 use FFMpeg\Coordinate\TimeCode;
 
+$extension = null;
+
 /**
  * Challenge
  *
@@ -75,26 +77,48 @@ class Challenge
      */
     private $imageAlt;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="gold", type="string", length=255)
-     */
-    private $gold;
+    
 
     /**
      * @var string
      *
-     * @ORM\Column(name="silver", type="string", length=255)
+     * @ORM\Column(name="one", type="integer", length=255)
      */
-    private $silver;
+    private $one;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="bronze", type="string", length=255)
+     * @ORM\Column(name="two", type="integer", length=255)
      */
-    private $bronze;
+    private $two;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="three", type="integer", length=255)
+     */
+    private $three;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="four", type="integer", length=255)
+     */
+    private $four;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="five", type="integer", length=255)
+     */
+    private $five;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="six", type="integer", length=255)
+     */
+    private $six;
 
     /**
     * @ORM\Column(name="date", type="datetime")
@@ -146,7 +170,9 @@ class Challenge
 
       // Le nom du fichier est son id, on doit juste stocker également son extension
       // Pour faire propre, on devrait renommer cet attribut en « extension », plutôt que « url »
-      $this->videoUrl = 'webm';
+      $this->videoUrl = 'mp4';
+      global $extension;
+      $extension = $this->file->guessExtension();
       // Et on génère l'attribut alt de la balise <img>, à la valeur du nom du fichier sur le PC de l'internaute
       $this->imageAlt = $this->file->getClientOriginalName();
       $this->imageUrl = 'jpg';
@@ -172,9 +198,10 @@ class Challenge
       }
 
       // On déplace le fichier envoyé dans le répertoire de notre choix
+      global $extension;
       $this->file->move(
         $this->getUploadRootDir(), // Le répertoire de destination
-        $this->id.'.'.$this->videoUrl  // Le nom du fichier à créer, ici « id.extension »
+        $this->id.'.'.$extension  // Le nom du fichier à créer, ici « id.extension »
       );
 
       //here we will convert the video to mp4 and webm and save the thumbnail.
@@ -190,7 +217,7 @@ class Challenge
         ));
 
         // Open video
-        $video = $ffmpeg->open($this->getUploadRootDir().'/'.$this->id.'.'.$this->videoUrl);
+        $video = $ffmpeg->open($this->getUploadRootDir().'/'.$this->id.'.'.$extension);
 
         $video
             ->frame( TimeCode::fromSeconds(1))
@@ -202,9 +229,10 @@ class Challenge
             ->synchronize();
 
         // Start transcoding and save video
-            if($this->videoUrl != 'webm')
+            if($extension != 'mp4')
             {
-                 $video->save(new webm(),'/var/www/bestfootball.fr/shared/web/uploads/challenges/'.$this->id.'.webm');
+                $video->save(new X264(),'/var/www/bestfootball.fr/shared/web/uploads/challenges/'.$this->id.'.webm');
+                unlink($this->getUploadRootDir().'/'.$this->id.'.'.$extension);
             }
        
     }
@@ -378,77 +406,6 @@ class Challenge
     }
 
     /**
-     * Set gold
-     *
-     * @param string $gold
-     *
-     * @return Challenge
-     */
-    public function setGold($gold)
-    {
-        $this->gold = $gold;
-
-        return $this;
-    }
-
-    /**
-     * Get gold
-     *
-     * @return string
-     */
-    public function getGold()
-    {
-        return $this->gold;
-    }
-
-    /**
-     * Set silver
-     *
-     * @param string $silver
-     *
-     * @return Challenge
-     */
-    public function setSilver($silver)
-    {
-        $this->silver = $silver;
-
-        return $this;
-    }
-
-    /**
-     * Get silver
-     *
-     * @return string
-     */
-    public function getSilver()
-    {
-        return $this->silver;
-    }
-
-    /**
-     * Set bronze
-     *
-     * @param string $bronze
-     *
-     * @return Challenge
-     */
-    public function setBronze($bronze)
-    {
-        $this->bronze = $bronze;
-
-        return $this;
-    }
-
-    /**
-     * Get bronze
-     *
-     * @return string
-     */
-    public function getBronze()
-    {
-        return $this->bronze;
-    }
-    /**
      * Constructor
      */
     public function __construct()
@@ -571,5 +528,149 @@ class Challenge
     public function getDuels()
     {
         return $this->duels;
+    }
+
+    /**
+     * Set one
+     *
+     * @param integer $one
+     *
+     * @return Challenge
+     */
+    public function setOne($one)
+    {
+        $this->one = $one;
+
+        return $this;
+    }
+
+    /**
+     * Get one
+     *
+     * @return integer
+     */
+    public function getOne()
+    {
+        return $this->one;
+    }
+
+    /**
+     * Set two
+     *
+     * @param integer $two
+     *
+     * @return Challenge
+     */
+    public function setTwo($two)
+    {
+        $this->two = $two;
+
+        return $this;
+    }
+
+    /**
+     * Get two
+     *
+     * @return integer
+     */
+    public function getTwo()
+    {
+        return $this->two;
+    }
+
+    /**
+     * Set three
+     *
+     * @param integer $three
+     *
+     * @return Challenge
+     */
+    public function setThree($three)
+    {
+        $this->three = $three;
+
+        return $this;
+    }
+
+    /**
+     * Get three
+     *
+     * @return integer
+     */
+    public function getThree()
+    {
+        return $this->three;
+    }
+
+    /**
+     * Set four
+     *
+     * @param integer $four
+     *
+     * @return Challenge
+     */
+    public function setFour($four)
+    {
+        $this->four = $four;
+
+        return $this;
+    }
+
+    /**
+     * Get four
+     *
+     * @return integer
+     */
+    public function getFour()
+    {
+        return $this->four;
+    }
+
+    /**
+     * Set five
+     *
+     * @param integer $five
+     *
+     * @return Challenge
+     */
+    public function setFive($five)
+    {
+        $this->five = $five;
+
+        return $this;
+    }
+
+    /**
+     * Get five
+     *
+     * @return integer
+     */
+    public function getFive()
+    {
+        return $this->five;
+    }
+
+    /**
+     * Set six
+     *
+     * @param integer $six
+     *
+     * @return Challenge
+     */
+    public function setSix($six)
+    {
+        $this->six = $six;
+
+        return $this;
+    }
+
+    /**
+     * Get six
+     *
+     * @return integer
+     */
+    public function getSix()
+    {
+        return $this->six;
     }
 }
