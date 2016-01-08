@@ -231,7 +231,7 @@ class Challenge
         // Start transcoding and save video
             if($extension != 'mp4')
             {
-                $video->save(new X264(),'/var/www/bestfootball.fr/shared/web/uploads/challenges/'.$this->id.'.webm');
+                $video->save(new X264(),'/var/www/bestfootball.fr/shared/web/uploads/challenges/'.$this->id.'.mp4');
                 unlink($this->getUploadRootDir().'/'.$this->id.'.'.$extension);
             }
        
