@@ -14,6 +14,7 @@ use BF\SiteBundle\Entity\VideoRepository;
 //les types
 use BF\SiteBundle\Form\VideoType;
 use BF\SiteBundle\Form\VideoEditType;
+use BF\SiteBundle\Form\VideoDeleteType;
 use BF\SiteBundle\Form\ChallengeType;
 
 class VideoController extends Controller
@@ -178,31 +179,138 @@ class VideoController extends Controller
 			    		}
 		    		}
 
+		    		
+
 			    	$form = $this->get('form.factory')->create(new VideoType, $video);
 			    	if ($form->handleRequest($request)->isValid()) {
-					      $em = $this->getDoctrine()->getManager();
+					    $em = $this->getDoctrine()->getManager();
 
-					      if($duel->getHostCompleted() == '1' && $duel->getGuestCompleted() == '1'){
-		    			//both the players uploaded their video. We can now set the complete off the duel to 1
-		    			$duel->setCompleted('1');
-		    			//now we look at the video with the highest repitions and we give 50 points to the winner.
-		    			
+					    $host = $duel->getHost();
+		    			$guest = $duel->getGuest();
 
-		    			//We send a notification to the winner and the loser.
-		    		}
+					    if($duel->getHostCompleted() == '1' && $duel->getGuestCompleted() == '1'){
+			    			//both the players uploaded their video. We can now set the complete off the duel to 1
+			    			$duel->setCompleted('1');
+			    			//now we look at the video with the highest repitions and we give 50 points to the winner.
+			    			$videos = $duel->getVideos();
+			    			//we get the repetitions for each video
+			    			foreach ($videos as $video) {
+			    				$score = $video->getRepetitions();
+					    		if($video->getUser() != $guest)
+					    			{ $hostscore = $score;}
+					    		elseif($video->getUser() == $guest)
+					    			{ $guestscore = $score; }
+					    		else{}
+					    	}
+					    	//we get compare the host to the guest score
+						    if($hostscore > $guestscore){//host wins
+						    	$repository = $this->getDoctrine()->getManager()->getRepository('BFUserBundle:User');
+    							$host = $repository->findOneByUsername($host);
+    							$guest = $repository->findOneByUsername($guest);
 
+    							$points = $host->getPoints() + 50;
+			      				$host->setPoints($points);
+			      				$em->persist($host);
 
+			      				//notifications
+			      					//host
+			      					$notificationhost = new Notification();
+							    	$notificationhost
+							    		->setDate(new \Datetime())
+							    		->setMessage('Congratulations you won the duel against '.$guest->getUsername().' adn you received 50 points !')
+							    		->setUser($host)
+							    		->setWatched('0')
+							    		->setDuel($duel)
+		   							;
+			      					//guest
+		   							$notificationguest = new Notification();
+							    	$notificationguest
+							    		->setDate(new \Datetime())
+							    		->setMessage('unfortunately you lost the duel against '.$host->getUsername())
+							    		->setUser($guest)
+							    		->setWatched('0')
+							    		->setDuel($duel)
+							    	;
+			      				$em->persist($notificationhost);
+			      				$em->persist($notificationguest);
+						    }
+						    elseif($hostscore < $guestscore){//guest wins
+						    	$repository = $this->getDoctrine()->getManager()->getRepository('BFUserBundle:User');
+    							$guest = $repository->findOneByUsername($guest);
+    							$guest = $repository->findOneByUsername($host);
 
+    							$points = $guest->getPoints() + 50;
+			      				$guest->setPoints($points);
+			      				$em->persist($guest);
 
+			      				//notifications
+			      					//guest
+			      					$notificationguest = new Notification();
+							    	$notificationguest
+							    		->setDate(new \Datetime())
+							    		->setMessage('Congratulations you won the duel against '.$host->getUsername().' and you received 50 points !')
+							    		->setUser($guest)
+							    		->setWatched('0')
+							    		->setDuel($duel)
+		   							;
+			      					//host
+		   							$notificationhost = new Notification();
+							    	$notificationhost
+							    		->setDate(new \Datetime())
+							    		->setMessage('unfortunately you lost the duel against '.$guest->getUsername())
+							    		->setUser($host)
+							    		->setWatched('0')
+							    		->setDuel($duel)
+							    	;
+			      				$em->persist($notificationhost);
+			      				$em->persist($notificationguest);
 
-					      //now we update the points of the user
-					      $em->persist($video);
-					      $em->persist($duel);
-					      $em->flush();
+						    }
+						    elseif($hostscore == $guestscore){//same score,each 25 points
+						    	$repository = $this->getDoctrine()->getManager()->getRepository('BFUserBundle:User');
+    							$guest = $repository->findOneByUsername($guest);
+    							$host = $repository->findOneByUsername($host);
 
-					      $this->addFlash('success', 'Your video was uploaded to our servers.');
+    							//host points
+    							$points = $host->getPoints() + 25;
+			      				$host->setPoints($points);
+			      				$em->persist($host);
+			      				//guest points
+			      				$points = $guest->getPoints() + 25;
+			      				$guest->setPoints($points);
+			      				$em->persist($guest);
 
-					      return $this->redirect($this->generateUrl('bf_site_video', array('id' => $video->getId())));
+			      				//notifications
+			      					//guest
+			      					$notificationguest = new Notification();
+							    	$notificationguest
+							    		->setDate(new \Datetime())
+							    		->setMessage('Congratulations, the duel against '.$host->getUsername().' was a tie and you received 25 points !')
+							    		->setUser($guest)
+							    		->setWatched('0')
+							    		->setDuel($duel)
+		   							;
+			      					//host
+		   							$notificationhost = new Notification();
+							    	$notificationhost
+							    		->setDate(new \Datetime())
+							    		->setMessage('Congratulations, the duel against '.$guest->getUsername().' was a tie and you received 25 points !')
+							    		->setUser($host)
+							    		->setWatched('0')
+							    		->setDuel($duel)
+							    	;
+			      				$em->persist($notificationhost);
+			      				$em->persist($notificationguest);
+						    }
+			    		}
+					    //now we update the points of the user
+					    $em->persist($video);
+					    $em->persist($duel);
+					    $em->flush();
+
+					    $this->addFlash('success', 'Your video was uploaded to our servers.');
+
+					    return $this->redirect($this->generateUrl('bf_site_video', array('id' => $video->getId())));
 					    }
 
 				    return $this->render('BFSiteBundle:Video:upload.html.twig', array(
@@ -231,8 +339,8 @@ class VideoController extends Controller
                     'route' => 'bf_site_search',
                     ))
             ->getForm(); 
-        $search->handleRequest($request);
-        if ($search->isValid()) {
+        
+        if ($search->handleRequest($request)->isValid()) {
             // data is an array with "name", "email", and "message" keys
             $data = $search->getData();
             $user = $data['user'];
@@ -253,24 +361,23 @@ class VideoController extends Controller
 	      throw $this->createNotFoundException("You can't delete a video that isn't yours");
 	    }
 	    
+        // On crée un formulaire vide, qui ne contiendra que le champ CSRF
+	    // Cela permet de protéger la suppression d'annonce contre cette faille
+	    $form = $this->get('form.factory')->create(new VideoDeleteType, $video);
 
-	        // On crée un formulaire vide, qui ne contiendra que le champ CSRF
-		    // Cela permet de protéger la suppression d'annonce contre cette faille
-		    $form = $this->createFormBuilder()->getForm();
-
-		    if ($form->handleRequest($request)->isValid()) {
+	    if ($form->handleRequest($request)->isValid()) {
 
 
-		      $points =  $user->getPoints() - $video->getScore();
-	      	  $user->setPoints($points);
-	      	  $em->persist($user);
-		      $em->remove($video);
-		      $em->flush();
+	      $points =  $user->getPoints() - $video->getScore();
+      	  $user->setPoints($points);
+      	  $em->persist($user);
+	      $em->remove($video);
+	      $em->flush();
 
-		      $request->getSession()->getFlashBag()->add('success', "Your video has been deleted.");
+	      $request->getSession()->getFlashBag()->add('success', "Your video has been deleted.");
 
-		      return $this->redirect($this->generateUrl('bf_site_videos'));
-		    }
+	      return $this->redirect($this->generateUrl('bf_site_videos'));
+	    }
 
 		    // Si la requête est en GET, on affiche une page de confirmation avant de supprimer
 		    return $this->render('BFSiteBundle:Video:delete.html.twig', array(

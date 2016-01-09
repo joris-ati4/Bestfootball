@@ -20,7 +20,9 @@
      --><div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 vcenter">
           <form action="{{ path('bf_site_video_modify', {'id': video.id}) }}" method="post">
             <p>
+              {% if video.challenge is not null %}
               Challenge : {{ video.challenge.title }} </br>
+              {% endif %}
               Points earned: {{ video.score }}
             </p>
             <div class="form-group">

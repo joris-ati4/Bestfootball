@@ -46,7 +46,7 @@ class DuelController extends Controller
 
       	return $this->render('BFSiteBundle:Duel:view.html.twig', array(
 	      	'duel'           => $duel,
-            'search'         => $search,
+            'search'         => $search->createView(),
 	    	));
     }
     public function createAction(request $request, $username)

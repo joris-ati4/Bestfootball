@@ -22,7 +22,9 @@
             <p>
               Title : {{ video.title }} </br>
               Description: {{ video.description }} </br>
+              {% if video.challenge is not null %}
               Challenge : {{ video.challenge.title }} </br>
+              {% endif %}
               Points earned: {{ video.score }} </br>
             </p>
             <p><b>Are you sure you want to delete this video ?</b></p>
