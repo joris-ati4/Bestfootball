@@ -41,6 +41,11 @@ security:
         - { path: ^/admin/, role: ROLE_ADMIN }
         - { path: ^/oauth/v2/, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/api, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/home, role: ROLE_USER }
+        - { path: ^/search, role: ROLE_USER }
+        - { path: ^/upload, role: ROLE_USER }
+        - { path: ^/duel, role: ROLE_USER }
+
 
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
     providers:
