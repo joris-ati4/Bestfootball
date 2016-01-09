@@ -106,10 +106,13 @@ class VideoController extends Controller
             ->setFile($file)
         ;
 
-        //getting the different values for gold,silver and bronze. and setting the points for the video
-        $gold = $challenge->getGold();
-        $silver = $challenge->getSilver();
-        $bronze = $challenge->getBronze();
+        //getting the different values for the different levels. and setting the points for the video
+        $one = $challenge->getOne();
+        $two = $challenge->getTwo();
+        $three = $challenge->getThree();
+        $four = $challenge->getFour();
+        $five = $challenge->getFive();
+        $six = $challenge->getSix();
 
         //if the user already uploaded a video to the same challenge we take the points of the last video.
         $repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video');
@@ -124,10 +127,13 @@ class VideoController extends Controller
             //this is the first video off the user.
         }
 
-        if($video->getRepetitions() >= $gold){$video->setScore('300');}
-        if($gold > $video->getRepetitions() && $video->getRepetitions() >= $silver){$video->setScore('200');}
-        if($silver > $video->getRepetitions() && $video->getRepetitions() >= $bronze){$video->setScore('100');}
-        if($bronze > $video->getRepetitions()){$video->setScore('0');}
+        if($video->getRepetitions() >= $six){$video->setScore('300');}
+        if($six > $video->getRepetitions() && $video->getRepetitions() >= $five){ $video->setScore('250');}
+        if($five > $video->getRepetitions() && $video->getRepetitions() >= $four){$video->setScore('200');}
+        if($four > $video->getRepetitions() && $video->getRepetitions() >= $three){$video->setScore('150');}
+        if($three > $video->getRepetitions() && $video->getRepetitions() >= $two){$video->setScore('100');}
+        if($two > $video->getRepetitions() && $video->getRepetitions() >= $one){$video->setScore('100');}
+        if($one > $video->getRepetitions()){$video->setScore('0');}
 
         //retrieving the points from the video and updating the points off the user.
         $points = $video->getScore() + $user->getPoints();

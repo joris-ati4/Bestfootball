@@ -66,7 +66,6 @@ class VideoController extends Controller
             ->getForm(); 
         $search->handleRequest($request);
         if ($search->isValid()) {
-            // data is an array with "name", "email", and "message" keys
             $data = $search->getData();
             $user = $data['user'];
             $username = $user->getUsername();
@@ -87,11 +86,17 @@ class VideoController extends Controller
 
 	    	//we verify if the user already uploaded a video.
     		$repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video');
-    		$check = $repository->checkChallenge($user, $challenge);
+    		$oldVideo = $repository->checkChallenge($user, $challenge);
 
-    		if (null != $check) {
-    		 	$this->addFlash('warning','You already participated at this challenge. You will have to delete your old video before uploading a new one.');
-	       		return $this->redirectToRoute('bf_site_challenges');
+    		if (null != $oldVideo) {
+		            //The user alreday has a video in the directory.
+		            $oldScore=$oldVideo->getScore();
+		            $points = $user->getPoints() - $oldScore;
+		            $user->setPoints($points);
+		        }
+		        else{
+		            //this is the first video off the user.
+		        }
 	    	}
 
 	    	$one = $challenge->getOne();
@@ -111,35 +116,14 @@ class VideoController extends Controller
 	    
 		    if ($form->handleRequest($request)->isValid()) {
 			      $em = $this->getDoctrine()->getManager();
-
-			      if($video->getRepetitions() >= $six)
-			      {
-			      		$video->setScore('300');
-			      }
-			      if($six > $video->getRepetitions() && $video->getRepetitions() >= $five)
-			      {
-			      		$video->setScore('250');
-			      }
-			      if($five > $video->getRepetitions() && $video->getRepetitions() >= $four)
-			      {
-			      		$video->setScore('200');
-			      }
-			      if($four > $video->getRepetitions() && $video->getRepetitions() >= $three)
-			      {
-			      		$video->setScore('150');
-			      }
-			      if($three > $video->getRepetitions() && $video->getRepetitions() >= $two)
-			      {
-			      		$video->setScore('100');
-			      }
-			      if($two > $video->getRepetitions() && $video->getRepetitions() >= $one)
-			      {
-			      		$video->setScore('100');
-			      }
-			      if($one > $video->getRepetitions())
-			      {
-			      		$video->setScore('0');
-			      }
+			      if($video->getRepetitions() >= $six){$video->setScore('300');}
+			      if($six > $video->getRepetitions() && $video->getRepetitions() >= $five){ $video->setScore('250');}
+			      if($five > $video->getRepetitions() && $video->getRepetitions() >= $four){$video->setScore('200');}
+			      if($four > $video->getRepetitions() && $video->getRepetitions() >= $three){$video->setScore('150');}
+			      if($three > $video->getRepetitions() && $video->getRepetitions() >= $two){$video->setScore('100');}
+			      if($two > $video->getRepetitions() && $video->getRepetitions() >= $one){$video->setScore('100');}
+			      if($one > $video->getRepetitions()){$video->setScore('0');}
+			      
 
 			      //now we update the points of the user
 			      $points = $video->getScore() + $user->getPoints();
