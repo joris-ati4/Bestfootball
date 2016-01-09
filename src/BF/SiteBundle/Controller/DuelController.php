@@ -128,7 +128,7 @@ class DuelController extends Controller
 
 		    return $this->render('BFSiteBundle:Duel:create.html.twig', array(
 		      'form' => $form->createView(),
-              'search'         => $search,
+              'search'  => $search->createView(),
 		    ));
     }
     public function acceptAction(request $request, $id)
@@ -255,7 +255,7 @@ class DuelController extends Controller
     	 return $this->render('BFSiteBundle:Profile:duels.html.twig', array(
 		      'listDuels' => $listDuels,
 		      'user' => $user,
-              'search'         => $search,
+              'search'         => $search->createView(),
 		    ));
     }
 }

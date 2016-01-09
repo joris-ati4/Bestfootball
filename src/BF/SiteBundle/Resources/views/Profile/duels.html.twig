@@ -39,6 +39,10 @@
 									<p> wait for {{ duel.guest }} to accept your duel.
 								{% endif %}
 							{% else %}
+								<a href="{{ path('bf_site_duel_view', {'id': duel.id}) }}" class="btn btn-success">
+									<i class="glyphicon glyphicon-upload"></i>
+									    View the duel
+								</a>
 								<a href="{{ path('bf_site_upload', {'id': duel.id, 'type':'duel'}) }}" class="btn btn-warning">
 									<i class="glyphicon glyphicon-upload"></i>
 									    Upload your video
@@ -48,7 +52,7 @@
 							<a href="{{ path('bf_site_duel_view', {'id': duel.id}) }}" class="btn btn-success">
 									<i class="glyphicon glyphicon-upload"></i>
 									    View the duel
-								</a>
+							</a>
 						{% endif %}
 					    </div>
 					</div>

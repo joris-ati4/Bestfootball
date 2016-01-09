@@ -34,6 +34,7 @@ class VideoController extends Controller
             // data is an array with "name", "email", and "message" keys
             $data = $search->getData();
             $user = $data['user'];
+            if($user == null){}
             $username = $user->getUsername();
             return $this->redirect($this->generateUrl('bf_site_profile', array('username' => $username)));
         }
@@ -159,7 +160,7 @@ class VideoController extends Controller
 			    		//check if he already uploaded a file. In that case we redirect him to the challenges page.
 			    		if($duel->getGuestCompleted() == '1'){
 			    			$this->addFlash('warning','You already uploaded a video for this duel. You can only upload one video/duel.');
-			       			return $this->redirectToRoute('bf_site_challenges');
+			       			return $this->redirectToRoute('bf_site_profile_duels');
 			    		}
 			    		else{
 			    			$duel->setGuestCompleted('1');
@@ -170,24 +171,30 @@ class VideoController extends Controller
 		    			//check if he already uploaded a file. In that case we redirect him to the challenges page.
 		    			if($duel->getHostCompleted() == '1'){
 			    			$this->addFlash('warning','You already uploaded a video for this duel. You can only upload one video/duel.');
-			       			return $this->redirectToRoute('bf_site_challenges');
+			       			return $this->redirectToRoute('bf_site_profile_duels');
 			    		}
 			    		else{
 			    			$duel->setHostCompleted('1');
 			    		}
 		    		}
-		    		if($duel->getHostCompleted() == '1' && $duel->getGuestCompleted() == '1'){
-		    			//both the players uploaded their video. We can now set the complete off the duel to 1
-		    			$duel->setCompleted('1');
-		    			//now we look at the video with the highest repitions and we give 50 points to the winner.
-
-
-		    			//We send a notification to the winner and the loser.
-		    		}
 
 			    	$form = $this->get('form.factory')->create(new VideoType, $video);
 			    	if ($form->handleRequest($request)->isValid()) {
 					      $em = $this->getDoctrine()->getManager();
+
+					      if($duel->getHostCompleted() == '1' && $duel->getGuestCompleted() == '1'){
+		    			//both the players uploaded their video. We can now set the complete off the duel to 1
+		    			$duel->setCompleted('1');
+		    			//now we look at the video with the highest repitions and we give 50 points to the winner.
+		    			
+
+		    			//We send a notification to the winner and the loser.
+		    		}
+
+
+
+
+
 					      //now we update the points of the user
 					      $em->persist($video);
 					      $em->persist($duel);
