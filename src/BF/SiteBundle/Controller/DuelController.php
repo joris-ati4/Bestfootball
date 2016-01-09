@@ -247,10 +247,16 @@ class DuelController extends Controller
         }
 
 
-
+        $em = $this->getDoctrine()->getManager();
     	$user = $this->container->get('security.context')->getToken()->getUser();
     	$listDuels = $user->getDuels();
+        $notifications = $user->getNotifications();
 
+        foreach ($notifications as $notification) {
+                    $notification->setWatched('1');
+                    $em->persist($notification);
+                }
+        $em->flush();
 
     	 return $this->render('BFSiteBundle:Profile:duels.html.twig', array(
 		      'listDuels' => $listDuels,
