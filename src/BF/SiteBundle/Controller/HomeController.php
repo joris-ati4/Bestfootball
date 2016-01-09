@@ -22,7 +22,7 @@ use BF\SiteBundle\Form\ChallengeType;
 
 class HomeController extends Controller
 {
-    public function indexAction()
+    public function indexAction(request $request)
     {
         //if the user is connected we redirect him to the logged page
         if($this->container->get('security.context')->isGranted('IS_AUTHENTICATED_REMEMBERED') OR $this->container->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY')){
@@ -50,7 +50,7 @@ class HomeController extends Controller
             ));
         }  
     }
-    public function challengesAction()
+    public function challengesAction(request $request)
     {
         //all the code for the user search function.
         $defaultData = array('user' => null );
@@ -78,7 +78,7 @@ class HomeController extends Controller
           'search' => $search->createView(),
 	    ));
     }
-    public function partnerChallengesAction()
+    public function partnerChallengesAction(request $request)
     {
         //all the code for the user search function.
         $defaultData = array('user' => null );
@@ -107,7 +107,7 @@ class HomeController extends Controller
             
         ));
     }
-    public function challengeViewAction($id)
+    public function challengeViewAction($id,request $request)
     {
         //all the code for the user search function.
         $defaultData = array('user' => null );
@@ -148,7 +148,7 @@ class HomeController extends Controller
           'search' => $search->createView(),
 	    ));
     }
-    public function rankingAction()
+    public function rankingAction(request $request)
     {
         //all the code for the user search function.
         $defaultData = array('user' => null );
@@ -195,7 +195,7 @@ class HomeController extends Controller
                 ));
         }    
     }
-    public function aboutAction()
+    public function aboutAction(request $request)
     {
         //all the code for the user search function.
         $defaultData = array('user' => null );
@@ -219,7 +219,7 @@ class HomeController extends Controller
               'search' => $search->createView(),
             ));
     }
-    public function rulesAction()
+    public function rulesAction(request $request)
     {
         //all the code for the user search function.
         $defaultData = array('user' => null );
@@ -243,7 +243,7 @@ class HomeController extends Controller
               'search' => $search->createView(),
             ));
     }
-    public function contactAction()
+    public function contactAction(request $request)
     {
         //all the code for the user search function.
         $defaultData = array('user' => null );
@@ -267,7 +267,7 @@ class HomeController extends Controller
               'search' => $search->createView(),
             ));
     }
-    public function connectAction()
+    public function connectAction(request $request)
     {
         //all the code for the user search function.
         $defaultData = array('user' => null );
@@ -291,7 +291,7 @@ class HomeController extends Controller
               'search' => $search->createView(),
             ));
     }
-    public function loggedAction()
+    public function loggedAction(request $request)
     {
         //all the code for the user search function.
         $defaultData = array('user' => null );
