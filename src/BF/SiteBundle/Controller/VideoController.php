@@ -97,7 +97,6 @@ class VideoController extends Controller
 		        else{
 		            //this is the first video off the user.
 		        }
-	    	}
 
 	    	$one = $challenge->getOne();
 	    	$two = $challenge->getTwo();
