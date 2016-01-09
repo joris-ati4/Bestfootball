@@ -66,7 +66,7 @@ class HomeController extends Controller
             // data is an array with "name", "email", and "message" keys
             $data = $search->getData();
             $user = $data['user'];
-            $username = $data->getUsername();
+            $username = $user->getUsername();
             return $this->redirect($this->generateUrl('bf_site_profile', array('username' => $username)));
         }
 
@@ -94,7 +94,7 @@ class HomeController extends Controller
             // data is an array with "name", "email", and "message" keys
             $data = $search->getData();
             $user = $data['user'];
-            $username = $data->getUsername();
+            $username = $user->getUsername();
             return $this->redirect($this->generateUrl('bf_site_profile', array('username' => $username)));
         }
 
@@ -123,7 +123,7 @@ class HomeController extends Controller
             // data is an array with "name", "email", and "message" keys
             $data = $search->getData();
             $user = $data['user'];
-            $username = $data->getUsername();
+            $username = $user->getUsername();
             return $this->redirect($this->generateUrl('bf_site_profile', array('username' => $username)));
         }
 
@@ -164,7 +164,7 @@ class HomeController extends Controller
             // data is an array with "name", "email", and "message" keys
             $data = $search->getData();
             $user = $data['user'];
-            $username = $data->getUsername();
+            $username = $user->getUsername();
             return $this->redirect($this->generateUrl('bf_site_profile', array('username' => $username)));
         }
 
@@ -211,7 +211,7 @@ class HomeController extends Controller
             // data is an array with "name", "email", and "message" keys
             $data = $search->getData();
             $user = $data['user'];
-            $username = $data->getUsername();
+            $username = $user->getUsername();
             return $this->redirect($this->generateUrl('bf_site_profile', array('username' => $username)));
         }
 
@@ -235,7 +235,7 @@ class HomeController extends Controller
             // data is an array with "name", "email", and "message" keys
             $data = $search->getData();
             $user = $data['user'];
-            $username = $data->getUsername();
+            $username = $user->getUsername();
             return $this->redirect($this->generateUrl('bf_site_profile', array('username' => $username)));
         }
 
@@ -259,7 +259,7 @@ class HomeController extends Controller
             // data is an array with "name", "email", and "message" keys
             $data = $search->getData();
             $user = $data['user'];
-            $username = $data->getUsername();
+            $username = $user->getUsername();
             return $this->redirect($this->generateUrl('bf_site_profile', array('username' => $username)));
         }
 
@@ -283,7 +283,7 @@ class HomeController extends Controller
             // data is an array with "name", "email", and "message" keys
             $data = $search->getData();
             $user = $data['user'];
-            $username = $data->getUsername();
+            $username = $user->getUsername();
             return $this->redirect($this->generateUrl('bf_site_profile', array('username' => $username)));
         }
 
@@ -307,7 +307,7 @@ class HomeController extends Controller
             // data is an array with "name", "email", and "message" keys
             $data = $search->getData();
             $user = $data['user'];
-            $username = $data->getUsername();
+            $username = $user->getUsername();
             return $this->redirect($this->generateUrl('bf_site_profile', array('username' => $username)));
         }
 
