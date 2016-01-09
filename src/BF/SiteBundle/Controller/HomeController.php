@@ -3,6 +3,9 @@
 namespace BF\SiteBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\HttpFoundation\Response;
 
 //Les entités
 use BF\SiteBundle\Entity\Video;
@@ -11,6 +14,7 @@ use BF\UserBundle\Entity\User;
 use BF\UserBundle\Entity\UserRepository;
 use BF\SiteBundle\Entity\VideoRepository;
 //les types
+use BF\UserBundle\Form\UserSearchType;
 use BF\SiteBundle\Form\VideoType;
 use BF\SiteBundle\Form\VideoEditType;
 use BF\SiteBundle\Form\ChallengeType;
@@ -48,24 +52,81 @@ class HomeController extends Controller
     }
     public function challengesAction()
     {
+        //all the code for the user search function.
+        $defaultData = array('user' => null );
+        $search = $this->createFormBuilder($defaultData)
+            ->add('user', 'entity_typeahead', array(
+                    'class' => 'BFUserBundle:User',
+                    'render' => 'username',
+                    'route' => 'bf_site_search',
+                    ))
+            ->getForm(); 
+        $search->handleRequest($request);
+        if ($search->isValid()) {
+            // data is an array with "name", "email", and "message" keys
+            $data = $search->getData();
+            $user = $data['user'];
+            $username = $data->getUsername();
+            return $this->redirect($this->generateUrl('bf_site_profile', array('username' => $username)));
+        }
+
     	$repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Challenge');
         $listChallenges = $repository->findBy(array(),array('date' => 'desc'));
 
 		return $this->render('BFSiteBundle:Home:challenges.html.twig', array(
 	      'listChallenges' => $listChallenges,
+          'search' => $search->createView(),
 	    ));
     }
     public function partnerChallengesAction()
     {
+        //all the code for the user search function.
+        $defaultData = array('user' => null );
+        $search = $this->createFormBuilder($defaultData)
+            ->add('user', 'entity_typeahead', array(
+                    'class' => 'BFUserBundle:User',
+                    'render' => 'username',
+                    'route' => 'bf_site_search',
+                    ))
+            ->getForm(); 
+        $search->handleRequest($request);
+        if ($search->isValid()) {
+            // data is an array with "name", "email", and "message" keys
+            $data = $search->getData();
+            $user = $data['user'];
+            $username = $data->getUsername();
+            return $this->redirect($this->generateUrl('bf_site_profile', array('username' => $username)));
+        }
+
         $repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Challenge');
         $listChallenges = $repository->findBy(array('partner' => '1'),array('date' => 'desc'));
 
         return $this->render('BFSiteBundle:Home:challenges.html.twig', array(
           'listChallenges' => $listChallenges,
+          'search' => $search->createView(),
+            
         ));
     }
     public function challengeViewAction($id)
     {
+        //all the code for the user search function.
+        $defaultData = array('user' => null );
+        $search = $this->createFormBuilder($defaultData)
+            ->add('user', 'entity_typeahead', array(
+                    'class' => 'BFUserBundle:User',
+                    'render' => 'username',
+                    'route' => 'bf_site_search',
+                    ))
+            ->getForm(); 
+        $search->handleRequest($request);
+        if ($search->isValid()) {
+            // data is an array with "name", "email", and "message" keys
+            $data = $search->getData();
+            $user = $data['user'];
+            $username = $data->getUsername();
+            return $this->redirect($this->generateUrl('bf_site_profile', array('username' => $username)));
+        }
+
     	$repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Challenge');
     	$challenge = $repository->find($id);
     	$repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video');
@@ -84,10 +145,28 @@ class HomeController extends Controller
 	      'listVideos' => $listVideos,
 	      'challenge'  => $challenge,
           'rankUsers' => $rankUsers,
+          'search' => $search->createView(),
 	    ));
     }
     public function rankingAction()
     {
+        //all the code for the user search function.
+        $defaultData = array('user' => null );
+        $search = $this->createFormBuilder($defaultData)
+            ->add('user', 'entity_typeahead', array(
+                    'class' => 'BFUserBundle:User',
+                    'render' => 'username',
+                    'route' => 'bf_site_search',
+                    ))
+            ->getForm(); 
+        $search->handleRequest($request);
+        if ($search->isValid()) {
+            // data is an array with "name", "email", and "message" keys
+            $data = $search->getData();
+            $user = $data['user'];
+            $username = $data->getUsername();
+            return $this->redirect($this->generateUrl('bf_site_profile', array('username' => $username)));
+        }
 
         if( $this->container->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY') ){
             $user = $this->container->get('security.context')->getToken()->getUser();
@@ -101,7 +180,8 @@ class HomeController extends Controller
             return $this->render('BFSiteBundle:Home:ranking.html.twig',array(
                 'listUsersGlobal' => $listUsersGlobal,
                 'listUsersCountry' => $listUsersCountry,
-                'country' => $country
+                'country' => $country,
+              'search' => $search->createView(),
                 ));
         }
         else{
@@ -113,31 +193,125 @@ class HomeController extends Controller
             return $this->render('BFSiteBundle:Home:ranking.html.twig',array(
                 'listUsersGlobal' => $listUsersGlobal,
                 ));
-
-
-
-
-
         }    
     }
     public function aboutAction()
     {
-		return $this->render('BFSiteBundle:Home:about.html.twig');
+        //all the code for the user search function.
+        $defaultData = array('user' => null );
+        $search = $this->createFormBuilder($defaultData)
+            ->add('user', 'entity_typeahead', array(
+                    'class' => 'BFUserBundle:User',
+                    'render' => 'username',
+                    'route' => 'bf_site_search',
+                    ))
+            ->getForm(); 
+        $search->handleRequest($request);
+        if ($search->isValid()) {
+            // data is an array with "name", "email", and "message" keys
+            $data = $search->getData();
+            $user = $data['user'];
+            $username = $data->getUsername();
+            return $this->redirect($this->generateUrl('bf_site_profile', array('username' => $username)));
+        }
+
+		return $this->render('BFSiteBundle:Home:about.html.twig', array(
+              'search' => $search->createView(),
+            ));
     }
     public function rulesAction()
     {
-    	return $this->render('BFSiteBundle:Home:rules.html.twig');
+        //all the code for the user search function.
+        $defaultData = array('user' => null );
+        $search = $this->createFormBuilder($defaultData)
+            ->add('user', 'entity_typeahead', array(
+                    'class' => 'BFUserBundle:User',
+                    'render' => 'username',
+                    'route' => 'bf_site_search',
+                    ))
+            ->getForm(); 
+        $search->handleRequest($request);
+        if ($search->isValid()) {
+            // data is an array with "name", "email", and "message" keys
+            $data = $search->getData();
+            $user = $data['user'];
+            $username = $data->getUsername();
+            return $this->redirect($this->generateUrl('bf_site_profile', array('username' => $username)));
+        }
+
+    	return $this->render('BFSiteBundle:Home:rules.html.twig', array(
+              'search' => $search->createView(),
+            ));
     }
     public function contactAction()
     {
-		return $this->render('BFSiteBundle:Home:contact.html.twig');
+        //all the code for the user search function.
+        $defaultData = array('user' => null );
+        $search = $this->createFormBuilder($defaultData)
+            ->add('user', 'entity_typeahead', array(
+                    'class' => 'BFUserBundle:User',
+                    'render' => 'username',
+                    'route' => 'bf_site_search',
+                    ))
+            ->getForm(); 
+        $search->handleRequest($request);
+        if ($search->isValid()) {
+            // data is an array with "name", "email", and "message" keys
+            $data = $search->getData();
+            $user = $data['user'];
+            $username = $data->getUsername();
+            return $this->redirect($this->generateUrl('bf_site_profile', array('username' => $username)));
+        }
+
+		return $this->render('BFSiteBundle:Home:contact.html.twig', array(
+              'search' => $search->createView(),
+            ));
     }
     public function connectAction()
     {
-        return $this->render('BFSiteBundle:Home:connect.html.twig');
+        //all the code for the user search function.
+        $defaultData = array('user' => null );
+        $search = $this->createFormBuilder($defaultData)
+            ->add('user', 'entity_typeahead', array(
+                    'class' => 'BFUserBundle:User',
+                    'render' => 'username',
+                    'route' => 'bf_site_search',
+                    ))
+            ->getForm(); 
+        $search->handleRequest($request);
+        if ($search->isValid()) {
+            // data is an array with "name", "email", and "message" keys
+            $data = $search->getData();
+            $user = $data['user'];
+            $username = $data->getUsername();
+            return $this->redirect($this->generateUrl('bf_site_profile', array('username' => $username)));
+        }
+
+        return $this->render('BFSiteBundle:Home:connect.html.twig', array(
+              'search' => $search->createView(),
+            ));
     }
     public function loggedAction()
     {
+        //all the code for the user search function.
+        $defaultData = array('user' => null );
+        $search = $this->createFormBuilder($defaultData)
+            ->add('user', 'entity_typeahead', array(
+                    'class' => 'BFUserBundle:User',
+                    'render' => 'username',
+                    'route' => 'bf_site_search',
+                    ))
+            ->getForm(); 
+        $search->handleRequest($request);
+        if ($search->isValid()) {
+            // data is an array with "name", "email", and "message" keys
+            $data = $search->getData();
+            $user = $data['user'];
+            $username = $data->getUsername();
+            return $this->redirect($this->generateUrl('bf_site_profile', array('username' => $username)));
+        }
+
+
         $user = $this->container->get('security.context')->getToken()->getUser();
 
         $listNotifications = $user->getNotifications();
@@ -175,6 +349,47 @@ class HomeController extends Controller
           'max' => $max,
           'style' => $style,
           'ranking'=> $ranking,
+          'search' => $search->createView(),
         ));
     }
+    public function searchAction(request $request)
+    {
+        $term = $request->get('query');
+        $repository = $this->getDoctrine()->getManager()->getRepository('BFUserBundle:User');
+        $array = $repository->findUserLike($term);
+
+        //making the array for the plugin
+        $response = new Response(json_encode($array));
+        $response -> headers -> set('Content-Type', 'application/json');
+        return $response;
+    }
+    public function testAction(request $request)
+    {
+       //all the code for the user search function.
+        $defaultData = array('user' => null );
+        $search = $this->createFormBuilder($defaultData)
+            ->add('user', 'entity_typeahead', array(
+                    'class' => 'BFUserBundle:User',
+                    'render' => 'username',
+                    'route' => 'bf_site_search',
+                    ))
+            ->getForm(); 
+        $search->handleRequest($request);
+        if ($search->isValid()) {
+            // data is an array with "name", "email", and "message" keys
+            $data = $search->getData();
+            $user = $data['user'];
+            $username = $user->getUsername();
+            return $this->redirect($this->generateUrl('bf_site_profile', array('username' => $username)));
+        }
+
+        return $this->render('BFSiteBundle:Home:search.html.twig', array(
+              'search' => $search->createView(),
+            )); 
+
+
+
+
+    }
+
 }

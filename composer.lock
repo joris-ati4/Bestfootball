@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "2d0eb2a2b0b4d87a10ef397e0a1a441d",
-    "content-hash": "1915bec3e0a9a596b0679d2efd0ad4f1",
+    "hash": "3adb10c56f5e87ade726ef7b927dab26",
+    "content-hash": "6cd393c8bff83299e24164ab9adb458d",
     "packages": [
         {
             "name": "alchemy/binary-driver",
@@ -400,16 +400,16 @@
         },
         {
             "name": "doctrine/dbal",
-            "version": "v2.5.3",
+            "version": "v2.5.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "2fbcea96eae34a53183377cdbb0b9bec33974648"
+                "reference": "abbdfd1cff43a7b99d027af3be709bc8fc7d4769"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/2fbcea96eae34a53183377cdbb0b9bec33974648",
-                "reference": "2fbcea96eae34a53183377cdbb0b9bec33974648",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/abbdfd1cff43a7b99d027af3be709bc8fc7d4769",
+                "reference": "abbdfd1cff43a7b99d027af3be709bc8fc7d4769",
                 "shasum": ""
             },
             "require": {
@@ -467,7 +467,7 @@
                 "persistence",
                 "queryobject"
             ],
-            "time": "2015-12-25 16:28:24"
+            "time": "2016-01-05 22:11:12"
         },
         {
             "name": "doctrine/doctrine-bundle",
@@ -868,16 +868,16 @@
         },
         {
             "name": "doctrine/orm",
-            "version": "v2.5.3",
+            "version": "v2.5.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/doctrine2.git",
-                "reference": "d9fc5388f1aa1751a0e148e76b4569bd207338e9"
+                "reference": "bc4ddbfb0114cb33438cc811c9a740d8aa304aab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/d9fc5388f1aa1751a0e148e76b4569bd207338e9",
-                "reference": "d9fc5388f1aa1751a0e148e76b4569bd207338e9",
+                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/bc4ddbfb0114cb33438cc811c9a740d8aa304aab",
+                "reference": "bc4ddbfb0114cb33438cc811c9a740d8aa304aab",
                 "shasum": ""
             },
             "require": {
@@ -892,7 +892,6 @@
             },
             "require-dev": {
                 "phpunit/phpunit": "~4.0",
-                "satooshi/php-coveralls": "dev-master",
                 "symfony/yaml": "~2.3|~3.0"
             },
             "suggest": {
@@ -941,7 +940,7 @@
                 "database",
                 "orm"
             ],
-            "time": "2015-12-25 15:50:05"
+            "time": "2016-01-05 21:34:58"
         },
         {
             "name": "evenement/evenement",
@@ -1112,12 +1111,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSRestBundle.git",
-                "reference": "044f4e06f9aa85592269b2ead0e05b3547678bde"
+                "reference": "4f34d4ffb1c5986ffd772c8212566cdaae2700e2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/044f4e06f9aa85592269b2ead0e05b3547678bde",
-                "reference": "044f4e06f9aa85592269b2ead0e05b3547678bde",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/4f34d4ffb1c5986ffd772c8212566cdaae2700e2",
+                "reference": "4f34d4ffb1c5986ffd772c8212566cdaae2700e2",
                 "shasum": ""
             },
             "require": {
@@ -1188,7 +1187,7 @@
             "keywords": [
                 "rest"
             ],
-            "time": "2015-12-31 09:34:04"
+            "time": "2016-01-08 17:05:03"
         },
         {
             "name": "friendsofsymfony/user-bundle",
@@ -1196,12 +1195,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSUserBundle.git",
-                "reference": "e5e7a2b8984da8dfedaf44adc7e5f60a62ad280c"
+                "reference": "6ccff96434c0ac7fee077d1dce90966341dfd278"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/e5e7a2b8984da8dfedaf44adc7e5f60a62ad280c",
-                "reference": "e5e7a2b8984da8dfedaf44adc7e5f60a62ad280c",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/6ccff96434c0ac7fee077d1dce90966341dfd278",
+                "reference": "6ccff96434c0ac7fee077d1dce90966341dfd278",
                 "shasum": ""
             },
             "require": {
@@ -1257,7 +1256,7 @@
             "keywords": [
                 "User management"
             ],
-            "time": "2015-12-28 18:02:43"
+            "time": "2016-01-08 10:46:39"
         },
         {
             "name": "incenteev/composer-parameter-handler",
@@ -1668,6 +1667,53 @@
             "time": "2015-11-12 13:51:40"
         },
         {
+            "name": "lifo/typeahead-bundle",
+            "version": "2.1",
+            "target-dir": "Lifo/TypeaheadBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/lifo101/typeahead-bundle.git",
+                "reference": "ff70b8a0435ad360dcb6194b65cba18986298ae9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/lifo101/typeahead-bundle/zipball/ff70b8a0435ad360dcb6194b65cba18986298ae9",
+                "reference": "ff70b8a0435ad360dcb6194b65cba18986298ae9",
+                "shasum": ""
+            },
+            "require": {
+                "symfony/symfony": "^2.2"
+            },
+            "suggest": {
+                "braincrafted/bootstrap-bundle": "Bundle to automatically enable Bootstrap styles for Symfony",
+                "twbs/bootstrap": "Bootstrap framework"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-0": {
+                    "Lifo\\TypeaheadBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jason Morriss",
+                    "email": "lifo2013@gmail.com"
+                }
+            ],
+            "description": "A Symfony2 bundle that provides a Typeahead form type compatible with Bootstrap v2.x and v3.x",
+            "keywords": [
+                "autocomplete",
+                "bootstrap",
+                "symfony",
+                "typeahead"
+            ],
+            "time": "2015-09-23 11:33:03"
+        },
+        {
             "name": "michelf/php-markdown",
             "version": "1.6.0",
             "source": {
@@ -1802,12 +1848,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nelmio/NelmioApiDocBundle.git",
-                "reference": "1ae2cfa9a50279d722d6b6e7b02322cef948d55d"
+                "reference": "5d9c47bbad2e064340cabfd3f96f5057a80773c4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nelmio/NelmioApiDocBundle/zipball/1ae2cfa9a50279d722d6b6e7b02322cef948d55d",
-                "reference": "1ae2cfa9a50279d722d6b6e7b02322cef948d55d",
+                "url": "https://api.github.com/repos/nelmio/NelmioApiDocBundle/zipball/5d9c47bbad2e064340cabfd3f96f5057a80773c4",
+                "reference": "5d9c47bbad2e064340cabfd3f96f5057a80773c4",
                 "shasum": ""
             },
             "require": {
@@ -1877,7 +1923,7 @@
                 "documentation",
                 "rest"
             ],
-            "time": "2015-12-16 15:17:51"
+            "time": "2016-01-08 12:33:10"
         },
         {
             "name": "neutron/temporary-filesystem",

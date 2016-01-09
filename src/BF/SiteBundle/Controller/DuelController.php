@@ -4,7 +4,7 @@ namespace BF\SiteBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\HttpFoundation\Response;
 
 //Les entités
 use BF\SiteBundle\Entity\Duel;
@@ -16,8 +16,28 @@ use BF\SiteBundle\Form\DuelType;
 
 class DuelController extends Controller
 {
-    public function viewAction($id)
-    {
+    public function viewAction($id,request $request)
+    {   
+        //all the code for the user search function.
+        $defaultData = array('user' => null );
+        $search = $this->createFormBuilder($defaultData)
+            ->add('user', 'entity_typeahead', array(
+                    'class' => 'BFUserBundle:User',
+                    'render' => 'username',
+                    'route' => 'bf_site_search',
+                    ))
+            ->getForm(); 
+        $search->handleRequest($request);
+        if ($search->isValid()) {
+            // data is an array with "name", "email", and "message" keys
+            $data = $search->getData();
+            $user = $data['user'];
+            $username = $user->getUsername();
+            return $this->redirect($this->generateUrl('bf_site_profile', array('username' => $username)));
+        }
+
+
+        
         $em = $this->getDoctrine()->getManager();
 	    $duel = $em->getRepository('BFSiteBundle:Duel')->find($id);
 	    if (null === $duel) {
@@ -25,11 +45,31 @@ class DuelController extends Controller
 	    }
 
       	return $this->render('BFSiteBundle:Duel:view.html.twig', array(
-	      	'duel'           => $duel
+	      	'duel'           => $duel,
+            'search'         => $search,
 	    	));
     }
     public function createAction(request $request, $username)
     {
+        //all the code for the user search function.
+        $defaultData = array('user' => null );
+        $search = $this->createFormBuilder($defaultData)
+            ->add('user', 'entity_typeahead', array(
+                    'class' => 'BFUserBundle:User',
+                    'render' => 'username',
+                    'route' => 'bf_site_search',
+                    ))
+            ->getForm(); 
+        $search->handleRequest($request);
+        if ($search->isValid()) {
+            // data is an array with "name", "email", and "message" keys
+            $data = $search->getData();
+            $user = $data['user'];
+            $username = $user->getUsername();
+            return $this->redirect($this->generateUrl('bf_site_profile', array('username' => $username)));
+        }
+
+
     	$em = $this->getDoctrine()->getManager();
     	//we get the host and the invited user
     	$host = $this->container->get('security.context')->getToken()->getUser();
@@ -88,6 +128,7 @@ class DuelController extends Controller
 
 		    return $this->render('BFSiteBundle:Duel:create.html.twig', array(
 		      'form' => $form->createView(),
+              'search'         => $search,
 		    ));
     }
     public function acceptAction(request $request, $id)
@@ -185,8 +226,28 @@ class DuelController extends Controller
     			throw new NotFoundHttpException("You can't decline this duel because it isn't yours.");
     		}   
     }
-    public function myduelsAction()
+    public function myduelsAction(request $request)
     {
+        //all the code for the user search function.
+        $defaultData = array('user' => null );
+        $search = $this->createFormBuilder($defaultData)
+            ->add('user', 'entity_typeahead', array(
+                    'class' => 'BFUserBundle:User',
+                    'render' => 'username',
+                    'route' => 'bf_site_search',
+                    ))
+            ->getForm(); 
+        $search->handleRequest($request);
+        if ($search->isValid()) {
+            // data is an array with "name", "email", and "message" keys
+            $data = $search->getData();
+            $user = $data['user'];
+            $username = $user->getUsername();
+            return $this->redirect($this->generateUrl('bf_site_profile', array('username' => $username)));
+        }
+
+
+
     	$user = $this->container->get('security.context')->getToken()->getUser();
     	$listDuels = $user->getDuels();
 
@@ -194,6 +255,7 @@ class DuelController extends Controller
     	 return $this->render('BFSiteBundle:Profile:duels.html.twig', array(
 		      'listDuels' => $listDuels,
 		      'user' => $user,
+              'search'         => $search,
 		    ));
     }
 }

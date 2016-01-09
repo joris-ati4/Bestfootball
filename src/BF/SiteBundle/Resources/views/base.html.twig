@@ -2,8 +2,22 @@
 
 {% block nav %}
   {% if app.user %} {# Here the user is connected to the site #}
+    <li>
+      <form class="navbar-form" method="post">
+        <div class="input-group">
+            {{ form_widget(search.user, {'attr': {'class': 'form-control'}}) }}
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="button" id="submit" type="submit" style="margin-top:0px;">S</button>
+            </span>
+        </div>
+        {{ form_rest(search) }}
+    </form>
+
+
+    </li>
+
     <li class="dropdown">
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">notifications<span class="caret"></span></a>
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="/img/notif.jpeg" alt="notifications on bestfootball" style="max-width:25px;max-height:20px;"><span class="caret"></span></a>
       <ul class="dropdown-menu">
         {% for notification in app.user.notifications %}
           <li><a href="{{ path('bf_site_profile_duels') }}">{{ notification.message }}</a></li>
@@ -17,7 +31,7 @@
 
 
     <li class="dropdown">
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ app.user.username }}<span class="caret"></span></a>
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="/uploads/img/{{ app.user.picture.src }}" alt="{{ app.user.picture.alt }}" style="max-width:25px;max-height:20px;"><span class="caret"></span></a>
       <ul class="dropdown-menu">
         <li><a href="{{ path('bf_site_profile', { 'username': app.user.username }) }}">My Profile</a></li>
         <li><a href="{{ path('bf_site_videos') }}">My Videos</a></li>
@@ -31,10 +45,16 @@
         <li><a href="/logout">Deconnect</a></li>
       </ul>
     </li>
+  </ul>
+  
+
+  
+
   {% else %} {# Here the user is NOT connected to the site #}
     <li>
         <button onclick="location.href='{{ path('bf_site_connect') }}'" class="btn btn-login" type="submit">Login / Subscribe </button>
     </li>
+  </ul>
   {% endif %}
 {% endblock %}
 

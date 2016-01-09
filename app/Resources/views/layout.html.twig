@@ -15,7 +15,9 @@
     <!-- Bootstrap core CSS and Custom CSS with assetic -->
     {% stylesheets 
       '@BFSiteBundle/Resources/public/css/bootstrap.min.css'
-      '@BFSiteBundle/Resources/public/css/custom.css' %}
+      '@BFSiteBundle/Resources/public/css/custom.css' 
+      '@lifo_typeahead_css'
+      %}
       <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
     {% endstylesheets %}
 
@@ -43,14 +45,15 @@
           <ul class="nav navbar-nav">
             <li class=""><a href="{{ path('bf_site_challenges') }}">Challenges</a></li>
             <li class=""><a href="{{ path('bf_site_partnerChallenges') }}">Partner Challenges</a></li>
-            <li class=""><a href="{{ path('bf_site_ranking') }}">Community</a></li>
-            <li class=""><a href="{{ path('bf_site_ranking') }}">Shop</a></li>
+            <!--<li class=""><a href="{{ path('bf_site_ranking') }}">Community</a></li>-->
+            <li class=""><a href="{{ path('bf_site_ranking') }}">Ranking</a></li>
           </ul>
+
           <ul class="nav navbar-nav navbar-right">
             {% block nav %}
             {% endblock %}
-          </ul>
-        </div><!--/.nav-collapse -->
+        </div>
+        <!--/.nav-collapse -->
       </div>
     </nav>
         
@@ -107,7 +110,9 @@
     {% javascripts 
     '@BFSiteBundle/Resources/public/js/bootstrap.min.js'
     '@BFSiteBundle/Resources/public/js/jquery.fadethis.js'
-    '@BFSiteBundle/Resources/public/assets/js/ie10-viewport-bug-workaround.js' %}
+    '@BFSiteBundle/Resources/public/assets/js/ie10-viewport-bug-workaround.js' 
+    '@lifo_typeahead_js'
+    %}
       <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
 

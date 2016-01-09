@@ -60,4 +60,27 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
       ->getResult()
     ;
   }
+  public function findUserLike( $term, $limit = 10 )
+  {
+   
+    $qb = $this->createQueryBuilder('u');
+    $qb
+    ->where('u.username LIKE :term')
+      ->setParameter('term', '%'.$term.'%')
+    ->setMaxResults($limit);
+   
+    $arrayAss= $qb->getQuery()
+  ->getArrayResult();
+ 
+  // Transformer le tableau associatif en un tableau standard
+  $array = array();
+  $i = 1;
+  foreach($arrayAss as $data)
+  {
+    $array[] = array("id"=>$data['id'], "name"=>$data['username'], "value"=>$data['username']);
+    $i++;
+  }
+ 
+  return $array;
+  }
 }
