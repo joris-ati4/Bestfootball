@@ -14,9 +14,10 @@
     </form>
     </li>
 
+    {% set unwatched = 0 %}
     {# testing if there are unread notifications #}
     {% for notification in app.user.notifications %}
-      {% if notification.watched == 1 %}
+      {% if notification.watched == 0 %}
         {% set unwatched = 1 %}
       {% endif %}
     {% endfor %}
@@ -25,7 +26,7 @@
     <li class="dropdown">
       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
         {% if unwatched == 1 %}
-          <img src="/img/notifunread.jpg" alt="notifications on bestfootball" style="max-width:25px;max-height:20px;">
+          <img src="/img/notifunread.jpg" alt="unread notifications on bestfootball" style="max-width:25px;max-height:20px;">
         {% else %}
           <img src="/img/notif.jpg" alt="notifications on bestfootball" style="max-width:25px;max-height:20px;">
         {% endif %}
