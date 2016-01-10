@@ -167,6 +167,7 @@ class VideoController extends Controller
 			    		}
 			    		else{
 			    			$duel->setGuestCompleted('1');
+			    			$userRole = 'guest';
 			    		}	    		
 			    	}
 			    	//the user is the Host for the duel
@@ -178,6 +179,7 @@ class VideoController extends Controller
 			    		}
 			    		else{
 			    			$duel->setHostCompleted('1');
+			    			$userRole = 'host';
 			    		}
 		    		}
 
@@ -190,27 +192,32 @@ class VideoController extends Controller
 					    $host = $duel->getHost();
 		    			$guest = $duel->getGuest();
 
+		    			$repository = $this->getDoctrine()->getManager()->getRepository('BFUserBundle:User');
+    					$host = $repository->findOneByUsername($host);
+    					$guest = $repository->findOneByUsername($guest);
+
 					    if($duel->getHostCompleted() == 1 && $duel->getGuestCompleted() == 1)
 					    {
 			    			//both the players uploaded their video. We can now set the complete off the duel to 1
 			    			$duel->setCompleted('1');
 			    			//now we look at the video with the highest repitions and we give 50 points to the winner.
-			    			$videos = $duel->getVideos();
-			    			//we get the repetitions for each video
-			    			foreach ($videos as $video) {
-			    				$score = $video->getRepetitions();
-					    		if($video->getUser() != $guest)
-					    			{ $hostscore = $score;}
-					    		elseif($video->getUser() == $guest)
-					    			{ $guestscore = $score; }
-					    		else{}
-					    	}
+			    			//get the video of the other player
+			    			$repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video');
+
+			    			if($userRole == 'host'){
+			    				$otherVideo = $repository->duelVideo($duel,$guest);
+			    				$hostscore = $video->getRepetitions();
+			    				$guestscore = $otherVideo->getRepetitions();
+			    			}
+			    			elseif($userRole == 'guest'){
+			    				$otherVideo = $repository->duelVideo($duel,$host);
+			    				$guestscore = $video->getRepetitions();
+			    				$hostscore = $otherVideo->getRepetitions();
+			    			}
+			    			
 					    	//we get compare the host to the guest score
 						    if($hostscore > $guestscore){//host wins
-						    	$repository = $this->getDoctrine()->getManager()->getRepository('BFUserBundle:User');
-    							$host = $repository->findOneByUsername($host);
-    							$guest = $repository->findOneByUsername($guest);
-
+						    	
     							$points = $host->getPoints() + 50;
 			      				$host->setPoints($points);
 			      				$em->persist($host);
@@ -238,9 +245,6 @@ class VideoController extends Controller
 			      				$em->persist($notificationguest);
 						    }
 						    elseif($hostscore < $guestscore){//guest wins
-						    	$repository = $this->getDoctrine()->getManager()->getRepository('BFUserBundle:User');
-    							$guest = $repository->findOneByUsername($guest);
-    							$guest = $repository->findOneByUsername($host);
 
     							$points = $guest->getPoints() + 50;
 			      				$guest->setPoints($points);
@@ -270,9 +274,6 @@ class VideoController extends Controller
 
 						    }
 						    elseif($hostscore == $guestscore){//same score,each 25 points
-						    	$repository = $this->getDoctrine()->getManager()->getRepository('BFUserBundle:User');
-    							$guest = $repository->findOneByUsername($guest);
-    							$host = $repository->findOneByUsername($host);
 
     							//host points
     							$points = $host->getPoints() + 25;
