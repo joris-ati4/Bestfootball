@@ -43,7 +43,7 @@ class VideoRepository extends \Doctrine\ORM\EntityRepository
 
 	  return $qb
 	    ->getQuery()
-	    ->getOneOrNullResult()
+	    ->getResult()
 	  ;
 	}
 	public function videoBefore($user, $challenge)
