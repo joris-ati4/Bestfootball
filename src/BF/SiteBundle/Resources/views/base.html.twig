@@ -13,7 +13,6 @@
         {{ form_rest(search) }}
     </form>
     </li>
-
     {% set unwatched = 0 %}
     {# testing if there are unread notifications #}
     {% for notification in app.user.notifications %}
@@ -21,8 +20,6 @@
         {% set unwatched = 1 %}
       {% endif %}
     {% endfor %}
-
-
     <li class="dropdown">
       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
         {% if unwatched == 1 %}
@@ -30,23 +27,16 @@
         {% else %}
           <img src="/img/notif.jpg" alt="notifications on bestfootball" style="max-width:25px;max-height:20px;">
         {% endif %}
-
-
-        <span class="caret"></span></a>
+          <span class="caret"></span></a>
       <ul class="dropdown-menu">
         {% for notification in app.user.notifications %}
-            {% if notification.watched == 0 %}
-              <li><a href="{{ path('bf_site_profile_duels') }}">{{ notification.message }}</a></li>
-              <li role="separator" class="divider"></li>
-            {% endif %}
+          {% if notification.watched == 0 %}
+            <li><a href="{{ path('bf_site_profile_duels') }}">{{ notification.message }}</a></li>
+            <li role="separator" class="divider"></li>
+          {% endif %}
         {% endfor %}
       </ul>
     </li>
-
-
-
-
-
     <li class="dropdown">
       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="/uploads/img/{{ app.user.picture.src }}" alt="{{ app.user.picture.alt }}" style="max-width:25px;max-height:20px;"><span class="caret"></span></a>
       <ul class="dropdown-menu">
@@ -62,16 +52,10 @@
         <li><a href="/logout">Deconnect</a></li>
       </ul>
     </li>
-  </ul>
-  
-
-  
-
   {% else %} {# Here the user is NOT connected to the site #}
     <li>
         <button onclick="location.href='{{ path('bf_site_connect') }}'" class="btn btn-login" type="submit">Login / Subscribe </button>
     </li>
-  </ul>
   {% endif %}
 {% endblock %}
 

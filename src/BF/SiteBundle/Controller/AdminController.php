@@ -82,7 +82,7 @@ class AdminController extends Controller
     		$email = $report->getUser()->getEmail();
 
 		    $message = \Swift_Message::newInstance()
-		        ->setSubject('Thank you for your report {{ user.username }}')
+		        ->setSubject('Thank you for your report '.$user->getUsername())
 		        ->setFrom('noreply@bestfootball.fr')
 		        ->setTo($email)
 		        ->setBody(
@@ -104,7 +104,7 @@ class AdminController extends Controller
     	$user->setPoints($points);
 
     	$message = \Swift_Message::newInstance()
-			        ->setSubject('{{ user.username }} Your video {{ video.title }} was deleted from our servers.')
+			        ->setSubject($user->getUsername().', your video '.$video()->getTitle().' was deleted from our servers.')
 			        ->setFrom('noreply@bestfootball.fr')
 			        ->setTo($email)
 			        ->setBody(
