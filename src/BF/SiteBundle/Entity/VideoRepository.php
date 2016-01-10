@@ -29,7 +29,24 @@ class VideoRepository extends \Doctrine\ORM\EntityRepository
 	    ->getOneOrNullResult()
 	  ;
 	}
-	public function duelVideo($user, $duel)
+	public function duelHostVideo($host, $duel)
+	{
+	  $qb = $this->createQueryBuilder('v');
+
+	  $qb->where('v.user = :user')
+	       ->setParameter('user', $user)
+	     ->andWhere('v.duel = :duel')
+	       ->setParameter('duel', $duel)
+	     ->orderBy('v.date', 'DESC')
+	     ->setMaxResults(1)
+	  	;
+
+	  return $qb
+	    ->getQuery()
+	    ->getResult()
+	  ;
+	}
+	public function duelGuestVideo($guest, $duel)
 	{
 	  $qb = $this->createQueryBuilder('v');
 

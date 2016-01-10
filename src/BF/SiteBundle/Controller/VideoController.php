@@ -204,13 +204,13 @@ class VideoController extends Controller
 			    			//get the video of the other player
 			    			if($userRole == 'host'){
 			    				$repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video');
-			    				$otherVideo = $repository->duelVideo($duel,$guest);
+			    				$otherVideo = $repository->duelGuestVideo($guest,$duel);
 			    				$hostscore = $video->getRepetitions();
 			    				$guestscore = $otherVideo->getRepetitions();
 			    			}
 			    			elseif($userRole == 'guest'){
 			    				$repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video');
-			    				$otherVideo = $repository->duelVideo($duel,$host);
+			    				$otherVideo = $repository->duelHostVideo($host,$duel);
 			    				$guestscore = $video->getRepetitions();
 			    				$hostscore = $otherVideo->getRepetitions();
 			    			}
