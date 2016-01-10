@@ -34,7 +34,7 @@ class VideoRepository extends \Doctrine\ORM\EntityRepository
 	  $qb = $this->createQueryBuilder('v');
 
 	  $qb->where('v.user = :user')
-	       ->setParameter('user', $user)
+	       ->setParameter('user', $host)
 	     ->andWhere('v.duel = :duel')
 	       ->setParameter('duel', $duel)
 	     ->orderBy('v.date', 'DESC')
@@ -51,7 +51,7 @@ class VideoRepository extends \Doctrine\ORM\EntityRepository
 	  $qb = $this->createQueryBuilder('v');
 
 	  $qb->where('v.user = :user')
-	       ->setParameter('user', $user)
+	       ->setParameter('user', $guest)
 	     ->andWhere('v.duel = :duel')
 	       ->setParameter('duel', $duel)
 	     ->orderBy('v.date', 'DESC')
