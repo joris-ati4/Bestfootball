@@ -41,7 +41,7 @@ class VideoRepository extends \Doctrine\ORM\EntityRepository
 
 	  return $qb
 	    ->getQuery()
-	    ->getResult()
+	    ->getOneOrNullResult()
 	  ;
 	}
 	public function duelGuestVideo($guest, $duel)
@@ -56,7 +56,7 @@ class VideoRepository extends \Doctrine\ORM\EntityRepository
 
 	  return $qb
 	    ->getQuery()
-	    ->getResult()
+	    ->getOneOrNullResult()
 	  ;
 	}
 	public function videoBefore($user, $challenge)

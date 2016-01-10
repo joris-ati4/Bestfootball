@@ -187,12 +187,13 @@ class VideoController extends Controller
 			    	if ($form->handleRequest($request)->isValid()) {
 					    $em = $this->getDoctrine()->getManager();
 
-					    $hostUsername = $duel->getHost();
-		    			$guestUsername = $duel->getGuest();
+					$hostUsername = $duel->getHost();
+		    		$guestUsername = $duel->getGuest();
 
-		    			$repository = $this->getDoctrine()->getManager()->getRepository('BFUserBundle:User');
-    					$host = $repository->findByUsername($hostUsername);
-    					$guest = $repository->findByUsername($guestUsername);
+		    		$repository = $this->getDoctrine()->getManager()->getRepository('BFUserBundle:User');
+    				$host = $repository->findOneByUsername($hostUsername);
+    				$guest = $repository->findOneByUsername($guestUsername);
+
 
 					    if($duel->getHostCompleted() == 1 && $duel->getGuestCompleted() == 1)
 					    {
@@ -313,7 +314,7 @@ class VideoController extends Controller
 					    $this->addFlash('success', 'Your video was uploaded to our servers.');
 
 					    return $this->redirect($this->generateUrl('bf_site_video', array('id' => $video->getId())));
-					    }
+					}
 
 				    return $this->render('BFSiteBundle:Video:upload.html.twig', array(
 				      'form' => $form->createView(),
