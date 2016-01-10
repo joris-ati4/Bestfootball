@@ -73,6 +73,10 @@
                   <source src="/uploads/videos/{{ video.id}}.{{ video.source }}" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
+                <a href="{{ path('bf_site_video_report', {'id': video.id}) }}">report this video</a>
+
+
+
               </div>
             {% elseif video.type == 'challenge' %}
               <div class="well row" style="margin-bottom:10px;">
@@ -89,6 +93,9 @@
                   <source src="/uploads/videos/{{ video.id}}.{{ video.source }}" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
+                <a href="{{ path('bf_site_video_report', {'id': video.id}) }}">report this video</a>
+
+
               </div>
             {% endif %}
 

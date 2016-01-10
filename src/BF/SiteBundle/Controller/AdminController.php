@@ -10,6 +10,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use BF\SiteBundle\Entity\Video;
 use BF\SiteBundle\Entity\Challenge;
 use BF\UserBundle\Entity\User;
+use BF\SiteBundle\Entity\Report;
 //les types
 use BF\SiteBundle\Form\VideoType;
 use BF\SiteBundle\Form\ChallengeType;
@@ -56,6 +57,89 @@ class AdminController extends Controller
 	    return $this->render('BFSiteBundle:Admin:challenges.html.twig',array(
 	    	'listChallenges' => $listChallenges,
 	    	));
+    }
+    public function reportsAction()
+    {
+    	$repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Report');
+    	$listReports = $repository->findBy(array('treated' => 0));
+	    return $this->render('BFSiteBundle:Admin:reports.html.twig',array(
+	    	'listReports' => $listReports,
+	    	));
+    }
+    public function deleteVideoAction($id)
+    {
+    	$em = $this->getDoctrine()->getManager();
+
+    	$repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Report');
+    	$report = $repository->findOneById($id);
+    	$video = $report->getVideo();
+
+    	//send a mail to all the reports for this video and mark every report as treated.
+    	$listReports = $video->getReports();
+    	foreach ($listReports as $report) {
+    		$report->setTreated(1);
+    		$user = $report->getUser();
+    		$email = $report->getUser()->getEmail();
+
+		    $message = \Swift_Message::newInstance()
+		        ->setSubject('Thank you for your report {{ user.username }}')
+		        ->setFrom('noreply@bestfootball.fr')
+		        ->setTo($email)
+		        ->setBody(
+		            $this->renderView(
+		                // app/Resources/views/Emails/registration.html.twig
+		                'Emails/thankreport.html.twig',
+		                array('user' => $user)
+		            ),
+		            'text/html'
+		        )
+		    ;
+		    $this->get('mailer')->send($message);
+			$em->persist($report);
+    	}
+    	//we delete the video from our servers and from the user we send a mail + delete his points.
+    	$user= $video->getUser();
+    	$email = $user->getEmail();
+    	$points = $user->getPoints() - $video->getScore();
+    	$user->setPoints($points);
+
+    	$message = \Swift_Message::newInstance()
+			        ->setSubject('{{ user.username }} Your video {{ video.title }} was deleted from our servers.')
+			        ->setFrom('noreply@bestfootball.fr')
+			        ->setTo($email)
+			        ->setBody(
+			            $this->renderView(
+			                // app/Resources/views/Emails/registration.html.twig
+			                'Emails/deletedvideo.html.twig',
+			                array('user' => $user,'video' => $video)
+			            ),
+			            'text/html'
+			        )
+			    ;
+			    $this->get('mailer')->send($message);
+
+    	//delete the video from our servers
+    	unlink('/var/www/bestfootball.fr/shared/web/uploads/videos/{{ video.id }}.mp4');
+    	unlink('/var/www/bestfootball.fr/shared/web/uploads/videos/thumbnail/{{ video.id }}.jpg');
+    	$em->remove($video);
+    	$em->persist($user);
+        $em->flush();
+        return $this->redirect($this->generateUrl('bf_site_admin_reports'));
+    }
+    public function okVideoAction($id)
+    {
+    	$em = $this->getDoctrine()->getManager();
+    	$repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Report');
+    	$report = $repository->findOneById($id);
+    	$video = $report->getVideo();
+
+    	$listReports = $video->getReports();
+    	foreach ($listReports as $report) {
+    		$report->setTreated(1);
+			$em->persist($report);
+    	}
+    	$em->flush();
+    	return $this->redirect($this->generateUrl('bf_site_admin_reports'));
     }
 
 }

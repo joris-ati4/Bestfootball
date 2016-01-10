@@ -25,6 +25,10 @@ $extension = null;
  */
 class Video
 {
+    /**
+    * @ORM\OneToMany(targetEntity="BF\SiteBundle\Entity\Report", mappedBy="video")
+    */
+    private $reports; // Notez le « s », une annonce est liée à plusieurs candidatures
 
     /**
     * @ORM\ManyToOne(targetEntity="BF\UserBundle\Entity\User", inversedBy="videos")
@@ -552,5 +556,39 @@ class Video
     public function getDuel()
     {
         return $this->duel;
+    }
+
+    /**
+     * Add report
+     *
+     * @param \BF\SiteBundle\Entity\Reports $report
+     *
+     * @return Video
+     */
+    public function addReport(\BF\SiteBundle\Entity\Reports $report)
+    {
+        $this->reports[] = $report;
+
+        return $this;
+    }
+
+    /**
+     * Remove report
+     *
+     * @param \BF\SiteBundle\Entity\Reports $report
+     */
+    public function removeReport(\BF\SiteBundle\Entity\Reports $report)
+    {
+        $this->reports->removeElement($report);
+    }
+
+    /**
+     * Get reports
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getReports()
+    {
+        return $this->reports;
     }
 }

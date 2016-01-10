@@ -12,12 +12,14 @@ use BF\SiteBundle\Entity\Challenge;
 use BF\UserBundle\Entity\User;
 use BF\SiteBundle\Entity\Notification;
 use BF\SiteBundle\Entity\Duel;
+use BF\SiteBundle\Entity\Report;
 use BF\SiteBundle\Entity\VideoRepository;
 //les types
 use BF\SiteBundle\Form\VideoType;
 use BF\SiteBundle\Form\VideoEditType;
 use BF\SiteBundle\Form\VideoDeleteType;
 use BF\SiteBundle\Form\ChallengeType;
+use BF\SiteBundle\Form\ReportType;
 
 class VideoController extends Controller
 {
@@ -137,7 +139,7 @@ class VideoController extends Controller
 
 			      $this->addFlash('success', 'Your video was uploaded to our servers and you received '.$video->getScore().' points for this video.');
 
-			      return $this->redirect($this->generateUrl('bf_site_video', array('id' => $video->getId())));
+			      return $this->redirect($this->generateUrl('bf_site_videos'));
 			    }
 
 		    return $this->render('BFSiteBundle:Video:upload.html.twig', array(
@@ -313,7 +315,7 @@ class VideoController extends Controller
 
 					    $this->addFlash('success', 'Your video was uploaded to our servers.');
 
-					    return $this->redirect($this->generateUrl('bf_site_video', array('id' => $video->getId())));
+					    return $this->redirect($this->generateUrl('bf_site_videos'));
 					}
 
 				    return $this->render('BFSiteBundle:Video:upload.html.twig', array(
@@ -443,6 +445,61 @@ class VideoController extends Controller
 
 		    // Si la requête est en GET, on affiche une page de confirmation avant de supprimer
 		    return $this->render('BFSiteBundle:Video:modify.html.twig', array(
+		      'video' => $video,
+		      'form'   => $form->createView(),
+		      'search' => $search->createView(),
+		    ));
+    }
+    public function reportAction(request $request, $id)
+    {
+	    //all the code for the user search function.
+        $defaultData = array('user' => null );
+        $search = $this->createFormBuilder($defaultData)
+            ->add('user', 'entity_typeahead', array(
+                    'class' => 'BFUserBundle:User',
+                    'render' => 'username',
+                    'route' => 'bf_site_search',
+                    ))
+            ->getForm(); 
+        $search->handleRequest($request);
+        if ($search->isValid()) {
+            // data is an array with "name", "email", and "message" keys
+            $data = $search->getData();
+            $user = $data['user'];
+            $username = $user->getUsername();
+            return $this->redirect($this->generateUrl('bf_site_profile', array('username' => $username)));
+        }
+
+	    $em = $this->getDoctrine()->getManager();
+	    $video = $em->getRepository('BFSiteBundle:Video')->find($id);
+
+	    if ($video== null) {
+	      throw $this->createNotFoundException("The video n°".$id." doesn't exist.");
+	    }
+
+	    $user = $this->container->get('security.context')->getToken()->getUser();
+	
+	    $report = new Report();
+	    $report
+	    	->setVideo($video)
+	    	->setUser($user)
+	    	->setDate(new \Datetime())
+	    	->setTreated(0)
+	    ;
+
+		    $form = $this->get('form.factory')->create(new ReportType, $report);
+		    if ($form->handleRequest($request)->isValid()) {
+
+		      $em->persist($report);
+		      $em->flush();
+
+		      $request->getSession()->getFlashBag()->add('success', "The video has been reported and will be reviewed by our Admins.");
+
+		      return $this->redirect($this->generateUrl('bf_site_videos'));
+		    }
+
+		    // Si la requête est en GET, on affiche une page de confirmation avant de supprimer
+		    return $this->render('BFSiteBundle:Video:report.html.twig', array(
 		      'video' => $video,
 		      'form'   => $form->createView(),
 		      'search' => $search->createView(),

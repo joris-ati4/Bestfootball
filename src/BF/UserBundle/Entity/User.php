@@ -13,6 +13,11 @@ use Doctrine\ORM\Mapping as ORM;
 class User extends BaseUser
 {
     /**
+    * @ORM\OneToMany(targetEntity="BF\SiteBundle\Entity\Report", mappedBy="user")
+    */
+    private $reports; // Notez le « s », une annonce est liée à plusieurs candidatures
+
+    /**
     * @ORM\ManyToMany(targetEntity="BF\SiteBundle\Entity\Duel", mappedBy="users")
     */
     private $duels; // Notez le « s », une annonce est liée à plusieurs candidatures
@@ -546,5 +551,39 @@ class User extends BaseUser
     public function getNotifications()
     {
         return $this->notifications;
+    }
+
+    /**
+     * Add report
+     *
+     * @param \BF\SiteBundle\Entity\Report $report
+     *
+     * @return User
+     */
+    public function addReport(\BF\SiteBundle\Entity\Report $report)
+    {
+        $this->reports[] = $report;
+
+        return $this;
+    }
+
+    /**
+     * Remove report
+     *
+     * @param \BF\SiteBundle\Entity\Report $report
+     */
+    public function removeReport(\BF\SiteBundle\Entity\Report $report)
+    {
+        $this->reports->removeElement($report);
+    }
+
+    /**
+     * Get reports
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getReports()
+    {
+        return $this->reports;
     }
 }

@@ -52,6 +52,12 @@ bf_site_video:
     requirements:
         id: -?\d+
 
+bf_site_video_report:
+    path:     /video/report/{id}
+    defaults: { _controller: BFSiteBundle:Video:report}
+    requirements:
+        id: -?\d+
+
 bf_site_upload:
     path:     /upload/{type}/{id}
     defaults: { _controller: BFSiteBundle:Video:upload }
@@ -96,6 +102,10 @@ bf_site_settings_picture:
     defaults: { _controller: BFSiteBundle:Profile:settingsPicture }
 
 #this section does all the routes for the admin section
+bf_site_admin:
+    path:     /admin
+    defaults: { _controller: BFSiteBundle:Admin:index }
+
 bf_site_admin_challenges:
     path:     /admin/challenges
     defaults: { _controller: BFSiteBundle:Admin:challenges }
@@ -116,9 +126,19 @@ bf_site_admin_users:
     path:     /admin/users
     defaults: { _controller: BFSiteBundle:Admin:users }
 
-bf_site_admin:
-    path:     /admin
-    defaults: { _controller: BFSiteBundle:Admin:index }
+bf_site_admin_reports:
+    path:     /admin/reports
+    defaults: { _controller: BFSiteBundle:Admin:reports }
+
+bf_site_admin_delvideo:
+    path:     /admin/reports/delvideo/{id}
+    defaults: { _controller: BFSiteBundle:Admin:deleteVideo }
+
+bf_site_admin_okvideo:
+    path:     /admin/reports/okvideo/{id}
+    defaults: { _controller: BFSiteBundle:Admin:okVideo }
+
+
 
 
 #this section does all the routes for the duel section
