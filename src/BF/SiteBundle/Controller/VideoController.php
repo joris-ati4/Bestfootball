@@ -10,6 +10,8 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use BF\SiteBundle\Entity\Video;
 use BF\SiteBundle\Entity\Challenge;
 use BF\UserBundle\Entity\User;
+use BF\SiteBundle\Entity\Notification;
+use BF\SiteBundle\Entity\Duel;
 use BF\SiteBundle\Entity\VideoRepository;
 //les types
 use BF\SiteBundle\Form\VideoType;
@@ -188,7 +190,8 @@ class VideoController extends Controller
 					    $host = $duel->getHost();
 		    			$guest = $duel->getGuest();
 
-					    if($duel->getHostCompleted() == '1' && $duel->getGuestCompleted() == '1'){
+					    if($duel->getHostCompleted() == 1 && $duel->getGuestCompleted() == 1)
+					    {
 			    			//both the players uploaded their video. We can now set the complete off the duel to 1
 			    			$duel->setCompleted('1');
 			    			//now we look at the video with the highest repitions and we give 50 points to the winner.
@@ -303,10 +306,10 @@ class VideoController extends Controller
 			      				$em->persist($notificationguest);
 						    }
 			    		}
-					    //now we update the points of the user
-					    $em->persist($video);
-					    $em->persist($duel);
-					    $em->flush();
+						//now we update the points of the user
+						$em->persist($video);
+						$em->persist($duel);
+						$em->flush();
 
 					    $this->addFlash('success', 'Your video was uploaded to our servers.');
 
@@ -317,15 +320,16 @@ class VideoController extends Controller
 				      'form' => $form->createView(),
 				      'search' => $search->createView(),
 				    ));
-		    	}
+		    }
 
 	    	else{
 	    		$this->addFlash('warning','You are not allowed to post a video to this Duel because it is not your duel');
 	       		return $this->redirectToRoute('bf_site_challenges');
 	    	}
 		}
-		if( $type == 'freestyle'){
-			
+		if( $type == 'freestyle')
+		{
+			//frestyle section upload	
 		} 
     }
     public function deleteAction(request $request, $id)
@@ -352,13 +356,20 @@ class VideoController extends Controller
 	    $video = $em->getRepository('BFSiteBundle:Video')->find($id);
 
 	    if ($video== null) {
-	      throw $this->createNotFoundException("L'annonce d'id ".$id." n'existe pas.");
+	      throw $this->createNotFoundException("This video doesn't exist.");
 	    }
 
 	    $user = $this->container->get('security.context')->getToken()->getUser();
 	    $check = $video->getUser();
 	    if ($check != $user) {
 	      throw $this->createNotFoundException("You can't delete a video that isn't yours");
+	    }
+	    //vérifier s'il y a des autres videos pour ce challenge
+	    if($video->getChallenge() != null){
+	    	$challenge = $video->getChallenge();
+	    	$repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video');
+    		$oldVideo = $repository->videoBefore($user, $challenge);
+    		$points = $user->getPoints() + $oldVideo->getScore(); 
 	    }
 	    
         // On crée un formulaire vide, qui ne contiendra que le champ CSRF

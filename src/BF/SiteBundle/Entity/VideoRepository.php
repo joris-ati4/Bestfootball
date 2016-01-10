@@ -22,6 +22,25 @@ class VideoRepository extends \Doctrine\ORM\EntityRepository
 	       ->setParameter('challenge', $challenge)
 	     ->orderBy('v.date', 'DESC')
 	     ->setMaxResults(1);
+
+	  ;
+
+	  return $qb
+	    ->getQuery()
+	    ->getOneOrNullResult()
+	  ;
+	}
+	public function videoBefore($user, $challenge)
+	{
+	  $qb = $this->createQueryBuilder('v');
+
+	  $qb->where('v.user = :user')
+	       ->setParameter('user', $user)
+	     ->andWhere('v.challenge = :challenge')
+	       ->setParameter('challenge', $challenge)
+	     ->orderBy('v.date', 'DESC')
+	     ->setFirstResult(1);
+	     ->setMaxResults(1);
 	  ;
 
 	  return $qb
