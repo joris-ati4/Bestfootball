@@ -34,11 +34,11 @@
         		<p>reason : {{ report.reason }} </br>score : {{ report.message }}</p>
         	</div><!--
          --><div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 row vcenter">
-        		<a href="{{ path('bf_site_admin_okvideo', {'id': report.video.id }) }}" class="btn btn-default">
+        		<a href="{{ path('bf_site_admin_okvideo', {'id': report.id }) }}" class="btn btn-default">
 			      <i class="glyphicon glyphicon-ok"></i>
 			      Video OK!
 			    </a>
-	   			<a href="{{ path('bf_site_admin_delvideo', {'id': report.video.id }) }}" class="btn btn-danger">
+	   			<a href="{{ path('bf_site_admin_delvideo', {'id': report.id }) }}" class="btn btn-danger">
 			      <i class="glyphicon glyphicon-trash"></i>
 			      Delete
 			    </a>

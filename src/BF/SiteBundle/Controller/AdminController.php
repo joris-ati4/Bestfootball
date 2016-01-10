@@ -71,7 +71,7 @@ class AdminController extends Controller
     	$em = $this->getDoctrine()->getManager();
 
     	$repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Report');
-    	$report = $repository->findOneById($id);
+    	$report = $repository->find($id);
     	$video = $report->getVideo();
 
     	//send a mail to all the reports for this video and mark every report as treated.
@@ -95,7 +95,7 @@ class AdminController extends Controller
 		        )
 		    ;
 		    $this->get('mailer')->send($message);
-			$em->persist($report);
+			$em->remove($report);
     	}
     	//we delete the video from our servers and from the user we send a mail + delete his points.
     	$user= $video->getUser();
