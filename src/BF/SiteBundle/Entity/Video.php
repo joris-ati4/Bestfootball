@@ -3,6 +3,9 @@
 namespace BF\SiteBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
 use BF\UserBundle\Entity;
 use BF\SiteBundle\Entity\Challenge;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -82,6 +85,7 @@ class Video
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
+     * @Assert\Length(min=5,max=20)
      */
     private $title;
 
@@ -89,6 +93,7 @@ class Video
      * @var string
      *
      * @ORM\Column(name="description", type="string", length=255)
+     * @Assert\Length(min=5,max=255)
      */
     private $description;
 
@@ -99,6 +104,7 @@ class Video
 
     /**
     * @ORM\Column(name="repetitions", type="integer", length=10)
+    * @Assert\Type(type="integer")
     */
     private $repetitions;
 

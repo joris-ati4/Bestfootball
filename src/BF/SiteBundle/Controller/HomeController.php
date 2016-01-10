@@ -363,33 +363,4 @@ class HomeController extends Controller
         $response -> headers -> set('Content-Type', 'application/json');
         return $response;
     }
-    public function testAction(request $request)
-    {
-       //all the code for the user search function.
-        $defaultData = array('user' => null );
-        $search = $this->createFormBuilder($defaultData)
-            ->add('user', 'entity_typeahead', array(
-                    'class' => 'BFUserBundle:User',
-                    'render' => 'username',
-                    'route' => 'bf_site_search',
-                    ))
-            ->getForm(); 
-        $search->handleRequest($request);
-        if ($search->isValid()) {
-            // data is an array with "name", "email", and "message" keys
-            $data = $search->getData();
-            $user = $data['user'];
-            $username = $user->getUsername();
-            return $this->redirect($this->generateUrl('bf_site_profile', array('username' => $username)));
-        }
-
-        return $this->render('BFSiteBundle:Home:search.html.twig', array(
-              'search' => $search->createView(),
-            )); 
-
-
-
-
-    }
-
 }
