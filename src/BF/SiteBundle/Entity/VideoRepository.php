@@ -21,9 +21,8 @@ class VideoRepository extends \Doctrine\ORM\EntityRepository
 	     ->andWhere('v.challenge = :challenge')
 	       ->setParameter('challenge', $challenge)
 	     ->orderBy('v.date', 'DESC')
-	     ->setMaxResults(1);
-
-	  ;
+	     ->setMaxResults(1)
+	  	;
 
 	  return $qb
 	    ->getQuery()
@@ -39,9 +38,9 @@ class VideoRepository extends \Doctrine\ORM\EntityRepository
 	     ->andWhere('v.challenge = :challenge')
 	       ->setParameter('challenge', $challenge)
 	     ->orderBy('v.date', 'DESC')
-	     ->setFirstResult(1);
-	     ->setMaxResults(1);
-	  ;
+	     ->setFirstResult(1)
+	     ->setMaxResults(1)
+	  	;
 
 	  return $qb
 	    ->getQuery()
@@ -57,8 +56,8 @@ class VideoRepository extends \Doctrine\ORM\EntityRepository
 	     ->andWhere('v.type = :challenge')
 	       ->setParameter('challenge', 'challenge')
 	     ->orderBy('v.date', 'DESC')
-	     ->setMaxResults(1);
-	  ;
+	     ->setMaxResults(1)
+	    ;
 
 	  return $qb
 	    ->getQuery()
@@ -106,8 +105,8 @@ class VideoRepository extends \Doctrine\ORM\EntityRepository
 	       ->setParameter('challenge', 'challenge')
 	       ->setParameter('freestyle', 'freestyle')
 	     ->orderBy('v.date', 'DESC')
-	     ->setMaxResults(100);
-	  ;
+	     ->setMaxResults(100)
+	    ;
 
 	  return $qb
 	    ->getQuery()
