@@ -183,18 +183,16 @@ class VideoController extends Controller
 			    		}
 		    		}
 
-		    		
-
 			    	$form = $this->get('form.factory')->create(new VideoType, $video);
 			    	if ($form->handleRequest($request)->isValid()) {
 					    $em = $this->getDoctrine()->getManager();
 
-					    $host = $duel->getHost();
-		    			$guest = $duel->getGuest();
+					    $hostUsername = $duel->getHost();
+		    			$guestUsername = $duel->getGuest();
 
 		    			$repository = $this->getDoctrine()->getManager()->getRepository('BFUserBundle:User');
-    					$host = $repository->findOneByUsername($host);
-    					$guest = $repository->findOneByUsername($guest);
+    					$host = $repository->findByUsername($hostUsername);
+    					$guest = $repository->findByUsername($guestUsername);
 
 					    if($duel->getHostCompleted() == 1 && $duel->getGuestCompleted() == 1)
 					    {

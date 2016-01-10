@@ -37,8 +37,6 @@ class VideoRepository extends \Doctrine\ORM\EntityRepository
 	       ->setParameter('user', $host)
 	     ->andWhere('v.duel = :duel')
 	       ->setParameter('duel', $duel)
-	     ->orderBy('v.date', 'DESC')
-	     ->setMaxResults(1)
 	  	;
 
 	  return $qb
@@ -54,8 +52,6 @@ class VideoRepository extends \Doctrine\ORM\EntityRepository
 	       ->setParameter('user', $guest)
 	     ->andWhere('v.duel = :duel')
 	       ->setParameter('duel', $duel)
-	     ->orderBy('v.date', 'DESC')
-	     ->setMaxResults(1)
 	  	;
 
 	  return $qb
