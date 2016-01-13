@@ -68,9 +68,9 @@
 				        {% set i = 1 %}
 							{% for user in ranking %}
 								{# here we make the little thumbnails for every video #}
-								<tr style="height:10vh;">
+								<tr style="height:50px;">
 						            <td>{{ i }}</td>
-						            <td style="height:10vh;"><img src="/uploads/img/{{ user.picture.src }}" alt="{{ user.picture.alt }}" style="height:101%;border-radius:50%"/></td>
+						            <td style="height:50px;"><img src="/uploads/img/{{ user.picture.src }}" alt="{{ user.picture.alt }}" style="height:101%;border-radius:50%"/></td>
 						            <td><a href="{{ path('bf_site_profile', { 'username': user.username }) }}">{{ user.username }}</a></td>
 						            <td>{{ user.points }}</td>
 						        </tr>
@@ -84,9 +84,9 @@
 				      	{% set i = 1 %}
 							{% for user in rankingGirls %}
 								{# here we make the little thumbnails for every video #}
-								<tr style="height:10vh;">
+								<tr style="height:50px;">
 				                  <td>{{ i }}</td>
-				                  <td style="height:10vh;"><img src="/uploads/img/{{ user.picture.src }}" alt="{{ user.picture.alt }}" style="height:101%;border-radius:50%"/></td>
+				                  <td style="height:50px;"><img src="/uploads/img/{{ user.picture.src }}" alt="{{ user.picture.alt }}" style="height:101%;border-radius:50%"/></td>
 				                  <td><a href="{{ path('bf_site_profile', { 'username': user.username }) }}">{{ user.username }}</a></td>
 				                  <td>{{ user.points }}</td>
 				                </tr>
