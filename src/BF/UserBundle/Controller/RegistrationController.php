@@ -80,7 +80,7 @@ class RegistrationController extends BaseController
             return $response;
         }
 
-        return $this->render('BFSiteBundle:Home:connect.html.twig', array(
+        return $this->render('BFUserBundle:Registration:register.html.twig', array(
             'form' => $form->createView(),
         ));
     }
@@ -148,7 +148,7 @@ class RegistrationController extends BaseController
             throw new AccessDeniedException('This user does not have access to this section.');
         }
 
-        return $this->render('FOSUserBundle:Registration:confirmed.html.twig', array(
+        return $this->render('BFUserBundle:Registration:confirmed.html.twig', array(
             'user' => $user,
             'targetUrl' => $this->getTargetUrlFromSession(),
         ));

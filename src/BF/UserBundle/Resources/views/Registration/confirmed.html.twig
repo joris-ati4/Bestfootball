@@ -1,10 +1,17 @@
-{% extends "FOSUserBundle::layout.html.twig" %}
+{% extends "BFSiteBundle::base.html.twig" %}
 
 {% trans_default_domain 'FOSUserBundle' %}
 
-{% block fos_user_content %}
-    <p>{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</p>
-    {% if targetUrl %}
-    <p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>
-    {% endif %}
-{% endblock fos_user_content %}
+{% block content %}
+	{% for key, message in app.session.flashbag.all() %}
+	    <div class="alert alert-{{ key }}">
+	      {{ message|trans({}, 'FOSUserBundle') }}
+	    </div>
+	{% endfor %}
+	<div class="well"style="margin-top:50px;">
+	     <p>{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</p>
+	    {% if targetUrl %}
+	    	<p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>
+	    {% endif %}
+	</div>
+{% endblock %}
