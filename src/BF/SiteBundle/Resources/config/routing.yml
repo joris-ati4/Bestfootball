@@ -21,8 +21,10 @@ bf_site_challengeview:
         id: -?\d+
 
 bf_site_ranking:
-    path:     /ranking
+    path:     /ranking/{country}/{state}
     defaults: { _controller: BFSiteBundle:Home:ranking }
+    requirements:
+        country: France|United States|Belgium|global
 
 bf_site_about:
     path:     /about

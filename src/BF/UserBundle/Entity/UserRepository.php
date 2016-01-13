@@ -23,17 +23,6 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
     $results = $query->getResult();
     return $results;
   }
-  public function globalRanking()
-  {
-    $qb = $this->createQueryBuilder('u');
-
-    $qb->orderBy('u.points', 'DESC');
-    
-    return $qb
-      ->getQuery()
-      ->getResult()
-    ;
-  }
   public function countryRanking($country)
   {
     $qb = $this->createQueryBuilder('u');
@@ -53,6 +42,36 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
 
     $qb->Where('u.state = :state')
          ->setParameter('state', $state)
+       ->orderBy('u.points', 'DESC')
+    ;
+    return $qb
+      ->getQuery()
+      ->getResult()
+    ;
+  }
+  public function countryRankingGirls($country)
+  {
+    $qb = $this->createQueryBuilder('u');
+
+    $qb->Where('u.country = :country')
+         ->setParameter('country', $country)
+       ->andWhere('u.gender = :gender')
+         ->setParameter('gender', 'Female')
+       ->orderBy('u.points', 'DESC')
+    ;
+    return $qb
+      ->getQuery()
+      ->getResult()
+    ;
+  }
+  public function stateRankingGirls($state)
+  {
+    $qb = $this->createQueryBuilder('u');
+
+    $qb->Where('u.state = :state')
+         ->setParameter('state', $state)
+       ->andWhere('u.gender = :gender')
+         ->setParameter('gender', 'Female')
        ->orderBy('u.points', 'DESC')
     ;
     return $qb

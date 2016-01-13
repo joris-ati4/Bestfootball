@@ -148,7 +148,7 @@ class HomeController extends Controller
           'search' => $search->createView(),
 	    ));
     }
-    public function rankingAction(request $request)
+    public function rankingAction(request $request,$country,$state)
     {
         //all the code for the user search function.
         $defaultData = array('user' => null );
@@ -168,32 +168,47 @@ class HomeController extends Controller
             return $this->redirect($this->generateUrl('bf_site_profile', array('username' => $username)));
         }
 
-        if( $this->container->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY') ){
-            $user = $this->container->get('security.context')->getToken()->getUser();
-            $country = $user->getCountry();
 
+        $em = $this->getDoctrine()->getEntityManager();
+
+        if($country == 'global'){ //the global ranking of all the users
             $repository = $this->getDoctrine()->getManager()->getRepository('BFUserBundle:User');
-            $listUsersGlobal = $repository->findBy(array(),array('points' => 'desc'),10,0);
-            $listUsersCountry = $repository->findBy(array('country' => $country),array('points' => 'desc'),10,0);
-
-
-            return $this->render('BFSiteBundle:Home:ranking.html.twig',array(
-                'listUsersGlobal' => $listUsersGlobal,
-                'listUsersCountry' => $listUsersCountry,
-                'country' => $country,
-              'search' => $search->createView(),
-                ));
+            $ranking = $repository->findBy(array(),array('points' => 'desc'));
+            $rankingGirls =$repository->findBy(array('gender' => 'Female'),array('points' => 'desc'));
+            $repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Country');
+            $listCountries = $repository->findall();
         }
-        else{
-            $repository = $this->getDoctrine()->getManager()->getRepository('BFUserBundle:User');
-            $listUsersGlobal = $repository->findBy(array(),array('points' => 'desc'),10,0);
-           
-
-
+        else{ 
+            if($state == 'country'){//rankings for country
+                $repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Country');
+                $country = $repository->findOneByName($country);
+                $repository = $this->getDoctrine()->getManager()->getRepository('BFUserBundle:User');
+                $ranking = $repository->countryRanking($country);
+                $rankingGirls =$repository->countryRankingGirls($country);
+                $repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Country');
+                $listCountries = $repository->findall();
+                $listStates = $country->getStates();
+            }
+            else{ //ranking for state
+                $repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:State');
+                $state = $repository->findOneByName($state);
+                $repository = $this->getDoctrine()->getManager()->getRepository('BFUserBundle:User');
+                $ranking = $repository->stateRanking($state);
+                $rankingGirls =$repository->stateRankingGirls($state);
+                $repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Country');
+                $listCountries = $repository->findall();
+            }
+        }
+        //rankings for state
             return $this->render('BFSiteBundle:Home:ranking.html.twig',array(
-                'listUsersGlobal' => $listUsersGlobal,
-                ));
-        }    
+              'search' => $search->createView(),
+              'ranking' => $ranking,
+              'rankingGirls' => $rankingGirls,
+              'listCountries' => $listCountries,
+              'country' => $country,
+              'state' => $state,
+            ));
+           
     }
     public function aboutAction(request $request)
     {
