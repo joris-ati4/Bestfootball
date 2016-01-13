@@ -54,8 +54,6 @@ class RegistrationController extends BaseController
             return $event->getResponse();
         }
 
-        
-
         $form = $formFactory->createForm();
         $form->setData($user);
 
@@ -82,7 +80,7 @@ class RegistrationController extends BaseController
             return $response;
         }
 
-        return $this->render('BFUserBundle:Registration:register.html.twig', array(
+        return $this->render('BFSiteBundle:Home:connect.html.twig', array(
             'form' => $form->createView(),
         ));
     }
@@ -100,7 +98,7 @@ class RegistrationController extends BaseController
             throw new NotFoundHttpException(sprintf('The user with email "%s" does not exist', $email));
         }
 
-        return $this->render('FOSUserBundle:Registration:checkEmail.html.twig', array(
+        return $this->render('BFUserBundle:Registration:checkEmail.html.twig', array(
             'user' => $user,
         ));
     }
