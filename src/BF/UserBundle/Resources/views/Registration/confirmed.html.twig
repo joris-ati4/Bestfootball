@@ -15,3 +15,12 @@
 	    {% endif %}
 	</div>
 {% endblock %}
+
+{% block javascripts %}
+	<script>
+		$(document).ready(function(){
+		  setTimeout(function(){
+			window.location='http://www.bestfootball.fr/';
+		  },5000); });
+	</script>
+{% endblock %}

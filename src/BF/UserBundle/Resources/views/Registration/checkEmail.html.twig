@@ -1,6 +1,6 @@
 {% extends "BFSiteBundle::base.html.twig" %}
 
-{% trans_default_domain 'FOSUserBundle' %}
+{% trans_default_domain 'BFUserBundle' %}
 
 {% block content %}
 	{% for key, message in app.session.flashbag.all() %}
@@ -11,4 +11,13 @@
 	<div class="well" style="margin-top:50px;">
 	    <p>{{ 'registration.check_email'|trans({'%email%': user.email}) }}</p>
 	</div>
+{% endblock %}
+
+{% block javascripts %}
+	<script>
+		$(document).ready(function(){
+		  setTimeout(function(){
+			window.location='http://www.bestfootball.fr/';
+		  },5000); });
+	</script>
 {% endblock %}
