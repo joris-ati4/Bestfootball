@@ -22,48 +22,30 @@
 			  <div class="tab-content row" style="padding-bottom:10px;">
 			    <div role="tabpanel" class="tab-pane active" id="connect">
 			    	<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 col-lg-offset-1" >
-						{{ render(controller("BFUserBundle:Security:login")) }}
+						<form action="{{ path("fos_user_security_check") }}" method="post">
+						    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+						    <div class="form-group">
+						    	<label for="username" class="col-xs-12 col-sm-5 col-md-5 col-lg-5 control-label">{{ 'security.login.username'|trans }}</label>
+						    	<div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
+						    		<input type="text" id="username" name="_username" value="{{ last_username }}" required="required" class="form-control"/>
+						    	</div>
+						   	</div>
+						   </br>
+						   	<div class="form-group">
+						    	<label for="password" class="col-xs-12 col-sm-5 col-md-5 col-lg-5 control-label">{{ 'security.login.password'|trans }}</label>
+						    	<div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
+						    		<input type="password" id="password" name="_password" required="required" class="form-control"/>
+						    	</div>
+						   	</div>
+						    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+						    <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+						</br>
+						    <input type="submit" id="_submit" name="_submit" class="btn btn-success" value="{{ 'security.login.submit'|trans }}" />
+						</form>
 					</div>
 			    </div>
 			    <div role="tabpanel" class="tab-pane" id="subscribe">
-			    	{% trans_default_domain 'FOSUserBundle' %}
-
-					{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
-
-					    <div class="form-group">
-					    	<label for="fos_user_registration_form_email" class="col-xs-12 col-sm-5 col-md-5 col-lg-5 control-label">Email</label>
-					    	<div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
-					    		 {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
-					    	</div>
-					   	</div>
-					   	<div class="form-group">
-					    	<label for="fos_user_registration_form_username" class="col-xs-12 col-sm-5 col-md-5 col-lg-5 control-label">Username</label>
-					    	<div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
-					    		{{ form_widget(form.username, {'attr': {'class': 'form-control'}}) }}
-					    	</div>
-					   	</div>
-					   	<div class="form-group">
-					    	<label for="fos_user_registration_form_plainPassword_first" class="col-xs-12 col-sm-5 col-md-5 col-lg-5 control-label">Password</label>
-					    	<div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
-					    		{{ form_widget(form.plainPassword.first, {'attr': {'class': 'form-control'}}) }}
-					    		
-					    	</div>
-					   	</div>
-					   	<div class="form-group">
-					    	<label for="fos_user_registration_form_plainPassword_second" class="col-xs-12 col-sm-5 col-md-5 col-lg-5 control-label">Repeat Password</label>
-					    	<div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
-					    		{{ form_widget(form.plainPassword.second, {'attr': {'class': 'form-control'}}) }}
-					    	</div>
-					   	</div>
-
-					   	{{ form_rest(form) }}
-					   </br>
-					</br>
-					    <div>
-					        <input type="submit" class="btn btn-success" style="margin-top: 10px;" value="{{ 'registration.submit'|trans }}" />
-					    </div>
-
-					{{ form_end(form) }}
+			    	{{ render(controller("BFUserBundle:Registration:register")) }}
 			    </div>
 			  </div>
 			</div>
