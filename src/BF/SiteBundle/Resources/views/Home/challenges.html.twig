@@ -10,6 +10,16 @@
 		<div class="row">
 		<div class="col-xs-12 col-sm-12 col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1">
 			<div class="row">
+				<div class="col-xs-6 col-sm-4 col-md-3 col-lg-3" style="padding:10px;">
+					<div class="challenge">
+						<div class="row">
+						</br>
+						  	<h3>Propose your own challenge !</h3>
+						  	<p>You have an idea about for a new challenge? Propose your own challenge by sending us a message!</p>
+						  	<button onclick="location.href='{{ path('bf_site_contact') }}'" class="btn btn-success" type="submit">Propose</button>
+							</div>
+					</div>
+				</div>
 				{% for challenge in listChallenges %}
 					<div class="col-xs-6 col-sm-4 col-md-3 col-lg-3" style="padding:10px;">
 						<div class="challenge">
