@@ -258,30 +258,6 @@ class HomeController extends Controller
               'search' => $search->createView(),
             ));
     }
-    public function contactAction(request $request)
-    {
-        //all the code for the user search function.
-        $defaultData = array('user' => null );
-        $search = $this->createFormBuilder($defaultData)
-            ->add('user', 'entity_typeahead', array(
-                    'class' => 'BFUserBundle:User',
-                    'render' => 'username',
-                    'route' => 'bf_site_search',
-                    ))
-            ->getForm(); 
-        $search->handleRequest($request);
-        if ($search->isValid()) {
-            // data is an array with "name", "email", and "message" keys
-            $data = $search->getData();
-            $user = $data['user'];
-            $username = $user->getUsername();
-            return $this->redirect($this->generateUrl('bf_site_profile', array('username' => $username)));
-        }
-
-		return $this->render('BFSiteBundle:Home:contact.html.twig', array(
-              'search' => $search->createView(),
-            ));
-    }
     public function connectAction(request $request)
     {
         //all the code for the user search function.
@@ -377,5 +353,74 @@ class HomeController extends Controller
         $response = new Response(json_encode($array));
         $response -> headers -> set('Content-Type', 'application/json');
         return $response;
+    }
+    public function contactAction(request $request)
+    {
+        //all the code for the user search function.
+        $defaultData = array('user' => null );
+        $search = $this->createFormBuilder($defaultData)
+            ->add('user', 'entity_typeahead', array(
+                    'class' => 'BFUserBundle:User',
+                    'render' => 'username',
+                    'route' => 'bf_site_search',
+                    ))
+            ->getForm(); 
+        $search->handleRequest($request);
+        if ($search->isValid()) {
+            // data is an array with "name", "email", and "message" keys
+            $data = $search->getData();
+            $user = $data['user'];
+            $username = $user->getUsername();
+            return $this->redirect($this->generateUrl('bf_site_profile', array('username' => $username)));
+        }
+
+
+        //the code for the proposition
+
+         $data = array();
+            $form = $this->createFormBuilder($data)
+                ->add('name', 'text')
+                ->add('email', 'email')
+                ->add('reason', 'choice',
+                    array('choices' => array(
+                        'propose a challenge'   => 'propose a challenge',
+                        'a problem with the site' => 'a problem with the site',
+                        'Partnership'   => 'Partnership',
+                    )))
+                ->add('message', 'textarea')
+            ->getForm();
+
+        $form->handleRequest($request);
+        if ($form->isValid()) {
+
+            // $data is a simply array with your form fields 
+            // like "query" and "category" as defined above.
+            $data = $form->getData();
+            $name = $data['name'];
+            $email = $data['email'];
+            $reason = $data['reason'];
+            $text = $data['message'];
+            $message = \Swift_Message::newInstance()
+                    ->setSubject('A new challenge proposition')
+                    ->setFrom('noreply@bestfootball.fr')
+                    ->setTo('joris.hart@ezwebcreation.fr')
+                    ->setBody(
+                        $this->renderView(
+                            // app/Resources/views/Emails/registration.html.twig
+                            'Emails/propose.html.twig',
+                            array('text' => $text, 'name' => $name, 'email' => $email, 'reason' => $reason)
+                        ),
+                        'text/html'
+                    )
+            ;
+            $this->get('mailer')->send($message);
+            $this->addFlash('success', 'Your message has been send. Thank you.');
+            return $this->redirect($this->generateUrl('bf_site_homepage'));
+        }
+
+        return $this->render('BFSiteBundle:Home:contact.html.twig', array(
+              'search' => $search->createView(),
+              'form' => $form->createView(),
+            ));
     }
 }
