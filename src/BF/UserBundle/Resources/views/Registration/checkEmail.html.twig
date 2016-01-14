@@ -5,13 +5,17 @@
 {% block content %}
 
 <section class="header text-center">
-	{% for key, message in app.session.flashbag.all() %}
-	    <div class="alert alert-{{ key }}">
-	      {{ message|trans({}, 'FOSUserBundle') }}
-	    </div>
-	{% endfor %}
-	<div class="well" style="margin-top:50px;">
-	    <p>{{ 'registration.check_email'|trans({'%email%': user.email}) }}</p>
+	<div class="row" style="margin-top:50px;">
+	    <div class="col-xs-10 col-sm-8 col-md-6 col-lg-6 col-xs-offset-1 col-sm-offset-2 col-md-offset-3 col-lg-offset-3" >
+			{% for key, message in app.session.flashbag.all() %}
+			    <div class="alert alert-{{ key }}">
+			      {{ message|trans({}, 'FOSUserBundle') }}
+			    </div>
+			{% endfor %}
+			<div class="well" style="margin-top:50px;">
+			    <p>{{ 'registration.check_email'|trans({'%email%': user.email}) }}</p>
+			</div>
+		</div>
 	</div>
 </section>
 {% endblock %}
@@ -21,6 +25,6 @@
 		$(document).ready(function(){
 		  setTimeout(function(){
 			window.location="{{ path('bf_site_homepage') }}";
-		  },5000); });
+		  },15000); });
 	</script>
 {% endblock %}
