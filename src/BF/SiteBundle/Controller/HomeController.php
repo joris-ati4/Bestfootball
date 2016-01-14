@@ -407,7 +407,7 @@ class HomeController extends Controller
                     ->setBody(
                         $this->renderView(
                             // app/Resources/views/Emails/registration.html.twig
-                            'Emails/propose.html.twig',
+                            'Emails/contact.html.twig',
                             array('text' => $text, 'name' => $name, 'email' => $email, 'reason' => $reason)
                         ),
                         'text/html'
