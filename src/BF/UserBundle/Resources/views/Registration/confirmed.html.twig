@@ -3,6 +3,8 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
 {% block content %}
+
+<section class="header text-center">
 	{% for key, message in app.session.flashbag.all() %}
 	    <div class="alert alert-{{ key }}">
 	      {{ message|trans({}, 'FOSUserBundle') }}
@@ -14,6 +16,8 @@
 	    	<p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>
 	    {% endif %}
 	</div>
+</section>
+
 {% endblock %}
 
 {% block javascripts %}

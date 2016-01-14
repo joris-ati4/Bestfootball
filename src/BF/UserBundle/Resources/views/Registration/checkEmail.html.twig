@@ -3,6 +3,8 @@
 {% trans_default_domain 'BFUserBundle' %}
 
 {% block content %}
+
+<section class="header text-center">
 	{% for key, message in app.session.flashbag.all() %}
 	    <div class="alert alert-{{ key }}">
 	      {{ message|trans({}, 'FOSUserBundle') }}
@@ -11,6 +13,7 @@
 	<div class="well" style="margin-top:50px;">
 	    <p>{{ 'registration.check_email'|trans({'%email%': user.email}) }}</p>
 	</div>
+</section>
 {% endblock %}
 
 {% block javascripts %}
