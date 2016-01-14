@@ -24,7 +24,6 @@ security:
         main:
             pattern: ^/
             form_login:
-                login_path: bf_site_connect
                 provider: fos_userbundle
                 csrf_provider: security.csrf.token_manager # Use form.csrf_provider instead for Symfony <2.4
             logout:       true
