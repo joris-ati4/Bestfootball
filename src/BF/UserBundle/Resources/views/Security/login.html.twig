@@ -12,7 +12,7 @@
         <!-- Nav tabs -->
         <ul class="nav nav-tabs" role="tablist">
           <li role="presentation" class="active" style="width:50%;"><a href="#connect" aria-controls="connect" role="tab" data-toggle="tab">Connect</a></li>
-          <li role="presentation"  style="width:50%;"><a href="#subscribe" aria-controls="subscribe" role="tab" data-toggle="tab">Subscribe</a></li>
+          <li role="presentation"  style="width:50%;"><a href="{{ path('fos_user_registration_register') }}" aria-controls="subscribe" role="tab" data-toggle="tab">Subscribe</a></li>
         </ul>
 
         <!-- Tab panes -->
@@ -23,7 +23,7 @@
                   <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
               {% endif %}
 
-              <form action="{{ path("fos_user_security_check") }}" method="post">
+              <form action="{{ path('fos_user_security_check') }}" method="post">
                   <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
 
                   <div class="form-group">
@@ -46,9 +46,7 @@
               </form>
             </div>
           </div>
-          <div role="tabpanel" class="tab-pane" id="subscribe">
-            {% include "BFUserBundle:Registration:register_content.html.twig" %}
-          </div>
+          
         </div>
 
       </div>

@@ -54,7 +54,7 @@
     </li>
   {% else %} {# Here the user is NOT connected to the site #}
     <li>
-        <button onclick="location.href='{{ path('bf_site_connect') }}'" class="btn btn-login" type="submit">Login / Subscribe </button>
+        <button onclick="location.href='{{ path('fos_user_security_login') }}'" class="btn btn-login" type="submit">Login / Subscribe </button>
     </li>
   {% endif %}
 {% endblock %}
