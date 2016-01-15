@@ -41,6 +41,12 @@
                             <source src="/uploads/videos/{{ duel.videos.0.id}}.{{ duel.videos.0.source }}" type="video/mp4">
                           Your browser does not support the video tag.
                           </video>
+                          {# all the info about the video #}
+                          <p>
+                            repetitions: {{ duel.videos.0.repetitions }}</br>
+
+
+                          </p>
                       </div><!--
                     --><div class="col-xs-12 col-sm-12 col-md-1 col-lg-1 vcenter">
                           <p>vs</p>
@@ -50,6 +56,12 @@
                             <source src="/uploads/videos/{{ duel.videos.1.id}}.{{ duel.videos.1.source }}" type="video/mp4">
                           Your browser does not support the video tag.
                           </video>
+                          {# all the info about the video #}
+                          <p>
+                            repetitions: {{ duel.videos.1.repetitions }}</br>
+
+
+                          </p>
                       </div>
                     </div>
                     {% endif %}

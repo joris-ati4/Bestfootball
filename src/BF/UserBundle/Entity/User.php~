@@ -103,6 +103,11 @@ class User extends BaseUser
     */
     private $points;
 
+    /**
+    * @ORM\Column(name="duel_points", type="integer", length=100, nullable=true)
+    */
+    private $duelPoints;
+
     /** @ORM\Column(name="facebook_id", type="string", length=255, nullable=true) */
     protected $facebook_id;
     /** @ORM\Column(name="facebook_access_token", type="string", length=255, nullable=true) */
@@ -560,7 +565,7 @@ class User extends BaseUser
      *
      * @return User
      */
-    public function addReport(\BF\SiteBundle\Entity\Reports $report)
+    public function addReport(\BF\SiteBundle\Entity\Report $report)
     {
         $this->reports[] = $report;
 
@@ -572,7 +577,7 @@ class User extends BaseUser
      *
      * @param \BF\SiteBundle\Entity\Report $report
      */
-    public function removeReport(\BF\SiteBundle\Entity\Reports $report)
+    public function removeReport(\BF\SiteBundle\Entity\Report $report)
     {
         $this->reports->removeElement($report);
     }

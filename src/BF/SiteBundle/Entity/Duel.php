@@ -100,6 +100,13 @@ class Duel
     private $guest;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="winner", type="string", length=255,nullable=true)
+     */
+    private $winner;
+
+    /**
      * Get id
      *
      * @return integer
@@ -434,5 +441,29 @@ class Duel
     public function getNotifications()
     {
         return $this->notifications;
+    }
+
+    /**
+     * Set winner
+     *
+     * @param string $winner
+     *
+     * @return Duel
+     */
+    public function setWinner($winner)
+    {
+        $this->winner = $winner;
+
+        return $this;
+    }
+
+    /**
+     * Get winner
+     *
+     * @return string
+     */
+    public function getWinner()
+    {
+        return $this->winner;
     }
 }

@@ -14,49 +14,310 @@
         	<div class="challengetitle">
           		<h3 class="text-center" style="color:white;">My duels</h3>
         	</div>
-        	<div class="challengecontent" style="min-height:440px;">
+        	<div class="challengecontent text-center" style="min-height:440px;">
         		{% if listDuels|length > 0 %}
-				  {% for duel in listDuels %}
-					<div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
-					  	<div class="jumbotron text-center" style="background-color:rgba(255, 255, 255,0.8);padding:10px;">
-					   		<p> {{ duel.challenge.title }}</p>
-							</br>
-
-
+				  	{% for duel in listDuels %}
 						{% if duel.completed == 0 %}
-							{% if duel.accepted == 0 %}
+							{% if duel.accepted == 0 %} {# the duel is not accepted #}
 								{% if duel.host != user.username %}
 									{# accept or decline the duel #}
-									<a href="{{ path('bf_site_duel_accept', {'id': duel.id}) }}" class="btn btn-success">
-										<i class="glyphicon glyphicon-ok"></i>
-										    Accept
-									</a>
-								    <a href="{{ path('bf_site_duel_decline', {'id': duel.id}) }}" class="btn btn-danger">
-										<i class="glyphicon glyphicon-trash"></i>
-										    Decline
-									</a>
+									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row">
+										<div class="challengedescription row" style="margin-bottom:10px;min-height:50px;">
+								        	<div class="challengetitle">
+								          		<h3 class="text-center" style="color:white;">{{ duel.challenge.title }} against {{ duel.host }}</h3>
+								        	</div>
+								        	<div class="challengecontent">
+								        		<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 row vcenter"><!-- picture of the duel -->
+								        			<img src="/uploads/challenges/thumbnail/{{ duel.challenge.id }}.jpg" alt="" style="max-height:100%;max-width:100%;"/>
+								        		</div><!--
+								        		--><div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 row vcenter"><!-- info about the duel -->
+								        			<p>Information:</p> 
+								        		</div><!--
+								        		--><div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 row vcenter"><!-- buttons to action -->
+								        			<a href="{{ path('bf_site_duel_accept', {'id': duel.id}) }}" class="btn btn-success">
+														<i class="glyphicon glyphicon-ok"></i>
+														    Accept
+													</a></br></br>
+												    <a href="{{ path('bf_site_duel_decline', {'id': duel.id}) }}" class="btn btn-danger">
+														<i class="glyphicon glyphicon-trash"></i>
+														    Decline
+													</a></br></br>
+													<a href="{{ path('bf_site_duel_view', {'id': duel.id}) }}" class="btn btn-success">
+														<i class="glyphicon glyphicon-upload"></i>
+													    View the duel
+													</a>
+								        		</div>
+								        	</div>
+								        </div>
+								    </div>
 								{% else %}
-									<p> wait for {{ duel.guest }} to accept your duel.
+									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row">
+										<div class="challengedescription row" style="margin-bottom:10px;min-height:50px;">
+								        	<div class="challengetitle">
+								          		<h3 class="text-center" style="color:white;">{{ duel.challenge.title }} against {{ duel.guest }}</h3>
+								        	</div>
+								        	<div class="challengecontent">
+								        		<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 row vcenter"><!-- picture of the duel -->
+								        			<img src="/uploads/challenges/thumbnail/{{ duel.challenge.id }}.jpg" alt="" style="max-height:100%;max-width:100%;"/>
+								        		</div><!--
+								        		--><div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 row vcenter"><!-- info about the duel -->
+								        			<p>Information: wait for {{ duel.guest }} to accept your duel.</p> 
+								        		</div><!--
+								        		--><div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 row vcenter"><!-- buttons to action -->
+													<a href="{{ path('bf_site_duel_view', {'id': duel.id}) }}" class="btn btn-success">
+														<i class="glyphicon glyphicon-upload"></i>
+													    View the duel
+													</a>
+								        		</div>
+								        	</div>
+								        </div>
+								    </div>
 								{% endif %}
-							{% else %}
-								<a href="{{ path('bf_site_duel_view', {'id': duel.id}) }}" class="btn btn-success">
-									<i class="glyphicon glyphicon-upload"></i>
-									    View the duel
-								</a>
-								<a href="{{ path('bf_site_upload', {'id': duel.id, 'type':'duel'}) }}" class="btn btn-warning">
-									<i class="glyphicon glyphicon-upload"></i>
-									    Upload your video
-								</a>
+							{% else %} {# the duel is accepted but not completed #}
+								{% if duel.host != user.username %} {# the user is the guest #}
+									{% if duel.guestCompleted == 0 %}
+										<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row">
+											<div class="challengedescription row" style="margin-bottom:10px;min-height:50px;">
+									        	<div class="challengetitle">
+									          		<h3 class="text-center" style="color:white;">{{ duel.challenge.title }} against {{ duel.host }}</h3>
+									        	</div>
+									        	<div class="challengecontent">
+									        		<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 row vcenter"><!-- picture of the duel -->
+									        			<img src="/uploads/challenges/thumbnail/{{ duel.challenge.id }}.jpg" alt="" style="max-height:100%;max-width:100%;"/>
+									        		</div><!--
+									        		--><div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 row vcenter"><!-- info about the duel -->
+									        			<p>Information:</br>You have till {{ duel.endDate|date('d-m-Y G:i') }} to upload your video. Once you passed this date you will not be able to upload your video.</p> 
+									        		</div><!--
+									        		--><div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 row vcenter"><!-- buttons to action -->
+									        			<a href="{{ path('bf_site_upload', {'id': duel.id, 'type':'duel'}) }}" class="btn btn-warning">
+															<i class="glyphicon glyphicon-upload"></i>
+															    Upload your video
+														</a></br></br>
+														<a href="{{ path('bf_site_duel_view', {'id': duel.id}) }}" class="btn btn-success">
+															<i class="glyphicon glyphicon-upload"></i>
+														    View the duel
+														</a>
+									        		</div>
+									        	</div>
+									        </div>
+									    </div>
+									{% else %}
+										<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row">
+											<div class="challengedescription row" style="margin-bottom:10px;min-height:50px;">
+									        	<div class="challengetitle">
+									          		<h3 class="text-center" style="color:white;">{{ duel.challenge.title }} against {{ duel.host }}</h3>
+									        	</div>
+									        	<div class="challengecontent">
+									        		<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 row vcenter"><!-- picture of the duel -->
+									        			<img src="/uploads/challenges/thumbnail/{{ duel.challenge.id }}.jpg" alt="" style="max-height:100%;max-width:100%;"/>
+									        		</div><!--
+									        		--><div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 row vcenter"><!-- info about the duel -->
+									        			<p>Information:</br>You uploaded your video in time. Now you have to wait for {{ duel.host }} to upload a video.</p> 
+									        		</div><!--
+									        		--><div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 row vcenter"><!-- buttons to action -->
+									        			
+														<a href="{{ path('bf_site_duel_view', {'id': duel.id}) }}" class="btn btn-success">
+															<i class="glyphicon glyphicon-upload"></i>
+														    View the duel
+														</a>
+									        		</div>
+									        	</div>
+									        </div>
+									    </div>
+									{% endif %}
+								{% else %} {# the user is the host #}
+									{% if duel.hostCompleted == 0 %}
+										<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row">
+											<div class="challengedescription row" style="margin-bottom:10px;min-height:50px;">
+									        	<div class="challengetitle">
+									          		<h3 class="text-center" style="color:white;">{{ duel.challenge.title }} against {{ duel.guest }}</h3>
+									        	</div>
+									        	<div class="challengecontent">
+									        		<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 row vcenter"><!-- picture of the duel -->
+									        			<img src="/uploads/challenges/thumbnail/{{ duel.challenge.id }}.jpg" alt="" style="max-height:100%;max-width:100%;"/>
+									        		</div><!--
+									        		--><div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 row vcenter"><!-- info about the duel -->
+									        			<p>Information:</br>You have till {{ duel.endDate|date('d-m-Y G:i') }} to upload your video. Once you passed this date you will not be able to upload your video.</p> 
+									        		</div><!--
+									        		--><div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 row vcenter"><!-- buttons to action -->
+									        			<a href="{{ path('bf_site_upload', {'id': duel.id, 'type':'duel'}) }}" class="btn btn-warning">
+															<i class="glyphicon glyphicon-upload"></i>
+															    Upload your video
+														</a></br></br>
+														<a href="{{ path('bf_site_duel_view', {'id': duel.id}) }}" class="btn btn-success">
+															<i class="glyphicon glyphicon-upload"></i>
+														    View the duel
+														</a>
+									        		</div>
+									        	</div>
+									        </div>
+									    </div>
+									{% else %}
+										<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row">
+											<div class="challengedescription row" style="margin-bottom:10px;min-height:50px;">
+									        	<div class="challengetitle">
+									          		<h3 class="text-center" style="color:white;">{{ duel.challenge.title }} against {{ duel.guest }}</h3>
+									        	</div>
+									        	<div class="challengecontent">
+									        		<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 row vcenter"><!-- picture of the duel -->
+									        			<img src="/uploads/challenges/thumbnail/{{ duel.challenge.id }}.jpg" alt="" style="max-height:100%;max-width:100%;"/>
+									        		</div><!--
+									        		--><div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 row vcenter"><!-- info about the duel -->
+									        			<p>Information:</br>You uploaded your video in time. Now you have to wait for {{ duel.guest }} to upload a video.</p> 
+									        		</div><!--
+									        		--><div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 row vcenter"><!-- buttons to action -->
+									        			
+														<a href="{{ path('bf_site_duel_view', {'id': duel.id}) }}" class="btn btn-success">
+															<i class="glyphicon glyphicon-upload"></i>
+														    View the duel
+														</a>
+									        		</div>
+									        	</div>
+									        </div>
+									    </div>
+									{% endif %}
+								{% endif %}
 							{% endif %}
-						{% else %}
-							<a href="{{ path('bf_site_duel_view', {'id': duel.id}) }}" class="btn btn-success">
-									<i class="glyphicon glyphicon-upload"></i>
-									    View the duel
-							</a>
+						{% else %} {# the duel is completed #}
+							{% if duel.host == user.username %}{# the user is the host #}
+								{% if duel.winner == user.username %} {# the user is the winner #}
+									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row">
+									<div class="challengedescription row" style="margin-bottom:10px;min-height:50px;background-color:green;">
+							        	<div class="challengetitle">
+							          		<h3 class="text-center" style="color:white;">{{ duel.challenge.title }} against {{ duel.guest }}</h3>
+							        	</div>
+							        	<div class="challengecontent">
+							        		<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 row vcenter"><!-- picture of the duel -->
+							        			<img src="/uploads/challenges/thumbnail/{{ duel.challenge.id }}.jpg" alt="" style="max-height:100%;max-width:100%;"/>
+							        		</div><!--
+							        		--><div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 row vcenter"><!-- info about the duel -->
+							        			 <p>Congratulations you won this duel and 100 points ! </p>
+							        		</div><!--
+							        		--><div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 row vcenter"><!-- buttons to action -->
+												<a href="{{ path('bf_site_duel_view', {'id': duel.id}) }}" class="btn btn-success">
+													<i class="glyphicon glyphicon-upload"></i>
+												    View the duel
+												</a>
+							        		</div>
+							        	</div>
+							        </div>
+							    </div>
+							    {% elseif duel.winner == null %}{# It was a draw #}
+									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row">
+									<div class="challengedescription row" style="margin-bottom:10px;min-height:50px;background-color:orange;">
+							        	<div class="challengetitle">
+							          		<h3 class="text-center" style="color:white;">{{ duel.challenge.title }} against {{ duel.guest }}</h3>
+							        	</div>
+							        	<div class="challengecontent">
+							        		<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 row vcenter"><!-- picture of the duel -->
+							        			<img src="/uploads/challenges/thumbnail/{{ duel.challenge.id }}.jpg" alt="" style="max-height:100%;max-width:100%;"/>
+							        		</div><!--
+							        		--><div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 row vcenter"><!-- info about the duel -->
+							        			 <p>Congratulations this duel was a draw and you received 50 points</p>
+							        		</div><!--
+							        		--><div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 row vcenter"><!-- buttons to action -->
+												<a href="{{ path('bf_site_duel_view', {'id': duel.id}) }}" class="btn btn-success">
+													<i class="glyphicon glyphicon-upload"></i>
+												    View the duel
+												</a>
+							        		</div>
+							        	</div>
+							        </div>
+							    </div>
+								{% else %}{# the user is the loser #}
+									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row">
+									<div class="challengedescription row" style="margin-bottom:10px;min-height:50px;background-color:red;">
+							        	<div class="challengetitle">
+							          		<h3 class="text-center" style="color:white;">{{ duel.challenge.title }} against {{ duel.guest }}</h3>
+							        	</div>
+							        	<div class="challengecontent">
+							        		<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 row vcenter"><!-- picture of the duel -->
+							        			<img src="/uploads/challenges/thumbnail/{{ duel.challenge.id }}.jpg" alt="" style="max-height:100%;max-width:100%;"/>
+							        		</div><!--
+							        		--><div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 row vcenter"><!-- info about the duel -->
+							        			 <p>unfortunately you lost the duel.</p>
+							        		</div><!--
+							        		--><div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 row vcenter"><!-- buttons to action -->
+												<a href="{{ path('bf_site_duel_view', {'id': duel.id}) }}" class="btn btn-success">
+													<i class="glyphicon glyphicon-upload"></i>
+												    View the duel
+												</a>
+							        		</div>
+							        	</div>
+							        </div>
+							    </div>
+								{% endif %}
+							{% else %} {# the user is the guest #}
+								{% if duel.winner == user.username %} {# the user is the winner #}
+									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row">
+									<div class="challengedescription row" style="margin-bottom:10px;min-height:50px;background-color:green;">
+							        	<div class="challengetitle">
+							          		<h3 class="text-center" style="color:white;">{{ duel.challenge.title }} against {{ duel.host }}</h3>
+							        	</div>
+							        	<div class="challengecontent">
+							        		<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 row vcenter"><!-- picture of the duel -->
+							        			<img src="/uploads/challenges/thumbnail/{{ duel.challenge.id }}.jpg" alt="" style="max-height:100%;max-width:100%;"/>
+							        		</div><!--
+							        		--><div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 row vcenter"><!-- info about the duel -->
+							        			 <p>Congratulations you won this duel and 100 points ! </p>
+							        		</div><!--
+							        		--><div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 row vcenter"><!-- buttons to action -->
+												<a href="{{ path('bf_site_duel_view', {'id': duel.id}) }}" class="btn btn-success">
+													<i class="glyphicon glyphicon-upload"></i>
+												    View the duel
+												</a>
+							        		</div>
+							        	</div>
+							        </div>
+							    </div>
+							    {% elseif duel.winner == null %}{# It was a draw #}
+									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row">
+									<div class="challengedescription row" style="margin-bottom:10px;min-height:50px;background-color:orange;">
+							        	<div class="challengetitle">
+							          		<h3 class="text-center" style="color:white;">{{ duel.challenge.title }} against {{ duel.host }}</h3>
+							        	</div>
+							        	<div class="challengecontent">
+							        		<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 row vcenter"><!-- picture of the duel -->
+							        			<img src="/uploads/challenges/thumbnail/{{ duel.challenge.id }}.jpg" alt="" style="max-height:100%;max-width:100%;"/>
+							        		</div><!--
+							        		--><div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 row vcenter"><!-- info about the duel -->
+							        			 <p>Congratulations this duel was a draw and you received 50 points</p>
+							        		</div><!--
+							        		--><div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 row vcenter"><!-- buttons to action -->
+												<a href="{{ path('bf_site_duel_view', {'id': duel.id}) }}" class="btn btn-success">
+													<i class="glyphicon glyphicon-upload"></i>
+												    View the duel
+												</a>
+							        		</div>
+							        	</div>
+							        </div>
+							    </div>
+								{% else %}{# the user is the loser #}
+									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row">
+									<div class="challengedescription row" style="margin-bottom:10px;min-height:50px;background-color:red;">
+							        	<div class="challengetitle">
+							          		<h3 class="text-center" style="color:white;">{{ duel.challenge.title }} against {{ duel.host }}</h3>
+							        	</div>
+							        	<div class="challengecontent">
+							        		<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 row vcenter"><!-- picture of the duel -->
+							        			<img src="/uploads/challenges/thumbnail/{{ duel.challenge.id }}.jpg" alt="" style="max-height:100%;max-width:100%;"/>
+							        		</div><!--
+							        		--><div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 row vcenter"><!-- info about the duel -->
+							        			 <p>unfortunately you lost the duel.</p>
+							        		</div><!--
+							        		--><div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 row vcenter"><!-- buttons to action -->
+												<a href="{{ path('bf_site_duel_view', {'id': duel.id}) }}" class="btn btn-success">
+													<i class="glyphicon glyphicon-upload"></i>
+												    View the duel
+												</a>
+							        		</div>
+							        	</div>
+							        </div>
+							    </div>
+								{% endif %}
+							{% endif %}
 						{% endif %}
-					    </div>
-					</div>
-				  {% endfor %}
+				  	{% endfor %}
 				{% else %}
                     <p> You don't have any duels !</p>
                 {% endif %}

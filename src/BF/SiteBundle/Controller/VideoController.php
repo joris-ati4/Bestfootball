@@ -219,8 +219,10 @@ class VideoController extends Controller
 					    	//we get compare the host to the guest score
 						    if($hostscore > $guestscore){//host wins
 						    	
-    							$points = $host->getPoints() + 50;
-			      				$host->setPoints($points);
+    							$points = $host->getDuelPoints() + 100;
+			      				$host->setDuelPoints($points);
+			      				$duel->setWinner($hostUsername);
+			      				$em->persist($duel);
 			      				$em->persist($host);
 
 			      				//notifications
@@ -228,7 +230,7 @@ class VideoController extends Controller
 			      					$notificationhost = new Notification();
 							    	$notificationhost
 							    		->setDate(new \Datetime())
-							    		->setMessage('Congratulations you won the duel against '.$guest->getUsername().' adn you received 50 points !')
+							    		->setMessage('Congratulations you won the duel against '.$guest->getUsername().' adn you received 100 points !')
 							    		->setUser($host)
 							    		->setWatched('0')
 							    		->setDuel($duel)
@@ -247,8 +249,10 @@ class VideoController extends Controller
 						    }
 						    elseif($hostscore < $guestscore){//guest wins
 
-    							$points = $guest->getPoints() + 50;
-			      				$guest->setPoints($points);
+    							$points = $guest->getDuelPoints() + 100;
+			      				$guest->setDuelPoints($points);
+			      				$duel->setWinner($guestUsername);
+			      				$em->persist($duel);
 			      				$em->persist($guest);
 
 			      				//notifications
@@ -256,7 +260,7 @@ class VideoController extends Controller
 			      					$notificationguest = new Notification();
 							    	$notificationguest
 							    		->setDate(new \Datetime())
-							    		->setMessage('Congratulations you won the duel against '.$host->getUsername().' and you received 50 points !')
+							    		->setMessage('Congratulations you won the duel against '.$host->getUsername().' and you received 100 points !')
 							    		->setUser($guest)
 							    		->setWatched('0')
 							    		->setDuel($duel)
@@ -277,12 +281,12 @@ class VideoController extends Controller
 						    elseif($hostscore == $guestscore){//same score,each 25 points
 
     							//host points
-    							$points = $host->getPoints() + 25;
-			      				$host->setPoints($points);
+    							$points = $host->getDuelPoints() + 50;
+			      				$host->setDuelPoints($points);
 			      				$em->persist($host);
 			      				//guest points
-			      				$points = $guest->getPoints() + 25;
-			      				$guest->setPoints($points);
+			      				$points = $guest->getDuelPoints() + 50;
+			      				$guest->setDuelPoints($points);
 			      				$em->persist($guest);
 
 			      				//notifications
@@ -290,7 +294,7 @@ class VideoController extends Controller
 			      					$notificationguest = new Notification();
 							    	$notificationguest
 							    		->setDate(new \Datetime())
-							    		->setMessage('Congratulations, the duel against '.$host->getUsername().' was a tie and you received 25 points !')
+							    		->setMessage('Congratulations, the duel against '.$host->getUsername().' was a tie and you received 50 points !')
 							    		->setUser($guest)
 							    		->setWatched('0')
 							    		->setDuel($duel)
@@ -299,7 +303,7 @@ class VideoController extends Controller
 		   							$notificationhost = new Notification();
 							    	$notificationhost
 							    		->setDate(new \Datetime())
-							    		->setMessage('Congratulations, the duel against '.$guest->getUsername().' was a tie and you received 25 points !')
+							    		->setMessage('Congratulations, the duel against '.$guest->getUsername().' was a tie and you received 50 points !')
 							    		->setUser($host)
 							    		->setWatched('0')
 							    		->setDuel($duel)

@@ -103,6 +103,11 @@ class User extends BaseUser
     */
     private $points;
 
+    /**
+    * @ORM\Column(name="duel_points", type="integer", length=100, nullable=true)
+    */
+    private $duelPoints;
+
     /** @ORM\Column(name="facebook_id", type="string", length=255, nullable=true) */
     protected $facebook_id;
     /** @ORM\Column(name="facebook_access_token", type="string", length=255, nullable=true) */
@@ -585,5 +590,29 @@ class User extends BaseUser
     public function getReports()
     {
         return $this->reports;
+    }
+
+    /**
+     * Set duelPoints
+     *
+     * @param integer $duelPoints
+     *
+     * @return User
+     */
+    public function setDuelPoints($duelPoints)
+    {
+        $this->duelPoints = $duelPoints;
+
+        return $this;
+    }
+
+    /**
+     * Get duelPoints
+     *
+     * @return integer
+     */
+    public function getDuelPoints()
+    {
+        return $this->duelPoints;
     }
 }

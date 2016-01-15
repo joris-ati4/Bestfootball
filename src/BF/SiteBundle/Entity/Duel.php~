@@ -100,6 +100,13 @@ class Duel
     private $guest;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="winner", type="string", length=255,nullable=true)
+     */
+    private $winner;
+
+    /**
      * Get id
      *
      * @return integer
