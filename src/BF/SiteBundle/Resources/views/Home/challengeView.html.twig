@@ -64,8 +64,8 @@
 					{# here we make the little thumbnails for every video #}
 						<tr style="height:50px;">
 					        <td>{{ i }}</td>
-			                <td style="height:50px;"><img src="img/profile.png" alt="" style="height:101%;border-radius:50%"/></td>
-			                <td>{{ user.username }}</td>
+			                <td style="height:50px;"><img src="/uploads/img/{{ user.user.picture.src }}" alt="{{ user.user.picture.alt }}" style="height:101%;border-radius:50%"/></td>
+			                <td>{{ user.user.username }}</td>
 			                <td>{{ user.points }}</td>
 					    </tr>
 						{% set i= i+1 %}
