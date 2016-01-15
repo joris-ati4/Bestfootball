@@ -358,6 +358,8 @@ class VideoController extends Controller
             return $this->redirect($this->generateUrl('bf_site_profile', array('username' => $username)));
         }
 
+
+
 	    $em = $this->getDoctrine()->getManager();
 	    $video = $em->getRepository('BFSiteBundle:Video')->find($id);
 
@@ -375,7 +377,9 @@ class VideoController extends Controller
 	    	$challenge = $video->getChallenge();
 	    	$repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video');
     		$oldVideo = $repository->videoBefore($user, $challenge);
-    		$points = $user->getPoints() + $oldVideo->getScore(); 
+    		if($oldVideo != null){
+    			$points = $user->getPoints() + $oldVideo->getScore(); 
+    		}    		
 	    }
 	    
         // On crée un formulaire vide, qui ne contiendra que le champ CSRF
