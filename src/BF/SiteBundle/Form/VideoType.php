@@ -17,7 +17,7 @@ class VideoType extends AbstractType
         $builder
             ->add('title', 'text')
             ->add('description', 'textarea')
-            ->add('repetitions', 'text')
+            ->add('repetitions', 'integer')
             ->add('file', 'file')
         ;
     }
