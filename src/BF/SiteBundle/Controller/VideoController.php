@@ -372,28 +372,51 @@ class VideoController extends Controller
 	    if ($check != $user) {
 	      throw $this->createNotFoundException("You can't delete a video that isn't yours");
 	    }
-	    //vérifier s'il y a des autres videos pour ce challenge
-	    if($video->getChallenge() != null){
-	    	$challenge = $video->getChallenge();
-	    	$repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video');
-    		$oldVideo = $repository->videoBefore($user, $challenge);
-    		if($oldVideo != null){
-    			$points = $user->getPoints() + $oldVideo->getScore(); 
-    		}    		
-	    }
-	    
+	    	    
         // On crée un formulaire vide, qui ne contiendra que le champ CSRF
 	    // Cela permet de protéger la suppression d'annonce contre cette faille
 	    $form = $this->get('form.factory')->create(new VideoDeleteType, $video);
 
 	    if ($form->handleRequest($request)->isValid()) {
 
+	    	//vérifier s'il y a des autres videos pour ce challenge
+	    	if($video->getChallenge() != null){
+		    	$challenge = $video->getChallenge();
+		    	//check if the video is the highest score.
+		    	$highestVideo = highestVideo($user, $challenge);
 
-	      $points =  $user->getPoints() - $video->getScore();
-      	  $user->setPoints($points);
-      	  $em->persist($user);
-	      $em->remove($video);
-	      $em->flush();
+		    	if($video == $highestVideo){ //the video that will be deleted is the highest video.
+		    		//now we check if there are other videos for this chalenge and we take that score.
+
+		    		$repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video');
+		    		$oldVideo = $repository->videoBefore($user, $challenge);
+
+		    		if($oldVideo != null){ //there is a video before.
+
+		    			$oldVideoScore = $oldVideo->getScore();
+		    			$deleteVideoScore = $video->getScore();
+		    			$userPoints = $user->getPoints();
+
+		    			$points =  ( $userPoints - $deleteVideoScore ) + $oldVideoScore;
+		    			$user->setPoints($points);
+			      		$em->persist($user);
+		    		}
+		    		else{ //this is the only video for the challenge
+
+						$deleteVideoScore = $video->getScore();
+		    			$userPoints = $user->getPoints();		    			
+
+		    			$points = $userPoints - $deleteVideoScore ;
+		    			$user->setPoints($points);
+			      		$em->persist($user);
+		    		}
+		    	}
+		    	else{ //if the video is not the highest score. We just delete it.
+				}    	   		
+		    }
+
+		    $em->remove($video);
+		    $em->flush();
 
 	      $request->getSession()->getFlashBag()->add('success', "Your video has been deleted.");
 
