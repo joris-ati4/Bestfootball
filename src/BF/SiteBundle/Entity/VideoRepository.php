@@ -84,7 +84,7 @@ class VideoRepository extends \Doctrine\ORM\EntityRepository
 	       ->setParameter('user', $user)
 	     ->andWhere('v.challenge = :challenge')
 	       ->setParameter('challenge', $challenge)
-	     ->orderBy('v.date', 'DESC')
+	     ->orderBy('v.score', 'DESC')
 	     ->setFirstResult(2)
 	     ->setMaxResults(1)
 	  	;

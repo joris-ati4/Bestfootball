@@ -413,6 +413,7 @@ class VideoController extends Controller
 		    		}
 		    	}
 		    	else{ //if the video is not the highest score. We just delete it.
+		    		
 				}    	   		
 		    }
 
