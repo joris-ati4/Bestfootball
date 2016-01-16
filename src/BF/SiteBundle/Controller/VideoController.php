@@ -386,7 +386,7 @@ class VideoController extends Controller
 		    	$repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video');
 		    	$highestVideo =  $repository->highestVideo($user, $challenge);
 
-		    	if($video == $highestVideo){ //the video that will be deleted is the highest video.
+		    	if($video->getid() == $highestVideo->getId()){ //the video that will be deleted is the highest video.
 		    		//now we check if there are other videos for this chalenge and we take that score.
 
 		    		$repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video');
