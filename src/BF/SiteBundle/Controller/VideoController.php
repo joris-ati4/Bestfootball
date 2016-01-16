@@ -387,38 +387,38 @@ class VideoController extends Controller
 		    	$highestVideo =  $repository->highestVideo($user, $challenge);
 
 		    	if($video->getid() == $highestVideo->getId()){ //the video that will be deleted is the highest video.
-		    		//now we check if there are other videos for this chalenge and we take that score.
+		    		//we delete the video and delete the score.
+		    		$deleteVideoScore = $video->getScore();
+		    		$userPoints = $user->getPoints();
 
+		    		$points =  $userPoints - $deleteVideoScore;
+		    		$user->setPoints($points);
+			      	$em->persist($user);
+		    		$em->remove($video);
+		    		$em->flush();
+
+		    		//we check if there is another video. and give this score to the user.
 		    		$repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video');
-		    		$oldVideo = $repository->videoBefore($user, $challenge);
+		    		$oldVideo = $repository->highestVideo($user, $challenge);
 
 		    		if($oldVideo != null){ //there is a video before.
 
 		    			$oldVideoScore = $oldVideo->getScore();
-		    			$deleteVideoScore = $video->getScore();
 		    			$userPoints = $user->getPoints();
 
-		    			$points =  ( $userPoints - $deleteVideoScore ) + $oldVideoScore;
+		    			$points =  $userPoints + $oldVideoScore;
 		    			$user->setPoints($points);
 			      		$em->persist($user);
-		    		}
-		    		else{ //this is the only video for the challenge
-
-						$deleteVideoScore = $video->getScore();
-		    			$userPoints = $user->getPoints();		    			
-
-		    			$points = $userPoints - $deleteVideoScore ;
-		    			$user->setPoints($points);
-			      		$em->persist($user);
+			      		$em->flush();
 		    		}
 		    	}
 		    	else{ //if the video is not the highest score. We just delete it.
-		    		
+		    		$em->remove($video);
+		    		$em->flush();
 				}    	   		
 		    }
 
-		    $em->remove($video);
-		    $em->flush();
+		    
 
 	      $request->getSession()->getFlashBag()->add('success', "Your video has been deleted.");
 
