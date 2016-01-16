@@ -132,7 +132,7 @@ class VideoController extends Controller
         if($five > $video->getRepetitions() && $video->getRepetitions() >= $four){$video->setScore('200');}
         if($four > $video->getRepetitions() && $video->getRepetitions() >= $three){$video->setScore('150');}
         if($three > $video->getRepetitions() && $video->getRepetitions() >= $two){$video->setScore('100');}
-        if($two > $video->getRepetitions() && $video->getRepetitions() >= $one){$video->setScore('100');}
+        if($two > $video->getRepetitions() && $video->getRepetitions() >= $one){$video->setScore('50');}
         if($one > $video->getRepetitions()){$video->setScore('0');}
 
         //retrieving the points from the video and updating the points off the user.
