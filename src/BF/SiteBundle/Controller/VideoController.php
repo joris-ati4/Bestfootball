@@ -17,6 +17,7 @@ use BF\SiteBundle\Entity\VideoRepository;
 //les types
 use BF\SiteBundle\Form\VideoType;
 use BF\SiteBundle\Form\VideoEditType;
+use BF\SiteBundle\Form\VideoDuelType;
 use BF\SiteBundle\Form\VideoDeleteType;
 use BF\SiteBundle\Form\ChallengeType;
 use BF\SiteBundle\Form\ReportType;
