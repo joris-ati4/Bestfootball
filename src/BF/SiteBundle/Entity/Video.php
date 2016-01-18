@@ -92,7 +92,7 @@ class Video
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="string", length=255)
+     * @ORM\Column(name="description", type="string", length=255,nullable=true)
      * @Assert\Length(min=5,max=255)
      */
     private $description;

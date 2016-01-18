@@ -3,6 +3,9 @@
 namespace BF\SiteBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
 use BF\UserBundle\Entity;
 use BF\SiteBundle\Entity\Challenge;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -82,13 +85,15 @@ class Video
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
+     * @Assert\Length(min=5,max=20)
      */
     private $title;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="string", length=255)
+     * @ORM\Column(name="description", type="string", length=255,nullable=true)
+     * @Assert\Length(min=5,max=255)
      */
     private $description;
 
@@ -99,6 +104,7 @@ class Video
 
     /**
     * @ORM\Column(name="repetitions", type="integer", length=10)
+    * @Assert\Type(type="integer")
     */
     private $repetitions;
 
@@ -565,7 +571,7 @@ class Video
      *
      * @return Video
      */
-    public function addReport(\BF\SiteBundle\Entity\Reports $report)
+    public function addReport(\BF\SiteBundle\Entity\Report $report)
     {
         $this->reports[] = $report;
 
@@ -577,7 +583,7 @@ class Video
      *
      * @param \BF\SiteBundle\Entity\Reports $report
      */
-    public function removeReport(\BF\SiteBundle\Entity\Reports $report)
+    public function removeReport(\BF\SiteBundle\Entity\Report $report)
     {
         $this->reports->removeElement($report);
     }

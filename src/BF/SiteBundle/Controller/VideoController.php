@@ -185,7 +185,7 @@ class VideoController extends Controller
 			    		}
 		    		}
 
-			    	$form = $this->get('form.factory')->create(new VideoType, $video);
+			    	$form = $this->get('form.factory')->create(new VideoDuelType, $video);
 			    	if ($form->handleRequest($request)->isValid()) {
 					    $em = $this->getDoctrine()->getManager();
 

@@ -45,6 +45,8 @@ class ProfileController extends Controller
       $listChallenges = $repository->listChallenges($user);
       $lastVideo = $repository->lastVideo($user);
 
+      $listDuels = $user->getDuels();
+
       //here we get the rank + points of the user
       $points = $user->getPoints();
       if( '0'<= $points && $points < '600'){$level = 'Incognito'; $percent=($points/600)*100;$min=0;$max=600;$style='progress-bar-success';} //incognito
@@ -78,6 +80,7 @@ class ProfileController extends Controller
     	      'listVideos' => $listVideos,
             'lastVideo' => $lastVideo,
             'listChallenges' => $listChallenges,
+            'listDuels' => $listDuels,
             'level' => $level,
             'percent' => $percent,
             'min' => $min,

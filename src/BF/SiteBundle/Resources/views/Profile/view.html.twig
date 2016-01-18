@@ -148,6 +148,49 @@
                   </div>
                 </div>
               </div>
+            <!-- The challenges section of thez profile-->
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vcenter row">
+                <div class="challengedescription">
+                  <div class="challengetitle">
+                    <h3 class="text-center" style="color:white;">My Duels</h3>
+                  </div>
+                  <div class="challengecontent">
+                    
+                    {% if listDuels|length > 0 %}
+                      {% for duel in listDuels %}
+                        <a href="{{ path('bf_site_duel_view', {'id': duel.id }) }}">
+                          <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 container text-center" style="margin:5px;border-radius: 15px 50px;height:250px;">
+                          <h4 style>{{ duel.challenge.title }}</h4>
+                          <img src="/uploads/challenges/thumbnail/{{ duel.challenge.id}}.jpg" alt="{{ duel.challenge.imageAlt }}" class="img-responsive"></a>
+                          <p>
+                          {% if duel.completed == 1 %}
+                            {% if duel.winner is not null %}
+                              {% if duel.winner == user.username %}
+                                WON
+                              {% else %}
+                                LOST
+                              {% endif %}
+                            {% else %}
+                              Draw !
+                            {% endif %}
+                          {% else %}
+                            In progress !
+                          {% endif %}
+                          </p>
+                        </div>
+                        </a>
+                      {% endfor %}
+                    {% else %}
+                    <p> This user didn't participate at any challenges</p>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+
+
+
+
+
           </div>
         </div>
       </section>
