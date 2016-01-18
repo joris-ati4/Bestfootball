@@ -161,3 +161,13 @@ bf_site_duel_decline:
 bf_site_duel_view:
     path:     /duel/view/{id}
     defaults: { _controller: BFSiteBundle:Duel:view }
+
+#the routes for the following code
+
+bf_site_follow:
+    path:     /follow/
+    defaults: { _controller: BFSiteBundle:Follow:followUser }
+
+bf_site_unfollow:
+    path:     /unfollow/
+    defaults: { _controller: BFSiteBundle:Follow:unfollowUser }

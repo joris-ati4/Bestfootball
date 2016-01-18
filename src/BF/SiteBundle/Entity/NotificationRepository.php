@@ -10,4 +10,20 @@ namespace BF\SiteBundle\Entity;
  */
 class NotificationRepository extends \Doctrine\ORM\EntityRepository
 {
+	public function checkNotification($user, $message)
+	{
+	  $qb = $this->createQueryBuilder('n');
+
+	  $qb->where('n.user = :user')
+	       ->setParameter('user', $user)
+	     ->andWhere('n.message = :message')
+	       ->setParameter('message', $message)
+	     ->setMaxResults(1)
+	  	;
+
+	  return $qb
+	    ->getQuery()
+	    ->getOneOrNullResult()
+	  ;
+	}
 }

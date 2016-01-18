@@ -12,6 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class User extends BaseUser
 {
+   
     /**
     * @ORM\OneToMany(targetEntity="BF\SiteBundle\Entity\Report", mappedBy="user")
     */
@@ -590,5 +591,29 @@ class User extends BaseUser
     public function getReports()
     {
         return $this->reports;
+    }
+
+    /**
+     * Set duelPoints
+     *
+     * @param integer $duelPoints
+     *
+     * @return User
+     */
+    public function setDuelPoints($duelPoints)
+    {
+        $this->duelPoints = $duelPoints;
+
+        return $this;
+    }
+
+    /**
+     * Get duelPoints
+     *
+     * @return integer
+     */
+    public function getDuelPoints()
+    {
+        return $this->duelPoints;
     }
 }

@@ -12,6 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class User extends BaseUser
 {
+   
     /**
     * @ORM\OneToMany(targetEntity="BF\SiteBundle\Entity\Report", mappedBy="user")
     */

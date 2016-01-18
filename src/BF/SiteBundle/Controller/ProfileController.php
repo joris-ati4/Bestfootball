@@ -13,6 +13,7 @@ use BF\SiteBundle\Entity\Picture;
 use BF\UserBundle\Form\UserType;
 use BF\UserBundle\Form\UserPictureType;
 use BF\SiteBundle\Form\PictureType;
+use BF\SiteBundle\Entity\Follow;
 
 
 class ProfileController extends Controller
@@ -37,8 +38,32 @@ class ProfileController extends Controller
             return $this->redirect($this->generateUrl('bf_site_profile', array('username' => $username)));
         }
 
+      //checking if the user is following the current user
+
+        $follower = $this->container->get('security.context')->getToken()->getUser();
+
+        $repository = $this->getDoctrine()->getManager()->getRepository('BFUserBundle:User');
+        $following = $repository->findOneByUsername($username);
+
+        if($follower->getUsername() != $following->getUsername()){ //the user is not viewing it's own profile page
+          $repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Follow');
+          $follow = $repository->checkFollow($follower, $following);
+
+          if($follow == null ){
+            $follow = 0;
+          }
+          else{
+            $follow =1;
+          }
+        }
+        else{
+          $follow = null;
+        }
+
     	$repository = $this->getDoctrine()->getManager()->getRepository('BFUserBundle:User');
     	$user = $repository->findOneByUsername($username);
+      $repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Follow');
+      $listFollows = $repository->findByFollowing($user);
     	$repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video');
     	$listVideos = $repository->listVideos($user);
 
@@ -80,6 +105,7 @@ class ProfileController extends Controller
     	      'listVideos' => $listVideos,
             'lastVideo' => $lastVideo,
             'listChallenges' => $listChallenges,
+            'listFollows' => $listFollows,
             'listDuels' => $listDuels,
             'level' => $level,
             'percent' => $percent,
@@ -87,6 +113,7 @@ class ProfileController extends Controller
             'max' => $max,
             'style' => $style,
             'ranking' => $ranking,
+            'follow' => $follow,
             'search' => $search->createView(),
     	    ));
     }

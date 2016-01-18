@@ -12,6 +12,7 @@
 {% endblock %}
 
 {% block content %}
+  <input type="hidden" name="user" id="user" value="{{ user.id }}">
 <section class="profile">
         <div class="row">
           <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">
@@ -61,9 +62,7 @@
                         <p> {{ ranking.1 }} </p>
                       </div>
                     {% else %}
-
                     {% endif %}
-
                     {% if user.state is not null %}
                       <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 row">
                         <p>{{ user.state.name }} <!--State -->
@@ -76,12 +75,34 @@
               
                     {% endif %}
                 </div>
+
+                 {% if listFollows|length > 0 %}
+                      {% set followers = 0 %}
+                      {% for follow in listFollows %}
+                       {% set followers = followers + 1 %}
+                      {% endfor %}
+
+                      Followers : {{ followers }}</br>
+                    {% endif %}
+
                 {% if user.username != app.user.username %}
                   <a href="{{ path('bf_site_duel_create', {'username': user.username }) }}" class="btn btn-success">
                     <i class="glyphicon glyphicon-ok"></i>
                        Duel me !
                   </a>
+
+                  <a id="follow" value="{{ user.id }}" class="btn btn-success">
+                    <i class="glyphicon glyphicon-ok"></i>
+                       Follow me !
+                  </a>
+
+                  <a id="unfollow" value="{{ user.id }}" class="btn btn-success">
+                    <i class="glyphicon glyphicon-ok"></i>
+                       Followed !
+                  </a>
+
                 {% endif %}
+
               </div>
             </div>
             <!-- The last video section of thez profile-->
@@ -186,11 +207,6 @@
                   </div>
                 </div>
               </div>
-
-
-
-
-
           </div>
         </div>
       </section>
@@ -238,4 +254,77 @@
               video[0].play();
       }
     </script>
+
+{% if follow is not null %}
+  {% if follow == 0 %}
+  <script>
+    $("#unfollow").hide();
+    $("#follow").click(function(){ 
+        var id = $("#user").val();
+        var DATA = 'id=' + id;
+        $.ajax({
+            type: "POST",
+            url: "{{ path('bf_site_follow')}}",
+            data: DATA,
+            cache: false,
+            success: function(){
+               $('#unfollow').show();
+               $("#follow").hide();
+               $("#unfollow").click(function(){ 
+                var id = $("#user").val();
+                var DATA = 'id=' + id;
+                $.ajax({
+                    type: "POST",
+                    url: "{{ path('bf_site_unfollow')}}",
+                    data: DATA,
+                    cache: false,
+                    success: function(){
+                       $('#follow').show();
+                       $("#unfollow").hide();
+                    }
+                });    
+                return false;
+            });
+            }
+        });    
+        return false;
+    });
+  </script>
+  {% elseif follow == 1 %}
+  <script>
+    $("#follow").hide();
+    $("#unfollow").click(function(){ 
+        var id = $("#user").val();
+        var DATA = 'id=' + id;
+        $.ajax({
+            type: "POST",
+            url: "{{ path('bf_site_unfollow')}}",
+            data: DATA,
+            cache: false,
+            success: function(){
+               $('#follow').show();
+               $("#unfollow").hide();
+               $("#follow").click(function(){ 
+                var id = $("#user").val();
+                var DATA = 'id=' + id;
+                $.ajax({
+                    type: "POST",
+                    url: "{{ path('bf_site_follow')}}",
+                    data: DATA,
+                    cache: false,
+                    success: function(){
+                       $('#unfollow').show();
+                       $("#follow").hide();
+                    }
+                });    
+                return false;
+            });
+            }
+        });    
+        return false;
+    });
+  </script>
+  {% endif %}
+{% endif %}
+
 {% endblock %}
