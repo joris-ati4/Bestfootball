@@ -16,6 +16,7 @@ class VideoDuelType extends AbstractType
     {
         $builder
             ->add('title', 'text')
+            ->add('description', 'textarea',array('required' => false))
             ->add('repetitions', 'integer')
             ->add('file', 'file')
         ;
