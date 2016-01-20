@@ -307,15 +307,51 @@ class HomeController extends Controller
 
         $listNotifications = $user->getNotifications();
 
-        $repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video');
-        $listVideos = $repository->listHomeVideos();
+        //we get the last videos of the users the user is following.
+        $repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Follow');
+        $listFollows = $repository->findByFollower($user);
+
+
+        $wallArray = array();
+
+        if($listFollows != null ){
+           
+            foreach($listFollows as $follow)
+            {
+                $following = $follow->getFollowing();
+                $repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video');
+                $listVideos = $repository->listHomeVideos($following);
+
+                //creating an array of the list
+                foreach($listVideos as $video)
+                {
+                    array_push($wallArray, $video);
+                }
+
+                $repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Duel');
+                $listDuels = $repository->listDuelsComplete($following);
+                foreach($listDuels as $duel)
+                {
+                    array_push($wallArray, $duel);
+                }
+                
+            }
+        }
+        else{ //if the listFollows is null, we give the user the last 50 videos uploaded on the site.
+
+        }
+            
+        //now we shuffle the array.
+        shuffle($wallArray);
+        
+
 
         $points = $user->getPoints();
-          if( '0'<= $points && $points < '600'){$level = 'Incognito'; $percent=($points/600)*100;$min=0;$max=600;$style='progress-bar-success';} //incognito
-          if( '600'<= $points && $points < '1200'){$level = 'Promising Star';$percent=(($points-600)/600)*100;$min=600;$max=1200;$style='progress-bar-success';}
-          if( '1200'<= $points && $points < '1900'){$level = 'Rising Star';$percent=(($points-1200)/700)*100;$min=1200;$max=1900;$style='progress-bar-info';}
-          if( '1900'<= $points && $points < '2500'){$level = 'Confirmed Star';$percent=(($points-1900)/600)*100;$min=1900;$max=2500;$style='progress-bar-warning';}
-          if( '2500'<= $points){$level = 'Legend';$percent=(($points-2500)/2500)*100;$min=2500;$max=5000;$style='progress-bar-danger';}
+          if( '0'<= $points && $points <= '1000'){$level = 'Uknown'; $percent=($points/1000)*100;$min=0;$max=1000;$style='progress-bar-success';} //incognito
+          if( '1000'< $points && $points <= '2000'){$level = 'Promising Talent';$percent=(($points-1000)/1000)*100;$min=1000;$max=2000;$style='progress-bar-success';}
+          if( '2000'< $points && $points <= '3500'){$level = 'Rising Star';$percent=(($points-2000)/1500)*100;$min=2000;$max=3500;$style='progress-bar-info';}
+          if( '3500'< $points && $points <= '5999'){$level = 'Real Star';$percent=(($points-3500)/1499)*100;$min=3500;$max=5999;$style='progress-bar-warning';}
+          if( '6000'<= $points){$level = 'Legend';$percent=(($points-6000)/2000)*100;$min=6000;$max=8000;$style='progress-bar-danger';}
 
 
         //now we are going to determine the place of the user.
@@ -331,7 +367,8 @@ class HomeController extends Controller
         $ranking = array($globalRank,$countryRank,$stateRank);
         
         return $this->render('BFSiteBundle:Home:logged.html.twig', array(
-          'listVideos' => $listVideos,
+          'listVideos' => $wallArray,
+          'listDuels' => $listDuels,
           'listNotifications' => $listNotifications,
           'user' => $user,
           'level' => $level,

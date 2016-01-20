@@ -99,6 +99,7 @@ class DuelController extends Controller
     		->setGuestCompleted('0')
     		->setHost($host->getUsername())
     		->setGuest($guest->getUsername())
+            ->setType('duel')
     		->addUser($host)
     		->addUser($guest)
     		;

@@ -56,50 +56,57 @@
             </div>
 
         <div class="col-xs-5 col-sm-5 col-md-7 col-lg-7 row">
-          {% for video in listVideos %}
+          {% for object in listVideos %}
 
-            {% if video.type == 'freestyle' %}
-              <div class="well row" style="margin-bottom:10px;">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row">
-                  <div class="col-xs-4 col-sm-4 col-md-4 col-lg-2 vcenter row">
-                    <img src="/uploads/img/{{ video.user.picture.src }}" alt="{{ video.user.picture.src }}" style="width:100%" id="{{ video.user.username }}">
-                  </div><!--
-               --><div class="col-xs-8 col-sm-8 col-md-8 col-lg-10 vcenter row">
-                    <a href="{{ path('bf_site_profile', { 'username': video.user.username }) }}">{{ video.user.username }}</a>
+              {% if object.type == 'freestyle' %}
+                <div class="well row" style="margin-bottom:10px;">
+                  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row">
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-2 vcenter row">
+                      <img src="/uploads/img/{{ object.user.picture.src }}" alt="{{ object.user.picture.src }}" style="width:100%" id="{{ object.user.username }}">
+                    </div><!--
+                 --><div class="col-xs-8 col-sm-8 col-md-8 col-lg-10 vcenter row">
+                      <a href="{{ path('bf_site_profile', { 'username': object.user.username }) }}">{{ object.user.username }}</a>
+                    </div>
                   </div>
+                  <p>{{ object.title }}</p>
+                  <video width="100%" id="video" controls>
+                    <source src="/uploads/videos/{{ object.id}}.{{ object.source }}" type="video/mp4">
+                      Your browser does not support the video tag.
+                  </video>
+                  <a href="{{ path('bf_site_video_report', {'id': object.id}) }}">report this video</a>
+
+
+
                 </div>
-                <p>{{ video.title }}</p>
-                <video width="100%" id="video" controls>
-                  <source src="/uploads/videos/{{ video.id}}.{{ video.source }}" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                <a href="{{ path('bf_site_video_report', {'id': video.id}) }}">report this video</a>
-
-
-
-              </div>
-            {% elseif video.type == 'challenge' %}
-              <div class="well row" style="margin-bottom:10px;">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row">
-                  <div class="col-xs-4 col-sm-4 col-md-4 col-lg-2 vcenter row">
-                    <img src="/uploads/img/{{ video.user.picture.src }}" alt="{{ video.user.picture.src }}" style="width:100%" id="{{ video.user.username }}">
-                  </div><!--
-               --><div class="col-xs-8 col-sm-8 col-md-8 col-lg-10 vcenter row">
-                    <a href="{{ path('bf_site_profile', { 'username': video.user.username }) }}">{{ video.user.username }}</a>
+              {% elseif object.type == 'challenge' %}
+                <div class="well row" style="margin-bottom:10px;">
+                  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row">
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-2 vcenter row">
+                      <img src="/uploads/img/{{ object.user.picture.src }}" alt="{{ object.user.picture.src }}" style="width:100%" id="{{ object.user.username }}">
+                    </div><!--
+                 --><div class="col-xs-8 col-sm-8 col-md-8 col-lg-10 vcenter row">
+                      <a href="{{ path('bf_site_profile', { 'username': object.user.username }) }}">{{ object.user.username }}</a>
+                    </div>
                   </div>
+                  <p>{{ object.title }} to the {{ object.challenge.title }} challenge.</p>
+                  <video width="100%" id="video" controls>
+                    <source src="/uploads/videos/{{ object.id}}.{{ object.source }}" type="video/mp4">
+                      Your browser does not support the video tag.
+                  </video>
+                  <a href="{{ path('bf_site_video_report', {'id': object.id}) }}">report this video</a>
                 </div>
-                <p>{{ video.title }} to the {{ video.challenge.title }} challenge.</p>
-                <video width="100%" id="video" controls>
-                  <source src="/uploads/videos/{{ video.id}}.{{ video.source }}" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                <a href="{{ path('bf_site_video_report', {'id': video.id}) }}">report this video</a>
 
 
-              </div>
-            {% endif %}
 
-          {% endfor %}
+              {% elseif object.type == 'duel' %}
+                <div class="well row" style="margin-bottom:10px;">
+                  {{ object.host }} against {{ object.guest }}
+                </div>
+              {% endif %}
+
+          {% endfor %} 
+
+          {{ dump(listVideos) }}
         </div>
         <div class="col-xs-3 col-sm-3 col-md-2 col-lg-2 row">
           Advertisements

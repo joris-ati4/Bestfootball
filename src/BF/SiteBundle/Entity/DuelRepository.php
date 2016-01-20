@@ -10,4 +10,20 @@ namespace BF\SiteBundle\Entity;
  */
 class DuelRepository extends \Doctrine\ORM\EntityRepository
 {
+	public function listDuelsComplete($user)
+	{
+	  $qb = $this->createQueryBuilder('d');
+
+	  $qb->where('d.host = :user OR d.guest =:user' )
+	       ->setParameter('user', $user->getUsername())
+	     ->andWhere('d.completed = :completed')
+	       ->setParameter('completed', '1')
+	     ->orderBy('d.beginDate', 'DESC')
+	  ;
+
+	  return $qb
+	    ->getQuery()
+	    ->getResult()
+	  ;
+	}
 }

@@ -107,6 +107,13 @@ class Duel
     private $winner;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="type", type="string", length=255,nullable=false)
+     */
+    private $type;
+
+    /**
      * Get id
      *
      * @return integer
@@ -465,5 +472,29 @@ class Duel
     public function getWinner()
     {
         return $this->winner;
+    }
+
+    /**
+     * Set type
+     *
+     * @param string $type
+     *
+     * @return Duel
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
     }
 }
