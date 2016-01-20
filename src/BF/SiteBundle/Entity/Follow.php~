@@ -31,8 +31,6 @@ class Follow
 
 
     /**
-     * 
-     *
      * @ORM\ManyToOne(targetEntity="BF\UserBundle\Entity\User")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_following", referencedColumnName="id")
