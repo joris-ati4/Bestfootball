@@ -154,9 +154,6 @@ class HomeController extends Controller
             return $this->redirect($this->generateUrl('bf_site_profile', array('username' => $username)));
         }
 
-
-        $em = $this->getDoctrine()->getEntityManager();
-
         if($country == 'global'){ //the global ranking of all the users
             $repository = $this->getDoctrine()->getManager()->getRepository('BFUserBundle:User');
             $ranking = $repository->findBy(array(),array('points' => 'desc'));
@@ -173,7 +170,6 @@ class HomeController extends Controller
                 $rankingGirls =$repository->countryRankingGirls($country);
                 $repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Country');
                 $listCountries = $repository->findall();
-                $listStates = $country->getStates();
             }
             else{ //ranking for state
                 $repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:State');
