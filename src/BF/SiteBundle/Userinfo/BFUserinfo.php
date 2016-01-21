@@ -29,8 +29,7 @@ class BFUserinfo
     if( '6000'<= $points){$level = 'Legend';$percent=(($points-6000)/2000)*100;$min=6000;$max=8000;$style='progress-bar-danger';}
 
     //now we are going to determine the place of the user.
-    //$em = $this->getDoctrine()->getManager();
-
+ 
     $repository = $this->em->getRepository('BFUserBundle:User');
     $globalRank = $repository->globalRanking();
     $countryRank = $repository->countryRanking($user->getCountry());
@@ -55,7 +54,6 @@ class BFUserinfo
    
 
     //now we are going to determine the place of the user.
-    //$em = $this->getDoctrine()->getManager();
 
     $repository = $this->em->getRepository('BFUserBundle:User');
     $globalRank = $repository->globalDuelRanking();
