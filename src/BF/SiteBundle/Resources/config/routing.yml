@@ -166,3 +166,9 @@ bf_site_ranking_duel:
     defaults: { _controller: BFSiteBundle:Ranking:duel }
     requirements:
         country: France|United States|Belgium|global
+
+#the routes for the AJAX calls.
+
+bf_site_api_userinfo:
+    path: /home/userinfo
+    defaults: { _controller: BFSiteBundle:Ajax:userInfo }

@@ -1,20 +1,3 @@
-{% extends "BFSiteBundle::base.html.twig" %}
-
-{% block title %}
-  Home page - {{ parent() }}
-{% endblock %}
-
-
-{% block content %}
-	<section class="background text-center" style="background-color:green;">
-    <div class="row">
-      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <div class="col-xs-4 col-sm-4 col-md-3 col-lg-3 row">
-          </br>
-        
-            <div class="challengetitle text-center row">
-                <h3 style="color:white;">{{ app.user.username }}</h3>
-            </div>
             <div class="videotabback" style="min-height:210px;">
               <div class="challengecontent row" style="margin: 0px 10px; margin-bottom:10px;">
                 <h2 class="text-center">{{ rank.rankinfo.level }}</h2>
@@ -32,11 +15,11 @@
                     <p> {{ rank.rankinfo.globalrank }}</p>
                   </div>
                   <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 row"><!--country -->
-                    {% if app.user.country.name == 'France' %}
+                    {% if user.country.name == 'France' %}
                       <img src="/img/fr.jpg" alt="" style="width:25px;"/>
-                    {% elseif app.user.country.name == 'United States' %}
+                    {% elseif user.country.name == 'United States' %}
                       <img src="/img/usa.jpg" alt="" style="width:25px;"/>
-                    {% elseif app.user.country.name == 'Belgium' %}
+                    {% elseif user.country.name == 'Belgium' %}
                       <img src="/img/be.jpg" alt="" style="width:25px;"/>
                     {% endif %}
                      
@@ -45,7 +28,7 @@
                     <p> {{ rank.rankinfo.countryrank }} </p>
                   </div>
                   <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 row">
-                    <p>{{ app.user.state.name }} <!--State -->
+                    <p>{{ user.state.name }} <!--State -->
                   </div><!--
                   --><div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 row">
                     <p> {{ rank.rankinfo.staterank }} </p>
@@ -92,97 +75,3 @@
               </div>
               </div>
             </div>
-
-        <div class="col-xs-5 col-sm-5 col-md-7 col-lg-7 row">
-          {% for object in listVideos %}
-
-              {% if object.type == 'freestyle' %}
-                <div class="well row" style="margin-bottom:10px;">
-                  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row">
-                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-2 vcenter row">
-                      <img src="/uploads/img/{{ object.user.picture.src }}" alt="{{ object.user.picture.src }}" style="width:100%" id="{{ object.user.username }}">
-                    </div><!--
-                 --><div class="col-xs-8 col-sm-8 col-md-8 col-lg-10 vcenter row">
-                      <a class="username" data-username="{{ object.user.username }}" href="{{ path('bf_site_profile', { 'username': object.user.username }) }}">{{ object.user.username }}</a>
-                      
-                    </div>
-                  </div>
-                  <p>{{ object.title }}</p>
-                  <video width="100%" id="video" controls>
-                    <source src="/uploads/videos/{{ object.id}}.{{ object.source }}" type="video/mp4">
-                      Your browser does not support the video tag.
-                  </video>
-                  <a href="{{ path('bf_site_video_report', {'id': object.id}) }}">report this video</a>
-
-
-
-                </div>
-              {% elseif object.type == 'challenge' %}
-                <div class="well row" style="margin-bottom:10px;">
-                  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row">
-                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-2 vcenter row">
-                      <img src="/uploads/img/{{ object.user.picture.src }}" alt="{{ object.user.picture.src }}" style="width:100%" id="{{ object.user.username }}">
-                    </div><!--
-                 --><div class="col-xs-8 col-sm-8 col-md-8 col-lg-10 vcenter row">
-                      <a class="username" rel="popover" data-username="{{ object.user.username }}" href="{{ path('bf_site_profile', { 'username': object.user.username }) }}">{{ object.user.username }}</a>
-                    </div>
-                  </div>
-                  <p>{{ object.title }} to the {{ object.challenge.title }} challenge.</p>
-                  <video width="100%" id="video" controls>
-                    <source src="/uploads/videos/{{ object.id}}.{{ object.source }}" type="video/mp4">
-                      Your browser does not support the video tag.
-                  </video>
-                  <a href="{{ path('bf_site_video_report', {'id': object.id}) }}">report this video</a>
-                </div>
-
-
-
-              {% elseif object.type == 'duel' %}
-                <div class="well row" style="margin-bottom:10px;">
-                  {{ object.host }} against {{ object.guest }}
-                </div>
-              {% endif %}
-
-          {% endfor %} 
-
-        </div>
-        <div class="col-xs-3 col-sm-3 col-md-2 col-lg-2 row">
-          Advertisements
-        </div> 
-      </div>
-    </div>
-  </section>
-
-
-  <!-- content for the popover -->
-  <div id="popover_content_wrapper" style="display: none"></div>
-{% endblock %}
-
-{% block javascripts %}
-<script type="text/javascript">  
-  $('.username').hover(function(event) {
-    event.preventDefault();
-    var username = $(this).data('username');
-      //retrieve the id of the user
-      $.ajax({
-            type: "POST",
-            url: "{{ path('bf_site_api_userinfo')}}",
-            data: 'username=' + username,
-            cache: false,
-            success: function(code_html, statut){
-
-              $('[rel=popover]').popover({ 
-                  html : true,
-                  trigger: 'hover',
-                  content: function() {
-                    return $('#popover_content_wrapper').replaceWith('<div id="popover_content_wrapper">' + code_html + '</div>');
-                  }
-              });           
-            }
-        });    
-        return false;
-    });
-
-</script>
-
-{% endblock %}
