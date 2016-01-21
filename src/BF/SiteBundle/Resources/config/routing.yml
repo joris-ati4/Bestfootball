@@ -112,14 +112,6 @@ bf_site_admin_addChallenge:
     path:     /admin/addchallenge
     defaults: { _controller: BFSiteBundle:Admin:addChallenge }
 
-bf_site_admin_challenge_modify:
-    path:     /admin/modchallenge
-    defaults: { _controller: BFSiteBundle:Admin:modChallenge }
-
-bf_site_admin_challenge_delete:
-    path:     /admin/delchallenge
-    defaults: { _controller: BFSiteBundle:Admin:delChallenge }
-
 bf_site_admin_users:
     path:     /admin/users
     defaults: { _controller: BFSiteBundle:Admin:users }
