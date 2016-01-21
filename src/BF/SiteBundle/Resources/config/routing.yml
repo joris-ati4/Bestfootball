@@ -4,7 +4,7 @@ bf_site_homepage:
 
 bf_site_logged_home:
     path:     /home
-    defaults: { _controller: BFSiteBundle:Home:logged }
+    defaults: { _controller: BFSiteBundle:Logged:logged }
 
 bf_site_challenges:
     path:     /challenges
@@ -38,13 +38,9 @@ bf_site_contact:
     path:     /contact
     defaults: { _controller: BFSiteBundle:Home:contact }
 
-bf_site_connect:
-    path:     /connection
-    defaults: { _controller: BFSiteBundle:Home:connect }
-
 bf_site_search:
     path:     /search
-    defaults: { _controller: BFSiteBundle:Home:search }
+    defaults: { _controller: BFSiteBundle:Logged:search }
 
 #this section does all the routes for the video section
 
