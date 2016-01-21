@@ -1,4 +1,6 @@
 services:
-#    bf_site.example:
-#        class: BF\SiteBundle\Example
-#        arguments: [@service_id, "plain_value", %parameter%]
+    bf_site.rankinfo:
+        class: BF\SiteBundle\Userinfo\BFUserinfo
+        arguments: [@doctrine.orm.entity_manager]
+    em:
+        alias: doctrine.orm.entity_manager

@@ -17,10 +17,10 @@
             </div>
             <div class="videotabback" style="min-height:210px;">
               <div class="challengecontent row" style="margin: 0px 10px; margin-bottom:10px;">
-                <h2 class="text-center">{{ level }}</h2>
+                <h2 class="text-center">{{ rankinfo.level }}</h2>
                 <p>{{ user.points }} Points</p>
                 <div class="progress class="text-center"">
-                  <div class="progress-bar {{ style }} progress-bar-striped active" role="progressbar" aria-valuenow="{{ user.points }}" aria-valuemin="{{min}}" aria-valuemax="{{max}}" style="width:{{percent}}%;">
+                  <div class="progress-bar {{ rankinfo.style }} progress-bar-striped active" role="progressbar" aria-valuenow="{{ user.points }}" aria-valuemin="{{ rankinfo.min }}" aria-valuemax="{{rankinfo.max }}" style="width:{{ rankinfo.percent }}%;">
                   </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row">
@@ -29,7 +29,7 @@
                     <img src="../img/globe.png" alt="globe ranking" style="width:25px;"/><!--globe -->
                   </div><!--
                   --><div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 row">
-                    <p> {{ ranking.0 }}</p>
+                    <p> {{ rankinfo.globalrank }}</p>
                   </div>
                   <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 row"><!--country -->
                     {% if app.user.country.name == 'France' %}
@@ -42,13 +42,13 @@
                      
                   </div><!--
                   --><div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 row">
-                    <p> {{ ranking.1 }} </p>
+                    <p> {{ rankinfo.countryrank }} </p>
                   </div>
                   <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 row">
                     <p>{{ app.user.state.name }} <!--State -->
                   </div><!--
                   --><div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 row">
-                    <p> {{ ranking.2 }} </p>
+                    <p> {{ rankinfo.staterank }} </p>
                   </div>
                 </div>
               </div>

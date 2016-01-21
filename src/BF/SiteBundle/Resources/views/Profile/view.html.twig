@@ -26,9 +26,9 @@
                 <p>{{ age }} Years</br>{{ user.city }}, {{ user.country.name }}</br>{{ user.footballClub }}</br>{{ user.foot }} foot</br>Position: {{ user.fieldPosition }}</p>
               </div><!--
               --><div class="col-xs-2 col-sm-3 col-md-3 col-lg-3 vcenter">
-                <h2 class="text-center">{{ level }}</h2>
+                <h2 class="text-center">{{ rankinfo.level }}</h2>
                 <div class="progress class="text-center"">
-                  <div class="progress-bar {{ style }} progress-bar-striped active" role="progressbar" aria-valuenow="{{ user.points }}" aria-valuemin="{{min}}" aria-valuemax="{{max}}" style="width:{{percent}}%;">
+                  <div class="progress-bar {{ rankinfo.style }} progress-bar-striped active" role="progressbar" aria-valuenow="{{ user.points }}" aria-valuemin="{{ rankinfo.min}}" aria-valuemax="{{ rankinfo.max}}" style="width:{{ rankinfo.percent}}%;">
                     {{ user.points }} Points
                   </div>
                 </div>
@@ -38,28 +38,28 @@
                     <img src="/img/globe.png" alt="globe ranking" style="width:25px;"/><!--globe -->
                   </div><!--
                   --><div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 row">
-                    <p> {{ ranking.0 }}</p>
+                    <p> {{ rankinfo.globalrank }}</p>
                   </div>
                     {% if user.country.name == 'France' %}
                       <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 row"><!--country -->
                         <img src="/img/fr.jpg" alt="" style="width:25px;"/>
                       </div><!--
                    --><div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 row">
-                        <p> {{ ranking.1 }} </p>
+                        <p> {{ rankinfo.countryrank }} </p>
                       </div>
                     {% elseif user.country.name == 'United States' %}
                       <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 row"><!--country -->
                         <img src="/img/usa.jpg" alt="" style="width:25px;"/>
                       </div><!--
                    --><div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 row">
-                        <p> {{ ranking.1 }} </p>
+                        <p> {{ rankinfo.countryrank }} </p>
                       </div>
                     {% elseif user.country.name == 'Belgium' %}
                       <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 row"><!--country -->
                         <img src="/img/be.jpg" alt="" style="width:25px;"/>
                       </div><!--
                     --><div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 row">
-                        <p> {{ ranking.1 }} </p>
+                        <p> {{ rankinfo.countryrank }} </p>
                       </div>
                     {% else %}
                     {% endif %}
@@ -68,7 +68,7 @@
                         <p>{{ user.state.name }} <!--State -->
                       </div><!--
                    --><div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 row">
-                        <p> {{ ranking.2 }} </p>
+                        <p> {{ rankinfo.staterank }} </p>
                       </div>
                    
                     {% else %}
