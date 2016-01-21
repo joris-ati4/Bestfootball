@@ -1,4 +1,5 @@
 {
+    "description": "A Social media site around football",
     "name": "joris/foot",
     "license": "proprietary",
     "type": "project",

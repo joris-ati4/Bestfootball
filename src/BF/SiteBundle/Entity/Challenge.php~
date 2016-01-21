@@ -12,8 +12,6 @@ use FFMpeg\Format\Video\X264;
 use FFMpeg\Format\Video\WebM;
 use FFMpeg\Coordinate\TimeCode;
 
-$extension = null;
-
 /**
  * Challenge
  *
@@ -134,6 +132,7 @@ class Challenge
 
     // On ajoute cet attribut pour y stocker le nom du fichier temporairement
     private $tempFilename;
+    private $extension;
 
 
     public function getFile()
@@ -171,8 +170,7 @@ class Challenge
       // Le nom du fichier est son id, on doit juste stocker également son extension
       // Pour faire propre, on devrait renommer cet attribut en « extension », plutôt que « url »
       $this->videoUrl = 'mp4';
-      global $extension;
-      $extension = $this->file->guessExtension();
+      $this->extension = $this->file->guessExtension();
       // Et on génère l'attribut alt de la balise <img>, à la valeur du nom du fichier sur le PC de l'internaute
       $this->imageAlt = $this->file->getClientOriginalName();
       $this->imageUrl = 'jpg';
@@ -198,10 +196,9 @@ class Challenge
       }
 
       // On déplace le fichier envoyé dans le répertoire de notre choix
-      global $extension;
       $this->file->move(
         $this->getUploadRootDir(), // Le répertoire de destination
-        $this->id.'.'.$extension  // Le nom du fichier à créer, ici « id.extension »
+        $this->id.'.'.$this->extension  // Le nom du fichier à créer, ici « id.extension »
       );
 
       //here we will convert the video to mp4 and webm and save the thumbnail.
@@ -217,7 +214,7 @@ class Challenge
         ));
 
         // Open video
-        $video = $ffmpeg->open($this->getUploadRootDir().'/'.$this->id.'.'.$extension);
+        $video = $ffmpeg->open($this->getUploadRootDir().'/'.$this->id.'.'.$this->extension);
 
         $video
             ->frame( TimeCode::fromSeconds(1))
@@ -229,10 +226,10 @@ class Challenge
             ->synchronize();
 
         // Start transcoding and save video
-            if($extension != 'mp4')
+            if($this->extension != 'mp4')
             {
                 $video->save(new X264(),'/var/www/bestfootball.fr/shared/web/uploads/challenges/'.$this->id.'.mp4');
-                unlink($this->getUploadRootDir().'/'.$this->id.'.'.$extension);
+                unlink($this->getUploadRootDir().'/'.$this->id.'.'.$this->extension);
             }
        
     }

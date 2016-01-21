@@ -49,7 +49,7 @@ class ProfileController extends Controller
           $repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Follow');
           $follow = $repository->checkFollow($follower, $following);
 
-          if($follow == null ){
+          if($follow === null ){
             $follow = 0;
           }
           else{
@@ -203,7 +203,6 @@ class ProfileController extends Controller
         $form = $this->get('form.factory')->create(new UserPictureType, $user);
         
         if ($form->handleRequest($request)->isValid()) {
-          var_dump($request->request->All());
           $em = $this->getDoctrine()->getManager();
           $em->persist($user);
           $em->flush();

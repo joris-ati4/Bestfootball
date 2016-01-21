@@ -139,7 +139,7 @@ class DuelController extends Controller
 
     	$guest = $this->container->get('security.context')->getToken()->getUser();
     	$duel = $em->getRepository('BFSiteBundle:Duel')->find($id);
-    	if ($duel== null) {
+    	if ($duel === null) {
 	      throw $this->createNotFoundException("This duel doesn't exist");
 	    }
     	$users = $duel->getUsers();
@@ -185,7 +185,7 @@ class DuelController extends Controller
     	$em = $this->getDoctrine()->getManager();
     	$guest = $this->container->get('security.context')->getToken()->getUser();
     	$duel = $em->getRepository('BFSiteBundle:Duel')->find($id);
-    	if ($duel== null) {
+    	if ($duel === null) {
 	      throw $this->createNotFoundException("This duel doesn't exist");
 	    }
     	$users = $duel->getUsers();

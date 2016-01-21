@@ -25,7 +25,7 @@ class HomeController extends Controller
     public function indexAction(request $request)
     {
         //if the user is connected we redirect him to the logged page
-        if($this->container->get('security.context')->isGranted('IS_AUTHENTICATED_REMEMBERED') OR $this->container->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY')){
+        if($this->container->get('security.context')->isGranted('IS_AUTHENTICATED_REMEMBERED') || $this->container->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY')){
             return $this->redirect($this->generateUrl('bf_site_logged_home'));
         }
         elseif( $this->container->get('security.context')->isGranted('IS_AUTHENTICATED_ANONYMOUSLY')){
@@ -314,7 +314,7 @@ class HomeController extends Controller
 
         $wallArray = array();
 
-        if($listFollows != null ){
+        if($listFollows !== null ){
            
             foreach($listFollows as $follow)
             {

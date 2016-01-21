@@ -117,7 +117,7 @@ class VideoController extends Controller
         //if the user already uploaded a video to the same challenge we take the points of the last video.
         $repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video');
         $oldVideo = $repository->checkChallenge($user, $challenge);
-        if($oldVideo != null){
+        if($oldVideo !== null){
             //The user alreday has a video in the directory.
             $oldScore=$oldVideo->getScore();
             $points = $user->getPoints() - $oldScore;

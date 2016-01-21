@@ -40,7 +40,7 @@ class VideoController extends Controller
             // data is an array with "name", "email", and "message" keys
             $data = $search->getData();
             $user = $data['user'];
-            if($user == null){}
+            if($user === null){}
             $username = $user->getUsername();
             return $this->redirect($this->generateUrl('bf_site_profile', array('username' => $username)));
         }
@@ -95,7 +95,7 @@ class VideoController extends Controller
     		$repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video');
     		$oldVideo = $repository->checkChallenge($user, $challenge);
 
-    		if (null != $oldVideo) {
+    		if (null !== $oldVideo) {
 		            //The user alreday has a video in the directory.
 		            $oldScore=$oldVideo->getScore();
 		            $points = $user->getPoints() - $oldScore;
@@ -364,7 +364,7 @@ class VideoController extends Controller
 	    $em = $this->getDoctrine()->getManager();
 	    $video = $em->getRepository('BFSiteBundle:Video')->find($id);
 
-	    if ($video== null) {
+	    if ($video === null) {
 	      throw $this->createNotFoundException("This video doesn't exist.");
 	    }
 
@@ -381,7 +381,7 @@ class VideoController extends Controller
 	    if ($form->handleRequest($request)->isValid()) {
 
 	    	//vérifier s'il y a des autres videos pour ce challenge
-	    	if($video->getChallenge() != null){
+	    	if($video->getChallenge() !== null){
 		    	$challenge = $video->getChallenge();
 		    	//check if the video is the highest score.
 		    	$repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video');
@@ -402,7 +402,7 @@ class VideoController extends Controller
 		    		$repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video');
 		    		$oldVideo = $repository->highestVideo($user, $challenge);
 
-		    		if($oldVideo != null){ //there is a video before.
+		    		if($oldVideo !== null){ //there is a video before.
 
 		    			$oldVideoScore = $oldVideo->getScore();
 		    			$userPoints = $user->getPoints();
@@ -456,7 +456,7 @@ class VideoController extends Controller
 	    $em = $this->getDoctrine()->getManager();
 	    $video = $em->getRepository('BFSiteBundle:Video')->find($id);
 
-	    if ($video== null) {
+	    if ($video === null) {
 	      throw $this->createNotFoundException("The video n°".$id." doesn't exist.");
 	    }
 
@@ -507,7 +507,7 @@ class VideoController extends Controller
 	    $em = $this->getDoctrine()->getManager();
 	    $video = $em->getRepository('BFSiteBundle:Video')->find($id);
 
-	    if ($video== null) {
+	    if ($video === null) {
 	      throw $this->createNotFoundException("The video n°".$id." doesn't exist.");
 	    }
 

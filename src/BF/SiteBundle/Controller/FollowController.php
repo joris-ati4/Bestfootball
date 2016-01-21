@@ -28,7 +28,7 @@ class FollowController extends Controller
         $repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Follow');
         $follow = $repository->checkFollow($follower, $following);
 
-        if($follow != null ){//the user isn't following this user. we create a reponse.
+        if($follow !== null ){//the user isn't following this user. we create a reponse.
             throw new NotFoundHttpException("You are already following this user.");
         }
 
@@ -44,7 +44,7 @@ class FollowController extends Controller
             $message = $follower->getUsername().' is now following you!';
             $repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Notification');
             $checkNotification = $repository->checkNotification($following, $message);
-            if($checkNotification == null ){
+            if($checkNotification === null ){
                 $notification = new Notification();
                 $notification
                     ->setDate(new \Datetime())
@@ -70,7 +70,7 @@ class FollowController extends Controller
         $repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Follow');
         $follow = $repository->checkFollow($follower, $following);
 
-        if($follow == null ){//the user isn't following this user. we create a reponse.
+        if($follow === null ){//the user isn't following this user. we create a reponse.
             throw new NotFoundHttpException("You can't unfollow somebody that you aren't following.");
         }
         $em = $this->getDoctrine()->getManager();
