@@ -4,21 +4,7 @@ namespace BF\SiteBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpFoundation\Response;
-
-//Les entités
-use BF\SiteBundle\Entity\Video;
-use BF\SiteBundle\Entity\Challenge;
-use BF\UserBundle\Entity\User;
-use BF\UserBundle\Entity\UserRepository;
-use BF\SiteBundle\Entity\VideoRepository;
-//les types
-use BF\UserBundle\Form\UserSearchType;
-use BF\SiteBundle\Form\VideoType;
-use BF\SiteBundle\Form\VideoEditType;
-use BF\SiteBundle\Form\ChallengeType;
-
 
 class HomeController extends Controller
 {

@@ -4,16 +4,13 @@ namespace BF\SiteBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 //Les entités
 use BF\SiteBundle\Entity\Duel;
-use BF\SiteBundle\Entity\Challenge;
 use BF\SiteBundle\Entity\Notification;
-use BF\UserBundle\Entity\User;
 //les types
-use BF\SiteBundle\Form\DuelType;
+use BF\SiteBundle\Form\Type\DuelType;
 
 class DuelController extends Controller
 {

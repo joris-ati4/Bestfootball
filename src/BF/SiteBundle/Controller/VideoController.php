@@ -8,19 +8,14 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 //Les entités
 use BF\SiteBundle\Entity\Video;
-use BF\SiteBundle\Entity\Challenge;
-use BF\UserBundle\Entity\User;
 use BF\SiteBundle\Entity\Notification;
-use BF\SiteBundle\Entity\Duel;
 use BF\SiteBundle\Entity\Report;
-use BF\SiteBundle\Entity\VideoRepository;
 //les types
-use BF\SiteBundle\Form\VideoType;
-use BF\SiteBundle\Form\VideoEditType;
-use BF\SiteBundle\Form\VideoDuelType;
-use BF\SiteBundle\Form\VideoDeleteType;
-use BF\SiteBundle\Form\ChallengeType;
-use BF\SiteBundle\Form\ReportType;
+use BF\SiteBundle\Form\Type\VideoType;
+use BF\SiteBundle\Form\Type\VideoEditType;
+use BF\SiteBundle\Form\Type\VideoDuelType;
+use BF\SiteBundle\Form\Type\VideoDeleteType;
+use BF\SiteBundle\Form\Type\ReportType;
 
 class VideoController extends Controller
 {
@@ -154,7 +149,7 @@ class VideoController extends Controller
     		//we check if the user has the right to upload his video for this duel. (if it is his duel)
 	    	$repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Duel');
 	    	$duel = $repository->findOneBy(array('id' => $id));
-	    	if($duel->getHost() == $user->getUsername() OR $duel->getGuest() == $user->getUsername()){ //We verify if the user and duel correspond
+	    	if($duel->getHost() == $user->getUsername() || $duel->getGuest() == $user->getUsername()){ //We verify if the user and duel correspond
 	    			$video
 			    	->setDate(new \Datetime())
 			    	->setDuel($duel)

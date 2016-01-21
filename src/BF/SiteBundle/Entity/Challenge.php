@@ -9,7 +9,6 @@ use FFMpeg\FFMpeg;
 use FFMpeg\Coordinate\Dimension;
 use FFMpeg\Filters\Video\ResizeFilter;
 use FFMpeg\Format\Video\X264;
-use FFMpeg\Format\Video\WebM;
 use FFMpeg\Coordinate\TimeCode;
 
 /**

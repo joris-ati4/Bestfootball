@@ -6,11 +6,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use BF\UserBundle\Entity\User;
 use BF\UserBundle\Form\UserType;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\View\View;
 use FOS\RestBundle\Util\Codes;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class UserController extends Controller
 {

@@ -7,13 +7,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 
-use BF\UserBundle\Entity\User;
-use BF\SiteBundle\Entity\Picture;
 //les types
-use BF\UserBundle\Form\UserType;
-use BF\UserBundle\Form\UserPictureType;
-use BF\SiteBundle\Form\PictureType;
-use BF\SiteBundle\Entity\Follow;
+use BF\UserBundle\Form\Type\UserType;
+use BF\UserBundle\Form\Type\UserPictureType;
 
 
 class ProfileController extends Controller

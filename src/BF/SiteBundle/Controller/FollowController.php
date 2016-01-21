@@ -9,7 +9,6 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 //Les entités
 use BF\SiteBundle\Entity\Notification;
-use BF\UserBundle\Entity\User;
 use BF\SiteBundle\Entity\Follow;
 
 class FollowController extends Controller

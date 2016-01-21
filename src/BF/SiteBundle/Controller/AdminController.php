@@ -4,16 +4,11 @@ namespace BF\SiteBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 //Les entités
-use BF\SiteBundle\Entity\Video;
 use BF\SiteBundle\Entity\Challenge;
-use BF\UserBundle\Entity\User;
-use BF\SiteBundle\Entity\Report;
 //les types
-use BF\SiteBundle\Form\VideoType;
-use BF\SiteBundle\Form\ChallengeType;
+use BF\SiteBundle\Form\Type\ChallengeType;
 
 class AdminController extends Controller
 {

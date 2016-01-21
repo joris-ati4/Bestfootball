@@ -1,12 +1,12 @@
 <?php
 
-namespace BF\SiteBundle\Form;
+namespace BF\SiteBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class ReportType extends AbstractType
+class VideoEditType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -15,15 +15,8 @@ class ReportType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('reason', 'choice', array(
-                'choices'  => array(
-                    'Cheating' => 'Cheating',
-                    'Adult Content' => 'Adult Content',
-                ),
-                'choices_as_values' => true,
-            ))
-            ->add('message', 'textarea')
-        ;
+            ->add('title', 'text')
+            ->add('description', 'textarea');
     }
     
     /**
@@ -32,7 +25,7 @@ class ReportType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'BF\SiteBundle\Entity\Report'
+            'data_class' => 'BF\SiteBundle\Entity\Video'
         ));
     }
 
@@ -41,6 +34,6 @@ class ReportType extends AbstractType
      */
     public function getName()
     {
-        return 'bf_sitebundle_report';
+        return 'bf_sitebundle_video';
     }
 }
