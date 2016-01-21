@@ -16,28 +16,18 @@ class FollowController extends Controller
     public function followUserAction(request $request)
     {  
         $em = $this->getDoctrine()->getManager();
-
         $id = $request->get('id');
         //we get the follower and the following
         $follower = $this->container->get('security.context')->getToken()->getUser();
-
         $repository = $this->getDoctrine()->getManager()->getRepository('BFUserBundle:User');
         $following = $repository->find($id);
-
         $repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Follow');
         $follow = $repository->checkFollow($follower, $following);
-
         if($follow !== null ){//the user isn't following this user. we create a reponse.
             throw new NotFoundHttpException("You are already following this user.");
         }
-
         $follow = new Follow();
-        $follow
-            ->setDate(new \Datetime())
-            ->setFollower($follower)
-            ->setFollowing($following)
-        ;
-
+        $follow->setDate(new \Datetime())->setFollower($follower)->setFollowing($following);
         //send a notification to the following
             //if the user already had a notification like this we do not send another one.
             $message = $follower->getUsername().' is now following you!';
@@ -45,12 +35,7 @@ class FollowController extends Controller
             $checkNotification = $repository->checkNotification($following, $message);
             if($checkNotification === null ){
                 $notification = new Notification();
-                $notification
-                    ->setDate(new \Datetime())
-                    ->setMessage($message)
-                    ->setUser($following)
-                    ->setWatched('0')
-                ;
+                $notification->setDate(new \Datetime())->setMessage($message)->setUser($following)->setWatched('0');
                 $em->persist($notification);
             }
         $em->persist($follow);

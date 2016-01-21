@@ -32,54 +32,47 @@ class ProfileController extends Controller
             $user = $data['user'];
             $username = $user->getUsername();
             return $this->redirect($this->generateUrl('bf_site_profile', array('username' => $username)));
-        }
+    }
 
       //checking if the user is following the current user
+      $follower = $this->container->get('security.context')->getToken()->getUser();
+      $repository = $this->getDoctrine()->getManager()->getRepository('BFUserBundle:User');
+      $following = $repository->findOneByUsername($username);
 
-        $follower = $this->container->get('security.context')->getToken()->getUser();
-
-        $repository = $this->getDoctrine()->getManager()->getRepository('BFUserBundle:User');
-        $following = $repository->findOneByUsername($username);
-
-        if($follower->getUsername() != $following->getUsername()){ //the user is not viewing it's own profile page
-          $repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Follow');
-          $follow = $repository->checkFollow($follower, $following);
-
-          if($follow === null ){
-            $follow = 0;
-          }
-          else{
-            $follow =1;
-          }
+      if($follower->getUsername() != $following->getUsername()){ //the user is not viewing it's own profile page
+        $repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Follow');
+        $follow = $repository->checkFollow($follower, $following);
+        if($follow === null ){
+          $follow = 0;
         }
         else{
-          $follow = null;
+          $follow =1;
         }
-
+      }
+      else{
+        $follow = null;
+      }
     	$repository = $this->getDoctrine()->getManager()->getRepository('BFUserBundle:User');
     	$user = $repository->findOneByUsername($username);
       $repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Follow');
       $listFollows = $repository->findByFollowing($user);
     	$repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video');
     	$listVideos = $repository->listVideos($user);
-
       $listChallenges = $repository->listChallenges($user);
       $lastVideo = $repository->lastVideo($user);
-
       $listDuels = $user->getDuels();
 
       //retrieving the service
       $info = $this->container->get('bf_site.rankinfo');
       $rankinfo = $info->rankInfo($user);
 
-        //calculating the age of the user.
-        $birthday = $user->getBirthday();
-        $now = new \Datetime();
-        $interval = date_diff($now, $birthday);
-        $age = $interval->y;
-      
+      //calculating the age of the user.
+      $birthday = $user->getBirthday();
+      $now = new \Datetime();
+      $interval = date_diff($now, $birthday);
+      $age = $interval->y;
 
-    		return $this->render('BFSiteBundle:Profile:view.html.twig', array(
+    	return $this->render('BFSiteBundle:Profile:view.html.twig', array(
     	      'user' => $user,
             'age' => $age,
             'rankinfo' => $rankinfo,

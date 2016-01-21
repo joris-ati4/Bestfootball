@@ -258,11 +258,8 @@ class HomeController extends Controller
             $username = $user->getUsername();
             return $this->redirect($this->generateUrl('bf_site_profile', array('username' => $username)));
         }
-
-
         //the code for the proposition
-
-         $data = array();
+        $data = array();
             $form = $this->createFormBuilder($data)
                 ->add('name', 'text')
                 ->add('email', 'email')
@@ -302,7 +299,6 @@ class HomeController extends Controller
             $this->addFlash('success', 'Your message has been send. Thank you.');
             return $this->redirect($this->generateUrl('bf_site_homepage'));
         }
-
         return $this->render('BFSiteBundle:Home:contact.html.twig', array(
               'search' => $search->createView(),
               'form' => $form->createView(),

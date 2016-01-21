@@ -9,7 +9,7 @@ class BFUserinfo
 {
    /**
    * Retrieve all the information about a user.
-   *@InjectParams
+   *
    */
   protected $doctrine;
 
