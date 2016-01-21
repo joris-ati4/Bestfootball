@@ -329,7 +329,7 @@ class HomeController extends Controller
 
 
         $points = $user->getPoints();
-          if( '0'<= $points && $points <= '1000'){$level = 'Uknown'; $percent=($points/1000)*100;$min=0;$max=1000;$style='progress-bar-success';} //incognito
+          if( '0'<= $points && $points <= '1000'){$level = 'Unknown'; $percent=($points/1000)*100;$min=0;$max=1000;$style='progress-bar-success';} //incognito
           if( '1000'< $points && $points <= '2000'){$level = 'Promising Talent';$percent=(($points-1000)/1000)*100;$min=1000;$max=2000;$style='progress-bar-success';}
           if( '2000'< $points && $points <= '3500'){$level = 'Rising Star';$percent=(($points-2000)/1500)*100;$min=2000;$max=3500;$style='progress-bar-info';}
           if( '3500'< $points && $points <= '5999'){$level = 'Real Star';$percent=(($points-3500)/1499)*100;$min=3500;$max=5999;$style='progress-bar-warning';}
