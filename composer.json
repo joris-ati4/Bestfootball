@@ -21,11 +21,11 @@
         "incenteev/composer-parameter-handler": "~2.0",
         "friendsofsymfony/user-bundle": "~2.0@dev",
         "pulse00/ffmpeg-bundle": "~0.5",
-        "jms/serializer-bundle": "dev-master",
-        "friendsofsymfony/rest-bundle": "dev-master",
-        "doctrine/doctrine-fixtures-bundle": "dev-master",
-        "friendsofsymfony/oauth-server-bundle": "dev-master",
-        "nelmio/api-doc-bundle": "dev-master",
+        "jms/serializer-bundle": "~1.1.0",
+        "friendsofsymfony/rest-bundle": "~1.7.7",
+        "doctrine/doctrine-fixtures-bundle": "~2.3.0",
+        "friendsofsymfony/oauth-server-bundle": "~1.5.0",
+        "nelmio/api-doc-bundle": "~2.11.2",
         "lifo/typeahead-bundle": "^2.0"
     },
     "require-dev": {
