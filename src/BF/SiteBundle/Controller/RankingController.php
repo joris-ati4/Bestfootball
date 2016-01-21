@@ -57,7 +57,6 @@ class RankingController extends Controller
         }
         //rankings for state
             return $this->render('BFSiteBundle:Ranking:challenge.html.twig',array(
-              'type' => 'Challenge',
               'search' => $search->createView(),
               'ranking' => $ranking,
               'rankingGirls' => $rankingGirls,
@@ -115,7 +114,6 @@ class RankingController extends Controller
         }
         //rankings for state
             return $this->render('BFSiteBundle:Ranking:duel.html.twig',array(
-              'type' => 'Duel',
               'search' => $search->createView(),
               'ranking' => $ranking,
               'rankingGirls' => $rankingGirls,
