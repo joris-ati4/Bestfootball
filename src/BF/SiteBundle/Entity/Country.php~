@@ -168,4 +168,38 @@ class Country
     {
         return $this->users;
     }
+
+    /**
+     * Add state
+     *
+     * @param \BF\SiteBundle\Entity\State $state
+     *
+     * @return Country
+     */
+    public function addState(\BF\SiteBundle\Entity\State $state)
+    {
+        $this->states[] = $state;
+
+        return $this;
+    }
+
+    /**
+     * Remove state
+     *
+     * @param \BF\SiteBundle\Entity\State $state
+     */
+    public function removeState(\BF\SiteBundle\Entity\State $state)
+    {
+        $this->states->removeElement($state);
+    }
+
+    /**
+     * Get states
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getStates()
+    {
+        return $this->states;
+    }
 }

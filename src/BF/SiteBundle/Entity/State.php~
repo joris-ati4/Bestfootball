@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class State
 {
     /**
-    * @ORM\OneToMany(targetEntity="BF\UserBundle\Entity\User", mappedBy="country")
+    * @ORM\OneToMany(targetEntity="BF\UserBundle\Entity\User", mappedBy="state")
     */
     private $users; // Notez le « s », une annonce est liée à plusieurs candidatures
 
@@ -73,5 +73,69 @@ class State
     {
         return $this->name;
     }
-}
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->users = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
+    /**
+     * Add user
+     *
+     * @param \BF\UserBundle\Entity\User $user
+     *
+     * @return State
+     */
+    public function addUser(\BF\UserBundle\Entity\User $user)
+    {
+        $this->users[] = $user;
+
+        return $this;
+    }
+
+    /**
+     * Remove user
+     *
+     * @param \BF\UserBundle\Entity\User $user
+     */
+    public function removeUser(\BF\UserBundle\Entity\User $user)
+    {
+        $this->users->removeElement($user);
+    }
+
+    /**
+     * Get users
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getUsers()
+    {
+        return $this->users;
+    }
+
+    /**
+     * Set country
+     *
+     * @param \BF\SiteBundle\Entity\Country $country
+     *
+     * @return State
+     */
+    public function setCountry(\BF\SiteBundle\Entity\Country $country)
+    {
+        $this->country = $country;
+
+        return $this;
+    }
+
+    /**
+     * Get country
+     *
+     * @return \BF\SiteBundle\Entity\Country
+     */
+    public function getCountry()
+    {
+        return $this->country;
+    }
+}

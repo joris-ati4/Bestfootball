@@ -1,0 +1,3 @@
+bf_user_registration_confirmed:
+    path:     /confirmed
+    defaults: { _controller: BFUserBundle:Registration:confirmed }

@@ -4,6 +4,7 @@ namespace BF\SiteBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\File\File;
 
 /**
  * Picture
@@ -41,6 +42,11 @@ class Picture
 
     private $tempFilename;
 
+    public function getFile()
+    {
+        return $this->file;
+    }
+
     public function setFile(UploadedFile $file)
     {
         $this->file = $file;
@@ -62,14 +68,10 @@ class Picture
         if (null === $this->file) {
           return;
         }
-
-        // Le nom du fichier est son id, on doit juste stocker également son extension
-        // Pour faire propre, on devrait renommer cet attribut en « extension », plutôt que « url »
-        $this->src = $this->file->guessExtension();
-
-        // Et on génère l'attribut alt de la balise <img>, à la valeur du nom du fichier sur le PC de l'internaute
+        $this->src = $this->id.'.'.$this->file->guessExtension();
         $this->alt = $this->file->getClientOriginalName();
-      }
+
+        }
 
       /**
        * @ORM\PostPersist()
@@ -92,8 +94,8 @@ class Picture
 
         // On déplace le fichier envoyé dans le répertoire de notre choix
         $this->file->move(
-          $this->getUploadRootDir(), // Le répertoire de destination
-          $this->id.'.'.$this->src   // Le nom du fichier à créer, ici « id.extension »
+          '/var/www/bestfootball.fr/shared/web/uploads/img', // Le répertoire de destination
+          $this->src   // Le nom du fichier à créer, ici « id.extension »
         );
       }
 
@@ -127,15 +129,8 @@ class Picture
       protected function getUploadRootDir()
       {
         // On retourne le chemin relatif vers l'image pour notre code PHP
-        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+        return '/var/www/bestfootball.fr/shared/web/'.$this->getUploadDir();
       }
-
-
-  
-    public function getFile()
-    {
-        return $this->file;
-    }
 
     /**
      * Get id
@@ -195,4 +190,3 @@ class Picture
         return $this->alt;
     }
 }
-

@@ -3,6 +3,9 @@
 namespace BF\SiteBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Report
@@ -52,6 +55,7 @@ class Report
      * @var string
      *
      * @ORM\Column(name="message", type="text")
+     * @Assert\Length(min=5,max=1000)
      */
     private $message;
 
