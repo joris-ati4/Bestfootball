@@ -165,11 +165,11 @@ class HomeController extends Controller
             if($state == 'country'){//rankings for country
                 $repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Country');
                 $country = $repository->findOneByName($country);
+                $listCountries = $repository->findall();
                 $repository = $this->getDoctrine()->getManager()->getRepository('BFUserBundle:User');
                 $ranking = $repository->countryRanking($country);
                 $rankingGirls =$repository->countryRankingGirls($country);
-                $repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Country');
-                $listCountries = $repository->findall();
+                
             }
             else{ //ranking for state
                 $repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:State');

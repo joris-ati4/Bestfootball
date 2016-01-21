@@ -32,7 +32,7 @@ class ProfileController extends Controller
             $user = $data['user'];
             $username = $user->getUsername();
             return $this->redirect($this->generateUrl('bf_site_profile', array('username' => $username)));
-    }
+        }
 
       //checking if the user is following the current user
       $follower = $this->container->get('security.context')->getToken()->getUser();
@@ -65,6 +65,7 @@ class ProfileController extends Controller
       //retrieving the service
       $info = $this->container->get('bf_site.rankinfo');
       $rankinfo = $info->rankInfo($user);
+      $duelRankInfo = $info->duelRankInfo($user);
 
       //calculating the age of the user.
       $birthday = $user->getBirthday();
@@ -76,6 +77,7 @@ class ProfileController extends Controller
     	      'user' => $user,
             'age' => $age,
             'rankinfo' => $rankinfo,
+            'duelrankinfo' => $duelRankInfo,
     	      'listVideos' => $listVideos,
             'lastVideo' => $lastVideo,
             'listChallenges' => $listChallenges,

@@ -73,6 +73,7 @@ class LoggedController extends Controller
         //retrieving the service
         $info = $this->container->get('bf_site.rankinfo');
         $rankinfo = $info->rankInfo($user);
+        $duelRankInfo = $info->duelRankInfo($user);
         
         return $this->render('BFSiteBundle:Home:logged.html.twig', array(
           'listVideos' => $wallArray,
@@ -80,6 +81,7 @@ class LoggedController extends Controller
           'listNotifications' => $listNotifications,
           'user' => $user,
           'rankinfo' => $rankinfo,
+          'duelrankinfo' => $duelRankInfo,
           'search' => $search->createView(),
         ));
     }

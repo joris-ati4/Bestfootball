@@ -1,7 +1,7 @@
 {% extends "BFSiteBundle::base.html.twig" %}
 
 {% block title %}
-  Rankings - {{ parent() }}
+  Challenge Ranking - {{ parent() }}
 {% endblock %}
 
 
@@ -9,8 +9,10 @@
   {# This is the content section of our page ! #}
 <section class="background">
 <div class="row" style="margin-top:75px;">
+	<a href="{{ path('bf_site_ranking_challenge', {'country': 'global', 'state':'country'}) }}">Challenge Ranking</a>
+	<a href="{{ path('bf_site_ranking_duel', {'country': 'global', 'state':'country'}) }}">Duel Ranking</a>
 	<div class="col-xs-2 col-sm-2 col-md-3 col-lg-3  text-center row" >
-		<a href="{{ path('bf_site_ranking', {'country': 'global', 'state':'country'}) }}" class="btn btn-default">
+		<a href="{{ path('bf_site_ranking_challenge', {'country': 'global', 'state':'country'}) }}" class="btn btn-default">
 				<i class="glyphicon glyphicon-globe"></i>
 					World
 		</a>
@@ -23,12 +25,12 @@
 
 		<div class="collapse" id="{{ country.id }}">
 		  <div class="well">
-		  	<a href="{{ path('bf_site_ranking', {'country': country.name, 'state':'country'}) }}" class="btn btn-primary">
+		  	<a href="{{ path('bf_site_ranking_challenge', {'country': country.name, 'state':'country'}) }}" class="btn btn-primary">
 				<i class="glyphicon glyphicon-edit"></i>
 					Country Ranking
 			</a></br>
 		  	{% for state in country.states %}
-				<a href="{{ path('bf_site_ranking', {'country': country.name, 'state': state.name}) }}" class="btn btn-primary">
+				<a href="{{ path('bf_site_ranking_challenge', {'country': country.name, 'state': state.name}) }}" class="btn btn-primary">
 					<i class="glyphicon glyphicon-edit"></i>
 						{{ state.name }}
 				</a>
@@ -46,11 +48,11 @@
 			<div class="challengetitle">
 			 
 			    	{% if country == 'global' %}
-			    		<h3 style="color:white;">Global Ranking</h3>
+			    		<h3 style="color:white;">Global challenge Ranking</h3>
 			    	{% elseif state == 'country' %}
-			    			<h3 style="color:white;">{{ country.name }} Ranking</h3>
+			    			<h3 style="color:white;">{{ country.name }} challenge Ranking</h3>
 			    	{% else %}
-			    			<h3 style="color:white;">{{ state.name }} - {{ state.country.name }} Ranking</h3>
+			    			<h3 style="color:white;">{{ state.name }} - {{ state.country.name }}  challenge Ranking</h3>
 			    	{% endif %}
 
 			    	

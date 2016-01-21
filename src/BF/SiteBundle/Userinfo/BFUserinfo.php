@@ -45,4 +45,30 @@ class BFUserinfo
     $rankInfo = array('level' => $level,'percent' => $percent,'min' => $min ,'max' => $max ,'style' => $style ,'globalrank' => $globalRank ,'countryrank' => $countryRank ,'staterank' => $stateRank);
     return $rankInfo;
   }
+  public function duelRankInfo($user)
+  {
+    $points = $user->getDuelPoints();
+    if( '0'<= $points && $points <= '1000'){$level = 1;} //incognito
+    if( '1000'< $points && $points <= '2000'){$level = 2;}
+    if( '2000'< $points && $points <= '3000'){$level = 3;}
+    if( '3000'< $points){$level = 4;}
+   
+
+    //now we are going to determine the place of the user.
+    //$em = $this->getDoctrine()->getManager();
+
+    $repository = $this->em->getRepository('BFUserBundle:User');
+    $globalRank = $repository->globalDuelRanking();
+    $countryRank = $repository->countryDuelRanking($user->getCountry());
+    $stateRank = $repository->stateDuelRanking($user->getState());
+
+    $globalRank = array_search($user, $globalRank) + 1;
+    $countryRank = array_search($user, $countryRank) + 1;
+    $stateRank = array_search($user, $stateRank) + 1;
+
+    //making an object to return all these informations
+
+    $rankInfo = array('level' => $level);
+    return $rankInfo;
+  }
 }

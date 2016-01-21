@@ -20,12 +20,6 @@ bf_site_challengeview:
     requirements:
         id: -?\d+
 
-bf_site_ranking:
-    path:     /ranking/{country}/{state}
-    defaults: { _controller: BFSiteBundle:Home:ranking }
-    requirements:
-        country: France|United States|Belgium|global
-
 bf_site_about:
     path:     /about
     defaults: { _controller: BFSiteBundle:Home:about }
@@ -159,3 +153,16 @@ bf_site_follow:
 bf_site_unfollow:
     path:     /unfollow/
     defaults: { _controller: BFSiteBundle:Follow:unfollowUser }
+
+#the routes for the ranking pages
+bf_site_ranking_challenge:
+    path:     /ranking/challenge/{country}/{state}
+    defaults: { _controller: BFSiteBundle:Ranking:challenge }
+    requirements:
+        country: France|United States|Belgium|global
+
+bf_site_ranking_duel:
+    path:     /ranking/duel/{country}/{state}
+    defaults: { _controller: BFSiteBundle:Ranking:duel }
+    requirements:
+        country: France|United States|Belgium|global
