@@ -146,10 +146,6 @@ class VideoController extends Controller
         $em->persist($user);
         $em->flush();
 
-        $url = $this->generateUrl(
-            'bf_rest_api_videos_get',
-            array('id' => $video->getId())
-        );
         return View::create($score,Response::HTTP_CREATED);
     }
 
