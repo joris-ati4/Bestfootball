@@ -154,34 +154,51 @@
   </section>
 
 
-  <!-- content for the popover -->
-  <div id="popover_content_wrapper" style="display: none"></div>
 {% endblock %}
 
 {% block javascripts %}
-<script type="text/javascript">  
-  $('.username').hover(function(event) {
-    event.preventDefault();
-    var username = $(this).data('username');
-      //retrieve the id of the user
-      $.ajax({
-            type: "POST",
-            url: "{{ path('bf_site_api_userinfo')}}",
-            data: 'username=' + username,
-            cache: false,
-            success: function(code_html, statut){
+<script type="text/javascript">
 
-              $('[rel=popover]').popover({ 
-                  html : true,
-                  trigger: 'hover',
-                  content: function() {
-                    return $('#popover_content_wrapper').replaceWith('<div id="popover_content_wrapper">' + code_html + '</div>');
-                  }
-              });           
-            }
-        });    
-        return false;
-    });
+
+
+
+
+ 
+$( document ).ready(function() {
+
+var timer;
+$("[rel=popover]").hover(function() {
+    var e=$(this);
+
+    timer = setTimeout(function(){
+      console.log('begin ajax');
+                var username = e.data('username');
+                  $.ajax({
+                    type: "POST",
+                    url: "{{ path('bf_site_api_userinfo')}}",
+                    data: 'username=' + username,
+                    cache: false,
+                      success: function(code_html, statut){
+                        e.popover({
+                          html: true, content : code_html}).popover('toggle');
+                      }
+                    });
+              
+    
+    }, 1500);
+}).mouseleave(function() {
+    clearTimeout(timer);
+    $("[rel=popover]").popover('hide');
+});
+
+
+
+
+
+
+});
+
+
 
 </script>
 
