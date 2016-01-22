@@ -168,34 +168,25 @@ $( document ).ready(function() {
 
 var timer;
 $("[rel=popover]").hover(function() {
-    var e=$(this);
-
-    timer = setTimeout(function(){
-      console.log('begin ajax');
-                var username = e.data('username');
-                  $.ajax({
-                    type: "POST",
-                    url: "{{ path('bf_site_api_userinfo')}}",
-                    data: 'username=' + username,
-                    cache: false,
-                      success: function(code_html, statut){
-                        e.popover({
-                          html: true, content : code_html}).popover('toggle');
-                      }
-                    });
-              
-    
-    }, 1500);
-}).mouseleave(function() {
-    clearTimeout(timer);
-    $("[rel=popover]").popover('hide');
-});
-
-
-
-
-
-
+        var e=$(this);
+        timer = setTimeout(function(){
+        var username = e.data('username');
+        $.ajax({
+          type: "POST",
+          url: "{{ path('bf_site_api_userinfo')}}",
+          data: 'username=' + username,
+          cache: false,
+            success: function(code_html, statut){
+              e.popover({
+                html: true, content : code_html
+              }).popover('toggle');
+            }
+        });       
+      }, 1500);
+    }).mouseleave(function() {
+      clearTimeout(timer);
+      $("[rel=popover]").popover('hide');
+  });
 });
 
 
