@@ -176,8 +176,8 @@ hwi_oauth:
             client_id:           "694354014040156"
             client_secret:       "55d4070a9dfa588b63027fe51bd7010e"
             scope:               "email"
-            paths:
-                email:          email
+            options:
+                display: popup
         google:
             type:                google
             client_id:           "128129884829-c4q7njcofueunt1po5v6j1rs5cgmpt7c.apps.googleusercontent.com"
