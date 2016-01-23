@@ -61,7 +61,7 @@ class FOSUBUserProvider extends BaseClass
                 $message = 'There is already an account with this email address';
                 throw new \Symfony\Component\Security\Core\Exception\AuthenticationException($message);
             }
-            if($existent_user = $this->userManager->findUserByUsername()){ //their is already a user with this username
+            if($existent_user = $this->userManager->findUserByUsername($nickname)){ //their is already a user with this username
                 $nickname = $nickname.'.'.$birthday;
             }
             $birthday = new \DateTime($birthday);
