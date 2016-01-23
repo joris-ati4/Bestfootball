@@ -50,7 +50,7 @@ class FOSUBUserProvider extends BaseClass
             $mail = $response->getEmail();
             $firstname = $response->getFirstname();
             $lastname = $response->getLastname();
-            $nickname = $firstname.'.'.$lastname;
+            $nickname = $firstname.rand(0, 1000000);
             $data = $response->getResponse();
             $gender = $data['gender'];
             $birthday = $data['birthday'];
@@ -61,8 +61,8 @@ class FOSUBUserProvider extends BaseClass
                 $message = 'There is already an account with this email address';
                 throw new \Symfony\Component\Security\Core\Exception\AuthenticationException($message);
             }
-            if($existent_user = $this->userManager->findUserByUsername($nickname)){ //their is already a user with this username
-                $nickname = $nickname.'.'.$birthday;
+            while($existent_user = $this->userManager->findUserByUsername($nickname)){ //their is already a user with this username
+                $nickname = $firstname.rand(0, 1000000);
             }
             $birthday = new \DateTime($birthday);
 
