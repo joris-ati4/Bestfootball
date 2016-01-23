@@ -21,7 +21,7 @@ set :use_sudo, true
 set :keep_releases, 3 # Le nombre de releases à garder après un déploiement réussi
 
 ## Symfony2
-#set :shared_files, ["app/config/parameters.yml"] # Les fichiers à conserver entre chaque déploiement
+set :shared_files, ["app/config/parameters.yml"] # Les fichiers à conserver entre chaque déploiement
 set :shared_children, [app_path + "/logs", "vendor", web_path + "/uploads"] # Idem, mais pour les dossiers
 set :use_composer, true
 set :update_vendors, false # Il est conseillé de laisser a false et de ne pas faire de ‘composer update’ directement sur la prod
