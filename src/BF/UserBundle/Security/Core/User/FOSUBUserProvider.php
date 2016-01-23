@@ -42,8 +42,9 @@ class FOSUBUserProvider extends BaseClass
         $mail = $response->getEmail();
         $firstname = $response->getFirstname();
         $lastname = $response->getLastname();
-        $gender = $response->getGender();
-        $birthday = $response->getBirthday();
+        $data = $response->getResponse();
+        $gender = $data['gender'];
+        $birthday = $data['birthday'];
         $user = $this->userManager->findUserBy(array($this->getProperty($response) => $username));
         //when the user is registrating
         if (null === $user) {
