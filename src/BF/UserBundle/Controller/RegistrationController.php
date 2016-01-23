@@ -36,7 +36,7 @@ class RegistrationController extends BaseController
         //we set the picture of the user to the default picture.
         $picture = new Picture();
         $picture
-          ->setSrc('profile.png')
+          ->setSrc('/uploads/img/profile.png')
           ->setAlt('default profile picture on bestfootball')
         ;
         $user = $userManager->createUser();

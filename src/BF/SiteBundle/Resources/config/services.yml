@@ -4,3 +4,7 @@ services:
         arguments: [@doctrine.orm.entity_manager]
     em:
         alias: doctrine.orm.entity_manager
+
+    bf_site.notification:
+        class: BF\SiteBundle\Notification\BFNotification
+

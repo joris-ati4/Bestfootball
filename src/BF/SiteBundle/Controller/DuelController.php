@@ -103,15 +103,9 @@ class DuelController extends Controller
 
     	$message = 'You received an invitation for a duel from '.$host->getUsername();
     	//we create a notification for the guest.
-    	$notification = new Notification();
-    	$notification
-    		->setDate(new \Datetime())
-    		->setMessage($message)
-    		->setUser($guest)
-    		->setWatched('0')
-    		->setDuel($duel)
-   		;
-	    
+        $service = $this->container->get('bf_site.notification');
+        $notification = $service->create($guest, $message, $duel);
+
 	    $form = $this->get('form.factory')->create(new DuelType, $duel);
 	    
 		    if ($form->handleRequest($request)->isValid()) {
@@ -160,15 +154,10 @@ class DuelController extends Controller
     			//we create the notification for the other user to say "accepted".
     			$message =$guest->getUsername().' accepted your invitation. You can now upload your video by clicking here or by going to your my duels page.';
     			//getting the other user
+
+                $service = $this->container->get('bf_site.notification');
+                $notification = $service->create($host, $message, $duel);
     			
-    			$notification = new Notification();
-		    	$notification
-		    		->setDate(new \Datetime())
-		    		->setMessage($message)
-		    		->setUser($host)
-		    		->setWatched('0')
-		    		->setDuel($duel)
-		   		;
     			$em->persist($duel);
 			    $em->persist($notification);
 			    $em->flush();
@@ -206,13 +195,9 @@ class DuelController extends Controller
 		    	}
     			$em->remove($duel);
 
-    			$notification = new Notification();
-		    	$notification
-		    		->setDate(new \Datetime())
-		    		->setMessage($message)
-		    		->setUser($host)
-		    		->setWatched('0')
-		   		;
+                $duel = null;
+                $service = $this->container->get('bf_site.notification');
+                $notification = $service->create($host, $message, $duel);
 
 			    $em->persist($notification);
 			    $em->flush();
