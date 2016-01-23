@@ -1,19 +1,21 @@
 <?php
 namespace BF\UserBundle\Security\Core\User;
+
 use HWI\Bundle\OAuthBundle\OAuth\Response\UserResponseInterface;
 use HWI\Bundle\OAuthBundle\Security\Core\User\FOSUBUserProvider as BaseClass;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Doctrine\ORM\EntityManager;
 
 use BF\SiteBundle\Entity\Picture;
+
 class FOSUBUserProvider extends BaseClass
 {
 
     protected $doctrine;
 
-    public function __construct(EntityManager $em)
+    public function __construct(EntityManager $pm)
     {
-        $this->em = $em;
+        $this->pm = $pm;
     }
     /**
      * {@inheritDoc}
@@ -75,9 +77,9 @@ class FOSUBUserProvider extends BaseClass
             $this->userManager->updateUser($user);
 
             //we persist the picture and flush it.
-            $em = $this->em;
-            $em->persist($picture);
-            $em->flush();
+            $pm = $this->pm;
+            $pm->persist($picture);
+            $pm->flush();
 
             return $user;
         }
