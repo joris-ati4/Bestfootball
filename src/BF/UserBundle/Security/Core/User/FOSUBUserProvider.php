@@ -39,10 +39,19 @@ class FOSUBUserProvider extends BaseClass
     public function loadUserByOAuthUserResponse(UserResponseInterface $response)
     {
         $username = $response->getUsername();
+        $mail = $response->getEmail();
         $user = $this->userManager->findUserBy(array($this->getProperty($response) => $username));
         //when the user is registrating
         if (null === $user) {
+
             $service = $response->getResourceOwner()->getName();
+
+            //we check for the email existence - if so, throw error.
+            if($existent_user = $this->userManager->findUserByEmail($response->getEmail())){
+                $message = 'There is already an account with this email address';
+                throw new \Symfony\Component\Security\Core\Exception\AuthenticationException($message);
+            }
+
             $setter = 'set'.ucfirst($service);
             $setter_id = $setter.'Id';
             $setter_token = $setter.'AccessToken';
@@ -61,7 +70,7 @@ class FOSUBUserProvider extends BaseClass
 
             //modify here with relevant data
             $user->setUsername($username);
-            $user->setEmail($username);
+            $user->setEmail($mail);
             $user->setPassword($username);
             $user->setEnabled(true);
             $user->setPoints(0);
@@ -70,8 +79,8 @@ class FOSUBUserProvider extends BaseClass
             $this->userManager->updateUser($user);
 
             //we persist the picture and flush it.
-            $em->persist($picture);
-            $em->flush();
+            //$em->persist($picture);
+            //$em->flush();
 
             return $user;
         }
