@@ -69,10 +69,10 @@ class FOSUBUserProvider extends BaseClass
             ;
 
             //profile picture for facebook
-            if($service == 'facebook'){
-                $profilepicture = $response->getProfilepicture();
-                $picture->setSrc($profilepicture);
-            }
+            //if($service == 'facebook'){
+               // $profilepicture = $response->getProfilepicture();
+                //$picture->setSrc($profilepicture);
+            //}
 
             //modify here with relevant data
             $user->setUsername($username);
