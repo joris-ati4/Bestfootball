@@ -1,12 +1,12 @@
 <?php
 
-namespace BF\UserBundle\Form;
+namespace BF\UserBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-use BF\SiteBundle\Form\PictureType;
+use BF\SiteBundle\Form\Type\PictureType;
 
 class UserPictureType extends AbstractType
 {
