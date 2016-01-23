@@ -5,7 +5,7 @@ use HWI\Bundle\OAuthBundle\OAuth\Response\UserResponseInterface;
 use HWI\Bundle\OAuthBundle\Security\Core\User\FOSUBUserProvider as BaseClass;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Doctrine\ORM\EntityManager;
-
+use Symfony\Component\Validator\Constraints\DateTime;
 use BF\SiteBundle\Entity\Picture;
 
 class FOSUBUserProvider extends BaseClass
@@ -39,23 +39,31 @@ class FOSUBUserProvider extends BaseClass
     public function loadUserByOAuthUserResponse(UserResponseInterface $response)
     {
         $username = $response->getUsername();
-        $mail = $response->getEmail();
-        $firstname = $response->getFirstname();
-        $lastname = $response->getLastname();
-        $data = $response->getResponse();
-        $gender = $data['gender'];
-        $birthday = $data['birthday'];
         $user = $this->userManager->findUserBy(array($this->getProperty($response) => $username));
         //when the user is registrating
         if (null === $user) {
 
             $service = $response->getResourceOwner()->getName();
 
+
+            $nickname = $firstname.'.'.$lastname;
+            $mail = $response->getEmail();
+            $firstname = $response->getFirstname();
+            $lastname = $response->getLastname();
+            $data = $response->getResponse();
+            $gender = $data['gender'];
+            $birthday = $data['birthday'];
+            
+
             //we check for the email existence - if so, throw error.
             if($existent_user = $this->userManager->findUserByEmail($response->getEmail())){
                 $message = 'There is already an account with this email address';
                 throw new \Symfony\Component\Security\Core\Exception\AuthenticationException($message);
             }
+            if($existent_user = $this->userManager->findUserByUsername()){ //their is already a user with this username
+                $nickname = $nickname.'.'.$birthday;
+            }
+            $birthday = new \DateTime($birthday);
 
             $setter = 'set'.ucfirst($service);
             $setter_id = $setter.'Id';
@@ -80,7 +88,7 @@ class FOSUBUserProvider extends BaseClass
             }
 
             //modify here with relevant data
-            $user->setUsername($firstname.'.'.$lastname);
+            $user->setUsername($nickname);
             $user->setEmail($mail);
             $user->setPassword($username);
             $user->setEnabled(true);
