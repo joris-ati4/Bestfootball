@@ -42,6 +42,8 @@ class FOSUBUserProvider extends BaseClass
         $mail = $response->getEmail();
         $firstname = $response->getFirstname();
         $lastname = $response->getLastname();
+        $gender = $response->getGender();
+        $birthday = $response->getBirthday();
         $user = $this->userManager->findUserBy(array($this->getProperty($response) => $username));
         //when the user is registrating
         if (null === $user) {
@@ -77,7 +79,7 @@ class FOSUBUserProvider extends BaseClass
             }
 
             //modify here with relevant data
-            $user->setUsername($username);
+            $user->setUsername($firstname.'.'$lastname);
             $user->setEmail($mail);
             $user->setPassword($username);
             $user->setEnabled(true);
@@ -86,6 +88,8 @@ class FOSUBUserProvider extends BaseClass
             $user->setPicture($picture);
             $user->setName($lastname);
             $user->setFirstname($firstname);
+            $user->setGender($gender);
+            $user->setBirthday($birthday)
             $this->userManager->updateUser($user);
 
             //we persist the picture and flush it.
