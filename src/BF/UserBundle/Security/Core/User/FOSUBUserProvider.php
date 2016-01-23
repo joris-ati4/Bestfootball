@@ -46,10 +46,11 @@ class FOSUBUserProvider extends BaseClass
             $service = $response->getResourceOwner()->getName();
 
 
-            $nickname = $firstname.'.'.$lastname;
+            
             $mail = $response->getEmail();
             $firstname = $response->getFirstname();
             $lastname = $response->getLastname();
+            $nickname = $firstname.'.'.$lastname;
             $data = $response->getResponse();
             $gender = $data['gender'];
             $birthday = $data['birthday'];
