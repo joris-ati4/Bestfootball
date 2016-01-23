@@ -10,13 +10,6 @@ use BF\SiteBundle\Entity\Picture;
 
 class FOSUBUserProvider extends BaseClass
 {
-
-    protected $doctrine;
-
-    public function __construct(EntityManager $pm)
-    {
-        $this->pm = $pm;
-    }
     /**
      * {@inheritDoc}
      */
@@ -77,9 +70,8 @@ class FOSUBUserProvider extends BaseClass
             $this->userManager->updateUser($user);
 
             //we persist the picture and flush it.
-            $pm = $this->pm;
-            $pm->persist($picture);
-            $pm->flush();
+            $em->persist($picture);
+            $em->flush();
 
             return $user;
         }
