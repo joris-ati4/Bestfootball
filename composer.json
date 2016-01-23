@@ -26,7 +26,8 @@
         "doctrine/doctrine-fixtures-bundle": "~2.3.0",
         "friendsofsymfony/oauth-server-bundle": "~1.5.0",
         "nelmio/api-doc-bundle": "~2.11.2",
-        "lifo/typeahead-bundle": "^2.0"
+        "lifo/typeahead-bundle": "^2.0",
+        "hwi/oauth-bundle":"~0.4"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3",
