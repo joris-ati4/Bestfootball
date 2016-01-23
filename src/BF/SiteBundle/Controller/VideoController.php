@@ -8,7 +8,6 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 //Les entités
 use BF\SiteBundle\Entity\Video;
-use BF\SiteBundle\Entity\Notification;
 use BF\SiteBundle\Entity\Report;
 //les types
 use BF\SiteBundle\Form\Type\VideoType;

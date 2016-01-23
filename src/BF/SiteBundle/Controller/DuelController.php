@@ -8,7 +8,6 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 //Les entités
 use BF\SiteBundle\Entity\Duel;
-use BF\SiteBundle\Entity\Notification;
 //les types
 use BF\SiteBundle\Form\Type\DuelType;
 

@@ -1,7 +1,6 @@
 <?php
 namespace BF\SiteBundle\Notification;
 
-use Doctrine\ORM\EntityManager;
 use BF\SiteBundle\Entity\Notification;
 
 class BFNotification

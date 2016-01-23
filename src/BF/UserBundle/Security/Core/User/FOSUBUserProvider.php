@@ -4,7 +4,6 @@ namespace BF\UserBundle\Security\Core\User;
 use HWI\Bundle\OAuthBundle\OAuth\Response\UserResponseInterface;
 use HWI\Bundle\OAuthBundle\Security\Core\User\FOSUBUserProvider as BaseClass;
 use Symfony\Component\Security\Core\User\UserInterface;
-use Doctrine\ORM\EntityManager;
 use Symfony\Component\Validator\Constraints\DateTime;
 use BF\SiteBundle\Entity\Picture;
 
@@ -57,11 +56,11 @@ class FOSUBUserProvider extends BaseClass
             
 
             //we check for the email existence - if so, throw error.
-            if($existent_user = $this->userManager->findUserByEmail($response->getEmail())){
+            if($this->userManager->findUserByEmail($response->getEmail())){
                 $message = 'There is already an account with this email address';
                 throw new \Symfony\Component\Security\Core\Exception\AuthenticationException($message);
             }
-            while($existent_user = $this->userManager->findUserByUsername($nickname)){ //their is already a user with this username
+            while($this->userManager->findUserByUsername($nickname)){ //their is already a user with this username
                 $nickname = $firstname.rand(0, 1000000);
             }
             $birthday = new \DateTime($birthday);
@@ -101,10 +100,6 @@ class FOSUBUserProvider extends BaseClass
             $user->setGender($gender);
             $user->setBirthday($birthday);
             $this->userManager->updateUser($user);
-
-            //we persist the picture and flush it.
-            //$em->persist($picture);
-            //$em->flush();
 
             return $user;
         }
