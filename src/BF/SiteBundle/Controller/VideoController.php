@@ -222,24 +222,14 @@ class VideoController extends Controller
 			      				$em->persist($host);
 
 			      				//notifications
-			      					//host
-			      					$notificationhost = new Notification();
-							    	$notificationhost
-							    		->setDate(new \Datetime())
-							    		->setMessage('Congratulations you won the duel against '.$guest->getUsername().' adn you received 100 points !')
-							    		->setUser($host)
-							    		->setWatched('0')
-							    		->setDuel($duel)
-		   							;
-			      					//guest
-		   							$notificationguest = new Notification();
-							    	$notificationguest
-							    		->setDate(new \Datetime())
-							    		->setMessage('unfortunately you lost the duel against '.$host->getUsername())
-							    		->setUser($guest)
-							    		->setWatched('0')
-							    		->setDuel($duel)
-							    	;
+			      				//host
+			      				$message = 'Congratulations you won the duel against '.$guest->getUsername().' adn you received 100 points !';
+			      				$service = $this->container->get('bf_site.notification');
+                				$notificationhost = $service->create($host, $message, $duel);
+                				//guest
+                				$message = 'unfortunately you lost the duel against '.$host->getUsername();
+			      				$service = $this->container->get('bf_site.notification');
+                				$notificationguest = $service->create($guest, $message, $duel);
 			      				$em->persist($notificationhost);
 			      				$em->persist($notificationguest);
 						    }
@@ -253,28 +243,19 @@ class VideoController extends Controller
 
 			      				//notifications
 			      					//guest
-			      					$notificationguest = new Notification();
-							    	$notificationguest
-							    		->setDate(new \Datetime())
-							    		->setMessage('Congratulations you won the duel against '.$host->getUsername().' and you received 100 points !')
-							    		->setUser($guest)
-							    		->setWatched('0')
-							    		->setDuel($duel)
-		   							;
-			      					//host
-		   							$notificationhost = new Notification();
-							    	$notificationhost
-							    		->setDate(new \Datetime())
-							    		->setMessage('unfortunately you lost the duel against '.$guest->getUsername())
-							    		->setUser($host)
-							    		->setWatched('0')
-							    		->setDuel($duel)
-							    	;
+			      					$message = 'Congratulations you won the duel against '.$host->getUsername().' adn you received 100 points !';
+			      					$service = $this->container->get('bf_site.notification');
+                					$notificationguest = $service->create($guest, $message, $duel);
+                					//host
+                					$message = 'unfortunately you lost the duel against '.$guest->getUsername();
+			      					$service = $this->container->get('bf_site.notification');
+                					$notificationhost = $service->create($host, $message, $duel);
+
 			      				$em->persist($notificationhost);
 			      				$em->persist($notificationguest);
 
 						    }
-						    elseif($hostscore == $guestscore){//same score,each 25 points
+						    elseif($hostscore == $guestscore){//same score,each 50 points
 
     							//host points
     							$points = $host->getDuelPoints() + 50;
@@ -286,26 +267,16 @@ class VideoController extends Controller
 			      				$em->persist($guest);
 
 			      				//notifications
-			      					//guest
-			      					$notificationguest = new Notification();
-							    	$notificationguest
-							    		->setDate(new \Datetime())
-							    		->setMessage('Congratulations, the duel against '.$host->getUsername().' was a tie and you received 50 points !')
-							    		->setUser($guest)
-							    		->setWatched('0')
-							    		->setDuel($duel)
-		   							;
 			      					//host
-		   							$notificationhost = new Notification();
-							    	$notificationhost
-							    		->setDate(new \Datetime())
-							    		->setMessage('Congratulations, the duel against '.$guest->getUsername().' was a tie and you received 50 points !')
-							    		->setUser($host)
-							    		->setWatched('0')
-							    		->setDuel($duel)
-							    	;
-			      				$em->persist($notificationhost);
-			      				$em->persist($notificationguest);
+				      				$message = 'Congratulations, the duel against '.$guest->getUsername().' was a tie and you received 50 points !';
+				      				$service = $this->container->get('bf_site.notification');
+	                				$notificationhost = $service->create($host, $message, $duel);
+	                				//guest
+	                				$message = 'Congratulations, the duel against '.$host->getUsername().' was a tie and you received 50 points !';
+				      				$service = $this->container->get('bf_site.notification');
+	                				$notificationguest = $service->create($guest, $message, $duel);
+				      				$em->persist($notificationhost);
+				      				$em->persist($notificationguest);
 						    }
 			    		}
 						//now we update the points of the user

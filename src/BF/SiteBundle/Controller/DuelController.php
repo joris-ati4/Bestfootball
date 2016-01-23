@@ -67,39 +67,22 @@ class DuelController extends Controller
             return $this->redirect($this->generateUrl('bf_site_profile', array('username' => $username)));
         }
 
-
     	$em = $this->getDoctrine()->getManager();
     	//we get the host and the invited user
     	$host = $this->container->get('security.context')->getToken()->getUser();
-
     	$repository = $this->getDoctrine()->getManager()->getRepository('BFUserBundle:User');
     	$guest = $repository->findOneByUsername($username);
-
     	//we check that the host and guest are not the same person
     	if($host == $guest){
     		throw new NotFoundHttpException("You can't create a duel against yourself.");
     	}
-
     	//we create a new duel and set the users to the duel
 		$date = new \Datetime();
 		            $duration = (7 * 24 * 60 * 60);
 		            $endtimestamp = $date->getTimestamp() + $duration;
 		            $date->setTimestamp($endtimestamp);
-
     	$duel = new Duel();
-    	$duel 
-    		->setBeginDate(new \Datetime())
-    		->setEndDate($date)
-    		->setAccepted('0')
-    		->setCompleted('0')
-    		->setHostCompleted('0')
-    		->setGuestCompleted('0')
-    		->setHost($host->getUsername())
-    		->setGuest($guest->getUsername())
-            ->setType('duel')
-    		->addUser($host)
-    		->addUser($guest)
-    		;
+    	$duel ->setBeginDate(new \Datetime())->setEndDate($date)->setAccepted('0')->setCompleted('0')->setHostCompleted('0')->setGuestCompleted('0')->setHost($host->getUsername())->setGuest($guest->getUsername())->setType('duel')->addUser($host)->addUser($guest);
 
     	$message = 'You received an invitation for a duel from '.$host->getUsername();
     	//we create a notification for the guest.
