@@ -3,8 +3,18 @@ namespace BF\UserBundle\Security\Core\User;
 use HWI\Bundle\OAuthBundle\OAuth\Response\UserResponseInterface;
 use HWI\Bundle\OAuthBundle\Security\Core\User\FOSUBUserProvider as BaseClass;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Doctrine\ORM\EntityManager;
+
+use BF\SiteBundle\Entity\Picture;
 class FOSUBUserProvider extends BaseClass
 {
+
+    protected $doctrine;
+
+    public function __construct(EntityManager $em)
+    {
+        $this->em = $em;
+    }
     /**
      * {@inheritDoc}
      */
@@ -46,12 +56,29 @@ class FOSUBUserProvider extends BaseClass
             $user->$setter_id($username);
             $user->$setter_token($response->getAccessToken());
             //I have set all requested data with the user's username
+
+            //creating the picture entity for the new user
+            $picture = new Picture();
+            $picture
+              ->setSrc('profile.png')
+              ->setAlt('default profile picture on bestfootball')
+            ;
+
             //modify here with relevant data
             $user->setUsername($username);
             $user->setEmail($username);
             $user->setPassword($username);
             $user->setEnabled(true);
+            $user->setPoints(0);
+            $user->setDuelPoints(0);
+            $user->setPicture($picture);
             $this->userManager->updateUser($user);
+
+            //we persist the picture and flush it.
+            $em = $this->em;
+            $em->persist($picture);
+            $em->flush();
+
             return $user;
         }
         //if user exists - go with the HWIOAuth way
