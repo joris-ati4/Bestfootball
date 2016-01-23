@@ -1,0 +1,16 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_host: localhost
+    database_port: null
+    database_name: Bestfootball
+    database_user: root
+    database_password: 'Yasmien1*'
+    mailer_transport: smtp
+    mailer_host: localhost
+    mailer_user: joris
+    mailer_password: 'Yasmien1*'
+    secret: ea6fedd44443f21312b0aecd7f07ce024be9b4d2b
+    facebook_app_id: 694354014040156
+    facebook_app_secret: 55d4070a9dfa588b63027fe51bd7010e
+    google_app_id: 128129884829-c4q7njcofueunt1po5v6j1rs5cgmpt7c.apps.googleusercontent.com
+    google_app_secret: piUn_hUN72EuMF7yD88cAGPY
