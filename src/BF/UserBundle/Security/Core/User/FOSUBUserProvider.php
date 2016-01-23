@@ -79,7 +79,7 @@ class FOSUBUserProvider extends BaseClass
             }
 
             //modify here with relevant data
-            $user->setUsername($firstname.'.'$lastname);
+            $user->setUsername($firstname.'.'.$lastname);
             $user->setEmail($mail);
             $user->setPassword($username);
             $user->setEnabled(true);
@@ -89,7 +89,7 @@ class FOSUBUserProvider extends BaseClass
             $user->setName($lastname);
             $user->setFirstname($firstname);
             $user->setGender($gender);
-            $user->setBirthday($birthday)
+            $user->setBirthday($birthday);
             $this->userManager->updateUser($user);
 
             //we persist the picture and flush it.
