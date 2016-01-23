@@ -68,9 +68,15 @@ class FOSUBUserProvider extends BaseClass
               ->setAlt('default profile picture on bestfootball')
             ;
 
+            //profile picture for facebook
+            if($service == 'facebook'){
+                $profilepicture = $response->getProfilepicture();
+                $picture->setSrc($profilepicture);
+            }
+
             //modify here with relevant data
             $user->setUsername($username);
-            $user->setEmail($mail);
+            $user->setEmail($username);
             $user->setPassword($username);
             $user->setEnabled(true);
             $user->setPoints(0);
