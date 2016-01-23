@@ -67,7 +67,7 @@ class Picture
         if (null === $this->file) {
           return;
         }
-        $this->src = '/uploads/img/'$this->id.'.'.$this->file->guessExtension();
+        $this->src = '/uploads/img/'.$this->id.'.'.$this->file->guessExtension();
         $this->alt = $this->file->getClientOriginalName();
 
         }
