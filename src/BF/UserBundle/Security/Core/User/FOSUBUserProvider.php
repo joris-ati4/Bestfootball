@@ -40,8 +40,6 @@ class FOSUBUserProvider extends BaseClass
     {
         $username = $response->getUsername();
         $mail = $response->getEmail();
-        $name = $response->getName();
-        $firstname = $response->getFirstname();
         $user = $this->userManager->findUserBy(array($this->getProperty($response) => $username));
         //when the user is registrating
         if (null === $user) {
@@ -84,8 +82,8 @@ class FOSUBUserProvider extends BaseClass
             $user->setPoints(0);
             $user->setDuelPoints(0);
             $user->setPicture($picture);
-            $user->setName($name);
-            $user->setFirstname($firstname);
+            $user->setName($username);
+            $user->setFirstname($username);
             $this->userManager->updateUser($user);
 
             //we persist the picture and flush it.
