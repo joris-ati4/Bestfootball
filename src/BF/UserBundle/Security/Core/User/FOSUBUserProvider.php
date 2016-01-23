@@ -40,6 +40,8 @@ class FOSUBUserProvider extends BaseClass
     {
         $username = $response->getUsername();
         $mail = $response->getEmail();
+        $firstname = $response->getFirstname();
+        $lastname = $response->getLastname();
         $user = $this->userManager->findUserBy(array($this->getProperty($response) => $username));
         //when the user is registrating
         if (null === $user) {
@@ -69,10 +71,10 @@ class FOSUBUserProvider extends BaseClass
             ;
 
             //profile picture for facebook
-            //if($service == 'facebook'){
-               // $profilepicture = $response->getProfilepicture();
-                //$picture->setSrc($profilepicture);
-            //}
+            if($service == 'facebook'){
+                $profilepicture = $response->getProfilePicture();
+                $picture->setSrc($profilepicture)->setAlt('Profile picture of '.$username.' on Bestfootball.fr');
+            }
 
             //modify here with relevant data
             $user->setUsername($username);
@@ -82,8 +84,8 @@ class FOSUBUserProvider extends BaseClass
             $user->setPoints(0);
             $user->setDuelPoints(0);
             $user->setPicture($picture);
-            $user->setName($username);
-            $user->setFirstname($username);
+            $user->setName($lastname);
+            $user->setFirstname($firstname);
             $this->userManager->updateUser($user);
 
             //we persist the picture and flush it.
