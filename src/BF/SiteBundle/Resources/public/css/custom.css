@@ -81,7 +81,7 @@ body{
 /*The layout for the sections */
 /* header */
 .header{
-    height:100vh;
+    min-height:100vh;
     background-image: url(../img/header.jpg);
     background-attachment: relative;
     background-size: cover;    
