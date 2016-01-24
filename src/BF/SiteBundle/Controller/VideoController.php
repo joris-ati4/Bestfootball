@@ -41,14 +41,12 @@ class VideoController extends Controller
 
 
         $em = $this->getDoctrine()->getManager();
-
 	    // On récupère $id de la video
 	    $video = $em->getRepository('BFSiteBundle:Video')->find($id);
 
 	    if (null === $video) {
 	      throw new NotFoundHttpException("La video n'existe pas.");
 	    }
-
 	    return $this->render('BFSiteBundle:Video:view.html.twig', array(
 	      'video'           => $video,
 	      'search' => $search->createView(),

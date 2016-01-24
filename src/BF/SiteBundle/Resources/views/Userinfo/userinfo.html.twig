@@ -1,0 +1,48 @@
+<div class="videotabback" style="min-height:210px;">
+  <div class="challengecontent row" style="margin: 0px 10px; margin-bottom:10px;">
+    <h2 class="text-center">{{ rank.rankinfo.level }}</h2>
+    <p>{{ user.points }} Points</p>
+    <div class="progress class="text-center"">
+      <div class="progress-bar {{ rank.rankinfo.style }} progress-bar-striped active" role="progressbar" aria-valuenow="{{ user.points }}" aria-valuemin="{{ rank.rankinfo.min }}" aria-valuemax="{{rank.rankinfo.max }}" style="width:{{ rank.rankinfo.percent }}%;">
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row">
+      <h3 class="text-center">Ranking</h3>
+      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 row">
+        <img src="../img/globe.png" alt="globe ranking" style="width:25px;"/><!--globe -->
+      </div><!--
+      --><div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 row">
+        <p> {{ rank.rankinfo.globalrank }}</p>
+      </div>
+      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 row"><!--country -->
+        {% if user.country.name == 'France' %}
+          <img src="/img/fr.jpg" alt="" style="width:25px;"/>
+        {% elseif user.country.name == 'United States' %}
+          <img src="/img/usa.jpg" alt="" style="width:25px;"/>
+        {% elseif user.country.name == 'Belgium' %}
+          <img src="/img/be.jpg" alt="" style="width:25px;"/>
+        {% endif %}
+         
+      </div><!--
+      --><div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 row">
+        <p> {{ rank.rankinfo.countryrank }} </p>
+      </div>
+      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 row">
+        <p>{{ user.state.name }} <!--State -->
+      </div><!--
+      --><div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 row">
+        <p> {{ rank.rankinfo.staterank }} </p>
+      </div>
+      {% if rank.duelrankinfo.level == 1 %}
+        {% include "BFSiteBundle:Userinfo:DuelRank:1bf.html.twig" %}
+      {% elseif rank.duelrankinfo.level == 2 %}
+        {% include "BFSiteBundle:Userinfo:DuelRank:2bf.html.twig" %}
+      {% elseif rank.duelrankinfo.level == 3 %}
+        {% include "BFSiteBundle:Userinfo:DuelRank:3bf.html.twig" %}
+      {% elseif rank.duelrankinfo.level == 4 %}
+        {% include "BFSiteBundle:Userinfo:DuelRank:4bf.html.twig" %}
+      {% endif %}
+    </div>
+  </div>
+  </div>
+</div>

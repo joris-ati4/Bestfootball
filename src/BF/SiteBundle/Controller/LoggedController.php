@@ -30,7 +30,6 @@ class LoggedController extends Controller
 
 
         $user = $this->container->get('security.context')->getToken()->getUser();
-
         $listNotifications = $user->getNotifications();
 
         //we get the last videos of the users the user is following.

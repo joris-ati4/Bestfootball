@@ -19,7 +19,7 @@ class AjaxController extends Controller
 
         $rank = array('rankinfo' => $rankinfo, 'duelrankinfo' => $duelRankInfo);
 
-        return $this->render('BFSiteBundle:Ajax:userinfo.html.twig', array(
+        return $this->render('BFSiteBundle:Userinfo:userinfo.html.twig', array(
             'rank' => $rank,
             'user' => $user,
             ));
