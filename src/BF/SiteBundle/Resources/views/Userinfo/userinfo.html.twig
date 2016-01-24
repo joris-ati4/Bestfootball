@@ -9,17 +9,17 @@
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row">
       <h3 class="text-center">Ranking</h3>
 
-      {% include "BFSiteBundle:Userinfo:ChallengeRank:Location.html.twig" with {"user": user, "rank": rank} only %}
+      {% include "BFSiteBundle:Userinfo:Location.html.twig" with {"user": user, "rank": rank} only %}
 
 
       {% if rank.duelrankinfo.level == 1 %}
-        {% include "BFSiteBundle:Userinfo:DuelRank:1bf.html.twig" %}
+        {% include "BFSiteBundle:Userinfo:1bf.html.twig" %}
       {% elseif rank.duelrankinfo.level == 2 %}
-        {% include "BFSiteBundle:Userinfo:DuelRank:2bf.html.twig" %}
+        {% include "BFSiteBundle:Userinfo:2bf.html.twig" %}
       {% elseif rank.duelrankinfo.level == 3 %}
-        {% include "BFSiteBundle:Userinfo:DuelRank:3bf.html.twig" %}
+        {% include "BFSiteBundle:Userinfo:3bf.html.twig" %}
       {% elseif rank.duelrankinfo.level == 4 %}
-        {% include "BFSiteBundle:Userinfo:DuelRank:4bf.html.twig" %}
+        {% include "BFSiteBundle:Userinfo:4bf.html.twig" %}
       {% endif %}
     </div>
   </div>
