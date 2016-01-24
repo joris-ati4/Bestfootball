@@ -10,10 +10,7 @@
  }
 
 h1,h2,h3,h4,h5,h6{
-    font-family: DinBold;
-}
-h1 { 
-    font-size: 4.5vw 
+    font-family: DinLight;
 }
 
 a,p,button{
@@ -93,7 +90,7 @@ body{
 .info{
     min-height:50vh;
     margin-bottom: 15px;
-    background-color: #FAFAFA;
+    background-color: #FFF;
 }
 .rank{
     min-height:50vh;
