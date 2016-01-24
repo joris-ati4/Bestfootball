@@ -4,6 +4,7 @@
 namespace BF\SiteBundle\Userinfo;
 
 use Doctrine\ORM\EntityManager;
+use BF\UserBundle\Entity\User;
 
 class BFUserinfo
 {
