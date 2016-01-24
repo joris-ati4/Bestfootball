@@ -19,7 +19,7 @@ class BFUserinfo
   }
 
 
-  public function rankInfo($user)
+  public function rankInfo(user $user)
   {
   	$points = $user->getPoints();
     if( '0'<= $points && $points <= '1000'){$level = 'Unknown'; $percent=($points/1000)*100;$min=0;$max=1000;$style='progress-bar-success';} //incognito
@@ -44,7 +44,7 @@ class BFUserinfo
     $rankInfo = array('level' => $level,'percent' => $percent,'min' => $min ,'max' => $max ,'style' => $style ,'globalrank' => $globalRank ,'countryrank' => $countryRank ,'staterank' => $stateRank);
     return $rankInfo;
   }
-  public function duelRankInfo($user)
+  public function duelRankInfo(user $user)
   {
     $points = $user->getDuelPoints();
     if( '0'<= $points && $points <= '1000'){$level = 1;} //incognito
