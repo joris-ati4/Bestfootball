@@ -402,13 +402,7 @@ class VideoController extends Controller
     {
 	    //all the code for the user search function.
         $defaultData = array('user' => null );
-        $search = $this->createFormBuilder($defaultData)
-            ->add('user', 'entity_typeahead', array(
-                    'class' => 'BFUserBundle:User',
-                    'render' => 'username',
-                    'route' => 'bf_site_search',
-                    ))
-            ->getForm(); 
+        $search = $this->createFormBuilder($defaultData)->add('user', 'entity_typeahead', array('class' => 'BFUserBundle:User','render' => 'username','route' => 'bf_site_search',))->getForm(); 
         $search->handleRequest($request);
         if ($search->isValid()) {
             // data is an array with "name", "email", and "message" keys
@@ -433,33 +427,21 @@ class VideoController extends Controller
 	    
 		    $form = $this->get('form.factory')->create(new VideoEditType, $video);
 		    if ($form->handleRequest($request)->isValid()) {
-
 		      $em->persist($video);
 		      $em->flush();
-
 		      $request->getSession()->getFlashBag()->add('success', "Your video has been modified.");
 
 		      return $this->redirect($this->generateUrl('bf_site_videos'));
 		    }
 
 		    // Si la requête est en GET, on affiche une page de confirmation avant de supprimer
-		    return $this->render('BFSiteBundle:Video:modify.html.twig', array(
-		      'video' => $video,
-		      'form'   => $form->createView(),
-		      'search' => $search->createView(),
-		    ));
+		    return $this->render('BFSiteBundle:Video:modify.html.twig', array('video' => $video,'form'   => $form->createView(),'search' => $search->createView()));
     }
     public function reportAction(request $request, $id)
     {
 	    //all the code for the user search function.
         $defaultData = array('user' => null );
-        $search = $this->createFormBuilder($defaultData)
-            ->add('user', 'entity_typeahead', array(
-                    'class' => 'BFUserBundle:User',
-                    'render' => 'username',
-                    'route' => 'bf_site_search',
-                    ))
-            ->getForm(); 
+        $search = $this->createFormBuilder($defaultData)->add('user', 'entity_typeahead', array('class' => 'BFUserBundle:User','render' => 'username','route' => 'bf_site_search',))->getForm(); 
         $search->handleRequest($request);
         if ($search->isValid()) {
             // data is an array with "name", "email", and "message" keys
@@ -477,23 +459,15 @@ class VideoController extends Controller
 	    }
 
 	    $user = $this->container->get('security.context')->getToken()->getUser();
-	
 	    $report = new Report();
-	    $report
-	    	->setVideo($video)
-	    	->setUser($user)
-	    	->setDate(new \Datetime())
-	    	->setTreated(0)
-	    ;
+	    $report->setVideo($video)->setUser($user)->setDate(new \Datetime())->setTreated(0);
 
 		    $form = $this->get('form.factory')->create(new ReportType, $report);
 		    if ($form->handleRequest($request)->isValid()) {
 
 		      $em->persist($report);
 		      $em->flush();
-
 		      $request->getSession()->getFlashBag()->add('success', "The video has been reported and will be reviewed by our Admins.");
-
 		      return $this->redirect($this->generateUrl('bf_site_videos'));
 		    }
 
