@@ -73,13 +73,12 @@ class ProfileController extends Controller
       $age = $interval->y;
 
       $lists=array(  'listVideos' => $listVideos,'lastVideo' => $lastVideo,'listChallenges' => $listChallenges,'listFollows' => $listFollows,'listDuels' => $listDuels);
-
+      $rank = array('rankinfo' => $rankinfo,'duelrankinfo' => $duelRankInfo);
     	return $this->render('BFSiteBundle:Profile:view.html.twig', array(
     	      'user' => $user,
             'age' => $age,
-            'rankinfo' => $rankinfo,
+            'rank' => $rank,
             'lists' => $lists,
-            'duelrankinfo' => $duelRankInfo,
             'follow' => $follow,
             'search' => $search->createView(),
     	    ));
