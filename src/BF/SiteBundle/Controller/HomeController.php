@@ -242,16 +242,9 @@ class HomeController extends Controller
     {
         //all the code for the user search function.
         $defaultData = array('user' => null );
-        $search = $this->createFormBuilder($defaultData)
-            ->add('user', 'entity_typeahead', array(
-                    'class' => 'BFUserBundle:User',
-                    'render' => 'username',
-                    'route' => 'bf_site_search',
-                    ))
-            ->getForm(); 
+        $search = $this->createFormBuilder($defaultData)->add('user', 'entity_typeahead', array('class' => 'BFUserBundle:User','render' => 'username','route' => 'bf_site_search',))->getForm(); 
         $search->handleRequest($request);
         if ($search->isValid()) {
-            // data is an array with "name", "email", and "message" keys
             $data = $search->getData();
             $user = $data['user'];
             $username = $user->getUsername();
@@ -259,28 +252,11 @@ class HomeController extends Controller
         }
         //the code for the proposition
         $data = array();
-            $form = $this->createFormBuilder($data)
-                ->add('name', 'text')
-                ->add('email', 'email')
-                ->add('reason', 'choice',
-                    array('choices' => array(
-                        'propose a challenge'   => 'propose a challenge',
-                        'a problem with the site' => 'a problem with the site',
-                        'Partnership'   => 'Partnership',
-                    )))
-                ->add('message', 'textarea')
-            ->getForm();
-
+            $form = $this->createFormBuilder($data)->add('name', 'text')->add('email', 'email')->add('reason', 'choice',array('choices' => array('propose a challenge'   => 'propose a challenge','a problem with the site' => 'a problem with the site','Partnership'   => 'Partnership',)))->add('message', 'textarea')->getForm();
         $form->handleRequest($request);
         if ($form->isValid()) {
-
-            // $data is a simply array with your form fields 
-            // like "query" and "category" as defined above.
+            // $data is a simply array with your form fields
             $data = $form->getData();
-            $name = $data['name'];
-            $email = $data['email'];
-            $reason = $data['reason'];
-            $text = $data['message'];
             $message = \Swift_Message::newInstance()
                     ->setSubject('A new challenge proposition')
                     ->setFrom('noreply@bestfootball.fr')
@@ -289,7 +265,7 @@ class HomeController extends Controller
                         $this->renderView(
                             // app/Resources/views/Emails/registration.html.twig
                             'Emails/contact.html.twig',
-                            array('text' => $text, 'name' => $name, 'email' => $email, 'reason' => $reason)
+                            array('text' => $data['message'], 'name' => $data['name'], 'email' => $data['email'], 'reason' => $data['reason'])
                         ),
                         'text/html'
                     )
