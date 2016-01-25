@@ -63,11 +63,6 @@ bf_rest_api_videos_delete:
         id: -?\d+
 
 # users rest api routes
-bf_rest_api_users_get:
-    type: rest
-    path: /users/get/{username}
-    defaults: { _controller: BFRestApiBundle:User:get, _format: json}
-
 bf_rest_api_users_getAll:
     type: rest
     path: /users/getAll
@@ -77,6 +72,16 @@ bf_rest_api_users_getCurrent:
     type: rest
     path: /users/getCurrent
     defaults: { _controller: BFRestApiBundle:User:getCurrent }
+
+bf_rest_api_users_get_facebook:
+    type: rest
+    path: /users/getfb/{facebookId}
+    defaults: { _controller: BFRestApiBundle:User:getFacebook }
+
+bf_rest_api_users_get_google:
+    type: rest
+    path: /users/getgoogle/{googleId}
+    defaults: { _controller: BFRestApiBundle:User:getGoogle }
 
 bf_rest_api_users_put:
     type: rest

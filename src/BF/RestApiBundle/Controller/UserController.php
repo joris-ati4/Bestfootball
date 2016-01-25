@@ -56,20 +56,10 @@ class UserController extends Controller
      *
      * @Rest\View()
      */
-    public function getAction($username)
+    public function getCurrentAction()
     {
-
-        $user = $this->getEntity($username);
-
-        $id=$user[0]->getId();
-        $username=$user[0]->getUsername();
-        $salt=$user[0]->getSalt();
-        $password=$user[0]->getPassword();
-
-        $user =array('id' => $id,'username' => $username,'password' => $password,'salt' => $salt);
-
-
-
+        $user = $this->container->get('security.context')->getToken()->getUser();
+        $user = array('id' => $user->getId(),'username' => $user->getUsername());
         return  array(
             'user' => $user,
         );
@@ -82,16 +72,44 @@ class UserController extends Controller
      *
      * @Rest\View()
      */
-    public function getCurrentAction()
+    public function getFacebookAction($facebookId)
     {
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository('BFUserBundle:User')->findByFacebook_id($facebookId);
+        if (!$user) {
+            throw $this->createNotFoundException('Unable to find user with facebook id'.$facebookId);
+        }
+        $user = array('id' => $user->getId(),'username' => $user->getUsername());
+        return  array(
+            'user' => $user,
+        );
+    }
 
-        $user = $this->container->get('security.context')->getToken()->getUser();
+    /**
+     * Get action
+     * @var integer $id Id of the user
+     * @return array
+     *
+     * @Rest\View()
+     */
+    public function getGoogleAction($googleId)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository('BFUserBundle:User')->findByGoogle_id($googleId);
+        if (!$user) {
+            throw $this->createNotFoundException('Unable to find user with google id'.$googleId);
+        }
         $user = array('id' => $user->getId(),'username' => $user->getUsername());
 
         return  array(
             'user' => $user,
         );
     }
+
+
+
+
+
 
     /**
      * Collection post action
