@@ -75,7 +75,7 @@ class UserController extends Controller
     public function getFacebookAction($facebookId)
     {
         $em = $this->getDoctrine()->getManager();
-        $user = $em->getRepository('BFUserBundle:User')->findByFacebook_id($facebookId);
+        $user = $em->getRepository('BFUserBundle:User')->findOneBy(array('facebook_id' => $facebookId),array());
         if (!$user) {
             throw $this->createNotFoundException('Unable to find user with facebook id'.$facebookId);
         }
@@ -95,7 +95,7 @@ class UserController extends Controller
     public function getGoogleAction($googleId)
     {
         $em = $this->getDoctrine()->getManager();
-        $user = $em->getRepository('BFUserBundle:User')->findByGoogle_id($googleId);
+        $user = $em->getRepository('BFUserBundle:User')->findOneBy(array('google_id' => $googleId),array());
         if (!$user) {
             throw $this->createNotFoundException('Unable to find user with google id'.$googleId);
         }
