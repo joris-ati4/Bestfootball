@@ -11,7 +11,7 @@
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10 col-lg-offset-1">
         <div class="row">
           {# integrating the  profile top #}
-          {% include "BFSiteBundle:Profile:Profiletop.html.twig" with {"user": user, "rank": rank} only %}
+          {% include "BFSiteBundle:Profile:Profiletop.html.twig" with {"user": user, "rank": rank,"age":age} only %}
         </div>
       </div>
       <!-- END of the Profile TOP -->
@@ -22,7 +22,7 @@
             <div class="row">
               <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="row">
-                  {% include "BFSiteBundle:Follow:Followingbar.html.twig" with {"listFollows": list.listFollows} only %}
+                  {% include "BFSiteBundle:Follow:Followingbar.html.twig" with {"listFollows": lists.listFollows} only %}
                 </div>
               </div>
             </div>
@@ -30,12 +30,13 @@
           <!--End of the follower bar -->
           <div class="col-xs-12 col-sm-9 col-md-9 col-lg-10">
             <div class="row">
+              {{ dump(index) }}
             <!--Begin of the lastest videos -->
-              {% include "BFSiteBundle:Video:Homelist.html.twig" with {"lastVideos": list.lastVideos} only %}
+              {% include "BFSiteBundle:Video:Homelist.html.twig" with {"lastVideos": lists.lastVideos} only %}
             <!--End of the lastest videos -->
 
             <!--Begin of the following videos -->
-              {% for object in listVideosFollows %}
+              {% for object in lists.listVideosFollows %}
                 {% include "BFSiteBundle:Video:Followingvideolist.html.twig" with {"object": object} only %}
               {% endfor %}
             <!--End of the following videos -->

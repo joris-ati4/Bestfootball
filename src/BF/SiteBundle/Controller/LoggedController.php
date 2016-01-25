@@ -50,8 +50,9 @@ class LoggedController extends Controller
         //retrieve 5 followings and get the videos of them.
         $listVideosFollows =array();
         $i = array_rand($listFollows, $k);
-        for($j=0;$j<$k;$j++){
-            $following = $listFollows[$i[$j]]->getFollowing();
+        for($j = 0; $j < $k; $j++){
+            $index = $i[$j];
+            $following = $listFollows[$index]->getFollowing();
             $listVideos = $repository->latestFollowingVideos($following);
             $object=array('user' => $following, 'listVideos' => $listVideos);
             array_push($listVideosFollows, $object);
@@ -71,6 +72,7 @@ class LoggedController extends Controller
         $age = $interval->y;
         
         return $this->render('BFSiteBundle:Home:logged.html.twig', array(
+            'index' => $i,
           'lists' => $lists,
           'user' => $user,
           'age' => $age,

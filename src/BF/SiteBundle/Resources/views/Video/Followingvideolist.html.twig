@@ -5,7 +5,7 @@
         <h3 style="color:white;">{{ object.user.username }} video's</h3>
       </div>
       <div class="followcontent">
-        {% for video in object.listvideos %}
+        {% for video in object.listVideos %}
           {% include "BFSiteBundle:Video:Thumbsquare.html.twig" with {"video": video} only %}
         {% endfor %}
       </div>
