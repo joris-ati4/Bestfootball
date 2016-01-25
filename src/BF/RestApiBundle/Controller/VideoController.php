@@ -102,6 +102,7 @@ class VideoController extends Controller
             ->setRepetitions($repetitions)
             ->setTitle($title)
             ->setDescription($description)
+            ->setType('challenge')
             ->setFile($file)
         ;
 
