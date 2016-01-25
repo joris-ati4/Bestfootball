@@ -54,7 +54,7 @@ class LoggedController extends Controller
             $following = $listFollows[$i[$j]]->getFollowing();
             $listVideos = $repository->latestFollowingVideos($following);
             $object=array('user' => $following, 'listVideos' => $listVideos);
-            array_push($listVideosFollows, 'object' => $object);
+            array_push($listVideosFollows, $object);
         }
 
         //retrieving the service
