@@ -32,55 +32,48 @@ class LoggedController extends Controller
         $user = $this->container->get('security.context')->getToken()->getUser();
         $listNotifications = $user->getNotifications();
 
-        //we get the last videos of the users the user is following.
+        //we get users the user is following.
         $repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Follow');
         $listFollows = $repository->findByFollower($user);
+        $numberfollowings = count($listFollows);
 
-
-        $wallArray = array();
-
-        if($listFollows !== null ){
-           
-            foreach($listFollows as $follow)
-            {
-                $following = $follow->getFollowing();
-                $repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video');
-                $listVideos = $repository->listHomeVideos($following);
-
-                //creating an array of the list
-                foreach($listVideos as $video)
-                {
-                    array_push($wallArray, $video);
-                }
-
-                $repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Duel');
-                $listDuels = $repository->listDuelsComplete($following);
-                foreach($listDuels as $duel)
-                {
-                    array_push($wallArray, $duel);
-                }
-                
-            }
+        if($numberfollowings > 5){
+            $k = 5;
         }
-        else{ //if the listFollows is null, we give the user the last 50 videos uploaded on the site.
-
+        else{
+            $k = $numberfollowings;
         }
-            
-        //now we shuffle the array.
-        shuffle($wallArray);
-        
+
+        $repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video');
+        $lastVideos = $repository->latestVideos();
+
+        //retrieve 5 followings and get the videos of them.
+        $listVideosFollows =array();
+        $i = array_rand($listFollows, $k);
+        for($j=0;$j<$k;$j++){
+            $following = $listFollows[$i[$j]]->getFollowing();
+            $listVideos = $repository->latestFollowingVideos($following);
+            $object=array('user' => $following, 'listVideos' => $listVideos);
+            array_push($listVideosFollows, 'object' => $object);
+        }
+
         //retrieving the service
         $info = $this->container->get('bf_site.rankinfo');
         $rankinfo = $info->rankInfo($user);
         $duelRankInfo = $info->duelRankInfo($user);
-
         $rank=array("rankinfo" => $rankinfo, "duelrankinfo" => $duelRankInfo);
+        $lists = array('lastVideos' => $lastVideos,'listNotifications' => $listNotifications,'listFollows' => $listFollows, 'listVideosFollows' => $listVideosFollows);
+
+        //calculating the age of the user.
+        $birthday = $user->getBirthday();
+        $now = new \Datetime();
+        $interval = date_diff($now, $birthday);
+        $age = $interval->y;
         
         return $this->render('BFSiteBundle:Home:logged.html.twig', array(
-          'listVideos' => $wallArray,
-          'listDuels' => $listDuels,
-          'listNotifications' => $listNotifications,
+          'lists' => $lists,
           'user' => $user,
+          'age' => $age,
           'rank' => $rank,
           'search' => $search->createView(),
         ));

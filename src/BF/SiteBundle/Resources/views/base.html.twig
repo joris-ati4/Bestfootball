@@ -60,7 +60,7 @@
 {% endblock %}
 
 {% block body %}
-  <div class="row" style="margin-top:50px;">
+  <div  id="flashmessage" class="row text-center" style="margin-top:50px;position: fixed;">
     {% for flash_message in app.session.flashbag.get('warning') %}
       <p class="bg-danger text-center" style="margin-top:100px;"> {{ flash_message }} </p>
     {% endfor %}
@@ -68,8 +68,17 @@
     {% for flash_message in app.session.flashbag.get('success') %}
       <p class="bg-success text-center" style="margin-top:100px;"> {{ flash_message }} </p>
     {% endfor %}
-    {% block content %}
-      {# here will come all the content of every page #}
-    {% endblock %}
   </div>
+  {% block content %}
+    {# here will come all the content of every page #}
+  {% endblock %}
+{% endblock %}
+
+
+{% block javascripts %}
+  <script>
+  $("#flashmessage").click(function() {
+      $( "div" ).slideUp();
+  });
+  </script>
 {% endblock %}

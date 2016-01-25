@@ -1,0 +1,21 @@
+<div class="followtabback">
+  <div class="followtitle text-center">
+    <h3 style="color:white;">Following</h3>
+  </div>
+  <div class="followcontent">
+    {% for follow in listFollows %}
+      <a href="{{ path('bf_site_profile', { 'username': follow.following.username }) }}">
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 vcenter">
+          <div class="row">
+            <img src="{{ follow.following.picture.src }}" alt="" style="width:100%;border-radius:100%"/>
+          </div>
+        </div><!--
+        --><div class="col-xs-6 col-sm-8 col-md-8 col-lg-8 vcenter">
+          <div class="row">
+            <p>{{ follow.following.username }}</p>
+          </div>
+        </div>
+      </a>
+    {% endfor %}
+  </div>
+</div>

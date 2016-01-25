@@ -1,0 +1,95 @@
+<!--Begin Profile top-->
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+  <div class="profiletop">
+    <div class="row">
+      <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5 vcenter text-center row">
+        <h1 class="text-center">{{ user.username }}</h1>
+        <div class="col-xs-6 col-sm-7 col-md-8 col-lg-8 vcenter text-center row">
+          <img src="img/profile.png" alt="" style="width:70%;border-radius:70%"/>
+        </div><!--
+        --><div class="col-xs-6 col-sm-5 col-md-4 col-lg-4 vcenter row">
+          <p style="text-align: left;">{{ age }} Years</br>{{ user.footballClub }}</br>{{ user.city }}, {{ user.country.name }}</p>
+        </div>
+      </div><!--
+   --><div class="col-xs-12 col-sm-7 col-md-7 col-lg-7 vcenter row">
+        <div class="row">
+          <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2 vcenter" style="padding:5px 5px;">
+            <div class="profilecounter text-center">
+              <div>
+                <p>1</br>Videos</p>
+              </div>
+            </div>
+          </div><!--
+       --><div class="col-xs-4 col-sm-4 col-md-2 col-lg-2 vcenter" style="padding:5px 5px;">
+            <div class="profilecounter text-center">
+              <div>
+                <p>1</br>Followers</p>
+              </div>
+            </div>
+          </div><!--
+       --><div class="col-xs-4 col-sm-4 col-md-2 col-lg-2 vcenter" style="padding:5px 5px;">
+            <div class="profilecounter text-center">
+              <div>
+                <p>1</br>Duel win's</p>
+              </div>
+            </div>
+          </div><!--
+       --><div class="col-xs-4 col-sm-4 col-md-2 col-lg-2 vcenter" style="padding:5px 5px;">
+            <div class="profilecounter text-center">
+              <div>
+                <p>N° {{ rank.rankinfo.globalrank }}</br>Global</p>
+              </div>
+            </div>
+          </div><!--
+       --><div class="col-xs-4 col-sm-4 col-md-2 col-lg-2 vcenter" style="padding:5px 5px;">
+            <div class="profilecounter text-center">
+              <div>
+                <p>N° {{ rank.rankinfo.countryrank }}</br>Country</p>
+              </div>
+            </div>
+          </div><!--
+       --><div class="col-xs-4 col-sm-4 col-md-2 col-lg-2 vcenter" style="padding:5px 5px;">
+            <div class="profilecounter text-center">
+              <div>
+                <p>N° {{ rank.rankinfo.staterank }}</br>State</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="row">
+              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <div class="row">
+                  <h2 class="text-center">Challenge:</h2>
+                  <h2 class="text-center">{{ rank.rankinfo.level }}</h2>
+                  <div class="progress text-center" style="margin-top:22px;">
+                    <div class="progress-bar {{ rank.rankinfo.style }} progress-bar-striped active" role="progressbar" aria-valuenow="{{ user.points }}" aria-valuemin="{{ rank.rankinfo.min }}" aria-valuemax="{{ rank.rankinfo.max }}" style="width:{{ rank.rankinfo.percent }}%;">
+                      {{ user.points }} Points
+                    </div>
+                  </div>
+                </div>
+              </div><!--
+           --><div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <div class="row">
+                  <h2 class="text-center">Duel: </h2>
+                  <h2 class="text-center">1BF</h2>
+                  {% if rank.duelrankinfo.level == 1 %}
+                    {% include "BFSiteBundle:Profile:1bf.html.twig" %}
+                  {% elseif rank.duelrankinfo.level == 2 %}
+                    {% include "BFSiteBundle:Profile:2bf.html.twig" %}
+                  {% elseif rank.duelrankinfo.level == 3 %}
+                    {% include "BFSiteBundle:Profile:3bf.html.twig" %}
+                  {% elseif rank.duelrankinfo.level == 4 %}
+                    {% include "BFSiteBundle:Profile:4bf.html.twig" %}
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--End Profile top-->
