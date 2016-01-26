@@ -200,7 +200,7 @@ class Video
         ));
 
 
-        $ffprobe = FFMpeg\FFProbe::create();
+        $ffprobe = FFProbe::create();
         $dimension = $ffprobe
             ->streams($this->getUploadRootDir().'/'.$this->id.'.'.$this->extension) // extracts streams informations
             ->videos()                      // filters video streams
