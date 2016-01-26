@@ -70,7 +70,7 @@ class Picture
         $this->src = '/uploads/img/'.$this->id.'.'.$this->file->guessExtension();
         $this->alt = $this->file->getClientOriginalName();
 
-        }
+      }
 
       /**
        * @ORM\PostPersist()
