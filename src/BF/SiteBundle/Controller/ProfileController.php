@@ -55,7 +55,12 @@ class ProfileController extends Controller
       $listFollows = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Follow')->findByFollowing($user);
     	$repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video');
     	$listVideos = $repository->listVideos($user);
+
+
+
+
       $listChallenges = $repository->listChallenges($user);
+      
       $lastVideo = $repository->lastVideo($user);
       $listDuels = $user->getDuels();
 
@@ -73,7 +78,7 @@ class ProfileController extends Controller
       $numberfollows = count($listFollows);
       $numbervideos = count($listVideos);
       
-      $profileTopInfo=array('followscount' => $numberfollows, 'videoscount' => $numberfollows, 'age' => $age);
+      $profileTopInfo=array('followscount' => $numberfollows, 'videoscount' => $numbervideos, 'age' => $age);
 
 
 

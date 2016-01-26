@@ -119,7 +119,8 @@ class VideoRepository extends \Doctrine\ORM\EntityRepository
 	       ->setParameter('user', $user)
 	     ->andWhere('v.type = :challenge')
 	       ->setParameter('challenge', 'challenge')
-	     ->orderBy('v.date', 'DESC')
+	     ->orderBy('v.challenge', 'DESC')
+	     ->addOrderBy('v.repetitions','DESC')
 	  ;
 
 	  return $qb

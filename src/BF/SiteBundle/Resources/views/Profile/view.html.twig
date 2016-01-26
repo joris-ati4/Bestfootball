@@ -51,11 +51,11 @@
           current = 0;
           video = $('#video');
           playlist = $('.playlist');
-          tracks = playlist.find('li a');
+          tracks = playlist.find('li .livevideo');
           len = tracks.length - 1;
           video[0].volume = .90;
           //video[0].play();
-          playlist.find('a').click(function(e){
+          playlist.find('.livevideo').click(function(e){
               e.preventDefault();
               link = $(this);
               current = link.parent().index();
@@ -65,9 +65,9 @@
               current++;
               if(current == len){
                   current = 0;
-                  link = playlist.find('a')[0];
+                  link = playlist.find('.livevideo')[0];
               }else{
-                  link = playlists.find('a')[current];    
+                  link = playlists.find('.livevideo')[current];    
               }
               run($(link),video[0]);
           });
