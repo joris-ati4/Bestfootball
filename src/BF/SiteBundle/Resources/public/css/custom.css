@@ -150,9 +150,40 @@ body{
     font-size:15px;
 }
 
+/* END OF THE PROFILE CSS*/
+
+/* BEGIN OF THE CHALLENGE CSS*/
+
+.btn-participate {
+    color: #fff;
+    background-color: #95cd36;
+    border-color: #85b82e;
+    width:80%;
+    position: absolute;
+    bottom:30px;
+    left:10%;
+}
+
+.btn-participate:hover {
+    color: #fff;
+    background-color: #76a329;
+    border-color: #678f24;
+    width:80%;
+    position: absolute;
+    bottom:30px;
+    left:10%;
+}
+
+.challenge{
+    background-color: #FFF;
+    height:300px;
+    padding: 10px 10px;
+    border: 2px solid;
+    border-color:#95cd36; 
+}
 
 
-
+/* END OF THE CHALLENGE CSS*/
 
 
 

@@ -58,7 +58,7 @@ class HomeController extends Controller
     	$repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Challenge');
         $listChallenges = $repository->findBy(array(),array('date' => 'desc'));
 
-		return $this->render('BFSiteBundle:Home:challenges.html.twig', array(
+		return $this->render('BFSiteBundle:Challenge:challenges.html.twig', array(
 	      'listChallenges' => $listChallenges,
           'search' => $search->createView(),
 	    ));
@@ -86,7 +86,7 @@ class HomeController extends Controller
         $repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Challenge');
         $listChallenges = $repository->findBy(array('partner' => '1'),array('date' => 'desc'));
 
-        return $this->render('BFSiteBundle:Home:challengespartner.html.twig', array(
+        return $this->render('BFSiteBundle:Challenge:challengespartner.html.twig', array(
           'listChallenges' => $listChallenges,
           'search' => $search->createView(),
             
@@ -126,7 +126,7 @@ class HomeController extends Controller
             5,
             0);
 
-		return $this->render('BFSiteBundle:Home:challengeView.html.twig', array(
+		return $this->render('BFSiteBundle:Challenge:challengeView.html.twig', array(
 	      'listVideos' => $listVideos,
 	      'challenge'  => $challenge,
           'rankUsers' => $rankUsers,
