@@ -1,0 +1,21 @@
+<div class="challengedescription">
+	<div class="challengetitle">
+	    <h3 style="color:white;">Ranking</h3>
+	</div>
+	<div class="challengecontent">
+	    <table class="table table-striped">
+	       	{% set i = 1 %}
+			{% for video in rankUsers %}
+			{# here we make the little thumbnails for every video #}
+				<tr style="height:50px;">
+					<td>{{ i }}</td>
+			        <td style="height:50px;"><img src="{{ video.user.picture.src }}" alt="{{ video.user.picture.alt }}" style="height:100%;border-radius:50%"/></td>
+			        <td>{{ video.user.username }}</td>
+			        <td>{{ video.score }}</td>
+			        <td>{{ video.repetitions }}</td>
+				</tr>
+				{% set i= i+1 %}
+			{% endfor %}
+	    </table>
+	</div>
+</div>
