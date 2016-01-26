@@ -19,8 +19,12 @@ class BFNotification
         ->setMessage($message)
         ->setUser($user)
         ->setWatched('0')
-        ->setDuel($duel)
       ;
+
+      if($duel != null){
+        $notification->setDuel($duel);
+      }
+
     return $notification;
   }
 }

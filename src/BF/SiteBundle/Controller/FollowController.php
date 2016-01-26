@@ -34,7 +34,7 @@ class FollowController extends Controller
         $checkNotification = $repository->checkNotification($following, $message);
         if($checkNotification === null ){
             $service = $this->container->get('bf_site.notification');
-            $duel = NULL;
+            $duel = null;
             $notification = $service->create($following, $message, $duel);
             $em->persist($notification);}
         $em->persist($follow)->flush();
