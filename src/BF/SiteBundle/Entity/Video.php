@@ -200,38 +200,16 @@ class Video
         // Open video
         $video = $ffmpeg->open($this->getUploadRootDir().'/'.$this->id.'.'.$this->extension);
 
-        $ffprobe = FFProbe::create();
-        $dimension = $ffprobe
-            ->streams($this->getUploadRootDir().'/'.$this->id.'.'.$this->extension) // extracts streams informations
-            ->videos()                      // filters video streams
-            ->first()                       // returns the first video stream
-            ->getDimensions();              // returns a FFMpeg\Coordinate\Dimension object
-
-        $height = $dimension -> getHeight();
-        $width = $dimension ->getWidth();
-
-        if($height >= $width ){ // the video is a vertical video. Need to add the black side bars
-            // Resize to 1280x720 to compact the video ! 
-            $video
-                ->filters()
-                ->resize(new Dimension(1280, 720), ResizeFilter::RESIZEMODE_SCALE_HEIGHT)
-                ->synchronize();
-            $video
+    
+        // Resize to 1280x720 to compact the video ! 
+        $video
+            ->filters()
+            ->resize(new Dimension(1280, 720), ResizeFilter::RESIZEMODE_SCALE_HEIGHT)
+            ->synchronize();
+        $video
             ->frame( TimeCode::fromSeconds(1))
             ->save('/var/www/bestfootball.fr/shared/web/uploads/videos/thumbnail/'.$this->id.'.jpg');
-        } 
-        elseif($height < $width ){ // the video is a width video. Need to add the black top and bottom bars
-            // Resize to 1280x720 to compact the video ! 
-            $video
-                ->filters()
-                ->resize(new Dimension(1280, 720), ResizeFilter::RESIZEMODE_SCALE_WIDTH)
-                ->synchronize();
-            $video
-            ->frame( TimeCode::fromSeconds(1))
-            ->save('/var/www/bestfootball.fr/shared/web/uploads/videos/thumbnail/'.$this->id.'.jpg');
-        }
         
-
         // Start transcoding and save video
         $video->save(new X264(),'/var/www/bestfootball.fr/shared/web/uploads/videos/'.$this->id.'.mp4');
 
@@ -240,8 +218,6 @@ class Video
         }
 
         
-
-
     }
 
     /**
