@@ -4,7 +4,7 @@
       <div class="followtitle text-center">
         <h3 style="color:white;">Latest Videos</h3>
       </div>
-      <div class="followcontent">
+      <div class="followcontent row">
         {% for video in lastVideos %}
           {% include "BFSiteBundle:Video:Thumbsquare.html.twig" with {"video": video} only %}
         {% endfor %}
