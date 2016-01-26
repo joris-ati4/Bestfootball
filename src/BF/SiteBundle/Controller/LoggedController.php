@@ -36,14 +36,13 @@ class LoggedController extends Controller
         $repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Follow');
         $listFollows = $repository->findByFollower($user);
 
-        
-        $numberfollowings = count($listFollows);
+        $numberfollows = count($listFollows);
 
-        if($numberfollowings > 5){
+        if($numberfollows > 5){
             $k = 5;
         }
         else{
-            $k = $numberfollowings;
+            $k = $numberfollows;
         }
 
         $repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video');
@@ -68,17 +67,22 @@ class LoggedController extends Controller
         $lists = array('lastVideos' => $lastVideos,'listNotifications' => $listNotifications,'listFollows' => $listFollows, 'listVideosFollows' => $listVideosFollows);
 
         //calculating the age of the user.
-        $birthday = $user->getBirthday();
-        $now = new \Datetime();
-        $interval = date_diff($now, $birthday);
+        $interval = date_diff(new \Datetime(), $user->getBirthday());
         $age = $interval->y;
+
+        //here we create an array with all the informations for the profileTop
+        $listVideos = $user->getVideos();        
+        $numbervideos = count($listVideos);
+      
+        $profileTopInfo=array('followscount' => $numberfollows, 'videoscount' => $numberfollows, 'age' => $age);
+
         
         return $this->render('BFSiteBundle:Home:logged.html.twig', array(
-            'index' => $i,
           'lists' => $lists,
           'user' => $user,
           'age' => $age,
           'rank' => $rank,
+          'profiletop' => $profileTopInfo,
           'search' => $search->createView(),
         ));
     }

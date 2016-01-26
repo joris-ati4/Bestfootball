@@ -4,26 +4,42 @@
     <div class="row">
       <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5 vcenter text-center row">
         <h1 class="text-center">{{ user.username }}</h1>
-        <div class="col-xs-6 col-sm-7 col-md-8 col-lg-8 vcenter text-center row">
-          <img src="{{ user.picture.src }}" alt="" style="width:70%;border-radius:70%"/>
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xs-offset-3 col-sm-offset-3 col-md-offset-3 col-lg-offset-3 vcenter text-center row">
+          <img src="{{ user.picture.src }}" alt="" style="width:100%;border-radius:100%"/>
         </div><!--
-        --><div class="col-xs-6 col-sm-5 col-md-4 col-lg-4 vcenter row">
-          <p style="text-align: left;">{{ age }} Years</br>{{ user.footballClub }}</br>{{ user.city }}, {{ user.country.name }}</p>
+        --><div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 vcenter row">
+          <p style="text-align: left;">{{ profiletop.age }} Years</br>{{ user.footballClub }}</br>{{ user.city }}, {{ user.country.name }}</p>
         </div>
+        {% if user.username != app.user.username %}
+          <a href="{{ path('bf_site_duel_create', {'username': user.username }) }}" class="btn btn-success">
+            <i class="glyphicon glyphicon-ok"></i>
+               Duel me !
+          </a>
+
+          <a id="follow" value="{{ user.id }}" class="btn btn-success">
+            <i class="glyphicon glyphicon-ok"></i>
+               Follow me !
+          </a>
+
+          <a id="unfollow" value="{{ user.id }}" class="btn btn-success">
+            <i class="glyphicon glyphicon-ok"></i>
+               Followed !
+          </a>
+        {% endif %}
       </div><!--
    --><div class="col-xs-12 col-sm-7 col-md-7 col-lg-7 vcenter row">
         <div class="row">
           <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2 vcenter" style="padding:5px 5px;">
             <div class="profilecounter text-center">
               <div>
-                <p>1</br>Videos</p>
+                <p>{{ profiletop.videoscount }}</br>Videos</p>
               </div>
             </div>
           </div><!--
        --><div class="col-xs-4 col-sm-4 col-md-2 col-lg-2 vcenter" style="padding:5px 5px;">
             <div class="profilecounter text-center">
               <div>
-                <p>1</br>Followers</p>
+                <p>{{ profiletop.followscount }}</br>Followers</p>
               </div>
             </div>
           </div><!--

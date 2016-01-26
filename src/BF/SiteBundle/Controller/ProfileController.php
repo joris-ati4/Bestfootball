@@ -51,15 +51,14 @@ class ProfileController extends Controller
       else{
         $follow = null;
       }
-    	$repository = $this->getDoctrine()->getManager()->getRepository('BFUserBundle:User');
-    	$user = $repository->findOneByUsername($username);
-      $repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Follow');
-      $listFollows = $repository->findByFollowing($user);
+    	$user = $this->getDoctrine()->getManager()->getRepository('BFUserBundle:User')->findOneByUsername($username);
+      $listFollows = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Follow')->findByFollowing($user);
     	$repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video');
     	$listVideos = $repository->listVideos($user);
       $listChallenges = $repository->listChallenges($user);
       $lastVideo = $repository->lastVideo($user);
       $listDuels = $user->getDuels();
+
 
       //retrieving the service
       $info = $this->container->get('bf_site.rankinfo');
@@ -67,19 +66,27 @@ class ProfileController extends Controller
       $duelRankInfo = $info->duelRankInfo($user);
 
       //calculating the age of the user.
-      $birthday = $user->getBirthday();
-      $now = new \Datetime();
-      $interval = date_diff($now, $birthday);
+      $interval = date_diff(new \Datetime(), $user->getBirthday());
       $age = $interval->y;
+
+      //here we create an array with all the informations for the profileTop
+      $numberfollows = count($listFollows);
+      $numbervideos = count($listVideos);
+      
+      $profileTopInfo=array('followscount' => $numberfollows, 'videoscount' => $numberfollows, 'age' => $age);
+
+
+
+
 
       $lists=array(  'listVideos' => $listVideos,'lastVideo' => $lastVideo,'listChallenges' => $listChallenges,'listFollows' => $listFollows,'listDuels' => $listDuels);
       $rank = array('rankinfo' => $rankinfo,'duelrankinfo' => $duelRankInfo);
     	return $this->render('BFSiteBundle:Profile:view.html.twig', array(
     	      'user' => $user,
-            'age' => $age,
             'rank' => $rank,
             'lists' => $lists,
             'follow' => $follow,
+            'profiletop' => $profileTopInfo,
             'search' => $search->createView(),
     	    ));
     }
