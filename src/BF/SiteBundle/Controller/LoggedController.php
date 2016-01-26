@@ -31,33 +31,48 @@ class LoggedController extends Controller
 
         $user = $this->container->get('security.context')->getToken()->getUser();
         $listNotifications = $user->getNotifications();
-
-        //we get users the user is following.
-        $repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Follow');
-        $listFollows = $repository->findByFollower($user);
+        $listFollows = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Follow')->findByFollower($user);
+        $lastVideos = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video')->latestVideos();
 
         $numberfollows = count($listFollows);
 
         if($numberfollows > 5){
             $k = 5;
+            $listVideosFollows =array();
+            $i = array_rand($listFollows, $k);
+            for($j = 0; $j < $k; $j++){
+                $index = $i[$j];
+                $following = $listFollows[$index]->getFollowing();
+                $listVideos = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video')->latestFollowingVideos($following);
+                $object=array('user' => $following, 'listVideos' => $listVideos);
+                array_push($listVideosFollows, $object);
+            }
         }
-        else{
+        elseif(1 < $numberfollows && $numberfollows < 5 ){
             $k = $numberfollows;
+            $listVideosFollows =array();
+            $i = array_rand($listFollows, $k);
+            for($j = 0; $j < $k; $j++){
+                $index = $i[$j];
+                $following = $listFollows[$index]->getFollowing();
+                $listVideos = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video')->latestFollowingVideos($following);
+                $object=array('user' => $following, 'listVideos' => $listVideos);
+                array_push($listVideosFollows, $object);
+            }
         }
-
-        $repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video');
-        $lastVideos = $repository->latestVideos();
-
-        //retrieve 5 followings and get the videos of them.
-        $listVideosFollows =array();
-        $i = array_rand($listFollows, $k);
-        for($j = 0; $j < $k; $j++){
-            $index = $i[$j];
-            $following = $listFollows[$index]->getFollowing();
-            $listVideos = $repository->latestFollowingVideos($following);
+        elseif($numberfollows == 1){ //only 1 follower
+            $listVideosFollows =array();
+            $following = $listFollows[0]->getFollowing();
+            $listVideos = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video')->latestFollowingVideos($following);
             $object=array('user' => $following, 'listVideos' => $listVideos);
             array_push($listVideosFollows, $object);
         }
+        else{ //no followers
+            $listVideosFollows =array();
+        }
+
+        //retrieve 5 followings and get the videos of them.
+        
 
         //retrieving the service
         $info = $this->container->get('bf_site.rankinfo');
@@ -74,7 +89,7 @@ class LoggedController extends Controller
         $listVideos = $user->getVideos();        
         $numbervideos = count($listVideos);
       
-        $profileTopInfo=array('followscount' => $numberfollows, 'videoscount' => $numberfollows, 'age' => $age);
+        $profileTopInfo=array('followscount' => $numberfollows, 'videoscount' => $numbervideos, 'age' => $age);
 
         
         return $this->render('BFSiteBundle:Home:logged.html.twig', array(
