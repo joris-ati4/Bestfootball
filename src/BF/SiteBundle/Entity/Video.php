@@ -198,21 +198,15 @@ class Video
             'timeout'          => 3600, // The timeout for the underlying process
             'ffmpeg.threads'   => 12,   // The number of threads that FFMpeg should use
         ));
-
+        // Open video
+        $video = $ffmpeg->open($this->getUploadRootDir().'/'.$this->id.'.'.$this->extension);
 
         $ffprobe = FFProbe::create();
         $dimension = $ffprobe
-            ->streams($this->getUploadRootDir().'/'.$this->id.'.'.$this->extension) // extracts streams informations
-            ->videos()                      // filters video streams
-            ->first()                       // returns the first video stream
-            ->getDimensions();              // returns a FFMpeg\Coordinate\Dimension object
-
+                ->getDimensions();              // returns a FFMpeg\Coordinate\Dimension object
 
         $height = $dimension -> getHeight();
         $width = $dimension ->getWidth();
-
-        // Open video
-        $video = $ffmpeg->open($this->getUploadRootDir().'/'.$this->id.'.'.$this->extension);
 
         if($height >= $width ){ // the video is a vertical video. Need to add the black side bars
             // Resize to 1280x720 to compact the video ! 
