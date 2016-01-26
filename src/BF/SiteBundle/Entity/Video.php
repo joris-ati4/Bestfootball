@@ -231,8 +231,11 @@ class Video
 
         // Start transcoding and save video
         $video->save(new X264(),'/var/www/bestfootball.fr/shared/web/uploads/videos/'.$this->id.'.mp4');
-        unlink($this->getUploadRootDir().'/'.$this->id.'.'.$this->extension);
-            
+
+        if($this->extension != 'mp4'){
+            unlink($this->getUploadRootDir().'/'.$this->id.'.'.$this->extension);
+        }
+        
         // Open the new video to take a thumbnail.
         $video = $ffmpeg->open('/var/www/bestfootball.fr/shared/web/uploads/videos/'.$this->id.'.mp4');
 
