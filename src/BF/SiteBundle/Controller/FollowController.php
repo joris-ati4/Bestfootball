@@ -23,21 +23,29 @@ class FollowController extends Controller
         $following = $repository->find($id);
         $repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Follow');
         $follow = $repository->checkFollow($follower, $following);
+
         if($follow !== null ){//the user isn't following this user. we create a reponse.
-            throw new NotFoundHttpException("You are already following this user.");}
+            throw new NotFoundHttpException("You are already following this user.");
+        }
+
         $follow = new Follow();
-        $follow->setDate(new \Datetime())->setFollower($follower)->setFollowing($following);
+        $follow
+            ->setDate(new \Datetime())
+            ->setFollower($follower)
+            ->setFollowing($following)
+        ;
+
         //send a notification to the following
             //if the user already had a notification like this we do not send another one.
         $message = $follower->getUsername().' is now following you!';
-        $repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Notification');
-        $checkNotification = $repository->checkNotification($following, $message);
+        $checkNotification = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Notification')->checkNotification($following, $message);
         if($checkNotification === null ){
             $service = $this->container->get('bf_site.notification');
-            $duel = null;
-            $notification = $service->create($following, $message, $duel);
-            $em->persist($notification);}
-        $em->persist($follow)->flush();
+            $notification = $service->create($following, $message, null);
+            $em->persist($notification);
+        }
+        $em->persist($follow);
+        $em->flush();
         return new Response();
     }
     public function unfollowUserAction(request $request)
