@@ -207,14 +207,18 @@ class Video
             ->resize(new Dimension(1280, 720), ResizeFilter::RESIZEMODE_SCALE_HEIGHT)
             ->synchronize();
         $video
-            ->frame( TimeCode::fromSeconds(1))
+            ->frame( TimeCode::fromSeconds(2))
             ->save('/var/www/bestfootball.fr/shared/web/uploads/videos/thumbnail/'.$this->id.'.jpg');
         
         // Start transcoding and save video
-        $video->save(new X264(),'/var/www/bestfootball.fr/shared/web/uploads/videos/'.$this->id.'.mp4');
+        
 
         if($this->extension != 'mp4'){
+            $video->save(new X264(),'/var/www/bestfootball.fr/shared/web/uploads/videos/'.$this->id.'.mp4');
             unlink($this->getUploadRootDir().'/'.$this->id.'.'.$this->extension);
+        }
+        else{
+            $video->save('/var/www/bestfootball.fr/shared/web/uploads/videos/'.$this->id.'.mp4');
         }
 
         
