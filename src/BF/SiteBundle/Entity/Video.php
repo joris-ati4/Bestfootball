@@ -8,7 +8,7 @@ use BF\UserBundle\Entity;
 use BF\SiteBundle\Entity\Challenge;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use FFMpeg\FFMpeg;
-use FFmpeg\FFProbe;
+use FFMpeg\FFProbe;
 use FFMpeg\Coordinate\Dimension;
 use FFMpeg\Filters\Video\ResizeFilter;
 use FFMpeg\Format\Video\X264;
