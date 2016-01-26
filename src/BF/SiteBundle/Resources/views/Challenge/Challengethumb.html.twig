@@ -4,7 +4,7 @@
 			<div class="row">
 				</br>
 				<h3 class="text-center">{{ challenge.title }}</h3>
-				<img src="{{ challenge.imageUrl }}" alt="thumbnail of {{ challenge.title }}" style="width:100%" class="text-center">
+				<img src="{{ challenge.imageUrl }}" alt="thumbnail of {{ challenge.title }}" style="max-width:90%;max-height:150px;" class="text-center">
 								
 				<button onclick="location.href='{{ path('bf_site_challengeview', {'id': challenge.id}) }}'" class="btn btn-participate" type="submit">Participate</button>
 			</div>

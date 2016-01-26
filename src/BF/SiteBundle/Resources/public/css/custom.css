@@ -176,7 +176,7 @@ body{
 
 .challenge{
     background-color: #FFF;
-    height:300px;
+    min-height:350px;
     padding: 10px 10px;
     border: 2px solid;
     border-color:#95cd36; 
