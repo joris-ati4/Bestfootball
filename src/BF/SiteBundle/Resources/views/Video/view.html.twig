@@ -9,30 +9,166 @@
   Videos - {{ parent() }}
 {% endblock %}
 
-{% block body %}
-  <div class="row">
-  {# On définit un sous-titre commun à toutes les pages du bundle, par exemple #}
-  	<div class="col-xs-10 col-sm-9 col-md-9 col-lg-9">
-  	<video width="100%" controls autoplay>
-		  <source src="/uploads/videos/{{video.id}}.{{ video.source }}" type="video/mp4">
-		Your browser does not support the video tag.
-		</video>
-		 <h2>{{ video.title }}</h2><p style="font-size:14px;">{{ video.user.username }} {{ video.date|date('d-m-Y')}}</p>
-		{{ video.description }}
-  </br>
-    
-    Challenge : {{ video.challenge.title }}
+{% block content %}
+  <input type="hidden" name="user" id="user" value="{{ video.user.id }}">
+<section class="homepage">
+  <div class="row" style="margin-top:50px;">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10 col-lg-offset-1">
+      <div class="row">
+        {# Begin of the video page #}
+        <div class="col-xs-12 col-sm-12 col-md-7 col-lg-8">
+          <div class="row">
+            {# the video #}
+            <div style="width:100%;max-height:400px;background-color:black;margin-bottom:20px;">
+              <video width="100%" id="video" controls style="max-width:100%;max-height:400px;">
+                  <source src="/uploads/videos/{{ video.id}}.{{ video.source }}" type="video/mp4">
+                    Your browser does not support the video tag.
+              </video>
+            </div>
+            {# the description #}
+            <div style="width:100%;background-color:white;margin-bottom:20px;padding:10px 10px;min-height:200px;">
+              <div class="row">
+                <h1 style="font-size:35px;margin-left:15px;">{{ video.title }}</h1>
 
-  	</div>
-  	<div class="col-xs-10 col-sm-3 col-md-3 col-lg-3">
 
-  	</div>
-</div>
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 vcenter row">
+                  <div class="col-xs-4 col-sm-3 col-md-3 col-lg-2 vcenter row">
+                      <img src="{{ video.user.picture.src }}" alt="{{ video.user.picture.alt }}" style="width:100%;border-radius:50%;"/>
+                  </div><!--
+                --><div class="col-xs-8 col-sm-8 col-md-9 col-lg-10 vcenter">
+                    <p style="font-size:14px;"><a href="{{ path('bf_site_profile', { 'username': video.user.username }) }}" style=""> {{ video.user.username }}</a></p>
+                    {% if video.user.username != app.user.username %}
+                      <!-- Button to duel the user -->
+                      
+                      <!-- Button to follow the user -->
+                      <a id="follow" value="{{ video.user.id }}" class="btn btn-success">
+                        <i class="glyphicon glyphicon-ok"></i>
+                           Follow me !
+                      </a>
+
+                      <a id="unfollow" value="{{ video.user.id }}" class="btn btn-success">
+                        <i class="glyphicon glyphicon-ok"></i>
+                           Followed !
+                      </a>
+                      <a href="{{ path('bf_site_duel_create', {'username': video.user.username }) }}" class="btn btn-success">
+                        <i class="glyphicon glyphicon-ok"></i>
+                           Duel me !
+                      </a>
+                    {% endif %}
+                  </div>
+                </div><!--
+              --><div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 vcenter row">
+                  <p>
+                    {{ video.description }}
+                  </p>
+                  {% if video.type == 'challenge'%}
+                    <p>Challenge: {{ video.challenge.title }}</p>
+                    <button onclick="location.href='{{ path('bf_site_challengeview', {'id': video.challenge.id}) }}'" class="btn btn-success" type="submit" style="width:50%;">To the challenge!</button>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+            <!-- End of the description -->
+          </div>
+        </div>
+        <!-- End of the video section -->
+        <div class="col-xs-12 col-sm-12 col-md-5 col-lg-4">
+          <div class="row">
+            {# the list with videos #}
+            {% for video in listVideos %}
+              <div class="row">
+                <a href="{{ path('bf_site_video', { 'id': video.id }) }}">
+                  <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 vcenter">
+                    <img src="{{ video.thumbUrl }}" alt="{{ video.thumbAlt }}" style="max-height:50px;max-width:100%"/>
+                  </div><!--
+                  --><div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 vcenter">
+                    <p style="font-size:14px;">{{ video.title }},</br> {{ video.date|date('d-m-Y')}} by <a href="{{ path('bf_site_profile', { 'username': video.user.username }) }}" style=""> {{ video.user.username }} </a></p>
+                  </div>
+                </a>
+              </div>    
+          {% endfor %}
+          </div>
+        </div>
 
 
-  	
-  <hr>
 
-  {# On définit un nouveau bloc, que les vues du bundle pourront remplir #}
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block javascripts %}
+{% if follow is not null %}
+  {% if follow == 0 %}
+  <script>
+    $("#unfollow").hide();
+    $("#follow").click(function(){ 
+        var id = $("#user").val();
+        var DATA = 'id=' + id;
+        $.ajax({
+            type: "POST",
+            url: "{{ path('bf_site_follow')}}",
+            data: DATA,
+            cache: false,
+            success: function(){
+               $('#unfollow').show();
+               $("#follow").hide();
+               $("#unfollow").click(function(){ 
+                var id = $("#user").val();
+                var DATA = 'id=' + id;
+                $.ajax({
+                    type: "POST",
+                    url: "{{ path('bf_site_unfollow')}}",
+                    data: DATA,
+                    cache: false,
+                    success: function(){
+                       $('#follow').show();
+                       $("#unfollow").hide();
+                    }
+                });    
+                return false;
+            });
+            }
+        });    
+        return false;
+    });
+  </script>
+  {% elseif follow == 1 %}
+  <script>
+    $("#follow").hide();
+    $("#unfollow").click(function(){ 
+        var id = $("#user").val();
+        var DATA = 'id=' + id;
+        $.ajax({
+            type: "POST",
+            url: "{{ path('bf_site_unfollow')}}",
+            data: DATA,
+            cache: false,
+            success: function(){
+               $('#follow').show();
+               $("#unfollow").hide();
+               $("#follow").click(function(){ 
+                var id = $("#user").val();
+                var DATA = 'id=' + id;
+                $.ajax({
+                    type: "POST",
+                    url: "{{ path('bf_site_follow')}}",
+                    data: DATA,
+                    cache: false,
+                    success: function(){
+                       $('#unfollow').show();
+                       $("#follow").hide();
+                    }
+                });    
+                return false;
+            });
+            }
+        });    
+        return false;
+    });
+  </script>
+  {% endif %}
+{% endif %}
 
 {% endblock %}

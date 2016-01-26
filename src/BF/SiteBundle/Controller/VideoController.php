@@ -38,17 +38,40 @@ class VideoController extends Controller
             $username = $user->getUsername();
             return $this->redirect($this->generateUrl('bf_site_profile', array('username' => $username)));
         }
-
-
         $em = $this->getDoctrine()->getManager();
 	    // On récupère $id de la video
 	    $video = $em->getRepository('BFSiteBundle:Video')->find($id);
+
+        //checking if the user is following the current user
+	    $follower = $this->container->get('security.context')->getToken()->getUser();
+	    $following = $em->getRepository('BFUserBundle:User')->findOneByUsername($video->getUser()->getUsername());
+
+	    if($follower->getUsername() != $following->getUsername()){ //the user is not viewing it's own profile page
+	      $repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Follow');
+	      $follow = $repository->checkFollow($follower, $following);
+	      if($follow === null ){
+	        $follow = 0;
+	      }
+	      else{
+	        $follow =1;
+	      }
+	    }
+	    else{
+	      $follow = null;
+	    }
+
+	    //retrieving the random videos through the service
+	    //retrieving the service
+      	$random = $this->container->get('bf_site.randomvideos');
+      	$listVideos = $random->randomize($video);
 
 	    if (null === $video) {
 	      throw new NotFoundHttpException("La video n'existe pas.");
 	    }
 	    return $this->render('BFSiteBundle:Video:view.html.twig', array(
-	      'video'           => $video,
+	      'video'  => $video,
+	      'listVideos' => $listVideos,
+	      'follow' => $follow,
 	      'search' => $search->createView(),
 	    ));
     }

@@ -2,6 +2,10 @@ services:
     bf_site.rankinfo:
         class: BF\SiteBundle\Userinfo\BFUserinfo
         arguments: [@doctrine.orm.entity_manager]
+    bf_site.randomvideos:
+        class: BF\SiteBundle\Randomvideos\BFRandomvideos
+        arguments: [@doctrine.orm.entity_manager]
+
     em:
         alias: doctrine.orm.entity_manager
 
