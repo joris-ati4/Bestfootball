@@ -35,6 +35,8 @@ class LoggedController extends Controller
         //we get users the user is following.
         $repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Follow');
         $listFollows = $repository->findByFollower($user);
+
+        
         $numberfollowings = count($listFollows);
 
         if($numberfollowings > 5){
