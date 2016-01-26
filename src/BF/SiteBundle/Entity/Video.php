@@ -158,7 +158,7 @@ class Video
       $this->extension = $this->file->guessExtension();
       // Et on génère l'attribut alt de la balise <img>, à la valeur du nom du fichier sur le PC de l'internaute
       $this->thumbAlt = $this->file->getClientOriginalName();
-      $this->thumbUrl = '/var/www/bestfootball.fr/shared/web/uploads/img'.$this->id.'.jpg';
+      $this->thumbUrl = '/uploads/img/'.$this->id.'.jpg';
     }
 
     /**
@@ -190,7 +190,7 @@ class Video
 
       //the file is stocked in /Foot/web/uploads/videos/ + filename
 
-      //this is the code to convert the file we receive into webm and mp4. We need to change to accept all file sizes.
+      //this is the code to convert the file we receive into mp4. We need to change to accept all file sizes.
         $ffmpeg = FFMpeg::create(array(
             'ffmpeg.binaries'  => '/home/joris/bin/ffmpeg',
             'ffprobe.binaries' => '/home/joris/bin/ffprobe',
@@ -198,26 +198,48 @@ class Video
             'ffmpeg.threads'   => 12,   // The number of threads that FFMpeg should use
         ));
 
+
+        $ffprobe = FFMpeg\FFProbe::create();
+        $dimension = $ffprobe
+            ->streams($this->getUploadRootDir().'/'.$this->id.'.'.$this->extension) // extracts streams informations
+            ->videos()                      // filters video streams
+            ->first()                       // returns the first video stream
+            ->getDimensions();              // returns a FFMpeg\Coordinate\Dimension object
+
+
+        $height = $dimension -> getHeight();
+        $width = $dimension ->getWidth();
+
         // Open video
         $video = $ffmpeg->open($this->getUploadRootDir().'/'.$this->id.'.'.$this->extension);
+
+        if($height >= $width ){ // the video is a vertical video. Need to add the black side bars
+            // Resize to 1280x720 to compact the video ! 
+            $video
+                ->filters()
+                ->resize(new Dimension(1280, 720), ResizeFilter::RESIZEMODE_SCALE_HEIGHT)
+                ->synchronize();
+        } 
+        elseif($height < $width ){ // the video is a width video. Need to add the black top and bottom bars
+            // Resize to 1280x720 to compact the video ! 
+            $video
+                ->filters()
+                ->resize(new Dimension(1280, 720), ResizeFilter::RESIZEMODE_SCALE_WIDTH)
+                ->synchronize();
+        }
+
+        // Start transcoding and save video
+        $video->save(new X264(),'/var/www/bestfootball.fr/shared/web/uploads/videos/'.$this->id.'.mp4');
+        unlink($this->getUploadRootDir().'/'.$this->id.'.'.$this->extension);
+            
+        // Open the new video to take a thumbnail.
+        $video = $ffmpeg->open('/var/www/bestfootball.fr/shared/web/uploads/videos/'.$this->id.'.mp4');
 
         $video
             ->frame( TimeCode::fromSeconds(1))
             ->save('/var/www/bestfootball.fr/shared/web/uploads/videos/thumbnail/'.$this->id.'.jpg');
-        // Resize to 1280x720 to compact the video ! 
-        $video
-            ->filters()
-            ->resize(new Dimension(1280, 720), ResizeFilter::RESIZEMODE_INSET)
-            ->synchronize();
 
-        // Start transcoding and save video
-            if($this->extension != 'mp4')
-            {
-                 $video->save(new X264(),'/var/www/bestfootball.fr/shared/web/uploads/videos/'.$this->id.'.mp4');
-                 unlink($this->getUploadRootDir().'/'.$this->id.'.'.$this->extension);
-            }
 
-       
     }
 
     /**
