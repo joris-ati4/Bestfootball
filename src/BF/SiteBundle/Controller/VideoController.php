@@ -220,14 +220,12 @@ class VideoController extends Controller
 			    			//now we look at the video with the highest repitions and we give 50 points to the winner.
 			    			//get the video of the other player
 			    			if($userRole == 'host'){
-			    				$repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video');
-			    				$otherVideo = $repository->duelGuestVideo($guest,$duel);
+			    				$otherVideo = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video')->duelGuestVideo($guest,$duel);
 			    				$hostscore = $video->getRepetitions();
 			    				$guestscore = $otherVideo->getRepetitions();
 			    			}
 			    			elseif($userRole == 'guest'){
-			    				$repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video');
-			    				$otherVideo = $repository->duelHostVideo($host,$duel);
+			    				$otherVideo = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video')->duelHostVideo($host,$duel);
 			    				$guestscore = $video->getRepetitions();
 			    				$hostscore = $otherVideo->getRepetitions();
 			    			}
@@ -237,6 +235,8 @@ class VideoController extends Controller
 						    	
     							$points = $host->getDuelPoints() + 100;
 			      				$host->setDuelPoints($points);
+			      				$wins = $host->getDuelWins() + 1;
+			      				$host->setDuelWins($wins);
 			      				$duel->setWinner($hostUsername);
 			      				$em->persist($duel);
 			      				$em->persist($host);
@@ -257,6 +257,8 @@ class VideoController extends Controller
 
     							$points = $guest->getDuelPoints() + 100;
 			      				$guest->setDuelPoints($points);
+			      				$wins = $guest->getDuelWins() + 1;
+			      				$guest->setDuelWins($wins);
 			      				$duel->setWinner($guestUsername);
 			      				$em->persist($duel);
 			      				$em->persist($guest);

@@ -88,8 +88,9 @@ class LoggedController extends Controller
         //here we create an array with all the informations for the profileTop
         $listVideos = $user->getVideos();        
         $numbervideos = count($listVideos);
+        $duelwins = $user->getDuelWins();
       
-        $profileTopInfo=array('followscount' => $numberfollows, 'videoscount' => $numbervideos, 'age' => $age);
+        $profileTopInfo=array('followscount' => $numberfollows, 'videoscount' => $numbervideos, 'age' => $age,'duelwins' => $duelwins);
 
         
         return $this->render('BFSiteBundle:Home:logged.html.twig', array(

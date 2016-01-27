@@ -145,6 +145,21 @@ class VideoRepository extends \Doctrine\ORM\EntityRepository
 	    ->getResult()
 	  ;
 	}
+	public function randomVideos()
+	{
+	  $qb = $this->createQueryBuilder('v');
+
+	  $qb->Where('v.type = :challenge OR v.type = :freestyle')
+	       ->setParameter('challenge', 'challenge')
+	       ->setParameter('freestyle', 'freestyle')
+	     ->orderBy('v.date', 'DESC')
+	  ;
+
+	  return $qb
+	    ->getQuery()
+	    ->getResult()
+	  ;
+	}
 	public function listHomeVideos($user)
 	{
 	  $qb = $this->createQueryBuilder('v');

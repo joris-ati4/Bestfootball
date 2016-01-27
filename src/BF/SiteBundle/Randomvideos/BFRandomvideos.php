@@ -22,7 +22,7 @@ class BFRandomvideos
     //selecting the videos for the videolist.
 	$listVideos = array();
 
-	$videos = $this->em->getRepository('BFSiteBundle:Video')->findByUser($video->getUser()); //4 videos of the current user.
+	$videos = $this->em->getRepository('BFSiteBundle:Video')->listVideos($video->getUser()); //4 videos of the current user.
 	$numberVideos = count($videos);
 	if($numberVideos > 4){
 	    $challengeVideos =array();
@@ -64,7 +64,7 @@ class BFRandomvideos
 	            //push the videos to the listVideos array
 	        }
 	        //random 6 videos
-		 	$videos = $this->em->getRepository('BFSiteBundle:Video')->findAll();
+		 	$videos = $this->em->getRepository('BFSiteBundle:Video')->randomVideos();
 		    $i = array_rand($videos, 6);
 		    $randomVideos=array();
 	        for($j = 0; $j < 6; $j++){
@@ -74,7 +74,7 @@ class BFRandomvideos
 	        }
         }
     else{ //select 11 random videos.
-		$videos = $this->em->getRepository('BFSiteBundle:Video')->findAll();
+		$videos = $this->em->getRepository('BFSiteBundle:Video')->randomVideos();
 		$numberVideos = count($videos);
 	    $challengeVideos=array();
 	        if($numberVideos > 11){

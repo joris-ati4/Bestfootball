@@ -83,8 +83,8 @@ class ProfileController extends Controller
       //here we create an array with all the informations for the profileTop
       $numberfollows = count($listFollows);
       $numbervideos = count($listVideos);
-      
-      $profileTopInfo=array('followscount' => $numberfollows, 'videoscount' => $numbervideos, 'age' => $age);
+      $duelwins = $user->getDuelWins();
+      $profileTopInfo=array('followscount' => $numberfollows, 'videoscount' => $numbervideos, 'age' => $age,'duelwins' => $duelwins);
 
 
 

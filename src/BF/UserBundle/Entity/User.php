@@ -105,6 +105,11 @@ class User extends BaseUser
     private $points;
 
     /**
+    * @ORM\Column(name="duel_wins", type="integer", length=100, nullable=true)
+    */
+    private $duelWins;
+
+    /**
     * @ORM\Column(name="duel_points", type="integer", length=100, nullable=true)
     */
     private $duelPoints;
@@ -668,5 +673,29 @@ class User extends BaseUser
     public function getGoogleAccessToken()
     {
         return $this->google_access_token;
+    }
+
+    /**
+     * Set duelWins
+     *
+     * @param integer $duelWins
+     *
+     * @return User
+     */
+    public function setDuelWins($duelWins)
+    {
+        $this->duelWins = $duelWins;
+
+        return $this;
+    }
+
+    /**
+     * Get duelWins
+     *
+     * @return integer
+     */
+    public function getDuelWins()
+    {
+        return $this->duelWins;
     }
 }

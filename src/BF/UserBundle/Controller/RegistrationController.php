@@ -43,6 +43,8 @@ class RegistrationController extends BaseController
         $user
             ->setEnabled(true)
             ->setPicture($picture)
+            ->setDuelWins(0)
+            ->setPoints(0)
         ;
 
 
