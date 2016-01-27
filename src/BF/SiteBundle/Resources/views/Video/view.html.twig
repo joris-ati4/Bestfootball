@@ -10,7 +10,7 @@
 {% endblock %}
 
 {% block content %}
-  <input type="hidden" name="user" id="user" value="{{ video.user.id }}">
+<input type="hidden" name="user" id="user" value="{{ video.user.id }}">
 <section class="homepage">
   <div class="row" style="margin-top:50px;">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10 col-lg-offset-1">
@@ -29,6 +29,7 @@
             <div style="width:100%;background-color:white;margin-bottom:20px;padding:10px 10px;min-height:200px;">
               <div class="row">
                 <h1 style="font-size:35px;margin-left:15px;">{{ video.title }}</h1>
+                <p style="margin-left:15px;">{{ video.date|date('d-m-Y')}}</p>
 
 
                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 vcenter row">
@@ -76,17 +77,8 @@
           <div class="row">
             {# the list with videos #}
             {% for video in listVideos %}
-              <div class="row">
-                <a href="{{ path('bf_site_video', { 'id': video.id }) }}">
-                  <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 vcenter">
-                    <img src="{{ video.thumbUrl }}" alt="{{ video.thumbAlt }}" style="max-height:50px;max-width:100%"/>
-                  </div><!--
-                  --><div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 vcenter">
-                    <p style="font-size:14px;">{{ video.title }},</br> {{ video.date|date('d-m-Y')}} by <a href="{{ path('bf_site_profile', { 'username': video.user.username }) }}" style=""> {{ video.user.username }} </a></p>
-                  </div>
-                </a>
-              </div>    
-          {% endfor %}
+              {% include "BFSiteBundle:Video:Thumbrectangle.html.twig" with {"video": video} only %}
+            {% endfor %}
           </div>
         </div>
 
