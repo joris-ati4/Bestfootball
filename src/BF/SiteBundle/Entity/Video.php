@@ -207,7 +207,7 @@ class Video
             ->resize(new Dimension(1280, 720), ResizeFilter::RESIZEMODE_SCALE_HEIGHT)
             ->synchronize();
         $video
-            ->frame( TimeCode::fromSeconds(2))
+            ->frame( TimeCode::fromSeconds(1))
             ->save('/var/www/bestfootball.fr/shared/web/uploads/videos/thumbnail/'.$this->id.'.jpg');
         
         // Start transcoding and save video

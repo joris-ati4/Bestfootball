@@ -12,67 +12,106 @@
 {% endblock %}
 
 {% block content %}
+<section class="homepage">
+  <div class="row" style="min-height:65vh;margin-top:50px;">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10 col-lg-offset-1">
+      <div class="row">
+        <!--Begin of the upload page -->
+        <div class="col-xs-12 col-sm-8 col-md-6 col-lg-6 col-sm-offset-2 col-md-offset-3 col-lg-offset-3" style="margin-top:50px;">
+          <div class="challengedescription text-center">
+            <div class="challengetitle">
+              <h3 style="color:white;">Upload your video.</h3>
+            </div>
+            <div class="challengecontent text-center">
+              {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+              {# Les erreurs générales du formulaire. #}
+              {{ form_errors(form) }}
+              <div class="form-group">
+                {# Génération du label. #}
+                {{ form_label(form.title, "Title:", {'label_attr': {'class': 'col-xs-12 col-sm-4 col-md-3 col-lg-3 control-label'}}) }}
+                {# Affichage des erreurs pour ce champ précis. #}
+                {{ form_errors(form.title) }}
+                <div class="col-xs-12 col-sm-8 col-md-9 col-lg-9">
+                  {# Génération de l'input. #}
+                  {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
+                </div>
+              </div>
 
-  
-<section class="profile">
-  <div class="row">
-    <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">
-      <div class="challengedescription text-center" style="margin:150px 0;">
-        <div class="challengetitle">
-          <h3 style="color:white;">Upload your video.</h3>
+              {# Idem pour un autre champ. #}
+              <div class="form-group">
+                {{ form_label(form.description, "Description:", {'label_attr': {'class': 'col-xs-12 col-sm-4 col-md-3 col-lg-3 control-label'}}) }}
+                {{ form_errors(form.description) }}
+                <div class="col-xs-12 col-sm-8 col-md-9 col-lg-9">
+                  {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+                </div>
+              </div>
+
+              <div class="form-group">
+                {{ form_label(form.repetitions, "Repetitions:", {'label_attr': {'class': 'col-xs-12 col-sm-4 col-md-3 col-lg-3 control-label'}}) }}
+                {{ form_errors(form.repetitions) }}
+                <div class="col-xs-12 col-sm-8 col-md-9 col-lg-9">
+                  {{ form_widget(form.repetitions, {'attr': {'class': 'form-control'}}) }}
+                </div>
+              </div>
+
+              <div class="form-group">
+                {{ form_label(form.file, "File:", {'label_attr': {'class': 'col-xs-12 col-sm-4 col-md-3 col-lg-3 control-label'}}) }}
+                {{ form_errors(form.file) }}
+                <div class="col-xs-12 col-sm-8 col-md-9 col-lg-9">
+                  {{ form_widget(form.file, {'attr': {'class': 'form-control'}}) }}
+                </div>
+              </div>
+              <input type="submit" value="Upload" id="submit" class="btn btn-upload" />
+
+
+              <div id="bar" class='progress_outer' style="display:none">
+                  <div id='progress' class='progress' style="width:20%;background:#DEDEDE;height:20px;"></div>
+              </div>
+
+
+
+
+
+              </br>
+              <a href="{{ path('bf_site_homepage') }}" class="btn btn-danger" style="font-size:10px;">
+                <i class="glyphicon glyphicon-remove"></i>
+                  Cancel
+              </a>
+            {# Pour le bouton, pas de label ni d'erreur, on affiche juste le widget #}
+            {{ form_rest(form) }}
+            {# Fermeture de la balise <form> du formulaire HTML #}
+            {{ form_end(form) }}
+            </div>
+          </div>
         </div>
-        <div class="challengecontent">
-          {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
-          {# Les erreurs générales du formulaire. #}
-          {{ form_errors(form) }}
-          <div class="form-group">
-            {# Génération du label. #}
-            {{ form_label(form.title, "Title:", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-            {# Affichage des erreurs pour ce champ précis. #}
-            {{ form_errors(form.title) }}
-            <div class="col-sm-4">
-              {# Génération de l'input. #}
-              {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
-            </div>
-          </div>
-
-          {# Idem pour un autre champ. #}
-          <div class="form-group">
-            {{ form_label(form.description, "Description:", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-            {{ form_errors(form.description) }}
-            <div class="col-sm-4">
-              {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
-            </div>
-          </div>
-
-          <div class="form-group">
-            {{ form_label(form.repetitions, "Repetitions:", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-            {{ form_errors(form.repetitions) }}
-            <div class="col-sm-4">
-              {{ form_widget(form.repetitions, {'attr': {'class': 'form-control'}}) }}
-            </div>
-          </div>
-
-          <div class="form-group">
-            {{ form_label(form.file, "File:", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-            {{ form_errors(form.file) }}
-            <div class="col-sm-4">
-              {{ form_widget(form.file, {'attr': {'class': 'form-control'}}) }}
-            </div>
-          </div>
-          <input type="submit" value="Upload" class="btn btn-warning" />
-
-          <a href="{{ path('bf_site_homepage') }}" class="btn btn-danger">
-            <i class="glyphicon glyphicon-edit"></i>
-              Cancel
-            </a>
-        {# Pour le bouton, pas de label ni d'erreur, on affiche juste le widget #}
-        {{ form_rest(form) }}
-        {# Fermeture de la balise <form> du formulaire HTML #}
-        {{ form_end(form) }}
-        </div>
+        <!--END of the upload page -->
       </div>
     </div>
   </div>
 </section>
+{% endblock %}
+{% block javascripts %}
+  <script type="text/javascript">
+    var submit = document.getElementById('submit'), 
+        progress = document.getElementById('progress'),
+        bar = document.getElementById('bar');
+
+        submit.addEventListener('click', upload);
+        
+      var upload = function(){
+
+        submit.style.display = 'none';
+        bar.style.display='block';
+
+
+        request.upload.addEventListener('progress', function(e){
+        progress.style.width = Math.ceil(e.loaded/e.total) * 100 + '%';
+        }, false);
+      } 
+
+      
+
+
+
+  </script>
 {% endblock %}

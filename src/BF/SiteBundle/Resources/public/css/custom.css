@@ -89,7 +89,6 @@ body{
     background-attachment: fixed;
     background-size: cover;    
     padding-top: 50px;
-    margin-bottom: 50px;
 }
 .followtitle{
     width: 100%;
@@ -231,7 +230,26 @@ border-radius:10px;
 
 
 /* END OF THE CHALLENGE CSS*/
+/* BEGIN upload page*/
 
+.btn-upload {
+    color: #fff;
+    background-color: #95cd36;
+    border-color: #85b82e;
+    width:80%;
+    position: relative;
+    margin: 20px 0px;
+}
+
+.btn-upload:hover {
+    color: #fff;
+    background-color: #76a329;
+    border-color: #678f24;
+    width:80%;
+    position: relative;
+    margin: 20px 0px;
+}
+/* End of upload page*/
 
 
 
