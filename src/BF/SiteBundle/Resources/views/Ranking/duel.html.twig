@@ -7,101 +7,93 @@
 
 {% block content %}
   {# This is the content section of our page ! #}
-<section class="background">
-<div class="row" style="margin-top:75px;">
-	<a href="{{ path('bf_site_ranking_challenge', {'country': 'global', 'state':'country'}) }}">Challenge Ranking</a>
-	<a href="{{ path('bf_site_ranking_duel', {'country': 'global', 'state':'country'}) }}">Duel Ranking</a>
-	<div class="col-xs-2 col-sm-2 col-md-3 col-lg-3  text-center row" >
-		<a href="{{ path('bf_site_ranking_challenge', {'country': 'global', 'state':'country'}) }}" class="btn btn-default">
-				<i class="glyphicon glyphicon-globe"></i>
-					World
-		</a>
-		</br>
+<section class="homepage">
+  	<div class="row" style="min-height:65vh;margin-top:50px;">
+    	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-10 col-lg-offset-1">
+      		<div class="row">
+        	<!--Begin of the ranking page -->
+        		<div class="col-xs-12 col-sm-4 col-md-3 col-lg-3 text-center" >
+        			<div class="row">
 
-		{% for country in listCountries %}
-		<a class="btn btn-primary" role="button" data-toggle="collapse" href="#{{ country.id }}" aria-expanded="false" aria-controls="{{ country.id }}">
-		  {{ country.name }}
-		</a>
+        				<a href="{{ path('bf_site_ranking_challenge', {'country': 'global', 'state':'country'}) }}">Challenge Ranking</a>
+						<a href="{{ path('bf_site_ranking_duel', {'country': 'global', 'state':'country'}) }}">Duel Ranking</a>
+        				<a href="{{ path('bf_site_ranking_challenge', {'country': 'global', 'state':'country'}) }}" class="btn btn-default">
+							<i class="glyphicon glyphicon-globe"></i>
+							World
+						</a>
+						</br>
 
-		<div class="collapse" id="{{ country.id }}">
-		  <div class="well">
-		  	<a href="{{ path('bf_site_ranking_challenge', {'country': country.name, 'state':'country'}) }}" class="btn btn-primary">
-				<i class="glyphicon glyphicon-edit"></i>
-					Country Ranking
-			</a></br>
-		  	{% for state in country.states %}
-				<a href="{{ path('bf_site_ranking_challenge', {'country': country.name, 'state': state.name}) }}" class="btn btn-primary">
-					<i class="glyphicon glyphicon-edit"></i>
-						{{ state.name }}
-				</a>
-			</br>
-			{% endfor %}
-		  </div>
-		</div>
-		</br>
-		{% endfor %}
-	</div>
+						{% for country in listCountries %}
+						<a class="btn btn-primary" role="button" data-toggle="collapse" href="#{{ country.id }}" aria-expanded="false" aria-controls="{{ country.id }}">
+						  {{ country.name }}
+						</a>
 
-
-	<div class="col-xs-10 col-sm-8 col-md-6 col-lg-6 text-center" >
-		<div class="challengedescription">
-			<div class="challengetitle">
-			 
-			    	{% if country == 'global' %}
-			    		<h3 style="color:white;">Global Duel Ranking</h3>
-			    	{% elseif state == 'country' %}
-			    			<h3 style="color:white;">{{ country.name }} Duel Ranking</h3>
-			    	{% else %}
-			    			<h3 style="color:white;">{{ state.name }} - {{ state.country.name }}  Duel Ranking</h3>
-			    	{% endif %}
-
-			    	
-			</div>
-			<div class="challengecontent">
-			 	<ul class="nav nav-tabs" role="tablist">
-				    <li role="presentation" class="active" style="width:50%;" ><a href="#mixed" aria-controls="mixed" role="tab" data-toggle="tab">Mixed</a></li>
-				    <li role="presentation" style="width:50%;"><a href="#girls" aria-controls="girls" role="tab" data-toggle="tab">Girls</a></li>
-				</ul>
+						<div class="collapse" id="{{ country.id }}">
+						  <div class="well">
+						  	<a href="{{ path('bf_site_ranking_challenge', {'country': country.name, 'state':'country'}) }}" class="btn btn-primary">
+								<i class="glyphicon glyphicon-edit"></i>
+									Country Ranking
+							</a></br>
+						  	{% for state in country.states %}
+								<a href="{{ path('bf_site_ranking_challenge', {'country': country.name, 'state': state.name}) }}" class="btn btn-primary">
+									<i class="glyphicon glyphicon-edit"></i>
+										{{ state.name }}
+								</a>
+							</br>
+							{% endfor %}
+						  </div>
+						</div>
+						</br>
+						{% endfor %}
 
 
-				<div class="tab-content">
-				  <div role="tabpanel" class="tab-pane fade in active" id="mixed">
-				  	<table class="table table-striped">
-				        {% set i = 1 %}
-							{% for user in ranking %}
-								{# here we make the little thumbnails for every video #}
-								<tr style="height:50px;">
-						            <td>{{ i }}</td>
-						            <td style="height:50px;"><img src="/uploads/img/{{ user.picture.src }}" alt="{{ user.picture.alt }}" style="height:101%;border-radius:50%"/></td>
-						            <td><a href="{{ path('bf_site_profile', { 'username': user.username }) }}">{{ user.username }}</a></td>
-						            <td>{{ user.duelPoints }}</td>
-						        </tr>
-										
-								{% set i= i+1 %}
-							{% endfor %}              
-				    </table>
-				  </div>
-				  <div role="tabpanel" class="tab-pane fade" id="girls">
-				  	<table class="table table-striped">
-				      	{% set i = 1 %}
-							{% for user in rankingGirls %}
-								{# here we make the little thumbnails for every video #}
-								<tr style="height:50px;">
-				                  <td>{{ i }}</td>
-				                  <td style="height:50px;"><img src="/uploads/img/{{ user.picture.src }}" alt="{{ user.picture.alt }}" style="height:101%;border-radius:50%"/></td>
-				                  <td><a href="{{ path('bf_site_profile', { 'username': user.username }) }}">{{ user.username }}</a></td>
-				                  <td>{{ user.duelPoints }}</td>
-				                </tr>
-								{% set i= i+1 %}
-							{% endfor %}              
-				    </table>
-				  </div>
-				</div>        
 
-			</div>
-		</div>
-	</div>
-</div>
+
+        			</div>
+        		</div>
+        		<div class="col-xs-12 col-sm-8 col-md-6 col-lg-6 text-center" >
+        			<div class="row">
+						<div class="challengedescription">
+							<div class="challengetitle">
+							    	{% if country == 'global' %}
+							    		<h3 style="color:white;">Global challenge Ranking</h3>
+							    	{% elseif state == 'country' %}
+							    			<h3 style="color:white;">{{ country.name }} challenge Ranking</h3>
+							    	{% else %}
+							    			<h3 style="color:white;">{{ state.name }} - {{ state.country.name }}  challenge Ranking</h3>
+							    	{% endif %}
+							</div>
+							<div class="challengecontent">
+							 	<ul class="nav nav-tabs" role="tablist">
+								    <li role="presentation" class="active" style="width:50%;" ><a href="#mixed" aria-controls="mixed" role="tab" data-toggle="tab">Mixed</a></li>
+								    <li role="presentation" style="width:50%;"><a href="#girls" aria-controls="girls" role="tab" data-toggle="tab">Girls</a></li>
+								</ul>
+
+
+								<div class="tab-content">
+								  <div role="tabpanel" class="tab-pane fade in active" id="mixed">
+								  	<table class="table table-striped">
+								        {% include "BFSiteBundle:Ranking:table.html.twig" with {"ranking": ranking} only %}             
+								    </table>
+								  </div>
+								  <div role="tabpanel" class="tab-pane fade" id="girls">
+								  	<table class="table table-striped">
+								  		{% include "BFSiteBundle:Ranking:table.html.twig" with {"ranking": rankingGirls} only %}
+								    </table>
+								  </div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+
+
+
+
+        	</div>
+      	</div>
+    </div>
 </section>
-
 {% endblock %}
