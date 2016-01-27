@@ -3,12 +3,17 @@ services:
         class: BF\RestApiBundle\OAuth\FacebookGrantExtension
         tags:
             - { name: fos_oauth_server.grant_extension, uri: 'facebook' }
-        arguments:
-            - BF\UserBundle\Entity\User
+        arguments: ["@BF_user.user_repository"]
 
     platform.grant_type.google:
         class: BF\RestApiBundle\OAuth\GoogleGrantExtension
         tags:
             - { name: fos_oauth_server.grant_extension, uri: 'google' }
+        arguments: ["@BF_user.user_repository"]
+
+    BF_user.user_repository:
+        class: Doctrine\ORM\EntityRepository
+        factory_service: doctrine.orm.default_entity_manager
+        factory_method: getRepository
         arguments:
             - BF\UserBundle\Entity\User
