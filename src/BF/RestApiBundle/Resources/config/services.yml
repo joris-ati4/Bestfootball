@@ -2,13 +2,13 @@ services:
     platform.grant_type.facebook:
         class: BF\RestApiBundle\OAuth\FacebookGrantExtension
         tags:
-            - { name: fos_oauth_server.grant_extension, uri: 'facebook' }
+            - { name: fos_oauth_server.grant_extension, uri: 'http://platform.local/grants/facebook' }
         arguments: ["@BF_user.user_repository"]
 
     platform.grant_type.google:
         class: BF\RestApiBundle\OAuth\GoogleGrantExtension
         tags:
-            - { name: fos_oauth_server.grant_extension, uri: 'google' }
+            - { name: fos_oauth_server.grant_extension, uri: 'http://platform.local/grants/google' }
         arguments: ["@BF_user.user_repository"]
 
     BF_user.user_repository:
