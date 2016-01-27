@@ -674,4 +674,28 @@ class User extends BaseUser
     {
         return $this->google_access_token;
     }
+
+    /**
+     * Set duelWins
+     *
+     * @param integer $duelWins
+     *
+     * @return User
+     */
+    public function setDuelWins($duelWins)
+    {
+        $this->duelWins = $duelWins;
+
+        return $this;
+    }
+
+    /**
+     * Get duelWins
+     *
+     * @return integer
+     */
+    public function getDuelWins()
+    {
+        return $this->duelWins;
+    }
 }

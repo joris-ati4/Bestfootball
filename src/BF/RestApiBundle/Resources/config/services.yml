@@ -1,4 +1,14 @@
 services:
-#    bf_rest_api.example:
-#        class: BF\RestApiBundle\Example
-#        arguments: [@service_id, "plain_value", %parameter%]
+    platform.grant_type.facebook:
+        class: BF\RestApiBundle\OAuth\FacebookGrantExtension
+        tags:
+            - { name: fos_oauth_server.grant_extension, uri: 'facebook' }
+        arguments:
+            - BF\UserBundle\Entity\User
+
+    platform.grant_type.google:
+        class: BF\RestApiBundle\OAuth\GoogleGrantExtension
+        tags:
+            - { name: fos_oauth_server.grant_extension, uri: 'google' }
+        arguments:
+            - BF\UserBundle\Entity\User

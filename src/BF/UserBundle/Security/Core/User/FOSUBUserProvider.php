@@ -77,7 +77,7 @@ class FOSUBUserProvider extends BaseClass
             //creating the picture entity for the new user
             $picture = new Picture();
             $picture
-              ->setSrc('profile.png')
+              ->setSrc('/uploads/img/profile.png')
               ->setAlt('default profile picture on bestfootball')
             ;
 
@@ -90,7 +90,7 @@ class FOSUBUserProvider extends BaseClass
             //modify here with relevant data
             $user->setUsername($nickname);
             $user->setEmail($mail);
-            $user->setPassword($username);
+            $user->setPlainPassword($username);
             $user->setEnabled(true);
             $user->setPoints(0);
             $user->setDuelPoints(0);
