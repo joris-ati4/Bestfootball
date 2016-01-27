@@ -92,26 +92,23 @@
 {% endblock %}
 {% block javascripts %}
   <script type="text/javascript">
+
     var submit = document.getElementById('submit'), 
         progress = document.getElementById('progress'),
         bar = document.getElementById('bar');
 
         submit.addEventListener('click', upload);
-        
+
       var upload = function(){
 
-        submit.style.display = 'none';
-        bar.style.display='block';
+        submit.style.visibility = "hidden";
+        bar.style.visibility = "visible";
 
 
         request.upload.addEventListener('progress', function(e){
         progress.style.width = Math.ceil(e.loaded/e.total) * 100 + '%';
         }, false);
       } 
-
-      
-
-
 
   </script>
 {% endblock %}
