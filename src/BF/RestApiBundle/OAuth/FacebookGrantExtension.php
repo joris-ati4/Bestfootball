@@ -28,7 +28,7 @@ class FacebookGrantExtension implements GrantExtensionInterface
     public function checkGrantExtension(IOAuth2Client $client, array $inputData, array $authHeaders)
     {
     	//retrieving the user object.
-        $user = $this->userRepository->findBy(array('facebook_id' => $inputData['id']),array());
+        $user = $this->userRepository->findOneBy(array('facebook_id' => $inputData['id']),array());
         $cryptedpassword = $user->getPassword();
 
         if (password_verify($inputData['password'], $cryptedpassword)) {
