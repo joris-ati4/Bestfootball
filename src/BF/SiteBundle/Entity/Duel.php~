@@ -85,24 +85,29 @@ class Duel
      */
     private $completed;
 
+
+
     /**
-     * @var string
-     *
-     * @ORM\Column(name="host", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="BF\UserBundle\Entity\User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="host", referencedColumnName="id",nullable=false)
+     * })
      */
     private $host;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="guest", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="BF\UserBundle\Entity\User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="guest", referencedColumnName="id",nullable=false)
+     * })
      */
     private $guest;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="winner", type="string", length=255,nullable=true)
+     * @ORM\ManyToOne(targetEntity="BF\UserBundle\Entity\User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="winner", referencedColumnName="id")
+     * })
      */
     private $winner;
 
@@ -268,53 +273,6 @@ class Duel
     }
 
     /**
-     * Set host
-     *
-     * @param integer $host
-     *
-     * @return Duel
-     */
-    public function setHost($host)
-    {
-        $this->host = $host;
-
-        return $this;
-    }
-
-    /**
-     * Get host
-     *
-     * @return integer
-     */
-    public function getHost()
-    {
-        return $this->host;
-    }
-
-    /**
-     * Set guest
-     *
-     * @param integer $guest
-     *
-     * @return Duel
-     */
-    public function setGuest($guest)
-    {
-        $this->guest = $guest;
-
-        return $this;
-    }
-
-    /**
-     * Get guest
-     *
-     * @return integer
-     */
-    public function getGuest()
-    {
-        return $this->guest;
-    }
-    /**
      * Constructor
      */
     public function __construct()
@@ -451,30 +409,6 @@ class Duel
     }
 
     /**
-     * Set winner
-     *
-     * @param string $winner
-     *
-     * @return Duel
-     */
-    public function setWinner($winner)
-    {
-        $this->winner = $winner;
-
-        return $this;
-    }
-
-    /**
-     * Get winner
-     *
-     * @return string
-     */
-    public function getWinner()
-    {
-        return $this->winner;
-    }
-
-    /**
      * Set type
      *
      * @param string $type
@@ -496,5 +430,29 @@ class Duel
     public function getType()
     {
         return $this->type;
+    }
+
+    /**
+     * Set winner
+     *
+     * @param \BF\UserBundle\Entity\User $winner
+     *
+     * @return Duel
+     */
+    public function setWinner(\BF\UserBundle\Entity\User $winner = null)
+    {
+        $this->winner = $winner;
+
+        return $this;
+    }
+
+    /**
+     * Get winner
+     *
+     * @return \BF\UserBundle\Entity\User
+     */
+    public function getWinner()
+    {
+        return $this->winner;
     }
 }

@@ -169,7 +169,7 @@ class VideoController extends Controller
     		//we check if the user has the right to upload his video for this duel. (if it is his duel)
 	    	$repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Duel');
 	    	$duel = $repository->findOneBy(array('id' => $id));
-	    	if($duel->getHost() == $user->getUsername() || $duel->getGuest() == $user->getUsername()){ //We verify if the user and duel correspond
+	    	if($duel->getHost() == $user || $duel->getGuest() == $user){ //We verify if the user and duel correspond
 	    			$video
 			    	->setDate(new \Datetime())
 			    	->setDuel($duel)
@@ -177,7 +177,7 @@ class VideoController extends Controller
 			    	->setScore('0')
 			    	;
 			    	//the user is the guest for the duel
-			    	if($duel->getGuest() == $user->getUsername()){ 
+			    	if($duel->getGuest() == $user){ 
 			    		//check if he already uploaded a file. In that case we redirect him to the challenges page.
 			    		if($duel->getGuestCompleted() == '1'){
 			    			$this->addFlash('warning','You already uploaded a video for this duel. You can only upload one video/duel.');
@@ -189,7 +189,7 @@ class VideoController extends Controller
 			    		}	    		
 			    	}
 			    	//the user is the Host for the duel
-		    		if($duel->getHost() == $user->getUsername()){ 
+		    		if($duel->getHost() == $user){ 
 		    			//check if he already uploaded a file. In that case we redirect him to the challenges page.
 		    			if($duel->getHostCompleted() == '1'){
 			    			$this->addFlash('warning','You already uploaded a video for this duel. You can only upload one video/duel.');
@@ -205,12 +205,12 @@ class VideoController extends Controller
 			    	if ($form->handleRequest($request)->isValid()) {
 					    $em = $this->getDoctrine()->getManager();
 
-					$hostUsername = $duel->getHost();
-		    		$guestUsername = $duel->getGuest();
+						$hostUsername = $duel->getHost()->getUsername();
+		    			$guestUsername = $duel->getGuest()->getUsername();
 
-		    		$repository = $this->getDoctrine()->getManager()->getRepository('BFUserBundle:User');
-    				$host = $repository->findOneByUsername($hostUsername);
-    				$guest = $repository->findOneByUsername($guestUsername);
+		    
+    					$host = $duel->getHost();
+    					$guest = $duel->getGuest();
 
 
 					    if($duel->getHostCompleted() == 1 && $duel->getGuestCompleted() == 1)
@@ -237,7 +237,7 @@ class VideoController extends Controller
 			      				$host->setDuelPoints($points);
 			      				$wins = $host->getDuelWins() + 1;
 			      				$host->setDuelWins($wins);
-			      				$duel->setWinner($hostUsername);
+			      				$duel->setWinner($host);
 			      				$em->persist($duel);
 			      				$em->persist($host);
 
@@ -259,7 +259,7 @@ class VideoController extends Controller
 			      				$guest->setDuelPoints($points);
 			      				$wins = $guest->getDuelWins() + 1;
 			      				$guest->setDuelWins($wins);
-			      				$duel->setWinner($guestUsername);
+			      				$duel->setWinner($guest);
 			      				$em->persist($duel);
 			      				$em->persist($guest);
 

@@ -15,9 +15,79 @@ class DuelRepository extends \Doctrine\ORM\EntityRepository
 	  $qb = $this->createQueryBuilder('d');
 
 	  $qb->where('d.host = :user OR d.guest =:user' )
-	       ->setParameter('user', $user->getUsername())
+	       ->setParameter('user', $user)
 	     ->andWhere('d.completed = :completed')
 	       ->setParameter('completed', '1')
+	     ->orderBy('d.beginDate', 'DESC')
+	  ;
+
+	  return $qb
+	    ->getQuery()
+	    ->getResult()
+	  ;
+	}
+	public function ProgressDuels($user)
+	{
+	  $qb = $this->createQueryBuilder('d');
+
+	  $qb->where('d.host = :user OR d.guest =:user' )
+	       ->setParameter('user', $user)
+	     ->andWhere('d.completed = :completed')
+	       ->setParameter('completed', '0')
+	     ->orderBy('d.beginDate', 'DESC')
+	  ;
+
+	  return $qb
+	    ->getQuery()
+	    ->getResult()
+	  ;
+	}
+	public function WonDuels($user)
+	{
+	  $qb = $this->createQueryBuilder('d');
+
+	  $qb->where('d.host = :user OR d.guest =:user' )
+	       ->setParameter('user', $user)
+	     ->andWhere('d.completed = :completed')
+	       ->setParameter('completed', '1')
+	     ->andWhere('d.winner = :user')
+	       ->setParameter('user', $user)
+	     ->orderBy('d.beginDate', 'DESC')
+	  ;
+
+	  return $qb
+	    ->getQuery()
+	    ->getResult()
+	  ;
+	}
+	public function LostDuels($user)
+	{
+	  $qb = $this->createQueryBuilder('d');
+
+	  $qb->where('d.host = :user OR d.guest =:user' )
+	       ->setParameter('user', $user)
+	     ->andWhere('d.completed = :completed')
+	       ->setParameter('completed', '1')
+	     ->andWhere('d.winner != :user')
+	       ->setParameter('user', $user)
+	     ->orderBy('d.beginDate', 'DESC')
+	  ;
+
+	  return $qb
+	    ->getQuery()
+	    ->getResult()
+	  ;
+	}
+	public function DrawDuels($user)
+	{
+	  $qb = $this->createQueryBuilder('d');
+
+	  $qb->where('d.host = :user OR d.guest =:user' )
+	       ->setParameter('user', $user)
+	     ->andWhere('d.completed = :completed')
+	       ->setParameter('completed', '1')
+	     ->andWhere('d.winner = :null')
+	       ->setParameter('null', null)
 	     ->orderBy('d.beginDate', 'DESC')
 	  ;
 

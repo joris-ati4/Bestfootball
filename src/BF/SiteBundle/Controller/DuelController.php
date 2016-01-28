@@ -69,19 +69,29 @@ class DuelController extends Controller
     	$em = $this->getDoctrine()->getManager();
     	//we get the host and the invited user
     	$host = $this->container->get('security.context')->getToken()->getUser();
-    	$repository = $this->getDoctrine()->getManager()->getRepository('BFUserBundle:User');
-    	$guest = $repository->findOneByUsername($username);
+    	$guest = $em->getRepository('BFUserBundle:User')->findOneByUsername($username);
     	//we check that the host and guest are not the same person
     	if($host == $guest){
     		throw new NotFoundHttpException("You can't create a duel against yourself.");
     	}
     	//we create a new duel and set the users to the duel
 		$date = new \Datetime();
-		            $duration = (7 * 24 * 60 * 60);
-		            $endtimestamp = $date->getTimestamp() + $duration;
-		            $date->setTimestamp($endtimestamp);
+		  $duration = (7 * 24 * 60 * 60);
+		  $endtimestamp = $date->getTimestamp() + $duration;
+		  $date->setTimestamp($endtimestamp);
     	$duel = new Duel();
-    	$duel ->setBeginDate(new \Datetime())->setEndDate($date)->setAccepted('0')->setCompleted('0')->setHostCompleted('0')->setGuestCompleted('0')->setHost($host->getUsername())->setGuest($guest->getUsername())->setType('duel')->addUser($host)->addUser($guest);
+    	$duel ->setBeginDate(new \Datetime())
+              ->setEndDate($date)
+              ->setAccepted('0')
+              ->setCompleted('0')
+              ->setHostCompleted('0')
+              ->setGuestCompleted('0')
+              ->setHost($host)
+              ->setGuest($guest)
+              ->setType('duel')
+              ->addUser($host)
+              ->addUser($guest)
+        ;
 
     	$message = 'You received an invitation for a duel from '.$host->getUsername();
     	//we create a notification for the guest.
@@ -112,25 +122,19 @@ class DuelController extends Controller
 
     	$guest = $this->container->get('security.context')->getToken()->getUser();
     	$duel = $em->getRepository('BFSiteBundle:Duel')->find($id);
+
     	if ($duel === null) {
 	      throw $this->createNotFoundException("This duel doesn't exist");
 	    }
-    	$users = $duel->getUsers();
+    	
+        $host = $duel->getHost();
 
-    	foreach ($users as $user) {
-    		if($user != $guest){ $host = $user;}
-    		elseif($user == $guest){ $guest = $user; $verified = 'ok';}
-    		else{}
-    	}
-
+        if($guest != $duel->getGuest()){
+            //the user can't accept the duel
+            throw new NotFoundHttpException("You can't accept this duel because it isn't yours.");
+        }
    
-	      //on verifie que l'utilisateur peut accepter le duel
-    		if($verified != 'ok'){ 
-    			throw new NotFoundHttpException("You can't accept this duel because it isn't yours.");
-    		}
-
     		//the user can accept.
-    			$em = $this->getDoctrine()->getManager();
     			$duel->setAccepted('1');
 
     			//we create the notification for the other user to say "accepted".
@@ -150,47 +154,47 @@ class DuelController extends Controller
     }
     public function declineAction(request $request, $id)
     {
-    	$em = $this->getDoctrine()->getManager();
-    	$guest = $this->container->get('security.context')->getToken()->getUser();
-    	$duel = $em->getRepository('BFSiteBundle:Duel')->find($id);
-    	if ($duel === null) {
-	      throw $this->createNotFoundException("This duel doesn't exist");
-	    }
-    	$users = $duel->getUsers();
+        $em = $this->getDoctrine()->getManager();
 
-    	foreach ($users as $user) {
-    		if($user != $guest){ $host = $user;}
-    		elseif($user == $guest){ $guest = $user; $verified = 'ok';}
-    		else{}
-    	}
-	      //on verifie que l'utilisateur peut decliner le duel
-    		if($verified == 'ok'){ //the user can accept.
-    			$em = $this->getDoctrine()->getManager();
-    			//we create the notification for the other user to say "accepted".
-    			$message =$guest->getUsername().' declined your invitation.';
-    			//getting the other user
-    			//getting the notifications that are linked with the duel.
-    			$notifications = $em->getRepository('BFSiteBundle:Notification')->findByDuel($duel);
+        $guest = $this->container->get('security.context')->getToken()->getUser();
+        $duel = $em->getRepository('BFSiteBundle:Duel')->find($id);
+
+        if ($duel === null) {
+          throw $this->createNotFoundException("This duel doesn't exist");
+        }
+        
+        $host = $duel->getHost();
+
+        //on verifie que l'utilisateur peut decliner le duel
+        if($guest != $duel->getGuest()){
+            //the user can't accept the duel
+            throw new NotFoundHttpException("You can't decline this duel because it isn't yours.");
+        }
+
+	      
+    		
+    	//we create the notification for the other user to say "accepted".
+    	$message =$guest->getUsername().' declined your invitation.';
+    	//getting the other user
+    	//getting the notifications that are linked with the duel.
+    	$notifications = $em->getRepository('BFSiteBundle:Notification')->findByDuel($duel);
 		   		
-		   		foreach ($notifications as $notification) {
-		    		$em->remove($notification);
-		    	}
-    			$em->remove($duel);
+		foreach ($notifications as $notification) {
+		    $em->remove($notification);
+		}
+    	$em->remove($duel);
 
-                $duel = null;
-                $service = $this->container->get('bf_site.notification');
-                $notification = $service->create($host, $message, $duel);
+        $duel = null;
+        $service = $this->container->get('bf_site.notification');
+        $notification = $service->create($host, $message, $duel);
 
-			    $em->persist($notification);
-			    $em->flush();
+		$em->persist($notification);
+		$em->flush();
 
-			    $this->addFlash('success', 'You declined the duel from '.$host->getUsername());
+		$this->addFlash('success', 'You declined the duel from '.$host->getUsername());
 
-			      return $this->redirect($this->generateUrl('bf_site_profile_duels'));
-    		}
-    		else{
-    			throw new NotFoundHttpException("You can't decline this duel because it isn't yours.");
-    		}   
+		return $this->redirect($this->generateUrl('bf_site_profile_duels'));
+
     }
     public function myduelsAction(request $request)
     {
@@ -213,9 +217,20 @@ class DuelController extends Controller
         }
 
 
+        //here we're going to make 3 lists of duels. Progress, won and lost
         $em = $this->getDoctrine()->getManager();
     	$user = $this->container->get('security.context')->getToken()->getUser();
-    	$listDuels = $user->getDuels();
+
+
+        $listProgress = $em->getRepository('BFSiteBundle:Duel')->ProgressDuels($user);
+        $listWon = $em->getRepository('BFSiteBundle:Duel')->WonDuels($user);
+        $listLost = $em->getRepository('BFSiteBundle:Duel')->LostDuels($user);
+        $listDraw = $em->getRepository('BFSiteBundle:Duel')->DrawDuels($user);
+
+
+    	$listDuels = array('listProgress' => $listProgress, 'listWon' => $listWon,'listDraw' => $listDraw, 'listLost' => $listLost);
+
+        //the notifications. Will be done with AJAx in the future.
         $notifications = $user->getNotifications();
 
         foreach ($notifications as $notification) {
