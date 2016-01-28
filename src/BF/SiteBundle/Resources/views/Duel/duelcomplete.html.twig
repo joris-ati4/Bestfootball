@@ -5,7 +5,7 @@
         <!--the Host section -->
 
         {% if duel.winner == duel.users.0 %}
-          <img src="/img/winner.gif" alt="winner gif">
+          <img src="/img/winner.gif" alt="winner gif"></br>
           <img src="{{ duel.users.0.picture.src }}" alt="{{ duel.users.0.picture.src }}" style="width:50%;border-radius:50%;">
         {% else %}
           <img src="{{ duel.users.0.picture.src }}" alt="{{ duel.users.0.picture.src }}" style="width:50%;border-radius:50%;margin-top:170px;">
@@ -47,7 +47,7 @@
       <div class="row">
       <!--The Guest section -->
         {% if duel.winner == duel.users.1 %}
-          <img src="/img/winner.gif" alt="winner gif">
+          <img src="/img/winner.gif" alt="winner gif"></br>
           <img src="{{ duel.users.1.picture.src }}" alt="{{ duel.users.1.picture.src }}" style="width:50%;border-radius:50%;">
         {% else %}
           <img src="{{ duel.users.1.picture.src }}" alt="{{ duel.users.1.picture.src }}" style="width:50%;border-radius:50%;margin-top:170px;">
