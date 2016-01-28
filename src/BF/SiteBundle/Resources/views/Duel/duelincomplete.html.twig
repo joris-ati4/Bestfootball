@@ -1,0 +1,54 @@
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vcenter" style="margin: 25px 0px;">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 vcenter text-center">
+      <div class="row">
+        <!--the Host section -->
+        <img src="{{ duel.host.picture.src }}" alt="{{ duel.host.picture.src }}" style="width:100%;border-radius:50%;">
+        <h2 style="color:#95cd36;" class="text-center">{{ duel.host.username }}</h2>
+      </div>
+    </div><!--
+  --><div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 vcenter text-center">
+      <div class="row">
+        <!--The VS sign -->
+        <img src="" alt="">
+      </div>
+    </div><!--
+--><div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 vcenter text-center">
+      <div class="row">
+      <!--The Guest section -->
+        <img src="{{ duel.guest.picture.src }}" alt="{{ duel.guest.picture.src }}" style="width:100%;border-radius:50%;">
+        <h2 style="color:#95cd36;" class="text-center">{{ duel.guest.username }}</h2>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="col-xs-12 col-sm-7 col-md-7 col-lg-7 vcenter">
+  <div class="row">
+    <div style="width:100%;max-height:400px;background-color:black;margin-bottom:20px;">
+  <video width="100%" id="video" controls style="max-width:100%;max-height:400px;">
+      <source src="/uploads/challenges/{{ duel.challenge.id}}.{{ duel.challenge.videoUrl }}" type="video/mp4">
+        Your browser does not support the video tag.
+  </video>
+    </div>
+  </div>
+</div><!--
+--><div class="col-xs-12 col-sm-5 col-md-5 col-lg-5 vcenter"> <!-- Challenge explication + participate button -->
+  <div class="challengedescription">
+      <div class="challengetitle">
+          <h3 style="color:white;" class="text-center">The Duel</h3>
+      </div>
+      <div class="challengecontent">
+          <p>Here will come a clock that counts down to the end date of the challenge. End of the duel : {{ duel.endDate|date('d-m-Y G:i')}}</p>
+
+          <p style="text-align: justify;text-justify: inter-word;">
+            {{ duel.challenge.description }}
+          </p>
+         
+          {% if duel.accepted == 1 %}
+            {% if duel.host == app.user or duel.guest == app.user %}
+              <button onclick="location.href='{{ path('bf_site_upload', {'id': duel.id, 'type':'duel'}) }}'" class="btn btn-participate" type="submit"><i class="glyphicon glyphicon-upload"></i>Upload my video</button>
+            {% endif %}
+          {% endif %}
+      </div>
+    </div>
+</div>
