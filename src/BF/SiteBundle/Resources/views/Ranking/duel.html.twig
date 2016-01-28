@@ -49,8 +49,8 @@
 						<div class="challengedescription">
 							<!-- Nav tabs -->
 						    <ul class="nav nav-tabs" role="tablist">
-						        <li role="presentation" style="width:50%;"><a href="{{ path('bf_site_ranking_challenge', {'country': 'global', 'state':'country'}) }}" aria-controls="challenge" role="tab" data-toggle="tab">Challenge Ranking</a></li>
-						        <li role="presentation" class="active" style="width:50%;"><a href="#duel">Duel Ranking</a></li>
+						        <li role="presentation" style="width:50%;"><a href="{{ path('bf_site_ranking_challenge', {'country': 'global', 'state':'country'}) }}" >Challenge Ranking</a></li>
+						        <li role="presentation" class="active" style="width:50%;" aria-controls="duel" role="tab" data-toggle="tab"><a href="#duel">Duel Ranking</a></li>
 						    </ul>
 							<div class="challengetitle">
 							    	{% if country == 'global' %}
@@ -75,12 +75,12 @@
 										<div class="tab-content">
 										  <div role="tabpanel" class="tab-pane fade in active" id="mixed">
 										  	<table class="table table-striped">
-										        {% include "BFSiteBundle:Ranking:table.html.twig" with {"ranking": ranking} only %}             
+										        {% include "BFSiteBundle:Ranking:dueltable.html.twig" with {"ranking": ranking} only %}             
 										    </table>
 										  </div>
 										  <div role="tabpanel" class="tab-pane fade" id="girls">
 										  	<table class="table table-striped">
-										  		{% include "BFSiteBundle:Ranking:table.html.twig" with {"ranking": rankingGirls} only %}
+										  		{% include "BFSiteBundle:Ranking:dueltable.html.twig" with {"ranking": rankingGirls} only %}
 										    </table>
 										  </div>
 										</div>
