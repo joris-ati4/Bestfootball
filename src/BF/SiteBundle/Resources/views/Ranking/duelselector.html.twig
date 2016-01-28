@@ -1,0 +1,27 @@
+<a href="{{ path('bf_site_ranking_duel', {'country': 'global', 'state':'country'}) }}" class="btn btn-primary" style="width:100%;">
+	<i class="glyphicon glyphicon-globe"></i>
+	World
+</a>
+</br>
+
+{% for country in listCountries %}
+<a class="btn btn-primary" role="button" data-toggle="collapse" href="#{{ country.id }}" aria-expanded="false" aria-controls="{{ country.id }}" style="width:100%;">
+  {{ country.name }}
+</a>
+
+<div class="collapse" id="{{ country.id }}">
+  <div class="well text-center">
+  	<a href="{{ path('bf_site_ranking_duel', {'country': country.name, 'state':'country'}) }}" class="btn btn-primary text-center" style="width:90%;">
+			Country Ranking
+	</a>
+  	{% for state in country.states %}
+		<a href="{{ path('bf_site_ranking_duel', {'country': country.name, 'state': state.name}) }}" class="btn btn-primary text-center" style="width:90%;">
+			{{ state.name }}
+		</a>
+	
+	{% endfor %}
+  </div>
+</div>
+
+{% endfor %}
+						
