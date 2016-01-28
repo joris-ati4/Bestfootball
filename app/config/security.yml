@@ -67,6 +67,7 @@ security:
         - { path: ^/search, role: ROLE_USER }
         - { path: ^/upload, role: ROLE_USER }
         - { path: ^/duel, role: ROLE_USER }
+        - { path: ^/profile, role: ROLE_USER }
 
 
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
