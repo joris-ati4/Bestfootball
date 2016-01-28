@@ -93,6 +93,14 @@ bf_site_settings_picture:
     path:     /settings/picture
     defaults: { _controller: BFSiteBundle:Profile:settingsPicture }
 
+bf_site_settings_reset_password:
+    path:     /settings/password
+    defaults: { _controller: BFSiteBundle:Profile:changePassword }
+
+bf_site_settings_reset_username:
+    path:     /settings/username
+    defaults: { _controller: BFSiteBundle:Profile:changeUsername }
+
 #this section does all the routes for the admin section
 bf_site_admin:
     path:     /admin

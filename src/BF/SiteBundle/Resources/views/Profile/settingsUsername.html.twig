@@ -1,0 +1,20 @@
+<div class="row">
+  {# This is the content section of our page, here the user will be able to view all the challenges with the different niveau's! #}
+  <form action="{{ path('bf_site_settings_reset_username')}}" method="post">
+  	<div class="row">
+	  	
+		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 vcenter">
+			<div class="form-group">
+			    {{ form_label(form.username, "Username:", {'label_attr': {'class': 'col-xs-12 col-sm-4 col-md-4 col-lg-4 control-label'}}) }}
+			    {{ form_errors(form.username) }}
+			    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+			      {{ form_widget(form.username, {'attr': {'class': 'form-control'}}) }}
+				</div>
+			</div>
+		</div>
+		 {{ form_rest(form) }}
+      <input type="submit" value="Modify" class="btn btn-success text-center" />
+	</div>
+  </form>
+	  
+</div>

@@ -4,6 +4,7 @@ namespace BF\SiteBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Form\FormError;
 
 
 //les types
@@ -199,6 +200,82 @@ class ProfileController extends Controller
         return $this->render('BFSiteBundle:Profile:settingsPicture.html.twig', array(
           'form' => $form->createView(),
           'user' => $user,
+        ));
+    }
+    public function changePasswordAction(request $request)
+    { 
+        $defaultData = array('oldpassword' => null, 'newpassword'=> null, 'newpasswordrepeat' => null);
+        $form = $this->createFormBuilder($defaultData)
+            ->add('oldpassword', 'password')
+            ->add('newpassword', 'password')
+            ->add('newpasswordrepeat', 'password')
+            ->getForm(); 
+
+        $form->handleRequest($request);
+        if ($form->isValid()) {
+            $data = $form->getData();
+
+            $user = $this->container->get('security.context')->getToken()->getUser();
+            $cryptedpassword = $user->getPassword(); 
+            if (password_verify($data['oldpassword'], $cryptedpassword)) {
+              //the old password is correct. Check for the 2 passwords to be equal.
+              if($data['newpassword'] == $data['newpasswordrepeat']){
+                //2 passwords are ok. Update user.
+                $userManager = $this->container->get('fos_user.user_manager');
+                $user->setPlainPassword($data['newpassword']);
+                $userManager->updateUser($user);
+                $request->getSession()->getFlashBag()->add('success', 'Your password has been updated.');
+
+                return $this->redirect($this->generateUrl('bf_site_settings'));
+              }
+              //passwords didn't match.
+              $form->get('newpassword')->addError(new FormError('The new passwords have to match'));
+              return $this->render('BFSiteBundle:Profile:settingsPassword.html.twig', array(
+                'form' => $form->createView(),
+              ));
+  
+            }
+            //old password is not the good one.
+            $form->get('oldpassword')->addError(new FormError('Invalid old password'));
+            return $this->render('BFSiteBundle:Profile:settingsPassword.html.twig', array(
+                'form' => $form->createView(),
+              ));
+  
+        }
+
+        return $this->render('BFSiteBundle:Profile:settingsPassword.html.twig', array(
+          'form' => $form->createView(),
+        ));
+    }
+    public function changeUsernameAction(request $request)
+    {
+
+        //all the code for the user search function.
+        $user = $this->container->get('security.context')->getToken()->getUser();
+        $em = $this->getDoctrine()->getManager();
+
+
+        $defaultData = array('username' => $user->getUsername());
+        $form = $this->createFormBuilder($defaultData)
+            ->add('username', 'text')
+            ->getForm(); 
+
+        $form->handleRequest($request);
+        if ($form->isValid()) {
+            $data = $form->getData();
+            if ($em->getRepository('BFUserBundle:User')->findOneByUsername($data['username']) === null) {
+              $userManager = $this->container->get('fos_user.user_manager');
+              $user->setUsername($data['username']);
+              $userManager->updateUser($user);
+              $request->getSession()->getFlashBag()->add('success', 'Your username has been updated.');
+              return $this->redirect($this->generateUrl('bf_site_settings'));
+            }
+            //the username is already taken.
+            $form->get('username')->addError(new FormError('This username is already taken. Please choose a new one.'));
+        }
+
+        return $this->render('BFSiteBundle:Profile:settingsUsername.html.twig', array(
+          'form' => $form->createView(),
         ));
     }
 }
