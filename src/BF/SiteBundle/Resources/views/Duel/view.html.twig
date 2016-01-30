@@ -22,10 +22,8 @@
             {% if duel.completed == 0 %} {# The duel is not completed yet #}
               {% include "BFSiteBundle:Duel:duelincomplete.html.twig" with {"duel": duel} only %}
             {% elseif duel.completed == 1 %}
-              {% include "BFSiteBundle:Duel:duelcomplete.html.twig" with {"duel": duel} only %}
+              {% include "BFSiteBundle:Duel:duelcomplete.html.twig" with {"duel": duel, 'videohost': videohost, 'videoguest': videoguest} only %}
            {% endif %}
-
-           {{ dump(duel) }}
           </div>
           {# end of the duel page #}
         </div>

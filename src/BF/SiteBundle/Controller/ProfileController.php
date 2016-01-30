@@ -53,11 +53,6 @@ class ProfileController extends Controller
         $follow = null;
       }
 
-
-
-
-
-      
     	$user = $this->getDoctrine()->getManager()->getRepository('BFUserBundle:User')->findOneByUsername($username);
       $listFollows = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Follow')->findByFollowing($user);
     	$repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video');
@@ -88,11 +83,10 @@ class ProfileController extends Controller
       $profileTopInfo=array('followscount' => $numberfollows, 'videoscount' => $numbervideos, 'age' => $age,'duelwins' => $duelwins);
 
 
-
-
-
       $lists=array(  'listVideos' => $listVideos,'lastVideo' => $lastVideo,'listChallenges' => $listChallenges,'listFollows' => $listFollows,'listDuels' => $listDuels);
       $rank = array('rankinfo' => $rankinfo,'duelrankinfo' => $duelRankInfo);
+
+      
     	return $this->render('BFSiteBundle:Profile:view.html.twig', array(
     	      'user' => $user,
             'rank' => $rank,

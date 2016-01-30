@@ -41,8 +41,16 @@ class DuelController extends Controller
 	      throw new NotFoundHttpException("This duel doesn't exist");
 	    }
 
+        if($duel->getCompleted() == 1){
+            //make 2 variables, one for the loser and one for the winner.
+            $videoHost = $em->getRepository('BFSiteBundle:Video')->duelHostVideo($duel->getHost(), $duel);
+            $videoGuest= $em->getRepository('BFSiteBundle:Video')->duelGuestVideo($duel->getGuest(), $duel);
+        }
+
       	return $this->render('BFSiteBundle:Duel:view.html.twig', array(
 	      	'duel'           => $duel,
+            'videohost' => $videoHost,
+            'videoguest' => $videoGuest,
             'search'         => $search->createView(),
 	    	));
     }

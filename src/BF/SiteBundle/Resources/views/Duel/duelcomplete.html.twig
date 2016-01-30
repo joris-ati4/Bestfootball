@@ -1,43 +1,121 @@
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vcenter" style="margin: 25px 0px;">
   <div class="row">
-    <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5 vcenter text-center">
-      <div class="row">
-        <!--the Host section -->
 
-        {% if duel.winner == duel.users.0 %}
+
+    {% if duel.winner == duel.host %}
+          
+        <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5 vcenter text-center">
+          <div class="row">
+            <!--the Host section -->
+
+              <img src="/img/winner.gif" alt="winner gif"></br>
+              <img src="{{ duel.host.picture.src }}" alt="{{ duel.host.picture.src }}" style="width:50%;border-radius:50%;margin-top:170px;">
+            
+              <h2 style="color:#95cd36;" class="text-center">{{ duel.host.username }}</h2>
+              <video width="100%" id="video" controls style="max-width:100%;max-height:400px;">
+                <source src="/uploads/challenges/{{ videohost.id}}.{{ videohost.source }}" type="video/mp4">
+                  Your browser does not support the video tag.
+            </video>
+
+
+          </div>
+        </div><!--
+      --><div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 vcenter text-center">
+          <div class="row">
+            <!--The VS sign -->
+            <img src="/img/vs.png" alt="the vs image" style="width:100%;">
+          </div>
+        </div><!--
+    --><div class="col-xs-12 col-sm-5 col-md-5 col-lg-5 vcenter text-center">
+          <div class="row">
+          <!--The Guest section -->
+           
+            <img src="{{ duel.guest.picture.src }}" alt="{{ duel.guest.picture.src }}" style="width:50%;border-radius:50%;margin-top:170px;">
+            <h2 style="color:#95cd36;" class="text-center">{{ duel.guest.username }}</h2>
+
+            <video width="100%" id="video" controls style="max-width:100%;max-height:400px;">
+                <source src="/uploads/challenges/{{ videoguest.id}}.{{ videoguest.source }}" type="video/mp4">
+                  Your browser does not support the video tag.
+            </video>
+
+          </div>
+        </div>
+
+
+    {% elseif duel.winner == duel.guest %}
+    {# user.1 is the winner #}
+
+      <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5 vcenter text-center">
+        <div class="row">
+          <!--the Host section -->
+            <img src="{{ duel.host.picture.src }}" alt="{{ duel.host.picture.src }}" style="width:50%;border-radius:50%;margin-top:170px;">
+            <h2 style="color:#95cd36;" class="text-center">{{ duel.host.username }}</h2>
+            <video width="100%" id="video" controls style="max-width:100%;max-height:400px;">
+                <source src="/uploads/challenges/{{ videohost.id}}.{{ videohost.source }}" type="video/mp4">
+                  Your browser does not support the video tag.
+            </video>
+        </div>
+      </div><!--
+    --><div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 vcenter text-center">
+        <div class="row">
+          <!--The VS sign -->
+          <img src="/img/vs.png" alt="the vs image" style="width:100%;">
+        </div>
+      </div><!--
+  --><div class="col-xs-12 col-sm-5 col-md-5 col-lg-5 vcenter text-center">
+        <div class="row">
+        <!--The Guest section -->
           <img src="/img/winner.gif" alt="winner gif"></br>
-        {% endif %}
-          <img src="{{ duel.users.0.picture.src }}" alt="{{ duel.users.0.picture.src }}" style="width:50%;border-radius:50%;margin-top:170px;">
-        
-          <h2 style="color:#95cd36;" class="text-center">{{ duel.users.0.username }}</h2>
+          <img src="{{ duel.guest.picture.src }}" alt="{{ duel.guest.picture.src }}" style="width:50%;border-radius:50%;margin-top:170px;">
+          <h2 style="color:#95cd36;" class="text-center">{{ duel.guest.username }}</h2>
+          <video width="100%" id="video" controls style="max-width:100%;max-height:400px;">
+                <source src="/uploads/challenges/{{ videoguest.id}}.{{ videoguest.source }}" type="video/mp4">
+                  Your browser does not support the video tag.
+            </video>
 
-
-        
-
-
-
+        </div>
       </div>
-    </div><!--
-  --><div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 vcenter text-center">
-      <div class="row">
-        <!--The VS sign -->
-        <img src="/img/vs.png" alt="the vs image" style="width:100%;">
+      {% else %} {# the duel is a draw #}
+
+      <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5 vcenter text-center">
+        <div class="row">
+          <!--the Host section -->
+            <img src="{{ duel.host.picture.src }}" alt="{{ duel.host.picture.src }}" style="width:50%;border-radius:50%;margin-top:170px;">
+            <h2 style="color:#95cd36;" class="text-center">{{ duel.host.username }}</h2>
+            <video width="100%" id="video" controls style="max-width:100%;max-height:400px;">
+                <source src="/uploads/challenges/{{ videohost.id}}.{{ videohost.source }}" type="video/mp4">
+                  Your browser does not support the video tag.
+            </video>
+        </div>
+      </div><!--
+    --><div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 vcenter text-center">
+        <div class="row">
+          <!--The VS sign -->
+          <img src="/img/vs.png" alt="the vs image" style="width:100%;">
+          <h2>Draw</h2>
+        </div>
+      </div><!--
+  --><div class="col-xs-12 col-sm-5 col-md-5 col-lg-5 vcenter text-center">
+        <div class="row">
+        <!--The Guest section -->
+          <img src="{{ duel.guest.picture.src }}" alt="{{ duel.guest.picture.src }}" style="width:50%;border-radius:50%;margin-top:170px;">
+          <h2 style="color:#95cd36;" class="text-center">{{ duel.guest.username }}</h2>
+          <video width="100%" id="video" controls style="max-width:100%;max-height:400px;">
+                <source src="/uploads/challenges/{{ videoguest.id}}.{{ videoguest.source }}" type="video/mp4">
+                  Your browser does not support the video tag.
+            </video>
+
+        </div>
       </div>
-    </div><!--
---><div class="col-xs-12 col-sm-5 col-md-5 col-lg-5 vcenter text-center">
-      <div class="row">
-      <!--The Guest section -->
-        {% if duel.winner == duel.users.1 %}
-          <img src="/img/winner.gif" alt="winner gif"></br>
-        {% endif %}
-          <img src="{{ duel.users.1.picture.src }}" alt="{{ duel.users.1.picture.src }}" style="width:50%;border-radius:50%;margin-top:170px;">
-        
-        <h2 style="color:#95cd36;" class="text-center">{{ duel.users.1.username }}</h2>
 
 
 
+    {% endif %}
 
-      </div>
-    </div>
+
+    
+
+
+
   </div>
 </div>
