@@ -24,5 +24,14 @@ class AjaxController extends Controller
             'user' => $user,
             ));
     }
+    public function getChallengeAction(request $request)
+    {
+        $id = $request->get('id');
+        $challenge = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Challenge')->find($id);
+
+        return $this->render('BFSiteBundle:Challenge:challengeAjax.html.twig', array(
+            'challenge' => $challenge,
+            ));
+    }
  
 }

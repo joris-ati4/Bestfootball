@@ -60,7 +60,7 @@
 {% endblock %}
 
 {% block body %}
-  <div  id="flashmessage" class="row text-center" style="margin-top:50px;position: fixed;">
+  <div  id="flashmessage" class="row text-center" style="margin-top:50px;position:absolute;margin: 0 auto;left: 0;right: 0;width:200px;">
     {% for flash_message in app.session.flashbag.get('warning') %}
       <p class="bg-danger text-center" style="margin-top:100px;"> {{ flash_message }} </p>
     {% endfor %}
@@ -78,7 +78,7 @@
 {% block javascripts %}
   <script>
   $("#flashmessage").click(function() {
-      $( "div" ).slideUp();
+      $("#flashmessage").slideUp();
   });
   </script>
 {% endblock %}

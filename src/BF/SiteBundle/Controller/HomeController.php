@@ -112,10 +112,8 @@ class HomeController extends Controller
             return $this->redirect($this->generateUrl('bf_site_profile', array('username' => $username)));
         }
 
-    	$repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Challenge');
-    	$challenge = $repository->find($id);
-    	$repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video');
-        $listVideos = $repository->findBy(
+    	$challenge = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Challenge')->$repository->find($id);
+        $listVideos = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video')->$repository->findBy(
             array('challenge' => $challenge),
             array('date' => 'desc'),
             5,

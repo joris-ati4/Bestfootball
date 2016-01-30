@@ -12,37 +12,81 @@
 {% endblock %}
 
 {% block content %}
-
-  
 <section class="profile">
   <div class="row">
     <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">
-      <div class="challengedescription text-center" style="margin:150px 0;">
+      <div class="challengedescription text-center" style="margin:100px 0;">
         <div class="challengetitle">
           <h3 style="color:white;">Start a new duel!</h3>
         </div>
         <div class="challengecontent">
-          {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
-          {# Les erreurs générales du formulaire. #}
-          {{ form_errors(form) }}
+          <div class="row">
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3 ">
+              <div class="row">
+                {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+                {# Les erreurs générales du formulaire. #}
+                {{ form_errors(form) }}
 
-          {# Idem pour un autre champ. #}
-          <div class="form-group">
-            {{ form_label(form.challenge, "Description:", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-            {{ form_errors(form.challenge) }}
-            <div class="col-sm-4">
-              {{ form_widget(form.challenge, {'attr': {'class': 'form-control'}}) }}
+                {# Idem pour un autre champ. #}
+                <div class="form-group">
+                  {{ form_label(form.challenge, "Challenge Title:", {'label_attr': {'class': 'text-center control-label'}}) }}
+                  {{ form_errors(form.challenge) }}
+                  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    {{ form_widget(form.challenge, {'attr': {'class': 'form-control'}}) }}
+                  </div>
+                </div>
+
+                <input type="submit" value="Create the challenge" class="btn btn-warning" style="background-color: #95cd36;border-color: #85b82e;"/>
+                {# Pour le bouton, pas de label ni d'erreur, on affiche juste le widget #}
+                {{ form_rest(form) }}
+                {# Fermeture de la balise <form> du formulaire HTML #}
+                {{ form_end(form) }}
+              </div>
+            </div><!--
+            --><div class="col-xs-12 col-sm-8 col-md-8 col-lg-9 ">
+              <div class="row">
+                <div id="challenge">
+
+                </div>
+                <img id="loading" src="/img/loading.gif" alt="the loading gif" style="visibility: hidden;width:50%;"/>
+              </div>
             </div>
           </div>
-
-          <input type="submit" value="Create the challenge" class="btn btn-warning" />
-        {# Pour le bouton, pas de label ni d'erreur, on affiche juste le widget #}
-        {{ form_rest(form) }}
-        {# Fermeture de la balise <form> du formulaire HTML #}
-        {{ form_end(form) }}
         </div>
       </div>
     </div>
   </div>
 </section>
 {% endblock %}
+
+{% block javascripts %}
+  <script type="text/javascript">
+    $(document).ready(function() {
+      myLoading();
+      $("select").change(function () {
+        //do ajax call.
+        myLoading();  
+      })
+
+    });
+
+    var myLoading = function(){
+        $('#challenge').hide();
+        $('#loading').show();
+        var id = $("select").val();
+        $.ajax({
+            type: "POST",
+            url: "{{ path('bf_site_api_challenge')}}",
+            data: 'id=' + id,
+            dataType: 'html',
+            cache: false,
+            success: function(code_html){
+              $('#loading').hide();
+              $('#challenge').show();
+              $( "#challenge" ).replaceWith(code_html);
+            }
+        });
+      };
+
+  </script>
+{% endblock %} 

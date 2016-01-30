@@ -180,3 +180,7 @@ bf_site_ranking_duel:
 bf_site_api_userinfo:
     path: /home/userinfo
     defaults: { _controller: BFSiteBundle:Ajax:userInfo }
+
+bf_site_api_challenge:
+    path: /home/challenge
+    defaults: { _controller: BFSiteBundle:Ajax:getChallenge }
