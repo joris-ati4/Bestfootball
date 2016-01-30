@@ -21,17 +21,15 @@
           <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vcenter row">
             {% if duel.completed == 0 %} {# The duel is not completed yet #}
               {% include "BFSiteBundle:Duel:duelincomplete.html.twig" with {"duel": duel} only %}
-            {% else %}
+            {% elseif duel.completed == 1 %}
               {% include "BFSiteBundle:Duel:duelcomplete.html.twig" with {"duel": duel} only %}
            {% endif %}
+
+           {{ dump(duel) }}
           </div>
           {# end of the duel page #}
         </div>
       </div>
     </div>
 </section>
-{% endblock %}
-
-
-{% block javascripts %}
 {% endblock %}
