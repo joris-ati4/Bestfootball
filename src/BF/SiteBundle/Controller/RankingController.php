@@ -126,6 +126,7 @@ class RankingController extends Controller
               'search' => $search->createView(),
               'ranking' => $ranking,
               'rankings'=> $rankings,
+              'listCountries' => $listCountries,
               'country' => $country,
               'state' => $state,
             ));   

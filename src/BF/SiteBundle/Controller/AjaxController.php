@@ -46,5 +46,22 @@ class AjaxController extends Controller
 
        return new response();
     }
+    public function checkUsernameAction(request $request)
+    {
+        $username = $request->get('username');
+        $user = $this->getDoctrine()->getManager()->getRepository('BFUserBundle:User')->findOneByUsername($username);
+        
+
+        if(!$user){
+            //username is available
+            $response = new response('ok');
+        }
+        else{
+            //username is not available
+            $response = new response('used');
+        }
+        return $response;
+         
+    }
  
 }

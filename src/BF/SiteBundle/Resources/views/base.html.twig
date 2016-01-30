@@ -89,7 +89,7 @@
       //ajax to mark it read.
       $.ajax({
             type: "POST",
-            url: link,
+            url: "{{ path('bf_site_api_notifread')}}",
             data: 'id=' + id,
             cache: false,
             success: function(code_html){
