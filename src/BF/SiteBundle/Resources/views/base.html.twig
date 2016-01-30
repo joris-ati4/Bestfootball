@@ -31,7 +31,7 @@
       <ul class="dropdown-menu">
         {% for notification in app.user.notifications %}
           {% if notification.watched == 0 %}
-            <li><a href="#" class="notification" data-notif="{{ notification.id }}" data-url="{{ notifiaction.link }}">{{ notification.message }}</a></li>
+            <li><a href="#" class="notification" data-notif="{{ notification.id }}" data-url="{{ notification.link }}">{{ notification.message }}</a></li>
             <li role="separator" class="divider"></li>
           {% endif %}
         {% endfor %}
