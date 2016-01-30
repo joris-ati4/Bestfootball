@@ -36,6 +36,29 @@ bf_site_search:
     path:     /search
     defaults: { _controller: BFSiteBundle:Logged:search }
 
+bf_site_partners:
+    path:     /partners
+    defaults: { _controller: BFSiteBundle:Information:partners }
+
+bf_site_press:
+    path:     /press
+    defaults: { _controller: BFSiteBundle:Information:press }
+
+bf_site_privacy:
+    path:     /privacy
+    defaults: { _controller: BFSiteBundle:Information:privacy }
+
+bf_site_terms:
+    path:     /terms
+    defaults: { _controller: BFSiteBundle:Information:terms }
+
+bf_site_conditions:
+    path:     /conditions
+    defaults: { _controller: BFSiteBundle:Information:conditions }
+
+bf_site_community:
+    path:     /comunity
+    defaults: { _controller: BFSiteBundle:Information:community }
 #this section does all the routes for the video section
 
 bf_site_video:
