@@ -16,22 +16,7 @@
         <h2 style="color:#95cd36;" class="text-center">{{ duel.users.0.username }}</h2>
 
 
-        {% if duel.videos.0.user == duel.users.0 %}
-        <video width="100%" id="video" controls style="max-width:100%;max-height:400px;">
-          <source src="/uploads/videos/{{ duel.videos.0.id }}.{{ duel.videos.0.source }}" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-        <p>repetitions: {{ duel.videos.0.repetitions }}</p>
-
-        {% else %}
-
-        <video width="100%" id="video" controls style="max-width:100%;max-height:400px;">
-          <source src="/uploads/videos/{{ duel.videos.1.id }}.{{ duel.videos.1.source }}" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-        <p>repetitions: {{ duel.videos.1.repetitions }}</p>
-
-        {% endif %}
+        
 
 
 
@@ -56,22 +41,6 @@
 
 
 
-        {% if duel.videos.1.user == duel.users.1 %}
-        <video width="100%" id="video" controls style="max-width:100%;max-height:400px;">
-          <source src="/uploads/videos/{{ duel.videos.1.id }}.{{ duel.videos.1.source }}" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-        <p>repetitions: {{ duel.videos.1.repetitions }}</p>
-
-        {% else %}
-
-        <video width="100%" id="video" controls style="max-width:100%;max-height:400px;">
-          <source src="/uploads/videos/{{ duel.videos.0.id }}.{{ duel.videos.0.source }}" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-        <p>repetitions: {{ duel.videos.0.repetitions }}</p>
-
-        {% endif %}
 
       </div>
     </div>
