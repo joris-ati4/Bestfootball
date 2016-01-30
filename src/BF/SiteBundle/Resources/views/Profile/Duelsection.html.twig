@@ -13,7 +13,7 @@
               <p>
                 {% if duel.completed == 1 %}
                   {% if duel.winner is not null %}
-                    {% if duel.winner == user %}
+                    {% if duel.winner.id == user.id %}
                       WON
                     {% else %}
                       LOST

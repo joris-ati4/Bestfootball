@@ -45,7 +45,7 @@
           </p>
          
           {% if duel.accepted == 1 %}
-            {% if duel.host == app.user or duel.guest == app.user %}
+            {% if duel.host.id == app.user.id or duel.guest.id == app.user.id %}
               <button onclick="location.href='{{ path('bf_site_upload', {'id': duel.id, 'type':'duel'}) }}'" class="btn btn-participate" type="submit"><i class="glyphicon glyphicon-upload"></i>Upload my video</button>
             {% endif %}
           {% endif %}
