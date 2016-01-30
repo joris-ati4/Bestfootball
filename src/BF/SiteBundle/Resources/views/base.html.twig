@@ -83,7 +83,7 @@
   </script>
   <script type="text/javascript">
   $(".notification").click(function(e) {
-      e.preventDefault();
+      e.preventDefault(e);
       var id = $(this).data("notif");
       var link = $(this).data("url");
       //ajax to mark it read.
