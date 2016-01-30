@@ -41,7 +41,8 @@ class FollowController extends Controller
         $checkNotification = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Notification')->checkNotification($following, $message);
         if($checkNotification === null ){
             $service = $this->container->get('bf_site.notification');
-            $notification = $service->create($following, $message, null);
+            $link = $this->generateUrl('bf_site_profile', array('username' => $follower->getUsername()));
+            $notification = $service->create($following, $message, null, $link);
             $em->persist($notification);
         }
         $em->persist($follow);

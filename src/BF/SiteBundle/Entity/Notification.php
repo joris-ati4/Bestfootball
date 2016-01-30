@@ -48,6 +48,13 @@ class Notification
     private $message;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="link", type="text")
+     */
+    private $link;
+
+    /**
      * @var boolean
      *
      * @ORM\Column(name="watched", type="boolean")
@@ -183,5 +190,29 @@ class Notification
     public function getDuel()
     {
         return $this->duel;
+    }
+
+    /**
+     * Set link
+     *
+     * @param string $link
+     *
+     * @return Notification
+     */
+    public function setLink($link)
+    {
+        $this->link = $link;
+
+        return $this;
+    }
+
+    /**
+     * Get link
+     *
+     * @return string
+     */
+    public function getLink()
+    {
+        return $this->link;
     }
 }

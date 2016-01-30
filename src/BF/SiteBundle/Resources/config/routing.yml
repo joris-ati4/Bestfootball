@@ -184,3 +184,7 @@ bf_site_api_userinfo:
 bf_site_api_challenge:
     path: /home/challenge
     defaults: { _controller: BFSiteBundle:Ajax:getChallenge }
+
+bf_site_api_notifread:
+    path: /home/notificationread
+    defaults: { _controller: BFSiteBundle:Ajax:notifread }

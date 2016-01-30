@@ -242,14 +242,15 @@ class VideoController extends Controller
 			      				$em->persist($host);
 
 			      				//notifications
+			      				$link = $this->generateUrl('bf_site_duel_view', array('id' => $duel->getId()));
 			      				//host
 			      				$message = 'Congratulations you won the duel against '.$guest->getUsername().' adn you received 100 points !';
 			      				$service = $this->container->get('bf_site.notification');
-                				$notificationhost = $service->create($host, $message, $duel);
+                				$notificationhost = $service->create($host, $message, $duel, $link);
                 				//guest
                 				$message = 'unfortunately you lost the duel against '.$host->getUsername();
 			      				$service = $this->container->get('bf_site.notification');
-                				$notificationguest = $service->create($guest, $message, $duel);
+                				$notificationguest = $service->create($guest, $message, $duel, $link);
 			      				$em->persist($notificationhost);
 			      				$em->persist($notificationguest);
 						    }
@@ -264,14 +265,15 @@ class VideoController extends Controller
 			      				$em->persist($guest);
 
 			      				//notifications
+			      				$link = $this->generateUrl('bf_site_duel_view', array('id' => $duel->getId()));
 			      					//guest
 			      					$message = 'Congratulations you won the duel against '.$host->getUsername().' adn you received 100 points !';
 			      					$service = $this->container->get('bf_site.notification');
-                					$notificationguest = $service->create($guest, $message, $duel);
+                					$notificationguest = $service->create($guest, $message, $duel, $link);
                 					//host
                 					$message = 'unfortunately you lost the duel against '.$guest->getUsername();
 			      					$service = $this->container->get('bf_site.notification');
-                					$notificationhost = $service->create($host, $message, $duel);
+                					$notificationhost = $service->create($host, $message, $duel, $link);
 
 			      				$em->persist($notificationhost);
 			      				$em->persist($notificationguest);
@@ -289,14 +291,15 @@ class VideoController extends Controller
 			      				$em->persist($guest);
 
 			      				//notifications
+			      					$link = $this->generateUrl('bf_site_duel_view', array('id' => $duel->getId()));
 			      					//host
 				      				$message = 'Congratulations, the duel against '.$guest->getUsername().' was a tie and you received 50 points !';
 				      				$service = $this->container->get('bf_site.notification');
-	                				$notificationhost = $service->create($host, $message, $duel);
+	                				$notificationhost = $service->create($host, $message, $duel, $link);
 	                				//guest
 	                				$message = 'Congratulations, the duel against '.$host->getUsername().' was a tie and you received 50 points !';
 				      				$service = $this->container->get('bf_site.notification');
-	                				$notificationguest = $service->create($guest, $message, $duel);
+	                				$notificationguest = $service->create($guest, $message, $duel, $link);
 				      				$em->persist($notificationhost);
 				      				$em->persist($notificationguest);
 						    }

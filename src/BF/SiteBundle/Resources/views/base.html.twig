@@ -31,7 +31,7 @@
       <ul class="dropdown-menu">
         {% for notification in app.user.notifications %}
           {% if notification.watched == 0 %}
-            <li><a href="{{ path('bf_site_profile_duels') }}">{{ notification.message }}</a></li>
+            <li><a href="#" class="notification" data-notif="{{ notification.id }}" data-url="{{ notifiaction.link }}">{{ notification.message }}</a></li>
             <li role="separator" class="divider"></li>
           {% endif %}
         {% endfor %}
@@ -79,6 +79,23 @@
   <script>
   $("#flashmessage").click(function() {
       $("#flashmessage").slideUp();
+  });
+  </script>
+  <script type="text/javascript">
+  $(".notification").click(function(e) {
+      e.preventDefault();
+      var id = $(this).data("notif");
+      var link = $(this).data("url");
+      //ajax to mark it read.
+      $.ajax({
+            type: "POST",
+            url: link,
+            data: 'id=' + id,
+            cache: false,
+            success: function(code_html){
+            window.location.replace(link);
+            }
+        });
   });
   </script>
 {% endblock %}

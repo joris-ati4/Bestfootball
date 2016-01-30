@@ -102,9 +102,10 @@ class DuelController extends Controller
         ;
 
     	$message = 'You received an invitation for a duel from '.$host->getUsername();
+        $link = $this->generateUrl('bf_site_profile_duels');
     	//we create a notification for the guest.
         $service = $this->container->get('bf_site.notification');
-        $notification = $service->create($guest, $message, $duel);
+        $notification = $service->create($guest, $message, $duel, $link);
 
 	    $form = $this->get('form.factory')->create(new DuelType, $duel);
 	    
@@ -239,13 +240,7 @@ class DuelController extends Controller
     	$listDuels = array('listProgress' => $listProgress, 'listWon' => $listWon,'listDraw' => $listDraw, 'listLost' => $listLost);
 
         //the notifications. Will be done with AJAx in the future.
-        $notifications = $user->getNotifications();
-
-        foreach ($notifications as $notification) {
-                    $notification->setWatched('1');
-                    $em->persist($notification);
-                }
-        $em->flush();
+        
 
     	 return $this->render('BFSiteBundle:Profile:duels.html.twig', array(
 		      'listDuels' => $listDuels,

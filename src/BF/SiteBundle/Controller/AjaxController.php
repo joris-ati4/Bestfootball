@@ -4,6 +4,7 @@ namespace BF\SiteBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class AjaxController extends Controller
 {
@@ -32,6 +33,18 @@ class AjaxController extends Controller
         return $this->render('BFSiteBundle:Challenge:challengeAjax.html.twig', array(
             'challenge' => $challenge,
             ));
+    }
+    public function notifreadAction(request $request)
+    {
+        $em =$this->getDoctrine()->getManager();
+        $id = $request->get('id');
+        $notification = $em ->getRepository('BFSiteBundle:Notification')->find($id);
+
+        $notification->setWatched('1');
+        $em->persist($notification);
+        $em->flush();
+
+       return new response();
     }
  
 }

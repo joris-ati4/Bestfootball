@@ -48,6 +48,13 @@ class Notification
     private $message;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="link", type="text")
+     */
+    private $link;
+
+    /**
      * @var boolean
      *
      * @ORM\Column(name="watched", type="boolean")

@@ -10,7 +10,7 @@ class BFNotification
    *
    */
 
-  public function create($user, $message, $duel)
+  public function create($user, $message, $duel, $link)
   {
       //we create a notification for the guest.
       $notification = new Notification();
@@ -19,6 +19,7 @@ class BFNotification
         ->setMessage($message)
         ->setUser($user)
         ->setWatched('0')
+        ->setLink($link)
       ;
 
       if($duel != null){
