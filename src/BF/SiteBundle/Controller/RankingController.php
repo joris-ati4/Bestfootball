@@ -59,7 +59,7 @@ class RankingController extends Controller
             }
         }
 
-        $rankins = array('rankingGirls' => $rankingGirls, 'rankingBoys' => $rankingBoys,);
+        $rankings = array('rankingGirls' => $rankingGirls, 'rankingBoys' => $rankingBoys,);
         //rankings for state
             return $this->render('BFSiteBundle:Ranking:challenge.html.twig',array(
               'search' => $search->createView(),
@@ -121,7 +121,7 @@ class RankingController extends Controller
             }
         }
         //rankings for state
-            $rankins = array('rankingGirls' => $rankingGirls, 'rankingBoys' => $rankingBoys,);
+            $rankings = array('rankingGirls' => $rankingGirls, 'rankingBoys' => $rankingBoys,);
             return $this->render('BFSiteBundle:Ranking:duel.html.twig',array(
               'search' => $search->createView(),
               'ranking' => $ranking,
