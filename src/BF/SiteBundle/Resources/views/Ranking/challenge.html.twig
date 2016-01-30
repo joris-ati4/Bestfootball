@@ -42,8 +42,9 @@
           							<div role="tabpanel" class="tab-pane active" id="challenge">
 
 									 	<ul class="nav nav-tabs" role="tablist">
-										    <li role="presentation" class="active" style="width:50%;" ><a href="#mixed" aria-controls="mixed" role="tab" data-toggle="tab">Mixed</a></li>
-										    <li role="presentation" style="width:50%;"><a href="#girls" aria-controls="girls" role="tab" data-toggle="tab">Girls</a></li>
+										    <li role="presentation" class="active" style="width:33%;" ><a href="#mixed" aria-controls="mixed" role="tab" data-toggle="tab">Mixed</a></li>
+										    <li role="presentation" style="width:33%;"><a href="#girls" aria-controls="girls" role="tab" data-toggle="tab">Girls</a></li>
+										    <li role="presentation" style="width:34%;"><a href="#boys" aria-controls="boys" role="tab" data-toggle="tab">Boys</a></li>
 										</ul>
 
 
@@ -55,7 +56,12 @@
 										  </div>
 										  <div role="tabpanel" class="tab-pane fade" id="girls">
 										  	<table class="table table-striped">
-										  		{% include "BFSiteBundle:Ranking:table.html.twig" with {"ranking": rankingGirls} only %}
+										  		{% include "BFSiteBundle:Ranking:table.html.twig" with {"ranking": rankings.rankingGirls} only %}
+										    </table>
+										  </div>
+										  <div role="tabpanel" class="tab-pane fade" id="boys">
+										  	<table class="table table-striped">
+										  		{% include "BFSiteBundle:Ranking:table.html.twig" with {"ranking": rankings.rankingBoys} only %}
 										    </table>
 										  </div>
 										</div>

@@ -31,6 +31,7 @@ class RankingController extends Controller
             $repository = $this->getDoctrine()->getManager()->getRepository('BFUserBundle:User');
             $ranking = $repository->findBy(array(),array('points' => 'desc'));
             $rankingGirls =$repository->findBy(array('gender' => 'Female'),array('points' => 'desc'));
+            $rankingBoys =$repository->findBy(array('gender' => 'Male'),array('points' => 'desc'));
             $repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Country');
             $listCountries = $repository->findall();
         }
@@ -42,6 +43,8 @@ class RankingController extends Controller
                 $repository = $this->getDoctrine()->getManager()->getRepository('BFUserBundle:User');
                 $ranking = $repository->countryRanking($country);
                 $rankingGirls =$repository->countryRankingGirls($country);
+                $rankingBoys =$repository->countryRankingBoys($country);
+
                 
             }
             else{ //ranking for state
@@ -50,15 +53,18 @@ class RankingController extends Controller
                 $repository = $this->getDoctrine()->getManager()->getRepository('BFUserBundle:User');
                 $ranking = $repository->stateRanking($state);
                 $rankingGirls =$repository->stateRankingGirls($state);
+                $rankingBoys =$repository->stateRankingBoys($state);
                 $repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Country');
                 $listCountries = $repository->findall();
             }
         }
+
+        $rankins = array('rankingGirls' => $rankingGirls, 'rankingBoys' => $rankingBoys,);
         //rankings for state
             return $this->render('BFSiteBundle:Ranking:challenge.html.twig',array(
               'search' => $search->createView(),
               'ranking' => $ranking,
-              'rankingGirls' => $rankingGirls,
+              'rankings' => $rankings,
               'listCountries' => $listCountries,
               'country' => $country,
               'state' => $state,
@@ -88,6 +94,7 @@ class RankingController extends Controller
             $repository = $this->getDoctrine()->getManager()->getRepository('BFUserBundle:User');
             $ranking = $repository->findBy(array(),array('duelPoints' => 'desc'));
             $rankingGirls =$repository->findBy(array('gender' => 'Female'),array('duelPoints' => 'desc'));
+            $rankingBoys =$repository->findBy(array('gender' => 'Male'),array('duelPoints' => 'desc'));
             $repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Country');
             $listCountries = $repository->findall();
         }
@@ -99,6 +106,7 @@ class RankingController extends Controller
                 $repository = $this->getDoctrine()->getManager()->getRepository('BFUserBundle:User');
                 $ranking = $repository->countryDuelRanking($country);
                 $rankingGirls =$repository->countryDuelRankingGirls($country);
+                $rankingBoys =$repository->countryDuelRankingBoys($country);
                 
             }
             else{ //ranking for state
@@ -107,16 +115,17 @@ class RankingController extends Controller
                 $repository = $this->getDoctrine()->getManager()->getRepository('BFUserBundle:User');
                 $ranking = $repository->stateDuelRanking($state);
                 $rankingGirls =$repository->stateDuelRankingGirls($state);
+                $rankingBoys =$repository->stateDuelRankingBoys($state);
                 $repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Country');
                 $listCountries = $repository->findall();
             }
         }
         //rankings for state
+            $rankins = array('rankingGirls' => $rankingGirls, 'rankingBoys' => $rankingBoys,);
             return $this->render('BFSiteBundle:Ranking:duel.html.twig',array(
               'search' => $search->createView(),
               'ranking' => $ranking,
-              'rankingGirls' => $rankingGirls,
-              'listCountries' => $listCountries,
+              'rankings'=> $rankings,
               'country' => $country,
               'state' => $state,
             ));   

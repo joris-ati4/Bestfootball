@@ -170,6 +170,67 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
       ->getResult()
     ;
   }
+  public function countryRankingBoys($country)
+  {
+    $qb = $this->createQueryBuilder('u');
+
+    $qb->Where('u.country = :country')
+         ->setParameter('country', $country)
+       ->andWhere('u.gender = :gender')
+         ->setParameter('gender', 'Male')
+       ->orderBy('u.points', 'DESC')
+    ;
+    return $qb
+      ->getQuery()
+      ->getResult()
+    ;
+  }
+  public function countryDuelRankingBoys($country)
+  {
+    $qb = $this->createQueryBuilder('u');
+
+    $qb->Where('u.country = :country')
+         ->setParameter('country', $country)
+       ->andWhere('u.gender = :gender')
+         ->setParameter('gender', 'Male')
+       ->orderBy('u.duelPoints', 'DESC')
+    ;
+    return $qb
+      ->getQuery()
+      ->getResult()
+    ;
+  }
+  public function stateRankingBoys($state)
+  {
+    $qb = $this->createQueryBuilder('u');
+
+    $qb->Where('u.state = :state')
+         ->setParameter('state', $state)
+       ->andWhere('u.gender = :gender')
+         ->setParameter('gender', 'Male')
+       ->orderBy('u.points', 'DESC')
+    ;
+    return $qb
+      ->getQuery()
+      ->getResult()
+    ;
+  }
+  public function stateDuelRankingBoys($state)
+  {
+    $qb = $this->createQueryBuilder('u');
+
+    $qb->Where('u.state = :state')
+         ->setParameter('state', $state)
+       ->andWhere('u.gender = :gender')
+         ->setParameter('gender', 'Male')
+       ->orderBy('u.duelPoints', 'DESC')
+    ;
+    return $qb
+      ->getQuery()
+      ->getResult()
+    ;
+  }
+
   public function findUserLike( $term, $limit = 10 )
   {
    
