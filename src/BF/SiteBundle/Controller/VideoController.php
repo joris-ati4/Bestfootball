@@ -314,8 +314,7 @@ class VideoController extends Controller
 	    	if($video->getChallenge() !== null){
 		    	$challenge = $video->getChallenge();
 		    	//check if the video is the highest score.
-		    	$repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video');
-		    	$highestVideo =  $repository->highestVideo($user, $challenge);
+		    	$highestVideo =  $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video')->highestVideo($user, $challenge);
 
 		    	if($video->getid() == $highestVideo->getId()){ //the video that will be deleted is the highest video.
 		    		//we delete the video and delete the score.
@@ -329,10 +328,9 @@ class VideoController extends Controller
 		    		$em->flush();
 
 		    		//we check if there is another video. and give this score to the user.
-		    		$repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video');
-		    		$oldVideo = $repository->highestVideo($user, $challenge);
+		    		$oldVideo = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video')->highestVideo($user, $challenge);
 
-		    		if($oldVideo !== null){ //there is a video before.
+		    		if($oldVideo){ //there is a video before.
 
 		    			$oldVideoScore = $oldVideo->getScore();
 		    			$userPoints = $user->getPoints();
@@ -340,6 +338,7 @@ class VideoController extends Controller
 		    			$points =  $userPoints + $oldVideoScore;
 		    			$user->setPoints($points);
 			      		$em->persist($user);
+			      		$em->remove($video);
 			      		$em->flush();
 		    		}
 		    	}
