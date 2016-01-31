@@ -52,7 +52,7 @@ class InformationController extends Controller
             return $this->redirect($this->generateUrl('bf_site_profile', array('username' => $username)));
         }
 
-        return $this->render('BFSiteBundle:Home:partner.html.twig', array(
+        return $this->render('BFSiteBundle:Home:partners.html.twig', array(
               'search' => $search->createView(),
             ));
     }

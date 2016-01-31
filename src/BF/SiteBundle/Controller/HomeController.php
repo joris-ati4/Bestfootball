@@ -54,9 +54,7 @@ class HomeController extends Controller
             $username = $user->getUsername();
             return $this->redirect($this->generateUrl('bf_site_profile', array('username' => $username)));
         }
-
-    	$repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Challenge');
-        $listChallenges = $repository->findBy(array(),array('date' => 'desc'));
+        $listChallenges = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Challenge')->findBy(array(),array('date' => 'desc'));
 
 		return $this->render('BFSiteBundle:Challenge:challenges.html.twig', array(
 	      'listChallenges' => $listChallenges,
@@ -83,8 +81,7 @@ class HomeController extends Controller
             return $this->redirect($this->generateUrl('bf_site_profile', array('username' => $username)));
         }
 
-        $repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Challenge');
-        $listChallenges = $repository->findBy(array('partner' => '1'),array('date' => 'desc'));
+        $listChallenges = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Challenge')->findBy(array('partner' => '1'),array('date' => 'desc'));
 
         return $this->render('BFSiteBundle:Challenge:challengespartner.html.twig', array(
           'listChallenges' => $listChallenges,
@@ -112,13 +109,13 @@ class HomeController extends Controller
             return $this->redirect($this->generateUrl('bf_site_profile', array('username' => $username)));
         }
 
-    	$challenge = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Challenge')->$repository->find($id);
-        $listVideos = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video')->$repository->findBy(
+    	$challenge = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Challenge')->find($id);
+        $listVideos = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video')->findBy(
             array('challenge' => $challenge),
             array('date' => 'desc'),
             5,
             0);
-        $rankUsers = $repository->findBy(
+        $rankUsers = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video')->findBy(
             array('challenge' => $challenge),
             array('repetitions' => 'desc'),
             5,
@@ -152,30 +149,23 @@ class HomeController extends Controller
         }
 
         if($country == 'global'){ //the global ranking of all the users
-            $repository = $this->getDoctrine()->getManager()->getRepository('BFUserBundle:User');
-            $ranking = $repository->findBy(array(),array('points' => 'desc'));
-            $rankingGirls =$repository->findBy(array('gender' => 'Female'),array('points' => 'desc'));
-            $repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Country');
-            $listCountries = $repository->findall();
+            $ranking = $this->getDoctrine()->getManager()->getRepository('BFUserBundle:User')->findBy(array(),array('points' => 'desc'));
+            $rankingGirls =$this->getDoctrine()->getManager()->getRepository('BFUserBundle:User')->findBy(array('gender' => 'Female'),array('points' => 'desc'));
+            $listCountries = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Country')->findall();
         }
         else{ 
             if($state == 'country'){//rankings for country
-                $repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Country');
-                $country = $repository->findOneByName($country);
-                $listCountries = $repository->findall();
-                $repository = $this->getDoctrine()->getManager()->getRepository('BFUserBundle:User');
-                $ranking = $repository->countryRanking($country);
-                $rankingGirls =$repository->countryRankingGirls($country);
+                $country = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Country')->findOneByName($country);
+                $listCountries = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Country')->findall();
+                $ranking = $this->getDoctrine()->getManager()->getRepository('BFUserBundle:User')->countryRanking($country);
+                $rankingGirls =$this->getDoctrine()->getManager()->getRepository('BFUserBundle:User')->countryRankingGirls($country);
                 
             }
             else{ //ranking for state
-                $repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:State');
-                $state = $repository->findOneByName($state);
-                $repository = $this->getDoctrine()->getManager()->getRepository('BFUserBundle:User');
-                $ranking = $repository->stateRanking($state);
-                $rankingGirls =$repository->stateRankingGirls($state);
-                $repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Country');
-                $listCountries = $repository->findall();
+                $state = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:State')->findOneByName($state);
+                $ranking = $this->getDoctrine()->getManager()->getRepository('BFUserBundle:User')->stateRanking($state);
+                $rankingGirls =$this->getDoctrine()->getManager()->getRepository('BFUserBundle:User')->stateRankingGirls($state);
+                $listCountries = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Country')->findall();
             }
         }
         //rankings for state
