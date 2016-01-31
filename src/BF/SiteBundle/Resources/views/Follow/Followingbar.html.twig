@@ -4,15 +4,15 @@
   </div>
   <div class="followcontent">
     {% for follow in listFollows %}
-      <a href="{{ path('bf_site_profile', { 'username': follow.following.username }) }}">
+      <a href="{{ path('bf_site_profile', { 'username': follow.follower.username }) }}">
         <div class="col-xs-4 hidden-sm col-md-2 col-lg-2 vcenter">
           <div class="row">
-            <img src="{{ follow.following.picture.src }}" alt="" style="width:100%;border-radius:100%"/>
+            <img src="{{ follow.follower.picture.src }}" alt="" style="width:100%;border-radius:100%"/>
           </div>
         </div><!--
         --><div class="col-xs-6 col-sm-12 col-md-10 col-lg-10 vcenter">
           <div class="row">
-            <p>{{ follow.following.username }}</p>
+            <p>{{ follow.follower.username }}</p>
           </div>
         </div>
       </a>

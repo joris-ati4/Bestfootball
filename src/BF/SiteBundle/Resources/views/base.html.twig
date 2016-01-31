@@ -60,13 +60,13 @@
 {% endblock %}
 
 {% block body %}
-  <div  id="flashmessage" class="row text-center" style="margin-top:50px;position:absolute;margin: 0 auto;left: 0;right: 0;width:200px;">
+  <div  id="flashmessage" class="row text-center" style="margin-top:50px;position:absolute;margin: 0 auto;left: 0;right: 0;width:200px;z-index: 500;">
     {% for flash_message in app.session.flashbag.get('warning') %}
-      <p class="bg-danger text-center" style="margin-top:100px;"> {{ flash_message }} </p>
+      <p class="bg-danger text-center" style="margin-top:100px;z-index: 550;"> {{ flash_message }} </p>
     {% endfor %}
 
     {% for flash_message in app.session.flashbag.get('success') %}
-      <p class="bg-success text-center" style="margin-top:100px;"> {{ flash_message }} </p>
+      <p class="bg-success text-center" style="margin-top:100px;z-index: 550;"> {{ flash_message }} </p>
     {% endfor %}
   </div>
   {% block content %}
