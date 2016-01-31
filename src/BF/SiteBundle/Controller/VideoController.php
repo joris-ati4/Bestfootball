@@ -311,12 +311,13 @@ class VideoController extends Controller
 	    if ($form->handleRequest($request)->isValid()) {
 
 	    	//vérifier s'il y a des autres videos pour ce challenge
-	    	if($video->getChallenge() !== null){
-		    	$challenge = $video->getChallenge();
+	    	if($video->getType() == 'challenge'){
+		    	
 		    	//check if the video is the highest score.
+		    	$challenge = $video->getChallenge();
 		    	$highestVideo =  $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video')->highestVideo($user, $challenge);
 
-		    	if($video->getid() == $highestVideo->getId()){ //the video that will be deleted is the highest video.
+		    	if($video == $highestVideo){ //the video that will be deleted is the highest video.
 		    		//we delete the video and delete the score.
 		    		$deleteVideoScore = $video->getScore();
 		    		$userPoints = $user->getPoints();
@@ -324,8 +325,7 @@ class VideoController extends Controller
 		    		$points =  $userPoints - $deleteVideoScore;
 		    		$user->setPoints($points);
 			      	$em->persist($user);
-		    		$em->remove($video);
-		    		$em->flush();
+			      	$em->remove($video);
 
 		    		//we check if there is another video. and give this score to the user.
 		    		$oldVideo = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video')->highestVideo($user, $challenge);
@@ -334,25 +334,36 @@ class VideoController extends Controller
 
 		    			$oldVideoScore = $oldVideo->getScore();
 		    			$userPoints = $user->getPoints();
-
 		    			$points =  $userPoints + $oldVideoScore;
 		    			$user->setPoints($points);
 			      		$em->persist($user);
-			      		$em->remove($video);
-			      		$em->flush();
 		    		}
+
+			      	$em->flush();
+			      	$request->getSession()->getFlashBag()->add('success', "Your video has been deleted.");
+					return $this->redirect($this->generateUrl('bf_site_videos'));
+
+
 		    	}
 		    	else{ //if the video is not the highest score. We just delete it.
 		    		$em->remove($video);
 		    		$em->flush();
-				}    	   		
+		    		$request->getSession()->getFlashBag()->add('success', "Your video has been deleted.");
+					return $this->redirect($this->generateUrl('bf_site_videos'));
+				}  	   		
 		    }
-
-		    
-
-	      $request->getSession()->getFlashBag()->add('success', "Your video has been deleted.");
-
-	      return $this->redirect($this->generateUrl('bf_site_videos'));
+		    elseif($video->getType() == 'freestyle'){
+		    	//freestyle videos can always be deleted.
+		    	$em->remove($video);
+		    	$em->flush();
+		    	$request->getSession()->getFlashBag()->add('success', "Your video has been deleted.");
+	      		return $this->redirect($this->generateUrl('bf_site_videos'));
+		    }
+		    else{
+		    	//duel videos can't be deleted.
+		    	$request->getSession()->getFlashBag()->add('success', "You can't delete duel videos.");
+		    	return $this->redirect($this->generateUrl('bf_site_videos'));
+		    }
 	    }
 
 		    // Si la requête est en GET, on affiche une page de confirmation avant de supprimer
