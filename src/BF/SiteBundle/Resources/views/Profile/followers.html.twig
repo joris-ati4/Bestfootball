@@ -1,0 +1,36 @@
+{% extends "BFSiteBundle::base.html.twig" %}
+
+
+{% block meta %}
+	<meta name="description" content="followers of {{ user.username }}.">
+	<meta name="keywords" content="soccer,football, ">
+{% endblock %}
+
+
+{% block title %}
+  followers of {{ user.username }}- {{ parent() }}
+{% endblock %}
+
+{% block content %}
+<section class="homepage">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1" style="margin-top:40px;">
+      <div class="row">
+        <h1 style="color:#95cd36;" class="text-center">followers of {{ user.username }}</h1>
+        {% if listFollows|length > 0 %}
+          {% for follow in listFollows %}
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 text-center">
+              <div class="row">
+                <img src="{{ follow.following.picture.src }}" alt="{{ follow.following.picture.alt }}" style="width:100%;border-radius:100%"/>
+                <a href="{{ path('bf_site_profile', { 'username': follow.following.username }) }}"><p>{{ follow.following.username }}</p></a>
+              </div>
+            </div>
+          {% endfor %}
+        {% else %}
+        <p>This user doesn't have any followers.</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

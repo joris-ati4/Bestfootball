@@ -6,6 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Form\FormError;
+use Symfony\Component\Form\FormView;
 
 //Les entités
 use BF\SiteBundle\Entity\Notification;
@@ -69,7 +71,38 @@ class FollowController extends Controller
         $em->flush();
 
         return new Response();
-
     }
-    
+    public function followersUserAction($username,request $request)
+    {
+        //all the code for the user search function.
+        $defaultData = array('user' => null );
+        $search = $this->createFormBuilder($defaultData)
+            ->add('user', 'entity_typeahead', array(
+                    'class' => 'BFUserBundle:User',
+                    'render' => 'username',
+                    'route' => 'bf_site_search',
+                    ))
+            ->getForm(); 
+        $search->handleRequest($request);
+        if ($search->isValid()) {
+            // data is an array with "name", "email", and "message" keys
+            $data = $search->getData();
+            $user = $data['user'];
+            $username = $user->getUsername();
+            return $this->redirect($this->generateUrl('bf_site_profile', array('username' => $username)));
+        }
+
+        $user = $this->getDoctrine()->getManager()->getRepository('BFUserBundle:User')->findOneByUsername($username);
+        if (!$user) {
+            throw $this->createNotFoundException('This user does not exist.');
+        }
+        //get the list of all the follows where the user is followed. 
+        $listFollows = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Follow')->findByFollower($user);
+
+        return $this->render('BFSiteBundle:Profile:followers.html.twig', array(
+          'listFollows' => $listFollows,
+          'user' => $user,
+          'search' => $search->createView(),
+        ));
+    }
 }

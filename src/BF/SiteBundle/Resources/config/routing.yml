@@ -96,6 +96,10 @@ bf_site_profile:
     path:     /profile/{username}
     defaults: { _controller: BFSiteBundle:Profile:view }
 
+bf_site_profile_followers:
+    path:     /profile/{username}/followers
+    defaults: { _controller: BFSiteBundle:Follow:followersUser }
+
 bf_site_videos:
     path:     /myvideos
     defaults: { _controller: BFSiteBundle:Profile:videos }

@@ -37,11 +37,13 @@
             </div>
           </div><!--
        --><div class="col-xs-4 col-sm-4 col-md-2 col-lg-2 vcenter" style="padding:5px 5px;">
-            <div class="profilecounter text-center">
-              <div>
-                <p>{{ profiletop.followscount }}</br>Followers</p>
+            <a href="{{ path('bf_site_profile_followers', { 'username': user.username }) }}" style="text-decoration: none;">
+              <div class="profilecounter text-center" style="cursor:pointer">
+                <div>
+                  <p>{{ profiletop.followscount }}</br>Followers</p>
+                </div>
               </div>
-            </div>
+            </a>
           </div><!--
        --><div class="col-xs-4 col-sm-4 col-md-2 col-lg-2 vcenter" style="padding:5px 5px;">
             <div class="profilecounter text-center">

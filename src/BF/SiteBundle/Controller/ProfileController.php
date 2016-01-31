@@ -58,14 +58,10 @@ class ProfileController extends Controller
     	$repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video');
     	$listVideos = $repository->listVideos($user);
 
-
-
-
       $listChallenges = $repository->listChallenges($user);
       
       $lastVideo = $repository->lastVideo($user);
       $listDuels = $user->getDuels();
-
 
       //retrieving the service
       $info = $this->container->get('bf_site.rankinfo');
@@ -86,7 +82,6 @@ class ProfileController extends Controller
       $lists=array(  'listVideos' => $listVideos,'lastVideo' => $lastVideo,'listChallenges' => $listChallenges,'listFollows' => $listFollows,'listDuels' => $listDuels);
       $rank = array('rankinfo' => $rankinfo,'duelrankinfo' => $duelRankInfo);
 
-      
     	return $this->render('BFSiteBundle:Profile:view.html.twig', array(
     	      'user' => $user,
             'rank' => $rank,
