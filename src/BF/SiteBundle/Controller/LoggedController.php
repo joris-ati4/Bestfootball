@@ -23,7 +23,7 @@ class LoggedController extends Controller
             $i = array_rand($listFollows, $k);
             for($j = 0; $j < $k; $j++){
                 $index = $i[$j];
-                $following = $listFollows[$index]->getFollowing();
+                $following = $listFollows[$index]->getFollower();
                 $listVideos = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video')->latestFollowingVideos($following);
                 $object=array('user' => $following, 'listVideos' => $listVideos);
                 array_push($listVideosFollows, $object);
@@ -35,7 +35,7 @@ class LoggedController extends Controller
             $i = array_rand($listFollows, $k);
             for($j = 0; $j < $k; $j++){
                 $index = $i[$j];
-                $following = $listFollows[$index]->getFollowing();
+                $following = $listFollows[$index]->getFollower();
                 $listVideos = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video')->latestFollowingVideos($following);
                 $object=array('user' => $following, 'listVideos' => $listVideos);
                 array_push($listVideosFollows, $object);
@@ -43,7 +43,7 @@ class LoggedController extends Controller
         }
         elseif($numberfollows == 1){ //only 1 follower
             $listVideosFollows =array();
-            $following = $listFollows[0]->getFollowing();
+            $following = $listFollows[0]->getFollower();
             $listVideos = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video')->latestFollowingVideos($following);
             $object=array('user' => $following, 'listVideos' => $listVideos);
             array_push($listVideosFollows, $object);

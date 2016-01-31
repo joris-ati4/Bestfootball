@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 class RankingController extends Controller
 {
-    public function challengeAction(request $request,$country,$state)
+    public function challengeAction($country,$state)
     {
         if($country == 'global'){ //the global ranking of all the users
             $ranking = $this->getDoctrine()->getManager()->getRepository('BFUserBundle:User')->findBy(array(),array('points' => 'desc'));
@@ -26,7 +26,9 @@ class RankingController extends Controller
                 $ranking = $this->getDoctrine()->getManager()->getRepository('BFUserBundle:User')->stateRanking($state);
                 $rankingGirls =$this->getDoctrine()->getManager()->getRepository('BFUserBundle:User')->stateRankingGirls($state);
                 $rankingBoys =$this->getDoctrine()->getManager()->getRepository('BFUserBundle:User')->stateRankingBoys($state);
-                $listCountries = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Country')->findall();}}
+                $listCountries = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Country')->findall();
+            }
+        }
 
         $rankings = array('rankingGirls' => $rankingGirls, 'rankingBoys' => $rankingBoys,);
         //rankings for state
@@ -38,7 +40,7 @@ class RankingController extends Controller
               'state' => $state,
             ));   
     }
-    public function duelAction(request $request,$country,$state)
+    public function duelAction($country,$state)
     {
 
         if($country == 'global'){ //the global ranking of all the users
@@ -61,7 +63,8 @@ class RankingController extends Controller
                 $ranking = $this->getDoctrine()->getManager()->getRepository('BFUserBundle:User')->stateDuelRanking($state);
                 $rankingGirls =$this->getDoctrine()->getManager()->getRepository('BFUserBundle:User')->stateDuelRankingGirls($state);
                 $rankingBoys =$this->getDoctrine()->getManager()->getRepository('BFUserBundle:User')->stateDuelRankingBoys($state);
-                $listCountries = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Country')->findall();}
+                $listCountries = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Country')->findall();
+            }
         }
         //rankings for state
             $rankings = array('rankingGirls' => $rankingGirls, 'rankingBoys' => $rankingBoys,);
