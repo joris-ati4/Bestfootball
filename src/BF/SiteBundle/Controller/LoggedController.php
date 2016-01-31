@@ -12,30 +12,32 @@ class LoggedController extends Controller
     {
         $user = $this->container->get('security.context')->getToken()->getUser();
         $listNotifications = $user->getNotifications();
-        $listFollows = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Follow')->findByFollowing($user);
+        $listFollowers = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Follow')->findByFollowing($user); // this is to calculate the number of followers
+        $listFollowings = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Follow')->findByFollower($user); //get the list of people the user is following
         $lastVideos = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video')->latestVideos();
 
-        $numberfollows = count($listFollows);
+        $numberfollowings = count($listFollowings); //number of people the user is following
+        $numberfollowers = count($listFollowers); //number of followers
 
-        if($numberfollows > 5){
+        if($numberfollowings > 5){
             $k = 5;
             $listVideosFollows =array();
-            $i = array_rand($listFollows, $k);
+            $i = array_rand($listFollowings, $k);
             for($j = 0; $j < $k; $j++){
                 $index = $i[$j];
-                $following = $listFollows[$index]->getFollower();
+                $following = $listFollowings[$index]->getFollowing();
                 $listVideos = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video')->latestFollowingVideos($following);
                 $object=array('user' => $following, 'listVideos' => $listVideos);
                 array_push($listVideosFollows, $object);
             }
         }
-        elseif(1 < $numberfollows && $numberfollows < 5 ){
-            $k = $numberfollows;
+        elseif(1 < $numberfollowings && $numberfollowings < 5 ){
+            $k = $numberfollowings;
             $listVideosFollows =array();
-            $i = array_rand($listFollows, $k);
+            $i = array_rand($listFollowings, $k);
             for($j = 0; $j < $k; $j++){
                 $index = $i[$j];
-                $following = $listFollows[$index]->getFollower();
+                $following = $listFollowings[$index]->getFollowing();
                 $listVideos = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video')->latestFollowingVideos($following);
                 $object=array('user' => $following, 'listVideos' => $listVideos);
                 array_push($listVideosFollows, $object);
@@ -43,7 +45,7 @@ class LoggedController extends Controller
         }
         elseif($numberfollows == 1){ //only 1 follower
             $listVideosFollows =array();
-            $following = $listFollows[0]->getFollower();
+            $following = $listFollows[0]->getFollowing();
             $listVideos = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video')->latestFollowingVideos($following);
             $object=array('user' => $following, 'listVideos' => $listVideos);
             array_push($listVideosFollows, $object);
@@ -60,7 +62,7 @@ class LoggedController extends Controller
         $rankinfo = $info->rankInfo($user);
         $duelRankInfo = $info->duelRankInfo($user);
         $rank=array("rankinfo" => $rankinfo, "duelrankinfo" => $duelRankInfo);
-        $lists = array('lastVideos' => $lastVideos,'listNotifications' => $listNotifications,'listFollows' => $listFollows, 'listVideosFollows' => $listVideosFollows);
+        $lists = array('lastVideos' => $lastVideos,'listNotifications' => $listNotifications,'listFollows' => $listFollowings, 'listVideosFollows' => $listVideosFollows);
 
         //calculating the age of the user.
         $interval = date_diff(new \Datetime(), $user->getBirthday());
@@ -71,7 +73,7 @@ class LoggedController extends Controller
         $numbervideos = count($listVideos);
         $duelwins = $user->getDuelWins();
       
-        $profileTopInfo=array('followscount' => $numberfollows, 'videoscount' => $numbervideos, 'age' => $age,'duelwins' => $duelwins);
+        $profileTopInfo=array('followscount' => $numberfollowers, 'videoscount' => $numbervideos, 'age' => $age,'duelwins' => $duelwins);
 
         
         return $this->render('BFSiteBundle:Home:logged.html.twig', array(
