@@ -23,14 +23,11 @@ class VideoController extends Controller
         $em = $this->getDoctrine()->getManager();
 	    // On récupère $id de la video
 	    $video = $em->getRepository('BFSiteBundle:Video')->find($id);
-
         //checking if the user is following the current user
 	    $follower = $this->container->get('security.context')->getToken()->getUser();
 	    $following = $em->getRepository('BFUserBundle:User')->findOneByUsername($video->getUser()->getUsername());
-
 	    if($follower->getUsername() != $following->getUsername()){ //the user is not viewing it's own profile page
-	      $repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Follow');
-	      $follow = $repository->checkFollow($follower, $following);
+	      $follow = $em->getRepository('BFSiteBundle:Follow')->checkFollow($follower, $following);
 	      if($follow === null ){
 	        $follow = 0;
 	      }
