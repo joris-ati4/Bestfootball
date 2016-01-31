@@ -46,32 +46,40 @@
             </a>
           </div><!--
        --><div class="col-xs-4 col-sm-4 col-md-2 col-lg-2 vcenter" style="padding:5px 5px;">
-            <div class="profilecounter text-center">
-              <div>
-                <p>{{ profiletop.duelwins }}</br>Duel win's</p>
+            <a href="{{ path('bf_site_ranking_duel', {'country': 'global', 'state':'country'}) }}" style="text-decoration: none;">
+              <div class="profilecounter text-center">
+                <div>
+                  <p>{{ profiletop.duelwins }}</br>Duel win's</p>
+                </div>
               </div>
-            </div>
+            </a>
           </div><!--
        --><div class="col-xs-4 col-sm-4 col-md-2 col-lg-2 vcenter" style="padding:5px 5px;">
-            <div class="profilecounter text-center">
-              <div>
-                <p>N° {{ rank.rankinfo.globalrank }}</br>Global</p>
+            <a href="{{ path('bf_site_ranking_challenge', {'country': 'global', 'state':'country'}) }}" style="text-decoration: none;">
+              <div class="profilecounter text-center">
+                <div>
+                  <p>N° {{ rank.rankinfo.globalrank }}</br>Global</p>
+                </div>
               </div>
-            </div>
+            </a>
           </div><!--
        --><div class="col-xs-4 col-sm-4 col-md-2 col-lg-2 vcenter" style="padding:5px 5px;">
-            <div class="profilecounter text-center">
-              <div>
-                <p>N° {{ rank.rankinfo.countryrank }}</br>Country</p>
+            <a href="{{ path('bf_site_ranking_challenge', {'country': '{{ user.country.name }}', 'state':'country'}) }}" style="text-decoration: none;">
+              <div class="profilecounter text-center">
+                <div>
+                  <p>N° {{ rank.rankinfo.countryrank }}</br>{{ user.country.name }}</p>
+                </div>
               </div>
-            </div>
+            </a>
           </div><!--
        --><div class="col-xs-4 col-sm-4 col-md-2 col-lg-2 vcenter" style="padding:5px 5px;">
-            <div class="profilecounter text-center">
-              <div>
-                <p>N° {{ rank.rankinfo.staterank }}</br>State</p>
+            <a href="{{ path('bf_site_ranking_challenge', {'country': '{{ user.country.name }}', 'state':'{{ user.state.name }}'}) }}" style="text-decoration: none;">
+              <div class="profilecounter text-center">
+                <div>
+                  <p>N° {{ rank.rankinfo.staterank }}</br>{{ user.state.name }}</p>
+                </div>
               </div>
-            </div>
+            </a>
           </div>
         </div>
         <div class="row">
