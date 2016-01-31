@@ -64,9 +64,7 @@ class AdminController extends Controller
     public function deleteVideoAction($id)
     {
     	$em = $this->getDoctrine()->getManager();
-
-    	$repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Report');
-    	$report = $repository->find($id);
+    	$report = $em->getRepository('BFSiteBundle:Report')->find($id);
     	$video = $report->getVideo();
 
     	//send a mail to all the reports for this video and mark every report as treated.
