@@ -9,23 +9,6 @@ class RankingController extends Controller
 {
     public function challengeAction(request $request,$country,$state)
     {
-        //all the code for the user search function.
-        $defaultData = array('user' => null );
-        $search = $this->createFormBuilder($defaultData)
-            ->add('user', 'entity_typeahead', array(
-                    'class' => 'BFUserBundle:User',
-                    'render' => 'username',
-                    'route' => 'bf_site_search',
-                    ))
-            ->getForm(); 
-        $search->handleRequest($request);
-        if ($search->isValid()) {
-            // data is an array with "name", "email", and "message" keys
-            $data = $search->getData();
-            $user = $data['user'];
-            $username = $user->getUsername();
-            return $this->redirect($this->generateUrl('bf_site_profile', array('username' => $username)));
-        }
 
         if($country == 'global'){ //the global ranking of all the users
             $repository = $this->getDoctrine()->getManager()->getRepository('BFUserBundle:User');
@@ -62,7 +45,6 @@ class RankingController extends Controller
         $rankings = array('rankingGirls' => $rankingGirls, 'rankingBoys' => $rankingBoys,);
         //rankings for state
             return $this->render('BFSiteBundle:Ranking:challenge.html.twig',array(
-              'search' => $search->createView(),
               'ranking' => $ranking,
               'rankings' => $rankings,
               'listCountries' => $listCountries,
@@ -72,23 +54,6 @@ class RankingController extends Controller
     }
     public function duelAction(request $request,$country,$state)
     {
-        //all the code for the user search function.
-        $defaultData = array('user' => null );
-        $search = $this->createFormBuilder($defaultData)
-            ->add('user', 'entity_typeahead', array(
-                    'class' => 'BFUserBundle:User',
-                    'render' => 'username',
-                    'route' => 'bf_site_search',
-                    ))
-            ->getForm(); 
-        $search->handleRequest($request);
-        if ($search->isValid()) {
-            // data is an array with "name", "email", and "message" keys
-            $data = $search->getData();
-            $user = $data['user'];
-            $username = $user->getUsername();
-            return $this->redirect($this->generateUrl('bf_site_profile', array('username' => $username)));
-        }
 
         if($country == 'global'){ //the global ranking of all the users
             $repository = $this->getDoctrine()->getManager()->getRepository('BFUserBundle:User');
@@ -123,7 +88,6 @@ class RankingController extends Controller
         //rankings for state
             $rankings = array('rankingGirls' => $rankingGirls, 'rankingBoys' => $rankingBoys,);
             return $this->render('BFSiteBundle:Ranking:duel.html.twig',array(
-              'search' => $search->createView(),
               'ranking' => $ranking,
               'rankings'=> $rankings,
               'listCountries' => $listCountries,

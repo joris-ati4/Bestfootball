@@ -20,24 +20,6 @@ class VideoController extends Controller
 {
     public function viewAction(request $request, $id)
     {
-    	//all the code for the user search function.
-        $defaultData = array('user' => null );
-        $search = $this->createFormBuilder($defaultData)
-            ->add('user', 'entity_typeahead', array(
-                    'class' => 'BFUserBundle:User',
-                    'render' => 'username',
-                    'route' => 'bf_site_search',
-                    ))
-            ->getForm(); 
-        $search->handleRequest($request);
-        if ($search->isValid()) {
-            // data is an array with "name", "email", and "message" keys
-            $data = $search->getData();
-            $user = $data['user'];
-            if($user === null){}
-            $username = $user->getUsername();
-            return $this->redirect($this->generateUrl('bf_site_profile', array('username' => $username)));
-        }
         $em = $this->getDoctrine()->getManager();
 	    // On récupère $id de la video
 	    $video = $em->getRepository('BFSiteBundle:Video')->find($id);
@@ -72,29 +54,10 @@ class VideoController extends Controller
 	      'video'  => $video,
 	      'listVideos' => $listVideos,
 	      'follow' => $follow,
-	      'search' => $search->createView(),
 	    ));
     }
     public function uploadAction(request $request, $id, $type)
     {
-    	//all the code for the user search function.
-        $defaultData = array('user' => null );
-        $search = $this->createFormBuilder($defaultData)
-            ->add('user', 'entity_typeahead', array(
-                    'class' => 'BFUserBundle:User',
-                    'render' => 'username',
-                    'route' => 'bf_site_search',
-                    ))
-            ->getForm(); 
-        $search->handleRequest($request);
-        if ($search->isValid()) {
-            $data = $search->getData();
-            $user = $data['user'];
-            $username = $user->getUsername();
-            return $this->redirect($this->generateUrl('bf_site_profile', array('username' => $username)));
-        }
-
-
     	//we get the user entity
     	$user = $this->container->get('security.context')->getToken()->getUser();
     	// On crée un objet Video
@@ -160,7 +123,6 @@ class VideoController extends Controller
 
 		    return $this->render('BFSiteBundle:Video:upload.html.twig', array(
 		      'form' => $form->createView(),
-		      'search' => $search->createView(),
 		    ));
     	}
     	//the upload is for a duel video
@@ -316,7 +278,6 @@ class VideoController extends Controller
 
 				    return $this->render('BFSiteBundle:Video:upload.html.twig', array(
 				      'form' => $form->createView(),
-				      'search' => $search->createView(),
 				    ));
 		    }
 
@@ -332,25 +293,6 @@ class VideoController extends Controller
     }
     public function deleteAction(request $request, $id)
     {
-    	//all the code for the user search function.
-        $defaultData = array('user' => null );
-        $search = $this->createFormBuilder($defaultData)
-            ->add('user', 'entity_typeahead', array(
-                    'class' => 'BFUserBundle:User',
-                    'render' => 'username',
-                    'route' => 'bf_site_search',
-                    ))
-            ->getForm(); 
-        
-        if ($search->handleRequest($request)->isValid()) {
-            // data is an array with "name", "email", and "message" keys
-            $data = $search->getData();
-            $user = $data['user'];
-            $username = $user->getUsername();
-            return $this->redirect($this->generateUrl('bf_site_profile', array('username' => $username)));
-        }
-
-
 
 	    $em = $this->getDoctrine()->getManager();
 	    $video = $em->getRepository('BFSiteBundle:Video')->find($id);
@@ -421,23 +363,10 @@ class VideoController extends Controller
 		    return $this->render('BFSiteBundle:Video:delete.html.twig', array(
 		      'video' => $video,
 		      'form'   => $form->createView(),
-		      'search' => $search->createView(),
 		    ));
     }
     public function modifyAction(request $request, $id)
     {
-	    //all the code for the user search function.
-        $defaultData = array('user' => null );
-        $search = $this->createFormBuilder($defaultData)->add('user', 'entity_typeahead', array('class' => 'BFUserBundle:User','render' => 'username','route' => 'bf_site_search',))->getForm(); 
-        $search->handleRequest($request);
-        if ($search->isValid()) {
-            // data is an array with "name", "email", and "message" keys
-            $data = $search->getData();
-            $user = $data['user'];
-            $username = $user->getUsername();
-            return $this->redirect($this->generateUrl('bf_site_profile', array('username' => $username)));
-        }
-
 	    $em = $this->getDoctrine()->getManager();
 	    $video = $em->getRepository('BFSiteBundle:Video')->find($id);
 
@@ -461,22 +390,10 @@ class VideoController extends Controller
 		    }
 
 		    // Si la requête est en GET, on affiche une page de confirmation avant de supprimer
-		    return $this->render('BFSiteBundle:Video:modify.html.twig', array('video' => $video,'form'   => $form->createView(),'search' => $search->createView()));
+		    return $this->render('BFSiteBundle:Video:modify.html.twig', array('video' => $video,'form'   => $form->createView()));
     }
     public function reportAction(request $request, $id)
     {
-	    //all the code for the user search function.
-        $defaultData = array('user' => null );
-        $search = $this->createFormBuilder($defaultData)->add('user', 'entity_typeahead', array('class' => 'BFUserBundle:User','render' => 'username','route' => 'bf_site_search',))->getForm(); 
-        $search->handleRequest($request);
-        if ($search->isValid()) {
-            // data is an array with "name", "email", and "message" keys
-            $data = $search->getData();
-            $user = $data['user'];
-            $username = $user->getUsername();
-            return $this->redirect($this->generateUrl('bf_site_profile', array('username' => $username)));
-        }
-
 	    $em = $this->getDoctrine()->getManager();
 	    $video = $em->getRepository('BFSiteBundle:Video')->find($id);
 
@@ -501,7 +418,6 @@ class VideoController extends Controller
 		    return $this->render('BFSiteBundle:Video:report.html.twig', array(
 		      'video' => $video,
 		      'form'   => $form->createView(),
-		      'search' => $search->createView(),
 		    ));
     }
 }

@@ -74,24 +74,6 @@ class FollowController extends Controller
     }
     public function followersUserAction($username,request $request)
     {
-        //all the code for the user search function.
-        $defaultData = array('user' => null );
-        $search = $this->createFormBuilder($defaultData)
-            ->add('user', 'entity_typeahead', array(
-                    'class' => 'BFUserBundle:User',
-                    'render' => 'username',
-                    'route' => 'bf_site_search',
-                    ))
-            ->getForm(); 
-        $search->handleRequest($request);
-        if ($search->isValid()) {
-            // data is an array with "name", "email", and "message" keys
-            $data = $search->getData();
-            $user = $data['user'];
-            $username = $user->getUsername();
-            return $this->redirect($this->generateUrl('bf_site_profile', array('username' => $username)));
-        }
-
         $user = $this->getDoctrine()->getManager()->getRepository('BFUserBundle:User')->findOneByUsername($username);
         if (!$user) {
             throw $this->createNotFoundException('This user does not exist.');
@@ -102,7 +84,6 @@ class FollowController extends Controller
         return $this->render('BFSiteBundle:Profile:followers.html.twig', array(
           'listFollows' => $listFollows,
           'user' => $user,
-          'search' => $search->createView(),
         ));
     }
 }

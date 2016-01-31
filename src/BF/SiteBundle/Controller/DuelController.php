@@ -15,26 +15,6 @@ class DuelController extends Controller
 {
     public function viewAction($id,request $request)
     {   
-        //all the code for the user search function.
-        $defaultData = array('user' => null );
-        $search = $this->createFormBuilder($defaultData)
-            ->add('user', 'entity_typeahead', array(
-                    'class' => 'BFUserBundle:User',
-                    'render' => 'username',
-                    'route' => 'bf_site_search',
-                    ))
-            ->getForm(); 
-        $search->handleRequest($request);
-        if ($search->isValid()) {
-            // data is an array with "name", "email", and "message" keys
-            $data = $search->getData();
-            $user = $data['user'];
-            $username = $user->getUsername();
-            return $this->redirect($this->generateUrl('bf_site_profile', array('username' => $username)));
-        }
-
-
-        
         $em = $this->getDoctrine()->getManager();
 	    $duel = $em->getRepository('BFSiteBundle:Duel')->find($id);
 	    if (null === $duel) {
@@ -51,29 +31,10 @@ class DuelController extends Controller
 	      	'duel'           => $duel,
             'videohost' => $videoHost,
             'videoguest' => $videoGuest,
-            'search'         => $search->createView(),
 	    	));
     }
     public function createAction(request $request, $username)
     {
-        //all the code for the user search function.
-        $defaultData = array('user' => null );
-        $search = $this->createFormBuilder($defaultData)
-            ->add('user', 'entity_typeahead', array(
-                    'class' => 'BFUserBundle:User',
-                    'render' => 'username',
-                    'route' => 'bf_site_search',
-                    ))
-            ->getForm(); 
-        $search->handleRequest($request);
-        if ($search->isValid()) {
-            // data is an array with "name", "email", and "message" keys
-            $data = $search->getData();
-            $user = $data['user'];
-            $username = $user->getUsername();
-            return $this->redirect($this->generateUrl('bf_site_profile', array('username' => $username)));
-        }
-
     	$em = $this->getDoctrine()->getManager();
     	//we get the host and the invited user
     	$host = $this->container->get('security.context')->getToken()->getUser();
@@ -122,7 +83,6 @@ class DuelController extends Controller
 
 		    return $this->render('BFSiteBundle:Duel:create.html.twig', array(
 		      'form' => $form->createView(),
-              'search'  => $search->createView(),
 		    ));
     }
     public function acceptAction(request $request, $id)
@@ -207,25 +167,6 @@ class DuelController extends Controller
     }
     public function myduelsAction(request $request)
     {
-        //all the code for the user search function.
-        $defaultData = array('user' => null );
-        $search = $this->createFormBuilder($defaultData)
-            ->add('user', 'entity_typeahead', array(
-                    'class' => 'BFUserBundle:User',
-                    'render' => 'username',
-                    'route' => 'bf_site_search',
-                    ))
-            ->getForm(); 
-        $search->handleRequest($request);
-        if ($search->isValid()) {
-            // data is an array with "name", "email", and "message" keys
-            $data = $search->getData();
-            $user = $data['user'];
-            $username = $user->getUsername();
-            return $this->redirect($this->generateUrl('bf_site_profile', array('username' => $username)));
-        }
-
-
         //here we're going to make 3 lists of duels. Progress, won and lost
         $em = $this->getDoctrine()->getManager();
     	$user = $this->container->get('security.context')->getToken()->getUser();
@@ -245,7 +186,6 @@ class DuelController extends Controller
     	 return $this->render('BFSiteBundle:Profile:duels.html.twig', array(
 		      'listDuels' => $listDuels,
 		      'user' => $user,
-              'search'         => $search->createView(),
 		    ));
     }
 }

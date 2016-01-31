@@ -16,24 +16,6 @@ class ProfileController extends Controller
 {
     public function viewAction($username,request $request)
     {
-      //all the code for the user search function.
-        $defaultData = array('user' => null );
-        $search = $this->createFormBuilder($defaultData)
-            ->add('user', 'entity_typeahead', array(
-                    'class' => 'BFUserBundle:User',
-                    'render' => 'username',
-                    'route' => 'bf_site_search',
-                    ))
-            ->getForm(); 
-        $search->handleRequest($request);
-        if ($search->isValid()) {
-            // data is an array with "name", "email", and "message" keys
-            $data = $search->getData();
-            $user = $data['user'];
-            $username = $user->getUsername();
-            return $this->redirect($this->generateUrl('bf_site_profile', array('username' => $username)));
-        }
-
       //checking if the user is following the current user
       $follower = $this->container->get('security.context')->getToken()->getUser();
       $repository = $this->getDoctrine()->getManager()->getRepository('BFUserBundle:User');
@@ -85,66 +67,23 @@ class ProfileController extends Controller
             'lists' => $lists,
             'follow' => $follow,
             'profiletop' => $profileTopInfo,
-            'search' => $search->createView(),
     	    ));
     }
     public function videosAction(request $request)
     { 
-        //all the code for the user search function.
-        $defaultData = array('user' => null );
-        $search = $this->createFormBuilder($defaultData)
-            ->add('user', 'entity_typeahead', array(
-                    'class' => 'BFUserBundle:User',
-                    'render' => 'username',
-                    'route' => 'bf_site_search',
-                    ))
-            ->getForm(); 
-        $search->handleRequest($request);
-        if ($search->isValid()) {
-            // data is an array with "name", "email", and "message" keys
-            $data = $search->getData();
-            $user = $data['user'];
-            $username = $user->getUsername();
-            return $this->redirect($this->generateUrl('bf_site_profile', array('username' => $username)));
-        }
-
-
-
         $user = $this->container->get('security.context')->getToken()->getUser();
         $repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video');
         $listVideos = $repository->findByUser($user);
 
         return $this->render('BFSiteBundle:Profile:videos.html.twig', array(
           'listVideos' => $listVideos,
-          'search' => $search->createView(),
         ));
     }
     public function settingsAction(request $request)
     {
-      //all the code for the user search function.
-        $defaultData = array('user' => null );
-        $search = $this->createFormBuilder($defaultData)
-            ->add('user', 'entity_typeahead', array(
-                    'class' => 'BFUserBundle:User',
-                    'render' => 'username',
-                    'route' => 'bf_site_search',
-                    ))
-            ->getForm(); 
-        $search->handleRequest($request);
-        if ($search->isValid()) {
-            // data is an array with "name", "email", and "message" keys
-            $data = $search->getData();
-            $user = $data['user'];
-            $username = $user->getUsername();
-            return $this->redirect($this->generateUrl('bf_site_profile', array('username' => $username)));
-        }
-
-        
-
         $user = $this->container->get('security.context')->getToken()->getUser();
 
         return $this->render('BFSiteBundle:Profile:settings.html.twig', array(
-          'search' => $search->createView(),
         ));
     }
     public function settingsInfoAction(request $request)

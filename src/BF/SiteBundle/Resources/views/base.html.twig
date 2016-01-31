@@ -3,15 +3,7 @@
 {% block nav %}
   {% if app.user %} {# Here the user is connected to the site #}
     <li>
-      <form class="navbar-form" method="post" action="">
-        <div class="input-group">
-            {{ form_widget(search.user, {'attr': {'class': 'form-control'}}) }}
-            <span class="input-group-btn">
-              <button class="btn btn-default" type="submit" id="submit" type="submit" style="margin-top:0px;"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-            </span>
-        </div>
-        {{ form_rest(search) }}
-    </form>
+      {{ render(controller('BFSiteBundle:Logged:userSearch')) }}
     </li>
     {% set unwatched = 0 %}
     {# testing if there are unread notifications #}
@@ -97,5 +89,19 @@
             }
         });
   });
+  </script>
+  <script type="text/javascript">
+    $("#user_search_form").submit(function(e) {
+      e.preventDefault();
+      var username = $("#form_user_text").val();
+      console.log(username);
+      var link = "{{ path('bf_site_profile', { 'username': 'link' }) }}";
+      link = link.replace("link", username);
+     
+     window.location.replace(link);
+
+    
+  });
+
   </script>
 {% endblock %}

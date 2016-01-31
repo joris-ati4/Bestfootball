@@ -1,0 +1,10 @@
+<form class="navbar-form" method="post" id="user_search_form" action="">
+	<div class="input-group">
+	    {{ form_widget(search.user, {'attr': {'class': 'form-control'}}) }}
+	    <span class="input-group-btn">
+	      <button class="btn btn-default" type="submit" id="submit" type="submit" style="margin-top:0px;"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+	    </span>
+	</div>
+	{{ form_rest(search) }}
+</form>
+      
