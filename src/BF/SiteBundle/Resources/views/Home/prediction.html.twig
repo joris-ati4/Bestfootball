@@ -1,0 +1,51 @@
+{% extends "BFSiteBundle::base.html.twig" %}
+
+
+{% block meta %}
+	<meta name="description" content="Press">
+	<meta name="keywords" content="soccer,football, ">
+{% endblock %}
+
+
+{% block title %}
+  press section - {{ parent() }}
+{% endblock %}
+
+{% block content %}
+<section class="homepage">
+  <div class="row" style="min-height:65vh;margin-top:50px;">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10 col-lg-offset-1">
+      <div class="row">
+      	<!-- begin of the page -->
+        <div class="col-xs-12 col-sm-8 col-md-6 col-lg-6 col-sm-offset-2 col-md-offset-3 col-lg-offset-3" style="margin-top:50px;">
+          <div class="challengedescription">
+            <div class="challengetitle text-center">
+              <h3 style="color:white;">Predict your player.</h3>
+            </div>
+            <div class="challengecontent">
+            	<!--Explenations about the principle -->
+            	<p>Every 6 months, bestfootball rewards the 3 best players of the global challenge ranking. But no worry ! We also think about the players that aren't able to climb up to the top of the ranking. That's why Bestfootball made the prediction feature. This feature is very simple. Every user on our site can "vote" for the player he thinks will be at the top of the ranking at the end of the saeson*. Then we pick 3 players out of the winning pool to win some awesome prices.
+            	</br>
+            	</br>
+            		*image with the predict button*
+            	<h3>How does it work:</h3>
+            	 <ul>
+            	 	<li> Go to the profile of your champion and click the "Vote for me" button.</li>
+            	 	<li> Every user has one vote.</li>
+            	 	<li> You have till one month before the end of the season to vote.</li>
+            	 	<li> 3 winners will be selected out of the winning pool.</li>
+            	 </ul>
+            	</p>
+            	<h3>The prices:</h3>
+
+
+            	*a season is a period of 6 months. After this period, the points of all players are reset to zero for the new season.
+            </div>
+          </div>
+        </div>
+ 		<!-- end of the page -->
+      </div>     	
+    </div>
+  </div>
+</section>
+{% endblock %}

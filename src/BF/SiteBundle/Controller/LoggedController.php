@@ -43,9 +43,9 @@ class LoggedController extends Controller
                 array_push($listVideosFollows, $object);
             }
         }
-        elseif($numberfollows == 1){ //only 1 follower
+        elseif($numberfollowings == 1){ //only 1 follower
             $listVideosFollows =array();
-            $following = $listFollows[0]->getFollowing();
+            $following = $listFollowings[0]->getFollowing();
             $listVideos = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video')->latestFollowingVideos($following);
             $object=array('user' => $following, 'listVideos' => $listVideos);
             array_push($listVideosFollows, $object);
@@ -119,5 +119,8 @@ class LoggedController extends Controller
               'search' => $search->createView(),
         ));
     }
-
+    public function predictionAction(request $request)
+    {
+        return $this->render('BFSiteBundle:Home:prediction.html.twig', array());
+    }
 }

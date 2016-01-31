@@ -59,6 +59,11 @@ bf_site_conditions:
 bf_site_community:
     path:     /comunity
     defaults: { _controller: BFSiteBundle:Information:community }
+
+bf_site_prediction:
+    path:     /prediction
+    defaults: { _controller: BFSiteBundle:Logged:prediction }
+    
 #this section does all the routes for the video section
 
 bf_site_video:
