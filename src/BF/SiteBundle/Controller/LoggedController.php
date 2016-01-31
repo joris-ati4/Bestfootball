@@ -31,7 +31,7 @@ class LoggedController extends Controller
 
         $user = $this->container->get('security.context')->getToken()->getUser();
         $listNotifications = $user->getNotifications();
-        $listFollows = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Follow')->findByFollower($user);
+        $listFollows = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Follow')->findByFollowing($user);
         $lastVideos = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video')->latestVideos();
 
         $numberfollows = count($listFollows);

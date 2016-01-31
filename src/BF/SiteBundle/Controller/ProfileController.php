@@ -55,12 +55,9 @@ class ProfileController extends Controller
 
     	$user = $this->getDoctrine()->getManager()->getRepository('BFUserBundle:User')->findOneByUsername($username);
       $listFollows = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Follow')->findByFollowing($user);
-    	$repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video');
-    	$listVideos = $repository->listVideos($user);
-
-      $listChallenges = $repository->listChallenges($user);
-      
-      $lastVideo = $repository->lastVideo($user);
+    	$listVideos = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video')->listVideos($user);
+      $listChallenges = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video')->listChallenges($user);
+      $lastVideo = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video')->lastVideo($user);
       $listDuels = $user->getDuels();
 
       //retrieving the service

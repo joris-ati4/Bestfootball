@@ -97,7 +97,7 @@ class FollowController extends Controller
             throw $this->createNotFoundException('This user does not exist.');
         }
         //get the list of all the follows where the user is followed. 
-        $listFollows = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Follow')->findByFollower($user);
+        $listFollows = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Follow')->findByFollowing($user);
 
         return $this->render('BFSiteBundle:Profile:followers.html.twig', array(
           'listFollows' => $listFollows,

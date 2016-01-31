@@ -64,7 +64,7 @@
             </a>
           </div><!--
        --><div class="col-xs-4 col-sm-4 col-md-2 col-lg-2 vcenter" style="padding:5px 5px;">
-            <a href="{{ path('bf_site_ranking_challenge', {'country': '{{ user.country.name }}', 'state':'country'}) }}" style="text-decoration: none;">
+            <a href="{{ path('bf_site_ranking_challenge', {'country': user.country.name , 'state':'country'}) }}" style="text-decoration: none;">
               <div class="profilecounter text-center">
                 <div>
                   <p>N° {{ rank.rankinfo.countryrank }}</br>{{ user.country.name }}</p>
@@ -73,7 +73,7 @@
             </a>
           </div><!--
        --><div class="col-xs-4 col-sm-4 col-md-2 col-lg-2 vcenter" style="padding:5px 5px;">
-            <a href="{{ path('bf_site_ranking_challenge', {'country': '{{ user.country.name }}', 'state':'{{ user.state.name }}'}) }}" style="text-decoration: none;">
+            <a href="{{ path('bf_site_ranking_challenge', {'country':  user.country.name , 'state': user.state.name }) }}" style="text-decoration: none;">
               <div class="profilecounter text-center">
                 <div>
                   <p>N° {{ rank.rankinfo.staterank }}</br>{{ user.state.name }}</p>
