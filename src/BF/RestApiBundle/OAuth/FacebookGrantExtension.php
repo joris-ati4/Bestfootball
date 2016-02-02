@@ -8,6 +8,8 @@ use Doctrine\Common\Persistence\ObjectRepository;
 use FOS\OAuthServerBundle\Storage\GrantExtensionInterface;
 use OAuth2\Model\IOAuth2Client;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Play at bingo to get an access_token: May the luck be with you!
@@ -32,7 +34,7 @@ class FacebookGrantExtension implements GrantExtensionInterface
         $user = $this->userRepository->findOneBy(array('facebook_id' => $inputData['id']),array());
 
         if(!$user){
-            throw $this->createNotFoundException('this user does not exist.');
+           throw new NotFoundHttpException("User not found");
         }
         $cryptedpassword = $user->getPassword();
 
