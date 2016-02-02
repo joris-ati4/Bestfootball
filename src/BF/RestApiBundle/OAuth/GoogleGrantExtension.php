@@ -29,6 +29,11 @@ class GoogleGrantExtension implements GrantExtensionInterface
     {
         //retrieving the user object.
         $user = $this->userRepository->findOneBy(array('google_id' => $inputData['id']),array());
+
+        if(!$user){
+            throw $this->createNotFoundException('this user does not exist.');
+        }
+        
         $cryptedpassword = $user->getPassword();
 
         if (password_verify($inputData['password'], $cryptedpassword)) {

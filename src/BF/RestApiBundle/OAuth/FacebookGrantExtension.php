@@ -7,6 +7,7 @@ namespace BF\RestApiBundle\OAuth;
 use Doctrine\Common\Persistence\ObjectRepository;
 use FOS\OAuthServerBundle\Storage\GrantExtensionInterface;
 use OAuth2\Model\IOAuth2Client;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Play at bingo to get an access_token: May the luck be with you!
@@ -29,6 +30,10 @@ class FacebookGrantExtension implements GrantExtensionInterface
     {
     	//retrieving the user object.
         $user = $this->userRepository->findOneBy(array('facebook_id' => $inputData['id']),array());
+
+        if(!$user){
+            throw $this->createNotFoundException('this user does not exist.');
+        }
         $cryptedpassword = $user->getPassword();
 
         if (password_verify($inputData['password'], $cryptedpassword)) {
