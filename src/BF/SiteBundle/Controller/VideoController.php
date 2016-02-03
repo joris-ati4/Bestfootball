@@ -290,6 +290,7 @@ class VideoController extends Controller
 			    ->setDate(new \Datetime())
 				->setUser($user)
 			    ->setScore('0')
+			    ->setRepetitions('0')
 			    ;
 			//frestyle section upload
 			$form = $this->get('form.factory')->create(new VideoFreestyleType, $video);
