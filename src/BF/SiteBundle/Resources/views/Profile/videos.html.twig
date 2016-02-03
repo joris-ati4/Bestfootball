@@ -26,7 +26,7 @@
 							</br>
 							
 
-							{% if video.type == "challenge" or video.type="freestyle" %}
+							{% if video.type == "challenge" or video.type == "freestyle" %}
 								<a href="{{ path('bf_site_video_modify', {'id': video.id}) }}" class="btn btn-default">
 								<i class="glyphicon glyphicon-edit"></i>
 								    Modify your video
@@ -35,6 +35,8 @@
 								<i class="glyphicon glyphicon-trash"></i>
 								    Delete this video.
 								</a>
+							{% else %}
+							<p>You can't delete Duel videos</p>
 							{% endif %}
 
 
