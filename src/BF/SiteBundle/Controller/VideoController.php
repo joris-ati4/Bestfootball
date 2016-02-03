@@ -14,6 +14,7 @@ use BF\SiteBundle\Form\Type\VideoType;
 use BF\SiteBundle\Form\Type\VideoEditType;
 use BF\SiteBundle\Form\Type\VideoDuelType;
 use BF\SiteBundle\Form\Type\VideoDeleteType;
+use BF\SiteBundle\Form\Type\VideoFreestyleType;
 use BF\SiteBundle\Form\Type\ReportType;
 
 class VideoController extends Controller
@@ -285,7 +286,27 @@ class VideoController extends Controller
 		}
 		if( $type == 'freestyle')
 		{
-			//frestyle section upload	
+			$video
+			    ->setDate(new \Datetime())
+				->setUser($user)
+			    ->setScore('0')
+			    ;
+			//frestyle section upload
+			$form = $this->get('form.factory')->create(new VideoFreestyleType, $video);
+	    
+		    if ($form->handleRequest($request)->isValid()) {
+			      $em = $this->getDoctrine()->getManager();
+			      $em->persist($video);
+			      $em->flush();
+
+			      $this->addFlash('success', 'Your video was uploaded to our servers.');
+
+			      return $this->redirect($this->generateUrl('bf_site_videos'));
+			    }
+
+		    return $this->render('BFSiteBundle:Video:uploadFreestyle.html.twig', array(
+		      'form' => $form->createView(),
+		    ));
 		} 
     }
     public function deleteAction(request $request, $id)

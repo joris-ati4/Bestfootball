@@ -15,6 +15,7 @@ class LoggedController extends Controller
         $listFollowers = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Follow')->findByFollowing($user); // this is to calculate the number of followers
         $listFollowings = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Follow')->findByFollower($user); //get the list of people the user is following
         $lastVideos = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video')->latestVideos();
+        $lastFreestyles = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video')->listFreestyleVideos();
 
         $numberfollowings = count($listFollowings); //number of people the user is following
         $numberfollowers = count($listFollowers); //number of followers
@@ -62,7 +63,7 @@ class LoggedController extends Controller
         $rankinfo = $info->rankInfo($user);
         $duelRankInfo = $info->duelRankInfo($user);
         $rank=array("rankinfo" => $rankinfo, "duelrankinfo" => $duelRankInfo);
-        $lists = array('lastVideos' => $lastVideos,'listNotifications' => $listNotifications,'listFollows' => $listFollowings, 'listVideosFollows' => $listVideosFollows);
+        $lists = array('lastVideos' => $lastVideos,'listNotifications' => $listNotifications,'listFollows' => $listFollowings, 'listVideosFollows' => $listVideosFollows,'lastFreestyles' => $lastFreestyles);
 
         //calculating the age of the user.
         $interval = date_diff(new \Datetime(), $user->getBirthday());

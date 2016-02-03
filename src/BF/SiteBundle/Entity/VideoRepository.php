@@ -197,6 +197,21 @@ class VideoRepository extends \Doctrine\ORM\EntityRepository
 	    ->getResult()
 	  ;
 	}
+	public function listFreestyleVideos()
+	{
+	  $qb = $this->createQueryBuilder('v');
+
+	  $qb->Where('v.type = :freestyle')
+	       ->setParameter('freestyle', 'freestyle')
+	     ->orderBy('v.date', 'DESC')
+	     ->setMaxResults(4)
+	    ;
+
+	  return $qb
+	    ->getQuery()
+	    ->getResult()
+	  ;
+	}
 	public function latestVideos()
 	{
 	  $qb = $this->createQueryBuilder('v');

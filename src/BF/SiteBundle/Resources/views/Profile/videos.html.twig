@@ -24,14 +24,20 @@
 					   	
 						   	<img src="/uploads/videos/thumbnail/{{ video.id }}.jpg" alt="{{ video.thumbAlt }}" class="img-responsive"/>
 							</br>
-							<a href="{{ path('bf_site_video_modify', {'id': video.id}) }}" class="btn btn-default">
+							
+
+							{% if video.type == "challenge" or video.type="freestyle" %}
+								<a href="{{ path('bf_site_video_modify', {'id': video.id}) }}" class="btn btn-default">
 								<i class="glyphicon glyphicon-edit"></i>
 								    Modify your video
 								</a>
-						    <a href="{{ path('bf_site_video_delete', {'id': video.id}) }}" class="btn btn-danger">
+						    	<a href="{{ path('bf_site_video_delete', {'id': video.id}) }}" class="btn btn-danger">
 								<i class="glyphicon glyphicon-trash"></i>
 								    Delete this video.
 								</a>
+							{% endif %}
+
+
 					    </div>
 					</div>
 				  {% endfor %}

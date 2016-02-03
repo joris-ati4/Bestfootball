@@ -33,6 +33,9 @@
             <!--Begin of the lastest videos -->
               {% include "BFSiteBundle:Video:Homelist.html.twig" with {"lastVideos": lists.lastVideos} only %}
             <!--End of the lastest videos -->
+              {% include "BFSiteBundle:Video:Freestylelist.html.twig" with {"lastFreestyles": lists.lastFreestyles} only %}
+
+            
 
             <!--Begin of the following videos -->
               {% for object in lists.listVideosFollows %}
