@@ -31,7 +31,9 @@ class RemoveOldDuelCommand extends ContainerAwareCommand
 	    	$videos = $em->getRepository('BFSiteBundle:Video')->findByDuel($duel);
 	    	if($duel->getAccepted() == '0'){
 	    		//not accepted. We just delete the notifications and the duel
-	    		foreach ($notifications as $notification) { $em->remove($notification);}
+	    		foreach ($notifications as $notification){ 
+	    			$em->remove($notification);
+	    		}
 	    		$em->remove($duel);
 	    		$em->flush();
 	    	}
