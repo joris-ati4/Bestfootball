@@ -96,4 +96,20 @@ class DuelRepository extends \Doctrine\ORM\EntityRepository
 	    ->getResult()
 	  ;
 	}
+	public function notFinishedDuels($date)
+	{
+	  $qb = $this->createQueryBuilder('d');
+
+	  $qb->Where('d.completed = :completed')
+	       ->setParameter('completed', '0')
+	     ->andWhere('d.endDate < :date')
+	     	->setParameter('date', $date)
+	     ->orderBy('d.beginDate', 'DESC')
+	  ;
+
+	  return $qb
+	    ->getQuery()
+	    ->getResult()
+	  ;
+	}
 }
