@@ -14,38 +14,37 @@
 {% block content %}
 
  
-<h3>Ajouter un nouveau Challenge</h3>
 
 <div class="well">
 	<a href="{{ path('bf_site_admin_addChallenge') }}" class="btn btn-success">Add a new challenge</a>
-	<table>
+	<table class="table">
 		<tr>
 			<th>Title</th>
 			<th>Description</th>
-			<th>Minimum Gold</th>
-			<th>Minimum Silver</th>
-			<th>Minimum Bronze<th>
+			<th>One</th>
+			<th>two</th>
+			<th>three</th>
+			<th>four</th>
+			<th>five</th>
+			<th>six</th>
 			<th>Delete</th>
 			<th>Modify</th>
  	{% for challenge in listChallenges %}
 		<tr>
 			<td>{{ challenge.title }}</td>
 			<td>{{ challenge.description }}</td>
-			<td>{{ challenge.gold }}</td>
-			<td>{{ challenge.silver }}</td>
-			<td>{{ challenge.bronze }}</td>
+			<td>{{ challenge.one }}</td>
+			<td>{{ challenge.two }}</td>
+			<td>{{ challenge.three }}</td>
+			<td>{{ challenge.four }}</td>
+			<td>{{ challenge.five }}</td>
+			<td>{{ challenge.six }}</td>
 			<td>
-			<a href="{{ path('bf_site_admin_challenge_modify', {'id': challenge.id}) }}" class="btn btn-default">
-		      <i class="glyphicon glyphicon-edit"></i>
-		      Modify
-		    </a>
-		</td>
-		<td>
-   			<a href="{{ path('bf_site_admin_challenge_delete', {'id': challenge.id}) }}" class="btn btn-danger">
-		      <i class="glyphicon glyphicon-trash"></i>
-		      Delete
-		    </a>
-		</td>
+				function coming
+			</td>
+			<td>
+   				function coming
+			</td>
 		</tr>
 	{% endfor %}
 </table>
