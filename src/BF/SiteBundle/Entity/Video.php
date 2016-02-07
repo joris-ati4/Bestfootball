@@ -377,22 +377,7 @@ class Video
      *
      * @return Video
      */
-    public function setChallenge(\BF\SiteBundle\Entity\Challenge $challenge)
-    {
-        $this->challenge = $challenge;
-
-        return $this;
-    }
-
-    /**
-     * Get challenge
-     *
-     * @return \BF\SiteBundle\Entity\Challenge
-     */
-    public function getChallenge()
-    {
-        return $this->challenge;
-    }
+   
 
     /**
      * Set date
@@ -594,5 +579,29 @@ class Video
     public function getReports()
     {
         return $this->reports;
+    }
+
+    /**
+     * Set challenge
+     *
+     * @param \BF\SiteBundle\Entity\Challenge $challenge
+     *
+     * @return Video
+     */
+    public function setChallenge(\BF\SiteBundle\Entity\Challenge $challenge = null)
+    {
+        $this->challenge = $challenge;
+
+        return $this;
+    }
+
+    /**
+     * Get challenge
+     *
+     * @return \BF\SiteBundle\Entity\Challenge
+     */
+    public function getChallenge()
+    {
+        return $this->challenge;
     }
 }

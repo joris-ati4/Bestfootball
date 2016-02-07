@@ -10,6 +10,7 @@ use BF\SiteBundle\Entity\Challenge;
 //les types
 use BF\SiteBundle\Form\Type\ChallengeType;
 use BF\SiteBundle\Form\Type\ChallengeEditType;
+use BF\SiteBundle\Form\Type\ChallengeDelType;
 
 class AdminController extends Controller
 {
@@ -73,6 +74,40 @@ class AdminController extends Controller
 
         return $this->render('BFSiteBundle:Admin:addChallenge.html.twig', array(
           'form' => $form->createView(),
+        ));
+    }
+
+    public function delChallengeAction(request $request, $id)
+    {
+        // On crée un objet Challenge
+        $challenge = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Challenge')->find($id);;
+
+        $form = $this->get('form.factory')->create(new ChallengeDelType, $challenge);
+        
+        if ($form->handleRequest($request)->isValid()) {
+          $em = $this->getDoctrine()->getManager();
+
+        $listVideos = $challenge->getVideos();
+        foreach ($listVideos as $video) {
+            $video
+                ->setChallenge(NULL)
+                ->setType('freestyle')
+            ;
+            $em->persist($video);
+        }
+
+
+          $em->remove($challenge);
+          $em->flush();
+
+          $request->getSession()->getFlashBag()->add('notice', 'the challenge was deleted');
+
+          return $this->redirect($this->generateUrl('bf_site_admin_challenges'));
+        }
+
+        return $this->render('BFSiteBundle:Admin:delChallenge.html.twig', array(
+          'form' => $form->createView(),
+          'challenge' => $challenge,
         ));
     }
 

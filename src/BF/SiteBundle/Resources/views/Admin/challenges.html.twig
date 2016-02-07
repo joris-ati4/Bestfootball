@@ -46,7 +46,9 @@
 				</a>
 			</td>
 			<td>
-   				function coming
+   				<a href="{{ path('bf_site_admin_delchallenge', {'id': challenge.id} ) }}" class="btn btn-danger">
+					Delete
+				</a>
 			</td>
 		</tr>
 	{% endfor %}
