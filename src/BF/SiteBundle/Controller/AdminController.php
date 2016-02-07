@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use BF\SiteBundle\Entity\Challenge;
 //les types
 use BF\SiteBundle\Form\Type\ChallengeType;
+use BF\SiteBundle\Form\Type\ChallengeEditType;
 
 class AdminController extends Controller
 {
@@ -26,7 +27,7 @@ class AdminController extends Controller
 
 	      $request->getSession()->getFlashBag()->add('notice', 'The new challenge has been registered');
 
-	      return $this->redirect($this->generateUrl('bf_site_homepage'));
+	      return $this->redirect($this->generateUrl('bf_site_admin_challenges'));
 	    }
 
 	    return $this->render('BFSiteBundle:Admin:addChallenge.html.twig', array(
@@ -53,6 +54,28 @@ class AdminController extends Controller
 	    	'listChallenges' => $listChallenges,
 	    	));
     }
+    public function modChallengeAction(request $request, $id)
+    {
+        // On crée un objet Challenge
+        $challenge = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Challenge')->find($id);;
+
+        $form = $this->get('form.factory')->create(new ChallengeEditType, $challenge);
+        
+        if ($form->handleRequest($request)->isValid()) {
+          $em = $this->getDoctrine()->getManager();
+          $em->persist($challenge);
+          $em->flush();
+
+          $request->getSession()->getFlashBag()->add('notice', 'The new challenge has been registered');
+
+          return $this->redirect($this->generateUrl('bf_site_admin_challenges'));
+        }
+
+        return $this->render('BFSiteBundle:Admin:addChallenge.html.twig', array(
+          'form' => $form->createView(),
+        ));
+    }
+
     public function reportsAction()
     {
     	$repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Report');

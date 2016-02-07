@@ -27,8 +27,9 @@
 			<th>four</th>
 			<th>five</th>
 			<th>six</th>
-			<th>Delete</th>
 			<th>Modify</th>
+			<th>Delete</th>
+			
  	{% for challenge in listChallenges %}
 		<tr>
 			<td>{{ challenge.title }}</td>
@@ -40,7 +41,9 @@
 			<td>{{ challenge.five }}</td>
 			<td>{{ challenge.six }}</td>
 			<td>
-				function coming
+				<a href="{{ path('bf_site_admin_modchallenge', {'id': challenge.id} ) }}" class="btn btn-primary">
+					Modify
+				</a>
 			</td>
 			<td>
    				function coming
