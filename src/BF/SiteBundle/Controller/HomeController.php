@@ -129,10 +129,16 @@ class HomeController extends Controller
                     ->add('email', 'email')
                     ->add('reason', 'choice',array('choices' => array('propose a challenge'   => 'propose a challenge','a problem with the site' => 'a problem with the site','Partnership'   => 'Partnership')))
                     ->add('message', 'textarea')
-                    ->add('copy', 'checkbox', array(
-                        'label'    => 'Get a copy of the mail.',
-                        'required' => false,
-                    ))
+
+                    ->add('copy', 'checkbox',
+                            array(
+                                'label'    => 'Get a copy of the mail.',
+                                'label_attr' => array(
+                                   'class' => 'checkbox-inline'
+                               ),
+                                'required' => false,
+                            )
+                        )
                     ->getForm();
             $form->handleRequest($request);
         if ($form->isValid()) {

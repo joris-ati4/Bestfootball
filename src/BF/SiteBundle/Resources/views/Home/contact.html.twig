@@ -59,9 +59,20 @@
                   {{ form_widget(form.message, {'attr': {'class': 'form-control'}}) }}
                 </div>
               </div>
+              
+              
+             
 
-              <div><label for="form_copy">Get a copy of the mail.</label><input type="checkbox" id="form_copy" name="form[copy]" value="1" /></div>
+              <div class="form-group">
+                {{ form_label(form.copy,"Get a copy of this message",{'label_attr': {'class': 'col-xs-9 col-sm-6 col-md-6 col-lg-6 control-label'}}) }}
+                <div class="col-xs-3 col-sm-6 col-md-6 col-lg-6">
+                  {{ form_widget(form.copy, {'attr': {'class': 'form-control','style': 'height:15px;'}}) }}
+                </div>
+              </div>
 
+
+
+            </br>
 
               <input type="submit" value="Send the message" class="btn btn-warning" />
             {# Pour le bouton, pas de label ni d'erreur, on affiche juste le widget #}
