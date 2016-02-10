@@ -73,6 +73,18 @@ class AjaxController extends Controller
         //get the video that has to be duplicated
         $Usevideo = $em->getRepository('BFSiteBundle:Video')->find($request->get('video'));
 
+       
+           
+                   
+        if($duel->getHost() == $user){ 
+            $duel->setHostCompleted('1');
+            $userRole = 'host';
+        }
+        else{
+            $duel->setGuestCompleted('1');
+            $userRole = 'guest';       
+        }
+
 
         $video = new Video();
         $video
@@ -87,8 +99,6 @@ class AjaxController extends Controller
             ->setThumbAlt('Thumbnail of '.$user->getUsername().' for the '.$duel->getChallenge()->getTitle().' duel.')
             ->setTitle($Usevideo->getTitle())
             ;
-
-
 
         $hostUsername = $duel->getHost()->getUsername();
         $guestUsername = $duel->getGuest()->getUsername();
@@ -193,7 +203,10 @@ class AjaxController extends Controller
                         $em->persist($video);
                         $em->persist($duel);
                         $em->flush();
-                     return new response();
+
+                        $this->addFlash('success', 'Your video was uploaded to our servers.');
+
+                        return new response();
 
 
     }
