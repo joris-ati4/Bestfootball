@@ -154,7 +154,7 @@ class Video
       }
       // Le nom du fichier est son id, on doit juste stocker également son extension
       // Pour faire propre, on devrait renommer cet attribut en « extension », plutôt que « url »
-      $this->source = 'mp4';
+      $this->source =  md5(uniqid()).'.mp4';
       $this->extension = $this->file->guessExtension();
       // Et on génère l'attribut alt de la balise <img>, à la valeur du nom du fichier sur le PC de l'internaute
       $this->thumbAlt = $this->file->getClientOriginalName();
@@ -213,13 +213,10 @@ class Video
         // Start transcoding and save video
         
 
-        if($this->extension != 'mp4'){
-            $video->save(new X264(),'/var/www/bestfootball.fr/shared/web/uploads/videos/'.$this->id.'.mp4');
-            unlink($this->getUploadRootDir().'/'.$this->id.'.'.$this->extension);
-        }
-        else{
-            
-        }
+       
+        $video->save(new X264(),'/var/www/bestfootball.fr/shared/web/uploads/videos/'.$this->source);
+        unlink($this->getUploadRootDir().'/'.$this->id.'.'.$this->extension);
+      
 
         
     }

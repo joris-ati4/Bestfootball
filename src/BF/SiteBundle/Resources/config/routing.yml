@@ -232,3 +232,7 @@ bf_site_api_notifread:
 bf_site_api_checkusername:
     path: /home/checkusername
     defaults: { _controller: BFSiteBundle:Ajax:checkUsername }
+
+bf_site_api_duelUseVideo:
+    path: /home/duelUseVideo
+    defaults: { _controller: BFSiteBundle:Ajax:duelCopyVideo }

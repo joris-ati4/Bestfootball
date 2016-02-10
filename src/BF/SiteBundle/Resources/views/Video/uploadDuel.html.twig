@@ -1,0 +1,138 @@
+{% extends "BFSiteBundle::base.html.twig" %}
+
+
+{% block meta %}
+  <meta name="description" content="Bla bla bla concernant l'upload.">
+  <meta name="keywords" content="soccer,football ">
+{% endblock %}
+
+
+{% block title %}
+  Upload your video - {{ parent() }} 
+{% endblock %}
+
+{% block content %}
+<section class="homepage">
+  <div class="row" style="min-height:65vh;margin-top:50px;">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10 col-lg-offset-1">
+      <div class="row">
+        <!--Begin of the upload page -->
+        <div class="col-xs-12 col-sm-10 col-md-10 col-lg-8 col-sm-offset-1 col-md-offset-1 col-lg-offset-2" style="margin-top:50px;">
+          <div class="challengedescription text-center">
+            <div class="challengetitle">
+              <h3 style="color:white;">Upload your video.</h3>
+            </div>
+            <div class="challengecontent text-center">
+
+              
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                  <div class="row">
+                    {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+                      {# Les erreurs générales du formulaire. #}
+                      {{ form_errors(form) }}
+                      <div class="form-group">
+                        {# Génération du label. #}
+                        {{ form_label(form.title, "Title:", {'label_attr': {'class': 'col-xs-12 col-sm-4 col-md-3 col-lg-3 control-label'}}) }}
+                        {# Affichage des erreurs pour ce champ précis. #}
+                        {{ form_errors(form.title) }}
+                        <div class="col-xs-12 col-sm-8 col-md-9 col-lg-9">
+                          {# Génération de l'input. #}
+                          {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                      </div>
+
+                      {# Idem pour un autre champ. #}
+                      <div class="form-group">
+                        {{ form_label(form.description, "Description:", {'label_attr': {'class': 'col-xs-12 col-sm-4 col-md-3 col-lg-3 control-label'}}) }}
+                        {{ form_errors(form.description) }}
+                        <div class="col-xs-12 col-sm-8 col-md-9 col-lg-9">
+                          {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        {{ form_label(form.repetitions, "Repetitions:", {'label_attr': {'class': 'col-xs-12 col-sm-4 col-md-3 col-lg-3 control-label'}}) }}
+                        {{ form_errors(form.repetitions) }}
+                        <div class="col-xs-12 col-sm-8 col-md-9 col-lg-9">
+                          {{ form_widget(form.repetitions, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        {{ form_label(form.file, "File:", {'label_attr': {'class': 'col-xs-12 col-sm-4 col-md-3 col-lg-3 control-label'}}) }}
+                        {{ form_errors(form.file) }}
+                        <div class="col-xs-12 col-sm-8 col-md-9 col-lg-9">
+                          {{ form_widget(form.file, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                      </div>
+                      <input type="submit" value="Upload" id="submit" class="btn btn-upload" />
+
+                      </br>
+                      <a href="{{ path('bf_site_homepage') }}" class="btn btn-danger" style="font-size:10px;">
+                        <i class="glyphicon glyphicon-remove"></i>
+                          Cancel
+                      </a>
+                    {# Pour le bouton, pas de label ni d'erreur, on affiche juste le widget #}
+                    {{ form_rest(form) }}
+                    {# Fermeture de la balise <form> du formulaire HTML #}
+                    {{ form_end(form) }}
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                  <div class="row">
+                    {% if highVideo is not null %}
+                      <h4>Use your previous video </h4>
+                      <img src="/uploads/videos/{{ highVideo.id }}.jpg" alt="{{ highVideo.thumbAlt }}" style="max-width:100%; max-height: 250px;"/>
+                      <p>
+                        repetitions: {{ highVideo.repetitions }}
+
+                      </p>
+                      <input type="hidden" value="{{ duel.id }}" id="duel" />
+                      <input type="hidden" value="{{ highVideo.id }}" id="video" />
+                      <input type="submit" value="Use this video" id="UseVideo" class="btn btn-upload" />
+
+                        
+                    {% else %} 
+                    <!--The user has no video-->
+                    <h4>Use the application! </h4>
+                    <p style="text-align:justify;">You didn't participate at this challenge.
+                      Steps to upload your video with our app: 
+                      <ol style="text-align:justify;">
+                        <li>Download our app</li>
+                        <li>Do the {{ duel.challenge.title }} challenge</li>
+                        <li>Come back on this page</li>
+                        <li>Use the uploaded video for this challenge</li>
+                      </ol> 
+                    </p>
+
+
+                    {% endif %}
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+        <!--END of the upload page -->
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+{% block javascripts %}
+  <script type="text/javascript">
+    $("#UseVideo").click(function(){ 
+        var duel = $("#duel").val();
+        var video = $("#video").val();
+        var DATA = 'duel=' + duel + '&video=' + video;
+        $.ajax({
+            type: "POST",
+            url: "{{ path('bf_site_api_duelUseVideo')}}",
+            data: DATA,
+            cache: false,
+            success: function(){
+              }
+        });    
+        return false;
+    });
+  </script>
+{% endblock %}

@@ -13,6 +13,7 @@ use BF\SiteBundle\Entity\Report;
 use BF\SiteBundle\Form\Type\VideoType;
 use BF\SiteBundle\Form\Type\VideoEditType;
 use BF\SiteBundle\Form\Type\VideoDuelType;
+use BF\SiteBundle\Form\Type\VideoExistDuelType;
 use BF\SiteBundle\Form\Type\VideoDeleteType;
 use BF\SiteBundle\Form\Type\VideoFreestyleType;
 use BF\SiteBundle\Form\Type\ReportType;
@@ -161,6 +162,9 @@ class VideoController extends Controller
 			    		}
 		    		}
 
+		    	//we check if the user has a video for this challenge. 
+	    		$highVideo = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video')->highestVideo($user, $duel->getChallenge());
+	    	
 			    	$form = $this->get('form.factory')->create(new VideoDuelType, $video);
 			    	if ($form->handleRequest($request)->isValid()) {
 					    $em = $this->getDoctrine()->getManager();
@@ -274,8 +278,10 @@ class VideoController extends Controller
 					    return $this->redirect($this->generateUrl('bf_site_videos'));
 					}
 
-				    return $this->render('BFSiteBundle:Video:upload.html.twig', array(
+				    return $this->render('BFSiteBundle:Video:uploadDuel.html.twig', array(
 				      'form' => $form->createView(),
+				      'highVideo' => $highVideo,
+				      'duel' => $duel,
 				    ));
 		    }
 

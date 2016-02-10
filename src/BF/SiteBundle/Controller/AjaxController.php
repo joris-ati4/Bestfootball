@@ -5,6 +5,7 @@ namespace BF\SiteBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use BF\SiteBundle\Entity\Video;
 
 class AjaxController extends Controller
 {
@@ -60,8 +61,141 @@ class AjaxController extends Controller
             //username is not available
             $response = new response('used');
         }
-        return $response;
-         
+        return $response; 
+    }
+    public function duelCopyVideoAction(request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->container->get('security.context')->getToken()->getUser();
+        //get the duel.
+        $duelId = $request->get('duel');
+        $duel = $em->getRepository('BFSiteBundle:Duel')->find($duelId);
+        //get the video that has to be duplicated
+        $Usevideo = $em->getRepository('BFSiteBundle:Video')->find($request->get('video'));
+
+
+        $video = new Video();
+        $video
+            ->setDate(new \Datetime())
+            ->setDuel($duel)
+            ->setUser($user)
+            ->setScore('0')
+            ->setType('duel')
+            ->setRepetitions($Usevideo->getRepetitions())
+            ->setSource($Usevideo->getSource())
+            ->setThumbUrl('jpg')
+            ->setThumbAlt('Thumbnail of '.$user->getUsername().' for the '.$duel->getChallenge()->getTitle().' duel.')
+            ->setTitle($Usevideo->getTitle())
+            ;
+
+
+
+        $hostUsername = $duel->getHost()->getUsername();
+        $guestUsername = $duel->getGuest()->getUsername();
+
+            
+        $host = $duel->getHost();
+        $guest = $duel->getGuest();
+
+
+                        if($duel->getHostCompleted() == 1 && $duel->getGuestCompleted() == 1)
+                        {
+                            //both the players uploaded their video. We can now set the complete off the duel to 1
+                            $duel->setCompleted('1');
+                            //now we look at the video with the highest repitions and we give 50 points to the winner.
+                            //get the video of the other player
+                            if($userRole == 'host'){
+                                $otherVideo = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video')->duelGuestVideo($guest,$duel);
+                                $hostscore = $video->getRepetitions();
+                                $guestscore = $otherVideo->getRepetitions();
+                            }
+                            elseif($userRole == 'guest'){
+                                $otherVideo = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video')->duelHostVideo($host,$duel);
+                                $guestscore = $video->getRepetitions();
+                                $hostscore = $otherVideo->getRepetitions();
+                            }
+                            
+                            //we get compare the host to the guest score
+                            if($hostscore > $guestscore){//host wins
+                                
+                                $points = $host->getDuelPoints() + 100;
+                                $host->setDuelPoints($points);
+                                $wins = $host->getDuelWins() + 1;
+                                $host->setDuelWins($wins);
+                                $duel->setWinner($host);
+                                $em->persist($duel);
+                                $em->persist($host);
+
+                                //notifications
+                                $link = $this->generateUrl('bf_site_duel_view', array('id' => $duel->getId()));
+                                //host
+                                $message = 'Congratulations you won the duel against '.$guest->getUsername().' adn you received 100 points !';
+                                $service = $this->container->get('bf_site.notification');
+                                $notificationhost = $service->create($host, $message, $duel, $link);
+                                //guest
+                                $message = 'unfortunately you lost the duel against '.$host->getUsername();
+                                $service = $this->container->get('bf_site.notification');
+                                $notificationguest = $service->create($guest, $message, $duel, $link);
+                                $em->persist($notificationhost);
+                                $em->persist($notificationguest);
+                            }
+                            elseif($hostscore < $guestscore){//guest wins
+
+                                $points = $guest->getDuelPoints() + 100;
+                                $guest->setDuelPoints($points);
+                                $wins = $guest->getDuelWins() + 1;
+                                $guest->setDuelWins($wins);
+                                $duel->setWinner($guest);
+                                $em->persist($duel);
+                                $em->persist($guest);
+
+                                //notifications
+                                $link = $this->generateUrl('bf_site_duel_view', array('id' => $duel->getId()));
+                                    //guest
+                                    $message = 'Congratulations you won the duel against '.$host->getUsername().' adn you received 100 points !';
+                                    $service = $this->container->get('bf_site.notification');
+                                    $notificationguest = $service->create($guest, $message, $duel, $link);
+                                    //host
+                                    $message = 'unfortunately you lost the duel against '.$guest->getUsername();
+                                    $service = $this->container->get('bf_site.notification');
+                                    $notificationhost = $service->create($host, $message, $duel, $link);
+
+                                $em->persist($notificationhost);
+                                $em->persist($notificationguest);
+
+                            }
+                            elseif($hostscore == $guestscore){//same score,each 50 points
+
+                                //host points
+                                $points = $host->getDuelPoints() + 50;
+                                $host->setDuelPoints($points);
+                                $em->persist($host);
+                                //guest points
+                                $points = $guest->getDuelPoints() + 50;
+                                $guest->setDuelPoints($points);
+                                $em->persist($guest);
+
+                                //notifications
+                                    $link = $this->generateUrl('bf_site_duel_view', array('id' => $duel->getId()));
+                                    //host
+                                    $message = 'Congratulations, the duel against '.$guest->getUsername().' was a tie and you received 50 points !';
+                                    $service = $this->container->get('bf_site.notification');
+                                    $notificationhost = $service->create($host, $message, $duel, $link);
+                                    //guest
+                                    $message = 'Congratulations, the duel against '.$host->getUsername().' was a tie and you received 50 points !';
+                                    $service = $this->container->get('bf_site.notification');
+                                    $notificationguest = $service->create($guest, $message, $duel, $link);
+                                    $em->persist($notificationhost);
+                                    $em->persist($notificationguest);
+                            }
+                        }
+                        //now we update the points of the user
+                        $em->persist($video);
+                        $em->persist($duel);
+                        $em->flush();
+                     return new response();
+
+
     }
  
 }
