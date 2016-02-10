@@ -124,8 +124,17 @@ class HomeController extends Controller
 
         //the code for the proposition
         $data = array();
-            $form = $this->createFormBuilder($data)->add('name', 'text')->add('email', 'email')->add('reason', 'choice',array('choices' => array('propose a challenge'   => 'propose a challenge','a problem with the site' => 'a problem with the site','Partnership'   => 'Partnership',)))->add('message', 'textarea')->getForm();
-        $form->handleRequest($request);
+            $form = $this->createFormBuilder($data)
+                    ->add('name', 'text')
+                    ->add('email', 'email')
+                    ->add('reason', 'choice',array('choices' => array('propose a challenge'   => 'propose a challenge','a problem with the site' => 'a problem with the site','Partnership'   => 'Partnership')))
+                    ->add('message', 'textarea')
+                    ->add('copy', 'checkbox', array(
+                        'label'    => 'Get a copy of the mail.',
+                        'required' => false,
+                    ))
+                    ->getForm();
+            $form->handleRequest($request);
         if ($form->isValid()) {
             // $data is a simply array with your form fields
             $data = $form->getData();
@@ -143,6 +152,24 @@ class HomeController extends Controller
                     )
             ;
             $this->get('mailer')->send($message);
+            if($data['copy'] == true){
+                //send the message to the user.
+                $secondmessage = \Swift_Message::newInstance()
+                    ->setSubject('Copy of your message to Bestfootball')
+                    ->setFrom('noreply@bestfootball.fr')
+                    ->setTo($data['email'])
+                    ->setBody(
+                        $this->renderView(
+                            // app/Resources/views/Emails/registration.html.twig
+                            'Emails/contactcopy.html.twig',
+                            array('text' => $data['message'], 'name' => $data['name'], 'email' => $data['email'], 'reason' => $data['reason'])
+                        ),
+                        'text/html'
+                    )
+            ;
+            $this->get('mailer')->send($secondmessage);
+            }
+
             $this->addFlash('success', 'Your message has been send. Thank you.');
             return $this->redirect($this->generateUrl('bf_site_homepage'));
         }
