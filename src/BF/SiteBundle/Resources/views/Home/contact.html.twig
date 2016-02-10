@@ -60,6 +60,9 @@
                 </div>
               </div>
 
+              <div><label for="form_copy">Get a copy of the mail.</label><input type="checkbox" id="form_copy" name="form[copy]" value="1" /></div>
+
+
               <input type="submit" value="Send the message" class="btn btn-warning" />
             {# Pour le bouton, pas de label ni d'erreur, on affiche juste le widget #}
             {{ form_rest(form) }}
