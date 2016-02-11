@@ -22,7 +22,7 @@ class BFNotification
         ->setLink($link)
       ;
 
-      if($duel != null){
+      if($duel !== null){
         $notification->setDuel($duel);
       }
 

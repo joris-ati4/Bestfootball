@@ -158,7 +158,7 @@ class HomeController extends Controller
                     )
             ;
             $this->get('mailer')->send($message);
-            if($data['copy'] == true){
+            if($data['copy'] === true){
                 //send the message to the user.
                 $secondmessage = \Swift_Message::newInstance()
                     ->setSubject('Copy of your message to Bestfootball')

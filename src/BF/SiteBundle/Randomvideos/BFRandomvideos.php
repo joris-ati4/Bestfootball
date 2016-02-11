@@ -2,7 +2,7 @@
 namespace BF\SiteBundle\Randomvideos;
 
 use Doctrine\ORM\EntityManager;
-
+use BF\SiteBundle\Entity\Video;
 
 class BFRandomvideos
 {
@@ -17,7 +17,7 @@ class BFRandomvideos
       $this->em = $em;
   }
 
-  public function randomize($video)
+  public function randomize(video $video)
   {
     //selecting the videos for the videolist.
 	$listVideos = array();
@@ -25,7 +25,6 @@ class BFRandomvideos
 	$videos = $this->em->getRepository('BFSiteBundle:Video')->listVideos($video->getUser()); //4 videos of the current user.
 	$numberVideos = count($videos);
 	if($numberVideos > 4){
-	    $challengeVideos =array();
 	    $i = array_rand($videos, 4);
 	        for($j = 0; $j < 4; $j++){
 	            $index = $i[$j];
