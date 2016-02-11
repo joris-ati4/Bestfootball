@@ -35,7 +35,7 @@ class RemoveOldDuelCommand extends ContainerAwareCommand
 	    			$em->remove($notification);
 	    		}
 	    		$em->remove($duel);
-	    		$em->flush();
+	    		
 	    	}
 	    	else{
 	    		//the duel is accepted. check if a user uploaded a video.
@@ -56,7 +56,7 @@ class RemoveOldDuelCommand extends ContainerAwareCommand
                 	$em->persist($user);
                 	$em->persist($notification);
 	    			$em->remove($duel);
-	    			$em->flush();
+	    			
 
 	    		}
 	    		elseif($duel->getGuestCompleted() == '1'){
@@ -77,7 +77,7 @@ class RemoveOldDuelCommand extends ContainerAwareCommand
 	    			$em->persist($notification);
 	    			$em->persist($user);
 	    			$em->remove($duel);
-	    			$em->flush();
+	    			
 
 	    		}
 	    		else{
@@ -98,15 +98,13 @@ class RemoveOldDuelCommand extends ContainerAwareCommand
 	    			$em->persist($notificationhost);
 	    			$em->persist($notificationguest);
 	    			$em->remove($duel);
-	    			$em->flush();
+	    			
 
 
 	    		}
 
 	    	}
-
-	    	
 	    }
-
+	    $em->flush();
 	}
 }
