@@ -47,7 +47,6 @@ class BFRandomvideos
 	    //verify that there are 5 videos.
 	    $numberVideos = count($videosChallenge);
 	    if($numberVideos > 5){
-	        $challengeVideos =array();
 	        $i = array_rand($videosChallenge, 5);
 	            for($j = 0; $j < 5; $j++){
 	                $index = $i[$j];

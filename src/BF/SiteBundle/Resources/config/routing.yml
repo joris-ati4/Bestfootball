@@ -38,7 +38,6 @@ bf_site_rules:
 bf_site_contact:
     path:     /contact
     defaults: { _controller: BFSiteBundle:Home:contact }
-    methods:  [GET]
 
 bf_site_search:
     path:     /search
@@ -48,30 +47,37 @@ bf_site_search:
 bf_site_partners:
     path:     /partners
     defaults: { _controller: BFSiteBundle:Information:partners }
+    methods:  [GET]
 
 bf_site_press:
     path:     /press
     defaults: { _controller: BFSiteBundle:Information:press }
+    methods:  [GET]
 
 bf_site_privacy:
     path:     /privacy
     defaults: { _controller: BFSiteBundle:Information:privacy }
+    methods:  [GET]
 
 bf_site_terms:
     path:     /terms
     defaults: { _controller: BFSiteBundle:Information:terms }
+    methods:  [GET]
 
 bf_site_conditions:
     path:     /conditions
     defaults: { _controller: BFSiteBundle:Information:conditions }
+    methods:  [GET]
 
 bf_site_community:
     path:     /comunity
     defaults: { _controller: BFSiteBundle:Information:community }
+    methods:  [GET]
 
 bf_site_prediction:
     path:     /prediction
     defaults: { _controller: BFSiteBundle:Logged:prediction }
+    methods:  [GET]
     
 #this section does all the routes for the video section
 
@@ -80,6 +86,7 @@ bf_site_video:
     defaults: { _controller: BFSiteBundle:Video:view, id: null }
     requirements:
         id: -?\d+
+    methods:  [GET]
 
 bf_site_video_report:
     path:     /video/report/{id}
@@ -109,55 +116,68 @@ bf_site_video_modify:
 bf_site_profile:
     path:     /profile/{username}
     defaults: { _controller: BFSiteBundle:Profile:view }
+    methods:  [GET]
 
 bf_site_profile_followers:
     path:     /profile/{username}/followers
     defaults: { _controller: BFSiteBundle:Follow:followersUser }
+    methods:  [GET]
 
 bf_site_videos:
     path:     /myvideos
     defaults: { _controller: BFSiteBundle:Profile:videos }
+    methods:  [GET]
 
 bf_site_profile_duels:
     path:     /myduels
     defaults: { _controller: BFSiteBundle:Duel:myduels }
+    methods:  [GET]
 
 bf_site_settings:
     path:     /settings
     defaults: { _controller: BFSiteBundle:Profile:settings }
+    methods:  [GET]
 
 bf_site_settings_info:
     path:     /settings/info
     defaults: { _controller: BFSiteBundle:Profile:settingsInfo }
+    methods:  [PUT]
 
 bf_site_settings_picture:
     path:     /settings/picture
     defaults: { _controller: BFSiteBundle:Profile:settingsPicture }
+    methods:  [PUT]
 
 bf_site_settings_reset_password:
     path:     /settings/password
     defaults: { _controller: BFSiteBundle:Profile:changePassword }
+    methods:  [PUT]
 
 bf_site_settings_reset_username:
     path:     /settings/username
     defaults: { _controller: BFSiteBundle:Profile:changeUsername }
+    methods:  [PUT]
 
 #this section does all the routes for the admin section
 bf_site_admin:
     path:     /admin
     defaults: { _controller: BFSiteBundle:Admin:index }
+    methods:  [GET]
 
 bf_site_admin_challenges:
     path:     /admin/challenges
     defaults: { _controller: BFSiteBundle:Admin:challenges }
+    methods:  [GET]
 
 bf_site_admin_addChallenge:
     path:     /admin/addchallenge
     defaults: { _controller: BFSiteBundle:Admin:addChallenge }
+    methods:  [POST]
 
 bf_site_admin_modchallenge:
     path:     /admin/challenges/mod/{id}
     defaults: { _controller: BFSiteBundle:Admin:modChallenge }
+    methods:  [PUT]
 
 bf_site_admin_delchallenge:
     path:     /admin/challenges/del/{id}
@@ -166,10 +186,12 @@ bf_site_admin_delchallenge:
 bf_site_admin_users:
     path:     /admin/users
     defaults: { _controller: BFSiteBundle:Admin:users }
+    methods:  [GET]
 
 bf_site_admin_reports:
     path:     /admin/reports
     defaults: { _controller: BFSiteBundle:Admin:reports }
+    methods:  [GET]
 
 bf_site_admin_delvideo:
     path:     /admin/reports/delvideo/{id}
@@ -200,16 +222,19 @@ bf_site_duel_decline:
 bf_site_duel_view:
     path:     /duel/view/{id}
     defaults: { _controller: BFSiteBundle:Duel:view }
+    methods:  [GET]
 
 #the routes for the following code
 
 bf_site_follow:
     path:     /follow/
     defaults: { _controller: BFSiteBundle:Follow:followUser }
+    methods:  [POST]
 
 bf_site_unfollow:
     path:     /unfollow/
     defaults: { _controller: BFSiteBundle:Follow:unfollowUser }
+    methods:  [POST]
 
 #the routes for the ranking pages
 bf_site_ranking_challenge:
@@ -217,31 +242,38 @@ bf_site_ranking_challenge:
     defaults: { _controller: BFSiteBundle:Ranking:challenge }
     requirements:
         country: France|United States|Belgium|global
+    methods:  [GET]
 
 bf_site_ranking_duel:
     path:     /ranking/duel/{country}/{state}
     defaults: { _controller: BFSiteBundle:Ranking:duel }
     requirements:
         country: France|United States|Belgium|global
+    methods:  [GET]
 
 #the routes for the AJAX calls.
 
 bf_site_api_userinfo:
     path: /home/userinfo
     defaults: { _controller: BFSiteBundle:Ajax:userInfo }
+    methods:  [GET]
 
 bf_site_api_challenge:
     path: /home/challenge
     defaults: { _controller: BFSiteBundle:Ajax:getChallenge }
+    methods:  [GET]
 
 bf_site_api_notifread:
     path: /home/notificationread
     defaults: { _controller: BFSiteBundle:Ajax:notifread }
+    methods:  [PUT]
 
 bf_site_api_checkusername:
     path: /home/checkusername
     defaults: { _controller: BFSiteBundle:Ajax:checkUsername }
+    methods:  [POST]
 
 bf_site_api_duelUseVideo:
     path: /home/duelUseVideo
     defaults: { _controller: BFSiteBundle:Ajax:duelCopyVideo }
+    methods:  [POST]
