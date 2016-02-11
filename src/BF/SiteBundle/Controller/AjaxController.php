@@ -100,9 +100,6 @@ class AjaxController extends Controller
             ->setTitle($Usevideo->getTitle())
             ;
 
-        $hostUsername = $duel->getHost()->getUsername();
-        $guestUsername = $duel->getGuest()->getUsername();
-
             
         $host = $duel->getHost();
         $guest = $duel->getGuest();

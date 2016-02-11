@@ -1,40 +1,49 @@
 bf_site_homepage:
     path:     /
     defaults: { _controller: BFSiteBundle:Home:index }
+    methods:  [GET]
 
 bf_site_logged_home:
     path:     /home
     defaults: { _controller: BFSiteBundle:Logged:logged }
+    methods:  [GET]
 
 bf_site_challenges:
     path:     /challenges
     defaults: { _controller: BFSiteBundle:Home:challenges }
+    methods:  [GET]
 
 bf_site_partnerChallenges:
     path:     /partnerChallenges
     defaults: { _controller: BFSiteBundle:Home:partnerChallenges }
+    methods:  [GET]
 
 bf_site_challengeview:
     path:     /challenge/{id}
     defaults: { _controller: BFSiteBundle:Home:challengeView }
     requirements:
         id: -?\d+
+    methods:  [GET]
 
 bf_site_about:
     path:     /about
     defaults: { _controller: BFSiteBundle:Home:about }
+    methods:  [GET]
 
 bf_site_rules:
     path:     /rules
     defaults: { _controller: BFSiteBundle:Home:rules }
+    methods:  [GET]
 
 bf_site_contact:
     path:     /contact
     defaults: { _controller: BFSiteBundle:Home:contact }
+    methods:  [GET]
 
 bf_site_search:
     path:     /search
     defaults: { _controller: BFSiteBundle:Logged:search }
+    methods:  [POST]
 
 bf_site_partners:
     path:     /partners

@@ -7,8 +7,6 @@ namespace BF\RestApiBundle\OAuth;
 use Doctrine\Common\Persistence\ObjectRepository;
 use FOS\OAuthServerBundle\Storage\GrantExtensionInterface;
 use OAuth2\Model\IOAuth2Client;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**

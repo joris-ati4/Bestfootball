@@ -13,7 +13,6 @@ use BF\SiteBundle\Entity\Report;
 use BF\SiteBundle\Form\Type\VideoType;
 use BF\SiteBundle\Form\Type\VideoEditType;
 use BF\SiteBundle\Form\Type\VideoDuelType;
-use BF\SiteBundle\Form\Type\VideoExistDuelType;
 use BF\SiteBundle\Form\Type\VideoDeleteType;
 use BF\SiteBundle\Form\Type\VideoFreestyleType;
 use BF\SiteBundle\Form\Type\ReportType;
@@ -169,13 +168,8 @@ class VideoController extends Controller
 			    	if ($form->handleRequest($request)->isValid()) {
 					    $em = $this->getDoctrine()->getManager();
 
-						$hostUsername = $duel->getHost()->getUsername();
-		    			$guestUsername = $duel->getGuest()->getUsername();
-
-		    
     					$host = $duel->getHost();
     					$guest = $duel->getGuest();
-
 
 					    if($duel->getHostCompleted() == 1 && $duel->getGuestCompleted() == 1)
 					    {

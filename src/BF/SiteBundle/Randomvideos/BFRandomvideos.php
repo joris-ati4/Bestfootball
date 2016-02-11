@@ -66,7 +66,6 @@ class BFRandomvideos
 	        //random 6 videos
 		 	$videos = $this->em->getRepository('BFSiteBundle:Video')->randomVideos();
 		    $i = array_rand($videos, 6);
-		    $randomVideos=array();
 	        for($j = 0; $j < 6; $j++){
 	            $index = $i[$j];
 	            $object = $videos[$index];
@@ -76,7 +75,6 @@ class BFRandomvideos
     else{ //select 11 random videos.
 		$videos = $this->em->getRepository('BFSiteBundle:Video')->randomVideos();
 		$numberVideos = count($videos);
-	    $challengeVideos=array();
 	        if($numberVideos > 11){
 	            $i = array_rand($videos, 11);
 	            for($j = 0; $j < 5; $j++){

@@ -81,8 +81,6 @@ class ProfileController extends Controller
     }
     public function settingsAction(request $request)
     {
-        $user = $this->container->get('security.context')->getToken()->getUser();
-
         return $this->render('BFSiteBundle:Profile:settings.html.twig', array(
         ));
     }

@@ -2,12 +2,9 @@
 // src/Acme/DemoBundle/Command/GreetCommand.php 
 namespace BF\SiteBundle\Command;
 
-use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand; 
-use Symfony\Component\Console\Input\InputArgument; 
-use Symfony\Component\Console\Input\InputInterface; 
-use Symfony\Component\Console\Input\InputOption; 
-use Symfony\Component\Console\Output\OutputInterface; 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
 
 class RemoveOldDuelCommand extends ContainerAwareCommand 
 { 

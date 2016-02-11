@@ -6,11 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Symfony\Component\Form\FormError;
-use Symfony\Component\Form\FormView;
 
 //Les entités
-use BF\SiteBundle\Entity\Notification;
 use BF\SiteBundle\Entity\Follow;
 
 class FollowController extends Controller
