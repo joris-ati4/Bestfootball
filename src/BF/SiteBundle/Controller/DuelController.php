@@ -160,10 +160,10 @@ class DuelController extends Controller
     	$user = $this->container->get('security.context')->getToken()->getUser();
 
 
-        $listProgress = $em->getRepository('BFSiteBundle:Duel')->ProgressDuels($user);
-        $listWon = $em->getRepository('BFSiteBundle:Duel')->WonDuels($user);
-        $listLost = $em->getRepository('BFSiteBundle:Duel')->LostDuels($user);
-        $listDraw = $em->getRepository('BFSiteBundle:Duel')->DrawDuels($user);
+        $listProgress = $em->getRepository('BFSiteBundle:Duel')->progressDuels($user);
+        $listWon = $em->getRepository('BFSiteBundle:Duel')->wonDuels($user);
+        $listLost = $em->getRepository('BFSiteBundle:Duel')->lostDuels($user);
+        $listDraw = $em->getRepository('BFSiteBundle:Duel')->drawDuels($user);
 
 
     	$listDuels = array('listProgress' => $listProgress, 'listWon' => $listWon,'listDraw' => $listDraw, 'listLost' => $listLost);

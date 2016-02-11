@@ -26,7 +26,7 @@ class DuelRepository extends \Doctrine\ORM\EntityRepository
 	    ->getResult()
 	  ;
 	}
-	public function ProgressDuels($user)
+	public function progressDuels($user)
 	{
 	  $qb = $this->createQueryBuilder('d');
 
@@ -42,7 +42,7 @@ class DuelRepository extends \Doctrine\ORM\EntityRepository
 	    ->getResult()
 	  ;
 	}
-	public function WonDuels($user)
+	public function wonDuels($user)
 	{
 	  $qb = $this->createQueryBuilder('d');
 
@@ -60,7 +60,7 @@ class DuelRepository extends \Doctrine\ORM\EntityRepository
 	    ->getResult()
 	  ;
 	}
-	public function LostDuels($user)
+	public function lostDuels($user)
 	{
 	  $qb = $this->createQueryBuilder('d');
 
@@ -78,7 +78,7 @@ class DuelRepository extends \Doctrine\ORM\EntityRepository
 	    ->getResult()
 	  ;
 	}
-	public function DrawDuels($user)
+	public function drawDuels($user)
 	{
 	  $qb = $this->createQueryBuilder('d');
 

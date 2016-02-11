@@ -42,9 +42,6 @@ class GoogleGrantExtension implements GrantExtensionInterface
             return array(
                 'data' => $user
             );
-
-            //if you need an anonymous user token
-            //return true;
         }
 
         return false;
