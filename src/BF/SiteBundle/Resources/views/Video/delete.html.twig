@@ -1,7 +1,7 @@
 {% extends "BFSiteBundle::base.html.twig" %}
 
 {% block title %}
-  Delete video - {{ parent() }}
+  {{ 'Delete your video'|trans }} - {{ parent() }}
 {% endblock %}
 
 {% block content %}
@@ -11,7 +11,7 @@
   {# This is the content section of our page, here the user will be able to view all the challenges with the different niveau's! #}
     <div class="challengedescription row" style="margin-bottom:100px;">
       <div class="challengetitle">
-        <h3 class="text-center" style="color:white;">Delete your video</h3>
+        <h3 class="text-center" style="color:white;">{{ 'Delete your video'|trans }}</h3>
       </div>
       <div class="challengecontent" style="min-height:440px;">
         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 vcenter">
@@ -20,15 +20,15 @@
      --><div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 vcenter">
           <form action="{{ path('bf_site_video_delete', {'id': video.id}) }}" method="post">
             <p>
-              Title : {{ video.title }} </br>
-              Description: {{ video.description }} </br>
+              {{ 'Title'|trans }} : {{ video.title }} </br>
+              {{ 'Description'|trans }} : {{ video.description }} </br>
               {% if video.challenge is not null %}
-              Challenge : {{ video.challenge.title }} </br>
+              {{ 'Challenge'|trans }} : {{ video.challenge.title }} </br>
               {% endif %}
-              Points earned: {{ video.score }} </br>
+              {{ 'Points earned'|trans }} : {{ video.score }} </br>
             </p>
             <p><b>Are you sure you want to delete this video ?</b></p>
-            <input type="submit" value="Delete" class="btn btn-danger" />
+            <button type="submit" class="btn btn-danger">{{ 'Delete'|trans }}</button>
             {{ form_rest(form) }}
           </form>
         </div> 

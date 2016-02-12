@@ -84,7 +84,7 @@ class BFRandomvideos
 	        else{//push all the videos to the array
 				$k = $numberVideos-1;
 	        	for($j = 0; $j < $k; $j++){
-	                $object = $videosChallenge[$j];
+	                $object = $videos[$j];
 	            	array_push($listVideos, $object);
 	            }
 	        }

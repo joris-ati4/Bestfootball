@@ -8,7 +8,7 @@
 
 
 {% block title %}
-  Upload your video - {{ parent() }} 
+  {{ 'Upload your video.'|trans }} - {{ parent() }} 
 {% endblock %}
 
 {% block content %}
@@ -20,7 +20,7 @@
         <div class="col-xs-12 col-sm-8 col-md-6 col-lg-6 col-sm-offset-2 col-md-offset-3 col-lg-offset-3" style="margin-top:50px;">
           <div class="challengedescription text-center">
             <div class="challengetitle">
-              <h3 style="color:white;">Upload your video.</h3>
+              <h3 style="color:white;">{{ 'Upload your video.'|trans }}</h3>
             </div>
             <div class="challengecontent text-center">
               {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
@@ -75,7 +75,7 @@
               </br>
               <a href="{{ path('bf_site_homepage') }}" class="btn btn-danger" style="font-size:10px;">
                 <i class="glyphicon glyphicon-remove"></i>
-                  Cancel
+                  {{ 'cancel'|trans }}
               </a>
             {# Pour le bouton, pas de label ni d'erreur, on affiche juste le widget #}
             {{ form_rest(form) }}
@@ -92,32 +92,6 @@
 {% endblock %}
 {% block javascripts %}
   <script type="text/javascript">
-  var submit = document.getElementById('submit'), 
-      progress = document.getElementById('progress'),
-      bar = document.getElementById('bar');
-
-
-
-  $('#submit').click(function() {
-
-    $( this ).slideUp();
-  });
-
-
-    
-
-        
-
-
-
-        submit.style.visibility = "hidden";
-        bar.style.visibility = "visible";
-
-
-        request.upload.addEventListener('progress', function(e){
-        progress.style.width = Math.ceil(e.loaded/e.total) * 100 + '%';
-        }, false);
-     
-
+ 
   </script>
 {% endblock %}

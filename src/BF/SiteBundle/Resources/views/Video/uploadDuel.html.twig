@@ -8,7 +8,7 @@
 
 
 {% block title %}
-  Upload your video - {{ parent() }} 
+  {{ 'Upload your video.'|trans }} - {{ parent() }} 
 {% endblock %}
 
 {% block content %}
@@ -20,7 +20,7 @@
         <div class="col-xs-12 col-sm-10 col-md-10 col-lg-8 col-sm-offset-1 col-md-offset-1 col-lg-offset-2" style="margin-top:50px;">
           <div class="challengedescription text-center">
             <div class="challengetitle">
-              <h3 style="color:white;">Upload your video.</h3>
+              <h3 style="color:white;">{{ 'Upload your video.'|trans }}</h3>
             </div>
             <div class="challengecontent text-center">
 
@@ -70,7 +70,7 @@
                       </br>
                       <a href="{{ path('bf_site_homepage') }}" class="btn btn-danger" style="font-size:10px;">
                         <i class="glyphicon glyphicon-remove"></i>
-                          Cancel
+                          {{ 'cancel'|trans }}
                       </a>
                     {# Pour le bouton, pas de label ni d'erreur, on affiche juste le widget #}
                     {{ form_rest(form) }}
@@ -81,7 +81,7 @@
                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                   <div class="row">
                     {% if highVideo is not null %}
-                      <h4>Use your previous video </h4>
+                      <h4>{{ 'Use your previous video '|trans }}</h4>
                       <img src="/uploads/videos/{{ highVideo.id }}.jpg" alt="{{ highVideo.thumbAlt }}" style="max-width:100%; max-height: 250px;"/>
                       <p>
                         repetitions: {{ highVideo.repetitions }}
@@ -94,14 +94,15 @@
                         
                     {% else %} 
                     <!--The user has no video-->
-                    <h4>Use the application! </h4>
-                    <p style="text-align:justify;">You didn't participate at this challenge.
-                      Steps to upload your video with our app: 
+                    <h4>{{ 'Use the application'|trans }}!</h4>
+                    <p style="text-align:justify;">
+                      {{ 'You did not participate at this challenge.
+                      Steps to upload your video with our app'|trans }}:
                       <ol style="text-align:justify;">
-                        <li>Download our app</li>
-                        <li>Do the {{ duel.challenge.title }} challenge</li>
-                        <li>Come back on this page</li>
-                        <li>Use the uploaded video for this challenge</li>
+                        <li>{{ 'Download our app'|trans }}</li>
+                        <li>{{ 'Do the'|trans }} {{ duel.challenge.title }} {{'challenge'|trans }}</li>
+                        <li>{{ 'Come back on this page'|trans }}</li>
+                        <li>{{ 'Use the uploaded video for this challenge'|trans }}</li>
                       </ol> 
                     </p>
 

@@ -20,10 +20,11 @@ class DuelController extends Controller
 	    if (null === $duel) {
 	      throw new NotFoundHttpException("This duel doesn't exist");
 	    }
+        $host = $duel->getHost();
 
         if($duel->getCompleted() == 1){
             //make 2 variables, one for the loser and one for the winner.
-            $videoHost = $em->getRepository('BFSiteBundle:Video')->duelHostVideo($duel->getHost(), $duel);
+            $videoHost = $em->getRepository('BFSiteBundle:Video')->duelHostVideo($host, $duel);
             $videoGuest= $em->getRepository('BFSiteBundle:Video')->duelGuestVideo($duel->getGuest(), $duel);
         }
 

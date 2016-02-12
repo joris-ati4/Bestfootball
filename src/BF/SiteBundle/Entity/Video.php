@@ -212,9 +212,14 @@ class Video
         // Start transcoding and save video
         
 
-       
+       if($this->extension != 'mp4'){
         $video->save(new X264(),'/var/www/bestfootball.fr/shared/web/uploads/videos/'.$this->source);
         unlink($this->getUploadRootDir().'/'.$this->id.'.'.$this->extension);
+       }
+       else{
+        rename ($this->getUploadRootDir().'/'.$this->id.'.'.$this->extension, '/var/www/bestfootball.fr/shared/web/uploads/videos/'.$this->source);
+       }
+        
       
 
         

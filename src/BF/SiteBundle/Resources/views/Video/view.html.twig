@@ -39,16 +39,16 @@
                       <!-- Button to follow the user -->
                       <a id="follow" value="{{ video.user.id }}" class="btn btn-success">
                         <i class="glyphicon glyphicon-ok"></i>
-                           Follow me !
+                        {{ 'Follow me'|trans }}! 
                       </a>
 
                       <a id="unfollow" value="{{ video.user.id }}" class="btn btn-success">
                         <i class="glyphicon glyphicon-ok"></i>
-                           Followed !
+                           {{ 'Followed'|trans }}! 
                       </a>
                       <a href="{{ path('bf_site_duel_create', {'username': video.user.username }) }}" class="btn btn-success">
                         <i class="glyphicon glyphicon-ok"></i>
-                           Duel me !
+                           {{ 'Duel me'|trans }}!
                       </a>
                     {% endif %}
                   </div>

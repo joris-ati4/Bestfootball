@@ -1,7 +1,7 @@
 {% extends "BFSiteBundle::base.html.twig" %}
 
 {% block title %}
-  Modify video - {{ parent() }}
+  {{ 'Modify your video'|trans }} - {{ parent() }}
 {% endblock %}
 
 {% block content %}
@@ -11,7 +11,7 @@
   {# This is the content section of our page, here the user will be able to view all the challenges with the different niveau's! #}
     <div class="challengedescription row" style="margin-bottom:100px;">
       <div class="challengetitle">
-        <h3 class="text-center" style="color:white;">Modify your video</h3>
+        <h3 class="text-center" style="color:white;">{{ 'Modify your video'|trans }}:</h3>
       </div>
       <div class="challengecontent" style="min-height:440px;">
         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 vcenter">
@@ -23,7 +23,7 @@
               {% if video.challenge is not null %}
               Challenge : {{ video.challenge.title }} </br>
               {% endif %}
-              Points earned: {{ video.score }}</br>
+             {{ 'Points earned'|trans }}: {{ video.score }}</br>
             </p>
             <div class="form-group">
               {{ form_label(form.title, "Title:", {'label_attr': {'class': 'col-xs-12 col-sm-4 col-md-4 col-lg-4 control-label'}}) }}
