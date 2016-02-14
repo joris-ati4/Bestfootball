@@ -447,4 +447,33 @@ class VideoController extends Controller
 		      'form'   => $form->createView(),
 		    ));
     }
+    public function freestyleAction()
+    {
+	    $em = $this->getDoctrine()->getManager();
+	    $listFreestyles = $em->getRepository('BFSiteBundle:Video')->findByType('freestyle');
+	    //choosing a random video.
+	    $i = array_rand($listFreestyles, 1);
+	    $video = $listFreestyles[$i];
+	    $listVideos = array();
+
+	    //selecting 12 random videos to display under the headsection of the page.
+	    if(count($listFreestyles) > 12){
+	    	//select 12 random videos.
+	    	$i = array_rand($listFreestyles, 12);
+            for($j = 0; $j < $k; $j++){
+                $index = $i[$j];
+                $object = $listFreestyles[$index];
+                array_push($listVideos, $object);
+            }
+	    }
+	    else{
+	    	//put all the videos into the video list.
+	    	$listVideos = $listFreestyles;
+	    }
+
+	    return $this->render('BFSiteBundle:Video:freestyle.html.twig', array(
+	      'video' => $video,
+	      'listVideos'   => $listVideos,
+	    ));
+    }
 }

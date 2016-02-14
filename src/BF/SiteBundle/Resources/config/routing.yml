@@ -78,7 +78,11 @@ bf_site_prediction:
     path:     /prediction
     defaults: { _controller: BFSiteBundle:Logged:prediction }
     methods:  [GET]
-    
+
+bf_site_freestyle:
+    path:     /freestyle
+    defaults: { _controller: BFSiteBundle:Video:freestyle }
+    methods:  [GET]
 #this section does all the routes for the video section
 
 bf_site_video:
