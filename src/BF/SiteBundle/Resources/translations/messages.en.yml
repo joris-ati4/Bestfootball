@@ -1,129 +1,138 @@
-'My Profile': '__My Profile'
-'My Videos': '__My Videos'
-'My Duels': '__My Duels'
-Settings: __Settings
-'Admin section': '__Admin section'
-Deconnect: __Deconnect
-'Login / Subscribe': '__Login / Subscribe'
-'The Duel': '__The Duel'
-'Last Videos': '__Last Videos'
-'Propose your own challenge !': '__Propose your own challenge !'
-'You have an idea for a new challenge? Propose your own challenge by sending us a message!': '__You have an idea for a new challenge? Propose your own challenge by sending us a message!'
-'Sponsor a challenge?': '__Sponsor a challenge?'
-'You want to be the sponsor of one challenge? Contact us for more info and propose us a new challenge.': '__You want to be the sponsor of one challenge? Contact us for more info and propose us a new challenge.'
-'Contact us!': '__Contact us!'
-Participate: __Participate
-'The challenge': '__The challenge'
-'Upload my video': '__Upload my video'
-'Start a new Duel': '__Start a new Duel'
-against: __against
-'Congratulations this duel was a draw and you received 50 points': '__Congratulations this duel was a draw and you received 50 points'
-'View the duel': '__View the duel'
-'End of the duel': '__End of the duel'
-'unfortunately you lost the duel.': '__unfortunately you lost the duel.'
-Accept: __Accept
-Decline: __Decline
-'Upload your video': '__Upload your video'
-'Congratulations you won this duel and 100 points !': '__Congratulations you won this duel and 100 points !'
-'Press section': '__Press section'
-Conditions: __Conditions
-security.login.username: __security.login.username
-security.login.password: __security.login.password
-security.login.remember_me: __security.login.remember_me
-security.login.submit: __security.login.submit
-'Contact us': '__Contact us'
-Partnerships: __Partnerships
-Prediction: __Prediction
-Press: __Press
-Privacy: __Privacy
-Rules: __Rules
-rules.1.title: __rules.1.title
-rules.1.content: __rules.1.content
-rules.2.title: __rules.2.title
-rules.2.content: __rules.2.content
-rules.3.title: __rules.3.title
-rules.3.content: __rules.3.content
-rules.4.title: __rules.4.title
-rules.4.content: __rules.4.content
-rules.5.title: __rules.5.title
-rules.5.content: __rules.5.content
-rules.6.title: __rules.6.title
-rules.6.content: __rules.6.content
-rules.7.title: __rules.7.title
-rules.7.content: __rules.7.content
-rules.8.title: __rules.8.title
-rules.8.content: __rules.8.content
-rules.9.title: __rules.9.title
-rules.9.content: __rules.9.content
-rules.10.title: __rules.10.title
-rules.10.content: __rules.10.content
-rules.11.title: __rules.11.title
-rules.11.content: __rules.11.content
-Terms: __Terms
-'My Challenges': '__My Challenges'
-'This user did not participate at any challenges': '__This user did not participate at any challenges'
-'My duels': '__My duels'
-'In progress': '__In progress'
-'You do not have any ongoing duels. Go out there and duel some users !': '__You do not have any ongoing duels. Go out there and duel some users !'
-'Won duels': '__Won duels'
-'You do not win any duels. Go out there and duel some users !': '__You do not win any duels. Go out there and duel some users !'
-'Draw duels': '__Draw duels'
-'You do not have any Draw duels.': '__You do not have any Draw duels.'
-'Lost duels': '__Lost duels'
-'You do not have any lost duels. Nice, keep up the good work!': '__You do not have any lost duels. Nice, keep up the good work!'
-Won: __Won
-Lost: __Lost
-Draw: __Draw
-'This user did not participate at any duels': '__This user did not participate at any duels'
-'Followers of': '__Followers of'
-'This user does not have any followers.': '__This user does not have any followers.'
-'Duel me !': '__Duel me !'
-'Follow !': '__Follow me !'
-'Followed !': '__Followed !'
-'My Settings': '__My Settings'
-information: __information
-'profile picture': '__profile picture'
-'Change username': '__Change username'
-'Change password': '__Change password'
-'No profile picture': '__No profile picture'
-'Sorry this username is already taken. Please choose another one.': '__Sorry this username is already taken. Please choose another one.'
-'This username is available.': '__This username is available.'
-Legend: __Legend
-Expert: __Expert
-'report this video': '__report this video'
-'My videos': '__My videos'
-'Modify your video': '__Modify your video'
-'Delete this video.': '__Delete this video.'
-'You can not delete Duel videos': '__You can not delete Duel videos'
-'You do not have any videos !': '__You do not have any videos !'
-'Profile of': '__Profile of'
-Mixed: __Mixed
-Girls: __Girls
-Boys: __Boys
-World: __World
-'Country Ranking': '__Country Ranking'
-'Delete your video': '__Delete your video'
-Title: __Title
-Description: __Description
-Challenge: __Challenge
-'Points earned': '__Points earned'
-Delete: __Delete
-'This is the Freestyle section of bestfootball. Be free and upload your freestyle video by clicking on the button below!': '__This is the Freestyle section of bestfootball. Be free and upload your freestyle video by clicking on the button below!'
-'This is the Freestyle section of bestfootball. Be free and upload your freestyle video by clicking on the button above!': '__This is the Freestyle section of bestfootball. Be free and upload your freestyle video by clicking on the button above!'
-'Report a video': '__Report a video'
-Repetitions: __Repetitions
-Report: __Report
-'Upload your video.': '__Upload your video.'
-cancel: __cancel
-'Use your previous video': '__Use your previous video'
-'Use the application': '__Use the application'
-"You did not participate at this challenge.\n                      Steps to upload your video with our app": "__You did not participate at this challenge.\n                      Steps to upload your video with our app"
-'Download our app': '__Download our app'
-'Do the': '__Do the'
-challenge: __challenge
-'Come back on this page': '__Come back on this page'
-'Use the uploaded video for this challenge': '__Use the uploaded video for this challenge'
-'Upload your freestyle video.': '__Upload your freestyle video.'
-'Follow me': '__Follow me'
-Followed: __Followed
-'Duel me': '__Duel me'
+'My Profile': 'My Profile'
+'My Videos': 'My Videos'
+'My Duels': 'My Duels'
+Settings: Settings
+'Admin section': 'Admin section'
+Deconnect: Deconnect
+'Login / Subscribe': 'Login / Subscribe'
+'The Duel': 'The Duel'
+'Last Videos': 'Last Videos'
+'Propose your own challenge !': 'Propose your own challenge !'
+'You have an idea for a new challenge? Propose your own challenge by sending us a message!': 'You have an idea for a new challenge? Propose your own challenge by sending us a message!'
+'Sponsor a challenge?': 'Sponsor a challenge?'
+'You want to be the sponsor of one challenge? Contact us for more info and propose us a new challenge.': 'You want to be the sponsor of one challenge? Contact us for more info and propose us a new challenge.'
+'Contact us!': 'Contact us!'
+Participate: Participate
+'The challenge': 'The challenge'
+'Upload my video': 'Upload my video'
+'Start a new Duel': 'Start a new Duel'
+against: against
+'Congratulations this duel was a draw and you received 50 points': 'Congratulations this duel was a draw and you received 50 points'
+'View the duel': 'View the duel'
+'End of the duel': 'End of the duel'
+'unfortunately you lost the duel.': 'unfortunately you lost the duel.'
+Accept: Accept
+Decline: Decline
+'Upload your video': 'Upload your video'
+'Congratulations you won this duel and 100 points !': 'Congratulations you won this duel and 100 points !'
+'Press section': 'Press section'
+Conditions: Conditions
+security.login.username: Username
+security.login.password: Password
+security.login.remember_me: Remember me
+security.login.submit: Submit
+'Contact us': 'Contact us'
+Partnerships: Partnerships
+Prediction: Prediction
+Press: Press
+Privacy: Privacy
+Rules: Rules
+rules.1.title: "1.Upload your videos."
+rules.1.content: "In order to participate in a challenge, you have to go to the “Challenges” tab or “Sponsored Challenges” tab. If you want to understand exactly what is asking for the challenge, you can watch the explanatory video. When you participate in a challenge, you have to indicate the number of tricks you achieved. You can post as many videos as you want and your best score will be retained! Once you have uploaded your video, you receive a number of points according to the level reached you indicated."
+rules.2.title: "2.Level reached"
+rules.2.content: "Bestfootball always value fun, entertainment and mutual trust towards our community. That is why we let you mention the level you reached while you upload the video. Of course, Bestfootball users can report a video when the level reached mentioned does not reflect the reality."
+rules.3.title: "3.Challenges levels"
+rules.3.content: "Each challenge has different degrees of difficulty. Every time you successfully reach a level within a challenge, you will get a certain amount of points. If your talent allows you to go further than the maximum level set by Bestfootball, you will have the privilege to obtain the grade of « Legend » in this particular challenge. "
+rules.4.title: "4.Challenges Ranking"
+rules.4.content: "Several rankings (global, nationally, by gender…) are made. You can measure your level and compare yourself with the best in your city or around the world."
+rules.5.title: "5.Grades"
+rules.5.content: "Grades will be given according to your number of points.
+1.	Unknown
+2.	Promising talent
+3.	Rising star
+4.	Star status
+5.	Legend
+Conditions
+
+To be considered as a rising star, you will have to reach the level 3 on at least two challenges. To get the Star status, you will have to reach the level 6 on at least two challenges. To be a legend, you will have to reach the level 6 on at least two challenges and be a legend in one other challenge.
+"
+rules.6.title:"6.Invite a Bestfootball user for a duel  "
+rules.6.content: "With Bestfootball, stop endless debate and let’s see who is better between you and your friends. You can defy a Bestfootball user in the challenge you want by going on his profile and clicking on “Duel me”. Once the two players have accepted the duel, one week is given to them to post their video. None of the videos will be shown until the two have been uploaded. As soon as the two videos are uploaded, they are shown even if the period of one week is not finished yet."
+rules.7.title: "7.Duel Ranking"
+rules.7.content: "In order to take into account ages differences we made the “Duel Ranking” section. The duels allow you to play against people of your level and get points with are counted only on the “Duel Ranking”. With that method, a young 11 years old can then have a better ranking than a 20 years old player."
+rules.8.title: "8.I have a great ranking, and so what?"
+rules.8.content: "Bestfootball aims to reward the best players. That is why each semester the best players (challenges, duels, freestyle section) will get prices from Bestfootball. The first prices will be given on 31th December 2016."
+rules.9.title: "9.What are the prices?"
+rules.9.content: "The list of rewards is coming soon! So far, your best reward is the pride to be the best! But do not worry, the team is working with many partners to offer you great prices!!"
+rules.10.title: "10.Are there other ways to win some rewards?"
+rules.10.content: "Yes! We have a feature that enables you to foresee which player will be the best of a challenge. Each semester, all the users who did foresee the winner of a challenge, are selected for a lottery, and one of them will receive a reward. "
+rules.11.title: "Why does my country not appear in the ranking page?"
+rules.11.content: "The website is not yet finished. Our team is working on it and all the countries will be represented."
+Terms: Terms
+'My Challenges': 'My Challenges'
+'This user did not participate at any challenges': 'This user did not participate at any challenges'
+'My duels': 'My duels'
+'In progress': 'In progress'
+'You do not have any ongoing duels. Go out there and duel some users !': 'You do not have any ongoing duels. Go out there and duel some users !'
+'Won duels': 'Won duels'
+'You do not win any duels. Go out there and duel some users !': 'You do not win any duels. Go out there and duel some users !'
+'Draw duels': 'Draw duels'
+'You do not have any Draw duels.': 'You do not have any Draw duels.'
+'Lost duels': 'Lost duels'
+'You do not have any lost duels. Nice, keep up the good work!': 'You do not have any lost duels. Nice, keep up the good work!'
+Won: Won
+Lost: Lost
+Draw: Draw
+'This user did not participate at any duels': 'This user did not participate at any duels'
+'Followers of': 'Followers of'
+'This user does not have any followers.': 'This user does not have any followers.'
+'Duel me !': 'Duel me !'
+'Follow !': 'Follow me !'
+'Followed !': 'Followed !'
+'My Settings': 'My Settings'
+information: information
+'profile picture': 'profile picture'
+'Change username': 'Change username'
+'Change password': 'Change password'
+'No profile picture': 'No profile picture'
+'Sorry this username is already taken. Please choose another one.': 'Sorry this username is already taken. Please choose another one.'
+'This username is available.': 'This username is available.'
+Legend: Legend
+Expert: Expert
+'report this video': 'report this video'
+'My videos': 'My videos'
+'Modify your video': 'Modify your video'
+'Delete this video.': 'Delete this video.'
+'You can not delete Duel videos': 'You can not delete Duel videos'
+'You do not have any videos !': 'You do not have any videos !'
+'Profile of': 'Profile of'
+Mixed: Mixed
+Girls: Girls
+Boys: Boys
+World: World
+'Country Ranking': 'Country Ranking'
+'Delete your video': 'Delete your video'
+Title: Title
+Description: Description
+Challenge: Challenge
+'Points earned': 'Points earned'
+Delete: Delete
+'This is the Freestyle section of bestfootball. Be free and upload your freestyle video by clicking on the button below!': 'This is the Freestyle section of bestfootball. Be free and upload your freestyle video by clicking on the button below!'
+'This is the Freestyle section of bestfootball. Be free and upload your freestyle video by clicking on the button above!': 'This is the Freestyle section of bestfootball. Be free and upload your freestyle video by clicking on the button above!'
+'Report a video': 'Report a video'
+Repetitions: Repetitions
+Report: Report
+'Upload your video.': 'Upload your video.'
+cancel: cancel
+'Use your previous video': 'Use your previous video'
+'Use the application': 'Use the application'
+"You did not participate at this challenge.\n                      Steps to upload your video with our app": "You did not participate at this challenge.\n                      Steps to upload your video with our app"
+'Download our app': 'Download our app'
+'Do the': 'Do the'
+challenge: challenge
+'Come back on this page': 'Come back on this page'
+'Use the uploaded video for this challenge': 'Use the uploaded video for this challenge'
+'Upload your freestyle video.': 'Upload your freestyle video.'
+'Follow me': 'Follow me'
+Followed: Followed
+'Duel me': 'Duel me'
