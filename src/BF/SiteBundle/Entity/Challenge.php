@@ -47,11 +47,16 @@ class Challenge
     private $title;
 
     /**
-     * @var string
      *
-     * @ORM\Column(name="description", type="string", length=255)
+     * @ORM\Column(name="description_fr", type="text")
      */
-    private $description;
+    private $descriptionFR;
+
+    /**
+     *
+     * @ORM\Column(name="description_en", type="text")
+     */
+    private $descriptionEN;
 
     /**
      * @var string
@@ -303,30 +308,6 @@ class Challenge
     public function getTitle()
     {
         return $this->title;
-    }
-
-    /**
-     * Set description
-     *
-     * @param string $description
-     *
-     * @return Challenge
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
-    /**
-     * Get description
-     *
-     * @return string
-     */
-    public function getDescription()
-    {
-        return $this->description;
     }
 
     /**
@@ -668,5 +649,53 @@ class Challenge
     public function getSix()
     {
         return $this->six;
+    }
+
+    /**
+     * Set descriptionFR
+     *
+     * @param string $descriptionFR
+     *
+     * @return Challenge
+     */
+    public function setDescriptionFR($descriptionFR)
+    {
+        $this->descriptionFR = $descriptionFR;
+
+        return $this;
+    }
+
+    /**
+     * Get descriptionFR
+     *
+     * @return string
+     */
+    public function getDescriptionFR()
+    {
+        return $this->descriptionFR;
+    }
+
+    /**
+     * Set descriptionEN
+     *
+     * @param string $descriptionEN
+     *
+     * @return Challenge
+     */
+    public function setDescriptionEN($descriptionEN)
+    {
+        $this->descriptionEN = $descriptionEN;
+
+        return $this;
+    }
+
+    /**
+     * Get descriptionEN
+     *
+     * @return string
+     */
+    public function getDescriptionEN()
+    {
+        return $this->descriptionEN;
     }
 }

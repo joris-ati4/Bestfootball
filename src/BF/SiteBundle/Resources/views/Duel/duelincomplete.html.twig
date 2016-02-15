@@ -38,7 +38,7 @@
           <h3 style="color:white;" class="text-center">The Duel</h3>
       </div>
       <div class="challengecontent">
-          <p>Here will come a clock that counts down to the end date of the challenge. End of the duel : {{ duel.endDate|date('d-m-Y G:i')}}</p>
+          <p>{{ 'End of the duel'|trans }} : {{ duel.endDate|date('d-m-Y G:i')}}</p>
 
           <p style="text-align: justify;text-justify: inter-word;">
             {{ duel.challenge.description }}
@@ -46,7 +46,7 @@
          
           {% if duel.accepted == 1 %}
             {% if duel.host.id == app.user.id or duel.guest.id == app.user.id %}
-              <button onclick="location.href='{{ path('bf_site_upload', {'id': duel.id, 'type':'duel'}) }}'" class="btn btn-participate" type="submit"><i class="glyphicon glyphicon-upload"></i>Upload my video</button>
+              <button onclick="location.href='{{ path('bf_site_upload', {'id': duel.id, 'type':'duel'}) }}'" class="btn btn-participate" type="submit"><i class="glyphicon glyphicon-upload"></i>{{ 'Upload my video'|trans }}</button>
             {% endif %}
           {% endif %}
       </div>

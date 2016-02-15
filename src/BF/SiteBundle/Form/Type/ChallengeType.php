@@ -16,7 +16,8 @@ class ChallengeType extends AbstractType
     {
         $builder
             ->add('title', 'text')
-            ->add('description', 'textarea')
+            ->add('descriptionFR', 'textarea')
+            ->add('descriptionEN', 'textarea')
             ->add('one', 'integer')
             ->add('two', 'integer')
             ->add('three', 'integer')

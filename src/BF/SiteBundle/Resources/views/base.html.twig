@@ -32,21 +32,21 @@
     <li class="dropdown">
       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="{{ app.user.picture.src }}" alt="{{ app.user.picture.alt }}" style="max-width:25px;max-height:20px;"><span class="caret"></span></a>
       <ul class="dropdown-menu">
-        <li><a href="{{ path('bf_site_profile', { 'username': app.user.username }) }}">My Profile</a></li>
-        <li><a href="{{ path('bf_site_videos') }}">My Videos</a></li>
-        <li><a href="{{ path('bf_site_profile_duels') }}">My Duels</a></li>
+        <li><a href="{{ path('bf_site_profile', { 'username': app.user.username }) }}">{{ 'My Profile'|trans }}</a></li>
+        <li><a href="{{ path('bf_site_videos') }}">{{ 'My Videos'|trans }}</a></li>
+        <li><a href="{{ path('bf_site_profile_duels') }}">{{ 'My Duels'|trans }}</a></li>
         <li role="separator" class="divider"></li>
-        <li><a href="{{ path('bf_site_settings') }}">Settings</a></li>
+        <li><a href="{{ path('bf_site_settings') }}">{{ 'Settings'|trans }}</a></li>
           {% if app.user and is_granted('ROLE_ADMIN') %}
-            <li><a href="{{ path('bf_site_admin') }}">Admin section</a></li>
+            <li><a href="{{ path('bf_site_admin') }}">{{ 'Admin section'|trans }}</a></li>
           {% endif %}
         <li role="separator" class="divider"></li>
-        <li><a href="/logout">Deconnect</a></li>
+        <li><a href="/logout">{{ 'Deconnect'|trans }}</a></li>
       </ul>
     </li>
   {% else %} {# Here the user is NOT connected to the site #}
     <li>
-        <button onclick="location.href='{{ path('fos_user_security_login') }}'" class="btn btn-login" type="submit">Login / Subscribe </button>
+        <button onclick="location.href='{{ path('fos_user_security_login') }}'" class="btn btn-login" type="submit">{{ 'Login / Subscribe'|trans }} </button>
     </li>
   {% endif %}
 {% endblock %}

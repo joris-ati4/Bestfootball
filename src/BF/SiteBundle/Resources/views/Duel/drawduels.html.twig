@@ -4,9 +4,9 @@
     	<div class="challengetitle">
       		<h3 class="text-center" style="color:white;">
       			{% if duel.host.username == user.username %}
-      				{{ duel.challenge.title }} against {{ duel.guest.username }}
+      				{{ duel.challenge.title }} {{ 'against'|trans }} {{ duel.guest.username }}
       			{% else %}
-      				{{ duel.challenge.title }} against {{ duel.host.username }}
+      				{{ duel.challenge.title }} {{ 'against'|trans }} {{ duel.host.username }}
       			{% endif %}
       		</h3>
     	</div>
@@ -15,12 +15,12 @@
     			<img src="/uploads/challenges/thumbnail/{{ duel.challenge.id }}.jpg" alt="" style="max-height:100%;max-width:100%;"/>
     		</div><!--
     		--><div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 row vcenter"><!-- info about the duel -->
-    			 <p>Congratulations this duel was a draw and you received 50 points</p>
+    			 <p>{{ 'Congratulations this duel was a draw and you received 50 points'|trans }}</p>
     		</div><!--
     		--><div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 row vcenter"><!-- buttons to action -->
 				<a href="{{ path('bf_site_duel_view', {'id': duel.id}) }}" class="btn btn-success">
 					<i class="glyphicon glyphicon-upload"></i>
-				    View the duel
+				    {{ 'View the duel'|trans }}
 				</a>
     		</div>
     	</div>

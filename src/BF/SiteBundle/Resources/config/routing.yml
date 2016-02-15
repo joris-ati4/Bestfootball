@@ -97,24 +97,28 @@ bf_site_video_report:
     defaults: { _controller: BFSiteBundle:Video:report}
     requirements:
         id: -?\d+
+    methods:  [GET,POST]
 
 bf_site_upload:
     path:     /upload/{type}/{id}
     defaults: { _controller: BFSiteBundle:Video:upload }
     requirements:
         id: -?\d+
+    methods:  [GET,POST]
 
 bf_site_video_delete:
     path:     /deletevideo/{id}
     defaults: { _controller: BFSiteBundle:Video:delete }
     requirements:
         id: -?\d+
+    methods:  [GET,POST]
 
 bf_site_video_modify:
     path:     /modifyvideo/{id}
     defaults: { _controller: BFSiteBundle:Video:modify }
     requirements:
         id: -?\d+
+    methods:  [GET,POST]
 #this section does all the routes for the profile section
 
 bf_site_profile:
@@ -176,16 +180,17 @@ bf_site_admin_challenges:
 bf_site_admin_addChallenge:
     path:     /admin/addchallenge
     defaults: { _controller: BFSiteBundle:Admin:addChallenge }
-    methods:  [POST]
+    methods:  [GET,POST]
 
 bf_site_admin_modchallenge:
     path:     /admin/challenges/mod/{id}
     defaults: { _controller: BFSiteBundle:Admin:modChallenge }
-    methods:  [PUT]
+    methods:  [GET,POST]
 
 bf_site_admin_delchallenge:
     path:     /admin/challenges/del/{id}
     defaults: { _controller: BFSiteBundle:Admin:delChallenge }
+    methods:  [GET,POST]
 
 bf_site_admin_users:
     path:     /admin/users
@@ -200,10 +205,12 @@ bf_site_admin_reports:
 bf_site_admin_delvideo:
     path:     /admin/reports/delvideo/{id}
     defaults: { _controller: BFSiteBundle:Admin:deleteVideo }
+    methods:  [POST]
 
 bf_site_admin_okvideo:
     path:     /admin/reports/okvideo/{id}
     defaults: { _controller: BFSiteBundle:Admin:okVideo }
+    methods:  [POST]
 
 
 
@@ -213,14 +220,17 @@ bf_site_admin_okvideo:
 bf_site_duel_create:
     path:     /duel/create/{username}
     defaults: { _controller: BFSiteBundle:Duel:create }
+    methods:  [GET,POST]
 
 bf_site_duel_accept:
     path:     /duel/accept/{id}
     defaults: { _controller: BFSiteBundle:Duel:accept }
+    methods:  [POST]
 
 bf_site_duel_decline:
     path:     /duel/decline/{id}
     defaults: { _controller: BFSiteBundle:Duel:decline }
+    methods:  [POST]
 
 
 bf_site_duel_view:
@@ -270,7 +280,7 @@ bf_site_api_challenge:
 bf_site_api_notifread:
     path: /home/notificationread
     defaults: { _controller: BFSiteBundle:Ajax:notifread }
-    methods:  [PUT]
+    methods:  [POST]
 
 bf_site_api_checkusername:
     path: /home/checkusername

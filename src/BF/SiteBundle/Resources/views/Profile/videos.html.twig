@@ -1,18 +1,18 @@
 {% extends "BFSiteBundle::base.html.twig" %}
 
 {% block title %}
-  My videos - {{ parent() }}
+  {{ 'My videos'|trans }} - {{ parent() }}
 {% endblock %}
 
 
 {% block content %}
-<section class="profile">
+<section class="homepage">
   <div class="row">
     <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">
   {# This is the content section of our page, here the user will be able to view all the challenges with the different niveau's! #}
  		<div class="challengedescription row" style="margin-bottom:100px;">
         	<div class="challengetitle">
-          		<h3 class="text-center" style="color:white;">My videos</h3>
+          		<h3 class="text-center" style="color:white;">{{ 'My videos'|trans }}</h3>
         	</div>
         	<div class="challengecontent" style="min-height:440px;">
         		{% if listVideos|length > 0 %}
@@ -29,14 +29,14 @@
 							{% if video.type == "challenge" or video.type == "freestyle" %}
 								<a href="{{ path('bf_site_video_modify', {'id': video.id}) }}" class="btn btn-default">
 								<i class="glyphicon glyphicon-edit"></i>
-								    Modify your video
+								    {{ 'Modify your video'|trans }}
 								</a>
 						    	<a href="{{ path('bf_site_video_delete', {'id': video.id}) }}" class="btn btn-danger">
 								<i class="glyphicon glyphicon-trash"></i>
-								    Delete this video.
+								    {{ 'Delete this video.'|trans }}
 								</a>
 							{% else %}
-							<p>You can't delete Duel videos</p>
+							<p>{{ 'You can not delete Duel videos'|trans }}</p>
 							{% endif %}
 
 
@@ -44,7 +44,7 @@
 					</div>
 				  {% endfor %}
 				{% else %}
-                    <p> You don't have any videos !</p>
+                    <p> {{ 'You do not have any videos !'|trans }}</p>
                 {% endif %}
 			</div>
 		</div>

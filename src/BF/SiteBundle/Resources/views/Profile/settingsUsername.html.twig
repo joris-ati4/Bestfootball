@@ -10,8 +10,8 @@
 			    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
 			      {{ form_widget(form.username, {'attr': {'class': 'form-control'}}) }}
 				</div>
-				<span id="helpblocktaken" class="help-block" >Sorry this username is already taken. Please choose another one.</span>
-				<span id="helpblockfree" class="help-block">This username is available.</span>
+				<span id="helpblocktaken" class="help-block" >{{'Sorry this username is already taken. Please choose another one.'|trans }}</span>
+				<span id="helpblockfree" class="help-block">{{'This username is available.'|trans }}</span>
 			</div>
 		</div>
 		 {{ form_rest(form) }}

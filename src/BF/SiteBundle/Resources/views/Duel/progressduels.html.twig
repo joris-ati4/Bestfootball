@@ -4,7 +4,7 @@
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row">
 			<div class="challengedescription row" style="margin-bottom:10px;min-height:50px;">
 	        	<div class="challengetitle">
-	          		<h3 class="text-center" style="color:white;">{{ duel.challenge.title }} against {{ duel.host.username }}</h3>
+	          		<h3 class="text-center" style="color:white;">{{ duel.challenge.title }} {{ 'against'|trans }} {{ duel.host.username }}</h3>
 	        	</div>
 	        	<div class="challengecontent">
 	        		<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 row vcenter"><!-- picture of the duel -->
@@ -16,15 +16,15 @@
 	        		--><div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 row vcenter"><!-- buttons to action -->
 	        			<a href="{{ path('bf_site_duel_accept', {'id': duel.id}) }}" class="btn btn-success">
 							<i class="glyphicon glyphicon-ok"></i>
-							    Accept
+							    {{ 'Accept'|trans }}
 						</a></br></br>
 					    <a href="{{ path('bf_site_duel_decline', {'id': duel.id}) }}" class="btn btn-danger">
 							<i class="glyphicon glyphicon-trash"></i>
-							    Decline
+							    {{ 'Decline'|trans }}
 						</a></br></br>
 						<a href="{{ path('bf_site_duel_view', {'id': duel.id}) }}" class="btn btn-success">
 							<i class="glyphicon glyphicon-upload"></i>
-						    View the duel
+						    {{ 'View the duel'|trans }}
 						</a>
 	        		</div>
 	        	</div>
@@ -34,7 +34,7 @@
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row">
 			<div class="challengedescription row" style="margin-bottom:10px;min-height:50px;">
 	        	<div class="challengetitle">
-	          		<h3 class="text-center" style="color:white;">{{ duel.challenge.title }} against {{ duel.guest.username }}</h3>
+	          		<h3 class="text-center" style="color:white;">{{ duel.challenge.title }} {{ 'against'|trans }} {{ duel.guest.username }}</h3>
 	        	</div>
 	        	<div class="challengecontent">
 	        		<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 row vcenter"><!-- picture of the duel -->
@@ -46,7 +46,7 @@
 	        		--><div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 row vcenter"><!-- buttons to action -->
 						<a href="{{ path('bf_site_duel_view', {'id': duel.id}) }}" class="btn btn-success">
 							<i class="glyphicon glyphicon-upload"></i>
-						    View the duel
+						    {{ 'View the duel'|trans }}
 						</a>
 	        		</div>
 	        	</div>
@@ -71,11 +71,11 @@
 		        		--><div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 row vcenter"><!-- buttons to action -->
 		        			<a href="{{ path('bf_site_upload', {'id': duel.id, 'type':'duel'}) }}" class="btn btn-warning">
 								<i class="glyphicon glyphicon-upload"></i>
-								    Upload your video
+								    {{ 'Upload your video'|trans }}
 							</a></br></br>
 							<a href="{{ path('bf_site_duel_view', {'id': duel.id}) }}" class="btn btn-success">
 								<i class="glyphicon glyphicon-upload"></i>
-							    View the duel
+							    {{ 'View the duel'|trans }}
 							</a>
 		        		</div>
 		        	</div>
@@ -98,7 +98,7 @@
 		        			
 							<a href="{{ path('bf_site_duel_view', {'id': duel.id}) }}" class="btn btn-success">
 								<i class="glyphicon glyphicon-upload"></i>
-							    View the duel
+							    {{ 'View the duel'|trans }}
 							</a>
 		        		</div>
 		        	</div>
@@ -122,11 +122,11 @@
 		        		--><div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 row vcenter"><!-- buttons to action -->
 		        			<a href="{{ path('bf_site_upload', {'id': duel.id, 'type':'duel'}) }}" class="btn btn-warning">
 								<i class="glyphicon glyphicon-upload"></i>
-								    Upload your video
+								    {{ 'Upload your video'|trans }}
 							</a></br></br>
 							<a href="{{ path('bf_site_duel_view', {'id': duel.id}) }}" class="btn btn-success">
 								<i class="glyphicon glyphicon-upload"></i>
-							    View the duel
+							    {{ 'View the duel'|trans }}
 							</a>
 		        		</div>
 		        	</div>
@@ -149,7 +149,7 @@
 		        			
 							<a href="{{ path('bf_site_duel_view', {'id': duel.id}) }}" class="btn btn-success">
 								<i class="glyphicon glyphicon-upload"></i>
-							    View the duel
+							    {{ 'View the duel'|trans }}
 							</a>
 		        		</div>
 		        	</div>

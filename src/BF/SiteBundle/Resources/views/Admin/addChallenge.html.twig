@@ -38,14 +38,27 @@
 
     <div class="form-group">
       {# Génération du label. #}
-      {{ form_label(form.description, "Description:", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+      {{ form_label(form.descriptionEN, "Description EN:", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
 
       {# Affichage des erreurs pour ce champ précis. #}
-      {{ form_errors(form.description) }}
+      {{ form_errors(form.descriptionEN) }}
 
       <div class="col-sm-4">
         {# Génération de l'input. #}
-        {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+        {{ form_widget(form.descriptionEN, {'attr': {'class': 'form-control'}}) }}
+      </div>
+    </div>
+
+    <div class="form-group">
+      {# Génération du label. #}
+      {{ form_label(form.descriptionFR, "Description FR:", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+      {# Affichage des erreurs pour ce champ précis. #}
+      {{ form_errors(form.descriptionFR) }}
+
+      <div class="col-sm-4">
+        {# Génération de l'input. #}
+        {{ form_widget(form.descriptionFR, {'attr': {'class': 'form-control'}}) }}
       </div>
     </div>
 

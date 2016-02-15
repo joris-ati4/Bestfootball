@@ -170,7 +170,7 @@ class AdminController extends Controller
 			    $this->get('mailer')->send($message);
 
     	//delete the video from our servers
-    	unlink('/var/www/bestfootball.fr/shared/web/uploads/videos/{{ video.id }}.mp4');
+    	unlink('/var/www/bestfootball.fr/shared/web/uploads/videos/{{ video.source }}');
     	unlink('/var/www/bestfootball.fr/shared/web/uploads/videos/thumbnail/{{ video.id }}.jpg');
     	$em->remove($video);
     	$em->persist($user);

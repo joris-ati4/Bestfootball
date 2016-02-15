@@ -8,7 +8,7 @@
 
 
 {% block title %}
-  followers of {{ user.username }}- {{ parent() }}
+  {{'Followers of'|trans }} {{ user.username }}- {{ parent() }}
 {% endblock %}
 
 {% block content %}
@@ -16,7 +16,7 @@
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1" style="margin-top:40px;">
       <div class="row">
-        <h1 style="color:#95cd36;" class="text-center">followers of {{ user.username }}</h1>
+        <h1 style="color:#95cd36;" class="text-center">{{'Followers of'|trans }} {{ user.username }}</h1>
         {% if listFollows|length > 0 %}
           {% for follow in listFollows %}
             <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 text-center">
@@ -29,7 +29,7 @@
             </div>
           {% endfor %}
         {% else %}
-        <p>This user doesn't have any followers.</p>
+        <p>{{'This user does not have any followers.'|trans }}</p>
         {% endif %}
       </div>
     </div>

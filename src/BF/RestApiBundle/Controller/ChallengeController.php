@@ -28,7 +28,8 @@ class ChallengeController extends Controller
         foreach ($listChallenges as $challenge) {
          $id = $challenge->getId();
          $title = $challenge->getTitle();
-         $challenges[$i]=array('id' => $id, 'title' => $title);
+         $description = $challenge->getDescriptionEN();
+         $challenges[$i]=array('id' => $id, 'title' => $title, 'description' => $description, 'one'=> $challenge->getOne(), 'two'=> $challenge->getTwo(), 'three'=> $challenge->getThree(), 'four'=> $challenge->getFour(), 'five'=> $challenge->getFive(), 'six'=> $challenge->getSix());
          $i++;
         }
 

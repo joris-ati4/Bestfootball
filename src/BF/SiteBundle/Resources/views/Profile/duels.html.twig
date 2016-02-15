@@ -1,7 +1,7 @@
 {% extends "BFSiteBundle::base.html.twig" %}
 
 {% block title %}
-  My duels - {{ parent() }}
+  {{ 'My duels'|trans }} - {{ parent() }}
 {% endblock %}
 
 
@@ -14,7 +14,7 @@
           	{# integrating the  my duels page #}
           		<div class="challengedescription row" style="margin-bottom:30vh;">
         			<div class="challengetitle">
-          				<h3 class="text-center" style="color:white;">My duels</h3>
+          				<h3 class="text-center" style="color:white;">{{ 'My duels'|trans }}</h3>
         			</div>
         		<div class="challengecontent">
 	          		<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
@@ -22,7 +22,7 @@
 					    <div class="panel-heading" role="tab" id="headingOne" style="background-color:rgba(149,205,54,0.8);">
 					      <h4 class="panel-title" style="color:white">
 					        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-					          In Progress
+					          {{ 'In progress'|trans }}
 					          <div style="background-color:white;width:25px;height:25px;border-radius:25px;display:inline-block;" class="text-center row">
 					          	<p style="color:#95cd36;margin-bottom:0px;margin-top:3px;font-size:19px;">{{ listDuels.listProgress|length }}
 					          </div>
@@ -39,7 +39,7 @@
 					        	{% endfor %}
 
 					        {% else %}
-							<p> You don't have any ongoing duels. Go out there and duel some users ! </p>
+							<p>{{ 'You do not have any ongoing duels. Go out there and duel some users !'|trans }} </p>
 							{% endif %}
 					      </div>
 					    </div>
@@ -48,7 +48,7 @@
 					    <div class="panel-heading" role="tab" id="headingTwo" style="background-color:rgba(149,205,54,0.8);">
 					      <h4 class="panel-title" style="color:white">
 					        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-					          Won duels
+					          {{ 'Won duels'|trans }}
 					          <div style="background-color:white;width:25px;height:25px;border-radius:25px;display:inline-block;" class="text-center row">
 					          	<p style="color:#95cd36;margin-bottom:0px;margin-top:3px;font-size:19px;">{{ listDuels.listWon|length }}
 					          </div>
@@ -64,7 +64,7 @@
 					        		{% include "BFSiteBundle:Duel:wonduels.html.twig" with {"user": user, "duel": duel} only %}
 					        	{% endfor %}
 					        {% else %}
-							<p> You don't have any won duels. Go out there and duel some users ! </p>
+							<p> {{ 'You do not win any duels. Go out there and duel some users !'|trans }} </p>
 							{% endif %}
 					      </div>
 					    </div>
@@ -73,7 +73,7 @@
 					    <div class="panel-heading" role="tab" id="headingTwo" style="background-color:rgba(149,205,54,0.8);">
 					      <h4 class="panel-title" style="color:white">
 					        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-					          Draw duels 
+					          {{ 'Draw duels'|trans }}
 					          <div style="background-color:white;width:25px;height:25px;border-radius:25px;display:inline-block;" class="text-center row">
 					          	<p style="color:#95cd36;margin-bottom:0px;margin-top:3px;font-size:19px;">{{ listDuels.listDraw|length }}
 					          </div>
@@ -89,7 +89,7 @@
 					        		{% include "BFSiteBundle:Duel:drawduels.html.twig" with {"user": user, "duel": duel} only %}
 					        	{% endfor %}
 					        {% else %}
-							<p> You don't have any Draw duels.</p>
+							<p> {{'You do not have any Draw duels.'|trans }}</p>
 							{% endif %}
 					      </div>
 					    </div>
@@ -99,7 +99,7 @@
 					    <div class="panel-heading" role="tab" id="headingThree" style="background-color:rgba(149,205,54,0.8);">
 					      <h4 class="panel-title" style="color:white">
 					        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-					        	Lost duels
+					        	{{'Lost duels'|trans }}
 					          <div style="background-color:white;width:25px;height:25px;border-radius:25px;display:inline-block;" class="text-center row">
 					          	<p style="color:#95cd36;margin-bottom:0px;margin-top:3px;font-size:19px;">{{ listDuels.listLost|length }}
 					          </div>
@@ -115,7 +115,7 @@
 					        		{% include "BFSiteBundle:Duel:lostduels.html.twig" with {"user": user, "duel": duel} only %}
 					        	{% endfor %}
 					        {% else %}
-							<p> You don't have any lost duels. Nice, keep up the good work! </p>
+							<p>{{'You do not have any lost duels. Nice, keep up the good work!'|trans }}</p>
 							{% endif %}
 					      </div>
 					    </div>

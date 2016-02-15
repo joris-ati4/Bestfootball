@@ -20,7 +20,8 @@
 	<table class="table">
 		<tr>
 			<th>Title</th>
-			<th>Description</th>
+			<th>Description EN</th>
+			<th>Description FR</th>
 			<th>One</th>
 			<th>two</th>
 			<th>three</th>
@@ -33,7 +34,8 @@
  	{% for challenge in listChallenges %}
 		<tr>
 			<td>{{ challenge.title }}</td>
-			<td>{{ challenge.description }}</td>
+			<td>{{ challenge.descriptionEN }}</td>
+			<td>{{ challenge.descriptionFR }}</td>
 			<td>{{ challenge.one }}</td>
 			<td>{{ challenge.two }}</td>
 			<td>{{ challenge.three }}</td>

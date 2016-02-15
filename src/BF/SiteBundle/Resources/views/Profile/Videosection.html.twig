@@ -6,7 +6,7 @@
 
         <div class="videolistback">
           <div class="videolisttitle text-center">
-            <h3 style="color:white;">My videos </h3>
+            <h3 style="color:white;">{{ 'My videos'|trans }}</h3>
           </div>
           <div class="videolistcontent" id="videolist">
             <ul class="playlist" style="list-style-type:none;padding-left:0px;" >
@@ -21,7 +21,7 @@
                       </div><!--
                    --><div class="col-xs-7 col-sm-7 col-md-8 col-lg-8 vcenter">
                         <p style="font-size:14px;">{{ video.title }},</br> {{ video.date|date('d-m-Y')}}</p>
-                        <a href="{{ path('bf_site_video_report', {'id': video.id}) }}">report this video</a>
+                        <a href="{{ path('bf_site_video_report', {'id': video.id}) }}">{{ 'report this video'|trans }}</a>
                       </div>
                     </div>
                   </a>

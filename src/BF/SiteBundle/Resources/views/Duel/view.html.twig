@@ -8,7 +8,7 @@
 
 
 {% block title %}
-  Duel - {{ duel.host.username }} against {{ duel.guest.username }} {{ parent() }} 
+  Duel - {{ duel.host.username }} {{ 'against'|trans }} {{ duel.guest.username }} {{ parent() }} 
 {% endblock %}
 
 {% block content %}
