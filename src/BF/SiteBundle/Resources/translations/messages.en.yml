@@ -37,28 +37,40 @@ Prediction: Prediction
 Press: Press
 Privacy: Privacy
 Rules: Rules
-rules.1.title: "1.Upload your videos."
-rules.1.content: "In order to participate in a challenge, you have to go to the “Challenges” tab or “Sponsored Challenges” tab. If you want to understand exactly what is asking for the challenge, you can watch the explanatory video. When you participate in a challenge, you have to indicate the number of tricks you achieved. You can post as many videos as you want and your best score will be retained! Once you have uploaded your video, you receive a number of points according to the level reached you indicated."
-rules.2.title: "2.Level reached"
-rules.2.content: "Bestfootball always value fun, entertainment and mutual trust towards our community. That is why we let you mention the level you reached while you upload the video. Of course, Bestfootball users can report a video when the level reached mentioned does not reflect the reality."
-rules.3.title: "3.Challenges levels"
-rules.3.content: "Each challenge has different degrees of difficulty. Every time you successfully reach a level within a challenge, you will get a certain amount of points. If your talent allows you to go further than the maximum level set by Bestfootball, you will have the privilege to obtain the grade of « Legend » in this particular challenge. "
-rules.4.title: "4.Challenges Ranking"
-rules.4.content: "Several rankings (global, nationally, by gender…) are made. You can measure your level and compare yourself with the best in your city or around the world."
-rules.5.title: "5.Grades"
-rules.5.content:"Grades will be given according to your number of points.1.	Unknown. 2.Promising talent. 3.Rising star. 4.Star status. 5.Legend. Conditions: To be considered as a rising star, you will have to reach the level 3 on at least two challenges. To get the Star status, you will have to reach the level 6 on at least two challenges. To be a legend, you will have to reach the level 6 on at least two challenges and be a legend in one other challenge."
-rules.6.title:"6.Invite a Bestfootball user for a duel  "
-rules.6.content: "With Bestfootball, stop endless debate and let’s see who is better between you and your friends. You can defy a Bestfootball user in the challenge you want by going on his profile and clicking on “Duel me”. Once the two players have accepted the duel, one week is given to them to post their video. None of the videos will be shown until the two have been uploaded. As soon as the two videos are uploaded, they are shown even if the period of one week is not finished yet."
-rules.7.title: "7.Duel Ranking"
-rules.7.content: "In order to take into account ages differences we made the “Duel Ranking” section. The duels allow you to play against people of your level and get points with are counted only on the “Duel Ranking”. With that method, a young 11 years old can then have a better ranking than a 20 years old player."
-rules.8.title: "8.I have a great ranking, and so what?"
-rules.8.content: "Bestfootball aims to reward the best players. That is why each semester the best players (challenges, duels, freestyle section) will get prices from Bestfootball. The first prices will be given on 31th December 2016."
-rules.9.title: "9.What are the prices?"
-rules.9.content: "The list of rewards is coming soon! So far, your best reward is the pride to be the best! But do not worry, the team is working with many partners to offer you great prices!!"
-rules.10.title: "10.Are there other ways to win some rewards?"
-rules.10.content: "Yes! We have a feature that enables you to foresee which player will be the best of a challenge. Each semester, all the users who did foresee the winner of a challenge, are selected for a lottery, and one of them will receive a reward. "
-rules.11.title: "Why does my country not appear in the ranking page?"
-rules.11.content: "The website is not yet finished. Our team is working on it and all the countries will be represented."
+rules:
+    1:
+        title: "1.Upload your videos."
+        content: "In order to participate in a challenge, you have to go to the “Challenges” tab or “Sponsored Challenges” tab. If you want to understand exactly what is asking for the challenge, you can watch the explanatory video. When you participate in a challenge, you have to indicate the number of tricks you achieved. You can post as many videos as you want and your best score will be retained! Once you have uploaded your video, you receive a number of points according to the level reached you indicated."
+    2:
+        title: "2.Level reached"
+        content: "Bestfootball always value fun, entertainment and mutual trust towards our community. That is why we let you mention the level you reached while you upload the video. Of course, Bestfootball users can report a video when the level reached mentioned does not reflect the reality."
+    3:
+        title: "3.Challenges levels"
+        content: "Each challenge has different degrees of difficulty. Every time you successfully reach a level within a challenge, you will get a certain amount of points. If your talent allows you to go further than the maximum level set by Bestfootball, you will have the privilege to obtain the grade of « Legend » in this particular challenge. "
+    4:
+        title: "4.Challenges Ranking"
+        content: "Several rankings (global, nationally, by gender…) are made. You can measure your level and compare yourself with the best in your city or around the world."
+    5:
+        title: "5.Grades"
+        content:"Grades will be given according to your number of points.1.	Unknown. 2.Promising talent. 3.Rising star. 4.Star status. 5.Legend. Conditions: To be considered as a rising star, you will have to reach the level 3 on at least two challenges. To get the Star status, you will have to reach the level 6 on at least two challenges. To be a legend, you will have to reach the level 6 on at least two challenges and be a legend in one other challenge."
+    6:
+        title:"6.Invite a Bestfootball user for a duel"
+        content: "With Bestfootball, stop endless debate and let’s see who is better between you and your friends. You can defy a Bestfootball user in the challenge you want by going on his profile and clicking on “Duel me”. Once the two players have accepted the duel, one week is given to them to post their video. None of the videos will be shown until the two have been uploaded. As soon as the two videos are uploaded, they are shown even if the period of one week is not finished yet."
+    7:
+        title: "7.Duel Ranking"
+        content: "In order to take into account ages differences we made the “Duel Ranking” section. The duels allow you to play against people of your level and get points with are counted only on the “Duel Ranking”. With that method, a young 11 years old can then have a better ranking than a 20 years old player."
+    8:
+        title: "8.I have a great ranking, and so what?"
+        content: "Bestfootball aims to reward the best players. That is why each semester the best players (challenges, duels, freestyle section) will get prices from Bestfootball. The first prices will be given on 31th December 2016."
+    9:
+        title: "9.What are the prices?"
+        content: "The list of rewards is coming soon! So far, your best reward is the pride to be the best! But do not worry, the team is working with many partners to offer you great prices!!"
+    10:
+        title: "10.Are there other ways to win some rewards?"
+        content: "Yes! We have a feature that enables you to foresee which player will be the best of a challenge. Each semester, all the users who did foresee the winner of a challenge, are selected for a lottery, and one of them will receive a reward. "
+    11:
+        title: "Why does my country not appear in the ranking page?"
+        content: "The website is not yet finished. Our team is working on it and all the countries will be represented."
 Terms: Terms
 'My Challenges': 'My Challenges'
 'This user did not participate at any challenges': 'This user did not participate at any challenges'
