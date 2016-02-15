@@ -84,7 +84,7 @@ class VideoController extends Controller
         $idChallenge = $data['idChallenge'];
         $idUser = $data['idUser'];
         $title = $data['title'];
-        $description = $data['description'];
+        $description = null;
         $repetitions = $data['repetitions'];
 
         //We search the user and challenge into the database (need to add security if these values are not in the database)
