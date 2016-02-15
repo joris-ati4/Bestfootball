@@ -54,7 +54,7 @@ rules:
         title: "5.Grades"
         content:"Grades will be given according to your number of points.1.	Unknown. 2.Promising talent. 3.Rising star. 4.Star status. 5.Legend. Conditions: To be considered as a rising star, you will have to reach the level 3 on at least two challenges. To get the Star status, you will have to reach the level 6 on at least two challenges. To be a legend, you will have to reach the level 6 on at least two challenges and be a legend in one other challenge."
     6:
-        title:"6.Invite a Bestfootball user for a duel"
+        title: "6.Invite a Bestfootball user for a duel"
         content: "With Bestfootball, stop endless debate and let’s see who is better between you and your friends. You can defy a Bestfootball user in the challenge you want by going on his profile and clicking on “Duel me”. Once the two players have accepted the duel, one week is given to them to post their video. None of the videos will be shown until the two have been uploaded. As soon as the two videos are uploaded, they are shown even if the period of one week is not finished yet."
     7:
         title: "7.Duel Ranking"
