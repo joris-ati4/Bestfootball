@@ -87,7 +87,9 @@ class VideoController extends Controller
 
         //We search the user and challenge into the database (need to add security if these values are not in the database)
        
-        return var_dump($data);
+        return array(
+            'data' => var_dump($data),
+        );
    
 
 
