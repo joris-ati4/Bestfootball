@@ -210,9 +210,15 @@ class Video
             ->save('/var/www/bestfootball.fr/shared/web/uploads/videos/thumbnail/'.$this->id.'.jpg');
         
         // Start transcoding and save video
+        if($this->extension != 'mp4'){
+            $video->save(new X264(),'/var/www/bestfootball.fr/shared/web/uploads/videos/'.$this->source);
+            unlink($this->getUploadRootDir().'/'.$this->id.'.'.$this->extension);
+        }
+        else{
+            rename($this->getUploadRootDir().'/'.$this->id.'.'.$this->extension, '/var/www/bestfootball.fr/shared/web/uploads/videos/'.$this->source);
+        }
         
-        $video->save(new X264(),'/var/www/bestfootball.fr/shared/web/uploads/videos/'.$this->source);
-        unlink($this->getUploadRootDir().'/'.$this->id.'.'.$this->extension);
+        
           
     }
 
