@@ -82,16 +82,18 @@ class VideoController extends Controller
 
         //We stock the data from the JSON in different variables
         $idChallenge = $data['idChallenge'];
-        $idUser = $data['idUser'];
         $title = $data['title'];
-        $description = null;
         $repetitions = $data['repetitions'];
 
         //We search the user and challenge into the database (need to add security if these values are not in the database)
-        $repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Challenge');
-        $challenge = $repository->find($idChallenge);
-        $repository = $this->getDoctrine()->getManager()->getRepository('BFUserBundle:User');
-        $user = $repository->find($idUser);
+        $challenge = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Challenge')->find($idChallenge);
+        if(!$challenge){
+            //the challenge does not exist.
+            throw $this->createNotFoundException('This challenge does not exist.');
+        }
+        $user = $this->container->get('security.context')->getToken()->getUser();
+
+        $description = 'A video for the '.$challenge->getTitle().' challenge.';
 
         // On crée un objet Video
         $video = new Video();
@@ -105,15 +107,7 @@ class VideoController extends Controller
             ->setType('challenge')
             ->setFile($file)
         ;
-
-        //getting the different values for the different levels. and setting the points for the video
-        $one = $challenge->getOne();
-        $two = $challenge->getTwo();
-        $three = $challenge->getThree();
-        $four = $challenge->getFour();
-        $five = $challenge->getFive();
-        $six = $challenge->getSix();
-
+        
         //if the user already uploaded a video to the same challenge we take the points of the last video.
         $repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video');
         $oldVideo = $repository->checkChallenge($user, $challenge);
@@ -127,13 +121,13 @@ class VideoController extends Controller
             //this is the first video off the user.
         }
 
-        if($video->getRepetitions() >= $six){$video->setScore('300');}
-        if($six > $video->getRepetitions() && $video->getRepetitions() >= $five){ $video->setScore('250');}
-        if($five > $video->getRepetitions() && $video->getRepetitions() >= $four){$video->setScore('200');}
-        if($four > $video->getRepetitions() && $video->getRepetitions() >= $three){$video->setScore('150');}
-        if($three > $video->getRepetitions() && $video->getRepetitions() >= $two){$video->setScore('100');}
-        if($two > $video->getRepetitions() && $video->getRepetitions() >= $one){$video->setScore('50');}
-        if($one > $video->getRepetitions()){$video->setScore('0');}
+        if($video->getRepetitions() >= $challenge->getSix()){$video->setScore('300');}
+        if($challenge->getSix() > $video->getRepetitions() && $video->getRepetitions() >= $challenge->getFive()){ $video->setScore('250');}
+        if($challenge->getFive() > $video->getRepetitions() && $video->getRepetitions() >= $challenge->getFour()){$video->setScore('200');}
+        if($challenge->getFour() > $video->getRepetitions() && $video->getRepetitions() >= $challenge->getThree()){$video->setScore('150');}
+        if($challenge->getThree() > $video->getRepetitions() && $video->getRepetitions() >= $challenge->getTwo()){$video->setScore('100');}
+        if($challenge->getTwo() > $video->getRepetitions() && $video->getRepetitions() >= $challenge->getOne()){$video->setScore('50');}
+        if($challenge->getOne() > $video->getRepetitions()){$video->setScore('0');}
 
         //retrieving the points from the video and updating the points off the user.
         $points = $video->getScore() + $user->getPoints();
