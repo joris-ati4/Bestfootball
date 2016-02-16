@@ -82,6 +82,11 @@ class VideoController extends Controller
 
         //We stock the data from the JSON in different variables
         $idChallenge = $data['idChallenge'];
+        if(!$idChallenge){
+            // no id for the challenge.
+            return var_dump($json_data);
+        }
+
         $title = $data['title'];
         $repetitions = $data['repetitions'];
 
