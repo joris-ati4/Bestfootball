@@ -82,16 +82,20 @@ class VideoController extends Controller
 
         //We stock the data from the JSON in different variables
         $idChallenge = $data['idChallenge'];
-        if(!$idChallenge){
-            // no id for the challenge.
-            return var_dump($json_data);
-        }
-
         $title = $data['title'];
         $repetitions = $data['repetitions'];
 
         //We search the user and challenge into the database (need to add security if these values are not in the database)
-        $challenge = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Challenge')->find($idChallenge);
+       
+        return var_dump($data);
+   
+
+
+
+
+
+
+        /*$challenge = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Challenge')->find($idChallenge);
         if(!$challenge){
             //the challenge does not exist.
             throw $this->createNotFoundException('This challenge does not exist.');
@@ -145,7 +149,7 @@ class VideoController extends Controller
         $em->persist($user);
         $em->flush();
 
-        return View::create($score,Response::HTTP_CREATED);
+        return View::create($score,Response::HTTP_CREATED); */
     }
 
     /**
