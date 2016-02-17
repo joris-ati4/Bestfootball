@@ -1,12 +1,12 @@
 /* the DIN font */ 
 @font-face {
     font-family: DinBold;
-    src: url('../fonts/DIN_Bold.ttf');
+    src: url('../fonts/Helvetica.ttf');
  }
 
 @font-face {
     font-family: DinLight;
-    src: url('../fonts/DIN_Light.ttf');
+    src: url('../fonts/Helvetica.ttf');
  }
 
 h1,h2,h3,h4,h5,h6{
