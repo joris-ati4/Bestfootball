@@ -72,8 +72,7 @@ class ProfileController extends Controller
     public function videosAction(request $request)
     { 
         $user = $this->container->get('security.context')->getToken()->getUser();
-        $repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video');
-        $listVideos = $repository->findByUser($user);
+        $listVideos = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video')->findByUser($user);
 
         return $this->render('BFSiteBundle:Profile:videos.html.twig', array(
           'listVideos' => $listVideos,
