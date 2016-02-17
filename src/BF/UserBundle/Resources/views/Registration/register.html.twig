@@ -19,6 +19,19 @@
 			  <!-- Tab panes -->
 			  	<div class="tab-content row" style="padding-bottom:10px;">
 				    <div role="tabpanel" class="tab-pane active" id="subscribe">
+				    	<div class="col-xs-12 col-sm-10 col-md-10 col-lg-10 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">
+			                <a href="{{ path('hwi_oauth_service_redirect', {'service': 'facebook', 'scope' : 'email' }) }}">
+			                  <img src="/img/fblogin.png" alt="fb login button" style="width:70%"/>
+			                </a>
+			            </div>
+			            </br>
+			            <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">
+			                <a href="{{ path('hwi_oauth_service_redirect', {'service': 'google'}) }}">
+			                  <img src="/img/googlelogin.png" alt="google login button" style="width:70%"/>
+			                </a>
+			            </div>
+
+
 				    	{% include "BFUserBundle:Registration:register_content.html.twig" %}
 				    </div>
 			  </div>
