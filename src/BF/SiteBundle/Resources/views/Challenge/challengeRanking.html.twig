@@ -13,6 +13,7 @@
 			        <td><a href="{{ path('bf_site_profile', { 'username': video.user.username }) }}" style=""> {{ video.user.username }} </a></td>
 			        <td>{{ video.score }}</td>
 			        <td>{{ video.repetitions }}</td>
+			        <td><a href="{{ path('bf_site_video', { 'id': video.id }) }}"><i class="fa fa-television"></i></a></td>
 				</tr>
 				{% set i= i+1 %}
 			{% endfor %}
