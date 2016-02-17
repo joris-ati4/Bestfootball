@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use BF\SiteBundle\Entity\Video;
+use BF\SiteBundle\Entity\Prediction;
 
 class AjaxController extends Controller
 {
@@ -206,6 +207,36 @@ class AjaxController extends Controller
                         return new response();
 
 
+    }
+    public function predictAction(request $request)
+    {
+        $voterId = $request->get('voter');
+        $predidtionedId = $request->get('predidtioned');
+        $challengeId = $request->get('challenge');
+
+        $voter = $this->getDoctrine()->getManager()->getRepository('BFUserBundle:User')->find($voterId);
+        $predictioned = $this->getDoctrine()->getManager()->getRepository('BFUserBundle:User')->find($predidtionedId);
+        $challenge = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Challenge')->find($challengeId);
+
+        $prediction = new Prediction();
+        $prediction
+            ->setDate(new \Datetime())
+            ->setVoter($voter)
+            ->setPredictioned($predictioned)
+            ->setChallenge($challenge)
+        ;
+
+        //create a notification for the predictioned user.
+        $message = 'Congratulations, '.$voter->getUsername().' predicted that you will win the '.$challenge->getTitle().' at the end of the season.';
+        $link = $this->generateUrl('bf_site_profile', array('username' => $voter->getUsername()));
+        $service = $this->container->get('bf_site.notification');
+        $notification = $service->create($predictioned, $message, null, $link);       
+
+        $em->persist($prediction);
+        $em->persist($notification);
+        $em->flush();
+
+        return new response();
     }
  
 }

@@ -51,6 +51,12 @@
                            {{ 'Duel me'|trans }}!
                       </a>
                     {% endif %}
+                    {% if video.type == 'challenge' %}
+                      <a id="predict" class="btn btn-success">
+                        <i class="glyphicon glyphicon-ok"></i>
+                        {{ 'Predict'|trans }}! 
+                      </a>
+                    {% endif %}
                   </div>
                 </div><!--
               --><div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 vcenter row">
@@ -156,6 +162,25 @@
     });
   </script>
   {% endif %}
+{% endif %}
+
+{% if video.type == 'challenge' %}
+<script type="text/javascript">     
+  //the prediction method.
+  $("#predict").click(function(){ 
+    var predictionedId = $("#user").val();
+    var DATA = 'voterId=' + {{ app.user.id }} + '$predictionedId=' + predictionedId + '$challengeId=' + {{ video.challenge.id }};
+      $.ajax({
+        type: "POST",
+        url: "{{ path('bf_site_api_predict')}}",
+              data: DATA,
+              cache: false,
+              success: function(){
+
+              }
+      });
+  });
+</script>
 {% endif %}
 
 {% endblock %}

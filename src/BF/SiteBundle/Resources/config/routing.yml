@@ -291,3 +291,8 @@ bf_site_api_duelUseVideo:
     path: /home/duelUseVideo
     defaults: { _controller: BFSiteBundle:Ajax:duelCopyVideo }
     methods:  [POST]
+
+bf_site_api_predict:
+    path: /home/predictUser
+    defaults: { _controller: BFSiteBundle:Ajax:predict }
+    methods:  [POST]
