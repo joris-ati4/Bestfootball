@@ -78,7 +78,7 @@ body{
         color: #333333;
         background-color: #ededf1;
         border-color: #95cd36;
-        border-width: 3px;
+        border-width: 2px;
     }
 /* end of the navbar styling */
 
@@ -134,19 +134,21 @@ body{
     
 }
 .profilecounter{
-    background-color:rgba(0,0,0,0.8);
-    height:75px;
-    display: table; 
+    background-color: rgba(255, 255, 255, 0.8);
+    height: 85px;
+    display: table;
     overflow: hidden;
-    width:100%;
-
+    width: 85px;
+    border-radius: 85px;
+    border: solid 2px;
+    border-color:#95cd36;
 }
 .profilecounter>div{
     display: table-cell; 
     vertical-align: middle;
 }
 .profilecounter>div>p{
-    color:white;
+    color:#95cd36;
     font-family: DinBold;
     font-size:15px;
 }

@@ -169,14 +169,14 @@
   //the prediction method.
   $("#predict").click(function(){ 
     var predictionedId = $("#user").val();
-    var DATA = 'voterId=' + {{ app.user.id }} + '$predictionedId=' + predictionedId + '$challengeId=' + {{ video.challenge.id }};
+    var DATA = 'voterId=' + {{ app.user.id }} + '&predictionedId=' + predictionedId + '&challengeId=' + {{ video.challenge.id }};
       $.ajax({
         type: "POST",
         url: "{{ path('bf_site_api_predict')}}",
               data: DATA,
               cache: false,
               success: function(){
-
+                location.reload();
               }
       });
   });

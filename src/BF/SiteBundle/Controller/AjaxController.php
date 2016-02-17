@@ -210,13 +210,15 @@ class AjaxController extends Controller
     }
     public function predictAction(request $request)
     {
-        $voterId = $request->get('voter');
-        $predidtionedId = $request->get('predidtioned');
-        $challengeId = $request->get('challenge');
+        $em = $this->getDoctrine()->getManager();
 
-        $voter = $this->getDoctrine()->getManager()->getRepository('BFUserBundle:User')->find($voterId);
-        $predictioned = $this->getDoctrine()->getManager()->getRepository('BFUserBundle:User')->find($predidtionedId);
-        $challenge = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Challenge')->find($challengeId);
+        $voterId = $request->get('voterId');
+        $predidtionedId = $request->get('predictionedId');
+        $challengeId = $request->get('challengeId');
+
+        $voter = $em->getRepository('BFUserBundle:User')->find($voterId);
+        $predictioned = $em->getRepository('BFUserBundle:User')->find($predidtionedId);
+        $challenge = $em->getRepository('BFSiteBundle:Challenge')->find($challengeId);
 
         $prediction = new Prediction();
         $prediction
@@ -227,7 +229,7 @@ class AjaxController extends Controller
         ;
 
         //create a notification for the predictioned user.
-        $message = 'Congratulations, '.$voter->getUsername().' predicted that you will win the '.$challenge->getTitle().' at the end of the season.';
+        $message = 'Congratulations, '.$voter->getUsername().' predicted that you will win the '.$challenge->getTitle().' challenge at the end of the season.';
         $link = $this->generateUrl('bf_site_profile', array('username' => $voter->getUsername()));
         $service = $this->container->get('bf_site.notification');
         $notification = $service->create($predictioned, $message, null, $link);       
@@ -235,6 +237,8 @@ class AjaxController extends Controller
         $em->persist($prediction);
         $em->persist($notification);
         $em->flush();
+
+        $this->addFlash('success', 'Thank you for your prediction and good chance.');
 
         return new response();
     }
