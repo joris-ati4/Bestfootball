@@ -48,7 +48,7 @@
             <a href="{{ path('bf_site_ranking_duel', {'country': 'global', 'state':'country'}) }}" style="text-decoration: none;">
               <div class="profilecounter text-center">
                 <div>
-                  <p>{{ profiletop.duelwins }}</br>Duel win's</p>
+                  <p>{{ profiletop.duelwins }}</br>Duel victories</p>
                 </div>
               </div>
             </a>
@@ -86,7 +86,7 @@
             <div class="row">
               <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                 <div class="row">
-                  <h2 class="text-center">Challenge:</h2>
+                  <h2 class="text-center">Challenge grade:</h2>
                   <h2 class="text-center">{{ rank.rankinfo.level }}</h2>
                   <div class="progress text-center" style="margin-top:22px;">
                     <div class="progress-bar {{ rank.rankinfo.style }} progress-bar-striped active" role="progressbar" aria-valuenow="{{ user.points }}" aria-valuemin="{{ rank.rankinfo.min }}" aria-valuemax="{{ rank.rankinfo.max }}" style="width:{{ rank.rankinfo.percent }}%;">
@@ -97,7 +97,7 @@
               </div><!--
            --><div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                 <div class="row">
-                  <h2 class="text-center">Duel: </h2>
+                  <h2 class="text-center">Duels level: </h2>
                   {% if rank.duelrankinfo.level == 1 %}
                     {% include "BFSiteBundle:Profile:1bf.html.twig" %}
                   {% elseif rank.duelrankinfo.level == 2 %}

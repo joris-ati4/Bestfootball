@@ -36,7 +36,7 @@
         <li><a href="{{ path('bf_site_videos') }}">{{ 'My Videos'|trans }}</a></li>
         <li><a href="{{ path('bf_site_profile_duels') }}">{{ 'My Duels'|trans }}</a></li>
         <li role="separator" class="divider"></li>
-        <li><a href="{{ path('bf_site_settings') }}">{{ 'Settings'|trans }}</a></li>
+        <li><a href="{{ path('bf_site_settings') }}">{{ 'My informations'|trans }}</a></li>
           {% if app.user and is_granted('ROLE_ADMIN') %}
             <li><a href="{{ path('bf_site_admin') }}">{{ 'Admin section'|trans }}</a></li>
           {% endif %}
