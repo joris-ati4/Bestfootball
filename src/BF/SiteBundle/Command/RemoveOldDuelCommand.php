@@ -74,8 +74,6 @@ class RemoveOldDuelCommand extends ContainerAwareCommand
 	    			$em->persist($notification);
 	    			$em->persist($user);
 	    			$em->remove($duel);
-	    			
-
 	    		}
 	    		else{
 	    			//nobody completed the challenge.
@@ -94,9 +92,6 @@ class RemoveOldDuelCommand extends ContainerAwareCommand
 	    			$em->persist($notificationhost);
 	    			$em->persist($notificationguest);
 	    			$em->remove($duel);
-	    			
-
-
 	    		}
 
 	    	}
