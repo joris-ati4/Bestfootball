@@ -220,25 +220,33 @@ class AjaxController extends Controller
         $predictioned = $em->getRepository('BFUserBundle:User')->find($predidtionedId);
         $challenge = $em->getRepository('BFSiteBundle:Challenge')->find($challengeId);
 
-        $prediction = new Prediction();
-        $prediction
-            ->setDate(new \Datetime())
-            ->setVoter($voter)
-            ->setPredictioned($predictioned)
-            ->setChallenge($challenge)
-        ;
+        $check = $em->getRepository('BFSiteBundle:Prediction')->checkPredict($voter, $challenge);
 
-        //create a notification for the predictioned user.
-        $message = 'Congratulations, '.$voter->getUsername().' predicted that you will win the '.$challenge->getTitle().' challenge at the end of the season.';
-        $link = $this->generateUrl('bf_site_profile', array('username' => $voter->getUsername()));
-        $service = $this->container->get('bf_site.notification');
-        $notification = $service->create($predictioned, $message, null, $link);       
+        //check if the user already predicted for this challenge.
+        if($check){
+            $this->addFlash('warning', 'You already voted for this challenge. You can only vote once for every challenge.');
+        }
+        else{
+            $prediction = new Prediction();
+            $prediction
+                ->setDate(new \Datetime())
+                ->setVoter($voter)
+                ->setPredictioned($predictioned)
+                ->setChallenge($challenge)
+            ;
 
-        $em->persist($prediction);
-        $em->persist($notification);
-        $em->flush();
+            //create a notification for the predictioned user.
+            $message = 'Congratulations, '.$voter->getUsername().' predicted that you will win the '.$challenge->getTitle().' challenge at the end of the season.';
+            $link = $this->generateUrl('bf_site_profile', array('username' => $voter->getUsername()));
+            $service = $this->container->get('bf_site.notification');
+            $notification = $service->create($predictioned, $message, null, $link);       
 
-        $this->addFlash('success', 'Thank you for your prediction and good chance.');
+            $em->persist($prediction);
+            $em->persist($notification);
+            $em->flush();
+
+            $this->addFlash('success', 'Thank you for your prediction and good chance.');
+        }
 
         return new response();
     }

@@ -39,6 +39,18 @@ class VideoController extends Controller
 	    else{
 	      $follow = null;
 	    }
+	    if($video->getType() == 'challenge'){
+	    	$challenge = $video->getChallenge();
+	    	$check = $em->getRepository('BFSiteBundle:Prediction')->checkPredict($follower, $challenge);
+	    	if($check){
+	    		$predict = null;
+	    	}
+	    	else{
+	    		$predict = true;
+	    	}
+	    }
+
+	    
 
 	    //retrieving the random videos through the service
 	    //retrieving the service
@@ -52,6 +64,7 @@ class VideoController extends Controller
 	      'video'  => $video,
 	      'listVideos' => $listVideos,
 	      'follow' => $follow,
+	      'predict' => $predict,
 	    ));
     }
     public function uploadAction(request $request, $id, $type)

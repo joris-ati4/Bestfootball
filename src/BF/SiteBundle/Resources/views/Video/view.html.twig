@@ -51,7 +51,7 @@
                            {{ 'Duel me'|trans }}!
                       </a>
                     {% endif %}
-                    {% if video.type == 'challenge' %}
+                    {% if video.type == 'challenge' and predict is not null %}
                       <a id="predict" class="btn btn-success">
                         <i class="glyphicon glyphicon-ok"></i>
                         {{ 'Predict'|trans }}! 
