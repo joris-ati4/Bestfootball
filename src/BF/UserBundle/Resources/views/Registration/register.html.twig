@@ -7,7 +7,7 @@
 {% block content %}
 	<section class="header text-center">
         <div class="row" style="margin-top:50px;">
-          <div class="col-xs-10 col-sm-6 col-md-4 col-lg-2 col-xs-offset-1 col-sm-offset-3 col-md-offset-4 col-lg-offset-5" >
+          <div class="col-xs-10 col-sm-6 col-md-4 col-lg-4 col-xs-offset-1 col-sm-offset-3 col-md-offset-4 col-lg-offset-4" >
             <div style="background-color:rgba(255,255,255,0.8)">
 
 			  <!-- Nav tabs -->
@@ -21,13 +21,13 @@
 				    <div role="tabpanel" class="tab-pane active" id="subscribe">
 				    	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 			                <a href="{{ path('hwi_oauth_service_redirect', {'service': 'facebook', 'scope' : 'email' }) }}">
-			                  <img src="/img/fblogin.png" alt="fb login button" style="width:70%"/>
+			                  <img src="/img/fblogin.png" alt="fb login button" style="width:80%;margin-top:20px;"/>
 			                </a>
 			            </div>
 			            </br>
 			            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 			                <a href="{{ path('hwi_oauth_service_redirect', {'service': 'google'}) }}">
-			                  <img src="/img/googlelogin.png" alt="google login button" style="width:70%"/>
+			                  <img src="/img/googlelogin.png" alt="google login button" style="width:80%;margin-top:20px;"/>
 			                </a>
 			            </div>
 
