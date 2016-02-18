@@ -91,7 +91,6 @@ class RemoveOldDuelCommand extends ContainerAwareCommand
                 	foreach ($notifications as $notification) { $em->remove($notification);}
                 	foreach ($videos as $video) { $em->remove($video);}
 	    			
-	    			$em->persist($user);
 	    			$em->persist($notificationhost);
 	    			$em->persist($notificationguest);
 	    			$em->remove($duel);
