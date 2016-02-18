@@ -42,7 +42,7 @@ bf_site_contact:
 bf_site_search:
     path:     /search
     defaults: { _controller: BFSiteBundle:Logged:search }
-    methods:  [POST]
+    methods:  [POST,GET]
 
 bf_site_partners:
     path:     /partners
@@ -225,12 +225,12 @@ bf_site_duel_create:
 bf_site_duel_accept:
     path:     /duel/accept/{id}
     defaults: { _controller: BFSiteBundle:Duel:accept }
-    methods:  [POST]
+    methods:  [POST,GET]
 
 bf_site_duel_decline:
     path:     /duel/decline/{id}
     defaults: { _controller: BFSiteBundle:Duel:decline }
-    methods:  [POST]
+    methods:  [POST,GET]
 
 
 bf_site_duel_view:
