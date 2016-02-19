@@ -41,7 +41,7 @@
 
 {% block javascripts %}
   {{ parent() }}
-  
+
   <script>
       var video;
       var playlist;
@@ -63,7 +63,7 @@
               current = link.parent().index();
               run(link, video[0]);
           });
-          video[0].addEventListener('ended',function(e){
+         /* video[0].addEventListener('ended',function(e){
               current++;
               if(current == len){
                   current = 0;
@@ -72,7 +72,7 @@
                   link = playlists.find('.livevideo')[current];    
               }
               run($(link),video[0]);
-          });
+          });*/
       }
       function run(link, player){
               player.src = link.attr('href');
