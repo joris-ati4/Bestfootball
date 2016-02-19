@@ -76,6 +76,7 @@ class LoggedController extends Controller
       
         $profileTopInfo=array('followscount' => $numberfollowers, 'videoscount' => $numbervideos, 'age' => $age,'duelwins' => $duelwins);
 
+
         
         return $this->render('BFSiteBundle:Home:logged.html.twig', array(
           'lists' => $lists,

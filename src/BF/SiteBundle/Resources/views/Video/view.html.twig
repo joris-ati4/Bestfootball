@@ -100,6 +100,7 @@
 {% endblock %}
 
 {% block javascripts %}
+  {{ parent() }}
 {% if follow is not null %}
   {% if follow == 0 %}
   <script>
