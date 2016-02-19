@@ -25,30 +25,41 @@ class VideoController extends Controller
 	    // On récupère $id de la video
 	    $video = $em->getRepository('BFSiteBundle:Video')->find($id);
         //checking if the user is following the current user
-	    $follower = $this->container->get('security.context')->getToken()->getUser();
-	    $following = $em->getRepository('BFUserBundle:User')->findOneByUsername($video->getUser()->getUsername());
-	    if($follower->getUsername() != $following->getUsername()){ //the user is not viewing it's own profile page
-	      $follow = $em->getRepository('BFSiteBundle:Follow')->checkFollow($follower, $following);
-	      if($follow === null ){
-	        $follow = 0;
-	      }
-	      else{
-	        $follow =1;
-	      }
+
+
+	    if($this->container->get('security.context')->isGranted('IS_AUTHENTICATED_REMEMBERED') || $this->container->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY')){
+	    	//the user is connected
+	    	$follower = $this->container->get('security.context')->getToken()->getUser();
+		    $following = $em->getRepository('BFUserBundle:User')->findOneByUsername($video->getUser()->getUsername());
+		    if($follower->getUsername() != $following->getUsername()){
+		      $follow = $em->getRepository('BFSiteBundle:Follow')->checkFollow($follower, $following);
+		      if($follow === null ){
+		        $follow = 0;
+		      }
+		      else{
+		        $follow =1;
+		      }
+		    }
+		    else{
+		      $follow = null;
+		    }
+		    if($video->getType() == 'challenge'){
+		    	$challenge = $video->getChallenge();
+		    	$check = $em->getRepository('BFSiteBundle:Prediction')->checkPredict($follower, $challenge);
+		    	if($check){
+		    		$predict = null;
+		    	}
+		    	else{
+		    		$predict = true;
+		    	}
+		    }
 	    }
 	    else{
-	      $follow = null;
+	    	$follow = null;
+	    	$predict = null;
+	    	$follower = null;
 	    }
-	    if($video->getType() == 'challenge'){
-	    	$challenge = $video->getChallenge();
-	    	$check = $em->getRepository('BFSiteBundle:Prediction')->checkPredict($follower, $challenge);
-	    	if($check){
-	    		$predict = null;
-	    	}
-	    	else{
-	    		$predict = true;
-	    	}
-	    }
+		    
 
 	    
 
@@ -65,6 +76,7 @@ class VideoController extends Controller
 	      'listVideos' => $listVideos,
 	      'follow' => $follow,
 	      'predict' => $predict,
+	      'follower' => $follower,
 	    ));
     }
     public function uploadAction(request $request, $id, $type)

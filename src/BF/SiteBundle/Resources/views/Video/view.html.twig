@@ -33,24 +33,32 @@
                   </div><!--
                 --><div class="col-xs-8 col-sm-8 col-md-9 col-lg-9 vcenter">
                     <p style="font-size:14px;"><a href="{{ path('bf_site_profile', { 'username': video.user.username }) }}" style=""> {{ video.user.username }}</a></p>
-                    {% if video.user.username != app.user.username %}
-                      <!-- Button to duel the user -->
-                      
-                      <!-- Button to follow the user -->
-                      <a id="follow" value="{{ video.user.id }}" class="btn btn-success">
-                        <i class="glyphicon glyphicon-ok"></i>
-                        {{ 'Follow me'|trans }}! 
-                      </a>
 
-                      <a id="unfollow" value="{{ video.user.id }}" class="btn btn-success">
-                        <i class="glyphicon glyphicon-ok"></i>
-                           {{ 'Followed'|trans }}! 
-                      </a>
-                      <a href="{{ path('bf_site_duel_create', {'username': video.user.username }) }}" class="btn btn-success">
-                        <i class="glyphicon glyphicon-ok"></i>
-                           {{ 'Duel me'|trans }}!
-                      </a>
+
+                    {% if follower is not null %}
+                      {% if video.user.username != follower.user.username %}
+                        <!-- Button to duel the user -->
+                        
+                        <!-- Button to follow the user -->
+                        <a id="follow" value="{{ video.user.id }}" class="btn btn-success">
+                          <i class="glyphicon glyphicon-ok"></i>
+                          {{ 'Follow me'|trans }}! 
+                        </a>
+
+                        <a id="unfollow" value="{{ video.user.id }}" class="btn btn-success">
+                          <i class="glyphicon glyphicon-ok"></i>
+                             {{ 'Followed'|trans }}! 
+                        </a>
+                        <a href="{{ path('bf_site_duel_create', {'username': video.user.username }) }}" class="btn btn-success">
+                          <i class="glyphicon glyphicon-ok"></i>
+                             {{ 'Duel me'|trans }}!
+                        </a>
+                      {% endif %}
                     {% endif %}
+
+
+
+
                     {% if video.type == 'challenge' and predict is not null %}
                       <a id="predict" class="btn btn-success">
                         <i class="glyphicon glyphicon-ok"></i>
@@ -164,7 +172,7 @@
   {% endif %}
 {% endif %}
 
-{% if video.type == 'challenge' %}
+{% if video.type == 'challenge' and follower is not null %}
 <script type="text/javascript">     
   //the prediction method.
   $("#predict").click(function(){ 

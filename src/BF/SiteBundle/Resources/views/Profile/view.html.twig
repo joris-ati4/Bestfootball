@@ -17,7 +17,7 @@
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1">
             <!-- The top section of the profile page -->
-            {% include "BFSiteBundle:Profile:Profiletop.html.twig" with {"user": user, "rank": rank,"profiletop":profiletop} only %}
+            {% include "BFSiteBundle:Profile:Profiletop.html.twig" with {"user": user, "rank": rank,"profiletop":profiletop, 'follow':follow} only %}
             <!-- END of the top profile section -->
 
             <!--Begin of the video section -->

@@ -16,24 +16,34 @@ class ProfileController extends Controller
 {
     public function viewAction($username,request $request)
     {
-      //checking if the user is following the current user
-      $follower = $this->container->get('security.context')->getToken()->getUser();
-      $repository = $this->getDoctrine()->getManager()->getRepository('BFUserBundle:User');
-      $following = $repository->findOneByUsername($username);
 
-      if($follower->getUsername() != $following->getUsername()){ //the user is not viewing it's own profile page
-        $repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Follow');
-        $follow = $repository->checkFollow($follower, $following);
-        if($follow === null ){
-          $follow = 0;
+
+      if($this->container->get('security.context')->isGranted('IS_AUTHENTICATED_REMEMBERED') || $this->container->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY')){
+        //checking if the user is following the current user
+        $follower = $this->container->get('security.context')->getToken()->getUser();
+        $repository = $this->getDoctrine()->getManager()->getRepository('BFUserBundle:User');
+        $following = $repository->findOneByUsername($username);
+
+        if($follower->getUsername() != $following->getUsername()){ //the user is not viewing it's own profile page
+          $repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Follow');
+          $follow = $repository->checkFollow($follower, $following);
+          if($follow === null ){
+            $follow = 0;
+          }
+          else{
+            $follow =1;
+          }
         }
         else{
-          $follow =1;
+          $follow = null;
         }
       }
       else{
         $follow = null;
       }
+
+
+
 
     	$user = $this->getDoctrine()->getManager()->getRepository('BFUserBundle:User')->findOneByUsername($username);
       $listFollows = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Follow')->findByFollowing($user);
