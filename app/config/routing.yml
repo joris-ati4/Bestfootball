@@ -1,5 +1,12 @@
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
+
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+upload_crop_image:
+    resource: "@UploadCropImageBundle/Resources/config/routing.yml"
+    prefix:   /
 
 #HWIOAuthBundle routes
 hwi_oauth_security:

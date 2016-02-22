@@ -27,6 +27,8 @@ class AppKernel extends Kernel
             new BF\RestApiBundle\BFRestApiBundle(),
             new Lifo\TypeaheadBundle\LifoTypeaheadBundle(),
             new HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
+            new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
+            new Marrouchi\UploadCropImageBundle\UploadCropImageBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

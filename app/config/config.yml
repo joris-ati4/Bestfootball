@@ -195,3 +195,7 @@ hwi_oauth:
             client_id:           "128129884829-c4q7njcofueunt1po5v6j1rs5cgmpt7c.apps.googleusercontent.com"
             client_secret:       "piUn_hUN72EuMF7yD88cAGPY"
             scope:               "https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile"
+
+#Upload and crop
+upload_crop_image:
+      media_entity: BF\SiteBundle\Entity\Picture

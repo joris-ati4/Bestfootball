@@ -3,25 +3,22 @@
 namespace BF\SiteBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Picture
- *
+ * Description: Picture
+ * @ORM\Entity
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="BF\SiteBundle\Entity\PictureRepository")
  * @ORM\HasLifecycleCallbacks
  */
-class Picture
-{
+class Picture {
+
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
+     * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
@@ -37,99 +34,90 @@ class Picture
      */
     private $alt;
 
-    private $file;
+    /**
+     * @ORM\Column(name="created",type="date")
+     */
+    protected $created;
 
-    private $tempFilename;
+    /**
+     * @var File
+     *
+     * @Assert\File(
+     *     maxSize = "1M",
+     *     mimeTypes = {"image/jpeg"},
+     *     maxSizeMessage = "The maxmimum allowed file size is 5MB.",
+     *     mimeTypesMessage = "Only the filetypes image are allowed."
+     * )
+     */
+    protected $file;
 
-    public function getFile()
-    {
-        return $this->file;
+    public function __construct() {
+        $this->created = new \Datetime();
     }
 
-    public function setFile(UploadedFile $file)
-    {
-        $this->file = $file;
-        
-        if (null !== $this->src) {
-          $this->tempFilename = $this->src;
-          $this->src = null;
-          $this->alt = null;
-        }
-    }
-
-      /**
-       * @ORM\PrePersist()
-       * @ORM\PreUpdate()
-       */
-      public function preUpload()
-      {
-        // Si jamais il n'y a pas de fichier (champ facultatif)
-        if (null === $this->file) {
-          return;
-        }
-        $this->src = '/uploads/img/'.$this->id.'.'.$this->file->guessExtension();
-        $this->alt = $this->file->getClientOriginalName();
-
-      }
-
-      /**
-       * @ORM\PostPersist()
-       * @ORM\PostUpdate()
-       */
-      public function upload()
-      {
-        // Si jamais il n'y a pas de fichier (champ facultatif)
-        if (null === $this->file) {
-          return;
-        }
-
-        // Si on avait un ancien fichier, on le supprime
-        if (null !== $this->tempFilename) {
-          $oldFile = $this->getUploadRootDir().'/'.$this->id.'.'.$this->tempFilename;
-          if (file_exists($oldFile)) {
-            unlink($oldFile);
-          }
-        }
-
-        // On déplace le fichier envoyé dans le répertoire de notre choix
-        $this->file->move(
-          '/var/www/bestfootball.fr/shared/web/uploads/img', // Le répertoire de destination
-          $this->src   // Le nom du fichier à créer, ici « id.extension »
-        );
-      }
-
-      /**
-       * @ORM\PreRemove()
-       */
-      public function preRemoveUpload()
-      {
-        // On sauvegarde temporairement le nom du fichier, car il dépend de l'id
-        $this->tempFilename = $this->getUploadRootDir().'/'.$this->id.'.'.$this->src;
-      }
-
-      /**
-       * @ORM\PostRemove()
-       */
-      public function removeUpload()
-      {
-        // En PostRemove, on n'a pas accès à l'id, on utilise notre nom sauvegardé
-        if (file_exists($this->tempFilename)) {
-          // On supprime le fichier
-          unlink($this->tempFilename);
-        }
-      }
-
-      public function getUploadDir()
-      {
-        // On retourne le chemin relatif vers l'image pour un navigateur
-        return 'uploads/img';
-      }
-
-      protected function getUploadRootDir()
-      {
-        // On retourne le chemin relatif vers l'image pour notre code PHP
+    public function getUploadRootDir() {
+        // absolute src to your directory where images must be saved
         return '/var/www/bestfootball.fr/shared/web/'.$this->getUploadDir();
-      }
+    }
+
+    public function getUploadDir() {
+        return 'uploads/img';
+    }
+
+    public function getAbsolutePath() {
+        return null === $this->src ? null : $this->getUploadRootDir() . '/' . $this->id . '.' . $this->src;
+    }
+
+    public function getWebPath() {
+        return null === $this->alt ? null : '/' . $this->getUploadDir() . '/' . $this->alt;
+    }
+
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function preUpload() {
+        if (null !== $this->file) {
+            // faites ce que vous voulez pour gÃ©nÃ©rer un nom unique
+            $filename = sha1(uniqid(mt_rand(), true));
+            $this->alt = $filename;
+            $this->src = $filename . '.' . $this->file->guessExtension();
+        }
+    }
+
+    /**
+     * @ORM\PostPersist()
+     * @ORM\PostUpdate()
+     */
+    public function upload() {
+        if (null === $this->file) {
+            return;
+        }
+
+        // s'il y a une erreur lors du dÃ©placement du fichier, une exception
+        // va automatiquement Ãªtre lancÃ©e par la mÃ©thode move(). Cela va empÃªcher
+        // proprement l'entitÃ© d'Ãªtre persistÃ©e dans la base de donnÃ©es si
+        // erreur il y a
+        $this->file->move($this->getUploadRootDir(), $this->src);
+
+        unset($this->file);
+    }
+
+    /**
+     * @ORM\PreRemove()
+     */
+    public function storeFilenameForRemove() {
+        $this->filenameForRemove = $this->getAbsolutePath();
+    }
+
+    /**
+     * @ORM\PostRemove()
+     */
+    public function removeUpload() {
+        if ($this->filenameForRemove) {
+            unlink($this->filenameForRemove);
+        }
+    }
 
     /**
      * Get id
@@ -187,5 +175,50 @@ class Picture
     public function getAlt()
     {
         return $this->alt;
+    }
+
+    /**
+     * Set created
+     *
+     * @param \DateTime $created
+     *
+     * @return Picture
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+
+        return $this;
+    }
+
+    /**
+     * Get created
+     *
+     * @return \DateTime
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * Get file.
+     *
+     * @return $file
+     */
+    public function getFile() {
+        return $this->file;
+    }
+
+    /* Set file
+     *
+     * @param $file
+     * @return Media
+     */
+
+    public function setFile($file) {
+        $this->file = $file;
+
+        return $this;
     }
 }
