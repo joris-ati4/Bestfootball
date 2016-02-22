@@ -4,14 +4,14 @@
   	<div class="row">
 	  	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 vcenter">
 	  		{% if user.picture != null %}
-	  		<img src="uploads/img/{{ user.picture.src }}" alt="{{ user.picture.alt }}" class="img-responsive"/>
+	  		<img src="{{ user.picture.src }}" alt="{{ user.picture.alt }}" class="img-responsive"/>
 	  		{% else %}
 	  			{{'No profile picture'|trans }}
 	  	{% endif %}
 		</div><!--
 	--><div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 vcenter">
 		  	<div id="jcrop-holder">
-		    	<img src="holder.js/300x300?bg=#b8ebb8&fg=#ffffff" id="cropbox">
+		    	<img src="holder.min.js/300x300?bg=#b8ebb8&fg=#ffffff" id="cropbox">
 		    </div>
 
 		    <form name="upload" action="{{ path('bf_site_settings_picture') }}" {{ form_enctype(form) }} method="POST"  onsubmit="return checkCoords();">
