@@ -9,7 +9,7 @@ use Symfony\Component\Form\FormError;
 
 //les types
 use BF\UserBundle\Form\Type\UserType;
-use BF\UserBundle\Form\Type\UserPictureType;
+use BF\SiteBundle\Form\Type\PictureType;
 
 
 class ProfileController extends Controller

@@ -16,11 +16,11 @@
 
 		    <form name="upload" action="{{ path('bf_site_settings_picture') }}" {{ form_enctype(form) }} method="POST"  onsubmit="return checkCoords();">
 
-				{{ form_widget(form.picture.file, {'id':'file','data-route':'media_json_upload'})}}
+				{{ form_widget(form.file, {'id':'file','data-route':'media_json_upload'})}}
 
-				{{ form_widget(form.picture.dimensions) }}
+				{{ form_widget(form.dimensions) }}
 
-				{{ form_widget(form.picture.submit) }}
+				{{ form_widget(form.submit) }}
 
 			</form>
 
