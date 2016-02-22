@@ -117,7 +117,8 @@ class ProfileController extends Controller
     public function settingsPictureAction(request $request)
     {
         $user = $this->container->get('security.context')->getToken()->getUser();
-        $form = $this->get('form.factory')->create(new UserPictureType, $user);
+        $picture = $user->getPicture();
+        $form = $this->get('form.factory')->create(new PictureType, $picture);
         
         if ($form->handleRequest($request)->isValid()) {
           $em = $this->getDoctrine()->getManager();
