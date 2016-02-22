@@ -4,6 +4,15 @@
   {{'My Settings'|trans }} - {{ parent() }}
 {% endblock %}
 
+{% block meta %}
+	<script src="{{asset("bundles/uploadcropimage/js/jquery.min.js") }}"></script>
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
+    {% include 'UploadCropImageBundle:Commun:crop.includes.html.twig' %}
+{% endblock %}
+
+
+
 
 {% block content %}
 <section class="homepage">
@@ -52,10 +61,6 @@
 
 {% block javascripts %}
 	{{ parent() }}
-	<script src="{{asset("bundles/uploadcropimage/js/jquery.min.js") }}"></script>
-    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
-    <script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
-    {% include 'UploadCropImageBundle:Commun:crop.includes.html.twig' %}
     {% include "UploadCropImageBundle:Commun:script.html.twig" %}
 <script>
 	var $country = $('#bf_userbundle_user_country');
