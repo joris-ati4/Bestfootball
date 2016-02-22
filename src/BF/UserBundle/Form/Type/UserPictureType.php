@@ -18,7 +18,6 @@ class UserPictureType extends AbstractType
     {
         $builder
             ->add('picture', new PictureType())
-            ->add('submit', 'submit')
         ;
     }
     

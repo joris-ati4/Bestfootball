@@ -17,6 +17,7 @@ class PictureType extends AbstractType
         $builder
             ->add('file', 'file')
             ->add('dimensions', 'crop_image', array('mapped' => false, 'label' => false))
+            ->add('submit', 'submit')
         ;
     }
     
