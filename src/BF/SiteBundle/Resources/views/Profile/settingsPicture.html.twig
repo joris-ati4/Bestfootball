@@ -16,7 +16,7 @@
 
 		    <form name="upload" action="{{ path('bf_site_settings_picture') }}" {{ form_enctype(form) }} method="POST"  onsubmit="return checkCoords();">
 
-				{{ form_widget(form.file, {'id':'file','data-route':'media_json_upload'})}}
+				{{ form_widget(form.file, {'data-route':'media_json_upload'})}}
 
 				{{ form_widget(form.dimensions) }}
 
