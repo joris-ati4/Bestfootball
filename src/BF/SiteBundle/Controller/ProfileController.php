@@ -9,7 +9,7 @@ use Symfony\Component\Form\FormError;
 
 //les types
 use BF\UserBundle\Form\Type\UserType;
-use BF\SiteBundle\Form\Type\PictureType;
+use BF\SiteBundle\Form\Type\MediaType;
 
 
 class ProfileController extends Controller
@@ -117,12 +117,12 @@ class ProfileController extends Controller
     public function settingsPictureAction(request $request)
     {
         $user = $this->container->get('security.context')->getToken()->getUser();
-        $picture = $user->getPicture();
-        $form = $this->get('form.factory')->create(new PictureType, $picture);
+        $picture = $user->getMedia();
+        $form = $this->get('form.factory')->create(new MediaType, $picture);
         
         if ($form->handleRequest($request)->isValid()) {
           $em = $this->getDoctrine()->getManager();
-          $em->persist($user);
+          $em->persist($picture);
           $em->flush();
 
           $request->getSession()->getFlashBag()->add('success', 'Your profile Picture has been updated.');

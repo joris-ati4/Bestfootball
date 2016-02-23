@@ -36,9 +36,10 @@ class User extends BaseUser
     private $state;
 
     /**
-    * @ORM\OneToOne(targetEntity="BF\SiteBundle\Entity\Picture", cascade={"persist"})
+    * @ORM\OneToOne(targetEntity="BF\SiteBundle\Entity\Media", cascade={"persist"})
+    * @ORM\JoinColumn(nullable=false)
     */
-    private $picture;
+    private $media;
 
     /**
     * @ORM\OneToMany(targetEntity="BF\SiteBundle\Entity\Video", mappedBy="user")
@@ -406,30 +407,6 @@ class User extends BaseUser
     }
 
     /**
-     * Set picture
-     *
-     * @param \BF\SiteBundle\Entity\Picture $picture
-     *
-     * @return User
-     */
-    public function setPicture(\BF\SiteBundle\Entity\Picture $picture = null)
-    {
-        $this->picture = $picture;
-
-        return $this;
-    }
-
-    /**
-     * Get picture
-     *
-     * @return \BF\SiteBundle\Entity\Picture
-     */
-    public function getPicture()
-    {
-        return $this->picture;
-    }
-
-    /**
      * Set facebookId
      *
      * @param string $facebookId
@@ -697,5 +674,29 @@ class User extends BaseUser
     public function getDuelWins()
     {
         return $this->duelWins;
+    }
+
+    /**
+     * Set media
+     *
+     * @param \BF\SiteBundle\Entity\Media $media
+     *
+     * @return User
+     */
+    public function setMedia(\BF\SiteBundle\Entity\Media $media)
+    {
+        $this->media = $media;
+
+        return $this;
+    }
+
+    /**
+     * Get media
+     *
+     * @return \BF\SiteBundle\Entity\Media
+     */
+    public function getMedia()
+    {
+        return $this->media;
     }
 }

@@ -7,7 +7,7 @@
       <a href="{{ path('bf_site_profile', { 'username': follow.following.username }) }}">
         <div class="col-xs-4 hidden-sm col-md-2 col-lg-2 vcenter">
           <div class="row">
-            <img src="{{ follow.following.picture.src }}" alt="" style="width:100%;border-radius:100%"/>
+            <img src="{{ follow.following.media.path }}" alt="{{ follow.following.media.name }}" style="width:100%;border-radius:100%"/>
           </div>
         </div><!--
         --><div class="col-xs-6 col-sm-12 col-md-10 col-lg-10 vcenter">

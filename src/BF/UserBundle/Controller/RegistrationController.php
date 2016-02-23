@@ -5,7 +5,7 @@ namespace BF\UserBundle\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use FOS\UserBundle\Controller\RegistrationController as BaseController;
 use Symfony\Component\HttpFoundation\Request;
-use BF\SiteBundle\Entity\Picture;
+use BF\SiteBundle\Entity\Media;
 
 //FOSUSERBUNDLE USES
 use FOS\UserBundle\FOSUserEvents;
@@ -34,17 +34,18 @@ class RegistrationController extends BaseController
         $dispatcher = $this->get('event_dispatcher');
 
         //we set the picture of the user to the default picture.
-        $picture = new Picture();
+        $picture = new Media();
         $picture
-          ->setSrc('/uploads/img/profile.png')
-          ->setAlt('default profile picture on bestfootball')
+          ->setPath('/uploads/img/profile.png')
+          ->setName('default profile picture on bestfootball')
         ;
         $user = $userManager->createUser();
         $user
             ->setEnabled(true)
-            ->setPicture($picture)
+            ->setMedia($picture)
             ->setDuelWins(0)
             ->setPoints(0)
+            ->setDuelPoints(0)
         ;
 
 

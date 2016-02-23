@@ -198,4 +198,4 @@ hwi_oauth:
 
 #Upload and crop
 upload_crop_image:
-      media_entity: BF\SiteBundle\Entity\Picture
+      media_entity: BF\SiteBundle\Entity\Media

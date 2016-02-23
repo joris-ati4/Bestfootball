@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class PictureType extends AbstractType
+class MediaType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -27,7 +27,7 @@ class PictureType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'BF\SiteBundle\Entity\Picture'
+            'data_class' => 'BF\SiteBundle\Entity\Media'
         ));
     }
 
@@ -36,6 +36,6 @@ class PictureType extends AbstractType
      */
     public function getName()
     {
-        return 'bf_sitebundle_picture';
+        return 'bf_sitebundle_media';
     }
 }

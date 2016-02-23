@@ -9,7 +9,7 @@
 			{# here we make the little thumbnails for every video #}
 				<tr style="height:50px;">
 					<td>{{ i }}</td>
-			        <td style="height:50px;"><img src="{{ video.user.picture.src }}" alt="{{ video.user.picture.alt }}" style="height:100%;border-radius:50%"/></td>
+			        <td style="height:50px;"><img src="{{ video.user.media.path }}" alt="{{ video.user.media.name }}" style="height:100%;border-radius:50%"/></td>
 			        <td><a href="{{ path('bf_site_profile', { 'username': video.user.username }) }}" style=""> {{ video.user.username }} </a></td>
 			        <td>{{ video.score }}</td>
 			        <td>{{ video.repetitions }}</td>
