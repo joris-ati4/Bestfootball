@@ -30,7 +30,7 @@
         "hwi/oauth-bundle":"~0.4",
         "sensio/generator-bundle": "~2.3",
         "symfony/phpunit-bridge": "~2.7",
-        "marrouchi/upload-crop-image-bundle": "~0.1.1"
+        "marrouchi/upload-crop-image-bundle": "dev-master"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3",

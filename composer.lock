@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e1f7f94bb2b74864d715a5b24dd70f7c",
-    "content-hash": "b574d0211f0716d0718b44b37a0d7556",
+    "hash": "80f251e9c4ffa517a02b6726e08e9350",
+    "content-hash": "f9e802ac13acebf97107805603a46f47",
     "packages": [
         {
             "name": "alchemy/binary-driver",
@@ -1968,16 +1968,16 @@
         },
         {
             "name": "marrouchi/upload-crop-image-bundle",
-            "version": "0.1.1",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/anis-marrouchi/UploadCropImageBundle.git",
-                "reference": "98bc11c02582fbc6eeb61ccd9986e317aefbec90"
+                "reference": "8fb5c571d07cc82d74d74603a3656e7828193523"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/anis-marrouchi/UploadCropImageBundle/zipball/98bc11c02582fbc6eeb61ccd9986e317aefbec90",
-                "reference": "98bc11c02582fbc6eeb61ccd9986e317aefbec90",
+                "url": "https://api.github.com/repos/anis-marrouchi/UploadCropImageBundle/zipball/8fb5c571d07cc82d74d74603a3656e7828193523",
+                "reference": "8fb5c571d07cc82d74d74603a3656e7828193523",
                 "shasum": ""
             },
             "require": {
@@ -2018,7 +2018,7 @@
                 "image",
                 "upload"
             ],
-            "time": "2015-06-30 01:29:02"
+            "time": "2015-06-30 19:44:41"
         },
         {
             "name": "michelf/php-markdown",
@@ -3356,7 +3356,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "friendsofsymfony/user-bundle": 20
+        "friendsofsymfony/user-bundle": 20,
+        "marrouchi/upload-crop-image-bundle": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
