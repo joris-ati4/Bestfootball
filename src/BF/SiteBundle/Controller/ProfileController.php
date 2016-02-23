@@ -5,6 +5,7 @@ namespace BF\SiteBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\FormError;
+use Symfony\Component\Finder\Finder;
 
 
 //les types
