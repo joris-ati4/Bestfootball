@@ -10,7 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @todo adjust to your need if you want to handle uploads by lifecyclecallback
  * @ORM\Entity
  * @ORM\Table()
- * //@ORM\HasLifecycleCallbacks <-
+ * @ORM\HasLifecycleCallbacks <-
  */
 class Media {
 

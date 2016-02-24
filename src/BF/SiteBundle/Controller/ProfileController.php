@@ -119,22 +119,41 @@ class ProfileController extends Controller
     {
         $user = $this->container->get('security.context')->getToken()->getUser();
         $picture = $user->getMedia();
-        $form = $this->get('form.factory')->create(new MediaType, $picture);
-        
-        if ($form->handleRequest($request)->isValid()) {
-          $em = $this->getDoctrine()->getManager();
-          $em->persist($picture);
-          $em->flush();
 
-          $request->getSession()->getFlashBag()->add('success', 'Your profile Picture has been updated.');
+        //Set filename to false to preview placeholderz
+        $asset = false;
+        $form = $this->createForm(new MediaType, $picture);
+        $form->handleRequest($request);
+        //Process the form
+        if ($form->isValid()) {
+            //Basic Cropping image adapted from Jcrop gd2 extension required
+            extract($form->get('dimensions')->getData());
+            $quality = 90;
+            $filename = $directory . $name;
+            $asset = $this->container->get('templating.helper.assets')->getUrl("uploads/$name");
+            $srcImage = imagecreatefromjpeg($filename);
+            $dstImage = ImageCreateTrueColor($w, $h);
+            imagecopyresampled($dstImage, $srcImage, 0, 0, $x, $y, $w, $h, $w, $h);
+            imagejpeg($dstImage, $filename, $quality);
 
-          return $this->redirect($this->generateUrl('bf_site_settings'));
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($picture);
+            $em->flush();
+
+            $request->getSession()->getFlashBag()->add('success', 'Your profile Picture has been updated.');
+
+            return $this->redirect($this->generateUrl('bf_site_settings'));
+            //TODO: persist to database
+            //TODO: redirect to the controller of your choice once done
         }
-
+       
         return $this->render('BFSiteBundle:Profile:settingsPicture.html.twig', array(
           'form' => $form->createView(),
           'user' => $user,
+          'asset' => $asset
         ));
+        
     }
     public function changePasswordAction(request $request)
     { 

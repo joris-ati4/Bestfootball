@@ -15,7 +15,7 @@ class MediaType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('file', 'file',array('attr' => array('data-route' => 'media_json_upload')))
+            ->add('file', 'file',array('attr' => array('data-route' => 'bf_site_settings_picture')))
             ->add('dimensions', 'crop_image', array('mapped' => false, 'label' => false))
             ->add('submit', 'submit')
         ;

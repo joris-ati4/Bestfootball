@@ -154,7 +154,6 @@ class RegistrationController extends BaseController
         return $this->render('BFUserBundle:Registration:confirmed.html.twig', array(
             'user' => $user,
             'targetUrl' => $this->getTargetUrlFromSession(),
-            'search' => $search->createView(),
         ));
     }
 
