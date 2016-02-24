@@ -84,20 +84,12 @@ body{
 
 /*CSS for the Homepage*/
 .homepage{
-    min-height:75vh;
-    background-image: url(../img/homepage.jpg);
-    background-attachment: relative;
-    background-size: cover;    
-    padding-top: 50px;
-
-
-
-    /*background-color:#FAFAFA;
-    rgba(149,205,54,0); 
+    background-color:#FAFAFA;
+    /*rgba(149,205,54,0); */
     background-attachment: fixed;
     background-size: cover;    
     padding-top: 50px;
-    min-height: 75vh*/
+    min-height: 75vh;
 }
 .followtitle{
     width: 100%;
