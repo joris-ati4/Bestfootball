@@ -18,10 +18,11 @@ class AdminController extends Controller
     {
 	    // On crée un objet Challenge
 	    $challenge = new Challenge();
+        $challenge->setType('normal');
 
 	    $form = $this->get('form.factory')->create(new ChallengeType, $challenge);
 	    
-	    if ($form->handleRequest($request)->isValid()) {
+	    if ($form->handleRequest($request)->isValid()) {            
 	      $em = $this->getDoctrine()->getManager();
 	      $em->persist($challenge);
 	      $em->flush();

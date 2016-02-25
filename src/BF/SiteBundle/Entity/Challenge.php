@@ -132,6 +132,11 @@ class Challenge
     */
     private $partner;
 
+    /**
+    * @ORM\Column(name="type", type="string")
+    */
+    private $type;
+
      private $file;
 
     // On ajoute cet attribut pour y stocker le nom du fichier temporairement
