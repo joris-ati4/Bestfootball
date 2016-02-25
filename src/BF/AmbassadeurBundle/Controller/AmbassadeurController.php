@@ -44,7 +44,6 @@ class AmbassadeurController extends Controller
             'challenge' => $challenge,
             ));
     }
-
     public function addChallengeAction(request $request)
     {
         $user = $this->container->get('security.context')->getToken()->getUser();
@@ -127,7 +126,7 @@ class AmbassadeurController extends Controller
 
           $request->getSession()->getFlashBag()->add('notice', 'the challenge was deleted');
 
-          return $this->redirect($this->generateUrl('bf_site_admin_challenges'));
+          return $this->redirect($this->generateUrl('bf_ambassadeur_index'));
         }
 
         return $this->render('BFAmbassadeurBundle:Challenge:del.html.twig', array(
