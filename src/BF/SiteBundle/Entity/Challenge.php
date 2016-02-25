@@ -133,7 +133,7 @@ class Challenge
     private $partner;
 
     /**
-    * @ORM\Column(name="type", type="string")
+    * @ORM\Column(name="type", type="string", length=255)
     */
     private $type;
 
@@ -702,5 +702,29 @@ class Challenge
     public function getDescriptionEN()
     {
         return $this->descriptionEN;
+    }
+
+    /**
+     * Set type
+     *
+     * @param string $type
+     *
+     * @return Challenge
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
     }
 }
