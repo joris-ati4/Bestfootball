@@ -137,13 +137,11 @@ class AmbassadeurController extends Controller
           'challenge' => $challenge,
         ));
     }
-    public function downloadVideoAction(request $request)
+    public function downloadVideoAction(request $request, $id)
     {
-        $id = $request->get('id');
         $video = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video')->find($id);
 
-
-        $filename = 'Video_'.$video->getUser()->getUsername();
+        $filename = 'Video_'.$video->getUser()->getUsername().'.mp4';
         $path = '/var/www/bestfootball.fr/current/web/uploads/videos/'.$video->getSource();
 
         $response = new Response();

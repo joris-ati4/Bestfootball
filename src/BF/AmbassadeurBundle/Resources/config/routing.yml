@@ -19,5 +19,5 @@ bf_ambassadeur_challenge_del:
     defaults: { _controller: BFAmbassadeurBundle:Ambassadeur:delChallenge }
 
 bf_ambassadeur_video_dowload:
-    path:     /download
+    path:     /download/{id}
     defaults: { _controller: BFAmbassadeurBundle:Ambassadeur:downloadVideo }
