@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use BF\SiteBundle\Entity\Challenge;
 //les types
 use BF\SiteBundle\Form\Type\ChallengeAmbassadeurType;
-use BF\SiteBundle\Form\Type\ChallengeEditType;
+use BF\SiteBundle\Form\Type\ChallengeAmbassadeurEditType;
 use BF\SiteBundle\Form\Type\ChallengeDelType;
 
 class AmbassadeurController extends Controller
@@ -80,15 +80,12 @@ class AmbassadeurController extends Controller
           'form' => $form->createView(),
         ));
     }
-
-
-
     public function modChallengeAction(request $request, $id)
     {
         // On crée un objet Challenge
         $challenge = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Challenge')->find($id);;
 
-        $form = $this->get('form.factory')->create(new ChallengeEditType, $challenge);
+        $form = $this->get('form.factory')->create(new ChallengeAmbassadeurEditType, $challenge);
         
         if ($form->handleRequest($request)->isValid()) {
           $em = $this->getDoctrine()->getManager();
@@ -97,11 +94,12 @@ class AmbassadeurController extends Controller
 
           $request->getSession()->getFlashBag()->add('notice', 'The new challenge has been registered');
 
-          return $this->redirect($this->generateUrl('bf_site_admin_challenges'));
+          return $this->redirect($this->generateUrl('bf_ambassadeur_index'));
         }
 
         return $this->render('BFAmbassadeurBundle:Challenge:mod.html.twig', array(
           'form' => $form->createView(),
+          'challenge' => $challenge,
         ));
     }
     public function delChallengeAction(request $request, $id)
