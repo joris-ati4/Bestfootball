@@ -1,0 +1,63 @@
+{% extends "BFSiteBundle::Adminbase.html.twig" %}
+
+
+{% block meta %}
+  <meta name="description" content="Bla bla bla concernant l'upload.">
+  <meta name="keywords" content="soccer,football ">
+{% endblock %}
+
+
+{% block title %}
+  Admin Section- challenges - {{ parent() }} 
+{% endblock %}
+
+{% block content %}
+
+ 
+
+<div class="well">
+	<a href="{{ path('bf_site_admin_addChallenge') }}" class="btn btn-success">Add a new challenge</a>
+	<table class="table">
+		<tr>
+			<th>Title</th>
+			<th>Description EN</th>
+			<th>Description FR</th>
+			<th>One</th>
+			<th>two</th>
+			<th>three</th>
+			<th>four</th>
+			<th>five</th>
+			<th>six</th>
+			<th>Modify</th>
+			<th>Delete</th>
+			
+ 	{% for challenge in listChallenges %}
+		<tr>
+			<td>{{ challenge.title }}</td>
+			<td>{{ challenge.descriptionEN }}</td>
+			<td>{{ challenge.descriptionFR }}</td>
+			<td>{{ challenge.one }}</td>
+			<td>{{ challenge.two }}</td>
+			<td>{{ challenge.three }}</td>
+			<td>{{ challenge.four }}</td>
+			<td>{{ challenge.five }}</td>
+			<td>{{ challenge.six }}</td>
+			<td>
+				<a href="{{ path('bf_site_admin_modchallenge', {'id': challenge.id} ) }}" class="btn btn-primary">
+					Modify
+				</a>
+			</td>
+			<td>
+   				<a href="{{ path('bf_site_admin_delchallenge', {'id': challenge.id} ) }}" class="btn btn-danger">
+					Delete
+				</a>
+			</td>
+		</tr>
+	{% endfor %}
+</table>
+</div>
+  
+
+  <hr>
+
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "BFSiteBundle::Adminbase.html.twig" %}
+
+
+{% block meta %}
+  <meta name="description" content="Bla bla bla concernant l'upload.">
+  <meta name="keywords" content="soccer,football ">
+{% endblock %}
+
+
+{% block title %}
+  Admin Section- add a new challenge - {{ parent() }} 
+{% endblock %}
+
+{% block body %}
+
+  {# src/BF/SiteBundle/Resources/views/Video/form.html.twig #}
+
+
+
+<div class="well" style="margin-top:50px;">
+  <h3>Are you sure you want to delete {{ challenge.title }} ?</h3>
+  {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+
+    {{ form_errors(form) }}
+
+
+    {{ form_rest(form) }}
+  
+
+  {{ form_end(form) }}
+</div>
+  
+
+  <hr>
+
+  {# On définit un nouveau bloc, que les vues du bundle pourront remplir #}
+
+{% endblock %}

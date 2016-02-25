@@ -1,0 +1,23 @@
+bf_ambassadeur_index:
+    path:     /
+    defaults: { _controller: BFAmbassadeurBundle:Ambassadeur:index }
+
+bf_ambassadeur_challenge:
+    path:     /challenge/{id}
+    defaults: { _controller: BFAmbassadeurBundle:Ambassadeur:viewChallenge }
+
+bf_ambassadeur_challenge_add:
+    path:     /addchallenge
+    defaults: { _controller: BFAmbassadeurBundle:Ambassadeur:addChallenge }
+
+bf_ambassadeur_challenge_mod:
+    path:     /challenge/mod/{id}
+    defaults: { _controller: BFAmbassadeurBundle:Ambassadeur:modChallenge }
+
+bf_ambassadeur_challenge_del:
+    path:     /challenge/del/{id}
+    defaults: { _controller: BFAmbassadeurBundle:Ambassadeur:delChallenge }
+
+bf_ambassadeur_video_dowload:
+    path:     /download
+    defaults: { _controller: BFAmbassadeurBundle:Ambassadeur:downloadVideo }

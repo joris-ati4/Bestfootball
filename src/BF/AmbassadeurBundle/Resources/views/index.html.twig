@@ -1,0 +1,62 @@
+{% extends "BFSiteBundle::Adminbase.html.twig" %}
+
+
+{% block meta %}
+  <meta name="description" content="Bla bla bla concernant l'upload.">
+  <meta name="keywords" content="soccer,football ">
+{% endblock %}
+
+
+{% block title %}
+  Amabassadeur section - {{ parent() }} 
+{% endblock %}
+
+{% block content %}
+
+
+<section class="header">
+    <div class="row" style="margin-top:20px;">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="row">
+        	<a href="{{ path('bf_ambassadeur_challenge_add') }}" class="btn btn-success" style="width:200px;margin-bottom:5px;">
+				<span class="glyphicon glyphicon-plus" aria-hidden="true"> </span> Create a new challenge.
+			</a>
+        	{% for challenge in listChallenges%}
+        		<div class="well text-center">
+        			<h2>{{ challenge.title }}</h2>
+        			<div class="hidden-xs col-sm-4 col-md-4 col-lg-4 vcenter">
+        				<div class="row">
+        					<img src="/uploads/challenges/thumbnail/{{ challenge.id }}.jpg" alt="thumbnail of {{ challenge.title }}" style="max-width:90%;max-height:150px;" class="text-center">
+        				</div>
+        			</div><!--
+        			--><div class="col-xs-6 col-sm-4 col-md-4 col-lg-4 vcenter">
+        				<div class="row">
+        					<p> Number of videos : {{ challenge.videos|length }}</p>
+        				</div>
+        			</div><!--
+        			--><div class="col-xs-6 col-sm-4 col-md-4 col-lg-4 vcenter">
+        				<div class="row">
+        					<a href="{{ path('bf_ambassadeur_challenge', {'id': challenge.id }) }}" class="btn btn-success" style="width:200px;margin-top:5px;">
+									<span class="glyphicon glyphicon-film" aria-hidden="true"> </span> See the videos.
+							</a>
+						</br>
+							<a href="{{ path('bf_ambassadeur_challenge_mod', {'id': challenge.id }) }}" class="btn btn-primary" style="width:200px;margin-top:5px;">
+								
+									<span class="glyphicon glyphicon-pencil" aria-hidden="true"> </span> Modify the challenge
+							</a>
+						</br>
+							<a href="{{ path('bf_ambassadeur_challenge_del', {'id': challenge.id }) }}" class="btn btn-danger" style="width:200px;margin-top:5px;">
+								
+									<span class="glyphicon glyphicon-trash" aria-hidden="true"> </span> Delete the Challenge
+							</a>
+
+        				</div>
+        			</div>
+        		</div>
+        	{% endfor %}
+        </div>
+      </div>
+    </div>
+</section>
+
+{% endblock %}

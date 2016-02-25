@@ -5,7 +5,8 @@ security:
         FOS\UserBundle\Model\UserInterface: bcrypt
 
     role_hierarchy:
-        ROLE_ADMIN:       ROLE_USER
+        ROLE_AMBASSADEUR: ROLE_USER
+        ROLE_ADMIN:       ROLE_AMBASSADEUR
         ROLE_SUPER_ADMIN: ROLE_ADMIN
 
     providers:
@@ -62,6 +63,7 @@ security:
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin, role: ROLE_ADMIN }
+        - { path: ^/ambassadeur, role: ROLE_AMBASSADEUR }
         - { path: ^/oauth/v2/, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/api, roles: IS_AUTHENTICATED_FULLY }
         - { path: ^/home, role: IS_AUTHENTICATED_FULLY }

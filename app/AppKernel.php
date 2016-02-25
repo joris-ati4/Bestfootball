@@ -29,6 +29,7 @@ class AppKernel extends Kernel
             new HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
             new Marrouchi\UploadCropImageBundle\UploadCropImageBundle(),
+            new BF\AmbassadeurBundle\BFAmbassadeurBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

@@ -40,6 +40,9 @@
           {% if app.user and is_granted('ROLE_ADMIN') %}
             <li><a href="{{ path('bf_site_admin') }}">{{ 'Admin section'|trans }}</a></li>
           {% endif %}
+          {% if app.user and is_granted('ROLE_AMBASSADEUR') %}
+            <li><a href="{{ path('bf_ambassadeur_index') }}">Ambassadeur section</a></li>
+          {% endif %}
         <li role="separator" class="divider"></li>
         <li><a href="/logout">{{ 'Deconnect'|trans }}</a></li>
       </ul>
