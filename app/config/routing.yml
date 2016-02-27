@@ -8,8 +8,8 @@ fos_user:
 fos_js_routing:
     resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
 
-upload_crop_image:
-    resource: "@UploadCropImageBundle/Resources/config/routing.yml"
+comur_image:
+    resource: "@ComurImageBundle/Resources/config/routing.yml"
     prefix:   /
 
 #HWIOAuthBundle routes

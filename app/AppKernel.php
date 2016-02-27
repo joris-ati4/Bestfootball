@@ -28,8 +28,9 @@ class AppKernel extends Kernel
             new Lifo\TypeaheadBundle\LifoTypeaheadBundle(),
             new HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
-            new Marrouchi\UploadCropImageBundle\UploadCropImageBundle(),
             new BF\AmbassadeurBundle\BFAmbassadeurBundle(),
+            new JMS\TranslationBundle\JMSTranslationBundle(),
+            new Comur\ImageBundle\ComurImageBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

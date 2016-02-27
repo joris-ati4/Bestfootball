@@ -144,7 +144,7 @@ bf_site_profile_duels:
 bf_site_settings:
     path:     /settings
     defaults: { _controller: BFSiteBundle:Profile:settings }
-    methods:  [GET]
+    methods:  [GET,POST]
 
 bf_site_settings_info:
     path:     /settings/info
