@@ -11,6 +11,7 @@ use Symfony\Component\Finder\Finder;
 //les types
 use BF\UserBundle\Form\Type\UserType;
 use BF\SiteBundle\Form\Type\MediaType;
+use BF\SiteBundle\Entity\Media;
 
 
 class ProfileController extends Controller
@@ -118,17 +119,18 @@ class ProfileController extends Controller
     public function settingsPictureAction(request $request)
     {
         $user = $this->container->get('security.context')->getToken()->getUser();
-        $picture = $user->getMedia();
+        $media = new Media;
 
         //Set filename to false to preview placeholderz
-        $form = $this->createForm(new MediaType, $picture);
+        $form = $this->createForm(new MediaType, $media);
         $form->handleRequest($request);
         //Process the form
         if ($form->isValid()) {
-            $path = '/uploads/img'.$picture->getImage();
-            $picture->setPath($path);             
+
+            $user->setPicture($media);         
             $em = $this->getDoctrine()->getManager();
-            $em->persist($picture);
+            $em->persist($media);
+            $em->persist($user);
             $em->flush();
 
             $request->getSession()->getFlashBag()->add('success', 'Your profile Picture has been updated.');
