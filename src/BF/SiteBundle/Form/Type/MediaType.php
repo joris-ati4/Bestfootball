@@ -25,7 +25,7 @@ class MediaType extends AbstractType
             'fileExt' => '*.jpg;*.gif;*.png;*.jpeg',    //optional
             'libraryDir' => null,                       //optional
             'libraryRoute' => 'comur_api_image_library', //optional
-            'showLibrary' => true,                      //optional
+            'showLibrary' => false,                      //optional
             
         ),
         'cropConfig' => array(

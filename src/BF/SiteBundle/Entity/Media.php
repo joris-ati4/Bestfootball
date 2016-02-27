@@ -7,10 +7,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Description: Media
- * @todo adjust to your need if you want to handle uploads by lifecyclecallback
  * @ORM\Entity
  * @ORM\Table()
- * @ORM\HasLifecycleCallbacks <-
  */
 class Media {
 
@@ -29,51 +27,23 @@ class Media {
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    protected $image;
-
-
-
-    public function getName() {
-        return $this->name;
-    }
-
-    public function setName($name) {
-        $this->name = $name;
-
-        return $this;
-    }
+    protected $path;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    protected $path;
+    protected $image;
 
-    public function setPath($path) {
-        $this->path = $path;
-
-        return $this;
-    }
-
-    public function getPath() {
-        return $this->path;
-    }
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $originalImage;
 
     /**
      * @ORM\Column(name="created",type="date")
      */
     protected $created;
 
-    /**
-     * @var File
-     *
-     * @Assert\File(
-     *     maxSize = "1M",
-     *     mimeTypes = {"image/jpeg"},
-     *     maxSizeMessage = "The maxmimum allowed file size is 5MB.",
-     *     mimeTypesMessage = "Only the filetypes image are allowed."
-     * )
-     */
-    protected $file;
 
     public function __construct() {
         $this->created = new \Datetime();
@@ -177,5 +147,77 @@ class Media {
     public function getImage()
     {
         return $this->image;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return Media
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set path
+     *
+     * @param string $path
+     *
+     * @return Media
+     */
+    public function setPath($path)
+    {
+        $this->path = $path;
+
+        return $this;
+    }
+
+    /**
+     * Get path
+     *
+     * @return string
+     */
+    public function getPath()
+    {
+        return $this->path;
+    }
+
+    /**
+     * Set originalImage
+     *
+     * @param string $originalImage
+     *
+     * @return Media
+     */
+    public function setOriginalImage($originalImage)
+    {
+        $this->originalImage = $originalImage;
+
+        return $this;
+    }
+
+    /**
+     * Get originalImage
+     *
+     * @return string
+     */
+    public function getOriginalImage()
+    {
+        return $this->originalImage;
     }
 }
