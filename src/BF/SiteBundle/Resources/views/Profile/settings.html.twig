@@ -11,8 +11,7 @@
 
 
 {% block content %}
-{% include "ComurImageBundle:Form:croppable_image_modal.html.twig" with {'include_jquery': true, 'include_bootstrap': false} %}
-
+	{% include "ComurImageBundle:Form:croppable_image_modal.html.twig" with {'include_jquery': false, 'include_bootstrap': false} %}
 <section class="homepage">
     <div class="row" style="margin-top:50px;">
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10 col-lg-offset-1">
@@ -61,6 +60,9 @@
 
 {% block javascripts %}
 	{{ parent() }}
+
+	
+
 	<script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
     <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
     
