@@ -119,7 +119,7 @@ class ProfileController extends Controller
     public function settingsPictureAction(request $request)
     {
         $user = $this->container->get('security.context')->getToken()->getUser();
-        $media = new Media;
+        $media = new Media();
 
         //Set filename to false to preview placeholderz
         $form = $this->createForm(new MediaType, $media);
