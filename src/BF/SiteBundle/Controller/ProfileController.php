@@ -125,7 +125,8 @@ class ProfileController extends Controller
         $form->handleRequest($request);
         //Process the form
         if ($form->isValid()) {
-             
+            $path = '/uploads/img'.$picture->getImage();
+            $picture->setPath($path);             
             $em = $this->getDoctrine()->getManager();
             $em->persist($picture);
             $em->flush();

@@ -23,7 +23,7 @@ class MediaType extends AbstractType
             'uploadUrl' => $media->getUploadRootDir(),       // required - see explanation below (you can also put just a dir path)
             'webDir' => $media->getUploadDir(),              // required - see explanation below (you can also put just a dir path)
             'fileExt' => '*.jpg;*.gif;*.png;*.jpeg',    //optional
-            'libraryDir' => $picture->getUser()->getId(),                       //optional
+            'libraryDir' => null,                       //optional
             'libraryRoute' => 'comur_api_image_library', //optional
             'showLibrary' => true,                      //optional
             
