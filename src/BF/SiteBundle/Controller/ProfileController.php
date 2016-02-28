@@ -122,9 +122,10 @@ class ProfileController extends Controller
         $media = new Media();
 
         //Set filename to false to preview placeholderz
-        $form = $this->createForm(new MediaType, $media);
+        $form = $this->get('form.factory')->create(new MediaType, $media);
         //Process the form
-        if ($form->handleRequest($request)->isValid()) {
+        $form->handleRequest($request);
+        if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
   
             $media
