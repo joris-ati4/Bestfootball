@@ -118,7 +118,7 @@ class ProfileController extends Controller
     }
     public function settingsPictureAction(request $request)
     {
-        
+        $user = $this->container->get('security.context')->getToken()->getUser();
         $media = new Media();
 
         //Set filename to false to preview placeholderz
@@ -126,14 +126,13 @@ class ProfileController extends Controller
         //Process the form
         if ($form->handleRequest($request)->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $user = $this->container->get('security.context')->getToken()->getUser();
-
+  
             $media
               ->setPath('/uploads/img/cropped')
               ->setName($user->getUsername().'Profile picture')
             ;
             
-            $user->setPicture($media);         
+            $user->setMedia($media);         
             
             $em->persist($media);
             $em->persist($user);
