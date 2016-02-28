@@ -121,6 +121,11 @@ class ProfileController extends Controller
         $user = $this->container->get('security.context')->getToken()->getUser();
         $media = new Media();
 
+        $media
+          ->setPath('/uploads/img/cropped')
+          ->setName($user->getUsername().'Profile picture')
+        ;
+
         //Set filename to false to preview placeholderz
         $form = $this->get('form.factory')->create(new MediaType, $media);
         //Process the form
