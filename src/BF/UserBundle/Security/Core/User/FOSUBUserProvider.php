@@ -5,7 +5,7 @@ use HWI\Bundle\OAuthBundle\OAuth\Response\UserResponseInterface;
 use HWI\Bundle\OAuthBundle\Security\Core\User\FOSUBUserProvider as BaseClass;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints\DateTime;
-use BF\SiteBundle\Entity\Picture;
+use BF\SiteBundle\Entity\Media;
 
 class FOSUBUserProvider extends BaseClass
 {
@@ -75,16 +75,23 @@ class FOSUBUserProvider extends BaseClass
             //I have set all requested data with the user's username
 
             //creating the picture entity for the new user
-            $picture = new Picture();
+            $picture = new Media();
             $picture
-              ->setSrc('/uploads/img/profile.png')
-              ->setAlt('default profile picture on bestfootball')
+              ->setPath('/uploads/img/profile.png')
+              ->setName('default profile picture on bestfootball')
+              ->setImage('/uploads/img/profile.png')
+              ->setOriginalImage('/uploads/img/profile.png')
             ;
 
             //profile picture for facebook
             if($service == 'facebook'){
                 $profilepicture = $response->getProfilePicture();
-                $picture->setSrc($profilepicture)->setAlt('Profile picture of '.$username.' on Bestfootball.fr');
+                $picture
+                    ->setPath($profilepicture)
+                    ->setName('Profile picture of '.$username.' on Bestfootball.fr')
+                    ->setImage($profilepicture)
+                    ->setOriginalImage($profilepicture)
+                    ;
             }
 
             //modify here with relevant data
@@ -94,7 +101,7 @@ class FOSUBUserProvider extends BaseClass
             $user->setEnabled(true);
             $user->setPoints(0);
             $user->setDuelPoints(0);
-            $user->setPicture($picture);
+            $user->setMedia($picture);
             $user->setName($lastname);
             $user->setFirstname($firstname);
             $user->setGender($gender);
