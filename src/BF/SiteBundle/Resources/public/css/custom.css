@@ -167,7 +167,7 @@ body{
 .videolistcontent{
     margin: 10px 10px;
     overflow-y: scroll;
-    height: 370px;
+    height: 50vh;
 }
 .videolistback{
     width: 100%;

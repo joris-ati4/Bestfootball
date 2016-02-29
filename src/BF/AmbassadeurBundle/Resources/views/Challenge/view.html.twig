@@ -31,11 +31,11 @@
               </div><!--
               --><div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 vcenter"> 
 
-                    <div class="videolistback">
+                    <div class="videolistback row">
                       <div class="videolisttitle text-center">
                         <h3 style="color:white;">All the videos</h3>
                       </div>
-                      <div class="videolistcontent" id="videolist">
+                      <div class="videolistcontent row" id="videolist">
                         <ul class="playlist" style="list-style-type:none;padding-left:0px;" >
 
 
@@ -44,7 +44,7 @@
                               <a href="/uploads/videos/{{ video.source }}" class="livevideo">
                                 <div class="videotab row">
                                   <div class="col-xs-5 col-sm-5 col-md-4 col-lg-4 vcenter row">
-                                    <img src="/uploads/videos/thumbnail/{{ video.id }}.jpg" alt="" style="width:100%;"/>
+                                    <img src="/uploads/videos/thumbnail/{{ video.id }}.jpg" alt="" style="max-width:100%;max-height:120px;"/>
                                   </div><!--
                                --><div class="col-xs-7 col-sm-7 col-md-8 col-lg-8 vcenter">
                                     <p style="font-size:14px;">{{ video.title }},</br> {{ video.date|date('d-m-Y')}}</p>
