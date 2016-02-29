@@ -455,7 +455,12 @@ class VideoController extends Controller
 
 	    $user = $this->container->get('security.context')->getToken()->getUser();
 	    $report = new Report();
-	    $report->setVideo($video)->setUser($user)->setDate(new \Datetime())->setTreated(0);
+	    $report
+	    	->setVideo($video)
+	    	->setUser($user)
+	    	->setDate(new \Datetime())
+	    	->setTreated(0)
+	    ;
 
 		    $form = $this->get('form.factory')->create(new ReportType, $report);
 		    if ($form->handleRequest($request)->isValid()) {
