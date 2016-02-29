@@ -205,12 +205,12 @@ bf_site_admin_reports:
 bf_site_admin_delvideo:
     path:     /admin/reports/delvideo/{id}
     defaults: { _controller: BFSiteBundle:Admin:deleteVideo }
-    methods:  [POST]
+    methods:  [POST,GET]
 
 bf_site_admin_okvideo:
     path:     /admin/reports/okvideo/{id}
     defaults: { _controller: BFSiteBundle:Admin:okVideo }
-    methods:  [POST]
+    methods:  [POST,GET]
 
 
 
