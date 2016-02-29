@@ -5,14 +5,19 @@
 	<meta name="keywords" content="soccer,football, {{ video.title }}, ">
 
   <meta property="og:url"                content="http://bestfootball.fr/view/{{video.id}}" />
-  <meta property="og:type"               content="article" />
+  <meta property="og:type"               content="video" />
   <meta property="og:title"              content="{{ video.title }}  on bestfootball" />
-  <meta property="og:description"        content="{{ video.user.username }} video for the {{challenge.title }} challenge on bestfootball." />
+  {% if video.type == 'challenge' and predict is not null %}
+    <meta property="og:description"        content="{{ video.user.username }} video for the {{video.challenge.title }} challenge on bestfootball." />
+  {% else %}
+    <meta property="og:description"        content="{{ video.user.username }} video on bestfootball." />         
+  {% endif %}
   <meta property="og:video"              content="http://www.bestfootball.fr/uploads/videos/{{ video.source }}" />
   <meta property="og:video:type"         content="video/mp4" />
-  <meta property="og:video:width"         content="480" />
-  <meta property="og:video:height"         content="240" />
-  <meta property="og:image"         content="http://www.bestfootball.fr/uploads/videos/thumbnails/{{ video.id }}.jpg" />
+  <meta property="og:video:width"         content="640 " />
+  <meta property="og:video:height"         content="360" />
+  <meta property="og:image"         content="http://www.bestfootball.fr/uploads/videos/thumbnail/{{ video.id }}.jpg" />
+  <meta property="fb:app_id" content="694354014040156" />
   
   
 {% endblock %}
@@ -88,7 +93,7 @@
                     <button onclick="location.href='{{ path('bf_site_challengeview', {'id': video.challenge.id}) }}'" class="btn btn-success" type="submit" style="width:50%;">To the challenge!</button>
                   {% endif %}
                     <!--facebook share button -->
-                    <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button"></div>
+                    <div class="fb-share-button" data-href="http://bestfootball.fr/view/{{video.id}}" data-layout="button"></div>
 
                 </div>
               </div>
