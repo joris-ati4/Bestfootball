@@ -101,6 +101,7 @@ class FOSUBUserProvider extends BaseClass
             $user->setEnabled(true);
             $user->setPoints(0);
             $user->setDuelPoints(0);
+            $user->setDuelWins(0);
             $user->setMedia($picture);
             $user->setName($lastname);
             $user->setFirstname($firstname);
