@@ -10,11 +10,11 @@
   {% if video.type == 'challenge' and predict is not null %}
     <meta property="og:description"        content="{{ video.user.username }} video for the {{video.challenge.title }} challenge on bestfootball." />
   {% else %}
-    <meta property="og:description"        content="{{ video.user.username }} video on bestfootball." />         
+    <meta property="og:description"        content="{{ video.user.username }} video on Bestfootball." />         
   {% endif %}
   <meta property="og:video"              content="http://www.bestfootball.fr/uploads/videos/{{ video.source }}" />
   <meta property="og:video:type"         content="video/mp4" />
-  <meta property="og:video:width"         content="640 " />
+  <meta property="og:video:width"         content="640" />
   <meta property="og:video:height"         content="360" />
   <meta property="og:image"         content="http://www.bestfootball.fr/uploads/videos/thumbnail/{{ video.id }}.jpg" />
   <meta property="fb:app_id" content="694354014040156" />
@@ -94,6 +94,18 @@
                   {% endif %}
                     <!--facebook share button -->
                     <div class="fb-share-button" data-href="http://bestfootball.fr/view/{{video.id}}" data-layout="button"></div>
+
+                    <!-- twitter share button-->
+                    <a class="twitter-share-button"
+                      href="https://twitter.com/share"
+                      data-url="http://bestfootball.fr/view/{{video.id}}"
+                      data-via="Bestfootball_10"
+                      data-related=""
+                      data-hashtags="Bestfootball,soccer"
+                      data-text="{{ video.title }} by {{ video.user.username }} on bestfootball">
+                    Tweet
+                    </a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 
                 </div>
               </div>
