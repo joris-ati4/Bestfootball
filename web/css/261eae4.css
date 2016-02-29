@@ -276,12 +276,11 @@ border-radius:10px;
 }
 .info{
     min-height:50vh;
-    margin-bottom: 15px;
     background-color: #FAFAFA;
 }
 .rank{
     min-height:50vh;
-    background-color: white;
+    background-color: #EDEDF1;
 }
 .map{
     min-height:50vh;
