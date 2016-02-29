@@ -192,8 +192,8 @@ hwi_oauth:
 
         google:
             type:                google
-            client_id:           "128129884829-c4q7njcofueunt1po5v6j1rs5cgmpt7c.apps.googleusercontent.com"
-            client_secret:       "piUn_hUN72EuMF7yD88cAGPY"
+            client_id:           "764453370712-e9v39pr3vh6q72gq9662h8vnf83ggl1q.apps.googleusercontent.com"
+            client_secret:       "nHGcEYTUbK4-Rqf4HlQJ65Kb"
             scope:               "https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile"
 #Comur image
 
