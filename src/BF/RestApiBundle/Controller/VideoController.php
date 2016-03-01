@@ -118,24 +118,20 @@ class VideoController extends Controller
             $points = $user->getPoints() - $oldScore;
             $user->setPoints($points);
         }
-        else{
-            //this is the first video off the user.
-        }
-
-
-        if($challenge->getType() != 'normal'){
+       
+        if($challenge->getType() == 'normal'){
             //we give the user 300 points
-            $video->setScore('300');
+            if($video->getRepetitions() >= $challenge->getSix()){$video->setScore('300');}
+            if($challenge->getSix() > $video->getRepetitions() && $video->getRepetitions() >= $challenge->getFive()){ $video->setScore('250');}
+            if($challenge->getFive() > $video->getRepetitions() && $video->getRepetitions() >= $challenge->getFour()){$video->setScore('200');}
+            if($challenge->getFour() > $video->getRepetitions() && $video->getRepetitions() >= $challenge->getThree()){$video->setScore('150');}
+            if($challenge->getThree() > $video->getRepetitions() && $video->getRepetitions() >= $challenge->getTwo()){$video->setScore('100');}
+            if($challenge->getTwo() > $video->getRepetitions() && $video->getRepetitions() >= $challenge->getOne()){$video->setScore('50');}
+            if($challenge->getOne() > $video->getRepetitions()){$video->setScore('0');}
         }
         else{
             //the video is for a normal challenge.
-            if($video->getRepetitions() >= $six){$video->setScore('300');}
-            if($six > $video->getRepetitions() && $video->getRepetitions() >= $five){ $video->setScore('250');}
-            if($five > $video->getRepetitions() && $video->getRepetitions() >= $four){$video->setScore('200');}
-            if($four > $video->getRepetitions() && $video->getRepetitions() >= $three){$video->setScore('150');}
-            if($three > $video->getRepetitions() && $video->getRepetitions() >= $two){$video->setScore('100');}
-            if($two > $video->getRepetitions() && $video->getRepetitions() >= $one){$video->setScore('50');}
-            if($one > $video->getRepetitions()){$video->setScore('0');}
+            $video->setScore('300');
         }
 
         //retrieving the points from the video and updating the points off the user.
