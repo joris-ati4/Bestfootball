@@ -124,7 +124,7 @@ class VideoController extends Controller
 			      //if the video is for an ambassador challenge
 		        if($challenge->getType() != 'normal'){
 		        	//we give the user 300 points
-		        	$video->setScore('300')
+		        	$video->setScore('300');
 		        }
 		        else{
 		        	//the video is for a normal challenge.
