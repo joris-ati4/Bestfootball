@@ -156,7 +156,7 @@ class AdminController extends Controller
     	$user->setPoints($points);
 
     	$message = \Swift_Message::newInstance()
-			        ->setSubject($user->getUsername().', your video '.$video()->getTitle().' was deleted from our servers.')
+			        ->setSubject($user->getUsername().', your video '.$video->getTitle().' was deleted from our servers.')
 			        ->setFrom('noreply@bestfootball.fr')
 			        ->setTo($email)
 			        ->setBody(
