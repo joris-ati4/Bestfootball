@@ -11,24 +11,32 @@
   Admin Section- add a new challenge - {{ parent() }} 
 {% endblock %}
 
-{% block body %}
+{% block content %}
 
   {# src/BF/SiteBundle/Resources/views/Video/form.html.twig #}
+<section class="header">
+  <div class="row" style="margin-top:20px;">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+      <div class="row">
+        <div class="well" style="margin-top:50px;">
+          <h3>Are you sure you want to delete {{ challenge.title }} ?</h3>
+          {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+
+            {{ form_errors(form) }}
+
+
+            {{ form_rest(form) }}
+          
+
+          {{ form_end(form) }}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 
 
-<div class="well" style="margin-top:50px;">
-  <h3>Are you sure you want to delete {{ challenge.title }} ?</h3>
-  {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
-
-    {{ form_errors(form) }}
-
-
-    {{ form_rest(form) }}
-  
-
-  {{ form_end(form) }}
-</div>
   
 
   <hr>
