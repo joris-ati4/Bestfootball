@@ -54,7 +54,7 @@
 
 
                     {% if follower is not null %}
-                      {% if video.user.username != follower.user.username or video.user.username != app.user.username %}
+                      {% if video.user.username != follower.user.username and video.user.username != app.user.username %}
                         <!-- Button to duel the user -->
                         
                         <!-- Button to follow the user -->
