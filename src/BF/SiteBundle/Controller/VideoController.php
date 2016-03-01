@@ -89,8 +89,7 @@ class VideoController extends Controller
     	//the upload is for a challenge video
     	if($type == 'challenge')
     	{
-	    	$repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Challenge');
-	    	$challenge = $repository->findOneBy(array('id' => $id));
+	    	$challenge = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Challenge')->findOneBy(array('id' => $id));
 
 	    	//we verify if the user already uploaded a video.
     		$repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video');
@@ -101,10 +100,7 @@ class VideoController extends Controller
 		            $oldScore=$oldVideo->getScore();
 		            $points = $user->getPoints() - $oldScore;
 		            $user->setPoints($points);
-		        }
-		        else{
-		            //this is the first video off the user.
-		        }
+		    }
 
 	    	$one = $challenge->getOne();
 	    	$two = $challenge->getTwo();
@@ -123,26 +119,35 @@ class VideoController extends Controller
 	    
 		    if ($form->handleRequest($request)->isValid()) {
 			      $em = $this->getDoctrine()->getManager();
-			      if($video->getRepetitions() >= $six){$video->setScore('300');}
-			      if($six > $video->getRepetitions() && $video->getRepetitions() >= $five){ $video->setScore('250');}
-			      if($five > $video->getRepetitions() && $video->getRepetitions() >= $four){$video->setScore('200');}
-			      if($four > $video->getRepetitions() && $video->getRepetitions() >= $three){$video->setScore('150');}
-			      if($three > $video->getRepetitions() && $video->getRepetitions() >= $two){$video->setScore('100');}
-			      if($two > $video->getRepetitions() && $video->getRepetitions() >= $one){$video->setScore('50');}
-			      if($one > $video->getRepetitions()){$video->setScore('0');}
-			      
 
-			      //now we update the points of the user
-			      $points = $video->getScore() + $user->getPoints();
-			      $user->setPoints($points);
-			      $em->persist($user);
-			      $em->persist($video);
-			      $em->flush();
 
-			      $this->addFlash('success', 'Your video was uploaded to our servers and you received '.$video->getScore().' points for this video.');
+			      //if the video is for an ambassador challenge
+		        if($challenge->getType() != 'normal'){
+		        	//we give the user 300 points
+		        	$video->setScore('300')
+		        }
+		        else{
+		        	//the video is for a normal challenge.
+		        	if($video->getRepetitions() >= $six){$video->setScore('300');}
+			      	if($six > $video->getRepetitions() && $video->getRepetitions() >= $five){ $video->setScore('250');}
+			      	if($five > $video->getRepetitions() && $video->getRepetitions() >= $four){$video->setScore('200');}
+			      	if($four > $video->getRepetitions() && $video->getRepetitions() >= $three){$video->setScore('150');}
+			      	if($three > $video->getRepetitions() && $video->getRepetitions() >= $two){$video->setScore('100');}
+			      	if($two > $video->getRepetitions() && $video->getRepetitions() >= $one){$video->setScore('50');}
+			      	if($one > $video->getRepetitions()){$video->setScore('0');}
+		        }
+			
+			    //now we update the points of the user
+			    $points = $video->getScore() + $user->getPoints();
+			    $user->setPoints($points);
+			    $em->persist($user);
+			    $em->persist($video);
+			    $em->flush();
 
-			      return $this->redirect($this->generateUrl('bf_site_videos'));
-			    }
+			    $this->addFlash('success', 'Your video was uploaded to our servers and you received '.$video->getScore().' points for this video.');
+
+			    return $this->redirect($this->generateUrl('bf_site_videos'));
+			}
 
 		    return $this->render('BFSiteBundle:Video:upload.html.twig', array(
 		      'form' => $form->createView(),
