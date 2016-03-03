@@ -4,9 +4,9 @@
 	        	<img src="/uploads/videos/thumbnail/{{ video.id }}.jpg" alt="{{ video.thumbAlt }}"  style="max-width:90%;max-height:150px;"/>
 
 	        	{% if video.type == 'freestyle' %}
-                  <p style="font-size:35px;margin-left:15px;">{{ video.title }}</p>
+                  <p style="font-size:20px;">{{ video.title }}</p>
                 {% else %}
-                  <p style="font-size:35px;margin-left:15px;">{{ video.challenge.title }}</p>
+                  <p style="font-size:20px;">{{ video.challenge.title }}</p>
                 {% endif %}
 
                 {% if video.repetitions > video.challenge.six %}

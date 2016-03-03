@@ -58,47 +58,48 @@
                   </div><!--
                 --><div class="col-xs-8 col-sm-8 col-md-9 col-lg-9 vcenter">
                     <p style="font-size:14px;"><a href="{{ path('bf_site_profile', { 'username': video.user.username }) }}" style=""> {{ video.user.username }}</a></p>
-
-
+                  </div>
+                  <!-- the action buttons -->
+                  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     {% if follower is not null %}
                       {% if video.user.username != follower.user.username and video.user.username != app.user.username %}
                         <!-- Button to duel the user -->
                         
                         <!-- Button to follow the user -->
-                        <a id="follow" value="{{ video.user.id }}" class="btn btn-success">
+                        <a id="follow" value="{{ video.user.id }}" class="">
                           <img src="/img/follow.png" alt="Bestfootball follow pictogram" style="width:30px;"/>
                           <i class="glyphicon glyphicon-ok"></i>
                           {{ 'Follow me'|trans }}! 
                         </a>
                         <!-- Button to unfollow the user -->
-                        <a id="unfollow" value="{{ video.user.id }}" class="btn btn-success">
+                        <a id="unfollow" value="{{ video.user.id }}" class="">
                           <img src="/img/unfollow.png" alt="Bestfootball follow pictogram" style="width:30px;"/>
                         </a>
                         <!-- Button to duel the user -->
-                        <a href="{{ path('bf_site_duel_create', {'username': video.user.username }) }}" class="btn btn-success">
+                        <a href="{{ path('bf_site_duel_create', {'username': video.user.username }) }}" class="">
                           <img src="/img/duel.png" alt="Bestfootball follow pictogram" style="width:30px;"/>
                         </a>
                       {% endif %}
                     {% endif %}
-
-
-
 
                     {% if video.type == 'challenge' and predict is not null %}
                       <a id="predict" class="btn btn-success">
                         <img src="/img/predict.png" alt="Bestfootball follow pictogram" style="width:30px;"/> 
                       </a>
                     {% endif %}
-                  </div>
+                    {% if video.type == 'challenge'%}
+                    <h3>share this video</h3>
+                    <button onclick="location.href='{{ path('bf_site_challengeview', {'id': video.challenge.id}) }}'" class="btn btn-success" type="submit" style="width:50%;">To the challenge!</button>
+                  {% endif %}
+
                 </div><!--
               --><div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 vcenter row">
                   <p>
                     {{ video.description }}
                   </p>
-                  {% if video.type == 'challenge'%}
-                    <p>Challenge: {{ video.challenge.title }}</p>
-                    <button onclick="location.href='{{ path('bf_site_challengeview', {'id': video.challenge.id}) }}'" class="btn btn-success" type="submit" style="width:50%;">To the challenge!</button>
-                  {% endif %}
+                
+                    <h3>share this video</h3>
+                   
                     <!--facebook share button -->
                     <div class="fb-share-button" data-href="http://bestfootball.fr/view/{{video.id}}" data-layout="button"></div>
 
