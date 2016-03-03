@@ -16,8 +16,20 @@ h1 {
     font-size: 50px;
 }
 
+.brandname{
+    background: url("/img/logo.png") left no-repeat transparent;
+    background-size: 25px 25px;
+    padding-left: 25px;
+}
+
 a,p,button{
     font-family: Helvetica;
+}
+a{
+    color:black;
+}
+a:hover{
+    color:black;
 }
 body{
     overflow-x: hidden;
@@ -275,7 +287,7 @@ border-radius:10px;
     padding-top: 50px;
 }
 .info{
-    min-height:50vh;
+    min-height:70vh;
     background-color: #FAFAFA;
 }
 .rank{

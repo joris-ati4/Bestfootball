@@ -41,7 +41,14 @@
             {# the description #}
             <div style="width:100%;background-color:white;margin-bottom:20px;padding:10px 10px;min-height:200px;">
               <div class="row">
-                <h1 style="font-size:35px;margin-left:15px;">{{ video.title }}</h1>
+                {% if video.type == 'freestyle' %}
+                  <h1 style="font-size:35px;margin-left:15px;">{{ video.title }}</h1>
+                {% else %}
+                  <h1 style="font-size:35px;margin-left:15px;">{{ video.challenge.title }}</h1>
+                {% endif %}
+
+
+
                 <p style="margin-left:15px;">{{ video.date|date('d-m-Y')}}</p>
 
 
@@ -59,17 +66,17 @@
                         
                         <!-- Button to follow the user -->
                         <a id="follow" value="{{ video.user.id }}" class="btn btn-success">
+                          <img src="/img/follow.png" alt="Bestfootball follow pictogram" style="width:30px;"/>
                           <i class="glyphicon glyphicon-ok"></i>
                           {{ 'Follow me'|trans }}! 
                         </a>
-
+                        <!-- Button to unfollow the user -->
                         <a id="unfollow" value="{{ video.user.id }}" class="btn btn-success">
-                          <i class="glyphicon glyphicon-ok"></i>
-                             {{ 'Followed'|trans }}! 
+                          <img src="/img/unfollow.png" alt="Bestfootball follow pictogram" style="width:30px;"/>
                         </a>
+                        <!-- Button to duel the user -->
                         <a href="{{ path('bf_site_duel_create', {'username': video.user.username }) }}" class="btn btn-success">
-                          <i class="glyphicon glyphicon-ok"></i>
-                             {{ 'Duel me'|trans }}!
+                          <img src="/img/duel.png" alt="Bestfootball follow pictogram" style="width:30px;"/>
                         </a>
                       {% endif %}
                     {% endif %}
@@ -79,8 +86,7 @@
 
                     {% if video.type == 'challenge' and predict is not null %}
                       <a id="predict" class="btn btn-success">
-                        <i class="glyphicon glyphicon-ok"></i>
-                        {{ 'Predict'|trans }}! 
+                        <img src="/img/predict.png" alt="Bestfootball follow pictogram" style="width:30px;"/> 
                       </a>
                     {% endif %}
                   </div>

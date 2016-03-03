@@ -2,7 +2,23 @@
 		<div class="row">
 			<a href="{{ path('bf_site_video', { 'id': video.id }) }}">
 	        	<img src="/uploads/videos/thumbnail/{{ video.id }}.jpg" alt="{{ video.thumbAlt }}"  style="max-width:90%;max-height:150px;"/>
-	        	<p style="text-align:left;">{{ video.title }}</br><a href="{{ path('bf_site_profile', { 'username': video.user.username }) }}">{{ video.user.username }}</a></p>
+
+	        	{% if video.type == 'freestyle' %}
+                  <p style="font-size:35px;margin-left:15px;">{{ video.title }}</p>
+                {% else %}
+                  <p style="font-size:35px;margin-left:15px;">{{ video.challenge.title }}</p>
+                {% endif %}
+
+                {% if video.repetitions > video.challenge.six %}
+		            <h5>{{'Legend'|trans }}</h5> <p>{{ video.repetitions }}X</p>
+		        {% elseif video.repetitions == video.challenge.six %}
+		          	<h5>{{'Expert'|trans }}</h5><p>{{ video.repetitions }}X</p>
+		        {% else %}
+		          	<h5>Points : {{ video.score }}</h5><p>{{ video.repetitions }}X</p>
+		        {% endif %}
+
+
+	        	<p><a href="{{ path('bf_site_profile', { 'username': video.user.username }) }}">{{ video.user.username }}</a></p>
         	</a>
     	</div>
     </div>
