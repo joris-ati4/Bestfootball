@@ -319,6 +319,13 @@ border-radius:10px;
 }
 
 
+
+.titleblock{
+    height:33px;
+    width: 100%; 
+    background-color: #FFF;
+}
+
 .titleline {
    width: 100%; 
    text-align: center; 
