@@ -1,7 +1,15 @@
 <div class="followtabback">
-  <div class="followtitle text-center">
-    <h3 style="color:white;">Following</h3>
+
+  <div style="width: 100%; height: 21px; border-bottom: 1px solid #95cd36; text-align: center;background-color:#FFF;">
+    <span style="font-size: 27px; background-color: #FFF; padding: 0 10px;color:#95cd36;">
+      Following <!--Padding is optional-->
+    </span>
   </div>
+  <div style="width: 100%; height: 15px;background-color:#FFF;">
+  </div>
+
+
+
   <div class="followcontent">
     {% for follow in listFollows %}
       <a href="{{ path('bf_site_profile', { 'username': follow.following.username }) }}">
