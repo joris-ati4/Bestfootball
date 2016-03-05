@@ -18,11 +18,13 @@ h1 {
 
 
 .imagereactive{
-    width:20%;
+    max-width:20%;
+    max-height: 60px;
 }
 
 .imagereactive:hover{
-    width:30%;
+    max-width:30%;
+    max-height: 90px;
 }
 
 .brandname{
