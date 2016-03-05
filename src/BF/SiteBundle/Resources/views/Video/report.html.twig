@@ -10,9 +10,17 @@
     <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">
   {# This is the content section of our page, here the user will be able to view all the challenges with the different niveau's! #}
     <div class="challengedescription row" style="margin-bottom:100px;">
-      <div class="challengetitle">
-        <h3 class="text-center" style="color:white;">{{ 'Report a video'|trans }}</h3>
+      <div style="width: 100%; height: 21px; border-bottom: 1px solid #95cd36; text-align: center;background-color:#FFF;">
+        <span style="font-size: 27px; background-color: #FFF; padding: 0 10px;color:#95cd36;">
+          {{ 'Report a video'|trans }} <!--Padding is optional-->
+        </span>
       </div>
+      <div style="width: 100%; height: 15px;background-color:#FFF;">
+      </div>
+
+
+
+
       <div class="challengecontent" style="min-height:440px;">
         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 vcenter">
          <img src="/uploads/videos/thumbnail/{{ video.id }}.jpg" alt="{{ video.thumbAlt }}" class="img-responsive"/>

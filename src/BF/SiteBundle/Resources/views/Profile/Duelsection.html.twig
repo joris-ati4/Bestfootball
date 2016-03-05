@@ -1,8 +1,14 @@
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vcenter row" style="margin-bottom:20px;">
   <div class="challengedescription">
-    <div class="challengetitle">
-        <h3 class="text-center" style="color:white;">{{'My Duels'|trans }}</h3>
-    </div>
+
+    <!--Title with line -->
+      <div style="width: 100%; height: 21px; border-bottom: 1px solid #95cd36; text-align: center;background-color:#FFF;">
+        <span style="font-size: 27px; background-color: #FFF; padding: 0 10px;color:#95cd36;">
+          {{'My Duels'|trans }}<!--Padding is optional-->
+        </span>
+      </div>
+      <div style="width: 100%; height: 15px;background-color:#FFF;">
+      </div>
     <div class="challengecontent">
       {% if lists.listDuels|length > 0 %}
         {% for duel in lists.listDuels %}
