@@ -16,6 +16,15 @@ h1 {
     font-size: 50px;
 }
 
+
+.imagereactive{
+    width:20%;
+}
+
+.imagereactive:hover{
+    width:30%;
+}
+
 .brandname{
     background: url("/img/logo.png") left no-repeat transparent;
     background-size: 25px 25px;

@@ -63,40 +63,42 @@
                   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     {% if follower is not null %}
                       {% if video.user.username != follower.user.username and video.user.username != app.user.username %}
-                        <!-- Button to duel the user -->
-                        
+                                              
                         <!-- Button to follow the user -->
-                        <a id="follow" value="{{ video.user.id }}" class="">
-                          <img src="/img/follow.png" alt="Bestfootball follow pictogram" style="width:30%;"/>
-                          <i class="glyphicon glyphicon-ok"></i>
-                          {{ 'Follow me'|trans }}! 
+                        <a id="follow" value="{{ video.user.id }}" class="" data-toggle="tooltip" title="Follow me!">
+                          <img src="/img/follow.png" alt="Bestfootball follow pictogram" class="imagereactive"/>
                         </a>
                         <!-- Button to unfollow the user -->
-                        <a id="unfollow" value="{{ video.user.id }}" class="">
-                          <img src="/img/unfollow.png" alt="Bestfootball follow pictogram" style="width:30%;"/>
+                        <a id="unfollow" value="{{ video.user.id }}" class="" data-toggle="tooltip" title="Unfollow">
+                          <img src="/img/unfollow.png" alt="Bestfootball follow pictogram" class="imagereactive"/>
                         </a>
                         <!-- Button to duel the user -->
-                        <a href="{{ path('bf_site_duel_create', {'username': video.user.username }) }}" class="">
-                          <img src="/img/duel.png" alt="Bestfootball follow pictogram" style="width:30%;"/>
+                        <a href="{{ path('bf_site_duel_create', {'username': video.user.username }) }}" class="" data-toggle="tooltip" title="Duel me!">
+                          <img src="/img/duel.png" alt="Bestfootball follow pictogram" class="imagereactive"/>
                         </a>
                       {% endif %}
                     {% endif %}
 
                     {% if video.type == 'challenge' and predict is not null %}
                       <a id="predict">
-                        <img src="/img/predict.png" alt="Bestfootball follow pictogram" style="width:30%;"/> 
+                        <img src="/img/predict.png" alt="Bestfootball follow pictogram" class="imagereactive" data-toggle="tooltip" title="Predict for me to win the challenge!"/> 
                       </a>
                     {% endif %}
-                    {% if video.type == 'challenge'%}
-                    <h3>share this video</h3>
-                    <button onclick="location.href='{{ path('bf_site_challengeview', {'id': video.challenge.id}) }}'" class="btn btn-success" type="submit" style="width:50%;">To the challenge!</button>
-                  {% endif %}
+                    
                 </div>
                 </div><!--
               --><div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 vcenter row">
+
+
+
                   <p>
-                    {{ video.description }}
+                    Description:</br>{{ video.description }}
                   </p>
+
+                  {% if video.type == 'challenge'%}
+                    <h3></h3>
+                    <button onclick="location.href='{{ path('bf_site_challengeview', {'id': video.challenge.id}) }}'" class="btn btn-success" type="submit" style="width:50%;">To the challenge!</button>
+                  {% endif %}
                 
                     <h3>share this video</h3>
                    
