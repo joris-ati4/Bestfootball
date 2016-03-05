@@ -317,6 +317,25 @@ border-radius:10px;
     background-size: cover;    
     padding-top: 50px;
 }
+
+
+.titleline {
+   width: 100%; 
+   text-align: center; 
+   border-bottom: 1px solid #95cd36; 
+   line-height: 0.1em;
+   margin: 10px 0 20px;
+} 
+
+.titleline>span { 
+    background:#fff; 
+    padding:0 10px;
+    color:#95cd36;
+}
+
+
+
+
 .challengetitle{
     width: 100%;
     height: 30px;
