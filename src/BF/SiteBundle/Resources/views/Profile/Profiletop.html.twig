@@ -17,7 +17,7 @@
 
         <!-- action button under the profile -->
           <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="height:50px;">
-            {% if follower is not null %}
+            {% if follow is not null %}
               {% if user.username != app.user.username %}                  
                 <!-- Button to follow the user -->
                 <a id="follow" value="{{ video.user.id }}" class="">
