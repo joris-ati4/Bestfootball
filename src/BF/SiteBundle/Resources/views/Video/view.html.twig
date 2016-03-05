@@ -60,7 +60,7 @@
                     <p style="font-size:14px;"><a href="{{ path('bf_site_profile', { 'username': video.user.username }) }}" style=""> {{ video.user.username }}</a></p>
                   </div>
                   <!-- the action buttons -->
-                  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="height:50px;">
                     {% if follower is not null %}
                       {% if video.user.username != follower.user.username and video.user.username != app.user.username %}
                                               
