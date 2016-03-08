@@ -13,12 +13,12 @@
       {% endif %}
     {% endfor %}
     <li class="dropdown">
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="padding: 5px 5px;">
         {% if unwatched > 0 %}
-          <img src="/img/picto_4.png" alt="unread notifications on bestfootball" style="max-width:25px;max-height:20px;">
-          <span class="badge" style="background-color:red;">{{ unwatched }}</span>
+          <img src="/img/picto_4_notif.png" alt="unread notifications on bestfootball" style="max-width:40px;max-height:40px;">
+          <span style="color:white;position:absolute;top:10px;left:22px;">{{ unwatched }}</span>
         {% else %}
-          <img src="/img/picto_4.png" alt="notifications on bestfootball" style="max-width:25px;max-height:20px;">
+          <img src="/img/picto_4.png" alt="notifications on bestfootball" style="max-width:40px;max-height:40px;">
         {% endif %}
           <span class="caret"></span></a>
       <ul class="dropdown-menu">
@@ -31,7 +31,7 @@
       </ul>
     </li>
     <li class="dropdown">
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="{{ app.user.media.path }}" alt="{{ app.user.media.name }}" style="max-width:25px;max-height:20px;"><span class="caret"></span></a>
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="padding: 5px 5px;"><img src="{{ app.user.media.path }}" alt="{{ app.user.media.name }}" style="max-width:40px;max-height:40px;border-radius:50%;"><span class="caret"></span></a>
       <ul class="dropdown-menu">
         <li><a href="{{ path('bf_site_profile', { 'username': app.user.username }) }}">{{ 'My Profile'|trans }}</a></li>
         <li><a href="{{ path('bf_site_videos') }}">{{ 'My Videos'|trans }}</a></li>
