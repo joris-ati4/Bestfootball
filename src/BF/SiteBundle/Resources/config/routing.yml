@@ -301,3 +301,8 @@ bf_site_api_comment_add:
     path: /home/comment/add
     defaults: { _controller: BFSiteBundle:Comment:create }
     methods:  [POST]
+
+bf_site_api_comment_del:
+    path: /home/comment/del
+    defaults: { _controller: BFSiteBundle:Comment:delete }
+    methods:  [POST]

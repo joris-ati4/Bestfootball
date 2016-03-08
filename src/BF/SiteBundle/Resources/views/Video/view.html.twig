@@ -144,6 +144,11 @@
                           <div class="bubble">
                             <p style="color:white;">{{ comment.content }}</p>
                             <p style="color:white;font-size:10px;">{{ comment.date|date("d/m/Y - H:i:s") }}</p>
+
+                            <!-- if the user is the commentor or the video owner we show the delete button -->
+                            {% if app.user.id == comment.user.id or app.user.id == video.user.id %}
+                              <span id="commentDelete" class="glyphicon glyphicon-remove delete" data-comment="{{ comment.id }}" aria-hidden="true"     style="top:7px;position: absolute;right:7px;" data-placement="right" data-toggle="tooltip" title="Delete this comment!"></span>
+                            {% endif %}
                           </div>
                         </div>
                       </div>
@@ -306,6 +311,25 @@
       });
   });                         
 
+  $("#commentDelete").click(function(){
+    var commentId = $(this).data('comment');
+    var DATA = 'commentId=' + commentId;
+
+    $.ajax({
+        type: "POST",
+        url: "{{ path('bf_site_api_comment_del')}}",
+              data: DATA,
+              cache: false,
+              success: function(){
+                location.reload();
+              }
+      });
+  });
+</script>
+<script type="text/javascript">
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
 </script>
 
 {% endblock %}
