@@ -126,9 +126,10 @@
             </div>
             <!-- End of the description -->
             <!--Begin of the comment section -->
-              {% for comment in listComments %}
                   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <div class="row">
+                    
+                    {% for comment in listComments %}
+                      <div class="row" style="margin-top:10px;">
                       <!-- the profile picture + link to the profile-->
                       <div class="col-xs-4 col-sm-3 col-md-2 col-lg-2 vcenter">
                         <div class="row">
@@ -142,14 +143,37 @@
                         <div class="row">
                           <div class="bubble">
                             <p style="color:white;">{{ comment.content }}</p>
-                            <p style="color:white;font-size:10px;">{{ comment.date|date("d/m/Y - H:i:s") }}
+                            <p style="color:white;font-size:10px;">{{ comment.date|date("d/m/Y - H:i:s") }}</p>
                           </div>
                         </div>
                       </div>
-                     
-                    </div>
+                      </div>
+                    {% endfor %}
+                    <!-- section for adding comments -->
+                    {% if app.user %}
+                      <div class="row" style="margin-top:10px;">
+                      <!-- the profile picture + link to the profile-->
+                      <div class="col-xs-4 col-sm-3 col-md-2 col-lg-2 vcenter">
+                        <div class="row">
+                            <img src="{{ app.user.media.path }}" alt="{{ app.user.media.path }}" style="width:90%;border-radius:50%;"/>
+                        </div>
+                      </div><!--
+                    --><div class="col-xs-8 col-sm-9 col-md-10 col-lg-10 vcenter">
+                    <!--the comment bubble -->
+                        <div class="row">
+                          <div class="bubble">
+                            <textarea id="addComment" placeholder="Type here your comment..." style="width:80%;"></textarea>
+                            <button id="commentSubmit" class="btn btn-success inline pull-right" style="width:18%;height:46px;">Send</button>
+                          </div>
+                        </div>
+                      </div>
+                       </div>
+                    {% else %}
+                        
+                    {% endif %}
+
+                   
                   </div>
-              {% endfor %}
             <!-- End of the comment section -->
 
           </div>
@@ -264,5 +288,24 @@
   });
 </script>
 {% endif %}
+
+<!-- Script for submitting comments -->
+<script type="text/javascript">
+  $("#commentSubmit").click(function(){
+    var content = $('#addComment').val();
+    var DATA = 'content=' + content + '&videoId=' + {{ video.id }};
+
+    $.ajax({
+        type: "POST",
+        url: "{{ path('bf_site_api_comment_add')}}",
+              data: DATA,
+              cache: false,
+              success: function(){
+                location.reload();
+              }
+      });
+  });                         
+
+</script>
 
 {% endblock %}

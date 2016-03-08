@@ -296,3 +296,8 @@ bf_site_api_predict:
     path: /home/predictUser
     defaults: { _controller: BFSiteBundle:Ajax:predict }
     methods:  [POST]
+
+bf_site_api_comment_add:
+    path: /home/comment/add
+    defaults: { _controller: BFSiteBundle:Comment:create }
+    methods:  [POST]
