@@ -30,7 +30,7 @@ h1 {
 .brandname{
     background: url("/img/logo.png") left no-repeat transparent;
     background-size: 35px 35px;
-    padding-left: 35px;
+    padding-left: 45px;
 }
 
 a,p,button{
