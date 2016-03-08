@@ -28,6 +28,9 @@
             <li role="separator" class="divider"></li>
           {% endif %}
         {% endfor %}
+        {% if unwatched == 0 %}
+          <p>You don't have any notifications</p>
+        {% endif %}
       </ul>
     </li>
     <li class="dropdown">
