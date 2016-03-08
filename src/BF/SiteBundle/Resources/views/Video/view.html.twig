@@ -62,7 +62,7 @@
                   <!-- the action buttons -->
                   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="height:50px;">
                     {% if follower is not null %}
-                      {% if video.user.username != follower.user.username and video.user.username != app.user.username %}
+                      {% if video.user.username != follower.username and video.user.username != app.user.username %}
                                               
                         <!-- Button to follow the user -->
                         <a id="follow" value="{{ video.user.id }}" class="">
@@ -125,6 +125,33 @@
               </div>
             </div>
             <!-- End of the description -->
+            <!--Begin of the comment section -->
+              {% for comment in listComments %}
+                  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="row">
+                      <!-- the profile picture + link to the profile-->
+                      <div class="col-xs-4 col-sm-3 col-md-2 col-lg-2 vcenter">
+                        <div class="row">
+                          <a href="{{ path( 'bf_site_profile', {'username' : comment.user.username })}}">
+                            <img src="{{ comment.user.media.path }}" alt="{{ comment.user.media.path }}" style="width:90%;border-radius:50%;"/>
+                          </a>
+                        </div>
+                      </div><!--
+                    --><div class="col-xs-8 col-sm-9 col-md-10 col-lg-10 vcenter">
+                    <!--the comment bubble -->
+                        <div class="row">
+                          <div class="bubble">
+                            <p style="color:white;">{{ comment.content }}</p>
+                            <p style="color:white;font-size:10px;">{{ comment.date|date("d/m/Y - H:i:s") }}
+                          </div>
+                        </div>
+                      </div>
+                     
+                    </div>
+                  </div>
+              {% endfor %}
+            <!-- End of the comment section -->
+
           </div>
         </div>
         <!-- End of the video section -->

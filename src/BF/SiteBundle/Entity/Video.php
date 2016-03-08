@@ -47,6 +47,11 @@ class Video
     private $duel;
 
     /**
+    * @ORM\OneToMany(targetEntity="BF\SiteBundle\Entity\Comment", mappedBy="video")
+    */
+    private $comments;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")
@@ -601,5 +606,39 @@ class Video
     public function getChallenge()
     {
         return $this->challenge;
+    }
+
+    /**
+     * Add comment
+     *
+     * @param \BF\SiteBundle\Entity\Comment $comment
+     *
+     * @return Video
+     */
+    public function addComment(\BF\SiteBundle\Entity\Comment $comment)
+    {
+        $this->comments[] = $comment;
+
+        return $this;
+    }
+
+    /**
+     * Remove comment
+     *
+     * @param \BF\SiteBundle\Entity\Comment $comment
+     */
+    public function removeComment(\BF\SiteBundle\Entity\Comment $comment)
+    {
+        $this->comments->removeElement($comment);
+    }
+
+    /**
+     * Get comments
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getComments()
+    {
+        return $this->comments;
     }
 }

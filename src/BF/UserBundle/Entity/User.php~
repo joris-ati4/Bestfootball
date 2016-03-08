@@ -12,7 +12,11 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class User extends BaseUser
 {
-   
+    /**
+    * @ORM\OneToMany(targetEntity="BF\SiteBundle\Entity\Comment", mappedBy="user")
+    */
+    private $comments;
+
     /**
     * @ORM\OneToMany(targetEntity="BF\SiteBundle\Entity\Report", mappedBy="user")
     */
@@ -674,5 +678,29 @@ class User extends BaseUser
     public function getDuelWins()
     {
         return $this->duelWins;
+    }
+
+    /**
+     * Set media
+     *
+     * @param \BF\SiteBundle\Entity\Media $media
+     *
+     * @return User
+     */
+    public function setMedia(\BF\SiteBundle\Entity\Media $media)
+    {
+        $this->media = $media;
+
+        return $this;
+    }
+
+    /**
+     * Get media
+     *
+     * @return \BF\SiteBundle\Entity\Media
+     */
+    public function getMedia()
+    {
+        return $this->media;
     }
 }

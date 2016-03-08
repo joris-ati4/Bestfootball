@@ -68,6 +68,9 @@ class VideoController extends Controller
       	$random = $this->container->get('bf_site.randomvideos');
       	$listVideos = $random->randomize($video);
 
+      	//getting the comments
+      	$listComments = $video->getComments();
+
 	    if (null === $video) {
 	      throw new NotFoundHttpException("La video n'existe pas.");
 	    }
@@ -77,6 +80,7 @@ class VideoController extends Controller
 	      'follow' => $follow,
 	      'predict' => $predict,
 	      'follower' => $follower,
+	      'listComments' => $listComments,
 	    ));
     }
     public function uploadAction(request $request, $id, $type)

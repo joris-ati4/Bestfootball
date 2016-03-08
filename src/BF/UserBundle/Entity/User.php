@@ -12,7 +12,11 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class User extends BaseUser
 {
-   
+    /**
+    * @ORM\OneToMany(targetEntity="BF\SiteBundle\Entity\Comment", mappedBy="user")
+    */
+    private $comments;
+
     /**
     * @ORM\OneToMany(targetEntity="BF\SiteBundle\Entity\Report", mappedBy="user")
     */
@@ -698,5 +702,39 @@ class User extends BaseUser
     public function getMedia()
     {
         return $this->media;
+    }
+
+    /**
+     * Add comment
+     *
+     * @param \BF\SiteBundle\Entity\Comment $comment
+     *
+     * @return User
+     */
+    public function addComment(\BF\SiteBundle\Entity\Comment $comment)
+    {
+        $this->comments[] = $comment;
+
+        return $this;
+    }
+
+    /**
+     * Remove comment
+     *
+     * @param \BF\SiteBundle\Entity\Comment $comment
+     */
+    public function removeComment(\BF\SiteBundle\Entity\Comment $comment)
+    {
+        $this->comments->removeElement($comment);
+    }
+
+    /**
+     * Get comments
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getComments()
+    {
+        return $this->comments;
     }
 }
