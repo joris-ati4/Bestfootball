@@ -25,12 +25,12 @@
                   <img src="/img/follow.png" alt="Bestfootball follow pictogram" class="imagereactive" data-placement="top" data-toggle="tooltip" title="Follow me!"/>
                 </a>
                 <!-- Button to unfollow the user -->
-                <a id="unfollow" value="{{ video.user.id }}" class="" data-placement="top" data-toggle="tooltip" title="Unfollow">
-                  <img src="/img/unfollow.png" alt="Bestfootball follow pictogram" class="imagereactive"/>
+                <a id="unfollow" value="{{ video.user.id }}" class="" >
+                  <img src="/img/unfollow.png" alt="Bestfootball follow pictogram" class="imagereactive" data-placement="top" data-toggle="tooltip" title="Unfollow"/>
                 </a>
                 <!-- Button to duel the user -->
-                <a href="{{ path('bf_site_duel_create', {'username': video.user.username }) }}" class="" data-placement="top" data-toggle="tooltip" title="Duel me!">
-                  <img src="/img/duel.png" alt="Bestfootball follow pictogram" class="imagereactive"/>
+                <a href="{{ path('bf_site_duel_create', {'username': video.user.username }) }}" class="" d>
+                  <img src="/img/duel.png" alt="Bestfootball follow pictogram" class="imagereactive" ata-placement="top" data-toggle="tooltip" title="Duel me!"/>
                 </a>
               {% endif %}
             {% endif %}
