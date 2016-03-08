@@ -403,7 +403,7 @@ border-radius:10px;
 position: relative;
 width: 100%;
 min-height: 80px;
-padding: 15px;
+padding: 20px;
 background: #95cd36;
 -webkit-border-radius: 15px;
 -moz-border-radius: 15px;
@@ -423,3 +423,16 @@ z-index: 1;
 left: -15px;
 top: 25px;
 }
+
+.bubble > .delete:hover{
+    color:red;
+    cursor: pointer;
+}
+
+.usersearch{
+    width:130px;
+}
+.usersearch>input:focus{
+    width:170px;
+}
+

@@ -428,3 +428,11 @@ top: 25px;
     color:red;
     cursor: pointer;
 }
+
+.usersearch{
+    width:130px;
+}
+.usersearch>.form-control:focus{
+    width:170px;
+}
+
