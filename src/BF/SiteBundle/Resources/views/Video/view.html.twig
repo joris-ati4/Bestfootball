@@ -4,6 +4,9 @@
 	<meta name="description" content="{{ video.description }}">
 	<meta name="keywords" content="soccer,football, {{ video.title }}, ">
 
+
+  <!--All the metatags for facebook -->
+
   <meta property="og:url"                content="http://bestfootball.fr/view/{{video.id}}" />
   <meta property="og:type"               content="video" />
   <meta property="og:title"              content="{{ video.title }}  on bestfootball" />
@@ -19,6 +22,18 @@
   <meta property="og:image"         content="http://www.bestfootball.fr/uploads/videos/thumbnail/{{ video.id }}.jpg" />
   <meta property="fb:app_id" content="694354014040156" />
   
+  <!--All the metatags for twitter -->
+
+  <meta name="twitter:card" content="player">
+  <meta name="twitter:site" content="@Bestfootball_10">
+  <meta name="twitter:title" content="Sample Player Card">
+  <meta name="twitter:description" content="This is a sample video. When you implement, make sure all links are secure.">
+  <meta name="twitter:image" content="http://www.bestfootball.fr/uploads/videos/thumbnail/{{ video.id }}.jpg">
+  <meta name="twitter:player" content="https://yoursite.com/container.html">
+  <meta name="twitter:player:width" content="480">
+  <meta name="twitter:player:height" content="480">
+  <meta name="twitter:player:stream" content="http://www.bestfootball.fr/uploads/videos/{{ video.source }}">
+  <meta name="twitter:player:stream:content_type" content="video/mp4">
   
 {% endblock %}
 
