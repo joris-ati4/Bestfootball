@@ -515,4 +515,13 @@ class VideoController extends Controller
 	      'listVideos'   => $listVideos,
 	    ));
     }
+    public function twitterAction($id)
+    {
+    	$em = $this->getDoctrine()->getManager();
+    	$video = $em->getRepository('BFSiteBundle:Video')->find($id);
+	   
+	    return $this->render('BFSiteBundle:Video:twitter.html.twig', array(
+	      'video' => $video
+	    ));
+    }
 }

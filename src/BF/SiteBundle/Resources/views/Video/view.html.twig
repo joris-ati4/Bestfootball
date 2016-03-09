@@ -29,7 +29,7 @@
   <meta name="twitter:title" content="Sample Player Card">
   <meta name="twitter:description" content="This is a sample video. When you implement, make sure all links are secure.">
   <meta name="twitter:image" content="http://www.bestfootball.fr/uploads/videos/thumbnail/{{ video.id }}.jpg">
-  <meta name="twitter:player" content="https://yoursite.com/container.html">
+  <meta name="twitter:player" content="http://www.bestfootball.fr/video/twitter/{{ video.id }}">
   <meta name="twitter:player:width" content="480">
   <meta name="twitter:player:height" content="480">
   <meta name="twitter:player:stream" content="http://www.bestfootball.fr/uploads/videos/{{ video.source }}">
@@ -119,17 +119,17 @@
                    
                     <!--facebook share button -->
                     <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fbestfootball.fr/view/{{video.id}}" class="popup">
-                      <img src="/img/share/facebook.png" alt="Bestfootball facebook share button" />
+                      <img src="/img/share/facebook.png" alt="Bestfootball facebook share button" style="width:45px;"/>
                     </a>
 
                     <!-- twitter share button-->
                     <a class="popup" href="https://twitter.com/share?url=http://bestfootball.fr/view/{{video.id}}&via=Bestfootball_10&related=viinsky360&hashtags=Bestfootball%2CVinskyDefiEspaceFoot&text={{ video.title }}%20by%20{{ video.user.username }}%20on%20bestfootball">
-                      <img src="/img/share/twitter.png" alt="Bestfootball twitter share button" />
+                      <img src="/img/share/twitter.png" alt="Bestfootball twitter share button" style="width:45px;"/>
                     </a>
 
                     <!-- google+ share button-->
                     <a href="https://plus.google.com/share?url=http%3A%2F%2Fbestfootball.fr/view/{{video.id}}" class="popup">
-                      <img src="/img/share/google.png" alt="Bestfootball google+ share button" />
+                      <img src="/img/share/google.png" alt="Bestfootball google+ share button" style="width:45px;"/>
                     </a>
 
 

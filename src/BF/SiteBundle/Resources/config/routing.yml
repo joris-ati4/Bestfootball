@@ -119,6 +119,13 @@ bf_site_video_modify:
     requirements:
         id: -?\d+
     methods:  [GET,POST]
+
+bf_site_video_twitter:
+    path:     /video/twitter/{id}
+    defaults: { _controller: BFSiteBundle:Video:twitter }
+    requirements:
+        id: -?\d+
+    methods:  [GET,POST]
 #this section does all the routes for the profile section
 
 bf_site_profile:
