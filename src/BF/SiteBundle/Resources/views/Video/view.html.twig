@@ -148,7 +148,23 @@
                         <div class="row" style="height:28px;">
                             <div class="bar-wrap">
                                 <div class="progress no-extra-space">
-                                  {% set percentage = (video.repetitions/video.challenge.six)*100 %}
+                                  <!--calcul du pourcentage pour les points -->
+                                  {% if video.score == 0 %}
+                                    {% set percentage = (((video.challenge.one - 0 )/video.repetitions) * 16.6) + 0 %}
+                                  {% elseif video.score == 50 %}
+                                    {% set percentage = (((video.repetitions - video.challenge.one )/(video.challenge.two - video.challenge.one )) * 16.6) + 16.6 %}
+                                  {% elseif video.score == 100 %}
+                                    {% set percentage = (((video.repetitions - video.challenge.two )/(video.challenge.three - video.challenge.two )) * 16.6) + 33.2 %}
+                                  {% elseif video.score == 150 %}
+                                    {% set percentage = (((video.repetitions - video.challenge.three )/(video.challenge.four - video.challenge.three )) * 16.6) + 49.8 %}
+                                  {% elseif video.score == 200 %}
+                                    {% set percentage = (((video.repetitions - video.challenge.four )/(video.challenge.five - video.challenge.four )) * 16.6) + 66.4 %}
+                                  {% elseif video.score == 250 %}
+                                    {% set percentage = (((video.repetitions - video.challenge.five )/(video.challenge.six - video.challenge.five )) * 16.6) + 83.0 %}
+                                  {% elseif video.score == 300 %}
+                                    {% set percentage = 100 %}
+                                  {% endif %}
+
                                   <div class="progress-bar" role="progressbar" aria-valuenow="{{ percentage }}" aria-valuemin="0" aria-valuemax="{{ percentage }}" style="width:{{ percentage }}%;background-color:#87bb2f;">
                                     <span style="">{{ video.repetitions }} X</span>
                                   </div>
