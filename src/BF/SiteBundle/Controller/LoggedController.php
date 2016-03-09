@@ -20,7 +20,7 @@ class LoggedController extends Controller
         $numberfollowings = count($listFollowings); //number of people the user is following
         $numberfollowers = count($listFollowers); //number of followers
 
-        if($numberfollowings > 5){
+        if($numberfollowings >= 5){
             $k = 5;
             $listVideosFollows =array();
             $i = array_rand($listFollowings, $k);

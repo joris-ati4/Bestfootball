@@ -103,24 +103,21 @@
                     <h3>share this video</h3>
                    
                     <!--facebook share button -->
-                    <div class="fb-share-button" data-href="http://bestfootball.fr/view/{{video.id}}" data-layout="button"></div>
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fbestfootball.fr/view/{{video.id}}" class="popup">
+                      <img src="/img/share/facebook.png" alt="Bestfootball facebook share button" />
+                    </a>
 
                     <!-- twitter share button-->
-                    <a class="twitter-share-button"
-                      href="https://twitter.com/share"
-                      data-url="http://bestfootball.fr/view/{{video.id}}"
-                      data-via="Bestfootball_10"
-                      data-related="viinsky360"
-
-
-                      data-hashtags="Bestfootball,VinskyDefiEspaceFoot"
-
-
-
-
-                      data-text="{{ video.title }} by {{ video.user.username }} on bestfootball">
-                    Tweet
+                    <a class="popup" href="https://twitter.com/share?url=http://bestfootball.fr/view/{{video.id}}&via=Bestfootball_10&related=viinsky360&hashtags=Bestfootball%2CVinskyDefiEspaceFoot&text={{ video.title }}%20by%20{{ video.user.username }}%20on%20bestfootball">
+                      
                     </a>
+
+                    <!-- google+ share button-->
+                    <a href="https://plus.google.com/share?url=http%3A%2F%2Fbestfootball.fr/view/{{video.id}}" class="popup">
+                      <img src="/img/share/google.png" alt="Bestfootball google+ share button" />
+                    </a>
+
+
                 </div>
               </div>
             </div>
@@ -330,6 +327,27 @@
   $(function () {
     $('[data-toggle="tooltip"]').tooltip()
   })
+</script>
+
+<script>
+$(document).ready(function() {
+  $('.popup').click(function(event) {
+    var width  = 575,
+        height = 400,
+        left   = ($(window).width()  - width)  / 2,
+        top    = ($(window).height() - height) / 2,
+        url    = this.href,
+        opts   = 'status=1' +
+                 ',width='  + width  +
+                 ',height=' + height +
+                 ',top='    + top    +
+                 ',left='   + left;
+    
+    window.open(url, 'twitter', opts);
+ 
+    return false;
+  });
+});
 </script>
 
 {% endblock %}
