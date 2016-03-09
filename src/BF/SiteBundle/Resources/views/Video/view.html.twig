@@ -131,6 +131,23 @@
                         <img src="/img/predict.png" alt="Bestfootball follow pictogram" class="imagereactive"  data-placement="top" data-toggle="tooltip" title="Predict for me to win the challenge!"/> 
                       </a>
                     {% endif %}
+
+                    <h3>share this video</h3>
+                   
+                    <!--facebook share button -->
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fbestfootball.fr/view/{{video.id}}" class="popup">
+                      <img src="/img/share/facebook.png" alt="Bestfootball facebook share button" style="width:45px;"/>
+                    </a>
+
+                    <!-- twitter share button-->
+                    <a class="popup" href="https://twitter.com/share?url=https://bestfootball.fr/view/{{video.id}}&via=Bestfootball_10&related=viinsky360&hashtags=Bestfootball%2CVinskyDefiEspaceFoot&text={{ video.title }}%20by%20{{ video.user.username }}%20on%20bestfootball">
+                      <img src="/img/share/twitter.png" alt="Bestfootball twitter share button" style="width:45px;"/>
+                    </a>
+
+                    <!-- google+ share button-->
+                    <a href="https://plus.google.com/share?url=https%3A%2F%2Fbestfootball.fr/view/{{video.id}}" class="popup">
+                      <img src="/img/share/google.png" alt="Bestfootball google+ share button" style="width:45px;"/>
+                    </a>
                     
                 </div>
                 </div><!--
@@ -199,24 +216,7 @@
                     </div>
                   {% endif %}
                 
-                    <h3>share this video</h3>
-                   
-                    <!--facebook share button -->
-                    <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fbestfootball.fr/view/{{video.id}}" class="popup">
-                      <img src="/img/share/facebook.png" alt="Bestfootball facebook share button" style="width:45px;"/>
-                    </a>
-
-                    <!-- twitter share button-->
-                    <a class="popup" href="https://twitter.com/share?url=https://bestfootball.fr/view/{{video.id}}&via=Bestfootball_10&related=viinsky360&hashtags=Bestfootball%2CVinskyDefiEspaceFoot&text={{ video.title }}%20by%20{{ video.user.username }}%20on%20bestfootball">
-                      <img src="/img/share/twitter.png" alt="Bestfootball twitter share button" style="width:45px;"/>
-                    </a>
-
-                    <!-- google+ share button-->
-                    <a href="https://plus.google.com/share?url=https%3A%2F%2Fbestfootball.fr/view/{{video.id}}" class="popup">
-                      <img src="/img/share/google.png" alt="Bestfootball google+ share button" style="width:45px;"/>
-                    </a>
-
-
+      
                 </div>
               </div>
             </div>
