@@ -7,7 +7,7 @@
 
   <!--All the metatags for facebook -->
 
-  <meta property="og:url"                content="http://bestfootball.fr/view/{{video.id}}" />
+  <meta property="og:url"                content="https://bestfootball.fr/view/{{video.id}}" />
   <meta property="og:type"               content="video" />
   <meta property="og:title"              content="{{ video.title }}  on bestfootball" />
   {% if video.type == 'challenge' and predict is not null %}
@@ -15,11 +15,11 @@
   {% else %}
     <meta property="og:description"        content="{{ video.user.username }} video on Bestfootball." />         
   {% endif %}
-  <meta property="og:video"              content="http://www.bestfootball.fr/uploads/videos/{{ video.source }}" />
+  <meta property="og:video"              content="https://www.bestfootball.fr/uploads/videos/{{ video.source }}" />
   <meta property="og:video:type"         content="video/mp4" />
   <meta property="og:video:width"         content="640" />
   <meta property="og:video:height"         content="360" />
-  <meta property="og:image"         content="http://www.bestfootball.fr/uploads/videos/thumbnail/{{ video.id }}.jpg" />
+  <meta property="og:image"         content="https://www.bestfootball.fr/uploads/videos/thumbnail/{{ video.id }}.jpg" />
   <meta property="fb:app_id" content="694354014040156" />
   
   <!--All the metatags for twitter -->
@@ -28,11 +28,11 @@
   <meta name="twitter:site" content="@Bestfootball_10">
   <meta name="twitter:title" content="Sample Player Card">
   <meta name="twitter:description" content="This is a sample video. When you implement, make sure all links are secure.">
-  <meta name="twitter:image" content="http://www.bestfootball.fr/uploads/videos/thumbnail/{{ video.id }}.jpg">
-  <meta name="twitter:player" content="http://www.bestfootball.fr/video/twitter/{{ video.id }}">
+  <meta name="twitter:image" content="https://www.bestfootball.fr/uploads/videos/thumbnail/{{ video.id }}.jpg">
+  <meta name="twitter:player" content="https://www.bestfootball.fr/video/twitter/{{ video.id }}">
   <meta name="twitter:player:width" content="480">
   <meta name="twitter:player:height" content="480">
-  <meta name="twitter:player:stream" content="http://www.bestfootball.fr/uploads/videos/{{ video.source }}">
+  <meta name="twitter:player:stream" content="https://www.bestfootball.fr/uploads/videos/{{ video.source }}">
   <meta name="twitter:player:stream:content_type" content="video/mp4">
   
 {% endblock %}
@@ -118,17 +118,17 @@
                     <h3>share this video</h3>
                    
                     <!--facebook share button -->
-                    <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fbestfootball.fr/view/{{video.id}}" class="popup">
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fbestfootball.fr/view/{{video.id}}" class="popup">
                       <img src="/img/share/facebook.png" alt="Bestfootball facebook share button" style="width:45px;"/>
                     </a>
 
                     <!-- twitter share button-->
-                    <a class="popup" href="https://twitter.com/share?url=http://bestfootball.fr/view/{{video.id}}&via=Bestfootball_10&related=viinsky360&hashtags=Bestfootball%2CVinskyDefiEspaceFoot&text={{ video.title }}%20by%20{{ video.user.username }}%20on%20bestfootball">
+                    <a class="popup" href="https://twitter.com/share?url=https://bestfootball.fr/view/{{video.id}}&via=Bestfootball_10&related=viinsky360&hashtags=Bestfootball%2CVinskyDefiEspaceFoot&text={{ video.title }}%20by%20{{ video.user.username }}%20on%20bestfootball">
                       <img src="/img/share/twitter.png" alt="Bestfootball twitter share button" style="width:45px;"/>
                     </a>
 
                     <!-- google+ share button-->
-                    <a href="https://plus.google.com/share?url=http%3A%2F%2Fbestfootball.fr/view/{{video.id}}" class="popup">
+                    <a href="https://plus.google.com/share?url=https%3A%2F%2Fbestfootball.fr/view/{{video.id}}" class="popup">
                       <img src="/img/share/google.png" alt="Bestfootball google+ share button" style="width:45px;"/>
                     </a>
 

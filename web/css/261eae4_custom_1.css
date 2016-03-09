@@ -432,7 +432,3 @@ top: 25px;
 .usersearch{
     width:130px;
 }
-.usersearch>input:focus{
-    width:170px;
-}
-
