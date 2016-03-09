@@ -34,6 +34,38 @@
   <meta name="twitter:player:height" content="480">
   <meta name="twitter:player:stream" content="https://www.bestfootball.fr/uploads/videos/{{ video.source }}">
   <meta name="twitter:player:stream:content_type" content="video/mp4">
+
+  <style type="text/css">
+    .bar-wrap {
+    position: relative;
+    }
+    .progress-marker {
+        width: 2px;
+        height: 10px;
+        position: absolute;
+        background: black;
+        bottom: -5px;
+    }
+    .time-axis {
+        display: block;
+        float: left;
+        width: 100%;
+        /*margin: 0px 0 10px 0;*/
+    }
+    .time-spot {
+        display: block;
+        float: left;
+        width: 16.3%;
+    }
+    .time-spot-end {
+        display: block;
+        float: left;
+        width: 9%;
+    }
+
+
+
+  </style>
   
 {% endblock %}
 
@@ -111,8 +143,44 @@
                   </p>
 
                   {% if video.type == 'challenge'%}
-                    <h3></h3>
-                    <button onclick="location.href='{{ path('bf_site_challengeview', {'id': video.challenge.id}) }}'" class="btn btn-success" type="submit" style="width:50%;">To the challenge!</button>
+                    <h3>Score</h3>
+                    <div class="container-fluid" style="margin-bottom:10px;">
+                        <div class="row" style="height:28px;">
+                            <div class="bar-wrap">
+                                <div class="progress no-extra-space">
+                                  {% set percentage = (video.repetitions/video.challenge.six)*100 %}
+                                  <div class="progress-bar" role="progressbar" aria-valuenow="{{ percentage }}" aria-valuemin="0" aria-valuemax="{{ percentage }}" style="width:{{ percentage }}%;background-color:#87bb2f;">
+                                    <span style="">{{ video.repetitions }} X</span>
+                                  </div>
+
+                  
+
+                                </div>
+                                <div style="right:16.6%" class="progress-marker"></div>
+                                <div style="right:33.2%" class="progress-marker"></div>
+                                <div style="right:49.8%" class="progress-marker"></div>
+                                <div style="right:66.4%" class="progress-marker"></div>
+                                <div style="right:83.0%" class="progress-marker"></div>
+                                
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="time-axis">
+                              <div class="time-spot-end text-left">0</div>
+                                <div class="time-spot text-center">50</div>
+                                <div class="time-spot text-center">100</div>
+                                <div class="time-spot text-center" style="width:16.6%;">150</div>
+                                <div class="time-spot text-center">200</div>
+                                <div class="time-spot text-center">250</div>
+                                <div class="time-spot-end text-right">300</div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="text-center">
+                      <button onclick="location.href='{{ path('bf_site_challengeview', {'id': video.challenge.id}) }}'" class="btn btn-success text-center" type="submit" style="width:50%;">To the challenge!</button>
+                    </div>
                   {% endif %}
                 
                     <h3>share this video</h3>
