@@ -1,6 +1,6 @@
 <?php
 
-namespace Comur\ImageBundle\Controller;
+namespace BF\ImageBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
