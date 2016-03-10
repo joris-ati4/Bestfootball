@@ -38,12 +38,11 @@ class MediaType extends AbstractType
                 array(
                     'maxWidth' => 400,
                     'maxHeight' => 400,
-                    'useAsFieldImage' => true  //optional
+                    'useAsFieldImage' => false  //optional
                 )
             )
         )
     ))
-        ->add('submit', 'submit')
         ;
     }
     
