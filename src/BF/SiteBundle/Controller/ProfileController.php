@@ -119,12 +119,13 @@ class ProfileController extends Controller
     public function settingsPictureAction(request $request)
     {
         $user = $this->container->get('security.context')->getToken()->getUser();
-        $media = new Media();
 
-        $media
-          ->setPath('/uploads/img/cropped')
-          ->setName($user->getUsername().'Profile picture')
-        ;
+        $media = $user->getMedia();
+
+        /*$media
+          ->setPath('/uploads/img/'.$request->get('filename'));
+          ->setName($user->getUsername().' Profile picture')
+        ;*/
 
         //Set filename to false to preview placeholderz
         $form = $this->get('form.factory')->create(new MediaType, $media);
@@ -134,14 +135,11 @@ class ProfileController extends Controller
             $em = $this->getDoctrine()->getManager();
   
             $media
-              ->setPath('/uploads/img/cropped')
-              ->setName($user->getUsername().'Profile picture')
+              ->setPath('/uploads/img/'.$request->get('filename'));
+              ->setName($user->getUsername().' Profile picture')
             ;
             
-            $user->setMedia($media);         
-            
             $em->persist($media);
-            $em->persist($user);
             $em->flush();
 
             $request->getSession()->getFlashBag()->add('success', 'Your profile Picture has been updated.');
