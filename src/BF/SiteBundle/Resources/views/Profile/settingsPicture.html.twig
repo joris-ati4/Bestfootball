@@ -2,20 +2,12 @@
 <div class="row">
   {# This is the content section of our page, here the user will be able to view all the challenges with the different niveau's! #}
   	<div class="row">
-	  	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 vcenter">
-	  		{% if user.media != null %}
-	  		<img src="{{ user.media.path }}" alt="{{ user.media.name }}" class="img-responsive"/>
-	  		{% else %}
-	  			{{'No profile picture'|trans }}
-	  	{% endif %}
-		</div><!--
-	--><div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 vcenter">     
+	  	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-sm-offset-3 col-md-offset-3 col-lg-offset-3 vcenter">     
             <!-- This is the form that our event handler fills -->
             {{ form_start(form) }}
                 {{ form_errors(form) }}
                 {{ form_rest(form) }}
             {{ form_end(form) }}
-
 		</div>
 	</div>	  
 </div>

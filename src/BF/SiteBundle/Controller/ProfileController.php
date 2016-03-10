@@ -135,7 +135,7 @@ class ProfileController extends Controller
             $em = $this->getDoctrine()->getManager();
   
             $media
-              ->setPath('/uploads/img/'.$request->get('filename'))
+              ->setPath('/uploads/img/'.$request->get('filename'));
               ->setName($user->getUsername().' Profile picture')
             ;
             
