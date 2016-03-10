@@ -131,7 +131,7 @@ class VideoController extends Controller
         }
         else{
             //the video is for a normal challenge.
-            $video->setScore('300');
+            $video->setScore('0');
         }
 
         //retrieving the points from the video and updating the points off the user.

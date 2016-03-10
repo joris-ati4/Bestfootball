@@ -3,17 +3,18 @@
     <div class="followtabback">
       
       <!--Title with line -->
-      <div style="width: 100%; height: 21px; border-bottom: 1px solid #95cd36; text-align: center;background-color:#FFF;">
-        <span style="font-size: 27px; background-color: #FFF; padding: 0 10px;color:#95cd36;">
+      <div style="width: 100%; height: 21px; border-bottom: 1px solid #95cd36; text-align: center;background-color:rgba(255,255,255,0.8);;">
+        <span style="font-size: 27px; background-color: rgba(255,255,255,0.8);; padding: 0 10px;color:#95cd36;">
           Freestyle Videos <!--Padding is optional-->
         </span>
       </div>
-      <div style="width: 100%; height: 15px;background-color:#FFF;">
+      <div style="width: 100%; height: 15px;background-color:rgba(255,255,255,0.8);">
       </div>
 
 
 
-      <div class="followcontent row">
+      <div class="followcontent">
+        <div class="row"
         {% if lastFreestyles|length > 0 %}
           {% for video in lastFreestyles %}
             {% include "BFSiteBundle:Video:Thumbsquare.html.twig" with {"video": video} only %}
@@ -21,6 +22,7 @@
         {% else %}
           <p class="text-center" style="margin: 20px 0px;">{{ 'This is the Freestyle section of bestfootball. Be free and upload your freestyle video by clicking on the button above!'|trans }}</p>
         {% endif %}
+        </div>
       </div>
     </div>
   </div>
