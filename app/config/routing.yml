@@ -1,7 +1,3 @@
-bf_image:
-    resource: "@BFImageBundle/Resources/config/routing.yml"
-    prefix:   /
-
 bf_ambassadeur:
     resource: "@BFAmbassadeurBundle/Resources/config/routing.yml"
     prefix:   /ambassadeur
