@@ -1,5 +1,5 @@
 bf_site_homepage:
-    path:     /{_locale}/
+    path:     /{_locale}
     defaults: { _controller: BFSiteBundle:Home:index, _locale: en }
     methods:  [GET]
     requirements:
