@@ -39,10 +39,14 @@ bf_rest_api:
 bf_user:
     resource: "@BFUserBundle/Resources/config/routing.yml"
     prefix:   /
+#The whole website
 
 bf_site:
+    host: {_locale}.bestfootball.fr
     resource: "@BFSiteBundle/Resources/config/routing.yml"
     prefix:   /
+    requirements:
+        _locale: "en|fr"
 
 # FOSAuthServerBundle
 fos_oauth_server_token:
