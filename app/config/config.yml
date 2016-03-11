@@ -8,7 +8,8 @@ imports:
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     default_locale: en
-    translator: ~
+    locale: en
+    translator: { fallbacks: [en] }
 
 services:
     fos_user.doctrine_registry:
