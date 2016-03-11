@@ -5,11 +5,13 @@ bf_rest_api_challenges_get:
     defaults: { _controller: BFRestApiBundle:Challenge:get, _format: json}
     requirements:
         id: -?\d+
+    methods:  [GET]
 
 bf_rest_api_challenges_getAll:
     type: rest
     path: /challenges/getAll
     defaults: { _controller: BFRestApiBundle:Challenge:getAll }
+    methods:  [GET]
 
 bf_rest_api_challenges_put:
     type: rest
@@ -17,11 +19,13 @@ bf_rest_api_challenges_put:
     defaults: { _controller: BFRestApiBundle:Challenge:put }
     requirements:
         id: -?\d+
+    methods:  [PUT]
 
 bf_rest_api_challenges_post:
     type: rest
     path: /challenges/post
     defaults: { _controller: BFRestApiBundle:Challenge:post }
+    methods:  [POST]
 
 bf_rest_api_challenge_delete:
     type: rest
@@ -29,6 +33,7 @@ bf_rest_api_challenge_delete:
     defaults: { _controller: BFRestApiBundle:Challenge:delete }
     requirements:
         id: -?\d+
+    methods:  [POST]
 
 # videos rest api routes
 bf_rest_api_videos_get:

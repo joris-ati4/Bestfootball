@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>An Error Occurred: {{ status_text }} - Bestfootball</title>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-7s5uDGW3AHqw6xtJmNNtr+OBRJUlgkNJEo78P4b0yRw= sha512-nNo+yCHEyn0smMxSswnf/OnX6/KwJuZTlNZBjauKhTK0c+zT+q5JOCx0UFhXQ6rJR9jg6Es8gPuD2uZcYDLqSw==" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    {% stylesheets 
+      '@BFSiteBundle/Resources/public/css/custom.css' 
+      '@lifo_typeahead_css'
+    %}
+      <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+    {% endstylesheets %}
+  </head>
+  <body>
+
+
+
+
+    <section class="header">
+      <div class="row" style="min-height:65vh;margin-top:50px;">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10 col-lg-offset-1">
+          <div class="row">
+            <!--Begin of the upload page -->
+            <div class="col-xs-12 col-sm-8 col-md-6 col-lg-6 col-sm-offset-2 col-md-offset-3 col-lg-offset-3" style="margin-top:50px;">
+              <div class="challengedescription text-center">
+                <div class="challengetitle">
+                  <h3 style="color:white;">{{ 'Oops! An Error Occurred'|trans }}</h3>
+                </div>
+                <div class="challengecontent  row text-center">
+                  <h2>The server returned a "{{ status_code }} {{ status_text }}".</h2>
+                  <p>Something is broken. Please e-mail us at contact@bestfootball.fr and let us know
+                      what you were doing when this error occurred. We will fix it as soon
+                      as possible. Sorry for any inconvenience caused.</p>
+
+                  <a href="{{path('bf_site_logged_home')}}" class="btn btn-upload"> Go back to the site </a>
+                </div>
+              </div>
+            </div>
+            <!--END of the not found page -->
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
