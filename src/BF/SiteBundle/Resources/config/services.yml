@@ -12,3 +12,8 @@ services:
     bf_site.notification:
         class: BF\SiteBundle\Notification\BFNotification
 
+    app.locale_listener:
+        class: AppBundle\EventListener\LocaleListener
+        arguments: ['%kernel.default_locale%']
+        tags:
+            - { name: kernel.event_subscriber }
