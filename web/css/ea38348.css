@@ -1,0 +1,564 @@
+/* the DIN font */ 
+@font-face {
+    font-family: DinBold;
+    src: url('../fonts/Helvetica.ttf');
+ }
+
+@font-face {
+    font-family: DinLight;
+    src: url('../fonts/Helvetica.ttf');
+ }
+
+h1,h2,h3,h4,h5,h6,span{
+    font-family: Helvetica;
+}
+h1 { 
+    font-size: 50px;
+}
+
+
+.imagereactive{
+    max-width:20%;
+    max-height: 60px;
+}
+
+.imagereactive:hover{
+    max-width:30%;
+    max-height: 90px;
+}
+
+.brandname{
+    background: url("/img/logo.png") left no-repeat transparent;
+    background-size: 35px 35px;
+    padding-left: 45px;
+}
+
+a,p,button{
+    font-family: Helvetica;
+}
+a{
+    color:black;
+}
+a:hover{
+    color:black;
+}
+body{
+    overflow-x: hidden;
+}
+/* the layout for the navbar */
+.navbar-default {
+    background-color: #ededf1;
+    border-color: #A4A4A4;
+}
+    /* Hover colour */
+    .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
+        color: #FFF;
+        background-color: #95cd36;
+        margin-bottom: -3px;
+        border-bottom: 3px solid #95cd36;
+    }
+    .navbar-default .navbar-nav>li>a:hover {
+        color: #FFF;
+        background-color: #95cd36;
+        margin-bottom: -3px;
+        border-bottom:3px solid #95cd36;
+    }
+    .navbar-default .navbar-nav>li>a {
+        color: #333333;
+    }
+    .navbar-default .navbar-brand {
+        color: #333333;
+        font-family: DinBold;
+        font-size: 25px;
+    }
+
+    .navbar-default .navbar-brand:focus, .navbar-default .navbar-brand:hover {
+    color: #95cd36;
+    background-color: #ededf1;
+    }
+    
+    @media (min-width: 768px) {
+        .navbar .navbar-nav {
+            display: inline-block;
+            float: none;
+            vertical-align: top;
+        }
+
+        .navbar .navbar-collapse {
+            text-align: center;
+        }
+    }
+    /* The layout for the login button*/
+    .nav .btn{
+        margin-top:6px;
+    }
+    .navbar-default .navbar-nav>li>button:hover {
+     color: #FFF;
+     background-color: #95cd36;
+    }
+
+    .btn-login {
+        color: #333333;
+        background-color: #ededf1;
+        border-color: #95cd36;
+        border-width: 2px;
+    }
+/* end of the navbar styling */
+
+/*CSS for the Homepage*/
+.homepage{
+    background-color:#FAFAFA;
+    /*rgba(149,205,54,0); */
+    background-attachment: fixed;
+    background-size: cover;    
+    padding-top: 50px;
+    min-height: 75vh;
+}
+.followtitle{
+    width: 100%;
+    height: 30px;
+    padding-top: 2px;
+    background-color: #95cd36;
+}
+.followtitle>h3{
+    color:white;
+    margin-top:0px;
+    margin-bottom:0px;
+}
+.followcontent{
+    margin: 10px 10px;
+}
+ .followtabback{
+    width: 100%;
+    background-color: rgba(255,255,255,1);
+    /* border:2px solid;
+    border-color: #95cd36; */
+ }
+
+/* END OF THE HOMEPAGE CSS*/
+
+
+
+/* CSS for the profile section */
+ .profile{
+    background-color:#FAFAFA;
+    /*rgba(149,205,54,0); */
+    background-attachment: fixed;
+    background-size: cover;    
+    padding-top: 50px;
+    margin-bottom: 50px;
+    min-height: 75vh
+}
+.profiletop{
+    background-color: rgba(255,255,255,1);
+    min-height: 100px;
+    padding:10px 10px;
+    margin-bottom: 15px;
+    
+}
+.profilecounter{
+    background-color: rgba(255, 255, 255, 1);
+    height: 85px;
+    display: table;
+    overflow: hidden;
+    width: 85px;
+    border-radius: 85px;
+    border: solid 2px;
+    border-color:#95cd36;
+}
+.profilecounter>div{
+    display: table-cell; 
+    vertical-align: middle;
+}
+.profilecounter>div>p{
+    color:#95cd36;
+    font-family: DinBold;
+    font-size:15px;
+}
+
+.videolisttitle{
+    width: 100%;
+    height: 30px;
+    padding-top: 2px;
+    background-color: #95cd36;
+}
+.videolisttitle>h3{
+    color:white;
+    margin-top:0px;
+    margin-bottom:0px;
+}
+.videolistcontent{
+    margin: 10px 10px;
+    overflow-y: scroll;
+    height: 50vh;
+}
+.videolistback{
+    width: 100%;
+    height: 50vh;
+    background-color: rgba(255,255,255,1);
+}
+
+#videolist::-webkit-scrollbar{
+width:10px;
+background-color:#FFF;
+} 
+#videolist::-webkit-scrollbar-thumb{
+background-color:rgba(149,205,54,0.5);
+border-radius:10px;
+}
+#videolist::-webkit-scrollbar-thumb:hover{
+background-color:rgba(149,205,54,0.8);
+border:1px solid rgba(149,205,54,0.9);
+}
+#videolist::-webkit-scrollbar-thumb:active{
+background-color:rgba(149,205,54,0.9);
+border:1px solid rgba(149,205,54,1);
+} 
+#videolist::-webkit-scrollbar-track{
+border:1px gray solid;
+border-radius:10px;
+-webkit-box-shadow:0 0 5px gray inset;
+} 
+
+
+
+
+/* END OF THE PROFILE CSS*/
+
+/* BEGIN OF THE CHALLENGE CSS*/
+
+.btn-participate {
+    color: #fff;
+    background-color: #95cd36;
+    border-color: #85b82e;
+    width:80%;
+    position: absolute;
+    bottom:30px;
+    left:10%;
+}
+
+.btn-participate:hover {
+    color: #fff;
+    background-color: #76a329;
+    border-color: #678f24;
+    width:80%;
+    position: absolute;
+    bottom:30px;
+    left:10%;
+}
+
+.challenge{
+    background-color: #FFF;
+    min-height:350px;
+    padding: 10px 10px;
+    border: 2px solid;
+    border-color:#95cd36; 
+}
+
+
+/* END OF THE CHALLENGE CSS*/
+/* BEGIN upload page*/
+
+.btn-upload {
+    color: #fff;
+    background-color: #95cd36;
+    border-color: #85b82e;
+    width:80%;
+    position: relative;
+    margin: 20px 0px;
+}
+
+.btn-upload:hover {
+    color: #fff;
+    background-color: #76a329;
+    border-color: #678f24;
+    width:80%;
+    position: relative;
+    margin: 20px 0px;
+}
+/* End of upload page*/
+
+
+
+
+/* justify your text*/
+.justify{
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+
+/*The layout for the sections */
+/* header */
+.header{
+    height:100vh;
+    background-image: url(../img/header.jpg);
+    background-attachment: relative;
+    background-size: cover;    
+    padding-top: 50px;
+}
+.info{
+    min-height:70vh;
+    background-color: #FAFAFA;
+}
+.rank{
+    min-height:50vh;
+    background-color: #EDEDF1;
+}
+.map{
+    min-height:50vh;
+    background-color: #FFFFFF;
+}
+.partner{
+    min-height:50vh;
+    background-color: #FFFFFF;
+}
+.row{
+    margin:0;
+}
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+/* CSS for the challenge pages */
+.background{
+    background-image: url(../img/background.jpg);
+    background-attachment: fixed;
+    background-size: cover;    
+    padding-top: 50px;
+}
+
+
+
+.titleblock{
+    height:30px;
+    width: 100%; 
+    background-color: #FFF;
+}
+
+.titleline {
+   width: 100%; 
+   text-align: center; 
+   border-bottom: 1px solid #95cd36; 
+   line-height: 0.1em;
+   margin: 10px 0 20px;
+} 
+
+.titleline>span { 
+    background:#fff; 
+    padding:0 10px;
+    color:#95cd36;
+}
+
+
+
+
+.challengetitle{
+    width: 100%;
+    height: 30px;
+    padding-top: 2px;
+    background-color: #95cd36;
+}
+.challengetitle>h3{
+    color:white;
+    margin-top:0px;
+    margin-bottom:0px;
+}
+.challengedescription{
+    width: 100%;
+    min-height: 250px;
+    background-color: rgba(255,255,255,1);
+    /* border:2px solid;
+    border-color: #95cd36;*/
+}
+.challengecontent{
+    margin: 10px 10px;
+}
+@media screen and (min-width: 768px) { 
+
+    .challengedescription{
+    width: 100%;
+    min-height: 300px;
+    background-color: rgba(255,255,255,1);
+}
+
+ }
+ .videotab{
+    background-color: rgba(255,255,255,1);
+    min-height: 60px;
+    padding:10px 10px;
+    margin-bottom: 3px;
+ }
+ .videotabback{
+    width: 100%;
+    min-height: 410px;
+    background-color: rgba(255,255,255,1);
+    /* border:2px solid;
+    border-color: #95cd36; */
+ }
+/* The comment bubble */
+.bubble 
+{
+position: relative;
+width: 100%;
+min-height: 80px;
+padding: 20px;
+background: #95cd36;
+-webkit-border-radius: 15px;
+-moz-border-radius: 15px;
+border-radius: 15px;
+}
+
+.bubble:after 
+{
+content: '';
+position: absolute;
+border-style: solid;
+border-width: 15px 15px 15px 0;
+border-color: transparent #95cd36;
+display: block;
+width: 0;
+z-index: 1;
+left: -15px;
+top: 25px;
+}
+
+.bubble > .delete:hover{
+    color:red;
+    cursor: pointer;
+}
+
+.usersearch{
+    width:130px;
+}
+
+/*
+  Player Skin Designer for Video.js
+  http://videojs.com
+
+  To customize the player skin edit 
+  the CSS below. Click "details" 
+  below to add comments or questions.
+  This file uses some SCSS. Learn more  
+  at http://sass-lang.com/guide)
+
+  This designer can be linked to at:
+  http://codepen.io/heff/pen/EarCt/left/?editors=010
+*/
+.video-js {
+  /* The base font size controls the size of everything, not just text.
+     All dimensions use em-based sizes so that the scale along with the font size.
+     Try increasing it to 15px and see what happens. */
+  font-size: 14px;
+  /* The main font color changes the ICON COLORS as well as the text */
+  color: #95cd36;
+}
+
+/* The "Big Play Button" is the play button that shows before the video plays.
+   To center it set the align values to center and middle. The typical location
+   of the button is the center, but there is trend towards moving it to a corner
+   where it gets out of the way of valuable content in the poster image.*/
+.vjs-default-skin .vjs-big-play-button {
+  /* The font size is what makes the big play button...big. 
+     All width/height values use ems, which are a multiple of the font size.
+     If the .video-js font-size is 10px, then 3em equals 30px.*/
+  font-size: 2em;
+  /* We're using SCSS vars here because the values are used in multiple places.
+     Now that font size is set, the following em values will be a multiple of the
+     new font size. If the font-size is 3em (30px), then setting any of
+     the following values to 3em would equal 30px. 3 * font-size. */
+  /* 1.5em = 45px default */
+  line-height: 1.5em;
+  height: 1.5em;
+  width: 3em;
+  /* 0.06666em = 2px default */
+  border: 0.06666em solid #95cd36;
+  /* 0.3em = 9px default */
+  border-radius: 0.3em;
+  /* Align center */
+  left: 50%;
+  top: 50%;
+  margin-left: -1.5em;
+  margin-top: -0.75em;
+}
+
+/* The default color of control backgrounds is mostly black but with a little
+   bit of blue so it can still be seen on all-black video frames, which are common. */
+.video-js .vjs-control-bar,
+.video-js .vjs-big-play-button,
+.video-js .vjs-menu-button .vjs-menu-content {
+  /* IE8 - has no alpha support */
+  background-color: #2B333F;
+  /* Opacity: 1.0 = 100%, 0.0 = 0% */
+  background-color: rgba(43, 51, 63, 0.7);
+}
+
+/* Slider - used for Volume bar and Progress bar */
+.video-js .vjs-slider {
+  background-color: #73859f;
+  background-color: rgba(115, 133, 159, 0.5);
+}
+
+/* The slider bar color is used for the progress bar and the volume bar
+   (the first two can be removed after a fix that's coming) */
+.video-js .vjs-volume-level,
+.video-js .vjs-play-progress,
+.video-js .vjs-slider-bar {
+  background: #95cd36;
+}
+
+/* The main progress bar also has a bar that shows how much has been loaded. */
+.video-js .vjs-load-progress {
+  /* For IE8 we'll lighten the color */
+  background: ligthen(#73859f, 25%);
+  /* Otherwise we'll rely on stacked opacities */
+  background: rgba(115, 133, 159, 0.5);
+}
+
+/* The load progress bar also has internal divs that represent
+   smaller disconnected loaded time ranges */
+.video-js .vjs-load-progress div {
+  /* For IE8 we'll lighten the color */
+  background: ligthen(#73859f, 50%);
+  /* Otherwise we'll rely on stacked opacities */
+  background: rgba(115, 133, 159, 0.75);
+}
+
+/* simple spinner class */
+.spin {
+    -webkit-animation: spin 1s infinite linear;
+    -moz-animation: spin 1s infinite linear;
+    -o-animation: spin 1s infinite linear;
+    animation: spin 1s infinite linear;
+    -webkit-transform-origin: 50% 58%;
+    transform-origin: 50% 58%;
+    -ms-transform-origin: 50% 58%; /* IE 9 */
+}
+
+@-moz-keyframes spin {
+    from {
+        -moz-transform: rotate(0deg);
+    }
+    to {
+        -moz-transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes spin {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
