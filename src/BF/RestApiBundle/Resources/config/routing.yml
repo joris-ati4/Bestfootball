@@ -47,6 +47,7 @@ bf_rest_api_videos_getAll:
     type: rest
     path: /videos/getAll
     defaults: { _controller: BFRestApiBundle:Video:getAll }
+    methods:  [GET]
 
 bf_rest_api_videos_put:
     type: rest
@@ -54,11 +55,13 @@ bf_rest_api_videos_put:
     defaults: { _controller: BFRestApiBundle:Video:put }
     requirements:
         id: -?\d+
+    methods:  [PUT]
 
 bf_rest_api_videos_post:
     type: rest
     path: /videos/post
     defaults: { _controller: BFRestApiBundle:Video:post }
+    methods:  [POST]
 
 bf_rest_api_videos_delete:
     type: rest
@@ -66,27 +69,32 @@ bf_rest_api_videos_delete:
     defaults: { _controller: BFRestApiBundle:Video:delete }
     requirements:
         id: -?\d+
+    methods:  [POST]
 
 # users rest api routes
 bf_rest_api_users_getAll:
     type: rest
     path: /users/getAll
     defaults: { _controller: BFRestApiBundle:User:getAll }
+    methods:  [GET]
 
 bf_rest_api_users_getCurrent:
     type: rest
     path: /users/getCurrent
     defaults: { _controller: BFRestApiBundle:User:getCurrent }
+    methods:  [GET]
 
 bf_rest_api_users_get_facebook:
     type: rest
     path: /users/getfb/{facebookId}
     defaults: { _controller: BFRestApiBundle:User:getFacebook }
+    methods:  [GET]
 
 bf_rest_api_users_get_google:
     type: rest
     path: /users/getgoogle/{googleId}
     defaults: { _controller: BFRestApiBundle:User:getGoogle }
+    methods:  [GET]
 
 bf_rest_api_users_put:
     type: rest
@@ -94,11 +102,13 @@ bf_rest_api_users_put:
     defaults: { _controller: BFRestApiBundle:User:put }
     requirements:
         id: -?\d+
+    methods:  [PUT]
 
 bf_rest_api_users_post:
     type: rest
     path: /users/post
     defaults: { _controller: BFRestApiBundle:User:post }
+    methods:  [POST]
 
 bf_rest_api_users_delete:
     type: rest
@@ -106,3 +116,4 @@ bf_rest_api_users_delete:
     defaults: { _controller: BFRestApiBundle:User:delete }
     requirements:
         id: -?\d+
+    methods:  [POST]

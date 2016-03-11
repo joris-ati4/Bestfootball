@@ -5,13 +5,11 @@ namespace BF\SiteBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\FormError;
-use Symfony\Component\Finder\Finder;
 
 
 //les types
 use BF\UserBundle\Form\Type\UserType;
 use BF\SiteBundle\Form\Type\MediaType;
-use BF\SiteBundle\Entity\Media;
 
 
 class ProfileController extends Controller

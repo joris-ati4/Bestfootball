@@ -813,7 +813,7 @@
             // on-click handler to remove items from <ul> list
             list.on({
                 'click.lifo-typeahead': function(e){
-                    // @todo make this 'prettier' ... fade out, etc...
+                    // make this 'prettier' ... fade out, etc...
                     $(this).closest('li').remove();
                     e.preventDefault();
                     e.stopPropagation();
