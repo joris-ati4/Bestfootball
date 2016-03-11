@@ -1,34 +1,34 @@
 bf_site_homepage:
     path:     /{_locale}/
-    defaults: { _controller: BFSiteBundle:Home:index }
+    defaults: { _controller: BFSiteBundle:Home:index, _locale: en }
     methods:  [GET]
     requirements:
         _locale: en|fr
 
 bf_site_logged_home:
     path:     /{_locale}/home
-    defaults: { _controller: BFSiteBundle:Logged:logged }
+    defaults: { _controller: BFSiteBundle:Logged:logged, _locale: en }
     methods:  [GET]
     requirements:
         _locale: en|fr
 
 bf_site_challenges:
     path:     /{_locale}/challenges
-    defaults: { _controller: BFSiteBundle:Home:challenges }
+    defaults: { _controller: BFSiteBundle:Home:challenges, _locale: en }
     methods:  [GET]
     requirements:
         _locale: en|fr
 
 bf_site_partnerChallenges:
     path:     /{_locale}/partnerChallenges
-    defaults: { _controller: BFSiteBundle:Home:partnerChallenges }
+    defaults: { _controller: BFSiteBundle:Home:partnerChallenges, _locale: en }
     methods:  [GET]
     requirements:
         _locale: en|fr
 
 bf_site_challengeview:
     path:     /{_locale}/challenge/{id}
-    defaults: { _controller: BFSiteBundle:Home:challengeView }
+    defaults: { _controller: BFSiteBundle:Home:challengeView, _locale: en }
     requirements:
         id: -?\d+
     methods:  [GET]
@@ -37,84 +37,84 @@ bf_site_challengeview:
 
 bf_site_about:
     path:     /{_locale}/about
-    defaults: { _controller: BFSiteBundle:Home:about }
+    defaults: { _controller: BFSiteBundle:Home:about, _locale: en }
     methods:  [GET]
     requirements:
         _locale: en|fr
 
 bf_site_rules:
     path:     /{_locale}/rules
-    defaults: { _controller: BFSiteBundle:Home:rules }
+    defaults: { _controller: BFSiteBundle:Home:rules, _locale: en }
     methods:  [GET]
     requirements:
         _locale: en|fr
 
 bf_site_contact:
     path:     /{_locale}/contact
-    defaults: { _controller: BFSiteBundle:Home:contact }
+    defaults: { _controller: BFSiteBundle:Home:contact, _locale: en }
     methods:  [GET,POST]
     requirements:
         _locale: en|fr
 
 bf_site_search:
     path:     /{_locale}/search
-    defaults: { _controller: BFSiteBundle:Logged:search }
+    defaults: { _controller: BFSiteBundle:Logged:search, _locale: en }
     methods:  [POST,GET]
     requirements:
         _locale: en|fr
 
 bf_site_partners:
     path:     /{_locale}/partners
-    defaults: { _controller: BFSiteBundle:Information:partners }
+    defaults: { _controller: BFSiteBundle:Information:partners, _locale: en }
     methods:  [GET]
     requirements:
         _locale: en|fr
 
 bf_site_press:
     path:     /{_locale}/press
-    defaults: { _controller: BFSiteBundle:Information:press }
+    defaults: { _controller: BFSiteBundle:Information:press, _locale: en }
     methods:  [GET]
     requirements:
         _locale: en|fr
 
 bf_site_privacy:
     path:     /{_locale}/privacy
-    defaults: { _controller: BFSiteBundle:Information:privacy }
+    defaults: { _controller: BFSiteBundle:Information:privacy, _locale: en }
     methods:  [GET]
     requirements:
         _locale: en|fr
 
 bf_site_terms:
     path:     /{_locale}/terms
-    defaults: { _controller: BFSiteBundle:Information:terms }
+    defaults: { _controller: BFSiteBundle:Information:terms, _locale: en }
     methods:  [GET]
     requirements:
         _locale: en|fr
 
 bf_site_conditions:
     path:     /{_locale}/conditions
-    defaults: { _controller: BFSiteBundle:Information:conditions }
+    defaults: { _controller: BFSiteBundle:Information:conditions, _locale: en }
     methods:  [GET]
     requirements:
         _locale: en|fr
 
 bf_site_community:
     path:     /{_locale}/comunity
-    defaults: { _controller: BFSiteBundle:Information:community }
+    defaults: { _controller: BFSiteBundle:Information:community, _locale: en }
     methods:  [GET]
     requirements:
         _locale: en|fr
 
 bf_site_prediction:
     path:     /{_locale}/prediction
-    defaults: { _controller: BFSiteBundle:Logged:prediction }
+    defaults: { _controller: BFSiteBundle:Logged:prediction, _locale: en }
     methods:  [GET]
     requirements:
         _locale: en|fr
 
 bf_site_freestyle:
     path:     /{_locale}/freestyle
-    defaults: { _controller: BFSiteBundle:Video:freestyle }
+    defaults: { _controller: BFSiteBundle:Video:freestyle, _locale: en }
     methods:  [GET]
     requirements:
         _locale: en|fr
@@ -122,7 +122,7 @@ bf_site_freestyle:
 
 bf_site_video:
     path:     /{_locale}/view/{id}
-    defaults: { _controller: BFSiteBundle:Video:view, id: null }
+    defaults: { _controller: BFSiteBundle:Video:view, id: null, _locale: en }
     requirements:
         id: -?\d+
     methods:  [GET]
@@ -131,7 +131,7 @@ bf_site_video:
 
 bf_site_video_report:
     path:     /{_locale}/video/report/{id}
-    defaults: { _controller: BFSiteBundle:Video:report}
+    defaults: { _controller: BFSiteBundle:Video:report, _locale: en }
     requirements:
         id: -?\d+
     methods:  [GET,POST]
@@ -140,7 +140,7 @@ bf_site_video_report:
 
 bf_site_upload:
     path:     /{_locale}/upload/{type}/{id}
-    defaults: { _controller: BFSiteBundle:Video:upload }
+    defaults: { _controller: BFSiteBundle:Video:upload, _locale: en }
     requirements:
         id: -?\d+
     methods:  [GET,POST]
@@ -149,7 +149,7 @@ bf_site_upload:
 
 bf_site_video_delete:
     path:     /{_locale}/deletevideo/{id}
-    defaults: { _controller: BFSiteBundle:Video:delete }
+    defaults: { _controller: BFSiteBundle:Video:delete, _locale: en }
     requirements:
         id: -?\d+
     methods:  [GET,POST]
@@ -158,7 +158,7 @@ bf_site_video_delete:
 
 bf_site_video_modify:
     path:     /{_locale}/modifyvideo/{id}
-    defaults: { _controller: BFSiteBundle:Video:modify }
+    defaults: { _controller: BFSiteBundle:Video:modify, _locale: en }
     requirements:
         id: -?\d+
     methods:  [GET,POST]
@@ -177,63 +177,63 @@ bf_site_video_twitter:
 
 bf_site_profile:
     path:     /{_locale}/profile/{username}
-    defaults: { _controller: BFSiteBundle:Profile:view }
+    defaults: { _controller: BFSiteBundle:Profile:view, _locale: en }
     methods:  [GET]
     requirements:
         _locale: en|fr
 
 bf_site_profile_followers:
     path:     /{_locale}/profile/{username}/followers
-    defaults: { _controller: BFSiteBundle:Follow:followersUser }
+    defaults: { _controller: BFSiteBundle:Follow:followersUser, _locale: en }
     methods:  [GET]
     requirements:
         _locale: en|fr
 
 bf_site_videos:
     path:     /{_locale}/myvideos
-    defaults: { _controller: BFSiteBundle:Profile:videos }
+    defaults: { _controller: BFSiteBundle:Profile:videos, _locale: en }
     methods:  [GET]
     requirements:
         _locale: en|fr
 
 bf_site_profile_duels:
     path:     /{_locale}/myduels
-    defaults: { _controller: BFSiteBundle:Duel:myduels }
+    defaults: { _controller: BFSiteBundle:Duel:myduels, _locale: en }
     methods:  [GET]
     requirements:
         _locale: en|fr
 
 bf_site_settings:
     path:     /{_locale}/settings
-    defaults: { _controller: BFSiteBundle:Profile:settings }
+    defaults: { _controller: BFSiteBundle:Profile:settings, _locale: en }
     methods:  [GET,POST]
     requirements:
         _locale: en|fr
 
 bf_site_settings_info:
     path:     /{_locale}/settings/info
-    defaults: { _controller: BFSiteBundle:Profile:settingsInfo }
+    defaults: { _controller: BFSiteBundle:Profile:settingsInfo, _locale: en }
     methods:  [PUT,POST]
     requirements:
         _locale: en|fr
 
 bf_site_settings_picture:
     path:     /{_locale}/settings/picture
-    defaults: { _controller: BFSiteBundle:Profile:settingsPicture }
+    defaults: { _controller: BFSiteBundle:Profile:settingsPicture, _locale: en }
     methods:  [PUT,POST]
     requirements:
         _locale: en|fr
 
 bf_site_settings_reset_password:
     path:     /{_locale}/settings/password
-    defaults: { _controller: BFSiteBundle:Profile:changePassword }
+    defaults: { _controller: BFSiteBundle:Profile:changePassword, _locale: en }
     methods:  [PUT,POST]
     requirements:
         _locale: en|fr
 
 bf_site_settings_reset_username:
     path:     /{_locale}/settings/username
-    defaults: { _controller: BFSiteBundle:Profile:changeUsername }
+    defaults: { _controller: BFSiteBundle:Profile:changeUsername, _locale: en }
     methods:  [PUT,POST]
     requirements:
         _locale: en|fr
@@ -291,21 +291,21 @@ bf_site_admin_okvideo:
 
 bf_site_duel_create:
     path:     /{_locale}/duel/create/{username}
-    defaults: { _controller: BFSiteBundle:Duel:create }
+    defaults: { _controller: BFSiteBundle:Duel:create, _locale: en }
     methods:  [GET,POST]
     requirements:
         _locale: en|fr
 
 bf_site_duel_accept:
     path:     /{_locale}/duel/accept/{id}
-    defaults: { _controller: BFSiteBundle:Duel:accept }
+    defaults: { _controller: BFSiteBundle:Duel:accept, _locale: en }
     methods:  [POST,GET]
     requirements:
         _locale: en|fr
 
 bf_site_duel_decline:
     path:     /{_locale}/duel/decline/{id}
-    defaults: { _controller: BFSiteBundle:Duel:decline }
+    defaults: { _controller: BFSiteBundle:Duel:decline, _locale: en }
     methods:  [POST,GET]
     requirements:
         _locale: en|fr
@@ -313,7 +313,7 @@ bf_site_duel_decline:
 
 bf_site_duel_view:
     path:     /{_locale}/duel/view/{id}
-    defaults: { _controller: BFSiteBundle:Duel:view }
+    defaults: { _controller: BFSiteBundle:Duel:view, _locale: en }
     methods:  [GET]
     requirements:
         _locale: en|fr
@@ -333,7 +333,7 @@ bf_site_unfollow:
 #the routes for the ranking pages
 bf_site_ranking_challenge:
     path:     /{_locale}/ranking/challenge/{country}/{state}
-    defaults: { _controller: BFSiteBundle:Ranking:challenge }
+    defaults: { _controller: BFSiteBundle:Ranking:challenge, _locale: en }
     requirements:
         country: France|United States|Belgium|global
     methods:  [GET]
@@ -342,7 +342,7 @@ bf_site_ranking_challenge:
 
 bf_site_ranking_duel:
     path:     /{_locale}/ranking/duel/{country}/{state}
-    defaults: { _controller: BFSiteBundle:Ranking:duel }
+    defaults: { _controller: BFSiteBundle:Ranking:duel, _locale: en }
     requirements:
         country: France|United States|Belgium|global
     methods:  [GET]
