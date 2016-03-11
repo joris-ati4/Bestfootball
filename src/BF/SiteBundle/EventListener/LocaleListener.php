@@ -1,6 +1,6 @@
 <?php
 // BF/SiteBundle/EventListener/LocaleListener.php
-namespace AppBundle\EventListener;
+namespace BF\SiteBundle\EventListener;
 
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
