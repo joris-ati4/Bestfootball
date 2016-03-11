@@ -38,6 +38,7 @@ bf_site_rules:
 bf_site_contact:
     path:     /contact
     defaults: { _controller: BFSiteBundle:Home:contact }
+    methods:  [GET,POST]
 
 bf_site_search:
     path:     /search

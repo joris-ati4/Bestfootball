@@ -42,6 +42,7 @@ bf_rest_api_videos_get:
     defaults: { _controller: BFRestApiBundle:Video:get, _format: json }
     requirements:
         id: -?\d+
+    methods:  [GET]
 
 bf_rest_api_videos_getAll:
     type: rest
