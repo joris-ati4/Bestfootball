@@ -1,125 +1,169 @@
 bf_site_homepage:
-    path:     /
+    path:     /{_locale}/
     defaults: { _controller: BFSiteBundle:Home:index }
     methods:  [GET]
+    requirements:
+        _locale: en|fr
 
 bf_site_logged_home:
-    path:     /home
+    path:     /{_locale}/home
     defaults: { _controller: BFSiteBundle:Logged:logged }
     methods:  [GET]
+    requirements:
+        _locale: en|fr
 
 bf_site_challenges:
-    path:     /challenges
+    path:     /{_locale}/challenges
     defaults: { _controller: BFSiteBundle:Home:challenges }
     methods:  [GET]
+    requirements:
+        _locale: en|fr
 
 bf_site_partnerChallenges:
-    path:     /partnerChallenges
+    path:     /{_locale}/partnerChallenges
     defaults: { _controller: BFSiteBundle:Home:partnerChallenges }
     methods:  [GET]
+    requirements:
+        _locale: en|fr
 
 bf_site_challengeview:
-    path:     /challenge/{id}
+    path:     /{_locale}/challenge/{id}
     defaults: { _controller: BFSiteBundle:Home:challengeView }
     requirements:
         id: -?\d+
     methods:  [GET]
+    requirements:
+        _locale: en|fr
 
 bf_site_about:
-    path:     /about
+    path:     /{_locale}/about
     defaults: { _controller: BFSiteBundle:Home:about }
     methods:  [GET]
+    requirements:
+        _locale: en|fr
 
 bf_site_rules:
-    path:     /rules
+    path:     /{_locale}/rules
     defaults: { _controller: BFSiteBundle:Home:rules }
     methods:  [GET]
+    requirements:
+        _locale: en|fr
 
 bf_site_contact:
-    path:     /contact
+    path:     /{_locale}/contact
     defaults: { _controller: BFSiteBundle:Home:contact }
     methods:  [GET,POST]
+    requirements:
+        _locale: en|fr
 
 bf_site_search:
-    path:     /search
+    path:     /{_locale}/search
     defaults: { _controller: BFSiteBundle:Logged:search }
     methods:  [POST,GET]
+    requirements:
+        _locale: en|fr
 
 bf_site_partners:
-    path:     /partners
+    path:     /{_locale}/partners
     defaults: { _controller: BFSiteBundle:Information:partners }
     methods:  [GET]
+    requirements:
+        _locale: en|fr
 
 bf_site_press:
-    path:     /press
+    path:     /{_locale}/press
     defaults: { _controller: BFSiteBundle:Information:press }
     methods:  [GET]
+    requirements:
+        _locale: en|fr
 
 bf_site_privacy:
-    path:     /privacy
+    path:     /{_locale}/privacy
     defaults: { _controller: BFSiteBundle:Information:privacy }
     methods:  [GET]
+    requirements:
+        _locale: en|fr
 
 bf_site_terms:
-    path:     /terms
+    path:     /{_locale}/terms
     defaults: { _controller: BFSiteBundle:Information:terms }
     methods:  [GET]
+    requirements:
+        _locale: en|fr
 
 bf_site_conditions:
-    path:     /conditions
+    path:     /{_locale}/conditions
     defaults: { _controller: BFSiteBundle:Information:conditions }
     methods:  [GET]
+    requirements:
+        _locale: en|fr
 
 bf_site_community:
-    path:     /comunity
+    path:     /{_locale}/comunity
     defaults: { _controller: BFSiteBundle:Information:community }
     methods:  [GET]
+    requirements:
+        _locale: en|fr
 
 bf_site_prediction:
-    path:     /prediction
+    path:     /{_locale}/prediction
     defaults: { _controller: BFSiteBundle:Logged:prediction }
     methods:  [GET]
+    requirements:
+        _locale: en|fr
 
 bf_site_freestyle:
-    path:     /freestyle
+    path:     /{_locale}/freestyle
     defaults: { _controller: BFSiteBundle:Video:freestyle }
     methods:  [GET]
+    requirements:
+        _locale: en|fr
 #this section does all the routes for the video section
 
 bf_site_video:
-    path:     /view/{id}
+    path:     /{_locale}/view/{id}
     defaults: { _controller: BFSiteBundle:Video:view, id: null }
     requirements:
         id: -?\d+
     methods:  [GET]
+    requirements:
+        _locale: en|fr
 
 bf_site_video_report:
-    path:     /video/report/{id}
+    path:     /{_locale}/video/report/{id}
     defaults: { _controller: BFSiteBundle:Video:report}
     requirements:
         id: -?\d+
     methods:  [GET,POST]
+    requirements:
+        _locale: en|fr
 
 bf_site_upload:
-    path:     /upload/{type}/{id}
+    path:     /{_locale}/upload/{type}/{id}
     defaults: { _controller: BFSiteBundle:Video:upload }
     requirements:
         id: -?\d+
     methods:  [GET,POST]
+    requirements:
+        _locale: en|fr
 
 bf_site_video_delete:
-    path:     /deletevideo/{id}
+    path:     /{_locale}/deletevideo/{id}
     defaults: { _controller: BFSiteBundle:Video:delete }
     requirements:
         id: -?\d+
     methods:  [GET,POST]
+    requirements:
+        _locale: en|fr
 
 bf_site_video_modify:
-    path:     /modifyvideo/{id}
+    path:     /{_locale}/modifyvideo/{id}
     defaults: { _controller: BFSiteBundle:Video:modify }
     requirements:
         id: -?\d+
     methods:  [GET,POST]
+    requirements:
+        _locale: en|fr
 
 bf_site_video_twitter:
     path:     /video/twitter/{id}
@@ -127,52 +171,72 @@ bf_site_video_twitter:
     requirements:
         id: -?\d+
     methods:  [GET,POST]
+    requirements:
+        _locale: en|fr
 #this section does all the routes for the profile section
 
 bf_site_profile:
-    path:     /profile/{username}
+    path:     /{_locale}/profile/{username}
     defaults: { _controller: BFSiteBundle:Profile:view }
     methods:  [GET]
+    requirements:
+        _locale: en|fr
 
 bf_site_profile_followers:
-    path:     /profile/{username}/followers
+    path:     /{_locale}/profile/{username}/followers
     defaults: { _controller: BFSiteBundle:Follow:followersUser }
     methods:  [GET]
+    requirements:
+        _locale: en|fr
 
 bf_site_videos:
-    path:     /myvideos
+    path:     /{_locale}/myvideos
     defaults: { _controller: BFSiteBundle:Profile:videos }
     methods:  [GET]
+    requirements:
+        _locale: en|fr
 
 bf_site_profile_duels:
-    path:     /myduels
+    path:     /{_locale}/myduels
     defaults: { _controller: BFSiteBundle:Duel:myduels }
     methods:  [GET]
+    requirements:
+        _locale: en|fr
 
 bf_site_settings:
-    path:     /settings
+    path:     /{_locale}/settings
     defaults: { _controller: BFSiteBundle:Profile:settings }
     methods:  [GET,POST]
+    requirements:
+        _locale: en|fr
 
 bf_site_settings_info:
-    path:     /settings/info
+    path:     /{_locale}/settings/info
     defaults: { _controller: BFSiteBundle:Profile:settingsInfo }
     methods:  [PUT,POST]
+    requirements:
+        _locale: en|fr
 
 bf_site_settings_picture:
-    path:     /settings/picture
+    path:     /{_locale}/settings/picture
     defaults: { _controller: BFSiteBundle:Profile:settingsPicture }
     methods:  [PUT,POST]
+    requirements:
+        _locale: en|fr
 
 bf_site_settings_reset_password:
-    path:     /settings/password
+    path:     /{_locale}/settings/password
     defaults: { _controller: BFSiteBundle:Profile:changePassword }
     methods:  [PUT,POST]
+    requirements:
+        _locale: en|fr
 
 bf_site_settings_reset_username:
-    path:     /settings/username
+    path:     /{_locale}/settings/username
     defaults: { _controller: BFSiteBundle:Profile:changeUsername }
     methods:  [PUT,POST]
+    requirements:
+        _locale: en|fr
 
 #this section does all the routes for the admin section
 bf_site_admin:
@@ -226,25 +290,33 @@ bf_site_admin_okvideo:
 #this section does all the routes for the duel section
 
 bf_site_duel_create:
-    path:     /duel/create/{username}
+    path:     /{_locale}/duel/create/{username}
     defaults: { _controller: BFSiteBundle:Duel:create }
     methods:  [GET,POST]
+    requirements:
+        _locale: en|fr
 
 bf_site_duel_accept:
-    path:     /duel/accept/{id}
+    path:     /{_locale}/duel/accept/{id}
     defaults: { _controller: BFSiteBundle:Duel:accept }
     methods:  [POST,GET]
+    requirements:
+        _locale: en|fr
 
 bf_site_duel_decline:
-    path:     /duel/decline/{id}
+    path:     /{_locale}/duel/decline/{id}
     defaults: { _controller: BFSiteBundle:Duel:decline }
     methods:  [POST,GET]
+    requirements:
+        _locale: en|fr
 
 
 bf_site_duel_view:
-    path:     /duel/view/{id}
+    path:     /{_locale}/duel/view/{id}
     defaults: { _controller: BFSiteBundle:Duel:view }
     methods:  [GET]
+    requirements:
+        _locale: en|fr
 
 #the routes for the following code
 
@@ -260,18 +332,22 @@ bf_site_unfollow:
 
 #the routes for the ranking pages
 bf_site_ranking_challenge:
-    path:     /ranking/challenge/{country}/{state}
+    path:     /{_locale}/ranking/challenge/{country}/{state}
     defaults: { _controller: BFSiteBundle:Ranking:challenge }
     requirements:
         country: France|United States|Belgium|global
     methods:  [GET]
+    requirements:
+        _locale: en|fr
 
 bf_site_ranking_duel:
-    path:     /ranking/duel/{country}/{state}
+    path:     /{_locale}/ranking/duel/{country}/{state}
     defaults: { _controller: BFSiteBundle:Ranking:duel }
     requirements:
         country: France|United States|Belgium|global
     methods:  [GET]
+    requirements:
+        _locale: en|fr
 
 #the routes for the AJAX calls.
 

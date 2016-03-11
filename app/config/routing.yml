@@ -42,11 +42,8 @@ bf_user:
 #The whole website
 
 bf_site:
-    host: "{_locale}.bestfootball.fr"
     resource: "@BFSiteBundle/Resources/config/routing.yml"
     prefix:   /
-    requirements:
-        _locale: "en|fr"
 
 # FOSAuthServerBundle
 fos_oauth_server_token:
