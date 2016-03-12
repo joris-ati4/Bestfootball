@@ -5,6 +5,7 @@ namespace BF\SiteBundle\EventListener;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Symfony\Component\HttpKernel\HttpKernel;
 
 class LocaleListener implements EventSubscriberInterface
 {
@@ -20,7 +21,7 @@ class LocaleListener implements EventSubscriberInterface
         if (HttpKernel::MASTER_REQUEST != $event->getRequestType()) {
             return;
         }
-        
+
         $request = $event->getRequest();
         if (!$request->hasPreviousSession()) {
             return;
