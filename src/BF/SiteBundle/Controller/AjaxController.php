@@ -5,6 +5,7 @@ namespace BF\SiteBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+Symfony\Component\HttpFoundation\RedirectResponse;
 use BF\SiteBundle\Entity\Video;
 use BF\SiteBundle\Entity\Prediction;
 
@@ -250,10 +251,24 @@ class AjaxController extends Controller
 
         return new response();
     }
-    public function languageAction(request $request){
-        $locale = $request->get('language');
-        $request->getSession()->set('_locale', $locale);
-        return new response();
+    public function setLocaleAction($language = null)
+    {
+        if($language != null)
+        {
+            // On enregistre la langue en session
+            $this->get('session')->set('_locale', $language);
+        }
+     
+        // on tente de rediriger vers la page d'origine
+        $url = $this->container->get('request')->headers->get('referer');
+        if(empty($url))
+        {
+            $url = $this->container->get('router')->generate('bf_site_homepage');
+        }
+     
+        return new RedirectResponse($url);
     }
+
+
  
 }

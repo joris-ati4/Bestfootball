@@ -392,6 +392,6 @@ bf_site_api_comment_del:
     methods:  [POST]
 
 bf_site_api_language:
-    path: /home/language/change
-    defaults: { _controller: BFSiteBundle:Ajax:language }
-    methods:  [POST]
+    path: /home/language/change/{language}
+    defaults: { _controller: BFSiteBundle:Ajax:setLocale }
+    methods:  [POST, GET]
