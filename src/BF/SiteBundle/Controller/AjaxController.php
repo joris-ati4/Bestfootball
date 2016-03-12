@@ -250,5 +250,10 @@ class AjaxController extends Controller
 
         return new response();
     }
+    public function languageAction(request $request){
+        $locale = $request->get('language');
+        $request->getSession()->set('_locale', $locale);
+        return new response();
+    }
  
 }

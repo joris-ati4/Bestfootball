@@ -51,6 +51,26 @@
         <li><a href="/logout">{{ 'Deconnect'|trans }}</a></li>
       </ul>
     </li>
+    <li class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="padding: 5px 5px;">
+        {% if app.request.locale == 'en' %}
+          <img src="/img/flags/en.png" alt="english flag on bestfootball" style="max-width:20px;max-height:20px;border-radius:50%;"><!-- English flag -->
+        {% elseif app.request.locale == 'fr' %}
+          <img src="/img/flags/fr.jpg" alt="Fench flag on bestfootball" style="max-width:20px;max-height:20px;border-radius:50%;"><!-- French flag -->
+        {% endif %}
+        <span class="caret"></span>
+      </a>
+      <ul class="dropdown-menu">
+        <li><a class="lanuage" href="#" data=language="en"></a><img src="/img/flags/en.png" alt="english flag on bestfootball" style="max-width:20px;max-height:20px;border-radius:50%;"></li><!-- English flag -->
+        <li><a class="lanuage" href="#" data=language="fr"></a><img src="/img/flags/fr.jpg" alt="Fench flag on bestfootball" style="max-width:20px;max-height:20px;border-radius:50%;"></li><!-- French flag -->
+      </ul>
+    </li>
+
+
+
+
+
+
   {% else %} {# Here the user is NOT connected to the site #}
     <li>
         <button onclick="location.href='{{ path('fos_user_security_login') }}'" class="btn btn-login" type="submit">{{ 'Login / Subscribe'|trans }} </button>
@@ -110,5 +130,19 @@
     
   });
 
+  </script>
+  <script type="text/javascript">
+  $('.language').click(function(e){
+    var language = $(this).data('language');
+    $.ajax({
+            type: "POST",
+            url: "{{ path('bf_site_api_language')}}",
+            data: 'language=' + language,
+            cache: false,
+            success: function(){
+              window.reload();
+            }
+        });
+  });
   </script>
 {% endblock %}
