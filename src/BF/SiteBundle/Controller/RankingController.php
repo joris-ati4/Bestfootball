@@ -10,7 +10,7 @@ class RankingController extends Controller
     {
         $listCountries = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Country')->findall();
         if($country == 'global'){ //the global ranking of all the users
-            $ranking = $this->getDoctrine()->getManager()->getRepository('BFUserBundle:User')->findBy(array(),array('points' => 'desc'));
+            $ranking = $this->getDoctrine()->getManager()->getRepository('BFUserBundle:User')->findBy(array(),array('points' => 'desc'),10,0);
             $rankingGirls =$this->getDoctrine()->getManager()->getRepository('BFUserBundle:User')->findBy(array('gender' => 'Female'),array('points' => 'desc'),10,0);
             $rankingBoys =$this->getDoctrine()->getManager()->getRepository('BFUserBundle:User')->findBy(array('gender' => 'Male'),array('points' => 'desc'),10,0);
             }
