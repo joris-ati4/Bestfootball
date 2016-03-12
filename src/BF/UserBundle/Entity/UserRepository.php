@@ -38,7 +38,8 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
   {
     $qb = $this->createQueryBuilder('u');
 
-    $qb->orderBy('u.duelPoints', 'DESC');
+    $qb->orderBy('u.duelPoints', 'DESC')
+      ->setMaxResults(10);
     
     return $qb
       ->getQuery()
@@ -51,7 +52,8 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
 
     $qb->Where('u.gender = :gender')
          ->setParameter('gender', 'Female')
-       ->orderBy('u.duelPoints', 'DESC');
+       ->orderBy('u.duelPoints', 'DESC')
+       ->setMaxResults(10);
     
     return $qb
       ->getQuery()
@@ -65,6 +67,7 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
     $qb->Where('u.country = :country')
          ->setParameter('country', $country)
        ->orderBy('u.points', 'DESC')
+       ->setMaxResults(10)
     ;
     return $qb
       ->getQuery()
@@ -78,6 +81,7 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
     $qb->Where('u.country = :country')
          ->setParameter('country', $country)
        ->orderBy('u.duelPoints', 'DESC')
+       ->setMaxResults(10)
     ;
     return $qb
       ->getQuery()
@@ -91,6 +95,7 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
     $qb->Where('u.state = :state')
          ->setParameter('state', $state)
        ->orderBy('u.points', 'DESC')
+       ->setMaxResults(10)
     ;
     return $qb
       ->getQuery()
@@ -104,6 +109,7 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
     $qb->Where('u.state = :state')
          ->setParameter('state', $state)
        ->orderBy('u.duelPoints', 'DESC')
+       ->setMaxResults(10)
     ;
     return $qb
       ->getQuery()
@@ -119,6 +125,7 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
        ->andWhere('u.gender = :gender')
          ->setParameter('gender', 'Female')
        ->orderBy('u.points', 'DESC')
+       ->setMaxResults(10)
     ;
     return $qb
       ->getQuery()
@@ -134,6 +141,7 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
        ->andWhere('u.gender = :gender')
          ->setParameter('gender', 'Female')
        ->orderBy('u.duelPoints', 'DESC')
+       ->setMaxResults(10)
     ;
     return $qb
       ->getQuery()
@@ -149,6 +157,7 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
        ->andWhere('u.gender = :gender')
          ->setParameter('gender', 'Female')
        ->orderBy('u.points', 'DESC')
+       ->setMaxResults(10)
     ;
     return $qb
       ->getQuery()
@@ -164,6 +173,7 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
        ->andWhere('u.gender = :gender')
          ->setParameter('gender', 'Female')
        ->orderBy('u.duelPoints', 'DESC')
+       ->setMaxResults(10)
     ;
     return $qb
       ->getQuery()
@@ -179,6 +189,7 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
        ->andWhere('u.gender = :gender')
          ->setParameter('gender', 'Male')
        ->orderBy('u.points', 'DESC')
+       ->setMaxResults(10)
     ;
     return $qb
       ->getQuery()
@@ -194,6 +205,7 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
        ->andWhere('u.gender = :gender')
          ->setParameter('gender', 'Male')
        ->orderBy('u.duelPoints', 'DESC')
+       ->setMaxResults(10)
     ;
     return $qb
       ->getQuery()
@@ -209,6 +221,7 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
        ->andWhere('u.gender = :gender')
          ->setParameter('gender', 'Male')
        ->orderBy('u.points', 'DESC')
+       ->setMaxResults(10)
     ;
     return $qb
       ->getQuery()
@@ -224,6 +237,7 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
        ->andWhere('u.gender = :gender')
          ->setParameter('gender', 'Male')
        ->orderBy('u.duelPoints', 'DESC')
+       ->setMaxResults(10)
     ;
     return $qb
       ->getQuery()

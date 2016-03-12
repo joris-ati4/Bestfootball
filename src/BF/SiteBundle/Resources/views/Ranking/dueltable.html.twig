@@ -3,7 +3,7 @@
 		{# here we make the little thumbnails for every video #}
 	<tr style="height:50px;">
         <td>{{ i }}</td>
-        <td style="height:50px;"><img src="{{ user.picture.src }}" alt="{{ user.picture.alt }}" style="height:101%;border-radius:50%"/></td>
+        <td style="height:50px;"><img src="{{ user.media.path }}" alt="{{ user.media.name }}" style="height:101%;border-radius:50%"/></td>
         <td><a href="{{ path('bf_site_profile', { 'username': user.username }) }}">{{ user.username }}</a></td>
         <td>{{ user.duelPoints }}</td>
     </tr>
