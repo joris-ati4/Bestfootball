@@ -17,6 +17,10 @@ class LocaleListener implements EventSubscriberInterface
 
     public function onKernelRequest(GetResponseEvent $event)
     {
+        if (HttpKernel::MASTER_REQUEST != $event->getRequestType()) {
+            return;
+        }
+        
         $request = $event->getRequest();
         if (!$request->hasPreviousSession()) {
             return;
@@ -35,7 +39,7 @@ class LocaleListener implements EventSubscriberInterface
     {
         return array(
             // must be registered after the default Locale listener
-            KernelEvents::REQUEST => array(array('onKernelRequest', 17)),
+            KernelEvents::REQUEST => array(array('onKernelRequest', 10)),
         );
     }
 }

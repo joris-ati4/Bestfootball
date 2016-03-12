@@ -67,8 +67,8 @@
         <span class="caret"></span>
       </a>
       <ul class="dropdown-menu">
-        <li><a href="{{ path('bf_site_api_language', {'language': 'fr'}) }}"><img src="/img/flags/en.png" alt="english flag on bestfootball" style="max-width:20px;max-height:20px;border-radius:50%;"></a></li><!-- English flag -->
-        <li><a href="{{ path('bf_site_api_language', {'language': 'fr'}) }}"><img src="/img/flags/fr.jpg" alt="Fench flag on bestfootball" style="max-width:20px;max-height:20px;border-radius:50%;"></a></li><!-- French flag -->
+        <li><a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale' : 'en'})) }}"><img src="/img/flags/en.png" alt="english flag on bestfootball" style="max-width:20px;max-height:20px;border-radius:50%;"></a></li><!-- English flag -->
+        <li><a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale' : 'fr'})) }}"><img src="/img/flags/fr.jpg" alt="Fench flag on bestfootball" style="max-width:20px;max-height:20px;border-radius:50%;"></a></li><!-- French flag -->
       </ul>
     </li>
 {% endblock %}

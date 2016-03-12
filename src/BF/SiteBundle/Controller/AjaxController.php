@@ -5,7 +5,7 @@ namespace BF\SiteBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use BF\SiteBundle\Entity\Video;
 use BF\SiteBundle\Entity\Prediction;
 
