@@ -3,8 +3,16 @@
 		<div class="challenge">
 			<div class="row text-center">
 				</br>
-				<h3 class="text-center">{{ challenge.title }}</h3>
-				<a href="{{ path('bf_site_challengeview', {'id': challenge.id}) }}"><img src="/uploads/challenges/thumbnail/{{ challenge.id }}.jpg" alt="thumbnail of {{ challenge.title }}" style="max-width:90%;max-height:150px;" class="text-center"></a>
+				<h3 class="text-center">
+					{% if app.request.getLocale() == 'fr' %}			
+		            	{{ challenge.titleFR }}
+		            {% elseif app.request.getLocale() == 'en' %}
+		            	{{ challenge.titleEN }}
+		            {% else %}
+		            	{{ challenge.titleEN }}
+		            {% endif %}
+		        </h3>
+				<a href="{{ path('bf_site_challengeview', {'id': challenge.id}) }}"><img src="/uploads/challenges/thumbnail/{{ challenge.id }}.jpg" alt="thumbnail of {{ challenge.titleEN }}" style="max-width:90%;max-height:150px;" class="text-center"></a>
 								
 				<button onclick="location.href='{{ path('bf_site_challengeview', {'id': challenge.id}) }}'" class="btn btn-participate" type="submit">{{ 'Participate'|trans }}</button>
 			</div>

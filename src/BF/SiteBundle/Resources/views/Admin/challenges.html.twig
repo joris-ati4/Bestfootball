@@ -21,7 +21,8 @@
 				<a href="{{ path('bf_site_admin_addChallenge') }}" class="btn btn-success">Add a new challenge</a>
 				<table class="table">
 					<tr>
-						<th>Title</th>
+						<th>Title EN </th>
+						<th>Title FR </th>
 						<th>Description EN</th>
 						<th>Description FR</th>
 						<th>One</th>
@@ -35,7 +36,8 @@
 						
 				 	{% for challenge in listChallenges %}
 						<tr>
-							<td>{{ challenge.title }}</td>
+							<td>{{ challenge.titleEN }}</td>
+							<td>{{ challenge.titleFR }}</td>
 							<td>{{ challenge.descriptionEN }}</td>
 							<td>{{ challenge.descriptionFR }}</td>
 							<td>{{ challenge.one }}</td>

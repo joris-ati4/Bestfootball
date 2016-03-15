@@ -6,7 +6,19 @@
 		            <img src="/uploads/videos/thumbnail/{{ video.id }}.jpg" alt="{{ video.thumbAlt }}" style="max-height:90px;max-width:100%"/>
 		        </div><!--
 		        --><div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 vcenter">
-		            <p style="font-size:14px;"><b>{{ video.title }}</b></br>
+		            <p style="font-size:14px;"><b>
+		            	{% if video.type == 'freestyle' %}
+		                  {{ video.title }}
+		                {% else %}
+		                    {% if app.request.getLocale() == 'fr' %}            
+		                        {{ video.challenge.titleFR }}
+		                    {% elseif app.request.getLocale() == 'en' %}
+		                        {{ video.challenge.titleEN }}
+		                    {% else %}
+		                        {{ video.challenge.titleEN }}
+		                    {% endif %}
+		                {% endif %}
+		            </b></br>
 		            <a href="{{ path('bf_site_profile', { 'username': video.user.username }) }}" style=""> {{ video.user.username }} </a></p>
 		        </div>
 	    	</div>

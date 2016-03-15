@@ -4,7 +4,15 @@
 				{% if video.type == 'freestyle' %}
                   <p style="font-size:20px;">{{ video.title }}</p>
                 {% else %}
-                  <p style="font-size:20px;">{{ video.challenge.title }}</p>
+                  <p style="font-size:20px;">
+                    {% if app.request.getLocale() == 'fr' %}            
+                        {{ video.challenge.titleFR }}
+                    {% elseif app.request.getLocale() == 'en' %}
+                        {{ video.challenge.titleEN }}
+                    {% else %}
+                        {{ video.challenge.titleEN }}
+                    {% endif %}
+                  </p>
                 {% endif %}
 	        		<img src="/uploads/videos/thumbnail/{{ video.id }}.jpg" alt="{{ video.thumbAlt }}"  style="max-width:90%;max-height:120px;"/>
                 </a>

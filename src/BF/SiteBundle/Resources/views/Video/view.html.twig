@@ -11,7 +11,7 @@
   <meta property="og:type"               content="video" />
   <meta property="og:title"              content="{{ video.title }}  on bestfootball" />
   {% if video.type == 'challenge' and predict is not null %}
-    <meta property="og:description"        content="{{ video.user.username }} video for the {{video.challenge.title }} challenge on bestfootball." />
+    <meta property="og:description"        content="{{ video.user.username }} video for the {{video.challenge.titleEN }} challenge on bestfootball." />
   {% else %}
     <meta property="og:description"        content="{{ video.user.username }} video on Bestfootball." />         
   {% endif %}
@@ -27,7 +27,7 @@
   <meta name="twitter:card" content="player">
   <meta name="twitter:site" content="@Bestfootball_10">
   <meta name="twitter:title" content="{{ video.title }}  on bestfootball">
-  <meta name="twitter:description" content="{{ video.user.username }} video for the {{video.challenge.title }} challenge on bestfootball.">
+  <meta name="twitter:description" content="{{ video.user.username }} video for the {{video.challenge.titleEN }} challenge on bestfootball.">
   <meta name="twitter:image" content="https://www.bestfootball.fr/uploads/videos/thumbnail/{{ video.id }}.jpg">
   <meta name="twitter:player" content="https://www.bestfootball.fr/video/twitter/{{ video.id }}">
   <meta name="twitter:player:width" content="480">
@@ -91,7 +91,15 @@
                 {% if video.type == 'freestyle' %}
                   <h1 style="font-size:35px;margin-left:15px;">{{ video.title }}</h1>
                 {% else %}
-                  <h1 style="font-size:35px;margin-left:15px;">{{ video.challenge.title }}</h1>
+                  <h1 style="font-size:35px;margin-left:15px;">
+                    {% if app.request.getLocale() == 'fr' %}      
+                      {{ video.challenge.titleFR }}
+                    {% elseif app.request.getLocale() == 'en' %}
+                      {{ video.challenge.titleEN }}
+                    {% else %}
+                      {{ video.challenge.titleEN }}
+                    {% endif %}
+                  </h1>
                 {% endif %}
 
 
@@ -251,8 +259,10 @@
                             <p style="color:white;font-size:10px;">{{ comment.date|date("d/m/Y - H:i:s") }}</p>
 
                             <!-- if the user is the commentor or the video owner we show the delete button -->
-                            {% if app.user.id == comment.user.id or app.user.id == video.user.id %}
-                              <span id="commentDelete" class="glyphicon glyphicon-remove delete" data-comment="{{ comment.id }}" aria-hidden="true"     style="top:7px;position: absolute;right:7px;" data-placement="right" data-toggle="tooltip" title="Delete this comment!"></span>
+                            {% if app.user is not null %}
+                              {% if app.user.id == comment.user.id or app.user.id == video.user.id %}
+                                <span id="commentDelete" class="glyphicon glyphicon-remove delete" data-comment="{{ comment.id }}" aria-hidden="true"     style="top:7px;position: absolute;right:7px;" data-placement="right" data-toggle="tooltip" title="Delete this comment!"></span>
+                              {% endif %}
                             {% endif %}
                           </div>
                         </div>

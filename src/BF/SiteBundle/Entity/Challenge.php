@@ -42,9 +42,16 @@ class Challenge
     /**
      * @var string
      *
-     * @ORM\Column(name="title", type="string", length=255)
+     * @ORM\Column(name="title_fr", type="string", length=255)
      */
-    private $title;
+    private $titleFR;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="title_en", type="string", length=255)
+     */
+    private $titleEN;
 
     /**
      *
@@ -726,5 +733,53 @@ class Challenge
     public function getType()
     {
         return $this->type;
+    }
+
+    /**
+     * Set titleFR
+     *
+     * @param string $titleFR
+     *
+     * @return Challenge
+     */
+    public function setTitleFR($titleFR)
+    {
+        $this->titleFR = $titleFR;
+
+        return $this;
+    }
+
+    /**
+     * Get titleFR
+     *
+     * @return string
+     */
+    public function getTitleFR()
+    {
+        return $this->titleFR;
+    }
+
+    /**
+     * Set titleEN
+     *
+     * @param string $titleEN
+     *
+     * @return Challenge
+     */
+    public function setTitleEN($titleEN)
+    {
+        $this->titleEN = $titleEN;
+
+        return $this;
+    }
+
+    /**
+     * Get titleEN
+     *
+     * @return string
+     */
+    public function getTitleEN()
+    {
+        return $this->titleEN;
     }
 }
