@@ -6,44 +6,46 @@
 
 
 {% block content %}
- <section class="header text-center">
- 	<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 col-lg-offset-1 row well">
-	  	<h1>About Bestfootball</h1>
+<section class="header text-center">
+  <div class="row" style="margin-top:50px;">
+    <div class="col-xs-10 col-sm-6 col-md-6 col-lg-6 col-xs-offset-1 col-sm-offset-3 col-md-offset-3 col-lg-offset-3" >
+      <div class="challengedescription text-center" style="background-color:rgba(255,255,255,0.8);">
+        <div class="challengetitle">
+          <h3 style="color:white;">{{ 'about us'|trans }}</h3>
+        </div>
+        <div class="challengecontent text-center">
+		<h4>Nassim, {{ 'number'|trans }} 10</h4>
+		<p style="text-align:justify;">
+			{{ 'about.nassim'|trans }}
+		</p>
+		<p>{{ 'qualities'|trans }} : {{ 'about.nassim.qualities'|trans }}</p>
+		<p>{{ 'function'|trans }}: CEO</p>
 
-	  	<section id="Our_Team"><!-- #Team -->
-			<h3 align="center">BestFootball team</h3><br/>
-			<img href="#" src="Images/image1_accueil.jpg" alt="" class="Photo_membres"/>				
-			<p><em>Nassim, CEO.</em><br/><br/>
-			Nassim finished his studies in 2014 and he is now a junior actuary.<br/>
-			He has been playing football since he was eight years old, and believe that football future talents can be discovered at every times.				
-			</p>
-			
-			<p id="Espace_membres"></p>
-			
-			<img href="#" src="Images/image1_accueil.jpg" alt="" class="Photo_membres" />
-			<p><em>Jérémie, Business developer.</em><br/>
-			Jérémie is an international business student at SKEMA Paris.<br/>
-			He joined the team after playing in the same football team as Nassim in USA, and share with him the same ideas about football.			
-			</p>				
-		</section>
-					
-		<section id="Our_Goal"><!-- #Goal -->
-			<h3 align="center">BestFootball Goal</h3><br/>				
-			<p>BestFootball aims to bring a new breath of air to football lovers. We think that football can be much more enjoyed by young players. Convinced that many players did not have the chance to be recruited earlier, we give them that second chance. The tasks of BestFootball are split into three pillars : 
-				<ul id="Pillars">
-					<li>being a 100% <strong>football social network</strong></li>
-					<li>making players improve themselves  by proposing <strong>entertaining challenges</strong>, tournaments and rewards</li>
-					<li>enhancing the <strong>recruiting process</strong> thanks to the videos uploaded</li>
-				</ul>
-			</p>				
-		</section>
-				
-		<section id="Our_Offer"><!-- #Offer -->
-			<h3 align="center">BestFootball Offer</h3><br/>
-			<p>BestFootball proposes several challenges : technical skills, accuracy, physical abilities and many others. You are allowed to propose yourself a new challenge. You can defy yours friends or people around the world, and organize tournaments. BestFootball ranks all the players regionnally and nationnaly so that you can see your progress and compare yourself with the best players. Players with highest scores are rewarded.</p>
-			<p>With the recruiting section of BestFootball, you can make your dream come true by uploading longer videos of yourself, and being watched by professional recruiters. Players with high score get rewarded and have the opportunity to enter the section.</p>				
-		</section>
-	</div>
+		<h4>Jérémie, {{ 'number'|trans }} 9</h4>
+		<p style="text-align:justify;">
+			{{ 'about.jeremie'|trans }}
+		<p>
+
+		<p>{{ 'qualities'|trans }} :  {{ 'about.jeremie.qualities'|trans }}</p>
+		<p>{{ 'function'|trans }} : COO</p>
+
+		<h4>Joris, {{ 'number'|trans }} 3</h4>
+
+		<p style="text-align:justify;">
+			{{ 'about.joris'|trans }}
+		</p>
+		<p>{{ 'qualities'|trans }} : {{ 'about.joris.qualities'|trans }} </p>
+		<p>{{ 'function'|trans }} : CTO</p>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
+
+
+
+
 
 {% endblock %}

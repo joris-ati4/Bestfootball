@@ -37,13 +37,13 @@ Followed: Suivi
 Settings: Paramètres
 'Admin section': 'Section Admin'
 Deconnect: Deconnexion
-'Login / Subscribe': "Se connecter / S'inscrire"
+'Login / Subscribe': 'Se connecter / S''inscrire'
 'The Duel': 'Le Duel'
 'Propose your own challenge !': 'Proposez votre propre challenge !'
 'You have an idea for a new challenge? Propose your own challenge by sending us a message!': 'Vous avez une idée pour un nouveau challenge? Proposez un challenge en envoyant un message!'
 'Sponsor a challenge?': 'Sponsoriser un challenge?'
 'You want to be the sponsor of one challenge? Contact us for more info and propose us a new challenge.': 'Voulez-vous sponsoriser un challenge? Contactez-nous pour avoir des informations supplémentaire.'
-'Contact us!': 'Contactez-nous!'
+'Contact us!': Contactez-nous!
 Participate: Participer
 'The challenge': 'Le challenge'
 'Upload my video': 'Envoyez ma vidéo'
@@ -130,3 +130,13 @@ rules.11.title: "11. Pourquoi mon pays n’apparaît pas sur Bestfootball\_?"
 rules.11.content: 'Le site n’est pas encore fini. Notre équipe travaille dessus et tous les pays seront très bientôt représentés. '
 'My informations': '__My informations'
 'You want to be the sponsor of one challenge? Contact us for more info. You can also propose us a new challenge.': '__You want to be the sponsor of one challenge? Contact us for more info. You can also propose us a new challenge.'
+'about us': 'Qui sommes-nous?'
+about.nassim: 'Nassim EZZAKRAOUI, dans la vie c''est un actuaire. Vous connaissez sûrement pas ce métier et on s''en fiche. Car plus qu''analyser les risques, c''est chausser ses crampons et dribbler qu''il aime par dessous tout. Joueur au sport-études de Besançon, il fait le constat qu''il ne progresse pas autant que prévu en club (et oui on a pas toujours ce à quoi on s''attend Nassim!!), mais qu''il apprend au contraire énormément en jouant seul ou avec des amis dans la rue. En 2013, alors qu’il essaie d’être recruté par une université américaine, il prend aussi grandement conscience du manque de visibilité qu’ont les jeunes joueurs de football amateur : Bestfootball vient de naître. '
+qualities: Atouts
+about.nassim.qualities: 'Vision du jeu, accélération du jeu'
+function: Fonction
+about.jeremie.qualities: 'Placements, Intuition, Vitesse'
+about.joris.qualities: 'Collectif, Précis, Travailleur'
+about.jeremie: 'Jérémie Karege travaille en tant que Business Manager dans le cabinet de conseil CAP GEMINI. C''est aux Etats-Unis qu''il rencontre Nassim et s''intéresse au projet.Sa passion : le foot. Il a pu jouer aux 4 coins du monde et, à défaut d’être un numéro 9 sur le terrain, Jérémie est avant tout un numéro 9 dans la vie! Et comme tout numéro 9 qui se respecte il n’a qu’une obsession, le but ! A travers son sang-froid qui le caractérise, Jérémie espère marquer ce qui serait son plus beau but : faire de Bestfootball une interface mondialement reconnue. '
+about.joris: 'Joris HART est étudiant en master d''ergonomie et ingénierie des activités sportives à l''université de Savoie. Ses grandes passions sont le parapente, le foot et... et la programmation web (Et oui entre un saut dans le vide et un match de foot, il a le temps de nous faire quelques lignes de codes)! Après une première tentative de start up dans le football (localisation et création de matchs entre amis), il crée sa plateforme de services (création de sites web pour particuliers). Séduit par le projet Bestfootball et la vision qui l''accompagne, Il s''associe à Jérémie et Nassim en Octobre 2015.'
+number: "numéro"
