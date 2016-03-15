@@ -66,11 +66,14 @@ security:
         - { path: ^/ambassadeur, role: ROLE_AMBASSADEUR }
         - { path: ^/oauth/v2/, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/api, roles: IS_AUTHENTICATED_FULLY }
-        - { path: ^/home, role: IS_AUTHENTICATED_FULLY }
         - { path: ^/search, role: IS_AUTHENTICATED_FULLY }
-        - { path: ^/upload, role: IS_AUTHENTICATED_FULLY }
-        - { path: ^/duel, role: IS_AUTHENTICATED_FULLY }
         - { path: ^/profile, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/fr/home, role: IS_AUTHENTICATED_FULLY }
+        - { path: ^/en/home, role: IS_AUTHENTICATED_FULLY }
+        - { path: ^/en/upload, role: IS_AUTHENTICATED_FULLY }
+        - { path: ^/fr/upload, role: IS_AUTHENTICATED_FULLY }
+        - { path: ^/en/duel, role: IS_AUTHENTICATED_FULLY }
+        - { path: ^/fr/duel, role: IS_AUTHENTICATED_FULLY }
 
 
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
