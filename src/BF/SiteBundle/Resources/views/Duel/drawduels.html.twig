@@ -4,9 +4,9 @@
     	<div class="challengetitle">
       		<h3 class="text-center" style="color:white;">
       			{% if duel.host.username == user.username %}
-      				{{ duel.challenge.title }} {{ 'against'|trans }} {{ duel.guest.username }}
+      				{{ duel.challenge.titleEN }} {{ 'against'|trans }} {{ duel.guest.username }}
       			{% else %}
-      				{{ duel.challenge.title }} {{ 'against'|trans }} {{ duel.host.username }}
+      				{{ duel.challenge.titleEN }} {{ 'against'|trans }} {{ duel.host.username }}
       			{% endif %}
       		</h3>
     	</div>

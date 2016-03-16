@@ -17,7 +17,7 @@ class DuelType extends AbstractType
         $builder
             ->add('challenge', 'entity', array(
               'class'    => 'BFSiteBundle:Challenge',
-              'property' => 'title',
+              'property' => 'titleEN',
               'multiple' => false
             ))
         ;
