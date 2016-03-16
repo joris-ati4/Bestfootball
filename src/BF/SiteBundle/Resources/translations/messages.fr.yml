@@ -140,3 +140,17 @@ about.joris.qualities: 'Collectif, Précis, Travailleur'
 about.jeremie: 'Jérémie Karege travaille en tant que Business Manager dans le cabinet de conseil CAP GEMINI. C''est aux Etats-Unis qu''il rencontre Nassim et s''intéresse au projet.Sa passion : le foot. Il a pu jouer aux 4 coins du monde et, à défaut d’être un numéro 9 sur le terrain, Jérémie est avant tout un numéro 9 dans la vie! Et comme tout numéro 9 qui se respecte il n’a qu’une obsession, le but ! A travers son sang-froid qui le caractérise, Jérémie espère marquer ce qui serait son plus beau but : faire de Bestfootball une interface mondialement reconnue. '
 about.joris: 'Joris HART est étudiant en master d''ergonomie et ingénierie des activités sportives à l''université de Savoie. Ses grandes passions sont le parapente, le foot et... et la programmation web (Et oui entre un saut dans le vide et un match de foot, il a le temps de nous faire quelques lignes de codes)! Après une première tentative de start up dans le football (localisation et création de matchs entre amis), il crée sa plateforme de services (création de sites web pour particuliers). Séduit par le projet Bestfootball et la vision qui l''accompagne, Il s''associe à Jérémie et Nassim en Octobre 2015.'
 number: "numéro"
+home.header.subtitle: 'Time for you to progress and show us your football skills.'
+home.header.explication: 'This is the arena. Only football challenges. You want to know your real level ? You want to be ranked in your city and in the world ? You want everyone to know that you are the best ?  Bestfootball fulfill your dreams. Choose a challenge, take a video of yourself and upload it here. '
+'HOW DOES IT WORK ?': 'HOW DOES IT WORK ?'
+Subscribe: "Inscris-toi"
+home.howto.sub.1: " Premièrement, veuillez lire les règles de Bestfootball afin d’être sur de profiter du site et de l’application mobile au maximum."
+'Click here to read the rules.':"Cliques ici pour lire les règles."
+'Then': 'Ensuite'
+'subscribe here': "clique ici pour t'inscrire"
+home.howto.sub.2: "Nous te conseillons aussi de télécharger l’application pour filmer tes challenges."
+Participate: 'Participe'
+home.howto.participate: "Pour participer c’est super simple. Choisis ton challenge, filme toi et indique le niveau que tu as atteint. C’est beaucoup plus simple avec l’application tout est sur ton téléphone, ta vidéo s’upload automatiquement sur le site."
+'Earn rewards': 'Gagne des Lots'
+home.howto.earn: "estfootball récompenses les utilisateurs avec de nombreux cadeaux, à toi de jouer pour faire partie des meilleurs. "
+home.app: "Nous avons développé une application pour filmer vos challenges. Grâce à l’application tu as accès à tous les challenges présents sur le site. En un clic, tu commences à te filmer et tu peux uploader ta vidéo automatiquement sur ton profil. "

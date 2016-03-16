@@ -139,3 +139,17 @@ about.joris.qualities: 'meticulous, hard worker, team spirit'
 about.jeremie: 'Jérémie Karege is working as a business manager for Capgemini (A French management consulting firm).  He met Nassim in the US where he had a football scholarship and decided to join Nassim on Bestfootball adventure. His passion : Football.  He played all over the world and despite not being a number 9 on the pitch, Jérémie is above all a number 9 in life! As any number 9 that respect its status he has one obsession, the goal! We are confident that jeremie will keep composure in front of what could be one of its most beautiful goal: Make of  Bestfootball an interface recognized worldwide.'
 about.joris: 'Joris HART is a graduate sudent in engineering and technical solutions for sports activities at Savoie univerisity. His main passions are paraglider, soccer and web programming ( Yes between jumping in glider playing a soccer game Joris finds time to code Bestfootball website) ! Joris is a true entrepreneur, Bestfootball is already his third project. Joris first project was already about foorball (Geo-localization and set a game between friends), he also created his own platform services ( creating website for individuals).  He was seduced by the Bestfootball project and the philosophy behind. He became an associate in the Bestfootball project in October 2015. '
 number: number
+home.header.subtitle: "Montre nous tes talents de footballeurs et vient t’améliorer. "
+home.header.explication: "Bienvenue dans l’arène, ici que des challenges et du foot. Tu veux connaître ton niveau ? Savoir ce que tu vaux dans ta ville, ton pays ou dans le monde ? Tu veux mettre tout le monde d’accord ? Bestfootball réalise tes rêves. Choisi un challenge sur le site, Prend une video de ton challenge avec notre application et montres nous de quoi tu es capable."
+'HOW DOES IT WORK ?': 'COMMENT CA MARCHE ?'
+Subscribe: 'Subscribe'
+home.howto.sub.1:'First of all, please read the rules of Bestfootball to be sure you can enjoy it fully!'
+'Click here to read the rules.':'Click here to read the rules.'
+'Then': 'Then'
+'subscribe here': 'subscribe here'
+home.howto.sub.2:'and download the application Bestfootball to record yourself(recommanded).'
+Participate: 'Participate'
+home.howto.participate: 'It is really simple! Just choose the challenge you want, record yourself, indicate us the level you reached and upload your video. And it is way faster with the application : you do all that on your phone and you do not need to connect it with the computer !'
+'Earn rewards': 'Earn rewards'
+home.howto.earn: 'Bestfootball rewards his users thanks to different systems of rewards. \n So Manage to be among the best !!'
+home.app: 'We developped an application to make it easier for you to film and upload the challenges. With our application, you can access all the challenges and with one click of a button, you can begin to record and upload your video.'

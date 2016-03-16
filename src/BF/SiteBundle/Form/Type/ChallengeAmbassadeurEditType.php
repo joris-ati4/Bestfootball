@@ -15,7 +15,8 @@ class ChallengeAmbassadeurEditType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title', 'text')
+            ->add('titleFR', 'text')
+            ->add('titleEN', 'text')
             ->add('descriptionFR', 'textarea')
             ->add('descriptionEN', 'textarea')
             ->add('submit', 'submit')
