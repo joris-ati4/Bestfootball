@@ -143,8 +143,8 @@ home.header.subtitle: "Montre nous tes talents de footballeurs et vient t’amé
 home.header.explication: "Bienvenue dans l’arène, ici que des challenges et du foot. Tu veux connaître ton niveau ? Savoir ce que tu vaux dans ta ville, ton pays ou dans le monde ? Tu veux mettre tout le monde d’accord ? Bestfootball réalise tes rêves. Choisi un challenge sur le site, Prend une video de ton challenge avec notre application et montres nous de quoi tu es capable."
 'HOW DOES IT WORK ?': 'COMMENT CA MARCHE ?'
 Subscribe: 'Subscribe'
-home.howto.sub.1:'First of all, please read the rules of Bestfootball to be sure you can enjoy it fully!'
-'Click here to read the rules.':'Click here to read the rules.'
+home.howto.sub.1:"First of all, please read the rules of Bestfootball to be sure you can enjoy it fully!"
+"Click here to read the rules.":'Click here to read the rules.'
 'Then': 'Then'
 'subscribe here': 'subscribe here'
 home.howto.sub.2:'and download the application Bestfootball to record yourself(recommanded).'
