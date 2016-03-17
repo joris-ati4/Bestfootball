@@ -45,13 +45,13 @@ class RemoveOldDuelCommand extends ContainerAwareCommand
 	    			$link = $this->getContainer()->get('router')->generate('bf_site_profile_duels');
 	    			$message = $duel->getGuest()->getUsername().' did not complete the duel in time, your receive 100 points';
 			      	$service = $this->getContainer()->get('bf_site.notification');
-                	$notification = $service->create($user, $message, null, $link);
+                	$newNotification = $service->create($user, $message, null, $link);
 
                 	
                 	foreach ($notifications as $notification) { $em->remove($notification);}
                 	foreach ($videos as $video) { $em->remove($video);}
                 	$em->persist($user);
-                	$em->persist($notification);
+                	$em->persist($newNotification);
 	    			$em->remove($duel);
 	    			
 
@@ -65,13 +65,13 @@ class RemoveOldDuelCommand extends ContainerAwareCommand
 	    			$link = $this->getContainer()->get('router')->generate('bf_site_profile_duels');
 	    			$message = $duel->getHost()->getUsername().' did not complete the duel in time, your receive 100 points';
 			      	$service = $this->getContainer()->get('bf_site.notification');
-                	$notification = $service->create($user, $message, null, $link);
+                	$newNotification = $service->create($user, $message, null, $link);
 
                 	
                 	foreach ($notifications as $notification) { $em->remove($notification);}
                 	foreach ($videos as $video) { $em->remove($video);}
 	    			
-	    			$em->persist($notification);
+	    			$em->persist($newNotification);
 	    			$em->persist($user);
 	    			$em->remove($duel);
 	    		}
