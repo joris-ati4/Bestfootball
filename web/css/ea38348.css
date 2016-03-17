@@ -433,6 +433,34 @@ top: 25px;
     width:130px;
 }
 
+/*The video view page */
+.bar-wrap {
+    position: relative;
+}
+.progress-marker {
+    width: 2px;
+    height: 10px;
+    position: absolute;
+    background: black;
+    bottom: -5px;
+}
+.time-axis {
+    display: block;
+    float: left;
+    width: 100%;
+    /*margin: 0px 0 10px 0;*/
+}
+.time-spot {
+    display: block;
+    float: left;
+    width: 16.3%;
+}
+.time-spot-end {
+    display: block;
+    float: left;
+    width: 9%;
+}
+
 /*
   Player Skin Designer for Video.js
   http://videojs.com
