@@ -293,7 +293,7 @@ border-radius:10px;
 .header{
     height:100vh;
     background-image: url(../img/header.jpg);
-    background-attachment: relative;
+    background-attachment: scroll;
     background-size: cover;    
     padding-top: 50px;
 }
