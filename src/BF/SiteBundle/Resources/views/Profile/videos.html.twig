@@ -29,7 +29,15 @@
 					  	<div class="jumbotron text-center text-center" style="background-color:rgba(255, 255, 255,0.8);padding:10px;">
 					   		<h3>{{ video.title }}</h3>
 					   		{% if video.type == "challenge" %}
-								<p>Challenge : {{ video.challenge.title }} </br> Points : {{ video.score }} </p>
+								<p>Challenge :
+									{% if app.request.getLocale() == 'fr' %}      
+				                      {{ video.challenge.titleFR }}
+				                    {% elseif app.request.getLocale() == 'en' %}
+				                      {{ video.challenge.titleEN }}
+				                    {% else %}
+				                      {{ video.challenge.titleEN }}
+				                    {% endif %}
+								</br> Points : {{ video.score }} </p>
 							{% endif %}
 
 					   	
