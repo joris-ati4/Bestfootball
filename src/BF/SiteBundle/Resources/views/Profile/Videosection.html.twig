@@ -1,9 +1,11 @@
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row" style="margin-bottom:20px;">
   <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 vcenter">
-    {% include "BFSiteBundle:Profile:video.html.twig" with {"video": lists.lastVideo} only %}
+    <div class="row">
+      {% include "BFSiteBundle:Profile:video.html.twig" with {"video": lists.lastVideo} only %}
+    </div>
   </div><!--
   --><div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 vcenter"> 
-
+      <div class="row">
         <div class="videolistback">
           <!--Title with line -->
           <div style="width: 100%; height: 21px; border-bottom: 1px solid #95cd36; text-align: center;background-color:#FFF;">
@@ -27,7 +29,6 @@
                       </div><!--
                    --><div class="col-xs-7 col-sm-7 col-md-8 col-lg-8 vcenter">
                         <p style="font-size:14px;">{{ video.title }},</br> {{ video.date|date('d-m-Y')}}</p>
-                        <a href="{{ path('bf_site_video_report', {'id': video.id}) }}">{{ 'report this video'|trans }}</a>
                       </div>
                     </div>
                   </a>
@@ -40,6 +41,7 @@
 
             </ul>
           </div>
+        </div>
         </div>
       </div>
 </div>

@@ -171,6 +171,7 @@
                   <p>
                     Description:</br>{{ video.description }}
                   </p>
+                  <a href="{{ path('bf_site_video_report', {'id': video.id}) }}">{{'report this video'|trans }}</a>
 
                   {% if video.type == 'challenge'%}
                     <h3>Score</h3>

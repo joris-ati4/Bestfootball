@@ -188,9 +188,9 @@ body{
     margin-bottom:0px;
 }
 .videolistcontent{
-    margin: 10px 10px;
+    margin: 10px 10px 0px 10px;
     overflow-y: scroll;
-    height: 50vh;
+    height: 47vh;
 }
 .videolistback{
     width: 100%;

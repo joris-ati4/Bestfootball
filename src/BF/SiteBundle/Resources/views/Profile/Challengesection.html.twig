@@ -17,7 +17,7 @@
 
     <div class="challengecontent">
       {% if lists.listChallenges|length > 0 %}
-        <ul class="playlist" style="list-style-type:none;padding-left:0px;" >
+        <ul style="list-style-type:none;padding-left:0px;" >
           {% set previous='' %}
           {% for video in lists.listChallenges %}
             {% if previous != video.challenge.id %}
