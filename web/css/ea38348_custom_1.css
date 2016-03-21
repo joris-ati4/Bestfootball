@@ -188,9 +188,9 @@ body{
     margin-bottom:0px;
 }
 .videolistcontent{
-    margin: 10px 10px;
+    margin: 10px 10px 0px 10px;
     overflow-y: scroll;
-    height: 50vh;
+    height: 47vh;
 }
 .videolistback{
     width: 100%;
@@ -301,10 +301,14 @@ border-radius:10px;
     min-height:70vh;
     background-color: #FAFAFA;
 }
-.rank{
-    min-height:50vh;
-    background-color: #EDEDF1;
-}
+.ranking{
+    background-image:url(/img/ranking.png);
+    /*rgba(149,205,54,0); */
+    background-attachment: fixed;
+    background-size: cover;    
+    padding-top: 50px;
+    min-height: 75vh;
+  }
 .map{
     min-height:50vh;
     background-color: #FFFFFF;

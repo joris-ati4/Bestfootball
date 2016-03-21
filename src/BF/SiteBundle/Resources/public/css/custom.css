@@ -301,10 +301,14 @@ border-radius:10px;
     min-height:70vh;
     background-color: #FAFAFA;
 }
-.rank{
-    min-height:50vh;
-    background-color: #EDEDF1;
-}
+.ranking{
+    background-image:url(/img/ranking.png);
+    /*rgba(149,205,54,0); */
+    background-attachment: fixed;
+    background-size: cover;    
+    padding-top: 50px;
+    min-height: 75vh;
+  }
 .map{
     min-height:50vh;
     background-color: #FFFFFF;
