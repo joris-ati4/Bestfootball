@@ -443,8 +443,11 @@ class VideoController extends Controller
 	    
 		    $form = $this->get('form.factory')->create(new VideoEditType, $video);
 		    if ($form->handleRequest($request)->isValid()) {
-		      $em->persist($video);
-		      $em->flush();
+
+
+		    	$service = $this->container->get('bf_site.videospoints');
+                $service->videoPoints($video);
+
 		      $request->getSession()->getFlashBag()->add('success', "Your video has been modified.");
 
 		      return $this->redirect($this->generateUrl('bf_site_videos'));

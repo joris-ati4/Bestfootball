@@ -16,7 +16,8 @@ class VideoEditType extends AbstractType
     {
         $builder
             ->add('title', 'text')
-            ->add('description', 'textarea');
+            ->add('description', 'textarea')
+            ->add('repetitions', 'integer');
     }
     
     /**
