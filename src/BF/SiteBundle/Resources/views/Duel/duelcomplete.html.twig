@@ -12,6 +12,7 @@
               <img src="{{ duel.host.media.path }}" alt="{{ duel.host.media.name }}" style="width:50%;border-radius:50%;"></br>
             
                 <a href="{{ path('bf_site_profile', { 'username': duel.host.username }) }}" style="color:#95cd36;font-size:30px;" class="text-center"> {{ duel.host.username }} </a>
+                <p style="font-size:22px;">Repetitions: {{ videohost.repetitions }}</p>
 
               <video width="100%" id="video" controls style="max-width:100%;max-height:400px;">
                 <source src="/uploads/videos/{{ videohost.source }}" type="video/mp4">
@@ -33,6 +34,7 @@
            
             <img src="{{ duel.guest.media.path }}" alt="{{ duel.guest.media.name }}" style="width:50%;border-radius:50%;"></br>
             <a href="{{ path('bf_site_profile', { 'username': duel.guest.username }) }}" style="color:#95cd36;font-size:30px;" class="text-center"> {{ duel.guest.username }} </a>
+            <p style="font-size:22px;">Repetitions: {{ videoguest.repetitions }}</p>
             
 
             <video width="100%" id="video" controls style="max-width:100%;max-height:400px;">
@@ -52,6 +54,7 @@
           <!--the Host section -->
             <img src="{{ duel.host.media.path }}" alt="{{ duel.host.media.name }}" style="width:50%;border-radius:50%;"></br>
             <a href="{{ path('bf_site_profile', { 'username': duel.host.username }) }}" style="color:#95cd36;font-size:30px;" class="text-center"> {{ duel.host.username }} </a>
+            <p style="font-size:22px;">Repetitions: {{ videohost.repetitions }}</p>
             <video width="100%" id="video" controls style="max-width:100%;max-height:400px;">
                 <source src="/uploads/videos/{{ videohost.source }}" type="video/mp4">
                   Your browser does not support the video tag.
@@ -70,6 +73,7 @@
           <img src="/img/winner.png" alt="winner gif" style="position:absolute;width:20%;top:20%;right:20%;">
           <img src="{{ duel.guest.media.path }}" alt="{{ duel.guest.media.name }}" style="width:50%;border-radius:50%;"></br>
             <a href="{{ path('bf_site_profile', { 'username': duel.guest.username }) }}" style="color:#95cd36;font-size:30px;" class="text-center"> {{ duel.guest.username }} </a>
+            <p style="font-size:22px;">Repetitions: {{ videoguest.repetitions }}</p>
           <video width="100%" id="video" controls style="max-width:100%;max-height:400px;">
                 <source src="/uploads/videos/{{ videoguest.source }}" type="video/mp4">
                   Your browser does not support the video tag.
@@ -84,6 +88,7 @@
           <!--the Host section -->
             <img src="{{ duel.host.media.path }}" alt="{{ duel.host.media.name }}" style="width:50%;border-radius:50%;margin-top:170px;"></br>
               <a href="{{ path('bf_site_profile', { 'username': duel.host.username }) }}" style="color:#95cd36;font-size:30px;" class="text-center"> {{ duel.host.username }} </a>
+              <p style="font-size:22px;">Repetitions: {{ videohost.repetitions }}</p>
             <video width="100%" id="video" controls style="max-width:100%;max-height:400px;">
                 <source src="/uploads/videos/{{ videohost.source }}" type="video/mp4">
                   Your browser does not support the video tag.
@@ -102,6 +107,7 @@
         <!--The Guest section -->
           <img src="{{ duel.guest.media.path }}" alt="{{ duel.guest.media.name }}" style="width:50%;border-radius:50%;margin-top:170px;"></br>
           <a href="{{ path('bf_site_profile', { 'username': duel.guest.username }) }}" style="color:#95cd36;font-size:30px;" class="text-center"> {{ duel.guest.username }} </a>
+          <p style="font-size:22px;">Repetitions: {{ videoguest.repetitions }}</p>
           <video width="100%" id="video" controls style="max-width:100%;max-height:400px;">
                 <source src="/uploads/videos/{{ videoguest.source }}" type="video/mp4">
                   Your browser does not support the video tag.
