@@ -166,7 +166,7 @@ bf_site_video_modify:
         _locale: en|fr
 
 bf_site_video_twitter:
-    path:     /video/twitter/{id}
+    path:     /video/twitter/{code}
     defaults: { _controller: BFSiteBundle:Video:twitter }
     requirements:
         id: -?\d+

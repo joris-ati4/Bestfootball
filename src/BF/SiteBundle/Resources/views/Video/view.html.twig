@@ -7,7 +7,7 @@
 
   <!--All the metatags for facebook -->
 
-  <meta property="og:url"                content="https://bestfootball.fr/view/{{video.id}}" />
+  <meta property="og:url"                content="https://bestfootball.fr/view/{{video.code}}" />
   <meta property="og:type"               content="video" />
   <meta property="og:title"              content="{{ video.title }}  on bestfootball" />
   {% if video.type == 'challenge' and predict is not null %}
@@ -29,7 +29,7 @@
   <meta name="twitter:title" content="{{ video.title }}  on bestfootball">
   <meta name="twitter:description" content="{{ video.user.username }} video for the {{video.challenge.titleEN }} challenge on bestfootball.">
   <meta name="twitter:image" content="https://www.bestfootball.fr/uploads/videos/thumbnail/{{ video.id }}.jpg">
-  <meta name="twitter:player" content="https://www.bestfootball.fr/video/twitter/{{ video.id }}">
+  <meta name="twitter:player" content="https://www.bestfootball.fr/video/twitter/{{ video.code }}">
   <meta name="twitter:player:width" content="480">
   <meta name="twitter:player:height" content="480">
   <meta name="twitter:player:stream" content="https://www.bestfootball.fr/uploads/videos/{{ video.source }}">
@@ -158,7 +158,7 @@
                       </a>
 
                       <!-- google+ share button-->
-                      <a href="https://plus.google.com/share?url=https%3A%2F%2Fbestfootball.fr/view/{{video.id}}" class="popup">
+                      <a href="https://plus.google.com/share?url=https%3A%2F%2Fbestfootball.fr/view/{{video.code}}" class="popup">
                         <img src="/img/share/google.png" alt="Bestfootball google+ share button" style="width:45px;"/>
                       </a>
                     </div>
