@@ -56,9 +56,9 @@
               <input type="submit" value="Upload" id="submit" class="btn btn-upload" />
 
 
-              <div id="bar" class='progress_outer' style="display:none">
-                  <div id='progress' class='progress' style="width:20%;background:#DEDEDE;height:20px;"></div>
-              </div>
+              <!--the loading img when the user decided to click upload -->
+              <p class="uploading" style="visibility: hidden;">Your video is being uploaded and converted. Please wait till this page says your video is uploaded</p>
+              <img src="/img/loading.gif" alt="the loading gif on bestfootball" class="uploading" style="width: 100px;visibility: hidden;"/>
 
 
 
@@ -83,33 +83,15 @@
 </section>
 {% endblock %}
 {% block javascripts %}
+  {{ parent() }}
+
   <script type="text/javascript">
-  var submit = document.getElementById('submit'), 
-      progress = document.getElementById('progress'),
-      bar = document.getElementById('bar');
-
-
-
-  $('#submit').click(function() {
-
-    $( this ).slideUp();
-  });
-
-
-    
-
-        
-
-
-
-        submit.style.visibility = "hidden";
-        bar.style.visibility = "visible";
-
-
-        request.upload.addEventListener('progress', function(e){
-        progress.style.width = Math.ceil(e.loaded/e.total) * 100 + '%';
-        }, false);
-     
-
+    $( document ).ready(function() {
+      //the logic to show the loading gif.
+      $("#sumbit").click(function(){
+        $('#sumbit').hide();
+        $('.uploading').show();
+      });
+    });
   </script>
 {% endblock %}

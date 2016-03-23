@@ -258,7 +258,7 @@ class AjaxController extends Controller
     }
     public function setLocaleAction($language = null)
     {
-        if($language != null)
+        if($language !== null)
         {
             // On enregistre la langue en session
             $this->get('session')->set('_locale', $language);

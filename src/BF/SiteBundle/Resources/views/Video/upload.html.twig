@@ -63,15 +63,10 @@
               </div>
               <input type="submit" value="Upload" id="submit" class="btn btn-upload" />
 
-
-              <div id="bar" class='progress_outer' style="display:none">
-                  <div id='progress' class='progress' style="width:20%;background:#DEDEDE;height:20px;"></div>
-              </div>
-
-
-
-
-
+              <!--the loading img when the user decided to click upload -->
+              <p class="uploading" style="visibility: hidden;">Your video is being uploaded and converted. Please wait till this page says your video is uploaded</p>
+              <img src="/img/loading.gif" alt="the loading gif on bestfootball" class="uploading" style="width: 100px;visibility: hidden;"/>
+              
               </br>
               <a href="{{ path('bf_site_homepage') }}" class="btn btn-danger" style="font-size:10px;">
                 <i class="glyphicon glyphicon-remove"></i>
@@ -91,7 +86,14 @@
 </section>
 {% endblock %}
 {% block javascripts %}
+  {{ parent() }}
   <script type="text/javascript">
- 
+    $( document ).ready(function() {
+      //the logic to show the loading gif.
+      $("#sumbit").click(function(){
+        $('#sumbit').hide();
+        $('.uploading').show();
+      });
+    });
   </script>
 {% endblock %}
