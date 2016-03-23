@@ -54,10 +54,10 @@ class HomeController extends Controller
             
         ));
     }
-    public function challengeViewAction($id,request $request)
+    public function challengeViewAction($slug,request $request)
     {
 
-    	$challenge = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Challenge')->find($id);
+    	$challenge = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Challenge')->findOneBySlug($slug);
         $listVideos = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video')->findBy(
             array('challenge' => $challenge),
             array('date' => 'desc'),

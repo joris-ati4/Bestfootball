@@ -3,6 +3,7 @@
 namespace BF\SiteBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use FFMpeg\FFMpeg;
@@ -38,6 +39,12 @@ class Challenge
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+
+    /**
+    * @Gedmo\Slug(fields={"titleEN"})
+    * @ORM\Column(length=128, unique=true)
+    */
+    private $slug;
 
     /**
      * @var string
@@ -781,5 +788,29 @@ class Challenge
     public function getTitleEN()
     {
         return $this->titleEN;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     *
+     * @return Challenge
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }

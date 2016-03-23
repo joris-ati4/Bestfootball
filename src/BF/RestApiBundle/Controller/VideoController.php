@@ -108,6 +108,11 @@ class VideoController extends Controller
             ->setType('challenge')
             ->setFile($file)
         ;
+
+        //getting the code for the duel
+        $service = $this->container->get('bf_site.randomcode');
+        $code = $service->generate('video');
+        $video->setCode($code);
         
         //if the user already uploaded a video to the same challenge we take the points of the last video.
         $repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video');

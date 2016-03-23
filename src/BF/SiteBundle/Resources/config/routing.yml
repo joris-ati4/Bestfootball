@@ -27,7 +27,7 @@ bf_site_partnerChallenges:
         _locale: en|fr
 
 bf_site_challengeview:
-    path:     /{_locale}/challenge/{id}
+    path:     /{_locale}/challenge/{slug}
     defaults: { _controller: BFSiteBundle:Home:challengeView, _locale: en }
     requirements:
         id: -?\d+
@@ -121,7 +121,7 @@ bf_site_freestyle:
 #this section does all the routes for the video section
 
 bf_site_video:
-    path:     /{_locale}/view/{id}
+    path:     /{_locale}/view/{code}
     defaults: { _controller: BFSiteBundle:Video:view, id: null, _locale: en }
     requirements:
         id: -?\d+
@@ -312,7 +312,7 @@ bf_site_duel_decline:
 
 
 bf_site_duel_view:
-    path:     /{_locale}/duel/view/{id}
+    path:     /{_locale}/duel/view/{code}
     defaults: { _controller: BFSiteBundle:Duel:view, _locale: en }
     methods:  [GET]
     requirements:

@@ -3,9 +3,9 @@
     	<div class="challengetitle">
       		<h3 class="text-center" style="color:white;">
       			{% if duel.host == user %}
-      				{{ duel.challenge.title }} {{ 'against'|trans }} {{ duel.guest.username }}
+      				{{ duel.challenge.titleEN }} {{ 'against'|trans }} {{ duel.guest.username }}
       			{% else %}
-      				{{ duel.challenge.title }} {{ 'against'|trans }} {{ duel.host.username }}
+      				{{ duel.challenge.titleEN }} {{ 'against'|trans }} {{ duel.host.username }}
       			{% endif %}
       		</h3>
     	</div>
@@ -17,7 +17,7 @@
     			 <p>{{ 'Congratulations you won this duel and 100 points !'|trans }}</p>
     		</div><!--
     		--><div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 row vcenter"><!-- buttons to action -->
-				<a href="{{ path('bf_site_duel_view', {'id': duel.id}) }}" class="btn btn-success">
+				<a href="{{ path('bf_site_duel_view', {'code': duel.code}) }}" class="btn btn-success">
 					<i class="glyphicon glyphicon-upload"></i>
 				    {{ 'View the duel'|trans }}
 				</a>

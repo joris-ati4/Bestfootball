@@ -63,6 +63,13 @@ class Video
     /**
      * @var string
      *
+     * @ORM\Column(name="code", type="string", length=15)
+     */
+    private $code;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="source", type="string", length=255)
      */
     private $source;
@@ -606,5 +613,39 @@ class Video
     public function getChallenge()
     {
         return $this->challenge;
+    }
+
+    /**
+     * Add comment
+     *
+     * @param \BF\SiteBundle\Entity\Comment $comment
+     *
+     * @return Video
+     */
+    public function addComment(\BF\SiteBundle\Entity\Comment $comment)
+    {
+        $this->comments[] = $comment;
+
+        return $this;
+    }
+
+    /**
+     * Remove comment
+     *
+     * @param \BF\SiteBundle\Entity\Comment $comment
+     */
+    public function removeComment(\BF\SiteBundle\Entity\Comment $comment)
+    {
+        $this->comments->removeElement($comment);
+    }
+
+    /**
+     * Get comments
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getComments()
+    {
+        return $this->comments;
     }
 }

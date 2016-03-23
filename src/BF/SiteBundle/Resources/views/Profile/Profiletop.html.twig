@@ -21,11 +21,11 @@
             {% if follow is not null %}
               {% if user.username != app.user.username %}                  
                 <!-- Button to follow the user -->
-                <a id="follow" value="{{ video.user.id }}" class="">
+                <a id="follow" value="{{ user.id }}" class="">
                   <img src="/img/follow.png" alt="Bestfootball follow pictogram" class="imagereactive" data-placement="top" data-toggle="tooltip" title="Follow me!"/>
                 </a>
                 <!-- Button to unfollow the user -->
-                <a id="unfollow" value="{{ video.user.id }}" class="" >
+                <a id="unfollow" value="{{ user.id }}" class="" >
                   <img src="/img/unfollow.png" alt="Bestfootball follow pictogram" class="imagereactive" data-placement="top" data-toggle="tooltip" title="Unfollow"/>
                 </a>
                 <!-- Button to duel the user -->

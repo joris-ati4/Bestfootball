@@ -19,11 +19,11 @@ use BF\SiteBundle\Form\Type\ReportType;
 
 class VideoController extends Controller
 {
-    public function viewAction(request $request, $id)
+    public function viewAction(request $request, $code)
     {
         $em = $this->getDoctrine()->getManager();
 	    // On récupère $id de la video
-	    $video = $em->getRepository('BFSiteBundle:Video')->find($id);
+	    $video = $em->getRepository('BFSiteBundle:Video')->findOneByCode($code);
         //checking if the user is following the current user
 
 
@@ -90,6 +90,14 @@ class VideoController extends Controller
     	// On crée un objet Video
     	$video = new Video();
     	$video->setType($type);
+
+    	//getting the code for the video
+        $service = $this->container->get('bf_site.randomcode');
+        $code = $service->generate('video');
+        $video->setCode($code);
+
+
+
     	//the upload is for a challenge video
     	if($type == 'challenge')
     	{

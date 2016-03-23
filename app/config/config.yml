@@ -208,3 +208,9 @@ comur_image:
         translation_domain: 'ComurImageBundle'
         gallery_thumb_size: 150
         gallery_dir: 'gallery'
+
+# Stof\DoctrineExtensionsBundle configuration
+stof_doctrine_extensions:
+    orm:
+        default:
+            sluggable: true

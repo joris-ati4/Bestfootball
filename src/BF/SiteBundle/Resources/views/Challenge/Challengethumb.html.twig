@@ -12,9 +12,9 @@
 		            	{{ challenge.titleEN }}
 		            {% endif %}
 		        </h3>
-				<a href="{{ path('bf_site_challengeview', {'id': challenge.id}) }}"><img src="/uploads/challenges/thumbnail/{{ challenge.id }}.jpg" alt="thumbnail of {{ challenge.titleEN }}" style="max-width:90%;max-height:150px;" class="text-center"></a>
+				<a href="{{ path('bf_site_challengeview', {'slug': challenge.slug}) }}"><img src="/uploads/challenges/thumbnail/{{ challenge.id }}.jpg" alt="thumbnail of {{ challenge.titleEN }}" style="max-width:90%;max-height:150px;" class="text-center"></a>
 								
-				<button onclick="location.href='{{ path('bf_site_challengeview', {'id': challenge.id}) }}'" class="btn btn-participate" type="submit">{{ 'Participate'|trans }}</button>
+				<button onclick="location.href='{{ path('bf_site_challengeview', {'slug': challenge.slug}) }}'" class="btn btn-participate" type="submit">{{ 'Participate'|trans }}</button>
 			</div>
 		</div>
 	</div>

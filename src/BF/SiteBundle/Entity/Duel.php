@@ -43,6 +43,13 @@ class Duel
     private $id;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="code", type="string", length=15)
+     */
+    private $code;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="begin_date", type="datetime")
@@ -500,5 +507,29 @@ class Duel
     public function getGuest()
     {
         return $this->guest;
+    }
+
+    /**
+     * Set code
+     *
+     * @param string $code
+     *
+     * @return Duel
+     */
+    public function setCode($code)
+    {
+        $this->code = $code;
+
+        return $this;
+    }
+
+    /**
+     * Get code
+     *
+     * @return string
+     */
+    public function getCode()
+    {
+        return $this->code;
     }
 }

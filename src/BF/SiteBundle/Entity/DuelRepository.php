@@ -112,4 +112,18 @@ class DuelRepository extends \Doctrine\ORM\EntityRepository
 	    ->getResult()
 	  ;
 	}
+	public function checkCode($code)
+	{
+	  $qb = $this->createQueryBuilder('d');
+
+	  $qb->where('d.code = :code')
+	       ->setParameter('code', $code)
+	     ->setMaxResults(1)
+	  	;
+
+	  return $qb
+	    ->getQuery()
+	    ->getOneOrNullResult()
+	  ;
+	}
 }

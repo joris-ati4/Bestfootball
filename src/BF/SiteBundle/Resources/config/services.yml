@@ -7,6 +7,10 @@ services:
         class: BF\SiteBundle\Randomvideos\BFRandomvideos
         arguments: [@doctrine.orm.entity_manager]
 
+    bf_site.randomcode:
+        class: BF\SiteBundle\RandomCode\BFRandomCode
+        arguments: [@doctrine.orm.entity_manager]
+
     bf_site.videospoints:
         class: BF\SiteBundle\VideosPoints\BFVideosPoints
         arguments: [@doctrine.orm.entity_manager]

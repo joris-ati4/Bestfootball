@@ -18,7 +18,7 @@
     			 <p>{{ 'Congratulations this duel was a draw and you received 50 points'|trans }}</p>
     		</div><!--
     		--><div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 row vcenter"><!-- buttons to action -->
-				<a href="{{ path('bf_site_duel_view', {'id': duel.id}) }}" class="btn btn-success">
+				<a href="{{ path('bf_site_duel_view', {'code': duel.code}) }}" class="btn btn-success">
 					<i class="glyphicon glyphicon-upload"></i>
 				    {{ 'View the duel'|trans }}
 				</a>

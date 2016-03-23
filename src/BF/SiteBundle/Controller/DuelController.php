@@ -13,10 +13,10 @@ use BF\SiteBundle\Form\Type\DuelType;
 
 class DuelController extends Controller
 {
-    public function viewAction($id,request $request)
+    public function viewAction($code,request $request)
     {   
         $em = $this->getDoctrine()->getManager();
-	    $duel = $em->getRepository('BFSiteBundle:Duel')->find($id);
+	    $duel = $em->getRepository('BFSiteBundle:Duel')->findOneByCode($code);
 	    if (null === $duel) {
 	      throw new NotFoundHttpException("This duel doesn't exist");
 	    }
@@ -26,6 +26,10 @@ class DuelController extends Controller
             //make 2 variables, one for the loser and one for the winner.
             $videoHost = $em->getRepository('BFSiteBundle:Video')->duelHostVideo($host, $duel);
             $videoGuest= $em->getRepository('BFSiteBundle:Video')->duelGuestVideo($duel->getGuest(), $duel);
+        }
+        else{
+            $videoHost = null;
+            $videoGuest = null;
         }
 
       	return $this->render('BFSiteBundle:Duel:view.html.twig', array(
@@ -62,6 +66,10 @@ class DuelController extends Controller
               ->addUser($host)
               ->addUser($guest)
         ;
+        //getting the code for the duel
+        $service = $this->container->get('bf_site.randomcode');
+        $code = $service->generate('duel');
+        $duel->setCode($code);
 
     	$message = 'You received an invitation for a duel from '.$host->getUsername();
         $link = $this->generateUrl('bf_site_profile_duels');

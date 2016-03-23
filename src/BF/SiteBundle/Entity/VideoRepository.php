@@ -246,4 +246,18 @@ class VideoRepository extends \Doctrine\ORM\EntityRepository
 	    ->getResult()
 	  ;
 	}
+	public function checkCode($code)
+	{
+	  $qb = $this->createQueryBuilder('v');
+
+	  $qb->where('v.code = :code')
+	       ->setParameter('code', $code)
+	     ->setMaxResults(1)
+	  	;
+
+	  return $qb
+	    ->getQuery()
+	    ->getOneOrNullResult()
+	  ;
+	}
 }

@@ -43,6 +43,13 @@ class Duel
     private $id;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="code", type="string", length=15)
+     */
+    private $code;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="begin_date", type="datetime")
@@ -85,12 +92,10 @@ class Duel
      */
     private $completed;
 
-
-
     /**
      * @ORM\ManyToOne(targetEntity="BF\UserBundle\Entity\User")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="host", referencedColumnName="id",nullable=false)
+     *   @ORM\JoinColumn(referencedColumnName="id",nullable=false)
      * })
      */
     private $host;
@@ -98,7 +103,7 @@ class Duel
     /**
      * @ORM\ManyToOne(targetEntity="BF\UserBundle\Entity\User")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="guest", referencedColumnName="id",nullable=false)
+     *   @ORM\JoinColumn(referencedColumnName="id",nullable=false)
      * })
      */
     private $guest;
@@ -454,5 +459,53 @@ class Duel
     public function getWinner()
     {
         return $this->winner;
+    }
+
+    /**
+     * Set host
+     *
+     * @param \BF\UserBundle\Entity\User $host
+     *
+     * @return Duel
+     */
+    public function setHost(\BF\UserBundle\Entity\User $host)
+    {
+        $this->host = $host;
+
+        return $this;
+    }
+
+    /**
+     * Get host
+     *
+     * @return \BF\UserBundle\Entity\User
+     */
+    public function getHost()
+    {
+        return $this->host;
+    }
+
+    /**
+     * Set guest
+     *
+     * @param \BF\UserBundle\Entity\User $guest
+     *
+     * @return Duel
+     */
+    public function setGuest(\BF\UserBundle\Entity\User $guest)
+    {
+        $this->guest = $guest;
+
+        return $this;
+    }
+
+    /**
+     * Get guest
+     *
+     * @return \BF\UserBundle\Entity\User
+     */
+    public function getGuest()
+    {
+        return $this->guest;
     }
 }

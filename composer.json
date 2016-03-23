@@ -30,7 +30,8 @@
         "hwi/oauth-bundle":"~0.4",
         "sensio/generator-bundle": "~2.3",
         "symfony/phpunit-bridge": "~2.7",
-        "comur/image-bundle": "1.0.*@dev"
+        "comur/image-bundle": "1.0.*@dev",
+        "stof/doctrine-extensions-bundle": "~1.1"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3",

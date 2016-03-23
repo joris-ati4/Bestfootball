@@ -63,6 +63,13 @@ class Video
     /**
      * @var string
      *
+     * @ORM\Column(name="code", type="string", length=15)
+     */
+    private $code;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="source", type="string", length=255)
      */
     private $source;
@@ -640,5 +647,29 @@ class Video
     public function getComments()
     {
         return $this->comments;
+    }
+
+    /**
+     * Set code
+     *
+     * @param string $code
+     *
+     * @return Video
+     */
+    public function setCode($code)
+    {
+        $this->code = $code;
+
+        return $this;
+    }
+
+    /**
+     * Get code
+     *
+     * @return string
+     */
+    public function getCode()
+    {
+        return $this->code;
     }
 }

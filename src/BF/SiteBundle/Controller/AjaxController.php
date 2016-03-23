@@ -102,6 +102,11 @@ class AjaxController extends Controller
             ->setTitle($Usevideo->getTitle())
             ;
 
+        //getting the code for the duel
+        $service = $this->container->get('bf_site.randomcode');
+        $code = $service->generate('video');
+        $video->setCode($code);
+
             
         $host = $duel->getHost();
         $guest = $duel->getGuest();

@@ -31,6 +31,7 @@ class AppKernel extends Kernel
             new BF\AmbassadeurBundle\BFAmbassadeurBundle(),
             new JMS\TranslationBundle\JMSTranslationBundle(),
             new Comur\ImageBundle\ComurImageBundle(),
+            new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {
