@@ -17,7 +17,15 @@
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10 col-lg-offset-1">
         <div class="row">
           {# begin of the duel page #}
-          <h1 style="color:#95cd36;" class="text-center">Duel  - {{ duel.challenge.titleEN }}</h1>
+          <h1 style="color:#95cd36;" class="text-center">
+            {% if app.request.getLocale() == 'fr' %}      
+              Duel  - {{ duel.challenge.descriptionFR }}
+            {% elseif app.request.getLocale() == 'en' %}
+              Duel  - {{ duel.challenge.descriptionEN }}
+            {% else %}
+              Duel  - {{ duel.challenge.descriptionEN }}
+            {% endif %}
+          </h1>
           <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vcenter row">
             {% if duel.completed == 0 %} {# The duel is not completed yet #}
               {% include "BFSiteBundle:Duel:duelincomplete.html.twig" with {"duel": duel} only %}

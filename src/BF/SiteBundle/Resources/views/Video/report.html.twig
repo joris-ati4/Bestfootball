@@ -29,7 +29,15 @@
           <form action="{{ path('bf_site_video_report', {'id': video.id}) }}" method="post">
             <p>
               {% if video.challenge is not null %}
-              Challenge : {{ video.challenge.title }} </br>
+              Challenge :
+                    {% if app.request.getLocale() == 'fr' %}      
+                      {{ video.challenge.titleFR }}
+                    {% elseif app.request.getLocale() == 'en' %}
+                      {{ video.challenge.titleEN }}
+                    {% else %}
+                      {{ video.challenge.titleEN }}
+                    {% endif %} 
+              </br>
               {% endif %}
               {{ 'Points earned'|trans }}: {{ video.score }}</br>
               {{ 'Repetitions'|trans }}: {{ video.repetitions }}</br>

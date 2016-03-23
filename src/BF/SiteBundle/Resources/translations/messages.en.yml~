@@ -76,9 +76,9 @@ Expert: Expert
 'You do not have any videos !': 'You do not have any videos !'
 'Profile of': 'Profile of'
 Mixed: Mixed
-Girls: 'Girls'
-Boys: 'Boys'
-World: 'World'
+Girls: Girls
+Boys: Boys
+World: World
 'Country Ranking': 'Country Ranking'
 'Delete your video': 'Delete your video'
 Title: Title
@@ -113,8 +113,8 @@ rules.3.title: '3.Challenges levels'
 rules.3.content: 'Each challenge has different degrees of difficulty. Every time you successfully reach a level within a challenge, you will get a certain amount of points. If your talent allows you to go further than the maximum level set by Bestfootball, you will have the privilege to obtain the grade of « Legend » in this particular challenge. '
 rules.4.title: '4.Challenges Ranking'
 rules.4.content: 'Several rankings (global, nationally, by gender…) are made. You can measure your level and compare yourself with the best in your city or around the world.'
-rules.5.title: '5.Grades'
-rules.5.content:"Grades will be given according to your number of points.1.Unknown. 2.Promising talent. 3.Rising star. 4.Star status. 5.Legend. Conditions: To be considered as a rising star, you will have to reach the level 3 on at least two challenges. To get the Star status, you will have to reach the level 6 on at least two challenges. To be a legend, you will have to reach the level 6 on at least two challenges and be a legend in one other challenge."
+rules.5.title: 5.Grades
+rules.5.content: 'Grades will be given according to your number of points. 1 Unknown 2. Promising talent 3. Rising star 4. Star status 5. Legend Conditions, To be considered as a rising star, you will have to reach the level 3 on at least two challenges. To get the Star status, you will have to reach the level 6 on at least two challenges. To be a legend, you will have to reach the level 6 on at least two challenges and be a legend in one other challenge.'
 rules.6.title: '6.Invite a Bestfootball user for a duel'
 rules.6.content: 'With Bestfootball, stop endless debate and let’s see who is better between you and your friends. You can defy a Bestfootball user in the challenge you want by going on his profile and clicking on “Duel me”. Once the two players have accepted the duel, one week is given to them to post their video. None of the videos will be shown until the two have been uploaded. As soon as the two videos are uploaded, they are shown even if the period of one week is not finished yet.'
 rules.7.title: '7.Duel Ranking'
@@ -131,10 +131,56 @@ rules.11.content: 'The website is not yet finished. Our team is working on it an
 'You want to be the sponsor of one challenge? Contact us for more info. You can also propose us a new challenge.': 'You want to be the sponsor of one challenge? Contact us for more info. You can also propose us a new challenge.'
 'about us': 'about us'
 about.nassim: 'Nassim EZZAKRAOUI,  in the daily life is an actuary. Most likely you don’t know about that job and we don’t mind. Actually more than analyzing risk, what Nassim like above all is to put his football boot on and dribbling on field. He played for Besaonçon academy and realized he is not improving as much as he wants to in a football club ( there you go Nassim we don’t always have what we wants). On the other hand he realize that he learn much more playing alone or with his friends in the street. In 2013, while he is trying to get a football scholarship to play in the US he realize the lack of visibility a lot of young amateur players are facing. Bestfootball was born.'
-qualities: 'Qualities'
+qualities: Qualities
 about.nassim.qualities: 'good reader of the game, ability to speed up the game'
-function: 'Fonction'
+function: Fonction
 about.jeremie.qualities: 'Intuition, Quick with the ball, know how to move without the ball'
 about.joris.qualities: 'meticulous, hard worker, team spirit'
 about.jeremie: 'Jérémie Karege is working as a business manager for Capgemini (A French management consulting firm).  He met Nassim in the US where he had a football scholarship and decided to join Nassim on Bestfootball adventure. His passion : Football.  He played all over the world and despite not being a number 9 on the pitch, Jérémie is above all a number 9 in life! As any number 9 that respect its status he has one obsession, the goal! We are confident that jeremie will keep composure in front of what could be one of its most beautiful goal: Make of  Bestfootball an interface recognized worldwide.'
 about.joris: 'Joris HART is a graduate sudent in engineering and technical solutions for sports activities at Savoie univerisity. His main passions are paraglider, soccer and web programming ( Yes between jumping in glider playing a soccer game Joris finds time to code Bestfootball website) ! Joris is a true entrepreneur, Bestfootball is already his third project. Joris first project was already about foorball (Geo-localization and set a game between friends), he also created his own platform services ( creating website for individuals).  He was seduced by the Bestfootball project and the philosophy behind. He became an associate in the Bestfootball project in October 2015. '
+number: number
+home.header.subtitle: 'Time for you to progress and show us your football skills.'
+home.header.explication: 'This is the arena. Only football challenges. You want to know your real level ? You want to be ranked in your city and in the world ? You want everyone to know that you are the best ?  Bestfootball fulfill your dreams. Choose a challenge, take a video of yourself and upload it here. '
+'HOW DOES IT WORK ?': 'COMMENT CA MARCHE ?'
+Subscribe: Subscribe
+home.howto.sub.1: 'First of all, please read the rules of Bestfootball to be sure you can enjoy it fully!'
+'Click here to read the rules.': 'Click here to read the rules.'
+Then: Then
+'subscribe here': 'subscribe here'
+home.howto.sub.2: 'and download the application Bestfootball to record yourself(recommanded).'
+home.howto.participate: 'It is really simple! Just choose the challenge you want, record yourself, indicate us the level you reached and upload your video. And it is way faster with the application : you do all that on your phone and you do not need to connect it with the computer !'
+'Earn rewards': 'Earn rewards'
+home.howto.earn: 'Bestfootball rewards his users thanks to different systems of rewards. \n So Manage to be among the best !!'
+home.app: 'We developped an application to make it easier for you to film and upload the challenges. With our application, you can access all the challenges and with one click of a button, you can begin to record and upload your video.'
+Home: Home
+'DOWLOAD OUR APPLICATION': 'DOWLOAD OUR APPLICATION'
+'FOLLOW US ON SOCIAL MEDIA': 'FOLLOW US ON SOCIAL MEDIA'
+Ranking: Ranking
+by: by
+'Create the challenge': 'Create the challenge'
+Following: Following
+Years: Years
+'Follow me!': 'Follow me!'
+Unfollow: Unfollow
+'Duel me!': 'Duel me!'
+Videos: Videos
+Followers: Followers
+'Duel victories': 'Duel victories'
+Global: Global
+'Challenge grade:': 'Challenge grade:'
+Points: Points
+'Duels level:': 'Duels level:'
+Modify: Modify
+'Challenge Ranking': 'Challenge Ranking'
+'Duel Ranking': 'Duel Ranking'
+videos: videos
+'Freestyle videos': 'Freestyle videos'
+'How does it work?': 'How does it work?'
+'Freestyle Videos': 'Freestyle Videos'
+'Predict for me to win the challenge!': 'Predict for me to win the challenge!'
+'share this video': 'share this video'
+'Description:': 'Description:'
+Score: Score
+'To the challenge!': 'To the challenge!'
+'Type here your comment...': 'Type here your comment...'
+Send: Send

@@ -116,22 +116,22 @@
                                                   
                             <!-- Button to follow the user -->
                             <a id="follow" value="{{ video.user.id }}" class="">
-                              <img src="/img/follow.png" alt="Bestfootball follow pictogram" class="imagereactive" data-placement="top" data-toggle="tooltip" title="Follow me!" />
+                              <img src="/img/follow.png" alt="Bestfootball follow pictogram" class="imagereactive" data-placement="top" data-toggle="tooltip" title="{{ 'Follow me!'|trans }}" />
                             </a>
                             <!-- Button to unfollow the user -->
                             <a id="unfollow" value="{{ video.user.id }}" class="">
-                              <img src="/img/unfollow.png" alt="Bestfootball follow pictogram" class="imagereactive" data-placement="top" data-toggle="tooltip" title="Unfollow"/>
+                              <img src="/img/unfollow.png" alt="Bestfootball follow pictogram" class="imagereactive" data-placement="top" data-toggle="tooltip" title="{{ 'Unfollow'|trans }}"/>
                             </a>
                             <!-- Button to duel the user -->
                             <a href="{{ path('bf_site_duel_create', {'username': video.user.username }) }}" class="" >
-                              <img src="/img/duel.png" alt="Bestfootball follow pictogram" class="imagereactive" data-placement="top" data-toggle="tooltip" title="Duel me!"/>
+                              <img src="/img/duel.png" alt="Bestfootball follow pictogram" class="imagereactive" data-placement="top" data-toggle="tooltip" title="{{ 'Duel me!'|trans }}"/>
                             </a>
                           {% endif %}
                         {% endif %}
 
                         {% if video.type == 'challenge' and predict is not null %}
                           <a id="predict">
-                            <img src="/img/predict.png" alt="Bestfootball follow pictogram" class="imagereactive"  data-placement="top" data-toggle="tooltip" title="Predict for me to win the challenge!"/> 
+                            <img src="/img/predict.png" alt="Bestfootball follow pictogram" class="imagereactive"  data-placement="top" data-toggle="tooltip" title="{{ 'Predict for me to win the challenge!'|trans }}"/> 
                           </a>
                         {% endif %}
                       </div>
@@ -145,7 +145,7 @@
 
                       
 
-                      <h3 style="margin-top:5px;">share this video</h3>
+                      <h3 style="margin-top:5px;">{{ 'share this video'|trans }}</h3>
                      
                       <!--facebook share button -->
                       <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fbestfootball.fr/view/{{video.id}}" class="popup">
@@ -169,12 +169,12 @@
 
 
                   <p>
-                    Description:</br>{{ video.description }}
+                    {{ 'Description:'|trans }}</br>{{ video.description }}
                   </p>
                   <a href="{{ path('bf_site_video_report', {'id': video.id}) }}">{{'report this video'|trans }}</a>
 
                   {% if video.type == 'challenge'%}
-                    <h3>Score</h3>
+                    <h3>{{ 'Score'|trans }}</h3>
                     <div class="container-fluid" style="margin-bottom:10px;">
                         <div class="row" style="height:28px;">
                             <div class="bar-wrap">
@@ -226,7 +226,7 @@
 
 
                     <div class="text-center">
-                      <button onclick="location.href='{{ path('bf_site_challengeview', {'slug': video.challenge.slug}) }}'" class="btn btn-success text-center" type="submit" style="width:50%;">To the challenge!</button>
+                      <button onclick="location.href='{{ path('bf_site_challengeview', {'slug': video.challenge.slug}) }}'" class="btn btn-success text-center" type="submit" style="width:50%;">{{ 'To the challenge!'|trans }}</button>
                     </div>
                   {% endif %}
                 
@@ -279,8 +279,8 @@
                     <!--the comment bubble -->
                         <div class="row">
                           <div class="bubble">
-                            <textarea id="addComment" placeholder="Type here your comment..." style="width:80%;"></textarea>
-                            <button id="commentSubmit" class="btn btn-success inline pull-right" style="width:18%;height:46px;">Send</button>
+                            <textarea id="addComment" placeholder="{{'Type here your comment...'|trans }}" style="width:80%;"></textarea>
+                            <button id="commentSubmit" class="btn btn-success inline pull-right" style="width:18%;height:46px;">{{'Send'|trans }}</button>
                           </div>
                         </div>
                       </div>

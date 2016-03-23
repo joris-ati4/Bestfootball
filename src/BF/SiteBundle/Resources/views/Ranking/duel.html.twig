@@ -83,10 +83,11 @@
         			<div class="row">
 						
 							<!-- buttons to navigate between challenge and duel -->
-						    <a href="{{ path('bf_site_ranking_challenge', {'country': 'global', 'state':'country'}) }}" class="btn btn-ranking">Challenge Ranking</a>
+						    <a href="{{ path('bf_site_ranking_challenge', {'country': 'global', 'state':'country'}) }}" class="btn btn-ranking">{{ 'Challenge Ranking'|trans }}
+						    </a>
 
 
-						    <a href="{{ path('bf_site_ranking_duel', {'country': 'global', 'state':'country'}) }}" class="btn btn-ranking-active" style="">Duel Ranking</a>
+						    <a href="{{ path('bf_site_ranking_duel', {'country': 'global', 'state':'country'}) }}" class="btn btn-ranking-active" style="">{{ 'Duel Ranking'|trans }}</a>
 
 
 
@@ -100,7 +101,7 @@
 								    		<!-- the title + image -->
 								    		<div class="titlemixed">
 								    			<img src="/img/ranking/mixed.png" alt=""/>
-								    			<h3>Mixed</h3>
+								    			<h3>{{ 'Mixed'|trans }}</h3>
 								    		</div>
 								    	</div>
 								    </div>
@@ -123,7 +124,7 @@
 								    		<!-- the title + image -->
 								    		<div class="titlemixed">
 								    			<img src="/img/ranking/girls.png" alt=""/>
-								    			<h3>Girls</h3>
+								    			<h3>{{ 'Girls'|trans }}</h3>
 								    		</div>
 								    	</div>
 								    </div>
@@ -147,7 +148,7 @@
 								    		<!-- the title + image -->
 								    		<div class="titlemixed">
 								    			<img src="/img/ranking/boys.png" alt=""/>
-								    			<h3>Boys</h3>
+								    			<h3>{{ 'Boys'|trans }}</h3>
 								    		</div>
 								    	</div>
 								    </div>

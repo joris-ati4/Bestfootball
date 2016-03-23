@@ -10,6 +10,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use BF\SiteBundle\Entity\Duel;
 //les types
 use BF\SiteBundle\Form\Type\DuelType;
+use BF\SiteBundle\Form\Type\DuelFRType;
 
 class DuelController extends Controller
 {
@@ -77,7 +78,15 @@ class DuelController extends Controller
         $service = $this->container->get('bf_site.notification');
         $notification = $service->create($guest, $message, $duel, $link);
 
-	    $form = $this->get('form.factory')->create(new DuelType, $duel);
+        $request = $this->get('request');
+        if($request->getLocale() == 'en'){
+            $form = $this->get('form.factory')->create(new DuelType, $duel);
+        }
+        elseif($request->getLocale() == 'fr'){
+            $form = $this->get('form.factory')->create(new DuelFRType, $duel);
+        }
+
+	    
 	    
 		    if ($form->handleRequest($request)->isValid()) {
 			      $em = $this->getDoctrine()->getManager();

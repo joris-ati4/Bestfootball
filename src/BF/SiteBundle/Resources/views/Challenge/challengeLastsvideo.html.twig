@@ -15,7 +15,7 @@
 		              <a href="{{ path('bf_site_video', { 'code': video.code }) }}"><img src="/uploads/videos/thumbnail/{{ video.id }}.jpg" alt="{{ video.thumbAlt }}" style="max-height:50px;max-width:100%"/></a>
 		            </div><!--
 		         --><div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 vcenter">
-		              <p style="font-size:14px;">{{ video.title }},</br> {{ video.date|date('d-m-Y')}} by <a href="{{ path('bf_site_profile', { 'username': video.user.username }) }}" style=""> {{ video.user.username }} </a></p>
+		              <p style="font-size:14px;">{{ video.title }},</br> {{ video.date|date('d-m-Y')}} {{ 'by'|trans }} <a href="{{ path('bf_site_profile', { 'username': video.user.username }) }}" style=""> {{ video.user.username }} </a></p>
 		            </div>
 		        </div>		
 	  	{% endfor %}

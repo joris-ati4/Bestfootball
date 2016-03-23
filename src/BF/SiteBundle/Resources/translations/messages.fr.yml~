@@ -2,10 +2,10 @@ security.login.username: 'Nom d''utilisateur'
 security.login.password: 'Mot de passe'
 security.login.remember_me: 'Se souvenir de moi'
 security.login.submit: 'Se connecter'
-'Report a video': 'Reporter une vidéo'
-'Points earned': 'Points gangé'
+'Report a video': 'Signaler une vidéo'
+'Points earned': 'Point gagné'
 Repetitions: Répétitions
-Report: Reporter
+Report: Signaler
 'Symfony2 is great': 'J''aime Symfony2'
 'Profile of': 'Profile de'
 'Delete your video': 'Supprimer la video'
@@ -46,7 +46,7 @@ Deconnect: Deconnexion
 'Contact us!': Contactez-nous!
 Participate: Participer
 'The challenge': 'Le challenge'
-'Upload my video': 'Envoyez ma vidéo'
+'Upload my video': 'Envoie ma vidéo'
 'Start a new Duel': 'Commencer un nouveau Duel'
 against: contre
 'Congratulations this duel was a draw and you received 50 points': 'Félicitations, ce duel était un match nul et vous a rapporté 50 points'
@@ -128,14 +128,58 @@ rules.10.title: "10. Est-ce qu’il y a d’autres moyen de gagner des prix\_?"
 rules.10.content: "Oui\_! Bestfootball propose une autre fonctionnalité à nos utilisateurs\_: prédire quel sera le gagnant d’un challenge à la fin du semestre. Un système de récompenses sera aussi mis en place pour ceux ayant eu un bon œil. "
 rules.11.title: "11. Pourquoi mon pays n’apparaît pas sur Bestfootball\_?"
 rules.11.content: 'Le site n’est pas encore fini. Notre équipe travaille dessus et tous les pays seront très bientôt représentés. '
-'My informations': '__My informations'
-'You want to be the sponsor of one challenge? Contact us for more info. You can also propose us a new challenge.': '__You want to be the sponsor of one challenge? Contact us for more info. You can also propose us a new challenge.'
-'about us': '__about us'
-about.nassim: "Nassim EZZAKRAOUI, dans la vie c'est un actuaire. Vous connaissez sûrement pas ce métier et on s'en fiche. Car plus qu'analyser les risques, c'est chausser ses crampons et dribbler qu'il aime par dessous tout. Joueur au sport-études de Besançon, il fait le constat qu'il ne progresse pas autant que prévu en club (et oui on a pas toujours ce à quoi on s'attend Nassim!!), mais qu'il apprend au contraire énormément en jouant seul ou avec des amis dans la rue. En 2013, alors qu’il essaie d’être recruté par une université américaine, il prend aussi grandement conscience du manque de visibilité qu’ont les jeunes joueurs de football amateur : Bestfootball vient de naître. "
-qualities: "Atouts"
-about.nassim.qualities: "Vision du jeu, accélération du jeu"
-function: "Fonction"
-about.jeremie.qualities: "Placements, Intuition, Vitesse"
-about.joris.qualities: "Collectif, Précis, Travailleur"
-about.jeremie: "Jérémie Karege travaille en tant que Business Manager dans le cabinet de conseil CAP GEMINI. C'est aux Etats-Unis qu'il rencontre Nassim et s'intéresse au projet.Sa passion : le foot. Il a pu jouer aux 4 coins du monde et, à défaut d’être un numéro 9 sur le terrain, Jérémie est avant tout un numéro 9 dans la vie! Et comme tout numéro 9 qui se respecte il n’a qu’une obsession, le but ! A travers son sang-froid qui le caractérise, Jérémie espère marquer ce qui serait son plus beau but : faire de Bestfootball une interface mondialement reconnue. "
-about.joris: "Joris HART est étudiant en master d'ergonomie et ingénierie des activités sportives à l'université de Savoie. Ses grandes passions sont le parapente, le foot et... et la programmation web (Et oui entre un saut dans le vide et un match de foot, il a le temps de nous faire quelques lignes de codes)! Après une première tentative de start up dans le football (localisation et création de matchs entre amis), il crée sa plateforme de services (création de sites web pour particuliers). Séduit par le projet Bestfootball et la vision qui l'accompagne, Il s'associe à Jérémie et Nassim en Octobre 2015."
+'My informations': 'Mes Paramètres'
+'You want to be the sponsor of one challenge? Contact us for more info. You can also propose us a new challenge.': 'Voulez-vous sponsoriser un challenge? Contactez-nous pour avoir des informations supplémentaire.'
+'about us': 'Qui sommes-nous?'
+about.nassim: 'Nassim EZZAKRAOUI, dans la vie c''est un actuaire. Vous connaissez sûrement pas ce métier et on s''en fiche. Car plus qu''analyser les risques, c''est chausser ses crampons et dribbler qu''il aime par dessous tout. Joueur au sport-études de Besançon, il fait le constat qu''il ne progresse pas autant que prévu en club (et oui on a pas toujours ce à quoi on s''attend Nassim!!), mais qu''il apprend au contraire énormément en jouant seul ou avec des amis dans la rue. En 2013, alors qu’il essaie d’être recruté par une université américaine, il prend aussi grandement conscience du manque de visibilité qu’ont les jeunes joueurs de football amateur : Bestfootball vient de naître. '
+qualities: Atouts
+about.nassim.qualities: 'Vision du jeu, accélération du jeu'
+function: Fonction
+about.jeremie.qualities: 'Placements, Intuition, Vitesse'
+about.joris.qualities: 'Collectif, Précis, Travailleur'
+about.jeremie: 'Jérémie Karege travaille en tant que Business Manager dans le cabinet de conseil CAP GEMINI. C''est aux Etats-Unis qu''il rencontre Nassim et s''intéresse au projet.Sa passion : le foot. Il a pu jouer aux 4 coins du monde et, à défaut d’être un numéro 9 sur le terrain, Jérémie est avant tout un numéro 9 dans la vie! Et comme tout numéro 9 qui se respecte il n’a qu’une obsession, le but ! A travers son sang-froid qui le caractérise, Jérémie espère marquer ce qui serait son plus beau but : faire de Bestfootball une interface mondialement reconnue. '
+about.joris: 'Joris HART est étudiant en master d''ergonomie et ingénierie des activités sportives à l''université de Savoie. Ses grandes passions sont le parapente, le foot et... et la programmation web (Et oui entre un saut dans le vide et un match de foot, il a le temps de nous faire quelques lignes de codes)! Après une première tentative de start up dans le football (localisation et création de matchs entre amis), il crée sa plateforme de services (création de sites web pour particuliers). Séduit par le projet Bestfootball et la vision qui l''accompagne, Il s''associe à Jérémie et Nassim en Octobre 2015.'
+number: numéro
+home.header.subtitle: 'Montre nous tes talents de footballeurs et vient t’améliorer. '
+home.header.explication: "Bienvenue dans l’arène, ici que des challenges et du foot. Tu veux connaître ton niveau\_? Savoir ce que tu vaux dans ta ville, ton pays ou dans le monde\_? Tu veux mettre tout le monde d’accord\_? Bestfootball réalise tes rêves. Choisi un challenge sur le site, Prend une video de ton challenge avec notre application et montres nous de quoi tu es capable."
+'HOW DOES IT WORK ?': 'COMMENT CA MARCHE ?'
+Subscribe: Inscris-toi
+home.howto.sub.1: 'Premièrement, veuillez lire les règles de Bestfootball afin d’être sur de profiter du site et de l’application mobile au maximum.'
+'Click here to read the rules.': 'Cliques ici pour lire les règles.'
+Then: Ensuite
+'subscribe here': 'clique ici pour t''inscrire'
+home.howto.sub.2: 'Nous te conseillons aussi de télécharger l’application pour filmer tes challenges.'
+home.howto.participate: 'Pour participer c’est super simple. Choisis ton challenge, filme toi et indique le niveau que tu as atteint. C’est beaucoup plus simple avec l’application tout est sur ton téléphone, ta vidéo s’upload automatiquement sur le site.'
+'Earn rewards': 'Gagne des Lots'
+home.howto.earn: 'estfootball récompenses les utilisateurs avec de nombreux cadeaux, à toi de jouer pour faire partie des meilleurs. '
+home.app: 'Nous avons développé une application pour filmer vos challenges. Grâce à l’application tu as accès à tous les challenges présents sur le site. En un clic, tu commences à te filmer et tu peux uploader ta vidéo automatiquement sur ton profil. '
+Home: Acceuil
+'DOWLOAD OUR APPLICATION': 'TELECHARGE NOTRE APP'
+'FOLLOW US ON SOCIAL MEDIA': 'SUIS NOUS SUR LES RESEAUX SOCIAX'
+Ranking: Classement
+by: par
+Following: __Following
+Years: __Years
+'Follow me!': '__Follow me!'
+Unfollow: __Unfollow
+'Duel me!': '__Duel me!'
+Videos: __Videos
+Followers: __Followers
+'Duel victories': '__Duel victories'
+Global: __Global
+'Challenge grade:': '__Challenge grade:'
+Points: __Points
+'Duels level:': '__Duels level:'
+'Challenge Ranking': '__Challenge Ranking'
+'Duel Ranking': '__Duel Ranking'
+videos: __videos
+'Freestyle videos': '__Freestyle videos'
+'How does it work?': '__How does it work?'
+'Freestyle Videos': '__Freestyle Videos'
+'Predict for me to win the challenge!': '__Predict for me to win the challenge!'
+'share this video': '__share this video'
+'Description:': '__Description:'
+Score: __Score
+'To the challenge!': '__To the challenge!'
+'Type here your comment...': '__Type here your comment...'
+Send: __Send
