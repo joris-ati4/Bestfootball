@@ -1,5 +1,5 @@
 set :application, "bestfootball.fr"
-set :domain, "joris@serveur.bestfootball.fr:1337" # Le SSH de destination
+set :domain, "joris@bestfootball.fr:1337" # Le SSH de destination
 set :deploy_to, "/var/www/bestfootball.fr" # Le répertoire de destination
 set :app_path, "app" # Le dossier d’application, laissez app
 set :user, "joris" # Le nom d’utilisateur du serveur distant
