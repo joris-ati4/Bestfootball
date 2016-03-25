@@ -15,7 +15,7 @@
   {% else %}
     <meta property="og:description"        content="{{ video.user.username }} video on Bestfootball." />         
   {% endif %}
-  <meta property="og:video"              content="https://www.bestfootball.fr/uploads/videos/{{ video.source }}" />
+  <meta property="og:video"              content="{{ video.source }}" />
   <meta property="og:video:type"         content="video/mp4" />
   <meta property="og:video:width"         content="640" />
   <meta property="og:video:height"         content="360" />
@@ -28,11 +28,11 @@
   <meta name="twitter:site" content="@Bestfootball_10">
   <meta name="twitter:title" content="{{ video.title }}  on bestfootball">
   <meta name="twitter:description" content="{{ video.user.username }} video for the {{video.challenge.titleEN }} challenge on bestfootball.">
-  <meta name="twitter:image" content="https://www.bestfootball.fr/uploads/videos/thumbnail/{{ video.id }}.jpg">
+  <meta name="twitter:image" content="{{ video.thumbUrl }}">
   <meta name="twitter:player" content="https://www.bestfootball.fr/video/twitter/{{ video.code }}">
   <meta name="twitter:player:width" content="480">
   <meta name="twitter:player:height" content="480">
-  <meta name="twitter:player:stream" content="https://www.bestfootball.fr/uploads/videos/{{ video.source }}">
+  <meta name="twitter:player:stream" content="{{ video.source }}">
   <meta name="twitter:player:stream:content_type" content="video/mp4">
   <style type="text/css">
     .bar-wrap {

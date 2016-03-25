@@ -130,6 +130,7 @@ class Video
     // On ajoute cet attribut pour y stocker le nom du fichier temporairement
     private $tempFilename;
     private $extension;
+    private $name;
 
 
     public function getFile()
@@ -165,11 +166,14 @@ class Video
       }
       // Le nom du fichier est son id, on doit juste stocker également son extension
       // Pour faire propre, on devrait renommer cet attribut en « extension », plutôt que « url »
-      $this->source =  md5(uniqid()).'.mp4';
+
+      //we get the file name
+      $this->name = md5(uniqid());
+      $this->source =  'http://v.bestfootball.fr/'.$this->name.'.mp4';
       $this->extension = $this->file->guessExtension();
       // Et on génère l'attribut alt de la balise <img>, à la valeur du nom du fichier sur le PC de l'internaute
       $this->thumbAlt = $this->file->getClientOriginalName();
-      $this->thumbUrl = '/uploads/img/'.$this->id.'.jpg';
+      $this->thumbUrl = 'http://v.bestfootball.fr/thumbnail/'.$this->name.'.jpg';
     }
 
     /**
@@ -219,15 +223,15 @@ class Video
             ->synchronize();
         $video
             ->frame( TimeCode::fromSeconds(1))
-            ->save('/var/www/bestfootball.fr/shared/web/uploads/videos/thumbnail/'.$this->id.'.jpg');
+            ->save('/var/www/v.bestfootball.fr/thumbnail/'.$this->name.'.jpg');
         
         // Start transcoding and save video
         if($this->extension != 'mp4'){
-            $video->save(new X264(),'/var/www/bestfootball.fr/shared/web/uploads/videos/'.$this->source);
+            $video->save(new X264(),'/var/www/v.bestfootball.fr/'.$this->name.'mp4');
             unlink($this->getUploadRootDir().'/'.$this->id.'.'.$this->extension);
         }
         else{
-            rename($this->getUploadRootDir().'/'.$this->id.'.'.$this->extension, '/var/www/bestfootball.fr/shared/web/uploads/videos/'.$this->source);
+            rename($this->getUploadRootDir().'/'.$this->id.'.'.$this->extension, '/var/www/v.bestfootball.fr/'.$this->name.'mp4');
         }
         
         

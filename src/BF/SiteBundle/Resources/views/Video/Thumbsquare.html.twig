@@ -14,7 +14,7 @@
                     {% endif %}
                   </p>
                 {% endif %}
-	        		<img src="/uploads/videos/thumbnail/{{ video.id }}.jpg" alt="{{ video.thumbAlt }}"  style="max-width:90%;max-height:120px;"/>
+	        		<img src="{{ video.thumbUrl }}" alt="{{ video.thumbAlt }}"  style="max-width:90%;max-height:120px;"/>
                 </a>
                 <p><a href="{{ path('bf_site_profile', { 'username': video.user.username }) }}">{{ video.user.username }}</a></p>
 
