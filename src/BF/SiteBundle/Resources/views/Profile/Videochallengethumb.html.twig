@@ -10,7 +10,7 @@
       </h4>
     
     
-        <img src="/uploads/videos/thumbnail/{{ video.id}}.jpg" alt="{{ video.thumbAlt }}" style="max-width:90%;max-height:150px;">
+        <img src="{{ video.thumbUrl }}" alt="{{ video.thumbAlt }}" style="max-width:90%;max-height:150px;">
       </a>
           {# calculating the rank off the user #}
           {% if video.repetitions > video.challenge.six %}
