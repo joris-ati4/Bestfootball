@@ -4,7 +4,7 @@
       <div class="row">
         <!--the Host section -->
         <img src="{{ duel.host.media.path }}" alt="{{ duel.host.media.name }}" style="width:50%;border-radius:50%;">
-        <h2 style="color:#95cd36;" class="text-center">{{ duel.host.username }}</h2>
+        <a href="{{ path('bf_site_profile', { 'username': duel.host.username }) }}" style="color:#95cd36;font-size:30px;" class="text-center"> {{ duel.host.username }} </a>
       </div>
     </div><!--
   --><div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 vcenter text-center">
@@ -17,7 +17,7 @@
       <div class="row">
       <!--The Guest section -->
         <img src="{{ duel.guest.media.path }}" alt="{{ duel.guest.media.name }}" style="width:50%;border-radius:50%;">
-        <h2 style="color:#95cd36;" class="text-center">{{ duel.guest.username }}</h2>
+        <a href="{{ path('bf_site_profile', { 'username': duel.guest.username }) }}" style="color:#95cd36;font-size:30px;" class="text-center"> {{ duel.guest.username }} </a>
       </div>
     </div>
   </div>
