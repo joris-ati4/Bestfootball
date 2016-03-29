@@ -155,31 +155,33 @@ home.howto.earn: 'estfootball récompenses les utilisateurs avec de nombreux cad
 home.app: 'Nous avons développé une application pour filmer vos challenges. Grâce à l’application tu as accès à tous les challenges présents sur le site. En un clic, tu commences à te filmer et tu peux uploader ta vidéo automatiquement sur ton profil. '
 Home: Acceuil
 'DOWLOAD OUR APPLICATION': 'TELECHARGE NOTRE APP'
-'FOLLOW US ON SOCIAL MEDIA': 'SUIS NOUS SUR LES RESEAUX SOCIAX'
+'FOLLOW US ON SOCIAL MEDIA': 'SUIS NOUS SUR LES RESEAUX SOCIAUX'
 Ranking: Classement
 by: par
-Following: __Following
-Years: __Years
-'Follow me!': '__Follow me!'
-Unfollow: __Unfollow
-'Duel me!': '__Duel me!'
-Videos: __Videos
+Following: Following
+Years: An
+'Follow me!': 'Suivez-moi!'
+Unfollow: "Ne plus me suivre"
+'Duel me!': 'Commencer un duel contre moi!'
+Videos: Videos
 Followers: __Followers
-'Duel victories': '__Duel victories'
-Global: __Global
-'Challenge grade:': '__Challenge grade:'
-Points: __Points
-'Duels level:': '__Duels level:'
-'Challenge Ranking': '__Challenge Ranking'
-'Duel Ranking': '__Duel Ranking'
-videos: __videos
-'Freestyle videos': '__Freestyle videos'
-'How does it work?': '__How does it work?'
-'Freestyle Videos': '__Freestyle Videos'
-'Predict for me to win the challenge!': '__Predict for me to win the challenge!'
-'share this video': '__share this video'
-'Description:': '__Description:'
-Score: __Score
-'To the challenge!': '__To the challenge!'
-'Type here your comment...': '__Type here your comment...'
-Send: __Send
+'Duel victories': 'Victoires de duels'
+Global: Globale
+'Challenge grade:': 'Grade de challenges'
+Points: Points
+'Duels level:': 'Level de duels:'
+'Challenge Ranking': 'Classement Challenge'
+'Duel Ranking': 'Classement Duel'
+videos: videos
+'Freestyle videos': 'Videos freestyle'
+'How does it work?': 'Comment ça marche?'
+'Freestyle Videos': 'Videos freestyle'
+'Predict for me to win the challenge!': 'Vote sur moi si tu penses que je gagnera ce challenge'
+'share this video': 'Partager cette vidéo'
+'Description:': 'Déscription:'
+Score: Score
+'To the challenge!': 'Voir le challenge'
+'Type here your comment...': 'Ecris ton commentaire'
+Send: Envoyer
+'Create the challenge': 'Créer le duel'
+Modify: Modifier

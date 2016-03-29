@@ -18,10 +18,10 @@ resetting.request.invalid_username: __resetting.request.invalid_username
 resetting.request.username: __resetting.request.username
 resetting.request.submit: __resetting.request.submit
 resetting.reset.submit: __resetting.reset.submit
-Connect: 'Se connecter'
-Subscribe: 'S''inscrire'
-Username: 'Nom d''utilisateur'
-Password: 'Mot de passe'
+Connect: Connect
+Subscribe: Subscribe
+Username: Username
+Password: Password
 security.login.remember_me: __security.login.remember_me
 security.login.submit: __security.login.submit
-'Forgot your password?': '__Forgot your password?'
+'Forgot your password?': 'Forgot your password?'

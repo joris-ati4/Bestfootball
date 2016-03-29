@@ -48,6 +48,13 @@ class RegistrationController extends BaseController
             ->setDuelPoints(0)
         ;
 
+        $message = $this->get('translator')->trans('Welcome to bestfootball. Please complete your personal informations by clicking on this notification or by going to the informations section. Once that is all set up, you can go out there and show your skills!');;
+        $link = $this->generateUrl('bf_site_settings');
+        $service = $this->container->get('bf_site.notification');
+        $notification = $service->create($user, $message, null, $link);
+
+        
+
 
         $event = new GetResponseUserEvent($user, $request);
         $dispatcher->dispatch(FOSUserEvents::REGISTRATION_INITIALIZE, $event);
@@ -70,6 +77,7 @@ class RegistrationController extends BaseController
             //we save the picture entity
             $em = $this->getDoctrine()->getManager();
             $em->persist($picture);
+            $em->persist($comment);
             $em->flush();
 
             if (null === $response = $event->getResponse()) {

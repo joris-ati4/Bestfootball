@@ -42,3 +42,4 @@ form.password: 'Mot de passe'
 form.password_confirmation: Vérification
 form.new_password: 'Nouveau mot de passe'
 form.new_password_confirmation: Vérification
+'Welcome to bestfootball. Please complete your personal informations by clicking on this notification or by going to the informations section. Once that is all set up, you can go out there and show your skills!': 'Bienvenue sur bestfootball. Merci de completer tes informations dans la section de paramètres. Une fois ces informations completé, tu peux commencer à montrer ton talent!'
