@@ -19,11 +19,11 @@
           {# begin of the duel page #}
           <h1 style="color:#95cd36;" class="text-center">
             {% if app.request.getLocale() == 'fr' %}      
-              Duel  - {{ duel.challenge.descriptionFR }}
+              Duel  - {{ duel.challenge.titleFR }}
             {% elseif app.request.getLocale() == 'en' %}
-              Duel  - {{ duel.challenge.descriptionEN }}
+              Duel  - {{ duel.challenge.titleEN }}
             {% else %}
-              Duel  - {{ duel.challenge.descriptionEN }}
+              Duel  - {{ duel.challenge.titleEN }}
             {% endif %}
           </h1>
           <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vcenter row">
