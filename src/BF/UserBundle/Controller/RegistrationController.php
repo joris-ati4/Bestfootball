@@ -26,6 +26,8 @@ class RegistrationController extends BaseController
 {
     public function registerAction(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
+
         /** @var $formFactory \FOS\UserBundle\Form\Factory\FactoryInterface */
         $formFactory = $this->get('fos_user.registration.form.factory');
         /** @var $userManager \FOS\UserBundle\Model\UserManagerInterface */
@@ -39,6 +41,12 @@ class RegistrationController extends BaseController
           ->setPath('/uploads/img/profile.png')
           ->setName('default profile picture on bestfootball')
         ;
+        //setting the country to France and region to ile de france.
+        $country = $em->getRepository('BFSiteBundle:Country')->find(2);
+        $state = $em->getRepository('BFSiteBundle:State')->find(111);
+
+
+
         $user = $userManager->createUser();
         $user
             ->setEnabled(true)
@@ -46,6 +54,8 @@ class RegistrationController extends BaseController
             ->setDuelWins(0)
             ->setPoints(0)
             ->setDuelPoints(0)
+            ->setCountry($country)
+            ->setState($state)
         ;
 
         $message = $this->get('translator')->trans('Welcome to bestfootball. Please complete your personal informations by clicking on this notification or by going to the informations section. Once that is all set up, you can go out there and show your skills!');;
@@ -75,7 +85,6 @@ class RegistrationController extends BaseController
             $userManager->updateUser($user);
 
             //we save the picture entity
-            $em = $this->getDoctrine()->getManager();
             $em->persist($picture);
             $em->persist($comment);
             $em->flush();
