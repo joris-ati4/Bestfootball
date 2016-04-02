@@ -57,7 +57,7 @@ class VideoRepository extends \Doctrine\ORM\EntityRepository
 	     ->orderBy('v.score', 'DESC')
 	     ->addOrderBy('v.date', 'DESC')
 	     ->setMaxResults(1)
-	     ->setFirstResult(2)
+	     ->setFirstResult(1)
 	  	;
 
 	  return $qb

@@ -402,3 +402,13 @@ bf_site_api_language:
     path: /home/language/change/{language}
     defaults: { _controller: BFSiteBundle:Ajax:setLocale }
     methods:  [POST, GET]
+
+bf_site_api_like_add:
+    path: /home/like/add
+    defaults: { _controller: BFSiteBundle:Like:create }
+    methods:  [POST]
+
+bf_site_api_like_del:
+    path: /home/like/del
+    defaults: { _controller: BFSiteBundle:Like:delete }
+    methods:  [POST]

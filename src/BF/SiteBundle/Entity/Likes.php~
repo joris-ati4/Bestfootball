@@ -1,0 +1,78 @@
+<?php
+
+namespace BF\SiteBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Likes
+ *
+ * @ORM\Table()
+ * @ORM\Entity
+ */
+class Likes
+{
+    /**
+    * @ORM\ManyToOne(targetEntity="BF\UserBundle\Entity\User", inversedBy="likes")
+    * @ORM\JoinColumn(nullable=false)
+    */
+    private $user;
+
+    /**
+    * @ORM\ManyToOne(targetEntity="BF\SiteBundle\Entity\Video", inversedBy="likes")
+    * @ORM\JoinColumn(nullable=false)
+    */
+    private $video;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="datetime")
+     */
+    private $date;
+
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     *
+     * @return Likes
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+}
+

@@ -52,6 +52,11 @@ class Video
     private $comments;
 
     /**
+    * @ORM\OneToMany(targetEntity="BF\SiteBundle\Entity\Likes", mappedBy="video")
+    */
+    private $likes;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")
@@ -675,5 +680,39 @@ class Video
     public function getCode()
     {
         return $this->code;
+    }
+
+    /**
+     * Add like
+     *
+     * @param \BF\SiteBundle\Entity\Likes $like
+     *
+     * @return Video
+     */
+    public function addLike(\BF\SiteBundle\Entity\Likes $like)
+    {
+        $this->likes[] = $like;
+
+        return $this;
+    }
+
+    /**
+     * Remove like
+     *
+     * @param \BF\SiteBundle\Entity\Likes $like
+     */
+    public function removeLike(\BF\SiteBundle\Entity\Likes $like)
+    {
+        $this->likes->removeElement($like);
+    }
+
+    /**
+     * Get likes
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getLikes()
+    {
+        return $this->likes;
     }
 }

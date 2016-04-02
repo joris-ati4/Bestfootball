@@ -70,11 +70,13 @@ class VideoController extends Controller
 
       	//getting the comments
       	$listComments = $video->getComments();
+      	$like = $em->getRepository('BFSiteBundle:Likes')->getLike($follower, $video);
 
 	    if (null === $video) {
 	      throw new NotFoundHttpException("La video n'existe pas.");
 	    }
 	    return $this->render('BFSiteBundle:Video:view.html.twig', array(
+	      'like' => $like,
 	      'video'  => $video,
 	      'listVideos' => $listVideos,
 	      'follow' => $follow,
@@ -357,22 +359,23 @@ class VideoController extends Controller
 
 	    $em = $this->getDoctrine()->getManager();
 	    $video = $em->getRepository('BFSiteBundle:Video')->find($id);
+	    $user = $this->container->get('security.context')->getToken()->getUser();
 
 	    if ($video === null) {
 	      throw $this->createNotFoundException("This video doesn't exist.");
 	    }
 
-	    $user = $this->container->get('security.context')->getToken()->getUser();
-	    $check = $video->getUser();
-	    if ($check != $user) {
+	    if ($video->getUser()->getid() != $user->getId()) {
 	      throw $this->createNotFoundException("You can't delete a video that isn't yours");
 	    }
 	    	    
         // On crée un formulaire vide, qui ne contiendra que le champ CSRF
 	    // Cela permet de protéger la suppression d'annonce contre cette faille
-	    $form = $this->get('form.factory')->create(new VideoDeleteType, $video);
+	    $form = $this->get('form.factory')->create(new VideoDeleteType);
 
-	    if ($form->handleRequest($request)->isValid()) {
+	    $form->handleRequest($request);
+
+	    if ($form->isSubmitted() && $form->isValid()) {
 
 	    	//vérifier s'il y a des autres videos pour ce challenge
 	    	if($video->getType() == 'challenge'){
@@ -400,6 +403,14 @@ class VideoController extends Controller
 		    			$user->setPoints($points);
 			      		$em->persist($user);
 		    		}
+
+		    		//checking for comments. if there are, we delete them.
+		    		if($video ->getComments() !== null){
+		    			$comments = $video ->getComments();
+		    			foreach ($comments as $comment){ 
+			    			$em->remove($comment);
+			    		}
+		    		}
 		    		$em->remove($video);
 			      	$em->flush();
 			      	$request->getSession()->getFlashBag()->add('success', "Your video has been deleted.");
@@ -408,6 +419,13 @@ class VideoController extends Controller
 
 		    	}
 		    	else{ //if the video is not the highest score. We just delete it.
+		    		//checking for comments. if there are, we delete them.
+		    		if($video ->getComments() !== null){
+		    			$comments = $video ->getComments();
+		    			foreach ($comments as $comment){ 
+			    			$em->remove($comment);
+			    		}
+		    		}
 		    		$em->remove($video);
 		    		$em->flush();
 		    		$request->getSession()->getFlashBag()->add('success', "Your video has been deleted.");
@@ -416,6 +434,13 @@ class VideoController extends Controller
 		    }
 		    elseif($video->getType() == 'freestyle'){
 		    	//freestyle videos can always be deleted.
+		    	//checking for comments. if there are, we delete them.
+		    		if($video ->getComments() !== null){
+		    			$comments = $video ->getComments();
+		    			foreach ($comments as $comment){ 
+			    			$em->remove($comment);
+			    		}
+		    		}
 		    	$em->remove($video);
 		    	$em->flush();
 		    	$request->getSession()->getFlashBag()->add('success', "Your video has been deleted.");

@@ -22,55 +22,9 @@
 
 		            {# the score bar #}
 		            {% if video.type == 'challenge'%}
-                    <div class="container-fluid" style="margin-bottom:10px;">
-                        <div class="row" style="height:28px;">
-                            <div class="bar-wrap">
-                                <div class="progress no-extra-space">
-                                  <!--calcul du pourcentage pour les points -->
-                                  {% if video.score == 0 %}
-                                    {% set percentage = ((video.repetitions/(video.challenge.one - 0 )) * 16.6) + 0 %}
-                                  {% elseif video.score == 50 %}
-                                    {% set percentage = (((video.repetitions - video.challenge.one )/(video.challenge.two - video.challenge.one )) * 16.6) + 16.6 %}
-                                  {% elseif video.score == 100 %}
-                                    {% set percentage = (((video.repetitions - video.challenge.two )/(video.challenge.three - video.challenge.two )) * 16.6) + 33.2 %}
-                                  {% elseif video.score == 150 %}
-                                    {% set percentage = (((video.repetitions - video.challenge.three )/(video.challenge.four - video.challenge.three )) * 16.6) + 49.8 %}
-                                  {% elseif video.score == 200 %}
-                                    {% set percentage = (((video.repetitions - video.challenge.four )/(video.challenge.five - video.challenge.four )) * 16.6) + 66.4 %}
-                                  {% elseif video.score == 250 %}
-                                    {% set percentage = (((video.repetitions - video.challenge.five )/(video.challenge.six - video.challenge.five )) * 16.6) + 83.0 %}
-                                  {% elseif video.score == 300 %}
-                                    {% set percentage = 100 %}
-                                  {% endif %}
+                  <p>Score: {{ video.score }} - {{ 'Repetitions'|trans }}: {{ video.repetitions }}X
 
-                                  <div class="progress-bar" role="progressbar" aria-valuenow="{{ percentage }}" aria-valuemin="0" aria-valuemax="{{ percentage }}" style="width:{{ percentage }}%;background-color:#87bb2f;">
-                                    <span style="">{{ video.repetitions }} X</span>
-                                  </div>
-
-                  
-
-                                </div>
-                                <div style="right:16.6%" class="progress-marker"></div>
-                                <div style="right:33.2%" class="progress-marker"></div>
-                                <div style="right:49.8%" class="progress-marker"></div>
-                                <div style="right:66.4%" class="progress-marker"></div>
-                                <div style="right:83.0%" class="progress-marker"></div>
-                                
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="time-axis">
-                              <div class="time-spot-end text-left">0</div>
-                                <div class="time-spot text-center">50</div>
-                                <div class="time-spot text-center">100</div>
-                                <div class="time-spot text-center" style="width:16.6%;">150</div>
-                                <div class="time-spot text-center">200</div>
-                                <div class="time-spot text-center">250</div>
-                                <div class="time-spot-end text-right">300</div>
-                            </div>
-                        </div>
-                    </div>
-                  	{% endif %}
+                {% endif %}
 
 
 

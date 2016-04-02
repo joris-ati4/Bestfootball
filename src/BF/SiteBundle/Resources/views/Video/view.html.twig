@@ -164,9 +164,34 @@
                     </div>
                   </div>
                 </div><!--
-              --><div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 vcenter row">
+                --><div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 vcenter row">
+
+                    <!-- The like section -->
+
+                    {% if video.user.username != app.user.username%}
+                      {% if like is not null %}
+                        <a href="#" id="likeSubmit">
+                          <img src="/img/like.png" alt="Bestfootball like button" style="width:45px;visibility:hidden;"/>
+                        </a>
+
+                        <a href="#" id="likeDelete">
+                          <img src="/img/unlike.png" alt="Bestfootball unlike button" style="width:45px;"/>
+                        </a>
+                      {% else %}
+                        <a href="#" id="likeSubmit">
+                          <img src="/img/like.png" alt="Bestfootball like button" style="width:45px;"/>
+                        </a>
+
+                        <a href="#" id="likeDelete">
+                          <img src="/img/unlike.png" alt="Bestfootball unlike button" style="width:45px;visibility:hidden;"/>
+                        </a>
+                      {% endif %}
+                    {% endif %}
 
 
+
+
+                  <p>Likes : {{ video.likes|length }}
 
                   <p>
                     {{ 'Description:'|trans }}</br>{{ video.description }}
@@ -437,6 +462,43 @@
               }
       });
   });
+
+  $("#likeSubmit").click(function(e){
+    e.preventDefault();
+    var DATA ='videoId=' + {{ video.id }};
+
+    $.ajax({
+        type: "POST",
+        url: "{{ path('bf_site_api_like_add')}}",
+              data: DATA,
+              cache: false,
+              success: function(){
+                $("#likeSubmit").hide();
+                $("#likeDelete").show();
+              }
+      });
+  });
+
+  $("#likeDelete").click(function(e){
+    e.preventDefault();
+    var DATA ='videoId=' + {{ video.id }};
+
+    $.ajax({
+        type: "POST",
+        url: "{{ path('bf_site_api_like_del')}}",
+              data: DATA,
+              cache: false,
+              success: function(){
+                $("#likeDelete").hide();
+                $("#likeSubmit").show();
+              }
+      });
+  });
+
+
+
+
+
 </script>
 <script type="text/javascript">
   $(function () {
