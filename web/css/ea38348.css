@@ -278,7 +278,13 @@ border-radius:10px;
 }
 /* End of upload page*/
 
-
+/* Partners + prices page */
+.price{
+    background-color: #FFF;
+    padding: 10px 10px;
+    border: 2px solid;
+    border-color:#95cd36; 
+}
 
 
 /* justify your text*/
