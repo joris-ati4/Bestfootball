@@ -183,4 +183,10 @@ class HomeController extends Controller
               'form' => $form->createView(),
             ));
     }
+    public function pricesAction(request $request)
+    {
+
+        return $this->render('BFSiteBundle:Home:prices.html.twig', array(
+            ));
+    }
 }

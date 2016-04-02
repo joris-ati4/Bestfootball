@@ -112,6 +112,13 @@ bf_site_prediction:
     requirements:
         _locale: en|fr
 
+bf_site_prices:
+    path:     /{_locale}/prices
+    defaults: { _controller: BFSiteBundle:Home:prices, _locale: en }
+    methods:  [GET]
+    requirements:
+        _locale: en|fr
+
 bf_site_freestyle:
     path:     /{_locale}/freestyle
     defaults: { _controller: BFSiteBundle:Video:freestyle, _locale: en }
