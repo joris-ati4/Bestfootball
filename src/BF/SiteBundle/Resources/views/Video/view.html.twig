@@ -168,7 +168,7 @@
 
                     <!-- The like section -->
 
-                    {% if video.user.username != app.user.username%}
+                    {% if video.user.username != app.user.username and video.type =='freestyle' %}
                       {% if like is not null %}
                         <a href="#" id="likeSubmit">
                           <img src="/img/like.png" alt="Bestfootball like button" style="width:45px;visibility:hidden;"/>
@@ -177,6 +177,7 @@
                         <a href="#" id="likeDelete">
                           <img src="/img/unlike.png" alt="Bestfootball unlike button" style="width:45px;"/>
                         </a>
+                        <p>Likes : {{ video.likes|length }}</p>
                       {% else %}
                         <a href="#" id="likeSubmit">
                           <img src="/img/like.png" alt="Bestfootball like button" style="width:45px;"/>
@@ -185,13 +186,14 @@
                         <a href="#" id="likeDelete">
                           <img src="/img/unlike.png" alt="Bestfootball unlike button" style="width:45px;visibility:hidden;"/>
                         </a>
+                        <p>Likes : {{ video.likes|length }}</p>
                       {% endif %}
                     {% endif %}
 
 
 
 
-                  <p>Likes : {{ video.likes|length }}
+                  
 
                   <p>
                     {{ 'Description:'|trans }}</br>{{ video.description }}
