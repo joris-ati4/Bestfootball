@@ -99,7 +99,7 @@ class DuelController extends Controller
                 if($guest->getMailDuel() === true){
                     $message = \Swift_Message::newInstance()
                         ->setSubject($host->getUsername().' invited you for a duel on bestfootball')
-                        ->setFrom('noreply@bestfootball.fr')
+                        ->setFrom('bestfootball@bestfootball.fr')
                         ->setTo($guest->getEmail())
                         ->setBody(
                             $this->renderView(
