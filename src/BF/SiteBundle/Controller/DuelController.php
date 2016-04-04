@@ -89,19 +89,41 @@ class DuelController extends Controller
 	    
 	    
 		    if ($form->handleRequest($request)->isValid()) {
-			      $em = $this->getDoctrine()->getManager();
-			      $em->persist($notification);
-			      $em->persist($duel);
-			      $em->flush();
+                //we check if the user wants to receive a mail. If so, we send him an email.
+                if($guest->getMailDuel() === true){
+                    $message = \Swift_Message::newInstance()
+                        ->setSubject($host->getUsername().' invited you for a duel on bestfootball')
+                        ->setFrom('noreply@bestfootball.fr')
+                        ->setTo($guest->getEmail())
+                        ->setBody(
+                            $this->renderView(
+                                // app/Resources/views/Emails/registration.html.twig
+                                'Emails/duelinvitation.html.twig',
+                                array(
+                                    'host' => $host,
+                                    'guest' => $guest,
+                                    'duel' => $duel
+                                )
+                            ),
+                            'text/html'
+                        )
+                    ;
+                    $this->get('mailer')->send($message);
+                }
 
-			      $this->addFlash('success', 'Your invitation for a duel has been send to '.$guest->getUsername().' you will have to wait for '.$guest->getUsername().' to accept it.');
+			    $em = $this->getDoctrine()->getManager();
+			    $em->persist($notification);
+			    $em->persist($duel);
+			    $em->flush();
 
-			      return $this->redirect($this->generateUrl('bf_site_profile', array('username' => $guest->getUsername())));
-			    }
+			    $this->addFlash('success', 'Your invitation for a duel has been send to '.$guest->getUsername().' you will have to wait for '.$guest->getUsername().' to accept it.');
 
-		    return $this->render('BFSiteBundle:Duel:create.html.twig', array(
-		      'form' => $form->createView(),
-		    ));
+			    return $this->redirect($this->generateUrl('bf_site_profile', array('username' => $guest->getUsername())));
+			}
+
+	    return $this->render('BFSiteBundle:Duel:create.html.twig', array(
+	      'form' => $form->createView(),
+	    ));
     }
     public function acceptAction(request $request, $id)
     {

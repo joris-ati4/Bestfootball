@@ -129,11 +129,24 @@ class User extends BaseUser
     /** @ORM\Column(name="google_access_token", type="string", length=255, nullable=true) */
     protected $google_access_token;
 
+    /** @ORM\Column(name="mail_weekly", type="boolean") */
+    protected $mailWeekly;
+
+    /** @ORM\Column(name="mail_comment", type="boolean") */
+    protected $mailComment;
+
+    /** @ORM\Column(name="mail_duel", type="boolean") */
+    protected $mailDuel;
+
 
     public function __construct()
     {
         parent::__construct();
         // your own logic
+        $this->mailDuel = true;
+        $this->mailComment = true;
+        $this->mailWeekly = true;
+
     }
 
     /**
@@ -736,5 +749,77 @@ class User extends BaseUser
     public function getComments()
     {
         return $this->comments;
+    }
+
+    /**
+     * Set mailWeekly
+     *
+     * @param boolean $mailWeekly
+     *
+     * @return User
+     */
+    public function setMailWeekly($mailWeekly)
+    {
+        $this->mailWeekly = $mailWeekly;
+
+        return $this;
+    }
+
+    /**
+     * Get mailWeekly
+     *
+     * @return boolean
+     */
+    public function getMailWeekly()
+    {
+        return $this->mailWeekly;
+    }
+
+    /**
+     * Set mailComment
+     *
+     * @param boolean $mailComment
+     *
+     * @return User
+     */
+    public function setMailComment($mailComment)
+    {
+        $this->mailComment = $mailComment;
+
+        return $this;
+    }
+
+    /**
+     * Get mailComment
+     *
+     * @return boolean
+     */
+    public function getMailComment()
+    {
+        return $this->mailComment;
+    }
+
+    /**
+     * Set mailDuel
+     *
+     * @param boolean $mailDuel
+     *
+     * @return User
+     */
+    public function setMailDuel($mailDuel)
+    {
+        $this->mailDuel = $mailDuel;
+
+        return $this;
+    }
+
+    /**
+     * Get mailDuel
+     *
+     * @return boolean
+     */
+    public function getMailDuel()
+    {
+        return $this->mailDuel;
     }
 }

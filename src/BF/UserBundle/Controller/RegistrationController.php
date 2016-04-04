@@ -86,7 +86,7 @@ class RegistrationController extends BaseController
 
             //we save the picture entity
             $em->persist($picture);
-            $em->persist($comment);
+            $em->persist($notification);
             $em->flush();
 
             if (null === $response = $event->getResponse()) {
