@@ -98,7 +98,7 @@ class DuelController extends Controller
                         ->setBody(
                             $this->renderView(
                                 // app/Resources/views/Emails/registration.html.twig
-                                'Emails/duelinvitation.html.twig',
+                                'Emails/duel.html.twig',
                                 array(
                                     'host' => $host,
                                     'guest' => $guest,
