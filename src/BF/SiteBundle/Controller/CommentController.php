@@ -36,6 +36,27 @@ class CommentController extends Controller
         $em->persist($notification);
         $em->flush();
 
+        if($guest->getMailComment() === true){
+            $message = \Swift_Message::newInstance()
+                ->setSubject($user->getUsername().' posted a new comment on your '.$video->getTitle().' video')
+                ->setFrom('bestfootball@bestfootball.fr')
+                ->setTo($video->getUser()->getEmail())
+                ->setBody(
+                    $this->renderView(
+                        // app/Resources/views/Emails/registration.html.twig
+                        'Emails/comment.html.twig',
+                        array(
+                            'user' => $video->getUser(),
+                            'commenter' => $user,
+                            'video' => $video
+                        )
+                    ),
+                    'text/html'
+                )
+            ;
+            $this->get('mailer')->send($message);
+        }
+
         $this->addFlash('success', 'Your comment has been added.');
 
         return new response();
