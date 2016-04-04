@@ -90,6 +90,12 @@ class DuelController extends Controller
 	    
 		    if ($form->handleRequest($request)->isValid()) {
                 //we check if the user wants to receive a mail. If so, we send him an email.
+                
+			    $em = $this->getDoctrine()->getManager();
+			    $em->persist($notification);
+			    $em->persist($duel);
+			    $em->flush();
+
                 if($guest->getMailDuel() === true){
                     $message = \Swift_Message::newInstance()
                         ->setSubject($host->getUsername().' invited you for a duel on bestfootball')
@@ -111,10 +117,6 @@ class DuelController extends Controller
                     $this->get('mailer')->send($message);
                 }
 
-			    $em = $this->getDoctrine()->getManager();
-			    $em->persist($notification);
-			    $em->persist($duel);
-			    $em->flush();
 
 			    $this->addFlash('success', 'Your invitation for a duel has been send to '.$guest->getUsername().' you will have to wait for '.$guest->getUsername().' to accept it.');
 
