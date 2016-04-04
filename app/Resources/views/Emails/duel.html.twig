@@ -240,6 +240,27 @@ body, td { font-family: HelveticaNeue, sans-serif; }
                             <tr style="border-collapse: collapse;"><td class="w580" width="580" height="10" style="font-family: HelveticaNeue, sans-serif;border-collapse: collapse;width: 280px !important;"></td></tr>
                         </tbody></table>
                     </layout>
+
+                    <layout label="Text with right-aligned image">
+                        <table class="w580" width="580" cellpadding="0" cellspacing="0" border="0" style="width: 280px !important;">
+                            <tbody><tr style="border-collapse: collapse;">
+                                <td class="w580" width="580" style="font-family: HelveticaNeue, sans-serif;border-collapse: collapse;width: 280px !important;">
+                                    <p align="left" class="article-title" style="font-size: 18px;line-height: 24px;color: #000000;font-weight: bold;margin-top: 0px;margin-bottom: 18px;font-family: HelveticaNeue, sans-serif;"><singleline label="Title">The duel : {{ duel.challenge.titleEN }}</singleline></p>
+                                    <table cellpadding="0" cellspacing="0" border="0" align="right">
+                                        <tbody><tr style="border-collapse: collapse;">
+                                            <td class="w30" width="15" style="font-family: HelveticaNeue, sans-serif;border-collapse: collapse;width: 10px !important;"></td>
+                                            <td style="font-family: HelveticaNeue, sans-serif;border-collapse: collapse;"><img src="http://bestfootball.fr/uploads/challenges/thumbnail/{{ duel.challenge.id }}.jpg" editable="true" label="Image" class="w300" width="300" border="0" style="height: auto;line-height: 100%;outline: none;text-decoration: none;display: block;width: 140px !important;"></td>
+                                        </tr>
+                                        <tr style="border-collapse: collapse;"><td class="w30" width="15" height="5" style="font-family: HelveticaNeue, sans-serif;border-collapse: collapse;width: 10px !important;"></td><td style="font-family: HelveticaNeue, sans-serif;border-collapse: collapse;"></td></tr>
+                                    </tbody></table>
+                                    <div align="left" class="article-content" style="font-size: 13px;line-height: 18px;color: #444444;margin-top: 0px;margin-bottom: 18px;font-family: HelveticaNeue, sans-serif;-webkit-text-size-adjust: 90% !important;-ms-text-size-adjust: 90% !important;">
+                                        <multiline label="Description">{{ duel.challenge.descriptionEN }}</multiline>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr style="border-collapse: collapse;"><td class="w580" width="580" height="10" style="font-family: HelveticaNeue, sans-serif;border-collapse: collapse;width: 280px !important;"></td></tr>
+                        </tbody></table>
+                    </layout>
                                         
                     
                     <layout label="Text with right-aligned image">
@@ -250,7 +271,9 @@ body, td { font-family: HelveticaNeue, sans-serif; }
                                     <table cellpadding="0" cellspacing="0" border="0" align="right">
                                         <tbody><tr style="border-collapse: collapse;">
                                             <td class="w30" width="15" style="font-family: HelveticaNeue, sans-serif;border-collapse: collapse;width: 10px !important;"></td>
-                                            <td style="font-family: HelveticaNeue, sans-serif;border-collapse: collapse;"><img editable="true" label="Image" class="w300" width="300" border="0" style="height: auto;line-height: 100%;outline: none;text-decoration: none;display: block;width: 140px !important;"></td>
+                                            <td style="font-family: HelveticaNeue, sans-serif;border-collapse: collapse;">
+                                                <img editable="true" label="Image" class="w300" width="300" border="0" style="height: auto;line-height: 100%;outline: none;text-decoration: none;display: block;width: 140px !important;">
+                                            </td>
                                         </tr>
                                         <tr style="border-collapse: collapse;"><td class="w30" width="15" height="5" style="font-family: HelveticaNeue, sans-serif;border-collapse: collapse;width: 10px !important;"></td><td style="font-family: HelveticaNeue, sans-serif;border-collapse: collapse;"></td></tr>
                                     </tbody></table>
