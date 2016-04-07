@@ -74,6 +74,12 @@ security:
         - { path: ^/fr/upload, role: IS_AUTHENTICATED_FULLY }
         - { path: ^/en/duel, role: IS_AUTHENTICATED_FULLY }
         - { path: ^/fr/duel, role: IS_AUTHENTICATED_FULLY }
+        - { path: ^/fr/myduels, role: IS_AUTHENTICATED_FULLY }
+        - { path: ^/en/myduels, role: IS_AUTHENTICATED_FULLY }
+        - { path: ^/fr/myvideos, role: IS_AUTHENTICATED_FULLY }
+        - { path: ^/en/myvideos, role: IS_AUTHENTICATED_FULLY }
+        - { path: ^/fr/settings, role: IS_AUTHENTICATED_FULLY }
+        - { path: ^/en/settings, role: IS_AUTHENTICATED_FULLY }
 
 
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers

@@ -197,49 +197,49 @@ bf_site_profile_followers:
         _locale: en|fr
 
 bf_site_videos:
-    path:     /{_locale}/profile/myvideos
+    path:     /{_locale}/myvideos
     defaults: { _controller: BFSiteBundle:Profile:videos, _locale: en }
     methods:  [GET]
     requirements:
         _locale: en|fr
 
 bf_site_profile_duels:
-    path:     /{_locale}/profile/myduels
+    path:     /{_locale}/myduels
     defaults: { _controller: BFSiteBundle:Duel:myduels, _locale: en }
     methods:  [GET]
     requirements:
         _locale: en|fr
 
 bf_site_settings:
-    path:     /{_locale}/profile/settings
+    path:     /{_locale}/settings
     defaults: { _controller: BFSiteBundle:Profile:settings, _locale: en }
     methods:  [GET,POST]
     requirements:
         _locale: en|fr
 
 bf_site_settings_info:
-    path:     /{_locale}/profile/settings/info
+    path:     /{_locale}/settings/info
     defaults: { _controller: BFSiteBundle:Profile:settingsInfo, _locale: en }
     methods:  [PUT,POST]
     requirements:
         _locale: en|fr
 
 bf_site_settings_picture:
-    path:     /{_locale}/profile/settings/picture
+    path:     /{_locale}/settings/picture
     defaults: { _controller: BFSiteBundle:Profile:settingsPicture, _locale: en }
     methods:  [PUT,POST]
     requirements:
         _locale: en|fr
 
 bf_site_settings_reset_password:
-    path:     /{_locale}/profile/settings/password
+    path:     /{_locale}/settings/password
     defaults: { _controller: BFSiteBundle:Profile:changePassword, _locale: en }
     methods:  [PUT,POST]
     requirements:
         _locale: en|fr
 
 bf_site_settings_reset_username:
-    path:     /{_locale}/profile/settings/username
+    path:     /{_locale}/settings/username
     defaults: { _controller: BFSiteBundle:Profile:changeUsername, _locale: en }
     methods:  [PUT,POST]
     requirements:
