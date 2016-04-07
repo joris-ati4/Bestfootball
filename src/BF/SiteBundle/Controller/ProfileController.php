@@ -16,8 +16,6 @@ class ProfileController extends Controller
 {
     public function viewAction($username,request $request)
     {
-
-
       if($this->container->get('security.context')->isGranted('IS_AUTHENTICATED_REMEMBERED') || $this->container->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY')){
         //checking if the user is following the current user
         $follower = $this->container->get('security.context')->getToken()->getUser();
