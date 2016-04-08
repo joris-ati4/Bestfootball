@@ -6,17 +6,9 @@ use HWI\Bundle\OAuthBundle\Security\Core\User\FOSUBUserProvider as BaseClass;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints\DateTime;
 use BF\SiteBundle\Entity\Media;
-use Doctrine\ORM\EntityManager;
 
 class FOSUBUserProvider extends BaseClass
 {
-
-    public function __construct(EntityManager $em)
-    {
-        $this->em = $em;
-    }
-
-
     /**
      * {@inheritDoc}
      */
@@ -107,10 +99,6 @@ class FOSUBUserProvider extends BaseClass
                     ;
             }
 
-            //setting the country to France and region to ile de france.
-            $country = $this->em->getRepository('BFSiteBundle:Country')->find(2);
-            $state = $this->em->getRepository('BFSiteBundle:State')->find(111);
-
             //modify here with relevant data
             $user->setUsername($nickname);
             $user->setEmail($mail);
@@ -124,8 +112,6 @@ class FOSUBUserProvider extends BaseClass
             $user->setFirstname($firstname);
             $user->setGender($gender);
             $user->setBirthday($birthday);
-            $user->setCountry($country);
-            $user->setState($state);
             $this->userManager->updateUser($user);
 
             return $user;
