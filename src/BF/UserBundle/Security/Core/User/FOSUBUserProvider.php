@@ -6,9 +6,17 @@ use HWI\Bundle\OAuthBundle\Security\Core\User\FOSUBUserProvider as BaseClass;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints\DateTime;
 use BF\SiteBundle\Entity\Media;
+use Doctrine\ORM\EntityManager;
 
 class FOSUBUserProvider extends BaseClass
 {
+
+    public function __construct(EntityManager $em)
+    {
+        $this->em = $em;
+    }
+
+
     /**
      * {@inheritDoc}
      */
@@ -37,7 +45,6 @@ class FOSUBUserProvider extends BaseClass
      */
     public function loadUserByOAuthUserResponse(UserResponseInterface $response)
     {
-        $em = $this->getDoctrine()->getManager();
         $username = $response->getUsername();
         $user = $this->userManager->findUserBy(array($this->getProperty($response) => $username));
         //when the user is registrating
@@ -101,8 +108,8 @@ class FOSUBUserProvider extends BaseClass
             }
 
             //setting the country to France and region to ile de france.
-            $country = $em->getRepository('BFSiteBundle:Country')->find(2);
-            $state = $em->getRepository('BFSiteBundle:State')->find(111);
+            $country = $this->em->getRepository('BFSiteBundle:Country')->find(2);
+            $state = $this->em->getRepository('BFSiteBundle:State')->find(111);
 
             //modify here with relevant data
             $user->setUsername($nickname);
