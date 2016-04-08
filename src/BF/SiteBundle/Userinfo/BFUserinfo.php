@@ -5,6 +5,7 @@ namespace BF\SiteBundle\Userinfo;
 
 use Doctrine\ORM\EntityManager;
 use BF\UserBundle\Entity\User;
+use Symfony\Component\Translation\TranslatorInterface;
 
 class BFUserinfo
 {
@@ -14,20 +15,21 @@ class BFUserinfo
    */
   protected $doctrine;
 
-  public function __construct(EntityManager $em)
+  public function __construct(EntityManager $em, TranslatorInterface $translator)
   {
       $this->em = $em;
+      $this->translator = $translator;
   }
 
 
   public function rankInfo(user $user)
   {
   	$points = $user->getPoints();
-    if( '0'<= $points && $points <= '1000'){$level = 'Unknown'; $percent=($points/1000)*100;$min=0;$max=1000;$style='progress-bar-success';} //incognito
-    if( '1000'< $points && $points <= '2000'){$level = 'Promising Talent';$percent=(($points-1000)/1000)*100;$min=1000;$max=2000;$style='progress-bar-success';}
-    if( '2000'< $points && $points <= '3500'){$level = 'Rising Star';$percent=(($points-2000)/1500)*100;$min=2000;$max=3500;$style='progress-bar-info';}
-    if( '3500'< $points && $points <= '5999'){$level = 'Real Star';$percent=(($points-3500)/1499)*100;$min=3500;$max=5999;$style='progress-bar-warning';}
-    if( '6000'<= $points){$level = 'Legend';$percent=(($points-6000)/2000)*100;$min=6000;$max=8000;$style='progress-bar-danger';}
+    if( '0'<= $points && $points <= '1000'){$level = $this->translator->trans('Unknown'); $percent=($points/1000)*100;$min=0;$max=1000;$style='progress-bar-success';} //incognito
+    if( '1000'< $points && $points <= '2000'){$level = $this->translator->trans('Promising Talent');$percent=(($points-1000)/1000)*100;$min=1000;$max=2000;$style='progress-bar-success';}
+    if( '2000'< $points && $points <= '3500'){$level = $this->translator->trans('Rising Star');$percent=(($points-2000)/1500)*100;$min=2000;$max=3500;$style='progress-bar-info';}
+    if( '3500'< $points && $points <= '5999'){$level = $this->translator->trans('Real Star');$percent=(($points-3500)/1499)*100;$min=3500;$max=5999;$style='progress-bar-warning';}
+    if( '6000'<= $points){$level = $this->translator->trans('Legend');$percent=(($points-6000)/2000)*100;$min=6000;$max=8000;$style='progress-bar-danger';}
 
     //now we are going to determine the place of the user.
  

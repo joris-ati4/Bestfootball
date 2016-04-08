@@ -21,7 +21,7 @@ Delete: Supprimer
 cancel: annuler
 'Use your previous video': 'Utilise ta dernière vidéo'
 'Use the application': 'Utilise notre application'
-'Download our app': 'Télécharge notre application'
+'Download our app': "Télécharge l'application mobile Bestfootball"
 'Do the': 'Faites le'
 challenge: challenge
 'Come back on this page': 'Revenez sur cette page'
@@ -140,7 +140,7 @@ about.joris.qualities: 'Collectif, Précis, Travailleur'
 about.jeremie: 'Jérémie Karege travaille en tant que Business Manager dans le cabinet de conseil CAP GEMINI. C''est aux Etats-Unis qu''il rencontre Nassim et s''intéresse au projet.Sa passion : le foot. Il a pu jouer aux 4 coins du monde et, à défaut d’être un numéro 9 sur le terrain, Jérémie est avant tout un numéro 9 dans la vie! Et comme tout numéro 9 qui se respecte il n’a qu’une obsession, le but ! A travers son sang-froid qui le caractérise, Jérémie espère marquer ce qui serait son plus beau but : faire de Bestfootball une interface mondialement reconnue. '
 about.joris: 'Joris HART est étudiant en master d''ergonomie et ingénierie des activités sportives à l''université de Savoie. Ses grandes passions sont le parapente, le foot et... et la programmation web (Et oui entre un saut dans le vide et un match de foot, il a le temps de nous faire quelques lignes de codes)! Après une première tentative de start up dans le football (localisation et création de matchs entre amis), il crée sa plateforme de services (création de sites web pour particuliers). Séduit par le projet Bestfootball et la vision qui l''accompagne, Il s''associe à Jérémie et Nassim en Octobre 2015.'
 number: numéro
-home.header.subtitle: 'Montre nous tes talents de footballeurs et vient t’améliorer. '
+home.header.subtitle: 'Montre nous tes talents de footballeurs et viens t’améliorer. '
 home.header.explication: "Bienvenue dans l’arène, ici que des challenges et du foot. Tu veux connaître ton niveau\_? Savoir ce que tu vaux dans ta ville, ton pays ou dans le monde\_? Tu veux mettre tout le monde d’accord\_? Bestfootball réalise tes rêves. Choisi un challenge sur le site, Prend une video de ton challenge avec notre application et montres nous de quoi tu es capable."
 'HOW DOES IT WORK ?': 'COMMENT CA MARCHE ?'
 Subscribe: Inscris-toi
@@ -151,11 +151,11 @@ Then: Ensuite
 home.howto.sub.2: 'Nous te conseillons aussi de télécharger l’application pour filmer tes challenges.'
 home.howto.participate: 'Pour participer c’est super simple. Choisis ton challenge, filme toi et indique le niveau que tu as atteint. C’est beaucoup plus simple avec l’application tout est sur ton téléphone, ta vidéo s’upload automatiquement sur le site.'
 'Earn rewards': 'Gagne des Lots'
-home.howto.earn: 'estfootball récompenses les utilisateurs avec de nombreux cadeaux, à toi de jouer pour faire partie des meilleurs. '
+home.howto.earn: 'Bestfootball récompenses les utilisateurs avec de nombreux cadeaux, à toi de jouer pour faire partie des meilleurs. '
 home.app: 'Nous avons développé une application pour filmer vos challenges. Grâce à l’application tu as accès à tous les challenges présents sur le site. En un clic, tu commences à te filmer et tu peux uploader ta vidéo automatiquement sur ton profil. '
 Home: Acceuil
 'DOWLOAD OUR APPLICATION': 'TELECHARGE NOTRE APP'
-'FOLLOW US ON SOCIAL MEDIA': 'SUIS NOUS SUR LES RESEAUX SOCIAUX'
+'FOLLOW US ON SOCIAL MEDIA': 'REJOINS NOUS SUR NOS RESEAUX SOCIAUX'
 Ranking: Classement
 by: par
 Following: Following
@@ -196,3 +196,8 @@ Prices: Recompenses
 'N° 3 Global': 'N° 3 Global'
 'The official 2016 Uefa Eurocup football': 'The official 2016 Uefa Eurocup football'
 Partners: Partenaires
+Unknown: Inconnu
+'Promising Talent': 'Talent prometteur'
+'Rising Star': 'Star Montante'
+'Real Star': 'Vrai Star'
+'Legend': 'Légende'

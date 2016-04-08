@@ -104,11 +104,12 @@
 
 
                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 vcenter row">
-                  <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 vcenter row">
+                  <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 vcenter row text-center">
+                      <p style="font-size:16px;"><a href="{{ path('bf_site_profile', { 'username': video.user.username }) }}"> {{ video.user.username }}</a></p>
                       <img src="{{ video.user.media.path }}" alt="{{ video.user.media.name }}" style="width:100%;border-radius:50%;"/>
                   </div><!--
                 --><div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 vcenter row">
-                    <p style="font-size:16px;"><a href="{{ path('bf_site_profile', { 'username': video.user.username }) }}"> {{ video.user.username }}</a></p>
+                    
 
                       <div class="" style="height:90px;">
                         {% if follower is not null %}
@@ -195,9 +196,8 @@
 
                   
 
-                  <p>
-                    {{ 'Description:'|trans }}</br>{{ video.description }}
-                  </p>
+                  <p style="color:#95cd36;font-size:16px;"><b>{{ 'Description:'|trans }}</b></p>
+                  <p><b>{{ video.description }}</b></p>
                   <a href="{{ path('bf_site_video_report', {'id': video.id}) }}">{{'report this video'|trans }}</a>
 
                   {% if video.type == 'challenge'%}

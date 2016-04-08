@@ -2,6 +2,7 @@
   {# This is the content section of our page, here the user will be able to view all the challenges with the different niveau's! #}
   <form action="{{ path('bf_site_settings_info')}}" method="post">
   	<div class="row">
+  		<h3 style="text-align:center;">Personal information</h3>
 	  	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 vcenter">
 		  	<div class="form-group">
 			    {{ form_label(form.name, "Name:", {'label_attr': {'class': 'col-xs-12 col-sm-4 col-md-4 col-lg-4 control-label'}}) }}
@@ -82,8 +83,30 @@
 			</div>
 
 		</div>
-		 {{ form_rest(form) }}
-      <input type="submit" value="Modify" class="btn btn-success text-center" />
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vcenter text-center">
+			<div class="row">
+				<h3>Mail Notifications</h3>
+					<div class="form-group">
+			    		{{ form_label(form.mailComment, "Receive an email for every commment on your vidéo:", {'label_attr': {'class': 'col-xs-6 col-sm-6 col-md-6 col-lg-6 control-label', 'style': 'text-align:left;'}}) }}
+			    		{{ form_errors(form.mailComment) }}
+			    		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+			      			{{ form_widget(form.mailComment, {'attr': {'class': 'form-control'}}) }}
+						</div>
+					</div>
+					<div class="form-group">
+			    		{{ form_label(form.mailDuel, "Receive an email for every duel invitation:", {'label_attr': {'class': 'col-xs-6 col-sm-6 col-md-6 col-lg-6 control-label', 'style': 'text-align:left;'}}) }}
+			    		{{ form_errors(form.mailDuel) }}
+			    		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+			      			{{ form_widget(form.mailDuel, {'attr': {'class': 'form-control'}}) }}
+						</div>
+					</div>
+
+
+				{{ form_rest(form) }}
+      			<input type="submit" value="Modify" class="btn btn-success text-center"/>
+			</div>
+		</div>
+		 
 	</div>
   </form>
 	  

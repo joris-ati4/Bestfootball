@@ -32,6 +32,8 @@ class UserType extends AbstractType
               'property' => 'name',
               'multiple' => false
             ))
+            ->add('mailComment', 'checkbox',array('required' => false))
+            ->add('mailDuel', 'checkbox',array('required' => false))
         ;
 
 

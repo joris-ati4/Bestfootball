@@ -31,38 +31,33 @@
                     {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
                       {# Les erreurs générales du formulaire. #}
                       {{ form_errors(form) }}
-                      <div class="form-group">
-                        {# Génération du label. #}
-                        {{ form_label(form.title, "Title:", {'label_attr': {'class': 'col-xs-12 col-sm-4 col-md-3 col-lg-3 control-label'}}) }}
+                     <div class="form-group">
                         {# Affichage des erreurs pour ce champ précis. #}
                         {{ form_errors(form.title) }}
-                        <div class="col-xs-12 col-sm-8 col-md-9 col-lg-9">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                           {# Génération de l'input. #}
-                          {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
+                          {{ form_widget(form.title, {'attr': {'class': 'form-control','placeholder': 'Title'}}) }}
                         </div>
                       </div>
 
                       {# Idem pour un autre champ. #}
                       <div class="form-group">
-                        {{ form_label(form.description, "Description:", {'label_attr': {'class': 'col-xs-12 col-sm-4 col-md-3 col-lg-3 control-label'}}) }}
                         {{ form_errors(form.description) }}
-                        <div class="col-xs-12 col-sm-8 col-md-9 col-lg-9">
-                          {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                          {{ form_widget(form.description, {'attr': {'class': 'form-control','placeholder': 'Description'}}) }}
                         </div>
                       </div>
 
                       <div class="form-group">
-                        {{ form_label(form.repetitions, "Repetitions:", {'label_attr': {'class': 'col-xs-12 col-sm-4 col-md-3 col-lg-3 control-label'}}) }}
                         {{ form_errors(form.repetitions) }}
                         <div class="col-xs-12 col-sm-8 col-md-9 col-lg-9">
-                          {{ form_widget(form.repetitions, {'attr': {'class': 'form-control'}}) }}
+                          {{ form_widget(form.repetitions, {'attr': {'class': 'form-control','placeholder': 'Repetitions'}}) }}
                         </div>
                       </div>
 
                       <div class="form-group">
-                        {{ form_label(form.file, "File:", {'label_attr': {'class': 'col-xs-12 col-sm-4 col-md-3 col-lg-3 control-label'}}) }}
                         {{ form_errors(form.file) }}
-                        <div class="col-xs-12 col-sm-8 col-md-9 col-lg-9">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                           {{ form_widget(form.file, {'attr': {'class': 'form-control'}}) }}
                         </div>
                       </div>

@@ -1,7 +1,7 @@
 services:
     bf_site.rankinfo:
         class: BF\SiteBundle\Userinfo\BFUserinfo
-        arguments: [@doctrine.orm.entity_manager]
+        arguments: [@doctrine.orm.entity_manager, @translator]
 
     bf_site.randomvideos:
         class: BF\SiteBundle\Randomvideos\BFRandomvideos
