@@ -78,11 +78,11 @@
       <div class="row">
         {# Begin of the video page #}
         <div class="col-xs-12 col-sm-12 col-md-7 col-lg-8">
-          <div class="row">
+          <div class="row" style="width:100%;background-color:white;margin-bottom:20px;padding:10px 10px;margin-top:20px;">
             {# the video #}
               {% include "BFSiteBundle:Video:video.html.twig" with {"video": video} only %}
             {# the description #}
-            <div style="width:100%;background-color:white;margin-bottom:20px;padding:10px 10px;margin-top:20px;">
+            <div >
               <div class="row">
                 {% if video.type == 'freestyle' %}
                   <h1 style="font-size:35px;margin-left:15px;">{{ video.title }}</h1>
