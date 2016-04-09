@@ -83,10 +83,10 @@ class FOSUBUserProvider extends BaseClass
               ->setOriginalImage('/uploads/img/profile.png')
             ;
 
-            $message = 'Welcome to bestfootball. Please complete your personal informations by clicking on this notification or by going to the informations section. Once that is all set up, you can go out there and show your skills!';
+           /* $message = 'Welcome to bestfootball. Please complete your personal informations by clicking on this notification or by going to the informations section. Once that is all set up, you can go out there and show your skills!';
             $link = $this->generateUrl('bf_site_settings');
             $service = $this->container->get('bf_site.notification');
-            $notification = $service->create($user, $message, null, $link);
+            $notification = $service->create($user, $message, null, $link); */
 
             //profile picture for facebook
             if($service == 'facebook'){
