@@ -214,3 +214,7 @@ stof_doctrine_extensions:
     orm:
         default:
             sluggable: true
+#Presta Sitemap
+presta_sitemap:
+    timetolive: 3600
+    route_annotation_listener: false

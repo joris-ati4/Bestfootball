@@ -31,7 +31,8 @@
         "sensio/generator-bundle": "~2.3",
         "symfony/phpunit-bridge": "~2.7",
         "comur/image-bundle": "1.0.*@dev",
-        "stof/doctrine-extensions-bundle": "~1.1"
+        "stof/doctrine-extensions-bundle": "~1.1",
+        "presta/sitemap-bundle": "dev-master"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3",

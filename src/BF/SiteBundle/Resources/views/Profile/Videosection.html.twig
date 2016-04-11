@@ -28,7 +28,25 @@
                         <img src="{{ video.thumbUrl }}" alt="" style="width:100%;"/>
                       </div><!--
                    --><div class="col-xs-7 col-sm-7 col-md-8 col-lg-8 vcenter">
-                        <p style="font-size:14px;">{{ video.title }},</br> {{ video.date|date('d-m-Y')}}</p>
+                        <p style="font-size:14px;"><b>
+                          {% if video.type == 'freestyle' %}
+                              {{ video.title }} -  {{ video.user.username }} 
+                          {% else %}
+                            {% if app.request.getLocale() == 'fr' %}            
+                                {{ video.challenge.titleFR }} - {{ video.user.username }} 
+                            {% elseif app.request.getLocale() == 'en' %}
+                                {{ video.challenge.titleEN }} - {{ video.user.username }} 
+                            {% else %}
+                                {{ video.challenge.titleEN }} - {{ video.user.username }} 
+                            {% endif %}
+                          {% endif %}
+                          </b></br>
+
+                        {# the score bar #}
+                        {% if video.type == 'challenge'%}
+                          <p>Score: {{ video.score }} - {{ 'Repetitions'|trans }}: {{ video.repetitions }}X
+                        {% endif %}
+                        </p>
                       </div>
                     </div>
                   </a>
