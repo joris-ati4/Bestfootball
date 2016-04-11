@@ -285,7 +285,7 @@
                             <!-- if the user is the commentor or the video owner we show the delete button -->
                             {% if app.user is not null %}
                               {% if app.user.id == comment.user.id or app.user.id == video.user.id %}
-                                <span id="commentDelete" class="glyphicon glyphicon-remove delete" data-comment="{{ comment.id }}" aria-hidden="true"     style="top:7px;position: absolute;right:7px;" data-placement="right" data-toggle="tooltip" title="Delete this comment!"></span>
+                                <span class="glyphicon glyphicon-remove delete commentDelete" data-comment="{{ comment.id }}" aria-hidden="true"     style="top:7px;position: absolute;right:7px;" data-placement="right" data-toggle="tooltip" title="Delete this comment!"></span>
                               {% endif %}
                             {% endif %}
                           </div>
@@ -450,8 +450,8 @@
       });
   });                         
 
-  $("#commentDelete").click(function(){
-    var comment = $(this).parent();
+  $(".commentDelete").click(function(){
+    var comment = $(this).parent().parent().parent().parent();
     var commentId = $(this).data('comment');
     var DATA = 'commentId=' + commentId;
 
@@ -462,7 +462,7 @@
               cache: false,
               success: function(){
                 //the comment has been deleted. We fade it out and remove it.
-                  console.log(comment);
+                  //console.log(comment);
                   $(comment).slideUp(); 
                   $(comment).remove();
               }

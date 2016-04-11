@@ -71,7 +71,7 @@ class CommentController extends Controller
         //check who deleted the comment.
         if($user->getId() != $comment->getUser()->getId()){
             //we send notification to the user of the video
-            $message = $comment->getUser()->getUsername().' just deleted your comment on his '.$video->getTitle().' video.';
+            $message = $user->getUsername().' just deleted your comment on his '.$video->getTitle().' video.';
             $link = $this->generateUrl('bf_site_video', array('code' => $comment->getVideo()->getCode()));
             $service = $this->container->get('bf_site.notification');
             $notification = $service->create($comment->getVideo()->getUser(), $message, null, $link);
