@@ -451,6 +451,7 @@
   });                         
 
   $("#commentDelete").click(function(){
+    var comment = $(this).parent();
     var commentId = $(this).data('comment');
     var DATA = 'commentId=' + commentId;
 
@@ -460,7 +461,10 @@
               data: DATA,
               cache: false,
               success: function(){
-                location.reload();
+                //the comment has been deleted. We fade it out and remove it.
+                  console.log(comment);
+                  $(comment).slideUp(); 
+                  $(comment).remove();
               }
       });
   });

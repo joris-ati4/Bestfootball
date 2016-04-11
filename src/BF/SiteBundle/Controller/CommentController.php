@@ -36,7 +36,7 @@ class CommentController extends Controller
         $em->persist($notification);
         $em->flush();
 
-        if($guest->getMailComment() === true){
+        if($video->getUser()->getMailComment() === true){
             $message = \Swift_Message::newInstance()
                 ->setSubject($user->getUsername().' posted a new comment on your '.$video->getTitle().' video')
                 ->setFrom('bestfootball@bestfootball.fr')
@@ -76,8 +76,6 @@ class CommentController extends Controller
             $notification = $service->create($comment->getVideo()->getUser(), $message, null, $link);
             $em->persist($notification);
         }
-
-        $this->addFlash('success', 'This comment has been deleted.');
         
         $em->remove($comment);
         $em->flush();
