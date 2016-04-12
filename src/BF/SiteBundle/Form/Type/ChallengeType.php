@@ -19,6 +19,7 @@ class ChallengeType extends AbstractType
             ->add('titleEN', 'text')
             ->add('descriptionFR', 'textarea')
             ->add('descriptionEN', 'textarea')
+            ->add('endDate', 'datetime')
             ->add('one', 'integer')
             ->add('two', 'integer')
             ->add('three', 'integer')

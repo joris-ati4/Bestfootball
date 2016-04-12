@@ -31,9 +31,10 @@
 						<th>four</th>
 						<th>five</th>
 						<th>six</th>
+						<th>End Prediction</th>
 						<th>Modify</th>
 						<th>Delete</th>
-						
+						<th>Prediction winner</th>
 				 	{% for challenge in listChallenges %}
 						<tr>
 							<td>{{ challenge.titleEN }}</td>
@@ -46,6 +47,7 @@
 							<td>{{ challenge.four }}</td>
 							<td>{{ challenge.five }}</td>
 							<td>{{ challenge.six }}</td>
+							<td>{{ challenge.endDate|date('d-m-Y') }}</td>
 							<td>
 								<a href="{{ path('bf_site_admin_modchallenge', {'id': challenge.id} ) }}" class="btn btn-primary">
 									Modify
@@ -54,6 +56,11 @@
 							<td>
 				   				<a href="{{ path('bf_site_admin_delchallenge', {'id': challenge.id} ) }}" class="btn btn-danger">
 									Delete
+								</a>
+							</td>
+							<td>
+								<a href="{{ path('bf_site_admin_prediction', {'slug': challenge.slug} ) }}" class="btn btn-success">
+									Winners
 								</a>
 							</td>
 						</tr>

@@ -193,5 +193,54 @@ class AdminController extends Controller
     	$em->flush();
     	return $this->redirect($this->generateUrl('bf_site_admin_reports'));
     }
+    public function getPredictionAction($slug)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $challenge = $em->getRepository('BFSiteBundle:Challenge')->findOneBySlug($slug);
+        //now we get the winner of the challenge.
+        $listVideos = $em->getRepository('BFSiteBundle:Video')->findByChallenge(array('challenge' => $challenge),array('repetitions' => 'DESC'),3,0);
+        $numberVideos = count($listVideos);
+
+        //if there less then 3 videos
+        if($numberVideos == 0){
+            $challengeWinner = null;
+            $challengeSecond = null;
+            $challengeThird = null;
+        }
+        elseif($numberVideos == 1){
+            $challengeWinner = $listVideos[0]->getUser();
+            $challengeSecond = null;
+            $challengeThird = null;
+        }
+        elseif($numberVideos == 2){
+            $challengeWinner = $listVideos[0]->getUser();
+            $challengeSecond = $listVideos[1]->getUser();
+            $challengeThird = null;
+        }
+        else{
+            $challengeWinner = $listVideos[0]->getUser();
+            $challengeSecond = $listVideos[1]->getUser();
+            $challengeThird = $listVideos[2]->getUser();
+        }
+
+        //now we get all the users that predicted this user for this challenge.
+        $listPredictors = $em->getRepository('BFSiteBundle:Prediction')->listPredictions($challengeWinner, $challenge);
+        $numberPredictors = count($listPredictors);
+        if($listPredictors != 0){
+            $index = array_rand($listPredictors, 1);
+            $winner = $listPredictors[$index]->getVoter();
+        }
+        else{
+            $winner = null;
+        }
+
+        return $this->render('BFSiteBundle:Admin:prediction.html.twig', array(
+          'winner' => $winner,
+          'challengeWinner' => $challengeWinner,
+          'challengeSecond' => $challengeSecond,
+          'challengeThird' => $challengeThird,
+
+        ));
+    }
 
 }

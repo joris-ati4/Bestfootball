@@ -1,0 +1,41 @@
+{% extends "BFSiteBundle::base.html.twig" %}
+
+
+{% block meta %}
+  <meta name="description" content="Bla bla bla concernant l'upload.">
+  <meta name="keywords" content="soccer,football ">
+{% endblock %}
+
+
+{% block title %}
+  Admin Section- challenges - {{ parent() }} 
+{% endblock %}
+
+{% block content %}
+
+<section class="header">
+    <div class="row" style="margin-top:20px;">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="row">
+        	<div class="well">
+				<h1>The Challenge winner </h1>
+				<ol>
+					<li>{{ challengeWinner.username }} - {{ challengeWinner.email }}</li>
+					<li>{{ challengeSecond.username }} - {{ challengeSecond.email }}</li>
+					<li>{{ challengeThird.username }} - {{ challengeThird.email }}</li>
+				</ol>
+				<h2>The prediction winner </h2>
+					{{ winner.username }} - {{ winner.email }}
+			</div>
+        </div>
+      </div>
+    </div>
+</section>
+ 
+
+
+  
+
+
+
+{% endblock %}

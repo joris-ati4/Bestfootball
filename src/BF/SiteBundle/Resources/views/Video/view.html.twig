@@ -130,10 +130,10 @@
                           {% endif %}
                         {% endif %}
 
-                        {% if video.type == 'challenge' and predict is not null %}
-                          <a id="predict">
-                            <img src="/img/predict.png" alt="Bestfootball follow pictogram" class="imagereactive"  data-placement="top" data-toggle="tooltip" title="{{ 'Predict for me to win the challenge!'|trans }}"/> 
-                          </a>
+                        {% if video.type == 'challenge' and predict is not null and 'now'|date('d-m-Y') < video.challenge.endDate|date('d-m-Y') %}
+                            <a id="predict">
+                              <img src="/img/predict.png" alt="Bestfootball predict pictogram" class="imagereactive"  data-placement="top" data-toggle="tooltip" title="{{ 'Predict for me to win the challenge!'|trans }}"/> 
+                            </a>
                         {% endif %}
                       </div>
 

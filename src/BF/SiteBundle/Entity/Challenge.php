@@ -142,6 +142,11 @@ class Challenge
     private $date;
 
     /**
+    * @ORM\Column(name="endDate", type="datetime")
+    */
+    private $endDate;
+
+    /**
     * @ORM\Column(name="partner", type="boolean")
     */
     private $partner;
@@ -812,5 +817,29 @@ class Challenge
     public function getSlug()
     {
         return $this->slug;
+    }
+
+    /**
+     * Set endDate
+     *
+     * @param \DateTime $endDate
+     *
+     * @return Challenge
+     */
+    public function setEndDate($endDate)
+    {
+        $this->endDate = $endDate;
+
+        return $this;
+    }
+
+    /**
+     * Get endDate
+     *
+     * @return \DateTime
+     */
+    public function getEndDate()
+    {
+        return $this->endDate;
     }
 }

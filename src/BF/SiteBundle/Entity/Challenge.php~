@@ -41,7 +41,7 @@ class Challenge
     private $id;
 
     /**
-    * @Gedmo\Slug(fields={"title_en"})
+    * @Gedmo\Slug(fields={"titleEN"})
     * @ORM\Column(length=128, unique=true)
     */
     private $slug;
@@ -140,6 +140,11 @@ class Challenge
     * @ORM\Column(name="date", type="datetime")
     */
     private $date;
+
+    /**
+    * @ORM\Column(name="endDate", type="datetime")
+    */
+    private $endDate;
 
     /**
     * @ORM\Column(name="partner", type="boolean")
@@ -788,5 +793,29 @@ class Challenge
     public function getTitleEN()
     {
         return $this->titleEN;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     *
+     * @return Challenge
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }

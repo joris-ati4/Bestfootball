@@ -291,7 +291,10 @@ bf_site_admin_okvideo:
     defaults: { _controller: BFSiteBundle:Admin:okVideo }
     methods:  [POST,GET]
 
-
+bf_site_admin_prediction:
+    path:     /admin/prediction/{slug}
+    defaults: { _controller: BFSiteBundle:Admin:getPrediction }
+    methods:  [POST,GET]
 
 
 #this section does all the routes for the duel section

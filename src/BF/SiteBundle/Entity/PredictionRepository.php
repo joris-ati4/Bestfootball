@@ -26,4 +26,19 @@ class PredictionRepository extends \Doctrine\ORM\EntityRepository
 	    ->getOneOrNullResult()
 	  ;
 	}
+	public function listPredictions($winner, $challenge)
+	{
+	  $qb = $this->createQueryBuilder('p');
+
+	  $qb->where('p.predictioned = :winner')
+	       ->setParameter('winner', $winner)
+	     ->andWhere('p.challenge = :challenge')
+	       ->setParameter('challenge', $challenge)
+	  	;
+
+	  return $qb
+	    ->getQuery()
+	    ->getResult()
+	  ;
+	}
 }

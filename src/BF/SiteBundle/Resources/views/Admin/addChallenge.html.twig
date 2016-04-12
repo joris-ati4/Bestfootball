@@ -76,6 +76,18 @@
                   {{ form_widget(form.descriptionFR, {'attr': {'class': 'form-control'}}) }}
                 </div>
               </div>
+              <div class="form-group">
+                {# Génération du label. #}
+                {{ form_label(form.endDate, "End date for the prediction:", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+                {# Affichage des erreurs pour ce champ précis. #}
+                {{ form_errors(form.endDate) }}
+
+                <div class="col-sm-4">
+                  {# Génération de l'input. #}
+                  {{ form_widget(form.descriptionFR, {'attr': {'class': 'form-control'}}) }}
+                </div>
+              </div>
 
               <div class="form-group">
                 {# Génération du label. #}
