@@ -120,7 +120,7 @@ class AdminController extends Controller
 	    	'listReports' => $listReports,
 	    	));
     }
-    public function deleteVideoAction($id)
+    public function deleteVideoReportAction($id)
     {
     	$em = $this->getDoctrine()->getManager();
     	$report = $em->getRepository('BFSiteBundle:Report')->find($id);
@@ -149,6 +149,11 @@ class AdminController extends Controller
 		    $this->get('mailer')->send($message);
 			$em->remove($report);
     	}
+
+        $listComments = $video->getComments();
+        foreach ($listComments as $comment) {
+            $em->remove($comment);
+        }
     	//we delete the video from our servers and from the user we send a mail + delete his points.
     	$user= $video->getUser();
     	$email = $user->getEmail();
@@ -241,6 +246,79 @@ class AdminController extends Controller
           'challengeThird' => $challengeThird,
 
         ));
+    }
+    public function viewChallengeAction($slug)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $challenge = $em->getRepository('BFSiteBundle:Challenge')->findOneBySlug($slug);
+
+        $listVideos = $challenge->getVideos();
+        return $this->render('BFSiteBundle:Admin:viewChallenge.html.twig', array(
+          'listVideos' => $listVideos,
+          'challenge' => $challenge,
+        ));
+    }
+    public function deleteVideoAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $video = $em->getRepository('BFSiteBundle:Video')->find($id);
+
+        //send a mail to all the reports for this video and remove every report.
+        $listReports = $video->getReports();
+        foreach ($listReports as $report) {
+            $report->setTreated(1);
+            $user = $report->getUser();
+            $email = $report->getUser()->getEmail();
+
+            $message = \Swift_Message::newInstance()
+                ->setSubject('Thank you for your report '.$user->getUsername())
+                ->setFrom('noreply@bestfootball.fr')
+                ->setTo($email)
+                ->setBody(
+                    $this->renderView(
+                        // app/Resources/views/Emails/registration.html.twig
+                        'Emails/thankreport.html.twig',
+                        array('user' => $user)
+                    ),
+                    'text/html'
+                )
+            ;
+            $this->get('mailer')->send($message);
+            $em->remove($report);
+        }
+
+        $listComments = $video->getComments();
+        foreach ($listComments as $comment) {
+            $em->remove($comment);
+        }
+        //we delete the video from our servers and from the user we send a mail + delete his points.
+        $user= $video->getUser();
+        $email = $user->getEmail();
+        $points = $user->getPoints() - $video->getScore();
+        $user->setPoints($points);
+
+        $message = \Swift_Message::newInstance()
+            ->setSubject($user->getUsername().', your video '.$video->getTitle().' was deleted from our servers.')
+            ->setFrom('noreply@bestfootball.fr')
+            ->setTo($email)
+            ->setBody(
+                $this->renderView(
+                    // app/Resources/views/Emails/registration.html.twig
+                    'Emails/deletedvideo.html.twig',
+                    array('user' => $user,'video' => $video)
+                ),
+                'text/html'
+            )
+        ;
+        $this->get('mailer')->send($message);
+
+        //delete the video from our servers
+        unlink('{{ video.source }}');
+        unlink('{{ video.thumbUrl }}');
+        $em->remove($video);
+        $em->persist($user);
+        $em->flush();
+        return $this->redirect($this->generateUrl('bf_site_admin_reports'));
     }
 
 }

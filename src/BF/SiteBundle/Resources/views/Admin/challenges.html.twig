@@ -35,6 +35,7 @@
 						<th>Modify</th>
 						<th>Delete</th>
 						<th>Prediction winner</th>
+						<th>view videos</th>
 				 	{% for challenge in listChallenges %}
 						<tr>
 							<td>{{ challenge.titleEN }}</td>
@@ -63,6 +64,15 @@
 									Winners
 								</a>
 							</td>
+							<td>
+								<a href="{{ path('bf_site_admin_viewChallenge', {'slug': challenge.slug} ) }}" class="btn btn-success">
+									view videos
+								</a>
+							</td>
+
+							
+
+
 						</tr>
 					{% endfor %}
 				</table>

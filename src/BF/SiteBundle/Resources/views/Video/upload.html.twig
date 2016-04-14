@@ -56,7 +56,7 @@
                   {{ form_widget(form.file, {'attr': {'class': 'form-control'}}) }}
                 </div>
               </div>
-              <input type="submit" value="Upload" id="submit" class="btn btn-upload" />
+              <input type="submit" value="Upload" id="submit" name="submit" class="btn btn-upload" />
 
               <!--the loading img when the user decided to click upload -->
               <p class="uploading" style="visibility: hidden;">Your video is being uploaded and converted. Please wait till this page says your video is uploaded</p>
@@ -84,10 +84,23 @@
   {{ parent() }}
   <script type="text/javascript">
     $( document ).ready(function() {
-      //the logic to show the loading gif.
+      function update_progress(e)
+      {
+        if (e.lengthComputable)
+        {
+          var percentage = Math.round((e.loaded/e.total)*100);
+          console.log("percent " + percentage + '%' );
+        }
+        else 
+        {
+          console.log("Unable to compute progress information since the total size is unknown");
+        }
+      }
       $("#submit").click(function(){
-        $('#submit').hide();
-        $('.uploading').show();
+        var xhttp;
+        if (window.XMLHttpRequest){xhttp = new XMLHttpRequest();}//code for modern browsers} 
+        else{xhttp = new ActiveXObject("Microsoft.XMLHTTP");}// code for IE6, IE5     
+        xhttp.onprogress = update_progress;
       });
     });
   </script>
