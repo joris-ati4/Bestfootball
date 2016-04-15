@@ -23,7 +23,7 @@
               <h3 style="color:white;">{{ 'Upload your video.'|trans }}</h3>
             </div>
             <div class="challengecontent text-center">
-              {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+              {{ form_start(form, {'attr': {'class': 'form-horizontal','id': 'videoUploadForm'}}) }}
               {# Les erreurs générales du formulaire. #}
               {{ form_errors(form) }}
               <div class="form-group">
@@ -86,8 +86,7 @@
     $( document ).ready(function() {
       function update_progress(e)
       {
-        if (e.lengthComputable)
-        {
+        if (e.lengthComputable){
           var percentage = Math.round((e.loaded/e.total)*100);
           console.log("percent " + percentage + '%' );
         }
@@ -96,7 +95,9 @@
           console.log("Unable to compute progress information since the total size is unknown");
         }
       }
-      $("#submit").click(function(){
+
+      $( "#videoUploadForm" ).submit(function(event) {
+        console.log( "Handler for .submit() called." );
         var xhttp;
         if (window.XMLHttpRequest){xhttp = new XMLHttpRequest();}//code for modern browsers} 
         else{xhttp = new ActiveXObject("Microsoft.XMLHTTP");}// code for IE6, IE5     
@@ -104,4 +105,20 @@
       });
     });
   </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 {% endblock %}
