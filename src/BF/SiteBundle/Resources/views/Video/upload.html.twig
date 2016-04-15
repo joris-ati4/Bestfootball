@@ -59,8 +59,8 @@
               <input type="submit" value="Upload" id="submit" name="submit" class="btn btn-upload" />
 
               <!--the loading img when the user decided to click upload -->
-              <p class="uploading" style="visibility: hidden;">Your video is being uploaded and converted. Please wait till this page says your video is uploaded</p>
-              <img src="/img/loading.gif" alt="the loading gif on bestfootball" class="uploading" style="width: 100px;visibility: hidden;"/>
+              <p class="uploading" id="uploadText" style="visibility: hidden;">Your video is being uploaded and converted. Please wait till this page says your video is uploaded</p>
+              <img class="uploading" id="uploadGif" src="/img/loading.gif" alt="the loading gif on bestfootball"  style="width: 100px;visibility: hidden;"/>
               
               </br>
               <a href="{{ path('bf_site_homepage') }}" class="btn btn-danger" style="font-size:10px;">
@@ -97,7 +97,11 @@
       }
 
       $( "#videoUploadForm" ).submit(function(event) {
-        console.log( "Handler for .submit() called." );
+        console.log( "showing the gif + text" );
+        $('#submit').hide();
+        $('#uploadText').show();
+        $('#uploadGif').show();
+
         var xhttp;
         if (window.XMLHttpRequest){xhttp = new XMLHttpRequest();}//code for modern browsers} 
         else{xhttp = new ActiveXObject("Microsoft.XMLHTTP");}// code for IE6, IE5     
