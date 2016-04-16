@@ -242,7 +242,7 @@ class AjaxController extends Controller
             ;
 
             //create a notification for the predictioned user.
-            $message = 'Congratulations, '.$voter->getUsername().' predicted that you will win the '.$challenge->getTitle().' challenge at the end of the season.';
+            $message = 'Congratulations, '.$voter->getUsername().' predicted that you will win the '.$challenge->getTitleEN().' challenge at the end of the season.';
             $link = $this->generateUrl('bf_site_profile', array('username' => $voter->getUsername()));
             $service = $this->container->get('bf_site.notification');
             $notification = $service->create($predictioned, $message, null, $link);       

@@ -130,6 +130,9 @@ class Video
     */
     private $type;
 
+    /**
+    * @Assert\File(maxSize="250M", mimeTypes={"video/mp4","video/avi","video/quicktime","video/3gpp"})
+    */
     private $file;
 
     // On ajoute cet attribut pour y stocker le nom du fichier temporairement
