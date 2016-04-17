@@ -28,12 +28,17 @@
     		{{ form_widget(form.plainPassword.second, {'attr': {'class': 'form-control' , 'placeholder': 'Confirm Password','style':'margin-top:20px;'}}) }}
     	</div>
    	</div>
-
    	{{ form_rest(form) }}
-   </br>
+   
 </br>
+</br>
+
+  </br>
     <div>
         <input type="submit" class="btn btn-success" style="margin-top: 10px;width:90%;" value="{{ 'registration.submit'|trans }}" style="margin-top:20px;"/>
     </div>
 
 {{ form_end(form) }}
+
+<p style="margin-top:15px;">By registering, you accept the Bestfootball <a href="{{ path('bf_site_terms') }}" target="_blank" >terms and conditions</a>
+  

@@ -2,16 +2,12 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>{{ 'Page not found'|trans }} - Bestfootball</title>
+    <title>Page Not Found - Bestfootball</title>
 
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-7s5uDGW3AHqw6xtJmNNtr+OBRJUlgkNJEo78P4b0yRw= sha512-nNo+yCHEyn0smMxSswnf/OnX6/KwJuZTlNZBjauKhTK0c+zT+q5JOCx0UFhXQ6rJR9jg6Es8gPuD2uZcYDLqSw==" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-    {% stylesheets 
-      '@BFSiteBundle/Resources/public/css/custom.css' 
-      '@lifo_typeahead_css'
-    %}
-      <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
-    {% endstylesheets %}
+    <link rel="stylesheet" href="/css/custom.css">
+
   </head>
   <body>
     <section class="header">
@@ -22,12 +18,12 @@
             <div class="col-xs-12 col-sm-8 col-md-6 col-lg-6 col-sm-offset-2 col-md-offset-3 col-lg-offset-3" style="margin-top:50px;">
               <div class="challengedescription text-center">
                 <div class="challengetitle">
-                  <h3 style="color:white;">{{ 'Page not found'|trans }}</h3>
+                  <h3 style="color:white;">Page Not Found</h3>
                 </div>
                 <div class="challengecontent  row text-center">
                   <p>The page you requested was not found. Please go back to our site by clicking on the bestfootball icon on the top left of your screen or by clicking the button below.</p>
 
-                  <a href="{{path('bf_site_logged_home')}}" class="btn btn-upload"> Go back to the site </a>
+                  <a href="{{path('bf_site_homepage')}}" class="btn btn-upload"> Go back to the site </a>
                 </div>
               </div>
             </div>

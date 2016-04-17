@@ -165,6 +165,7 @@ body{
     border-radius: 85px;
     border: solid 2px;
     border-color:#95cd36;
+    margin: 0 auto;
 }
 .profilecounter>div{
     display: table-cell; 
