@@ -177,11 +177,11 @@ class Video
 
       //we get the file name
       $this->name = md5(uniqid());
-      $this->source =  'http://v.bestfootball.fr/'.$this->name.'.mp4';
+      $this->source =  'https://v.bestfootball.fr/'.$this->name.'.mp4';
       $this->extension = $this->file->guessExtension();
       // Et on génère l'attribut alt de la balise <img>, à la valeur du nom du fichier sur le PC de l'internaute
       $this->thumbAlt = $this->file->getClientOriginalName();
-      $this->thumbUrl = 'http://v.bestfootball.fr/thumbnail/'.$this->name.'.jpg';
+      $this->thumbUrl = 'https://v.bestfootball.fr/thumbnail/'.$this->name.'.jpg';
     }
 
     /**
