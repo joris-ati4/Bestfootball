@@ -77,6 +77,11 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
+            {% if app.user %}
+              <li class=""><a href="{{ path('bf_site_homepage') }}">{{ 'Home'|trans }}</a></li>
+            {% else %}
+              <li class=""><a href="{{ path('bf_site_last_videos') }}">{{ 'Videos'|trans }}</a></li>
+            {% endif %}
             <li class=""><a href="{{ path('bf_site_challenges') }}">{{ 'Challenges'|trans }}</a></li>
             <li class=""><a href="{{ path('bf_site_ranking_challenge', {'country': 'global', 'state':'country'}) }}">{{ 'Ranking'|trans }}</a></li>
             <li class=""><a href="{{ path('bf_site_freestyle') }}">{{ 'Freestyle'|trans }}</a></li>

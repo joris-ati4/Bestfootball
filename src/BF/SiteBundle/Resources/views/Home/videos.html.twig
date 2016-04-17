@@ -1,0 +1,27 @@
+{% extends "BFSiteBundle::base.html.twig" %}
+
+{% block title %}
+  Last videos - {{ parent() }}
+{% endblock %}
+
+
+{% block content %}
+  <section class="homepage">
+    <div class="row" style="margin-top:50px;">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10 col-lg-offset-1 text-center">
+        <div class="row">
+          <h1 style="margin-bottom:20px;">Videos on Bestfootball</h1>
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="row">
+            <!--Begin of the lastest videos -->
+              {% include "BFSiteBundle:Video:Homelist.html.twig" with {"lastVideos": lastVideos } only %}
+            <!--End of the lastest videos -->
+              {% include "BFSiteBundle:Video:Freestylelist.html.twig" with {"lastFreestyles": lastFreestyles } only %}
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

@@ -119,6 +119,13 @@ bf_site_prices:
     requirements:
         _locale: en|fr
 
+bf_site_last_videos:
+    path:     /{_locale}/videos
+    defaults: { _controller: BFSiteBundle:Home:videos, _locale: en }
+    methods:  [GET]
+    requirements:
+        _locale: en|fr
+
 bf_site_freestyle:
     path:     /{_locale}/freestyle
     defaults: { _controller: BFSiteBundle:Video:freestyle, _locale: en }

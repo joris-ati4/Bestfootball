@@ -19,7 +19,7 @@
                 <p><a href="{{ path('bf_site_profile', { 'username': video.user.username }) }}">{{ video.user.username }}</a></p>
 
                 {% if video.type == 'challenge' %}
-                	<p>{{ video.repetitions }}X</p>
+                	<p>{{ video.score }} Points - {{ video.repetitions }}X</p>
                 {% endif %}
         	
     	</div>

@@ -183,10 +183,20 @@ class HomeController extends Controller
               'form' => $form->createView(),
             ));
     }
-    public function pricesAction(request $request)
+    public function pricesAction()
     {
 
         return $this->render('BFSiteBundle:Home:prices.html.twig', array(
+            ));
+    }
+    public function videosAction()
+    {
+        $lastVideos = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video')->latestVideosPage();
+        $lastFreestyles = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video')->lastestFreestyleVideos();
+
+        return $this->render('BFSiteBundle:Home:videos.html.twig', array(
+            'lastVideos' => $lastVideos,
+            'lastFreestyles' => $lastFreestyles,
             ));
     }
 }
