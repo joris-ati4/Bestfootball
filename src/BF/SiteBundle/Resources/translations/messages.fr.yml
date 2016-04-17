@@ -58,7 +58,7 @@ Decline: Refuser
 'Congratulations you won this duel and 100 points !': 'Félicitations, vous avez gagné le duel et 100 points!'
 'Press section': 'Section Presse'
 Conditions: Conditions
-'Contact us': Contactez-nous
+'Contact us': 'Nous contacter'
 Partnerships: Partenaires
 Prediction: Prediction
 Press: Presse
@@ -105,7 +105,7 @@ Girls: Filles
 Boys: Garçons
 World: Mondial
 'Country Ranking': 'Ranking du pays'
-'This is the Freestyle section of bestfootball. Be free and upload your freestyle video by clicking on the button below!': 'Ceci est la section Freestyle de Bestfootball. Soyez libre d''envoyer votre vidéo freestyle en cliquant sur le bouton ci dessous!'
+'This is the Freestyle section of bestfootball. Be free and upload your freestyle video by clicking on the button below!': 'Ceci est la section Freestyle de Bestfootball. Soyez libres d''envoyer votre vidéo freestyle en cliquant sur le bouton ci dessous!'
 rules.1.title: '1. Uploade vos vidéos'
 rules.1.content: "Afin de participer à un challenge, tu dois aller sur la page «\_Challenge\_» ou la page «\_Challenges sponsorisés\_». Si tu veux comprendre ce qu’il faut faire exactement pour réussir le challenge, tu peux regarder la vidéo explicative. Lorsque tu participes à un challenge, tu dois indiquer le nombre de fois que tu as réussi le geste demandé. Tu peux poster autant de vidéos que tu le veux, et seulement ton meilleur score sera retenu\_! Une fois que tu as uploadé ta vidéo, tu reçois un nombre de points en fonction du level atteint que tu as indiqué."
 rules.2.title: '2. Level atteint'
@@ -140,26 +140,26 @@ about.joris.qualities: 'Collectif, Précis, Travailleur'
 about.jeremie: "Jérémie Karege travaille en tant que Business Manager dans le cabinet de conseil CAP GEMINI. C'est aux Etats-Unis qu'il rencontre Nassim et s'intéresse au projet. Sa passion : le foot. Il a pu jouer aux 4 coins du monde et, à défaut d’être un numéro 9 sur le terrain, Jérémie est avant tout un numéro 9 dans la vie! Et comme tout numéro 9 qui se respecte il n’a qu’une obsession, le but ! A travers son sang-froid qui le caractérise, Jérémie espère marquer ce qui serait son plus beau but : faire de Bestfootball une interface mondialement reconnue."
 about.joris: "Joris HART est étudiant en master d'ergonomie et ingénierie des activités sportives à l'université de Savoie. Ses grandes passions sont le parapente, le foot et... et la programmation web (Et oui entre un saut dans le vide et un match de foot, il a le temps de nous faire quelques lignes de codes)! Après une première tentative de start up dans le football (localisation et création de matchs entre amis), il crée sa plateforme de services (création de sites web pour particuliers). Séduit par le projet Bestfootball et la vision qui l'accompagne, Il s'associe à Jérémie et Nassim en Octobre 2015."
 number: numéro
-home.header.subtitle: 'Montre nous tes talents de footballeurs et viens t’améliorer. '
-home.header.explication: "Bienvenue dans l’arène, ici que des challenges et du foot. Tu veux connaître ton niveau\_? Savoir ce que tu vaux dans ta ville, ton pays ou dans le monde\_? Tu veux mettre tout le monde d’accord\_? Bestfootball réalise tes rêves. Choisi un challenge sur le site, Prend une video de ton challenge avec notre application et montres nous de quoi tu es capable."
+home.header.subtitle: 'Montre nous tes talents de footballeur et viens t’améliorer. '
+home.header.explication: "Bienvenue dans l’arène, ici que des challenges et du football. Tu veux connaître ton niveau\_? Savoir ce que tu vaux dans ta ville, ton pays ou dans le monde\_? Tu veux mettre tout le monde d’accord\_? Bestfootball réalise tes rêves. Choisis un challenge sur le site, Prends une video de ton challenge avec notre application et montre nous de quoi tu es capable."
 'HOW DOES IT WORK ?': 'COMMENT CA MARCHE ?'
 Subscribe: Inscris-toi
-home.howto.sub.1: 'Premièrement, veuillez lire les règles de Bestfootball afin d’être sur de profiter du site et de l’application mobile au maximum.'
-'Click here to read the rules.': 'Cliques ici pour lire les règles.'
+home.howto.sub.1: 'Premièrement, lis les règles de Bestfootball afin d’être sûr de profiter du site et de l’application mobile au maximum.'
+'Click here to read the rules.': 'Clique ici pour lire les règles.'
 Then: Ensuite
 'subscribe here': 'clique ici pour t''inscrire'
-home.howto.sub.2: 'Nous te conseillons aussi de télécharger l’application pour filmer tes challenges.'
+home.howto.sub.2: 'Nous te conseillons fortement de télécharger l’application pour filmer tes challenges.'
 home.howto.participate: 'Pour participer c’est super simple. Choisis ton challenge, filme toi et indique le niveau que tu as atteint. C’est beaucoup plus simple avec l’application tout est sur ton téléphone, ta vidéo s’upload automatiquement sur le site.'
 'Earn rewards': 'Gagne des Lots'
-home.howto.earn: 'Bestfootball récompenses les utilisateurs avec de nombreux cadeaux, à toi de jouer pour faire partie des meilleurs. '
-home.app: 'Nous avons développé une application pour filmer vos challenges. Grâce à l’application tu as accès à tous les challenges présents sur le site. En un clic, tu commences à te filmer et tu peux uploader ta vidéo automatiquement sur ton profil. '
+home.howto.earn: 'Bestfootball récompense les utilisateurs avec de nombreux cadeaux, à toi de jouer pour faire partie des meilleurs. '
+home.app: 'Nous avons développé une application pour filmer tes challenges. Grâce à l’application, tu as accès à tous les challenges présents sur le site. En un clic, tu commences à te filmer et tu peux uploader ta vidéo automatiquement sur ton profil. '
 Home: Acceuil
 'DOWLOAD OUR APPLICATION': 'TELECHARGE NOTRE APP'
 'FOLLOW US ON SOCIAL MEDIA': 'REJOINS NOUS SUR NOS RESEAUX SOCIAUX'
 Ranking: Classement
 by: par
 Following: Following
-Years: An
+Years: Ans
 'Follow me!': Suivez-moi!
 Unfollow: 'Ne plus me suivre'
 'Duel me!': 'Commencer un duel contre moi!'
@@ -173,7 +173,7 @@ Points: Points
 'Challenge Ranking': 'Classement Challenge'
 'Duel Ranking': 'Classement Duel'
 videos: videos
-'Freestyle videos': 'Videos freestyle'
+'Freestyle videos': 'Freestyle Vidéos '
 'How does it work?': 'Comment ça marche?'
 'Freestyle Videos': 'Videos freestyle'
 'Predict for me to win the challenge!': 'Vote sur moi si tu penses que je gagnera ce challenge'
@@ -188,13 +188,7 @@ Modify: Modifier
 'Vous voulez parler de Bestfootball ?': 'Vous voulez parler de Bestfootball ?'
 'N’hésitez pas à  nous joindre et on répondra avec plaisir à toutes vos questions : contact@bestfootball.fr': 'N’hésitez pas à  nous joindre et on répondra avec plaisir à toutes vos questions : contact@bestfootball.fr'
 'Vous trouverez ci-dessous nos ressources médias :': 'Vous trouverez ci-dessous nos ressources médias :'
-Prices: Recompenses
-'N° 1 Global': 'N° 1 Global'
-'A pair of brand new Nike football shoes': 'A pair of brand new Nike football shoes'
-'N° 2 Global': 'N° 2 Global'
-'Brand new Nike shin protectors': 'Brand new Nike shin protectors'
-'N° 3 Global': 'N° 3 Global'
-'The official 2016 Uefa Eurocup football': 'The official 2016 Uefa Eurocup football'
+Prices: Récompenses
 Partners: Partenaires
 Unknown: Inconnu
 'Promising Talent': 'Talent prometteur'
@@ -202,5 +196,14 @@ Unknown: Inconnu
 'Real Star': 'Vrai Star'
 'Legend': 'Légende'
 Challenges: Challenges
-'Partner Challenges': 'Challenges Sponsorisé'
-'Sponsored Challenges': 'Challenges Sponsorisé'
+'Partner Challenges': 'Challenges Sponsorisés'
+'Sponsored Challenges': 'Challenges Sponsorisés'
+'Videos on Bestfootball': 'Vidéos sur Bestfootball'
+'Regional': 'Régional'
+'Prices end season 1 (31/12/2016)': 'Prix de fin de saison 1 (31/12/2016)'
+'Bestfootball Cap': 'Casquette Bestfootball'
+'Bestfootball Ball': 'Ballon Bestfootball'
+'Bestfootball shirt': 'T-shirt Bestfootball'
+"You don't have any notifications": "Tu n'as aucune notification"
+duel.date: "Tu as jusque %date% pour uploader ta vidéo. Une fois cette date passée, tu n'auras plus la possibilité d'en uploadé une pour ce duel."
+About: à propos
