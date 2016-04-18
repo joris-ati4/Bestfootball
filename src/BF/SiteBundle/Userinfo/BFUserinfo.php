@@ -50,7 +50,8 @@ class BFUserinfo
   public function duelRankInfo(user $user)
   {
     $points = $user->getDuelPoints();
-    if( '0'<= $points && $points <= '1000'){$level = 1;} //incognito
+    if( '0' == $points){$level = 0;} 
+    if( '0'< $points && $points <= '1000'){$level = 1;} //incognito
     if( '1000'< $points && $points <= '2000'){$level = 2;}
     if( '2000'< $points && $points <= '3000'){$level = 3;}
     if( '3000'< $points){$level = 4;}

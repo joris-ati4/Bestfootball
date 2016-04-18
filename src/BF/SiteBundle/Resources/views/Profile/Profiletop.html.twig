@@ -116,7 +116,9 @@
            --><div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                 <div class="row">
                   <h2 class="text-center">{{ 'Duels level:'|trans }} </h2>
-                  {% if rank.duelrankinfo.level == 1 %}
+                  {% if rank.duelrankinfo.level == 0 %}
+                    {% include "BFSiteBundle:Profile:0bf.html.twig" %}
+                  {% elseif rank.duelrankinfo.level == 1 %}
                     {% include "BFSiteBundle:Profile:1bf.html.twig" %}
                   {% elseif rank.duelrankinfo.level == 2 %}
                     {% include "BFSiteBundle:Profile:2bf.html.twig" %}
