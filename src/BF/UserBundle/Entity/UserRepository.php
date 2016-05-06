@@ -3,6 +3,7 @@
 namespace BF\UserBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 
 /**
  * UserRepository
@@ -268,4 +269,20 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
  
   return $array;
   }
+
+  public function getUsers($page, $nbPerPage)
+  {
+    $query = $this->createQueryBuilder('u')
+      ->orderBy('u.username', 'DESC')
+      ->getQuery()
+    ;
+    $query
+      ->setFirstResult(($page-1) * $nbPerPage)
+      ->setMaxResults($nbPerPage)
+    ;
+    // Enfin, on retourne l'objet Paginator correspondant à la requête construite
+    // (n'oubliez pas le use correspondant en début de fichier)
+    return new Paginator($query, true);
+  }
+
 }

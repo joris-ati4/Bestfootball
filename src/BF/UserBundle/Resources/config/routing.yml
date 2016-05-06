@@ -2,3 +2,8 @@ bf_user_registration_confirmed:
     path:     /confirmed
     defaults: { _controller: BFUserBundle:Registration:confirmed }
     methods:  [GET,POST]
+
+bf_user_list:
+    path:     /users/{page}
+    defaults: { _controller: BFUserBundle:User:getUsers }
+    methods:  [GET]
