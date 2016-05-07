@@ -61,6 +61,7 @@
 		{% endfor %}
 	  </div>
 	</div>
+	<a href="{{ path('bf_user_list', {'page': 1}) }}" class="btn btn-country" style="width:100%;">{{ 'User List'|trans }}</a>
 
 {% elseif country.name == 'Belgium' %}
 <!-- we put the Belgium button on active -->
@@ -124,6 +125,8 @@
 		{% endfor %}
 	  </div>
 	</div>
+
+	<a href="{{ path('bf_user_list', {'page': 1}) }}" class="btn btn-country" style="width:100%;">{{ 'User List'|trans }}</a>
 
 
 {% elseif country.name == 'France' %}
@@ -189,6 +192,8 @@
 	  </div>
 	</div>
 
+	<a href="{{ path('bf_user_list', {'page': 1}) }}" class="btn btn-country" style="width:100%;">{{ 'User List'|trans }}</a>
+
 {% elseif country.name == 'United States' %}
 <!-- we put the USA button on active -->
 	<a href="{{ path('bf_site_ranking_duel', {'country': 'global', 'state':'country'}) }}" class="btn btn-country" style="width:100%;">
@@ -251,4 +256,6 @@
 		{% endfor %}
 	  </div>
 	</div>
+
+	<a href="{{ path('bf_user_list', {'page': 1}) }}" class="btn btn-country" style="width:100%;">{{ 'User List'|trans }}</a>
 {% endif %}

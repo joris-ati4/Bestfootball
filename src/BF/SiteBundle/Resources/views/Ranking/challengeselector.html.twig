@@ -62,6 +62,8 @@
 	  </div>
 	</div>
 
+	<a href="{{ path('bf_user_list', {'page': 1}) }}" class="btn btn-country" style="width:100%;">{{ 'User List'|trans }}</a>
+
 {% elseif country.name == 'Belgium' %}
 <!-- we put the Belgium button on active -->
 	<a href="{{ path('bf_site_ranking_challenge', {'country': 'global', 'state':'country'}) }}" class="btn btn-country" style="width:100%;">
@@ -125,6 +127,8 @@
 	  </div>
 	</div>
 
+	<a href="{{ path('bf_user_list', {'page': 1}) }}" class="btn btn-country" style="width:100%;">{{ 'User List'|trans }}</a>
+
 
 {% elseif country.name == 'France' %}
 <!-- we put the France button on active -->
@@ -172,7 +176,7 @@
 
 	<!--button for the third country -->
 
-	<a class="btn btn-country" role="button" data-toggle="collapse" href="#{{ listCountries.2.id }}" aria-expanded="false" aria-controls="{{ listCountries.2.id }}" style="width:100%;">
+	<a class="btn btn-country" role="button" data-toggle="collapse" href="#{{ listCountries.2.id }}" aria-expanded="false" aria-controls="{{ listCountries.2.id }}" >
   		{{ listCountries.2.name }}
 	</a>
 	<div class="collapse" id="{{ listCountries.2.id }}">
@@ -188,6 +192,11 @@
 		{% endfor %}
 	  </div>
 	</div>
+
+	<a href="{{ path('bf_user_list', {'page': 1}) }}" class="btn btn-country" style="width:100%;">{{ 'User List'|trans }}</a>
+
+
+
 
 {% elseif country.name == 'United States' %}
 <!-- we put the USA button on active -->
@@ -251,4 +260,5 @@
 		{% endfor %}
 	  </div>
 	</div>
+	<a href="{{ path('bf_user_list', {'page': 1}) }}" class="btn btn-country" style="width:100%;">{{ 'User List'|trans }}</a>
 {% endif %}

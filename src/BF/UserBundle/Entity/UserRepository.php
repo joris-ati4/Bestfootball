@@ -273,7 +273,7 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
   public function getUsers($page, $nbPerPage)
   {
     $query = $this->createQueryBuilder('u')
-      ->orderBy('u.username', 'DESC')
+      ->orderBy('u.username', 'ASC')
       ->getQuery()
     ;
     $query
