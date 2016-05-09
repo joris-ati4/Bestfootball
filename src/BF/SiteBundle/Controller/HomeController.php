@@ -146,8 +146,8 @@ class HomeController extends Controller
             $data = $form->getData();
             $message = \Swift_Message::newInstance()
                     ->setSubject('A new challenge proposition')
-                    ->setFrom('noreply@bestfootball.fr')
-                    ->setTo('joris.hart@ezwebcreation.fr')
+                    ->setFrom($data['email'])
+                    ->setTo(array('joris.hart@ezwebcreation.fr','contact@bestfootball.fr'))
                     ->setBody(
                         $this->renderView(
                             // app/Resources/views/Emails/registration.html.twig
