@@ -100,6 +100,12 @@
 	          		</div>
 	      		</div>
 
+	      		<!-- If the challenge is a partner challenge we put the info here -->
+	      		{% if challenge.partner == 1 %}
+	      			{% include "BFSiteBundle:Challenge:partner.html.twig" with {"challenge": challenge} only %}
+	      		{% endif %}
+
+
 	      		<!--Begin of the latest videos -->
 	      		<div class="col-xs-12 col-sm-12 col-md-7 col-lg-5">
 	      			<div class="row">

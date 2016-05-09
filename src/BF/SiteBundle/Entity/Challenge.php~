@@ -152,6 +152,76 @@ class Challenge
     private $partner;
 
     /**
+    * @ORM\Column(name="logo_partner", type="string", length=255, nullable=true)
+    */
+    private $logoPartner;
+
+    /**
+    * @ORM\Column(name="nom_partner", type="string", length=255, nullable=true)
+    */
+    private $nomPartner;
+
+    /**
+    * @ORM\Column(name="lien_partner", type="string", length=255, nullable=true)
+    */
+    private $lienPartner; 
+
+    /**
+    * @ORM\Column(name="description_partner_EN", type="string", length=255, nullable=true)
+    */
+    private $descriptionPartnerEN;
+
+    /**
+    * @ORM\Column(name="description_partner_FR", type="string", length=255, nullable=true)
+    */
+    private $descriptionPartnerFR;
+
+    /**
+    * @ORM\Column(name="first_prize_title_EN", type="string", length=255, nullable=true)
+    */
+    private $firstPrizeTitleEN;
+
+    /**
+    * @ORM\Column(name="first_prize_title_FR", type="string", length=255, nullable=true)
+    */
+    private $firstPrizeTitleFR;
+
+    /**
+    * @ORM\Column(name="first_prize_img", type="string", length=255, nullable=true)
+    */
+    private $firstPrizeLogo; 
+
+    /**
+    * @ORM\Column(name="second_prize_title_EN", type="string", length=255, nullable=true)
+    */
+    private $secondPrizeTitleEN;
+
+    /**
+    * @ORM\Column(name="second_prize_title_FR", type="string", length=255, nullable=true)
+    */
+    private $secondPrizeTitleFR;
+
+    /**
+    * @ORM\Column(name="second_prize_img", type="string", length=255, nullable=true)
+    */
+    private $secondPrizeLogo;
+
+    /**
+    * @ORM\Column(name="third_prize_title_EN", type="string", length=255, nullable=true)
+    */
+    private $thirdPrizeTitleEN;
+
+    /**
+    * @ORM\Column(name="third_prize_title_FR", type="string", length=255, nullable=true)
+    */
+    private $thirdPrizeTitleFR;
+
+    /**
+    * @ORM\Column(name="third_prize_img", type="string", length=255, nullable=true)
+    */
+    private $thirdPrizeLogo; 
+
+    /**
     * @ORM\Column(name="type", type="string", length=255)
     */
     private $type;
@@ -817,5 +887,29 @@ class Challenge
     public function getSlug()
     {
         return $this->slug;
+    }
+
+    /**
+     * Set endDate
+     *
+     * @param \DateTime $endDate
+     *
+     * @return Challenge
+     */
+    public function setEndDate($endDate)
+    {
+        $this->endDate = $endDate;
+
+        return $this;
+    }
+
+    /**
+     * Get endDate
+     *
+     * @return \DateTime
+     */
+    public function getEndDate()
+    {
+        return $this->endDate;
     }
 }
