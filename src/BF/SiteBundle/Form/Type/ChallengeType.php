@@ -29,6 +29,7 @@ class ChallengeType extends AbstractType
             ->add('partner','checkbox',array('required' => false))
             ->add('logoPartner','text',array('required' => false))
             ->add('nomPartner','text',array('required' => false))
+            ->add('lienPartner','text',array('required' => false))
             ->add('descriptionPartnerEN','textarea',array('required' => false))
             ->add('descriptionPartnerFR','textarea',array('required' => false))
             ->add('firstPrizeTitleEN','text',array('required' => false))
