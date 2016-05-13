@@ -41,7 +41,7 @@ class Challenge
     private $id;
 
     /**
-    * @Gedmo\Slug(fields={"titleEN"})
+    * @Gedmo\Slug(fields={"titleFR"})
     * @ORM\Column(length=128, unique=true)
     */
     private $slug;
