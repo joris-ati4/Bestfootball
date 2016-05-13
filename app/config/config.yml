@@ -9,7 +9,7 @@ imports:
 parameters:
     default_locale: fr
     locale: fr
-    translator: { fallbacks: [en] }
+    translator: { fallbacks: [fr] }
 
 services:
     fos_user.doctrine_registry:
