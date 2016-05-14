@@ -4,6 +4,8 @@ namespace BF\SiteBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+
 
 class HomeController extends Controller
 {
@@ -58,6 +60,12 @@ class HomeController extends Controller
     {
 
     	$challenge = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Challenge')->findOneBySlug($slug);
+
+        if($challenge === null){
+          throw new NotFoundHttpException("Ce Challenge n'existe pas.");
+        }
+
+
         $listVideos = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video')->findBy(
             array('challenge' => $challenge),
             array('date' => 'desc'),
