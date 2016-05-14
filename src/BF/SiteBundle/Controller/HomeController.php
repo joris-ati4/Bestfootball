@@ -62,7 +62,7 @@ class HomeController extends Controller
     	$challenge = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Challenge')->findOneBySlug($slug);
 
         if($challenge === null){
-          throw new NotFoundHttpException("Ce Challenge n'existe pas.");
+          throw new NotFoundHttpException("Ce Challenge n'existe pas. Peut-être le challenge a changé de nom. Merci de retourner dans la liste des challenges.");
         }
 
 
