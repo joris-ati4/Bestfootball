@@ -101,7 +101,12 @@ class FOSUBUserProvider extends BaseClass
 
             //modify here with relevant data
             $user->setUsername($nickname);
-            $user->setEmail($mail);
+            if($mail === null){
+                $user->setEmail("contact@bestfootball.fr");
+            }
+            else{
+                $user->setEmail($mail);
+            }
             $user->setPlainPassword($username);
             $user->setEnabled(true);
             $user->setPoints(0);
