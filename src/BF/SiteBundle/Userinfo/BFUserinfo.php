@@ -35,8 +35,8 @@ class BFUserinfo
  
     $repository = $this->em->getRepository('BFUserBundle:User');
     $globalRank = $repository->globalRanking();
-    $countryRank = $repository->countryRanking($user->getCountry());
-    $stateRank = $repository->stateRanking($user->getState());
+    $countryRank = $repository->countryRankingFull($user->getCountry());
+    $stateRank = $repository->stateRankingFull($user->getState());
 
     $globalRank = array_search($user, $globalRank) + 1;
     $countryRank = array_search($user, $countryRank) + 1;

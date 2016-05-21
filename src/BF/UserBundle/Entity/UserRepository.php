@@ -75,6 +75,19 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
       ->getResult()
     ;
   }
+  public function countryRankingFull($country)
+  {
+    $qb = $this->createQueryBuilder('u');
+
+    $qb->Where('u.country = :country')
+         ->setParameter('country', $country)
+       ->orderBy('u.points', 'DESC')
+    ;
+    return $qb
+      ->getQuery()
+      ->getResult()
+    ;
+  }
   public function countryDuelRanking($country)
   {
     $qb = $this->createQueryBuilder('u');
@@ -97,6 +110,19 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
          ->setParameter('state', $state)
        ->orderBy('u.points', 'DESC')
        ->setMaxResults(10)
+    ;
+    return $qb
+      ->getQuery()
+      ->getResult()
+    ;
+  }
+  public function stateRankingFull($state)
+  {
+    $qb = $this->createQueryBuilder('u');
+
+    $qb->Where('u.state = :state')
+         ->setParameter('state', $state)
+       ->orderBy('u.points', 'DESC')
     ;
     return $qb
       ->getQuery()
