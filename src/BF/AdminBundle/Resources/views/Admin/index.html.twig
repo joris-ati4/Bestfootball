@@ -14,7 +14,7 @@
 {% block content %}
 <section class="header">
     <div class="row" style="margin-top:20px;">
-      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <div class="row">
         	<div class="well">
         		<h1>Admin Section Bestfootball</h1>
@@ -25,23 +25,25 @@
 	        			<div class="row">
 	        				<!-- Total videos colum -->
 	        				<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" >
-	        					<div class="row" style="border: 2px solid #95cd36;">
-	        						<h3>Total videos</h3>
-	        						<span>{{ videoInfo.totalVideos }}</span>
-	        					</div>
+	        					<a href="{{ path('bf_site_admin_videos') }}">
+		        					<div class="row" style="border: 2px solid #95cd36;">
+		        						<h3>Total videos</h3>
+		        						<span style="font-size:30px;">{{ videoInfo.totalVideos }}</span>
+		        					</div>
+	        					</a>
 	        				</div>
 	        				<!-- Videos last week -->
 	        				<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" >
 	        					<div class="row" style="border: 2px solid #95cd36;">
 	        						<h3>Videos last week</h3>
-	        						<span>{{ videoInfo.videosWeek }}</span>
+	        						<span style="font-size:30px;">{{ videoInfo.videosWeek }}</span>
 	        					</div>
 	        				</div>
 	        				<!-- Videos views -->
 	        				<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" >
 	        					<div class="row" style="border: 2px solid #95cd36;">
 	        						<h3>Total video views</h3>
-	        						<span>{{ videoInfo.videosTotalViews }}</span>
+	        						<span style="font-size:30px;">{{ videoInfo.videosTotalViews }}</span>
 	        					</div>
 	        				</div>
 	        			</div>
@@ -54,23 +56,25 @@
 	        			<div class="row">
 	        				<!-- Total User colum -->
 	        				<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" >
-	        					<div class="row" style="border: 2px solid #95cd36;">
-	        						<h3>Total users</h3>
-	        						<span>{{ userInfo.totalUsers }}</span>
-	        					</div>
+	        					<a href="{{ path('bf_site_admin_users') }}">
+		        					<div class="row" style="border: 2px solid #95cd36;">
+		        						<h3>Total users</h3>
+		        						<span style="font-size:30px;">{{ userInfo.totalUsers }}</span>
+		        					</div>
+		        				</a>
 	        				</div>
 	        				<!-- Day User colum -->
 	        				<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" >
 	        					<div class="row" style="border: 2px solid #95cd36;">
 	        						<h3>Users -1d</h3>
-	        						<span>{{ userInfo.dayUsers }}</span>
+	        						<span style="font-size:30px;">{{ userInfo.dayUsers }}</span>
 	        					</div>
 	        				</div>
 	        				<!-- Week User colum -->
 	        				<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" >
 	        					<div class="row" style="border: 2px solid #95cd36;">
 	        						<h3>Users -1w</h3>
-	        						<span>{{ userInfo.weekUsers }}</span>
+	        						<span style="font-size:30px;">{{ userInfo.weekUsers }}</span>
 	        					</div>
 	        				</div>
 	        			</div>
@@ -82,13 +86,7 @@
 						See all the challenges.
 				</a>
 
-				<a href="{{ path('bf_site_admin_users') }}" class="btn btn-primary">
-					
-						See all the users.
-				</a>
-
 				<a href="{{ path('bf_site_admin_reports') }}" class="btn btn-primary">
-					
 						See all the reports.
 				</a>
 

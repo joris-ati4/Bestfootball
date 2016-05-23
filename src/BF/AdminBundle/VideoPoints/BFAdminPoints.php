@@ -1,10 +1,10 @@
 <?php
-namespace BF\SiteBundle\VideosPoints;
+namespace BF\AdminBundle\VideoPoints;
 
 use Doctrine\ORM\EntityManager;
 use BF\SiteBundle\Entity\Video;
 
-class BFVideosPoints
+class BFAdminPoints
 {
     /**
    * Return a list of semi-random videos
@@ -20,10 +20,10 @@ class BFVideosPoints
   public function videoPoints(video $video)
   {
   	//we get the user
-    $user = $video->getUser();
-    $challenge = $video->getChallenge();
-    
-      if($video->getRepetitions() >= $challenge->getSix()){$video->setScore('300');}
+  	$user = $video->getUser();
+  	$challenge = $video->getChallenge();
+  	
+  		if($video->getRepetitions() >= $challenge->getSix()){$video->setScore('300');}
       if($challenge->getSix() > $video->getRepetitions() && $video->getRepetitions() >= $challenge->getFive()){ $video->setScore('250');}
       if($challenge->getFive() > $video->getRepetitions() && $video->getRepetitions() >= $challenge->getFour()){$video->setScore('200');}
       if($challenge->getFour() > $video->getRepetitions() && $video->getRepetitions() >= $challenge->getThree()){$video->setScore('150');}
@@ -39,14 +39,15 @@ class BFVideosPoints
         if($highestVideo !== null){
           $points = $points + $video->getScore();
         }
+        
       }
       
     $user->setPoints($points);
     $this->em->persist($user);
     $this->em->persist($video);
 
-    $this->em->flush();
-    $done = true;
+  	$this->em->flush();
+  	$done = true;
 
     return $done;
   }

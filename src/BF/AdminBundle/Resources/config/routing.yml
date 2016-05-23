@@ -24,10 +24,42 @@ bf_site_admin_delchallenge:
     defaults: { _controller: BFAdminBundle:Admin:delChallenge, _locale: fr }
     methods:  [GET,POST]
 
+#User related routes
 bf_site_admin_users:
     path:     /{_locale}/admin/users
-    defaults: { _controller: BFAdminBundle:Admin:users, _locale: fr }
+    defaults: { _controller: BFAdminBundle:User:users, _locale: fr }
     methods:  [GET]
+
+bf_site_admin_user_view:
+    path:     /{_locale}/admin/user/{id}
+    defaults: { _controller: BFAdminBundle:User:userView, _locale: fr }
+    methods:  [GET]
+
+bf_site_admin_user_mod:
+    path:     /{_locale}/admin/user/mod/{id}
+    defaults: { _controller: BFAdminBundle:User:users, _locale: fr }
+    methods:  [GET]
+
+
+#Video related routes
+bf_site_admin_videos:
+    path:     /{_locale}/admin/videos
+    defaults: { _controller: BFAdminBundle:Video:videos, _locale: fr }
+    methods:  [GET]
+
+bf_site_admin_video_mod:
+    path:     /{_locale}/admin/video/mod/{id}
+    defaults: { _controller: BFAdminBundle:Video:mod, _locale: fr }
+    methods:  [GET,POST]
+
+bf_site_admin_video_del:
+    path:     /{_locale}/admin/video/del/{id}
+    defaults: { _controller: BFAdminBundle:Video:del, _locale: fr }
+    methods:  [GET,POST]
+
+
+
+
 
 bf_site_admin_reports:
     path:     /{_locale}/admin/reports

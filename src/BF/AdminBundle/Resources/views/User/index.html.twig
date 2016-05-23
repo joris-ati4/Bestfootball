@@ -15,20 +15,32 @@
 
 
 <section class="header">
-	<div class="row" style="margin-top:20px;">
+	<div class="row" style="margin-top:50px;">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
 			<div class="row">
-				<h3>Ajouter un nouveau Challenge</h3>
+				<h3>All the users</h3>
 
 				<div class="well">
-					<table>
+					<table class="table">
+						<tr>
+							<th>Name</th>
+							<th>firstname</th>
+							<th>email</th>
+							<th>points</th>
+							<th>view</th>
+						</tr>
+
 				 	{% for user in listUsers %}
 						<tr>
 							<td>{{ user.name }}</td>
 							<td>{{ user.firstname }}</td>
 							<td>{{ user.email }}</td>
-							<td>Modify </td>
-							<td>Delete</td>
+							<td>{{ user.points }}</td>
+							<td>
+								<a href="{{ path('bf_site_admin_user_view', {'id': user.id} ) }}" class="btn btn-primary">
+									View
+								</a>
+							</td>
 						</tr>
 					{% endfor %}
 				</table>
