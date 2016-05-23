@@ -62,7 +62,8 @@ security:
         - { path: ^/view, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/admin, role: ROLE_ADMIN }
+        - { path: ^/fr/admin, role: ROLE_ADMIN }
+        - { path: ^/fr/admin, role: ROLE_ADMIN }
         - { path: ^/ambassadeur, role: ROLE_AMBASSADEUR }
         - { path: ^/oauth/v2/, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/api, roles: IS_AUTHENTICATED_FULLY }
