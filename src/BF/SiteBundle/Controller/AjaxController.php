@@ -272,11 +272,14 @@ class AjaxController extends Controller
         return new RedirectResponse($url);
     }
     public function setViewAction(request $request){
-        $id = $request->get('id');
-        $video = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video')->find($id);
+        $em =$this->getDoctrine()->getManager();
+        $id = $request->get('videoId');
+        $video = $em->getRepository('BFSiteBundle:Video')->find($id);
 
         $video->setViews($video->getViews()+1);
         $em->persist($video);
         $em->flush();
+
+        return new response();
     }
 }

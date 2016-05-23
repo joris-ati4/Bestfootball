@@ -535,10 +535,12 @@ $(document).ready(function() {
 <!--script for submitting a views -->
 <script type="text/javascript">
 $(document).ready(function(){
+  var done;
   $("#video").on(
     "timeupdate", 
     function(event){
-      if(this.currentTime > 5){
+      if(this.currentTime > 5 && !done ){
+          done = true;
           var DATA ='videoId=' + {{ video.id }};
 
           $.ajax({
@@ -547,7 +549,7 @@ $(document).ready(function(){
                     data: DATA,
                     cache: false,
                     success: function(){
-                    
+                      
                     }
             });
       }
