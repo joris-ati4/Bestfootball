@@ -538,9 +538,19 @@ $(document).ready(function(){
   $("#video").on(
     "timeupdate", 
     function(event){
-      //if(this.currentTime > 0:10)
-      console.log(this.currentTime);
+      if(this.currentTime > 10){
+          var DATA ='videoId=' + {{ video.id }};
 
+          $.ajax({
+              type: "POST",
+              url: "{{ path('bf_site_api_video_view')}}",
+                    data: DATA,
+                    cache: false,
+                    success: function(){
+                    
+                    }
+            });
+      }
     });
 });
 </script>
