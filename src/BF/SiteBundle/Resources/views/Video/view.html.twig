@@ -538,7 +538,7 @@ $(document).ready(function(){
   $("#video").on(
     "timeupdate", 
     function(event){
-      if(this.currentTime > 10){
+      if(this.currentTime > 5){
           var DATA ='videoId=' + {{ video.id }};
 
           $.ajax({
