@@ -1,0 +1,60 @@
+#this section does all the routes for the admin section
+bf_site_admin:
+    path:     /{_locale}/admin
+    defaults: { _controller: BFAdminBundle:Admin:index, _locale: fr }
+    methods:  [GET]
+
+bf_site_admin_challenges:
+    path:     /{_locale}/admin/challenges
+    defaults: { _controller: BFAdminBundle:Admin:challenges, _locale: fr }
+    methods:  [GET]
+
+bf_site_admin_addChallenge:
+    path:     /{_locale}/admin/addchallenge
+    defaults: { _controller: BFAdminBundle:Admin:addChallenge, _locale: fr }
+    methods:  [GET,POST]
+
+bf_site_admin_modchallenge:
+    path:     /{_locale}/admin/challenges/mod/{id}
+    defaults: { _controller: BFAdminBundle:Admin:modChallenge, _locale: fr }
+    methods:  [GET,POST]
+
+bf_site_admin_delchallenge:
+    path:     /{_locale}/admin/challenges/del/{id}
+    defaults: { _controller: BFAdminBundle:Admin:delChallenge, _locale: fr }
+    methods:  [GET,POST]
+
+bf_site_admin_users:
+    path:     /{_locale}/admin/users
+    defaults: { _controller: BFAdminBundle:Admin:users, _locale: fr }
+    methods:  [GET]
+
+bf_site_admin_reports:
+    path:     /{_locale}/admin/reports
+    defaults: { _controller: BFAdminBundle:Admin:reports, _locale: fr }
+    methods:  [GET]
+
+bf_site_admin_delvideo:
+    path:     /{_locale}/admin/reports/delvideo/{id}
+    defaults: { _controller: BFAdminBundle:Admin:deleteVideoReport, _locale: fr }
+    methods:  [POST,GET]
+
+bf_site_admin_okvideo:
+    path:     /{_locale}/admin/reports/okvideo/{id}
+    defaults: { _controller: BFAdminBundle:Admin:okVideo, _locale: fr }
+    methods:  [POST,GET]
+
+bf_site_admin_prediction:
+    path:     /{_locale}/admin/prediction/{slug}
+    defaults: { _controller: BFAdminBundle:Admin:getPrediction, _locale: fr }
+    methods:  [POST,GET]
+
+bf_site_admin_viewChallenge:
+    path:     /{_locale}/admin/viewchallenge/{slug}
+    defaults: { _controller: BFAdminBundle:Admin:viewChallenge, _locale: fr }
+    methods:  [POST,GET]
+
+bf_site_admin_video_delete:
+    path:     /{_locale}/admin/video/delete/{id}
+    defaults: { _controller: BFAdminBundle:Admin:deleteVideo, _locale: fr }
+    methods:  [POST,GET]

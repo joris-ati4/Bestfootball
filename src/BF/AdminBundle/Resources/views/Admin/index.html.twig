@@ -1,0 +1,104 @@
+{% extends "BFSiteBundle::base.html.twig" %}
+
+
+{% block meta %}
+  <meta name="description" content="Bla bla bla concernant l'upload.">
+  <meta name="keywords" content="soccer,football ">
+{% endblock %}
+
+
+{% block title %}
+  Admin Section- add a new challenge - {{ parent() }} 
+{% endblock %}
+
+{% block content %}
+<section class="header">
+    <div class="row" style="margin-top:20px;">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+        <div class="row">
+        	<div class="well">
+        		<h1>Admin Section Bestfootball</h1>
+        		
+        		<section id="userInfo">
+        			<h2>Video Informations</h2>
+        			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+	        			<div class="row">
+	        				<!-- Total videos colum -->
+	        				<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" >
+	        					<div class="row" style="border: 2px solid #95cd36;">
+	        						<h3>Total videos</h3>
+	        						<span>{{ videoInfo.totalVideos }}</span>
+	        					</div>
+	        				</div>
+	        				<!-- Videos last week -->
+	        				<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" >
+	        					<div class="row" style="border: 2px solid #95cd36;">
+	        						<h3>Videos last week</h3>
+	        						<span>{{ videoInfo.videosWeek }}</span>
+	        					</div>
+	        				</div>
+	        				<!-- Videos views -->
+	        				<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" >
+	        					<div class="row" style="border: 2px solid #95cd36;">
+	        						<h3>Total video views</h3>
+	        						<span>{{ videoInfo.videosTotalViews }}</span>
+	        					</div>
+	        				</div>
+	        			</div>
+        			</div>
+        		</section>
+
+        		<section id="userInfo">
+        			<h2>Users Informations</h2>
+        			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+	        			<div class="row">
+	        				<!-- Total User colum -->
+	        				<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" >
+	        					<div class="row" style="border: 2px solid #95cd36;">
+	        						<h3>Total users</h3>
+	        						<span>{{ userInfo.totalUsers }}</span>
+	        					</div>
+	        				</div>
+	        				<!-- Day User colum -->
+	        				<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" >
+	        					<div class="row" style="border: 2px solid #95cd36;">
+	        						<h3>Users -1d</h3>
+	        						<span>{{ userInfo.dayUsers }}</span>
+	        					</div>
+	        				</div>
+	        				<!-- Week User colum -->
+	        				<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" >
+	        					<div class="row" style="border: 2px solid #95cd36;">
+	        						<h3>Users -1w</h3>
+	        						<span>{{ userInfo.weekUsers }}</span>
+	        					</div>
+	        				</div>
+	        			</div>
+        			</div>
+        		</section>
+        		
+
+			  	<a href="{{ path('bf_site_admin_challenges') }}" class="btn btn-primary">
+						See all the challenges.
+				</a>
+
+				<a href="{{ path('bf_site_admin_users') }}" class="btn btn-primary">
+					
+						See all the users.
+				</a>
+
+				<a href="{{ path('bf_site_admin_reports') }}" class="btn btn-primary">
+					
+						See all the reports.
+				</a>
+
+				
+			</div>
+        </div>
+      </div>
+    </div>
+</section>
+
+  
+
+{% endblock %}

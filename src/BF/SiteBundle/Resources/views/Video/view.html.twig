@@ -532,5 +532,16 @@ $(document).ready(function() {
   });
 });
 </script>
+<!--script for submitting a views -->
+<script type="text/javascript">
+$(document).ready(function(){
+  $("#video").on(
+    "timeupdate", 
+    function(event){
+      //if(this.currentTime > 0:10)
+      console.log(this.currentTime);
 
+    });
+});
+</script>
 {% endblock %}

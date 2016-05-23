@@ -291,4 +291,17 @@ class VideoRepository extends \Doctrine\ORM\EntityRepository
 	    ->getResult()
 	  ;
 	}
+	public function videoWeek($date)
+	{
+	  $qb = $this->createQueryBuilder('v');
+
+	  $qb->Where('v.date > :date')
+	       ->setParameter('date', $date)
+	    ;
+
+	  return $qb
+	    ->getQuery()
+	    ->getResult()
+	  ;
+	}
 }

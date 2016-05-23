@@ -310,5 +310,29 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
     // (n'oubliez pas le use correspondant en début de fichier)
     return new Paginator($query, true);
   }
+  public function usersDay($date)
+  {
+    $qb = $this->createQueryBuilder('u');
+
+    $qb->Where('u.lastLogin > :date')
+         ->setParameter('date', $date)
+    ;
+    return $qb
+      ->getQuery()
+      ->getResult()
+    ;
+  }
+  public function usersWeek($date)
+  {
+    $qb = $this->createQueryBuilder('u');
+
+    $qb->Where('u.lastLogin > :date')
+         ->setParameter('date', $date)
+    ;
+    return $qb
+      ->getQuery()
+      ->getResult()
+    ;
+  }
 
 }

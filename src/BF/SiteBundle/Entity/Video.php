@@ -131,6 +131,11 @@ class Video
     private $type;
 
     /**
+    * @ORM\Column(name="views", type="integer", length=20, nullable=true)
+    */
+    private $views;
+
+    /**
     * @Assert\File(maxSize="250M", mimeTypes={"video/mp4","video/avi","video/quicktime","video/3gpp"})
     */
     private $file;
@@ -210,8 +215,6 @@ class Video
       );
 
       //here we will convert the video to mp4 and webm and save the thumbnail.
-
-      //the file is stocked in /Foot/web/uploads/videos/ + filename
 
       //this is the code to convert the file we receive into mp4. We need to change to accept all file sizes.
         $ffmpeg = FFMpeg::create(array(
@@ -717,5 +720,29 @@ class Video
     public function getLikes()
     {
         return $this->likes;
+    }
+
+    /**
+     * Set views
+     *
+     * @param integer $views
+     *
+     * @return Video
+     */
+    public function setViews($views)
+    {
+        $this->views = $views;
+
+        return $this;
+    }
+
+    /**
+     * Get views
+     *
+     * @return integer
+     */
+    public function getViews()
+    {
+        return $this->views;
     }
 }

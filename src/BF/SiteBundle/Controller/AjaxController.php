@@ -211,8 +211,6 @@ class AjaxController extends Controller
                         $this->addFlash('success', 'Your video was uploaded to our servers.');
 
                         return new response();
-
-
     }
     public function predictAction(request $request)
     {
@@ -273,7 +271,12 @@ class AjaxController extends Controller
      
         return new RedirectResponse($url);
     }
+    public function setViewAction(request $request){
+        $id = $request->get('id');
+        $video = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video')->find($id);
 
-
- 
+        $video->setViews($video->getViews()+1);
+        $em->persist($video);
+        $em->flush();
+    }
 }

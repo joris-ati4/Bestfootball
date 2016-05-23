@@ -49,6 +49,11 @@ bf_site:
     resource: "@BFSiteBundle/Resources/config/routing.yml"
     prefix:   /
 
+#Admin section of the site
+bf_admin:
+    resource: "@BFAdminBundle/Resources/config/routing.yml"
+    prefix:   /
+
 # FOSAuthServerBundle
 fos_oauth_server_token:
     resource: "@FOSOAuthServerBundle/Resources/config/routing/token.xml"
