@@ -21,7 +21,7 @@ Delete: Supprimer
 cancel: annuler
 'Use your previous video': 'Utilise ta dernière vidéo'
 'Use the application': 'Utilise notre application'
-'Download our app': "Télécharge l'application mobile Bestfootball"
+'Download our app': 'Télécharge l''application mobile Bestfootball'
 'Do the': 'Faites le'
 challenge: challenge
 'Come back on this page': 'Revenez sur cette page'
@@ -46,7 +46,7 @@ Deconnect: Deconnexion
 'Contact us!': Contactez-nous!
 Participate: Participer
 'The challenge': 'Le challenge'
-'Upload my video': "J'envoie ma vidéo"
+'Upload my video': 'J''envoie ma vidéo'
 'Start a new Duel': 'Commencer un nouveau Duel'
 against: contre
 'Congratulations this duel was a draw and you received 50 points': 'Félicitations, ce duel était un match nul et vous a rapporté 50 points'
@@ -131,14 +131,14 @@ rules.11.content: 'Le site n’est pas encore fini. Notre équipe travaille dess
 'My informations': 'Mes Paramètres'
 'You want to be the sponsor of one challenge? Contact us for more info. You can also propose us a new challenge.': 'Voulez-vous sponsoriser un challenge? Contactez-nous pour avoir des informations supplémentaire.'
 'about us': 'Qui sommes-nous?'
-about.nassim: "Nassim EZZAKRAOUI, dans la vie c'est un actuaire. Vous ne connaissez sûrement pas ce métier et on s'en fiche. Car plus qu'analyser les risques, c'est chausser ses crampons et dribbler qu'il aime par dessous tout. Joueur au sport-études de Besançon, il fait le constat qu'il ne progresse pas autant que prévu en club (et oui on n’a pas toujours ce à quoi on s'attend Nassim!!), mais qu'il apprend au contraire énormément en jouant seul ou avec des amis dans la rue. En 2013, alors qu’il essaie d’être recruté par une université américaine, il prend aussi grandement conscience du manque de visibilité qu’ont les jeunes joueurs de football amateur : Bestfootball vient de naître."
+about.nassim: 'Nassim EZZAKRAOUI, dans la vie c''est un actuaire. Vous ne connaissez sûrement pas ce métier et on s''en fiche. Car plus qu''analyser les risques, c''est chausser ses crampons et dribbler qu''il aime par dessous tout. Joueur au sport-études de Besançon, il fait le constat qu''il ne progresse pas autant que prévu en club (et oui on n’a pas toujours ce à quoi on s''attend Nassim!!), mais qu''il apprend au contraire énormément en jouant seul ou avec des amis dans la rue. En 2013, alors qu’il essaie d’être recruté par une université américaine, il prend aussi grandement conscience du manque de visibilité qu’ont les jeunes joueurs de football amateur : Bestfootball vient de naître.'
 qualities: Atouts
 about.nassim.qualities: 'Vision du jeu, accélération du jeu'
 function: Fonction
 about.jeremie.qualities: 'Placements, Intuition, Vitesse'
 about.joris.qualities: 'Collectif, Précis, Travailleur'
-about.jeremie: "Jérémie Karege travaille en tant que Business Manager dans le cabinet de conseil CAP GEMINI. C'est aux Etats-Unis qu'il rencontre Nassim et s'intéresse au projet. Sa passion : le foot. Il a pu jouer aux 4 coins du monde et, à défaut d’être un numéro 9 sur le terrain, Jérémie est avant tout un numéro 9 dans la vie! Et comme tout numéro 9 qui se respecte il n’a qu’une obsession, le but ! A travers son sang-froid qui le caractérise, Jérémie espère marquer ce qui serait son plus beau but : faire de Bestfootball une interface mondialement reconnue."
-about.joris: "Joris HART est étudiant en master d'ergonomie et ingénierie des activités sportives à l'université de Savoie. Ses grandes passions sont le parapente, le foot et... et la programmation web (Et oui entre un saut dans le vide et un match de foot, il a le temps de nous faire quelques lignes de codes)! Après une première tentative de start up dans le football (localisation et création de matchs entre amis), il crée sa plateforme de services (création de sites web pour particuliers). Séduit par le projet Bestfootball et la vision qui l'accompagne, Il s'associe à Jérémie et Nassim en Octobre 2015."
+about.jeremie: 'Jérémie Karege travaille en tant que Business Manager dans le cabinet de conseil CAP GEMINI. C''est aux Etats-Unis qu''il rencontre Nassim et s''intéresse au projet. Sa passion : le foot. Il a pu jouer aux 4 coins du monde et, à défaut d’être un numéro 9 sur le terrain, Jérémie est avant tout un numéro 9 dans la vie! Et comme tout numéro 9 qui se respecte il n’a qu’une obsession, le but ! A travers son sang-froid qui le caractérise, Jérémie espère marquer ce qui serait son plus beau but : faire de Bestfootball une interface mondialement reconnue.'
+about.joris: 'Joris HART est étudiant en master d''ergonomie et ingénierie des activités sportives à l''université de Savoie. Ses grandes passions sont le parapente, le foot et... et la programmation web (Et oui entre un saut dans le vide et un match de foot, il a le temps de nous faire quelques lignes de codes)! Après une première tentative de start up dans le football (localisation et création de matchs entre amis), il crée sa plateforme de services (création de sites web pour particuliers). Séduit par le projet Bestfootball et la vision qui l''accompagne, Il s''associe à Jérémie et Nassim en Octobre 2015.'
 number: numéro
 home.header.subtitle: 'Montre nous tes talents de footballeur et viens t’améliorer. '
 home.header.explication: "Bienvenue dans l’arène, ici que des challenges et du football. Tu veux connaître ton niveau\_? Savoir ce que tu vaux dans ta ville, ton pays ou dans le monde\_? Tu veux mettre tout le monde d’accord\_? Bestfootball réalise tes rêves. Choisis un challenge sur le site, Prends une video de ton challenge avec notre application et montre nous de quoi tu es capable."
@@ -164,7 +164,7 @@ Years: Ans
 Unfollow: 'Ne plus me suivre'
 'Duel me!': 'Commencer un duel contre moi!'
 Videos: Videos
-Followers: 'Abonnes'
+Followers: Abonnes
 'Duel victories': 'Victoires de duels'
 Global: Globale
 'Challenge grade:': 'Grade de challenges'
@@ -194,18 +194,21 @@ Unknown: Inconnu
 'Promising Talent': 'Talent prometteur'
 'Rising Star': 'Star Montante'
 'Real Star': 'Vrai Star'
-'Legend': 'Légende'
 Challenges: Challenges
 'Partner Challenges': 'Challenges Sponsorisés'
-'Sponsored Challenges': "Challenges Sponsorisés"
+'Sponsored Challenges': 'Challenges Sponsorisés'
 'Videos on Bestfootball': 'Vidéos sur Bestfootball'
-'Regional': 'Régional'
+Regional: Régional
 'Prices end season 1 (31/12/2016)': 'Prix de fin de saison 1 (31/12/2016)'
 'Bestfootball Cap': 'Casquette Bestfootball'
 'Bestfootball Ball': 'Ballon Bestfootball'
 'Bestfootball shirt': 'T-shirt Bestfootball'
-"You don't have any notifications": "Tu n'as aucune notification"
-duel.date: "Tu as jusque %date% pour uploader ta vidéo. Une fois cette date passée, tu n'auras plus la possibilité d'en uploadé une pour ce duel."
-About: à propos
-no.duels: "L'utilisateur n'a pas encore fait de duel"
-'User List': "Liste d'utilisateurs"
+'You don''t have any notifications': 'Tu n''as aucune notification'
+duel.date: 'Tu as jusque %date% pour uploader ta vidéo. Une fois cette date passée, tu n''auras plus la possibilité d''en uploadé une pour ce duel.'
+About: 'à propos'
+no.duels: 'L''utilisateur n''a pas encore fait de duel'
+'User List': 'Liste d''utilisateurs'
+challenge.sponsored.button: "Challenges Sponsorisés"
+'N° 1 Regional': "N° 1 Régionale'
+'N° 2 Regional': 'N° 2 Régionale'
+'N° 3 Regional': 'N° 3 Régionale'

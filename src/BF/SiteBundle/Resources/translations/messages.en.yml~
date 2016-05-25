@@ -3,14 +3,14 @@
 'My Duels': 'My Duels'
 Settings: Settings
 'Admin section': 'Admin section'
-Deconnect: Deconnect
+Deconnect: 'Log out'
 'Login / Subscribe': 'Login / Subscribe'
 'The Duel': 'The Duel'
 'Last Videos': 'Last Videos'
 'Propose your own challenge !': 'Propose your own challenge !'
 'You have an idea for a new challenge? Propose your own challenge by sending us a message!': 'You have an idea for a new challenge? Propose your own challenge by sending us a message!'
 'Sponsor a challenge?': 'Sponsor a challenge?'
-'You want to be the sponsor of one challenge? Contact us for more info and propose us a new challenge.': 'You want to be the sponsor of one challenge? Contact us for more info and propose us a new challenge.'
+'You want to be the sponsor of one challenge? Contact us for more info and propose us a new challenge.': 'You want to sponsor one of the challenges? Contact us for more info and propose us a new challenge.'
 'Contact us!': 'Contact us!'
 Participate: Participate
 'The challenge': 'The challenge'
@@ -128,30 +128,30 @@ rules.10.content: 'Yes! We have a feature that enables you to foresee which play
 rules.11.title: 'Why does my country not appear in the ranking page?'
 rules.11.content: 'The website is not yet finished. Our team is working on it and all the countries will be represented.'
 'My informations': 'My informations'
-'You want to be the sponsor of one challenge? Contact us for more info. You can also propose us a new challenge.': 'You want to be the sponsor of one challenge? Contact us for more info. You can also propose us a new challenge.'
+'You want to be the sponsor of one challenge? Contact us for more info. You can also propose us a new challenge.': 'You want to sponsor one of the challenges? Contact us for more info. You can also propose us a new challenge.'
 'about us': 'about us'
-about.nassim: 'Nassim EZZAKRAOUI,  in the daily life is an actuary. Most likely you don’t know about that job and we don’t mind. Actually more than analyzing risk, what Nassim like above all is to put his football boot on and dribbling on field. He played for Besaonçon academy and realized he is not improving as much as he wants to in a football club ( there you go Nassim we don’t always have what we wants). On the other hand he realize that he learn much more playing alone or with his friends in the street. In 2013, while he is trying to get a football scholarship to play in the US he realize the lack of visibility a lot of young amateur players are facing. Bestfootball was born.'
+about.nassim: 'Nassim Ezzakraoui in the daily life is an actuary. Most likely you don’t know about that job and we don’t mind. Actually more than analyzing risk, what Nassim like above all is to put his football boot on and dribbling on field. He played for Besaonçon academy and realized he is not improving as much as he wants to in a football club ( there you go Nassim we don’t always have what we wants). On the other hand he realize that he learn much more playing alone or with his friends in the street. In 2013, while he is trying to get a football scholarship to play in the US he realize the lack of visibility a lot of young amateur players are facing. Bestfootball was born.'
 qualities: Qualities
 about.nassim.qualities: 'good reader of the game, ability to speed up the game'
 function: Fonction
 about.jeremie.qualities: 'Intuition, Quick with the ball, know how to move without the ball'
 about.joris.qualities: 'meticulous, hard worker, team spirit'
-about.jeremie: 'Jérémie Karege is working as a business manager for Capgemini (A French management consulting firm).  He met Nassim in the US where he had a football scholarship and decided to join Nassim on Bestfootball adventure. His passion : Football.  He played all over the world and despite not being a number 9 on the pitch, Jérémie is above all a number 9 in life! As any number 9 that respect its status he has one obsession, the goal! We are confident that jeremie will keep composure in front of what could be one of its most beautiful goal: Make of  Bestfootball an interface recognized worldwide.'
-about.joris: 'Joris HART is a graduate sudent in engineering and technical solutions for sports activities at Savoie univerisity. His main passions are paraglider, soccer and web programming ( Yes between jumping in glider playing a soccer game Joris finds time to code Bestfootball website) ! Joris is a true entrepreneur, Bestfootball is already his third project. Joris first project was already about foorball (Geo-localization and set a game between friends), he also created his own platform services ( creating website for individuals).  He was seduced by the Bestfootball project and the philosophy behind. He became an associate in the Bestfootball project in October 2015. '
+about.jeremie: 'Jérémie Karege is working as a business manager for Capgemini (A French management consulting firm). He met Nassim in the US where he had a football scholarship and decided to join Nassim on Bestfootball adventure. His passion : Football. He played all over the world and despite not being a number 9 on the pitch, Jérémie is above all a number 9 in life! As any number 9 that respect its status he has one obsession, the goal! We are confident that jeremie will keep composure in front of what could be one of its most beautiful goal: Make of Bestfootball an interface recognized worldwide.'
+about.joris: 'Joris Hart is a graduate sudent in engineering and technical solutions for sports activities at Savoie univerisity. His main passions are paraglider, soccer and web programming ( Yes between jumping in glider playing a soccer game Joris finds time to code Bestfootball website) ! Joris is a true entrepreneur; Bestfootball is already his third project. Joris first project was already about foorball (Geo-localization and set a game between friends), he also created his own platform services (creating website for individuals). He was seduced by the Bestfootball project and the philosophy behind. He became an associate in the Bestfootball project in October 2015.'
 number: number
-home.header.subtitle: 'Time for you to progress and show us your football skills.'
+home.header.subtitle: 'Time for you to improve your game and show us your football skills.'
 home.header.explication: 'This is the arena. Only football challenges. You want to know your real level ? You want to be ranked in your city and in the world ? You want everyone to know that you are the best ?  Bestfootball fulfill your dreams. Choose a challenge, take a video of yourself and upload it here. '
 'HOW DOES IT WORK ?': 'HOW DOES IT WORK ?'
 Subscribe: Subscribe
-home.howto.sub.1: 'First of all, please read the rules of Bestfootball to be sure you can enjoy it fully!'
+home.howto.sub.1: 'First of all, please read bestfootball rules to be sure you can enjoy it fully!'
 'Click here to read the rules.': 'Click here to read the rules.'
 Then: Then
 'subscribe here': 'subscribe here'
-home.howto.sub.2: 'and download the application Bestfootball to record yourself(recommanded).'
-home.howto.participate: 'It is really simple! Just choose the challenge you want, record yourself, indicate us the level you reached and upload your video. And it is way faster with the application : you do all that on your phone and you do not need to connect it with the computer !'
+home.howto.sub.2: 'and download the Bestfootball application to record yourself(recommanded).'
+home.howto.participate: "It is really simple! Just choose the challenge you want, record yourself, indicate us the level you reached and upload your video. And it is way faster with the application : you do all that on your phone and you don't need to connect it with a computer !"
 'Earn rewards': 'Earn rewards'
-home.howto.earn: 'Bestfootball rewards his users thanks to different systems of rewards. \n So Manage to be among the best !!'
-home.app: 'We developped an application to make it easier for you to film and upload the challenges. With our application, you can access all the challenges and with one click of a button, you can begin to record and upload your video.'
+home.howto.earn: 'Bestfootball rewards its users with different reward systems. Manage to be among the best !!'
+home.app: 'We developed an application to make it easier for you to record and upload your challenges. Our application allows you to access all the challenges and with one click, you can record and upload your video.'
 Home: Home
 'DOWLOAD OUR APPLICATION': 'DOWLOAD OUR APPLICATION'
 'FOLLOW US ON SOCIAL MEDIA': 'FOLLOW US ON SOCIAL MEDIA'
@@ -184,5 +184,27 @@ Score: Score
 'To the challenge!': 'To the challenge!'
 'Type here your comment...': 'Type here your comment...'
 Send: Send
-'Vous voulez parler de Bestfootball ?': "You want to talk about Bestfootball?"
-"N’hésitez pas à  nous joindre et on répondra avec plaisir à toutes vos questions : contact@bestfootball.fr": "Do not hesitate to contact us at contact@bestfootball.fr and we will be happy to awnser all your questions."
+'Vous voulez parler de Bestfootball ?': 'You want to talk about Bestfootball?'
+'N’hésitez pas à  nous joindre et on répondra avec plaisir à toutes vos questions : contact@bestfootball.fr': 'Do not hesitate to contact us at contact@bestfootball.fr and we will be happy to awnser all your questions.'
+'Vous trouverez ci-dessous nos ressources médias :': 'You will find our press release here :'
+Prices: Prizes
+Partners: Partners
+Unknown: Unknown
+'Promising Talent': 'Promising Talent'
+'Rising Star': 'Rising Star'
+'Real Star': 'Real Star'
+'Legend': 'Legend'
+Challenges: Challenges
+'Partner Challenges': 'Sponsored Challenges'
+'Sponsored Challenges': 'Sponsored Challenges'
+'Videos on Bestfootball': 'Videos on Bestfootball'
+'Regional': 'Regional'
+'Prices end season 1 (31/12/2016)': 'Prizes end season 1 (31/12/2016)'
+'Bestfootball Cap': 'Bestfootball Cap'
+'Bestfootball Ball': 'Bestfootball Ball'
+'Bestfootball shirt': 'Bestfootball shirt'
+"You don't have any notifications": "You don't have any notifications"
+duel.date: You have till %date% to upload your video. Once you passed this date you will not be able to upload your video.
+About: About
+no.duels: "The user didn't participate at any duels"
+'User List': 'User List'

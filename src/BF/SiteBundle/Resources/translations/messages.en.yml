@@ -148,7 +148,7 @@ home.howto.sub.1: 'First of all, please read bestfootball rules to be sure you c
 Then: Then
 'subscribe here': 'subscribe here'
 home.howto.sub.2: 'and download the Bestfootball application to record yourself(recommanded).'
-home.howto.participate: "It is really simple! Just choose the challenge you want, record yourself, indicate us the level you reached and upload your video. And it is way faster with the application : you do all that on your phone and you don't need to connect it with a computer !"
+home.howto.participate: 'It is really simple! Just choose the challenge you want, record yourself, indicate us the level you reached and upload your video. And it is way faster with the application : you do all that on your phone and you don''t need to connect it with a computer !'
 'Earn rewards': 'Earn rewards'
 home.howto.earn: 'Bestfootball rewards its users with different reward systems. Manage to be among the best !!'
 home.app: 'We developed an application to make it easier for you to record and upload your challenges. Our application allows you to access all the challenges and with one click, you can record and upload your video.'
@@ -193,18 +193,21 @@ Unknown: Unknown
 'Promising Talent': 'Promising Talent'
 'Rising Star': 'Rising Star'
 'Real Star': 'Real Star'
-'Legend': 'Legend'
 Challenges: Challenges
 'Partner Challenges': 'Sponsored Challenges'
 'Sponsored Challenges': 'Sponsored Challenges'
 'Videos on Bestfootball': 'Videos on Bestfootball'
-'Regional': 'Regional'
+Regional: Regional
 'Prices end season 1 (31/12/2016)': 'Prizes end season 1 (31/12/2016)'
 'Bestfootball Cap': 'Bestfootball Cap'
 'Bestfootball Ball': 'Bestfootball Ball'
 'Bestfootball shirt': 'Bestfootball shirt'
-"You don't have any notifications": "You don't have any notifications"
-duel.date: You have till %date% to upload your video. Once you passed this date you will not be able to upload your video.
+'You don''t have any notifications': 'You don''t have any notifications'
+duel.date: 'You have till %date% to upload your video. Once you passed this date you will not be able to upload your video.'
 About: About
-no.duels: "The user didn't participate at any duels"
+no.duels: 'The user didn''t participate at any duels'
 'User List': 'User List'
+challenge.sponsored.button: "Sponsored Challenges"
+'N° 1 Regional': 'N° 1 Regional'
+'N° 2 Regional': 'N° 2 Regional'
+'N° 3 Regional': 'N° 3 Regional'
