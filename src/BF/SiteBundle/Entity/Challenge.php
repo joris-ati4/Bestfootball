@@ -167,12 +167,12 @@ class Challenge
     private $lienPartner; 
 
     /**
-    * @ORM\Column(name="description_partner_EN", type="string", length=255, nullable=true)
+    * @ORM\Column(name="description_partner_EN", type="text", nullable=true)
     */
     private $descriptionPartnerEN;
 
     /**
-    * @ORM\Column(name="description_partner_FR", type="string", length=255, nullable=true)
+    * @ORM\Column(name="description_partner_FR", type="text", nullable=true)
     */
     private $descriptionPartnerFR;
 
