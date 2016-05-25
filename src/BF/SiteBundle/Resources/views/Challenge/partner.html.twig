@@ -30,8 +30,40 @@
     	</div>
     	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-10 col-lg-offset-1" style="margin-top:5px;">
     		<div class="row">
+    			<!-- The First Price -->
+    			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center">
+    				<div class="row">
+
+    					<img src="/img/challenges/first.png" alt="" style="max-width:40%;max-height:150px;" class="text-center"/>
+	    				<!--The gift -->
+	    				
+
+						{% if challenge.firstPrizeLogo is null %}
+							<p>
+								{% if app.request.getLocale() == 'fr' %}			
+			        				{{ challenge.firstPrizeTitleFR }}
+			        			{% else %}
+			        				{{ challenge.firstPrizeTitleEN }}
+			        			{% endif %}
+				        	</p>
+						{% else %}
+		    				<figure>
+								<img src="{{ challenge.firstPrizeLogo }}" alt="first prize for the {{ challenge.nomPartner }} challenge on Bestfootball" style="max-width:90%;max-height:150px;" class="text-center"/>
+								<figcaption>
+						  			{% if app.request.getLocale() == 'fr' %}			
+				        				{{ challenge.firstPrizeTitleFR }}
+				        			{% else %}
+				        				{{ challenge.firstPrizeTitleEN }}
+				        			{% endif %}
+						  		</figcaption>
+							</figure>
+						{% endif %}
+
+
+    				</div>
+    			</div>
     			<!-- The second price -->
-    			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center" style="margin-top:25px;">
+    			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center">
     				<div class="row">
 
     					<img src="/img/challenges/second.png" alt="" style="max-width:40%;max-height:150px;" class="text-center"/>
@@ -60,44 +92,8 @@
     				</div>
     			</div>
 
-
-
-    			<!-- The First Price -->
-    			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center" style="margin-top:5px;">
-    				<div class="row">
-
-    					<img src="/img/challenges/first.png" alt="" style="max-width:40%;max-height:150px;" class="text-center"/>
-    				<!--The gift -->
-    				
-
-					{% if challenge.firstPrizeLogo is null %}
-						<p>
-							{% if app.request.getLocale() == 'fr' %}			
-		        				{{ challenge.firstPrizeTitleFR }}
-		        			{% else %}
-		        				{{ challenge.firstPrizeTitleEN }}
-		        			{% endif %}
-			        	</p>
-					{% else %}
-	    				<figure>
-							<img src="{{ challenge.firstPrizeLogo }}" alt="first prize for the {{ challenge.nomPartner }} challenge on Bestfootball" style="max-width:90%;max-height:150px;" class="text-center"/>
-							<figcaption>
-					  			{% if app.request.getLocale() == 'fr' %}			
-			        				{{ challenge.firstPrizeTitleFR }}
-			        			{% else %}
-			        				{{ challenge.firstPrizeTitleEN }}
-			        			{% endif %}
-					  		</figcaption>
-						</figure>
-					{% endif %}
-
-
-    				</div>
-    			</div>
-
-
     			<!-- The third Price -->
-    			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center" style="margin-top:35px;">
+    			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center" >
     				<div class="row">
     					<!--The number of the place -->
     						<img src="/img/challenges/third.png" alt="" style="max-width:40%;max-height:150px;" class="text-center"/>
