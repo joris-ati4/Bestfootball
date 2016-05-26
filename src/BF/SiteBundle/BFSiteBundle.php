@@ -11,7 +11,7 @@ use Presta\SitemapBundle\Sitemap\Url\UrlConcrete;
 class BFSiteBundle extends Bundle
 {
 
-/*	public function boot()
+	public function boot()
     {
         $router = $this->container->get('router');
         $event  = $this->container->get('event_dispatcher');
@@ -295,5 +295,5 @@ class BFSiteBundle extends Bundle
             );
         }
         
-    }*/
+    }
 }
