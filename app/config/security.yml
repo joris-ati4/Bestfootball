@@ -41,6 +41,12 @@ security:
 
             logout:       true
             anonymous:    true
+            remember_me:
+                secret:      "%secret%"
+                lifetime: 2592000
+                path:     /
+                domain:   ~
+                user_provider: fos_userbundle
 
         login:
             pattern:  ^/login$
