@@ -230,7 +230,7 @@ class Video
         // Resize to 1280x720 to compact the video ! 
         $video
             ->filters()
-            ->resize(new Dimension(1280, 720), ResizeFilter::RESIZEMODE_INSET)
+            ->resize(new Dimension(1280, 720), ResizeFilter::RESIZEMODE_SCALE_HEIGHT)
             ->synchronize();
         $video
             ->frame( TimeCode::fromSeconds(1))
