@@ -31,6 +31,11 @@ class BFAdminPoints
       if($challenge->getTwo() > $video->getRepetitions() && $video->getRepetitions() >= $challenge->getOne()){$video->setScore('50');}
       if($challenge->getOne() > $video->getRepetitions()){$video->setScore('0');}
 
+    //we flush the video.
+      $this->em->persist($video);
+      $this->em->flush();
+
+
       //recount the points of the user
       $listChallenges = $this->em->getRepository('BFSiteBundle:Challenge')->findall();
       $points = 0;

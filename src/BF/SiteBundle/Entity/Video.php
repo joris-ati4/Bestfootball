@@ -136,7 +136,7 @@ class Video
     private $views;
 
     /**
-    * @Assert\File(maxSize="250M", mimeTypes={"video/mp4","video/avi","video/quicktime","video/3gpp"})
+    * @Assert\File(maxSize="250M", mimeTypes={"video/mp4","video/avi","video/3gpp"})
     */
     private $file;
 
