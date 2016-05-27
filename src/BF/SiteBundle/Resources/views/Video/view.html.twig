@@ -168,28 +168,28 @@
                 --><div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 vcenter row">
 
                     <!-- The like section -->
+                    {% if video.type =='freestyle' %}
+                      {% if video.user.username != app.user.username %}
+                        {% if like is not null %}
+                          <a href="#" id="likeSubmit">
+                            <img src="/img/like.png" alt="Bestfootball like button" style="width:45px;visibility:hidden;"/>
+                          </a>
 
-                    {% if video.user.username != app.user.username and video.type =='freestyle' %}
-                      {% if like is not null %}
-                        <a href="#" id="likeSubmit">
-                          <img src="/img/like.png" alt="Bestfootball like button" style="width:45px;visibility:hidden;"/>
-                        </a>
+                          <a href="#" id="likeDelete">
+                            <img src="/img/unlike.png" alt="Bestfootball unlike button" style="width:45px;"/>
+                          </a>                        
+                        {% else %}
+                          <a href="#" id="likeSubmit">
+                            <img src="/img/like.png" alt="Bestfootball like button" style="width:45px;"/>
+                          </a>
 
-                        <a href="#" id="likeDelete">
-                          <img src="/img/unlike.png" alt="Bestfootball unlike button" style="width:45px;"/>
-                        </a>                        
-                      {% else %}
-                        <a href="#" id="likeSubmit">
-                          <img src="/img/like.png" alt="Bestfootball like button" style="width:45px;"/>
-                        </a>
-
-                        <a href="#" id="likeDelete">
-                          <img src="/img/unlike.png" alt="Bestfootball unlike button" style="width:45px;visibility:hidden;"/>
-                        </a>
+                          <a href="#" id="likeDelete">
+                            <img src="/img/unlike.png" alt="Bestfootball unlike button" style="width:45px;visibility:hidden;"/>
+                          </a>
+                        {% endif %}
                       {% endif %}
+                      <p style="color:#95cd36;font-size:20px;">Likes : {{ video.likes|length }}</p>
                     {% endif %}
-
-                    <p style="color:#95cd36;font-size:20px;">Likes : {{ video.likes|length }}</p>
 
 
 
