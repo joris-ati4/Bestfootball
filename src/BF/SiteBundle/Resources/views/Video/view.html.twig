@@ -177,8 +177,7 @@
 
                         <a href="#" id="likeDelete">
                           <img src="/img/unlike.png" alt="Bestfootball unlike button" style="width:45px;"/>
-                        </a>
-                        <p>Likes : {{ video.likes|length }}</p>
+                        </a>                        
                       {% else %}
                         <a href="#" id="likeSubmit">
                           <img src="/img/like.png" alt="Bestfootball like button" style="width:45px;"/>
@@ -187,9 +186,10 @@
                         <a href="#" id="likeDelete">
                           <img src="/img/unlike.png" alt="Bestfootball unlike button" style="width:45px;visibility:hidden;"/>
                         </a>
-                        <p>Likes : {{ video.likes|length }}</p>
                       {% endif %}
                     {% endif %}
+
+                    <p style="color:#95cd36;font-size:20px;">Likes : {{ video.likes|length }}</p>
 
 
 

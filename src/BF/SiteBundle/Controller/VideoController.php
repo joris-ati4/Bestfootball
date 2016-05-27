@@ -53,6 +53,9 @@ class VideoController extends Controller
 		    		$predict = true;
 		    	}
 		    }
+		    else{
+		    	$predict = null;
+		    }
 	    }
 	    else{
 	    	$follow = null;
