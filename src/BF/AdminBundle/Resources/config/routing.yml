@@ -90,3 +90,10 @@ bf_site_admin_video_delete:
     path:     /{_locale}/admin/video/delete/{id}
     defaults: { _controller: BFAdminBundle:Admin:deleteVideo, _locale: fr }
     methods:  [POST,GET]
+
+#Mailing url
+
+bf_site_admin_mail_newsletter:
+    path:     /{_locale}/admin/mail/newsletter
+    defaults: { _controller: BFAdminBundle:Mail:newsletter, _locale: fr }
+    methods:  [POST,GET]
