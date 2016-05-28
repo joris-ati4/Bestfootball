@@ -32,7 +32,7 @@ class VideoController extends Controller
           
           if($video->getType() == 'challenge'){
             //calculate the score of the video
-            $service = $this->container->get('bf_site.videospoints');
+            $service = $this->container->get('bf_admin.videopoints');
             $service->videoPoints($video);
           }
 
