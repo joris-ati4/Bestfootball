@@ -35,6 +35,13 @@ bf_site_challengeview:
     requirements:
         _locale: en|fr
 
+bf_site_challenge_banner:
+    path:     /{_locale}/challengesponsor/banner
+    defaults: { _controller: BFSiteBundle:Challenge:banner, _locale: fr }
+    methods:  [GET]
+    requirements:
+        _locale: en|fr
+
 bf_site_about:
     path:     /{_locale}/about
     defaults: { _controller: BFSiteBundle:Home:about, _locale: fr }

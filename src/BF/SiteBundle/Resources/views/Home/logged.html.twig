@@ -38,6 +38,10 @@
             <!--Begin of the lastest videos -->
               {% include "BFSiteBundle:Video:Homelist.html.twig" with {"lastVideos": lists.lastVideos} only %}
             <!--End of the lastest videos -->
+
+            {{ render(controller('BFSiteBundle:Challenge:banner')) }}
+
+
               {% include "BFSiteBundle:Video:Freestylelist.html.twig" with {"lastFreestyles": lists.lastFreestyles} only %}
 
             
