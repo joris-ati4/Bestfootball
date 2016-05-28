@@ -4,9 +4,9 @@
     	<div class="challengetitle">
       		<h3 class="text-center" style="color:white;">
       			{% if duel.host.username == user.username %}
-      				{{ duel.challenge.titleEN }} {{ 'against'|trans }} {{ duel.guest.username }}
+      				{{ duel.challenge.titleEN }} {{ 'against'|trans }} <a href="{{ path('bf_site_profile', { 'username': duel.guest.username }) }}" style=""> {{ duel.guest.username }} </a>
       			{% else %}
-      				{{ duel.challenge.titleEN }} {{ 'against'|trans }} {{ duel.host.username }}
+      				{{ duel.challenge.titleEN }} {{ 'against'|trans }} <a href="{{ path('bf_site_profile', { 'username': duel.host.username }) }}" style=""> {{ duel.host.username }} </a>
       			{% endif %}
       		</h3>
     	</div>

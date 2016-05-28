@@ -23,7 +23,7 @@
   			<div class="row">
   				<!-- Picture -->
   				{% if challenge.partner == 1 %}
-  					<a href="{{ path('bf_site_challengeview', {'slug': challenge.slug}) }}"><img src="{{ challenge.logoPartner }}" alt="Logo of {{ challenge.titleEN }}" style="max-width:90%;max-height:150px;" class="text-center"></a>
+  					<a href="{{ path('bf_site_challengeview', {'slug': challenge.slug}) }}"><img src="{{ challenge.logoPartner }}" alt="Logo of {{ challenge.titleEN }}" style="max-width:90%;max-height:210px;" class="text-center"></a>
   				{% else %}
   					<a href="{{ path('bf_site_challengeview', {'slug': challenge.slug}) }}"><img src="/uploads/challenges/thumbnail/{{ challenge.id }}.jpg" alt="thumbnail of {{ challenge.titleEN }}" style="max-width:90%;max-height:150px;" class="text-center"></a>
   				{% endif %}
