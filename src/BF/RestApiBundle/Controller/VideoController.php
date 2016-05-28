@@ -82,7 +82,6 @@ class VideoController extends Controller
 
         //We stock the data from the JSON in different variables
         $idChallenge = $data['idChallenge'];
-        $title = $data['title'];
         $repetitions = $data['repetitions'];
 
         //We search the user and challenge into the database (need to add security if these values are not in the database)
@@ -94,7 +93,8 @@ class VideoController extends Controller
         }
         $user = $this->container->get('security.context')->getToken()->getUser();
 
-        $description = 'A video for the '.$challenge->getTitle().' challenge.';
+        $description = 'A video for the '.$challenge->getTitleFR().' challenge.';
+        $title = $challenge->getTitleFR();
 
         // On crée un objet Video
         $video = new Video();
