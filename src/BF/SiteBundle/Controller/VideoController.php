@@ -481,7 +481,7 @@ class VideoController extends Controller
 		    if ($form->handleRequest($request)->isValid()) {
 
 
-		    	$service = $this->container->get('bf_site.videospoints');
+		    	$service = $this->container->get('bf_admin.videopoints');
                 $service->videoPoints($video);
 
 		      $request->getSession()->getFlashBag()->add('success', "Your video has been modified.");
