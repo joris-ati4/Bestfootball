@@ -11,7 +11,7 @@
 	<div class="challengecontent">
     	{% for video in listVideos %}
 	  			<div class="videotab row">
-		            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 vcenter">
+		            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center vcenter">
 		              <a href="{{ path('bf_site_video', { 'code': video.code }) }}"><img src="{{ video.thumbUrl }}" alt="{{ video.thumbAlt }}" style="max-height:50px;max-width:100%"/></a>
 		            </div><!--
 		         --><div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 vcenter">
