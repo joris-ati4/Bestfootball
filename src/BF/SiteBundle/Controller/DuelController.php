@@ -151,7 +151,7 @@ class DuelController extends Controller
     			//we create the notification for the other user to say "accepted".
     			$message =$guest->getUsername().' accepted your invitation. You can now upload your video by clicking here or by going to your my duels page.';
     			//getting the other user
-                $link = $this->generateUrl('bf_site_duel_view', array('id' => $duel->getId()));
+                $link = $this->generateUrl('bf_site_duel_view', array('code' => $duel->getCode()));
                 $service = $this->container->get('bf_site.notification');
                 $notification = $service->create($host, $message, $duel,$link);
     			
