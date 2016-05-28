@@ -49,6 +49,13 @@ bf_site_about:
     requirements:
         _locale: en|fr
 
+bf_site_explications:
+    path:     /{_locale}/explications
+    defaults: { _controller: BFSiteBundle:Information:explination, _locale: fr }
+    methods:  [GET]
+    requirements:
+        _locale: en|fr
+
 bf_site_rules:
     path:     /{_locale}/rules
     defaults: { _controller: BFSiteBundle:Home:rules, _locale: fr }

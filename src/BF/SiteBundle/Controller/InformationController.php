@@ -43,4 +43,10 @@ class InformationController extends Controller
               
             ));
     }
+    public function explinationAction()
+    {
+        return $this->render('BFSiteBundle:Home:explications.html.twig', array(
+              
+            ));
+    }
 }
