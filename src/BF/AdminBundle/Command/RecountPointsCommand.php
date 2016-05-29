@@ -23,12 +23,12 @@ class RecountPointsCommand extends ContainerAwareCommand
 	    $listUsers = $em->getRepository('BFUserBundle:User')->findBy(array("enabled" => 1));
 
 	    //recount the points of the user
-      	$listChallenges = $this->em->getRepository('BFSiteBundle:Challenge')->findall();
+      	$listChallenges = $em->getRepository('BFSiteBundle:Challenge')->findall();
       	
       	foreach ( $listUsers as $user) {
       		$points = 0;
 		    foreach ( $listChallenges as $challenge) {
-		        $highestVideo =  $this->em->getRepository('BFSiteBundle:Video')->highestVideo($user, $challenge);
+		        $highestVideo =  $em->getRepository('BFSiteBundle:Video')->highestVideo($user, $challenge);
 		        if($highestVideo !== null){
 		          $points = $points + $highestVideo->getScore();
 		          $highestVideo = null; //Reset the value of the variable
