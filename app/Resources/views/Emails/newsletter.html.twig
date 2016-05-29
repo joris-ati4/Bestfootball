@@ -281,41 +281,6 @@ body, td { font-family: HelveticaNeue, sans-serif; }
                         </tbody></table>
                     </layout>
 
-                    <!--Derniers vidéos -->
-                    <layout label="Text with right-aligned image">
-                        <table class="w580" width="580" cellpadding="0" cellspacing="0" border="0" style="width: 600px !important;">
-                            <tbody>
-                                <tr style="border-collapse: collapse;">
-                                    <td class="w580" width="580" style="font-family: HelveticaNeue, sans-serif;border-collapse: collapse;width: 600px !important;">
-                                        <p align="left" class="article-title" style="font-size: 18px;line-height: 24px;color: #000000;font-weight: bold;margin-top: 0px;margin-bottom: 18px;font-family: HelveticaNeue, sans-serif;"><singleline label="Title">Les dernières vidéos</singleline></p>
-                                    </td>
-                                </tr>
-
-
-
-                                <tr style="border-collapse: collapse;">
-
-                                    {% for video in listVideos %}
-                                        <td style="font-family: HelveticaNeue, sans-serif;border-collapse: collapse;">
-                                            <a href="http://bestfootball.fr{{ path('bf_site_video', {'code': video.code }) }}" target="_blank">
-                                                <img src="{{ video.thumbUrl }}" editable="true" label="Image" class="w300" width="300" border="0" style="height: auto;line-height: 100%;outline: none;text-decoration: none;display: block;">
-                                            </a>
-                                        </td>
-                                        <td class="w30" width="15" style="font-family: HelveticaNeue, sans-serif;border-collapse: collapse;width: 10px !important;"></td>
-                                    {% endfor %}
-                                </tr>
-                
-
-                                <tr style="border-collapse: collapse;">
-                                    <td class="w580" width="580" height="10" style="font-family: HelveticaNeue, sans-serif;border-collapse: collapse;width: 280px !important;"></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </layout>
-
-
-                                        
-                    
                     <layout label="Text with right-aligned image">
                         <table class="w580" width="580" cellpadding="0" cellspacing="0" border="0" style="width: 280px !important;">
                             <tbody><tr style="border-collapse: collapse;">

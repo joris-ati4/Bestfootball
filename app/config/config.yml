@@ -163,7 +163,7 @@ swiftmailer:
             password:  %mailer_password%
             spool:
                 type: file
-                path: "%kernel.root_dir%/spool"
+                path: "%kernel.root_dir%"
 
 #Pulse 000 - ffmpeg bundle
 #dubture_f_fmpeg:
