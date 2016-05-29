@@ -224,14 +224,14 @@ body, td { font-family: HelveticaNeue, sans-serif; }
                                         <tbody><tr style="border-collapse: collapse;">
                                             <td class="w30" width="15" style="font-family: HelveticaNeue, sans-serif;border-collapse: collapse;width: 10px !important;"></td>
                                             <td style="font-family: HelveticaNeue, sans-serif;border-collapse: collapse;">
-                                                <img src="http://v.bestfootball.fr/thumbnail/{{ video.code }}.jpg" editable="true" label="Image" class="w300" width="300" border="0" style="height: auto;line-height: 100%;outline: none;text-decoration: none;display: block;width: 140px !important;">
+                                                <img src="{{ video.thumbUrl }}" editable="true" label="Image" class="w300" width="300" border="0" style="height: auto;line-height: 100%;outline: none;text-decoration: none;display: block;width: 140px !important;">
                                             </td>
                                         </tr>
                                         <tr style="border-collapse: collapse;"><td class="w30" width="15" height="5" style="font-family: HelveticaNeue, sans-serif;border-collapse: collapse;width: 10px !important;"></td><td style="font-family: HelveticaNeue, sans-serif;border-collapse: collapse;"></td></tr>
                                     </tbody></table>
                                     <div align="left" class="article-content" style="font-size: 13px;line-height: 18px;color: #444444;margin-top: 0px;margin-bottom: 18px;font-family: HelveticaNeue, sans-serif;-webkit-text-size-adjust: 90% !important;-ms-text-size-adjust: 90% !important;">
                                         <multiline label="Description">
-                                            You received a new comment by {{ commenter.username }} on one of your videos. To check out the comment, click the link below.
+                                            Tu viens de récevoir un commentiare de {{ commenter.username }} sur une de tes vidéos. Pour regarde le commentaire, clique sur le bouton ci desssous. 
 
                                         </multiline>
 
@@ -241,7 +241,7 @@ body, td { font-family: HelveticaNeue, sans-serif; }
                             <tr style="border-collapse: collapse;">
                                 <td class="w580" width="580" height="10" style="font-family: HelveticaNeue, sans-serif;border-collapse: collapse;width: 280px !important;">
                                     <div align="left" class="article-content" style="text-align: center;font-size: 13px;line-height: 18px;color: #444444;margin-top: 0px;margin-bottom: 18px;font-family: HelveticaNeue, sans-serif;-webkit-text-size-adjust: 90% !important;-ms-text-size-adjust: 90% !important;">
-                                        <a href="http://bestfootball.fr/{{ path('bf_site_video', {'code': video.id }) }}" target="_blank" class="btn btn-success" style="color: white;display: inline-block;padding: 6px 12px;margin-bottom: 0;font-size: 14px;font-weight: bold;line-height: 1.42857143;text-align: center;white-space: nowrap;vertical-align: middle;-ms-touch-action: manipulation;touch-action: manipulation;cursor: pointer;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;background-image: none;border: 1px solid transparent;border-radius: 4px;background-color: #5cb85c;border-color: #4cae4c;text-decoration: none;">To the video !</a>
+                                        <a href="http://bestfootball.fr/{{ path('bf_site_video', {'code': video.code }) }}" target="_blank" class="btn btn-success" style="color: white;display: inline-block;padding: 6px 12px;margin-bottom: 0;font-size: 14px;font-weight: bold;line-height: 1.42857143;text-align: center;white-space: nowrap;vertical-align: middle;-ms-touch-action: manipulation;touch-action: manipulation;cursor: pointer;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;background-image: none;border: 1px solid transparent;border-radius: 4px;background-color: #5cb85c;border-color: #4cae4c;text-decoration: none;">Vers la vidéo!</a>
                                     </div>
                                 </td>
                             </tr>
@@ -253,7 +253,7 @@ body, td { font-family: HelveticaNeue, sans-serif; }
                         <table class="w580" width="580" cellpadding="0" cellspacing="0" border="0" style="width: 280px !important;">
                             <tbody><tr style="border-collapse: collapse;">
                                 <td class="w580" width="580" style="font-family: HelveticaNeue, sans-serif;border-collapse: collapse;width: 280px !important;">
-                                    <p align="left" class="article-title" style="font-size: 18px;line-height: 24px;color: #000000;font-weight: bold;margin-top: 0px;margin-bottom: 18px;font-family: HelveticaNeue, sans-serif;"><singleline label="Title">See you soon on Bestfootball !</singleline></p>
+                                    <p align="left" class="article-title" style="font-size: 18px;line-height: 24px;color: #000000;font-weight: bold;margin-top: 0px;margin-bottom: 18px;font-family: HelveticaNeue, sans-serif;"><singleline label="Title">A bient^tot sur Bestfootball !</singleline></p>
                                     <table cellpadding="0" cellspacing="0" border="0" align="right">
                                         <tbody><tr style="border-collapse: collapse;">
                                             <td class="w30" width="15" style="font-family: HelveticaNeue, sans-serif;border-collapse: collapse;width: 10px !important;"></td>
