@@ -77,7 +77,7 @@
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10 col-lg-offset-1">
       <div class="row">
         {# Begin of the video page #}
-        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-8">
+        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
           <div class="row" style="width:100%;background-color:white;margin-bottom:20px;padding:10px 10px;margin-top:20px;">
             {# the video #}
               {% include "BFSiteBundle:Video:video.html.twig" with {"video": video} only %}
@@ -302,9 +302,10 @@
                               {% endif %}
                             </div>
                           </div>
+                        </div>
 
                           <!--The quote Input section -->
-
+                          <div class="col-xs-11 col-sm-10 col-md-10 col-lg-10  col-xs-offset-1 col-sm-offset-2 col-md-offset-2 col-lg-offset-2 vcenter">
                           {% if app.user %}
                             <div class="row quoteInput" style="margin-top:10px;display:none;" id="quoteInput{{ comment.id }}">
                               <!-- the profile picture + link to the profile-->
@@ -408,7 +409,7 @@
           </div>
         </div>
         <!-- End of the video section -->
-        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-4">
+        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
           <div class="row">
             {# the list with videos #}
             {% for video in listVideos %}
