@@ -13,6 +13,11 @@ use Doctrine\ORM\Mapping as ORM;
 class User extends BaseUser
 {
     /**
+    * @ORM\OneToMany(targetEntity="BF\SiteBundle\Entity\Quote", mappedBy="user")
+    */
+    private $quotes;
+
+    /**
     * @ORM\OneToMany(targetEntity="BF\SiteBundle\Entity\Comment", mappedBy="user")
     */
     private $comments;
@@ -143,9 +148,9 @@ class User extends BaseUser
     {
         parent::__construct();
         // your own logic
-        $this->mailDuel(1);
-        $this->mailComment(1);
-        $this->mailWeekly(1);
+        $this->mailDuel = true;
+        $this->mailComment = true;
+        $this->mailWeekly = true;
 
     }
 
@@ -749,5 +754,77 @@ class User extends BaseUser
     public function getComments()
     {
         return $this->comments;
+    }
+
+    /**
+     * Set mailWeekly
+     *
+     * @param boolean $mailWeekly
+     *
+     * @return User
+     */
+    public function setMailWeekly($mailWeekly)
+    {
+        $this->mailWeekly = $mailWeekly;
+
+        return $this;
+    }
+
+    /**
+     * Get mailWeekly
+     *
+     * @return boolean
+     */
+    public function getMailWeekly()
+    {
+        return $this->mailWeekly;
+    }
+
+    /**
+     * Set mailComment
+     *
+     * @param boolean $mailComment
+     *
+     * @return User
+     */
+    public function setMailComment($mailComment)
+    {
+        $this->mailComment = $mailComment;
+
+        return $this;
+    }
+
+    /**
+     * Get mailComment
+     *
+     * @return boolean
+     */
+    public function getMailComment()
+    {
+        return $this->mailComment;
+    }
+
+    /**
+     * Set mailDuel
+     *
+     * @param boolean $mailDuel
+     *
+     * @return User
+     */
+    public function setMailDuel($mailDuel)
+    {
+        $this->mailDuel = $mailDuel;
+
+        return $this;
+    }
+
+    /**
+     * Get mailDuel
+     *
+     * @return boolean
+     */
+    public function getMailDuel()
+    {
+        return $this->mailDuel;
     }
 }

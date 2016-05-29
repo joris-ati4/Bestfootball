@@ -360,6 +360,8 @@ bf_site_api_predict:
     defaults: { _controller: BFSiteBundle:Ajax:predict }
     methods:  [POST]
 
+#ALL the comment and quote routes
+
 bf_site_api_comment_add:
     path: /home/comment/add
     defaults: { _controller: BFSiteBundle:Comment:create }
@@ -369,6 +371,18 @@ bf_site_api_comment_del:
     path: /home/comment/del
     defaults: { _controller: BFSiteBundle:Comment:delete }
     methods:  [POST]
+
+bf_site_api_quote_add:
+    path: /home/quote/add
+    defaults: { _controller: BFSiteBundle:Comment:addQuote }
+    methods:  [POST]
+
+bf_site_api_quote_del:
+    path: /home/quote/del
+    defaults: { _controller: BFSiteBundle:Comment:delQuote }
+    methods:  [POST]
+
+
 
 bf_site_api_language:
     path: /home/language/change/{language}

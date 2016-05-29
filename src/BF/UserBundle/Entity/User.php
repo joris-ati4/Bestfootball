@@ -13,6 +13,11 @@ use Doctrine\ORM\Mapping as ORM;
 class User extends BaseUser
 {
     /**
+    * @ORM\OneToMany(targetEntity="BF\SiteBundle\Entity\Quote", mappedBy="user")
+    */
+    private $quotes;
+
+    /**
     * @ORM\OneToMany(targetEntity="BF\SiteBundle\Entity\Comment", mappedBy="user")
     */
     private $comments;
@@ -821,5 +826,39 @@ class User extends BaseUser
     public function getMailDuel()
     {
         return $this->mailDuel;
+    }
+
+    /**
+     * Add quote
+     *
+     * @param \BF\SiteBundle\Entity\Quote $quote
+     *
+     * @return User
+     */
+    public function addQuote(\BF\SiteBundle\Entity\Quote $quote)
+    {
+        $this->quotes[] = $quote;
+
+        return $this;
+    }
+
+    /**
+     * Remove quote
+     *
+     * @param \BF\SiteBundle\Entity\Quote $quote
+     */
+    public function removeQuote(\BF\SiteBundle\Entity\Quote $quote)
+    {
+        $this->quotes->removeElement($quote);
+    }
+
+    /**
+     * Get quotes
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getQuotes()
+    {
+        return $this->quotes;
     }
 }

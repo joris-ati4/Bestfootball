@@ -13,6 +13,11 @@ use Doctrine\ORM\Mapping as ORM;
 class Comment
 {
     /**
+    * @ORM\OneToMany(targetEntity="BF\SiteBundle\Entity\Quote", mappedBy="comment")
+    */
+    private $quotes;
+
+    /**
     * @ORM\ManyToOne(targetEntity="BF\UserBundle\Entity\User", inversedBy="comments")
     * @ORM\JoinColumn(nullable=false)
     */
@@ -152,5 +157,46 @@ class Comment
     public function getVideo()
     {
         return $this->video;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->quotes = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add quote
+     *
+     * @param \BF\SiteBundle\Entity\Quote $quote
+     *
+     * @return Comment
+     */
+    public function addQuote(\BF\SiteBundle\Entity\Quote $quote)
+    {
+        $this->quotes[] = $quote;
+
+        return $this;
+    }
+
+    /**
+     * Remove quote
+     *
+     * @param \BF\SiteBundle\Entity\Quote $quote
+     */
+    public function removeQuote(\BF\SiteBundle\Entity\Quote $quote)
+    {
+        $this->quotes->removeElement($quote);
+    }
+
+    /**
+     * Get quotes
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getQuotes()
+    {
+        return $this->quotes;
     }
 }

@@ -5,29 +5,25 @@ namespace BF\SiteBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Comment
+ * Quote
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="BF\SiteBundle\Entity\CommentRepository")
+ * @ORM\Entity(repositoryClass="BF\SiteBundle\Entity\QuoteRepository")
  */
-class Comment
+class Quote
 {
     /**
-    * @ORM\OneToMany(targetEntity="BF\SiteBundle\Entity\Quote", mappedBy="comment")
-    */
-    private $quotes;
-
-    /**
-    * @ORM\ManyToOne(targetEntity="BF\UserBundle\Entity\User", inversedBy="comments")
+    * @ORM\ManyToOne(targetEntity="BF\UserBundle\Entity\User", inversedBy="quotes")
     * @ORM\JoinColumn(nullable=false)
     */
     private $user;
 
     /**
-    * @ORM\ManyToOne(targetEntity="BF\SiteBundle\Entity\Video", inversedBy="comments")
+    * @ORM\ManyToOne(targetEntity="BF\SiteBundle\Entity\Comment", inversedBy="quotes")
     * @ORM\JoinColumn(nullable=false)
     */
-    private $video;
+    private $comment;
+
 
     /**
      * @var integer
@@ -68,7 +64,7 @@ class Comment
      *
      * @param string $content
      *
-     * @return Comment
+     * @return Quote
      */
     public function setContent($content)
     {
@@ -92,7 +88,7 @@ class Comment
      *
      * @param \DateTime $date
      *
-     * @return Comment
+     * @return Quote
      */
     public function setDate($date)
     {
@@ -110,52 +106,5 @@ class Comment
     {
         return $this->date;
     }
-
-    /**
-     * Set user
-     *
-     * @param \BF\UserBundle\Entity\User $user
-     *
-     * @return Comment
-     */
-    public function setUser(\BF\UserBundle\Entity\User $user)
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    /**
-     * Get user
-     *
-     * @return \BF\UserBundle\Entity\User
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
-
-    /**
-     * Set video
-     *
-     * @param \BF\SiteBundle\Entity\Video $video
-     *
-     * @return Comment
-     */
-    public function setVideo(\BF\SiteBundle\Entity\Video $video)
-    {
-        $this->video = $video;
-
-        return $this;
-    }
-
-    /**
-     * Get video
-     *
-     * @return \BF\SiteBundle\Entity\Video
-     */
-    public function getVideo()
-    {
-        return $this->video;
-    }
 }
+

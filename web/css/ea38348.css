@@ -440,6 +440,38 @@ top: 25px;
     cursor: pointer;
 }
 
+/* The comment bubble */
+.bubbleQuote
+{
+position: relative;
+width: 100%;
+min-height: 80px;
+padding: 20px;
+background: #3D75DE;
+-webkit-border-radius: 15px;
+-moz-border-radius: 15px;
+border-radius: 15px;
+}
+
+.bubbleQuote:after 
+{
+content: '';
+position: absolute;
+border-style: solid;
+border-width: 15px 15px 15px 0;
+border-color: transparent #3D75DE;
+display: block;
+width: 0;
+z-index: 1;
+left: -15px;
+top: 25px;
+}
+
+.bubbleQuote > .delete:hover{
+    color:red;
+    cursor: pointer;
+}
+
 .usersearch{
     width:130px;
 }

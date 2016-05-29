@@ -5,29 +5,25 @@ namespace BF\SiteBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Comment
+ * Quote
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="BF\SiteBundle\Entity\CommentRepository")
+ * @ORM\Entity(repositoryClass="BF\SiteBundle\Entity\QuoteRepository")
  */
-class Comment
+class Quote
 {
     /**
-    * @ORM\OneToMany(targetEntity="BF\SiteBundle\Entity\Quote", mappedBy="comment")
-    */
-    private $quotes;
-
-    /**
-    * @ORM\ManyToOne(targetEntity="BF\UserBundle\Entity\User", inversedBy="comments")
+    * @ORM\ManyToOne(targetEntity="BF\UserBundle\Entity\User", inversedBy="quotes")
     * @ORM\JoinColumn(nullable=false)
     */
     private $user;
 
     /**
-    * @ORM\ManyToOne(targetEntity="BF\SiteBundle\Entity\Video", inversedBy="comments")
+    * @ORM\ManyToOne(targetEntity="BF\SiteBundle\Entity\Comment", inversedBy="quotes")
     * @ORM\JoinColumn(nullable=false)
     */
-    private $video;
+    private $comment;
+
 
     /**
      * @var integer
@@ -68,7 +64,7 @@ class Comment
      *
      * @param string $content
      *
-     * @return Comment
+     * @return Quote
      */
     public function setContent($content)
     {
@@ -92,7 +88,7 @@ class Comment
      *
      * @param \DateTime $date
      *
-     * @return Comment
+     * @return Quote
      */
     public function setDate($date)
     {
@@ -116,7 +112,7 @@ class Comment
      *
      * @param \BF\UserBundle\Entity\User $user
      *
-     * @return Comment
+     * @return Quote
      */
     public function setUser(\BF\UserBundle\Entity\User $user)
     {
@@ -136,26 +132,26 @@ class Comment
     }
 
     /**
-     * Set video
+     * Set comment
      *
-     * @param \BF\SiteBundle\Entity\Video $video
+     * @param \BF\SiteBundle\Entity\Comment $comment
      *
-     * @return Comment
+     * @return Quote
      */
-    public function setVideo(\BF\SiteBundle\Entity\Video $video)
+    public function setComment(\BF\SiteBundle\Entity\Comment $comment)
     {
-        $this->video = $video;
+        $this->comment = $comment;
 
         return $this;
     }
 
     /**
-     * Get video
+     * Get comment
      *
-     * @return \BF\SiteBundle\Entity\Video
+     * @return \BF\SiteBundle\Entity\Comment
      */
-    public function getVideo()
+    public function getComment()
     {
-        return $this->video;
+        return $this->comment;
     }
 }
