@@ -359,6 +359,9 @@
 
                                             <!-- if the user is the commentor or the video owner we show the delete button -->
                                             {% if app.user is not null %}
+                                              <!-- if the user is the commentor or the video owner we show the delete button -->
+                                              <span class="glyphicon glyphicon-edit delete addQuote" data-comment="{{ comment.id }}" aria-hidden="true"     style="top:65px;position: absolute;right:7px;font-size: 25px;" data-placement="right" data-toggle="tooltip" title="Répondre à ce commentaire"></span>
+
                                               {% if app.user.id == quote.user.id or app.user.id == video.user.id %}
                                                 <span class="glyphicon glyphicon-remove delete quoteDelete" data-quote="{{ quote.id }}" aria-hidden="true"     style="top:7px;position: absolute;right:7px;" data-placement="right" data-toggle="tooltip" title="Delete this quote!"></span>
                                               {% endif %}
