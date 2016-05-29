@@ -152,7 +152,7 @@ swiftmailer:
     host:      "%mailer_host%"
     username:  "%mailer_user%"
     password:  "%mailer_password%"
-    spool:     { type: memory }
+    spool:     { type: file }
 
 #Pulse 000 - ffmpeg bundle
 #dubture_f_fmpeg:
