@@ -143,7 +143,7 @@ class CommentController extends Controller
             
             $em->flush();
 
-        $this->addFlash('success', 'Your comment has been added.');
+        $this->addFlash('success', 'Ton quote a été ajouté.');
 
         return new response();
     }

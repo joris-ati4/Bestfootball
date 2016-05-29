@@ -168,7 +168,7 @@
                 --><div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 vcenter row">
 
                     <!-- The like section -->
-                    {% if video.type =='freestyle' %}
+                    {% if video.type =='freestyle' and app.user is not null %}
                       {% if video.user.username != app.user.username %}
                         {% if like is not null %}
                           <a href="#" id="likeSubmit">
@@ -290,11 +290,12 @@
                                   {{ comment.user.username }}
                                 </a> - {{ comment.date|date("d/m/Y - H:i:s") }}</p>
 
-                              <!-- if the user is the commentor or the video owner we show the delete button -->
-                                <span class="glyphicon glyphicon-edit delete addQuote" data-comment="{{ comment.id }}" aria-hidden="true"     style="top:65px;position: absolute;right:7px;font-size: 25px;" data-placement="right" data-toggle="tooltip" title="Répondre à ce commentaire"></span>
-
+                              
 
                               {% if app.user is not null %}
+                                <!-- if the user is the commentor or the video owner we show the delete button -->
+                                <span class="glyphicon glyphicon-edit delete addQuote" data-comment="{{ comment.id }}" aria-hidden="true"     style="top:65px;position: absolute;right:7px;font-size: 25px;" data-placement="right" data-toggle="tooltip" title="Répondre à ce commentaire"></span>
+
                                 {% if app.user.id == comment.user.id or app.user.id == video.user.id %}
                                   <span class="glyphicon glyphicon-remove delete commentDelete" data-comment="{{ comment.id }}" aria-hidden="true"     style="top:7px;position: absolute;right:7px;" data-placement="right" data-toggle="tooltip" title="Delete this comment!"></span>
                                 {% endif %}
@@ -333,7 +334,7 @@
                           {% if comment.quotes|length > 0 %}
                             <!--The quote section -->
                             
-                              
+                              <div id="quotesection{{ comment.id }}">
                                 <!-- a quote line -->
                                 {% for quote in comment.quotes %}
                                    
@@ -341,7 +342,7 @@
                                       <div class="hidden-xs col-sm-2 col-md-2 col-lg-2 vcenter">
                                         <div class="row">
                                           <a href="{{ path( 'bf_site_profile', {'username' : quote.user.username })}}">
-                                            <img src="{{ comment.user.media.path }}" alt="{{ quote.user.media.path }}" style="width:90%;border-radius:50%;"/>
+                                            <img src="{{ quote.user.media.path }}" alt="{{ quote.user.media.path }}" style="width:90%;border-radius:50%;"/>
                                           </a>
                                         </div>
                                       </div><!--
@@ -369,6 +370,7 @@
 
 
                                 {% endfor %}
+                              </div>
                                 <!-- End of a quote line -->
                               
                            
