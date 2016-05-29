@@ -42,14 +42,13 @@ class BFAdminPoints
       foreach ( $listChallenges as $challenge) {
         $highestVideo =  $this->em->getRepository('BFSiteBundle:Video')->highestVideo($user, $challenge);
         if($highestVideo !== null){
-          $points = $points + $video->getScore();
+          $points = $points + $highestVideo->getScore();
         }
         
       }
       
     $user->setPoints($points);
     $this->em->persist($user);
-    $this->em->persist($video);
 
   	$this->em->flush();
   	$done = true;
