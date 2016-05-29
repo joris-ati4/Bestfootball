@@ -42,7 +42,7 @@ class SendConfirmationMailCommand extends ContainerAwareCommand
                         'text/html'
                     )
             ;
-            $this->getContainer()->get('mailer')->send($secondmessage);
+            $this->getContainer()->get('swiftmailer.mailer.spool')->send($secondmessage);
 
             $output->writeln("mail envoyé à ".$user->getUsername()." !");
 	    }

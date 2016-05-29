@@ -60,7 +60,7 @@ class MailController extends Controller
                         ),
                         'text/html'
                   );
-                $this->get('mailer')->send($message);
+                $this->get('swiftmailer.mailer.spool')->send($message); //using the spool mailing method
               }
 
               $request->getSession()->getFlashBag()->add('notice', 'The mail has been send!');
@@ -73,19 +73,5 @@ class MailController extends Controller
       return $this->render('BFAdminBundle:Mail:newsletter.html.twig',array(
         'form' => $form->createView(),
       ));
-
-
-
-
-
-
-
-
-
-
-    	$listVideos = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video')->findall();
-	    return $this->render('BFAdminBundle:Video:index.html.twig',array(
-	    	'listVideos' => $listVideos,
-	    	));
     }
 }
