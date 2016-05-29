@@ -47,13 +47,15 @@
 	      		</div>
 
 	      		<!--Begin of the latest videos -->
-	      		{% for video in listVideos %}
+	      		
 	      			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-top:20px;">
 	      				<div class="row">
-	      					{% include "BFSiteBundle:Video:Thumbsquare.html.twig" with {"video": video} only %}
+	      					{% for video in listVideos %}
+	      						{% include "BFSiteBundle:Video:Thumbsquare.html.twig" with {"video": video} only %}
+	      					{% endfor %}
 	      				</div>
 	      			</div>
-	      		{% endfor %}
+	      		
 
 
 	      		
