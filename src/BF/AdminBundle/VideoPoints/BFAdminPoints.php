@@ -43,6 +43,7 @@ class BFAdminPoints
         $highestVideo =  $this->em->getRepository('BFSiteBundle:Video')->highestVideo($user, $challenge);
         if($highestVideo !== null){
           $points = $points + $highestVideo->getScore();
+          $highestVideo = null; //Reset the value of the variable
         }
         
       }
