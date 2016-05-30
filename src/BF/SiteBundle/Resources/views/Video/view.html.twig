@@ -285,7 +285,10 @@
                           <div class="row">
                             <div class="bubble">
                               <p style="color:white;">{{ comment.content }}</p>
-                              <p style="color:white;font-size:10px;">
+                              <p style="color:white;font-size:12px;">
+                                {% if app.user is not null %}
+                                  <span class="glyphicon glyphicon-edit delete addQuote" data-comment="{{ comment.id }}" aria-hidden="true"     style="font-size: 25px;margin-right:7px;" data-placement="right" data-toggle="tooltip" title="Répondre à ce commentaire"></span>
+                                {% endif %}
                                 <a href="{{ path( 'bf_site_profile', {'username' : comment.user.username })}}">
                                   {{ comment.user.username }}
                                 </a> - {{ comment.date|date("d/m/Y - H:i:s") }}</p>
@@ -294,8 +297,7 @@
 
                               {% if app.user is not null %}
                                 <!-- if the user is the commentor or the video owner we show the delete button -->
-                                <span class="glyphicon glyphicon-edit delete addQuote" data-comment="{{ comment.id }}" aria-hidden="true"     style="top:65px;position: absolute;right:7px;font-size: 25px;" data-placement="right" data-toggle="tooltip" title="Répondre à ce commentaire"></span>
-
+                              
                                 {% if app.user.id == comment.user.id or app.user.id == video.user.id %}
                                   <span class="glyphicon glyphicon-remove delete commentDelete" data-comment="{{ comment.id }}" aria-hidden="true"     style="top:7px;position: absolute;right:7px;" data-placement="right" data-toggle="tooltip" title="Delete this comment!"></span>
                                 {% endif %}
@@ -318,9 +320,17 @@
                             <!--the comment bubble -->
                                 <div class="row">
                                   <div class="bubbleQuote">
-                                    <textarea id="contentQuote{{ comment.id }}" placeholder="{{'Type here your comment...'|trans }}" style="width:70%;"></textarea>
-                                    <button class="btn btn-success inline pull-right submitQuote" style="width:28%;height:46px;" data-comment="{{ comment.id}}">{{'Send'|trans }}</button>
-
+                                    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-9 vcenter">
+                                      <div class="row">
+                                        <textarea id="contentQuote{{ comment.id }}" placeholder="{{'Type here your comment...'|trans }}" style="width:100%;"></textarea>
+                                      </div>
+                                    </div><!--
+                                    --><div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 vcenter">
+                                      <div class="row">
+                                        <button class="btn btn-success inline pull-right submitQuote" style="width:100%;height:46px;" data-comment="{{ comment.id}}">{{'Send'|trans }}</button>
+                                      </div>
+                                    </div>
+                                    
                                     <span class="glyphicon glyphicon-remove delete cancelQuote" data-comment="{{ comment.id}}" aria-hidden="true" style="top:7px;position: absolute;right:7px;" data-placement="right" data-toggle="tooltip" title="Cancel"></span>
 
                                   </div>
@@ -351,7 +361,10 @@
                                         <div class="row">
                                           <div class="bubbleQuote">
                                             <p style="color:white;">{{ quote.content }}</p>
-                                            <p style="color:white;font-size:10px;">
+                                            <p style="color:white;font-size:12px;">
+                                              {% if app.user is not null %}
+                                                <span class="glyphicon glyphicon-edit delete addQuote" data-comment="{{ comment.id }}" aria-hidden="true"     style="font-size: 25px;margin-right:7px;" data-placement="right" data-toggle="tooltip" title="Répondre à ce commentaire"></span>
+                                              {% endif %}
                                               <a href="{{ path( 'bf_site_profile', {'username' : quote.user.username })}}">
                                                 {{ quote.user.username }}
                                               </a> - {{ quote.date|date("d/m/Y - H:i:s") }}
@@ -360,8 +373,6 @@
                                             <!-- if the user is the commentor or the video owner we show the delete button -->
                                             {% if app.user is not null %}
                                               <!-- if the user is the commentor or the video owner we show the delete button -->
-                                              <span class="glyphicon glyphicon-edit delete addQuote" data-comment="{{ comment.id }}" aria-hidden="true"     style="top:65px;position: absolute;right:7px;font-size: 25px;" data-placement="right" data-toggle="tooltip" title="Répondre à ce commentaire"></span>
-
                                               {% if app.user.id == quote.user.id or app.user.id == video.user.id %}
                                                 <span class="glyphicon glyphicon-remove delete quoteDelete" data-quote="{{ quote.id }}" aria-hidden="true"     style="top:7px;position: absolute;right:7px;" data-placement="right" data-toggle="tooltip" title="Delete this quote!"></span>
                                               {% endif %}
