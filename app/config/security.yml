@@ -43,7 +43,7 @@ security:
             anonymous:    true
             remember_me:
                 key:      "%secret%"
-                lifetime: 2592000
+                lifetime: 31536000
                 path:     /
                 domain:   ~
                 user_provider: fos_userbundle
@@ -51,12 +51,6 @@ security:
         login:
             pattern:  ^/login$
             security: false
-
-            remember_me:
-                key: "%secret%"
-                lifetime: 31536000 # 365 days in seconds
-                path: /
-                domain: ~ # Defaults to the current domain from $_SERVER
 
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -68,25 +62,25 @@ security:
         - { path: ^/view, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/oauth/v2/, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/profile, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/fr/admin, role: ROLE_ADMIN }
         - { path: ^/fr/admin, role: ROLE_ADMIN }
         - { path: ^/ambassadeur, role: ROLE_AMBASSADEUR }
-        - { path: ^/oauth/v2/, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/api, roles: IS_AUTHENTICATED_FULLY }
-        - { path: ^/search, role: IS_AUTHENTICATED_FULLY }
-        - { path: ^/profile, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/fr/home, role: IS_AUTHENTICATED_FULLY }
-        - { path: ^/en/home, role: IS_AUTHENTICATED_FULLY }
-        - { path: ^/en/upload, role: IS_AUTHENTICATED_FULLY }
-        - { path: ^/fr/upload, role: IS_AUTHENTICATED_FULLY }
-        - { path: ^/en/duel, role: IS_AUTHENTICATED_FULLY }
-        - { path: ^/fr/duel, role: IS_AUTHENTICATED_FULLY }
-        - { path: ^/fr/myduels, role: IS_AUTHENTICATED_FULLY }
-        - { path: ^/en/myduels, role: IS_AUTHENTICATED_FULLY }
-        - { path: ^/fr/myvideos, role: IS_AUTHENTICATED_FULLY }
-        - { path: ^/en/myvideos, role: IS_AUTHENTICATED_FULLY }
-        - { path: ^/fr/settings, role: IS_AUTHENTICATED_FULLY }
-        - { path: ^/en/settings, role: IS_AUTHENTICATED_FULLY }
+        - { path: ^/search, roles: [IS_AUTHENTICATED_FULLY, IS_AUTHENTICATED_REMEMBERED] }
+        - { path: ^/fr/home, roles: [IS_AUTHENTICATED_FULLY, IS_AUTHENTICATED_REMEMBERED] }
+        - { path: ^/en/home, roles: [IS_AUTHENTICATED_FULLY, IS_AUTHENTICATED_REMEMBERED] }
+        - { path: ^/en/upload, roles: [IS_AUTHENTICATED_FULLY, IS_AUTHENTICATED_REMEMBERED] }
+        - { path: ^/fr/upload, roles: [IS_AUTHENTICATED_FULLY, IS_AUTHENTICATED_REMEMBERED] }
+        - { path: ^/en/duel, roles: [IS_AUTHENTICATED_FULLY, IS_AUTHENTICATED_REMEMBERED] }
+        - { path: ^/fr/duel, roles: [IS_AUTHENTICATED_FULLY, IS_AUTHENTICATED_REMEMBERED] }
+        - { path: ^/fr/myduels, roles: [IS_AUTHENTICATED_FULLY, IS_AUTHENTICATED_REMEMBERED] }
+        - { path: ^/en/myduels, roles: [IS_AUTHENTICATED_FULLY, IS_AUTHENTICATED_REMEMBERED] }
+        - { path: ^/fr/myvideos, roles: [IS_AUTHENTICATED_FULLY, IS_AUTHENTICATED_REMEMBERED] }
+        - { path: ^/en/myvideos, roles: [IS_AUTHENTICATED_FULLY, IS_AUTHENTICATED_REMEMBERED] }
+        - { path: ^/fr/settings, roles: [IS_AUTHENTICATED_FULLY, IS_AUTHENTICATED_REMEMBERED] }
+        - { path: ^/en/settings, roles: [IS_AUTHENTICATED_FULLY, IS_AUTHENTICATED_REMEMBERED] }
 
 
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers

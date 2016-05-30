@@ -115,4 +115,12 @@ class UserController extends Controller
           'challenge' => $challenge,
         ));
     }
+    public function whoIsOnlineAction()
+    {
+        $users = $this->getDoctrine()->getManager()->getRepository('BFUserBundle:User')->getActive();
+
+        return $this->render('BFAdminBundle:User:onlineList.html.twig',array(
+            'users' => $users,
+        ));
+    }
 }

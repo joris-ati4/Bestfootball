@@ -143,6 +143,8 @@ class User extends BaseUser
     /** @ORM\Column(name="mail_duel", type="boolean") */
     protected $mailDuel;
 
+    /** @ORM\Column(name="last_activity", type="datetime") */
+    protected $lastActivity;
 
     public function __construct()
     {
@@ -153,6 +155,11 @@ class User extends BaseUser
         $this->mailWeekly = true;
 
     }
+
+    public function isActiveNow(){
+        $this->lastActivity = new \DateTime();
+    }
+
 
     /**
      * Set name
@@ -860,5 +867,29 @@ class User extends BaseUser
     public function getQuotes()
     {
         return $this->quotes;
+    }
+
+    /**
+     * Set lastActivity
+     *
+     * @param \DateTime $lastActivity
+     *
+     * @return User
+     */
+    public function setLastActivity($lastActivity)
+    {
+        $this->lastActivity = $lastActivity;
+
+        return $this;
+    }
+
+    /**
+     * Get lastActivity
+     *
+     * @return \DateTime
+     */
+    public function getLastActivity()
+    {
+        return $this->lastActivity;
     }
 }

@@ -8,3 +8,9 @@ services:
         arguments: [@fos_user.user_manager,{facebook: facebook_id, google: google_id},@doctrine.orm.entity_manager]
     em:
         alias: doctrine.orm.entity_manager
+
+    activity_listener:
+        class: BF\UserBundle\Listener\ActivityListener
+        arguments: [@security.context, @doctrine.orm.entity_manager]
+        tags:
+            - { name: kernel.event_listener, event: kernel.controller, method: onCoreController }

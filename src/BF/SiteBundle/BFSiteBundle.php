@@ -295,5 +295,5 @@ class BFSiteBundle extends Bundle
             );
         }
         
-    }
+   }
 }

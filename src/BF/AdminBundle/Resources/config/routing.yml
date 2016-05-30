@@ -40,6 +40,11 @@ bf_site_admin_user_mod:
     defaults: { _controller: BFAdminBundle:User:users, _locale: fr }
     methods:  [GET]
 
+bf_site_admin_user_online:
+    path:     /{_locale}/admin/user/online
+    defaults: { _controller: BFAdminBundle:User:whoIsOnline, _locale: fr }
+    methods:  [GET]
+
 
 #Video related routes
 bf_site_admin_videos:
