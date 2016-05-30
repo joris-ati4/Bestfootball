@@ -61,6 +61,7 @@ class MailController extends Controller
                         'text/html'
                   );
                 $this->get('swiftmailer.mailer.spool')->send($message); //using the spool mailing method
+                unset($message); //resetting the memory variable back to null
               }
 
               $request->getSession()->getFlashBag()->add('notice', 'The mail has been send!');

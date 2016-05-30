@@ -13,7 +13,7 @@ class BFSiteBundle extends Bundle
 
 	public function boot()
     {
-       /* $router = $this->container->get('router');
+        $router = $this->container->get('router');
         $event  = $this->container->get('event_dispatcher');
         
 
@@ -295,5 +295,5 @@ class BFSiteBundle extends Bundle
             );
         }
         
-   */}
+   }
 }
