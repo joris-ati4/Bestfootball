@@ -314,7 +314,7 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
   {
     $qb = $this->createQueryBuilder('u');
 
-    $qb->Where('u.lastLogin > :date')
+    $qb->Where('u.lastActivity > :date')
          ->setParameter('date', $date)
     ;
     return $qb
@@ -326,7 +326,7 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
   {
     $qb = $this->createQueryBuilder('u');
 
-    $qb->Where('u.lastLogin > :date')
+    $qb->Where('u.lastActivity > :date')
          ->setParameter('date', $date)
     ;
     return $qb
