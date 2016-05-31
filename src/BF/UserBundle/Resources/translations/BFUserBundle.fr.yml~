@@ -1,1 +1,3 @@
-registration.check_email: __registration.check_email
+registration.check_email: "Merci de vous avoir inscrit sur bestfootball! On vous a envoyé un mail avec un lien d'activation. Il faut cliquer sur ce lien afin d'activer ce compte. Si vous n'avez rien reçu, veulliez regarder dans votre Spam."
+'Sorry this username is already taken. Please choose another one.': "Nom d'utilisateur pas disponible."
+'This username is available.': "Nom d'utilisateur pas disponible."

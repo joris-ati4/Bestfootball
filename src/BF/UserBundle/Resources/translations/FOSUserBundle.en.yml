@@ -25,3 +25,5 @@ Password: Password
 security.login.remember_me: __security.login.remember_me
 security.login.submit: __security.login.submit
 'Forgot your password?': 'Forgot your password?'
+'Sorry this username is already taken. Please choose another one.': 'Sorry this username is already taken. Please choose another one.'
+'This username is available.': 'This username is available.'

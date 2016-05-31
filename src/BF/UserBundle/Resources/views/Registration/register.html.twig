@@ -2,8 +2,6 @@
 
 
 
-
-
 {% block content %}
 	<section class="header text-center">
         <div class="row" style="margin-top:50px;">
@@ -39,4 +37,59 @@
           </div>
         </div>
       </section>
+{% endblock %}
+
+{% block javascripts %}
+<script type="text/javascript">
+$( document ).ready(function() {
+	
+	$("#fos_user_registration_form_username").on('input',function() {
+	 	//check for the username
+	 	var response;
+	 	console.log('written');
+	 	checkUsername();
+	});
+
+	var checkUsername = function(){
+		var response;
+		var username = $("#fos_user_registration_form_username").val();
+		$.ajax({
+		    url : "{{ path('bf_site_api_checkusername')}}",
+		    type: "POST",
+		    data : 'username=' + username,
+		    success: function(response) {
+		      	console.log(response);
+		      	if(response == 'ok'){
+	 				//the username is available. Make the button available.
+	 				console.log('username is available');
+	 				$('#sumbit_username').removeClass( "disabled" );
+	 				$("#sumbit_username").removeAttr( "disabled");
+	 				$('#username_field').removeClass( "has-error" );
+	 				$('#username_field').addClass( "has-success" );
+	 				$('#helpblocktaken').hide();
+	 				$('#helpblockfree').show();
+	 				return false;
+	 			}
+	 			if(response == 'used'){
+	 				//the username is already taken. Block the buton.
+	 				console.log('username is not available');
+	 				$('#sumbit_username').addClass( "disabled" );
+	 				$("#sumbit_username").attr( "disabled", "disabled" );
+	 				$('#username_field').removeClass( "has-success" );
+	 				$('#username_field').addClass( "has-error" );
+	 				$('#helpblockfree').hide();
+	 				$('#helpblocktaken').show();
+	 				return false;
+	 			}
+		    }
+	  	});
+	};
+	$(window).keydown(function(event) {
+		if (event.keyCode == 13) {
+			event.preventDefault();
+			return false;
+		}
+	});
+});
+</script>
 {% endblock %}

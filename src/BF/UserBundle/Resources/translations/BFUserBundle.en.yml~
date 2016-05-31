@@ -42,3 +42,6 @@ form.password: Password
 form.password_confirmation: 'Repeat password'
 form.new_password: 'New password'
 form.new_password_confirmation: 'Repeat new password'
+'Welcome to bestfootball. Please complete your personal informations by clicking on this notification or by going to the informations section. Once that is all set up, you can go out there and show your skills!': 'Welcome to bestfootball. Please complete your personal informations by clicking on this notification or by going to the informations section. Once that is all set up, you can go out there and show your skills!'
+'Sorry this username is already taken. Please choose another one.': 'Sorry this username is already taken. Please choose another one.'
+'This username is available.': 'This username is available.'

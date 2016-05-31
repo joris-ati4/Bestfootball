@@ -9,11 +9,14 @@
     		 {{ form_widget(form.email, {'attr': {'class': 'form-control', 'placeholder': 'Email','style':'margin-top:20px;' }}) }}
     	</div>
    	</div>
-   	<div class="form-group">
+   	<div class="form-group" id="username_field">
       {{ form_errors(form.username) }}
     	<div class="col-xs-12 col-sm-10 col-md-10 col-lg-10 col-sm-offset-1 col-md-offset-1 col-lg-offset-1" style="margin-top:20px;">
     		{{ form_widget(form.username, {'attr': {'class': 'form-control' , 'placeholder': 'Username','style':'margin-top:20px;'}}) }}
+        <span id="helpblocktaken" class="help-block" style="display:none;">{{'Sorry this username is already taken. Please choose another one.'|trans }}</span>
+        <span id="helpblockfree" class="help-block" style="display:none;">{{'This username is available.'|trans }}</span>
     	</div>
+      
    	</div>
    	<div class="form-group">
       {{ form_errors(form.plainPassword.first) }}
@@ -35,7 +38,7 @@
 
   </br>
     <div>
-        <input type="submit" class="btn btn-success" style="margin-top: 10px;width:90%;" value="{{ 'registration.submit'|trans }}" style="margin-top:20px;"/>
+        <input type="submit" id="sumbit_username" class="btn btn-success" style="margin-top: 10px;width:90%;" value="{{ 'registration.submit'|trans }}" style="margin-top:20px;"/>
     </div>
 
 {{ form_end(form) }}

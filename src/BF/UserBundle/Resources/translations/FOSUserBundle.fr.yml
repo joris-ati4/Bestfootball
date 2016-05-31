@@ -1,14 +1,14 @@
-change_password.submit: "Changer le mot de passe"
+change_password.submit: 'Changer le mot de passe'
 group.edit.submit: __group.edit.submit
 group.new.submit: __group.new.submit
 group.show.name: __group.show.name
 profile.edit.submit: __profile.edit.submit
 profile.show.username: __profile.show.username
 profile.show.email: __profile.show.email
-registration.confirmed: "Votre inscription a été prise en compte"
-registration.back: "Retour"
-registration.email.subject: "Votre inscription sur Bestfootball"
-registration.email.message: ""
+registration.confirmed: 'Votre inscription a été prise en compte'
+registration.back: Retour
+registration.email.subject: 'Votre inscription sur Bestfootball'
+registration.email.message: ''
 registration.submit: __registration.submit
 resetting.check_email: __resetting.check_email
 resetting.email.subject: __resetting.email.subject
@@ -22,6 +22,8 @@ Connect: 'Se connecter'
 Subscribe: 'S''inscrire'
 Username: 'Nom d''utilisateur'
 Password: 'Mot de passe'
-security.login.remember_me: "se souvenir de moi"
+security.login.remember_me: 'se souvenir de moi'
 security.login.submit: __security.login.submit
 'Forgot your password?': 'Mot de passe oublié?'
+'Sorry this username is already taken. Please choose another one.': "Ce nom d'utilisateur est déjà pris"
+'This username is available.': "Ce nom d'utilisateur est disponible."
