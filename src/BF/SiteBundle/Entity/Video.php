@@ -242,8 +242,7 @@ class Video
             unlink($this->getUploadRootDir().'/'.$this->id.'.'.$this->extension);
         }
         else{
-            $video->save(new X264(),'/var/www/v.bestfootball.fr/'.$this->name.'.mp4');
-            unlink($this->getUploadRootDir().'/'.$this->id.'.'.$this->extension);
+            rename($this->getUploadRootDir().'/'.$this->id.'.'.$this->extension, '/var/www/v.bestfootball.fr/'.$this->name.'.mp4');
         }
         
         
