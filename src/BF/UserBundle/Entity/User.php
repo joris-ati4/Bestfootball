@@ -143,7 +143,7 @@ class User extends BaseUser
     /** @ORM\Column(name="mail_duel", type="boolean") */
     protected $mailDuel;
 
-    /** @ORM\Column(name="last_activity", type="datetime") */
+    /** @ORM\Column(name="last_activity", type="datetime", nullable=true) */
     protected $lastActivity;
 
     public function __construct()
@@ -868,6 +868,7 @@ class User extends BaseUser
     {
         return $this->quotes;
     }
+
 
     /**
      * Set lastActivity
