@@ -163,10 +163,11 @@ class VideoController extends Controller
 
 
 			    //we convert the video to the right size and with the watermark
-				$curl = curl_init();
-				curl_setopt($curl, CURLOPT_URL, 'http://v.bestfootball.fr/test/convert.php?file='.$video->getSource());
-				$retour = curl_exec($curl);
-				curl_close($curl);
+			      $exploded = explode('/', $video->getSource());
+				  $curl = curl_init();
+				  curl_setopt($curl, CURLOPT_URL, 'http://v.bestfootball.fr/test/convert.php?file='.$exploded[3]);
+				  $retour = curl_exec($curl);
+				  curl_close($curl);
 
 			    $this->addFlash('success', 'Your video was uploaded to our servers and you received '.$video->getScore().' points for this video.');
 
@@ -322,10 +323,11 @@ class VideoController extends Controller
 						$em->flush();
 
 						//we convert the video to the right size and with the watermark
-						$curl = curl_init();
-						curl_setopt($curl, CURLOPT_URL, 'http://v.bestfootball.fr/test/convert.php?file='.$video->getSource());
-						$retour = curl_exec($curl);
-						curl_close($curl);
+				      $exploded = explode('/', $video->getSource());
+					  $curl = curl_init();
+					  curl_setopt($curl, CURLOPT_URL, 'http://v.bestfootball.fr/test/convert.php?file='.$exploded[3]);
+					  $retour = curl_exec($curl);
+					  curl_close($curl);
 
 					    $this->addFlash('success', 'Your video was uploaded to our servers.');
 
@@ -361,8 +363,9 @@ class VideoController extends Controller
 			      $em->flush();
 
 			      //we convert the video to the right size and with the watermark
+			      $exploded = explode('/', $video->getSource());
 				  $curl = curl_init();
-				  curl_setopt($curl, CURLOPT_URL, 'http://v.bestfootball.fr/test/convert.php?file='.$video->getSource());
+				  curl_setopt($curl, CURLOPT_URL, 'http://v.bestfootball.fr/test/convert.php?file='.$exploded[3]);
 				  $retour = curl_exec($curl);
 				  curl_close($curl);
 
