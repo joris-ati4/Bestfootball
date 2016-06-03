@@ -161,6 +161,16 @@ class VideoController extends Controller
 			    $em->persist($video);
 			    $em->flush();
 
+
+			    //we convert the video to the right size and with the watermark
+				$curl = curl_init();
+				curl_setopt($curl, CURLOPT_URL, 'http://v.bestfootball.fr/test/convert.php?file='.$video->getSource());
+				curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+				curl_setopt($curl, CURLOPT_COOKIESESSION, true); 
+				curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
+				$retour = curl_exec($curl);
+				curl_close($curl);
+
 			    $this->addFlash('success', 'Your video was uploaded to our servers and you received '.$video->getScore().' points for this video.');
 
 			    return $this->redirect($this->generateUrl('bf_site_videos'));
@@ -314,6 +324,15 @@ class VideoController extends Controller
 						$em->persist($duel);
 						$em->flush();
 
+						//we convert the video to the right size and with the watermark
+						$curl = curl_init();
+						curl_setopt($curl, CURLOPT_URL, 'http://v.bestfootball.fr/test/convert.php?file='.$video->getSource());
+						curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+						curl_setopt($curl, CURLOPT_COOKIESESSION, true); 
+						curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
+						$retour = curl_exec($curl);
+						curl_close($curl);
+
 					    $this->addFlash('success', 'Your video was uploaded to our servers.');
 
 					    return $this->redirect($this->generateUrl('bf_site_videos'));
@@ -346,6 +365,15 @@ class VideoController extends Controller
 			      $em = $this->getDoctrine()->getManager();
 			      $em->persist($video);
 			      $em->flush();
+
+			      //we convert the video to the right size and with the watermark
+				  $curl = curl_init();
+				  curl_setopt($curl, CURLOPT_URL, 'http://v.bestfootball.fr/test/convert.php?file='.$video->getSource());
+				  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+				  curl_setopt($curl, CURLOPT_COOKIESESSION, true); 
+				  curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
+				  $retour = curl_exec($curl);
+				  curl_close($curl);
 
 			      $this->addFlash('success', 'Your video was uploaded to our servers.');
 
