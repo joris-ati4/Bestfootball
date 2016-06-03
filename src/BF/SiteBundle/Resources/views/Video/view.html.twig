@@ -198,7 +198,11 @@
 
                   <p style="color:#95cd36;font-size:16px;"><b>{{ 'Description:'|trans }}</b></p>
                   <p><b>{{ video.description }}</b></p>
-                  <a href="{{ path('bf_site_video_report', {'id': video.id}) }}">{{'report this video'|trans }}</a>
+
+
+                  {% if app.user is not null %}
+                    <a href="{{ path('bf_site_video_report', {'id': video.id}) }}">{{'report this video'|trans }}</a>
+                  {% endif %}
 
                   {% if video.type == 'challenge'%}
                     <h3>{{ 'Score'|trans }}</h3>
