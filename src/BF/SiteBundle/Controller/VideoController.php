@@ -165,9 +165,6 @@ class VideoController extends Controller
 			    //we convert the video to the right size and with the watermark
 				$curl = curl_init();
 				curl_setopt($curl, CURLOPT_URL, 'http://v.bestfootball.fr/test/convert.php?file='.$video->getSource());
-				curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-				curl_setopt($curl, CURLOPT_COOKIESESSION, true); 
-				curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
 				$retour = curl_exec($curl);
 				curl_close($curl);
 
@@ -327,9 +324,6 @@ class VideoController extends Controller
 						//we convert the video to the right size and with the watermark
 						$curl = curl_init();
 						curl_setopt($curl, CURLOPT_URL, 'http://v.bestfootball.fr/test/convert.php?file='.$video->getSource());
-						curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-						curl_setopt($curl, CURLOPT_COOKIESESSION, true); 
-						curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
 						$retour = curl_exec($curl);
 						curl_close($curl);
 
@@ -369,9 +363,6 @@ class VideoController extends Controller
 			      //we convert the video to the right size and with the watermark
 				  $curl = curl_init();
 				  curl_setopt($curl, CURLOPT_URL, 'http://v.bestfootball.fr/test/convert.php?file='.$video->getSource());
-				  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-				  curl_setopt($curl, CURLOPT_COOKIESESSION, true); 
-				  curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
 				  $retour = curl_exec($curl);
 				  curl_close($curl);
 
