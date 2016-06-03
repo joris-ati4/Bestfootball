@@ -150,6 +150,16 @@ class VideoController extends Controller
         $em->persist($user);
         $em->flush();
 
+        //here we convert the video with the watermark
+        $exploded = explode('/', $video->getSource());
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, 'http://v.bestfootball.fr/test/convert.php?file='.$exploded[3]);
+        $retour = curl_exec($curl);
+        curl_close($curl);
+
+
+
+
         return View::create($score,Response::HTTP_CREATED);
     }
 
