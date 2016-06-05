@@ -55,7 +55,12 @@ class AdminController extends Controller
         $videoByDiferentUser = 0;
         $oldUser = null;
             foreach ($listVideos as $video){
-                if($video->getUser()->getId() == $oldUser->getId()){
+                if($oldUser == null){
+                    //premier tour.
+                    $videoByDiferentUser = $videoByDiferentUser + 1;
+                    $oldUser = $video->getUser();
+                }
+                if($video->getUser()->getId() != $oldUser->getId()){
                     //add 1 to $videoByDiferentUser
                     $videoByDiferentUser = $videoByDiferentUser + 1;
                     $oldUser = $video->getUser();
