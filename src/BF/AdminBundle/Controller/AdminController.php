@@ -67,7 +67,7 @@ class AdminController extends Controller
                 }
             }
 
-        $videoInfo = array('totalVideos' => $totalVideos, 'videosWeek' => $videosWeek, 'videosTotalViews' => $totalViews, 'videosDiferentUser' => $videosDiferentUser);
+        $videoInfo = array('totalVideos' => $totalVideos, 'videosWeek' => $videosWeek, 'videosTotalViews' => $totalViews, 'videosDiferentUser' => $videoByDiferentUser);
         //informations about users.
         $totalUsers = count($this->getDoctrine()->getManager()->getRepository('BFUserBundle:User')->findall());
         $numberDayUsers = count($this->getDoctrine()->getManager()->getRepository('BFUserBundle:User')->usersDay(new \Datetime("- 1 day")));
