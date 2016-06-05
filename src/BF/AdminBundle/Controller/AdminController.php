@@ -50,16 +50,25 @@ class AdminController extends Controller
         $totalVideos = count($this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video')->findall());
         $videosWeek = count($this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video')->videoWeek(new \Datetime("- 7 days")));
 
-        $videoInfo = array('totalVideos' => $totalVideos, 'videosWeek' => $videosWeek, 'videosTotalViews' => $totalViews);
+        //videos by différent users
+        $listVideos = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video')->findBy(array(),array('user' => 'desc'));
+        $videoByDiferentUser = 0;
+        $oldUser = null;
+            foreach ($listVideos as $video){
+                if($video->getUser()->getId() == $oldUser->getId()){
+                    //add 1 to $videoByDiferentUser
+                    $videoByDiferentUser = $videoByDiferentUser + 1;
+                    $oldUser = $video->getUser();
+                }
+            }
+
+        $videoInfo = array('totalVideos' => $totalVideos, 'videosWeek' => $videosWeek, 'videosTotalViews' => $totalViews, 'videosDiferentUser' => $videosDiferentUser);
         //informations about users.
         $totalUsers = count($this->getDoctrine()->getManager()->getRepository('BFUserBundle:User')->findall());
         $numberDayUsers = count($this->getDoctrine()->getManager()->getRepository('BFUserBundle:User')->usersDay(new \Datetime("- 1 day")));
         $numberWeekUsers = count($this->getDoctrine()->getManager()->getRepository('BFUserBundle:User')->usersWeek(new \Datetime("- 7 days")));
 
         $userInfo = array('totalUsers' => $totalUsers, 'dayUsers' => $numberDayUsers, 'weekUsers' => $numberWeekUsers);
-
-        //
-
 
 
 	    return $this->render('BFAdminBundle:Admin:index.html.twig',array(

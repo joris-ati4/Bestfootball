@@ -3,18 +3,14 @@
 
 
     <!--Title with line -->
-      <div style="width: 100%; height: 21px; border-bottom: 1px solid #95cd36; text-align: center;background-color:#FFF;">
-        <span style="font-size: 27px; background-color: #FFF; padding: 0 10px;color:#95cd36;">
-          {{ 'My Challenges'|trans }}<!--Padding is optional-->
-        </span>
-      </div>
-      <div style="width: 100%; height: 15px;background-color:#FFF;">
-      </div>
-
-
-
-
-
+    <div style="width: 100%; height: 21px; border-bottom: 1px solid #95cd36; text-align: center;background-color:#FFF;">
+      <span style="font-size: 27px; background-color: #FFF; padding: 0 10px;color:#95cd36;">
+        {{ 'My Challenges'|trans }}<!--Padding is optional-->
+      </span>
+    </div>
+    <div style="width: 100%; height: 15px;background-color:#FFF;">
+    </div>
+      
     <div class="challengecontent">
       {% if lists.listChallenges|length > 0 %}
         <ul style="list-style-type:none;padding-left:0px;" >
