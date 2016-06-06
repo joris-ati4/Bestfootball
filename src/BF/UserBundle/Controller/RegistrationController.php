@@ -45,8 +45,7 @@ class RegistrationController extends BaseController
         $country = $em->getRepository('BFSiteBundle:Country')->find(2);
         $state = $em->getRepository('BFSiteBundle:State')->find(111);
 
-
-
+        
         $user = $userManager->createUser();
         $user
             ->setEnabled(true)
@@ -58,12 +57,29 @@ class RegistrationController extends BaseController
             ->setState($state)
         ;
 
+
+
+       
+
+        //section du parrainage
+        $parainId = $request->query->get('parain');
+
+        if($parainId === null){
+            //il n'y a pas de parain
+            $user->setParain(null);
+        }
+        else{
+            $parain = $em->getRepository('BFUserBundle:User')->find($parainId);
+            $user->setParain($parain);
+        }  
+
+
         $message = $this->get('translator')->trans('Welcome to bestfootball. Please complete your personal informations by clicking on this notification or by going to the informations section. Once that is all set up, you can go out there and show your skills!');;
         $link = $this->generateUrl('bf_site_settings');
         $service = $this->container->get('bf_site.notification');
         $notification = $service->create($user, $message, null, $link);
 
-        
+
 
 
         $event = new GetResponseUserEvent($user, $request);
@@ -80,8 +96,8 @@ class RegistrationController extends BaseController
 
         if ($form->isValid()) {
             $event = new FormEvent($form, $request);
-            $dispatcher->dispatch(FOSUserEvents::REGISTRATION_SUCCESS, $event); 
-
+            $dispatcher->dispatch(FOSUserEvents::REGISTRATION_SUCCESS, $event);
+ 
             $userManager->updateUser($user);
 
             //we save the picture entity
@@ -101,6 +117,7 @@ class RegistrationController extends BaseController
 
         return $this->render('BFUserBundle:Registration:register.html.twig', array(
             'form' => $form->createView(),
+            'parain' => $parainId
         ));
     }
 

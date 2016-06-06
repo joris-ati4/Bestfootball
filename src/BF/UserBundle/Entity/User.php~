@@ -12,6 +12,14 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class User extends BaseUser
 {
+
+    
+    /**
+    * @ORM\ManyToOne(targetEntity="BF\UserBundle\Entity\User", inversedBy="users")
+    * @ORM\JoinColumn(nullable=true)
+    */
+    private $parain;
+
     /**
     * @ORM\OneToMany(targetEntity="BF\SiteBundle\Entity\Quote", mappedBy="user")
     */
@@ -25,12 +33,12 @@ class User extends BaseUser
     /**
     * @ORM\OneToMany(targetEntity="BF\SiteBundle\Entity\Report", mappedBy="user")
     */
-    private $reports; // Notez le « s », une annonce est liée à plusieurs candidatures
+    private $reports; 
 
     /**
     * @ORM\ManyToMany(targetEntity="BF\SiteBundle\Entity\Duel", mappedBy="users")
     */
-    private $duels; // Notez le « s », une annonce est liée à plusieurs candidatures
+    private $duels; 
 
     /**
     * @ORM\ManyToOne(targetEntity="BF\SiteBundle\Entity\Country", inversedBy="users")
@@ -146,6 +154,8 @@ class User extends BaseUser
     /** @ORM\Column(name="last_activity", type="datetime", nullable=true) */
     protected $lastActivity;
 
+  
+
     public function __construct()
     {
         parent::__construct();
@@ -255,30 +265,6 @@ class User extends BaseUser
     public function getCity()
     {
         return $this->city;
-    }
-
-    /**
-     * Set country
-     *
-     * @param string $country
-     *
-     * @return User
-     */
-    public function setCountry($country)
-    {
-        $this->country = $country;
-
-        return $this;
-    }
-
-    /**
-     * Get country
-     *
-     * @return string
-     */
-    public function getCountry()
-    {
-        return $this->country;
     }
 
     /**
@@ -869,4 +855,53 @@ class User extends BaseUser
         return $this->quotes;
     }
 
+
+    /**
+     * Set lastActivity
+     *
+     * @param \DateTime $lastActivity
+     *
+     * @return User
+     */
+    public function setLastActivity($lastActivity)
+    {
+        $this->lastActivity = $lastActivity;
+
+        return $this;
+    }
+
+    /**
+     * Get lastActivity
+     *
+     * @return \DateTime
+     */
+    public function getLastActivity()
+    {
+        return $this->lastActivity;
+    }
+
+
+    /**
+     * Set parain
+     *
+     * @param \BF\UserBundle\Entity\User $parain
+     *
+     * @return User
+     */
+    public function setParain(\BF\UserBundle\Entity\User $parain = null)
+    {
+        $this->parain = $parain;
+
+        return $this;
+    }
+
+    /**
+     * Get parain
+     *
+     * @return \BF\UserBundle\Entity\User
+     */
+    public function getParain()
+    {
+        return $this->parain;
+    }
 }

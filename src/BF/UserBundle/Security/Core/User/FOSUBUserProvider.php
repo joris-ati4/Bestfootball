@@ -49,7 +49,7 @@ class FOSUBUserProvider extends BaseClass
             $mail = $response->getEmail();
             $firstname = $response->getFirstname();
             $lastname = $response->getLastname();
-            $nickname = $firstname.rand(0, 1000000);
+            $nickname = $firstname.rand(0, 1000);
             $data = $response->getResponse();
             $gender = $data['gender'];
             $birthday = $data['birthday'];
