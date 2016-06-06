@@ -151,16 +151,14 @@ swiftmailer:
     default_mailer: default
     mailers:
         default:
-            transport: %mailer_transport%
-            host:      %mailer_host%
-            username:  %mailer_user%
-            password:  %mailer_password%
+            transport: gmail
+            username:  "contact@bestfootball.fr"
+            password:  "Bestfootball1*"
             spool:     { type: memory }
         spool:
-            transport: %mailer_transport%
-            host:      %mailer_host%
-            username:  %mailer_user%
-            password:  %mailer_password%
+            transport: gmail
+            username:  "contact@bestfootball.fr"
+            password:  "Bestfootball1*"
             spool:
                 type: file
                 path: "%kernel.root_dir%"
