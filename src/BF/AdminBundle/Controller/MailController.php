@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 class MailController extends Controller
 {
-    public function newsletterAction(request $request)
+    public function newsletterChallengeAction(request $request)
     {
       //make a form to send a newsletter
       $form = $this->createFormBuilder()
@@ -72,6 +72,92 @@ class MailController extends Controller
     
 
       return $this->render('BFAdminBundle:Mail:newsletter.html.twig',array(
+        'form' => $form->createView(),
+      ));
+    }
+    public function newsletterLastVideoAction(request $request)
+    {
+      //make a form to send a newsletter
+      $form = $this->createFormBuilder()
+            ->add('subject', 'text')
+            ->add('message', 'textarea')
+            
+            ->add('video', 'entity', array(
+                  'class' => 'BFSiteBundle:Video',
+                  'choice_label' => 'id',
+              ))
+            ->add('test', 'checkbox', array('required' => false))
+            ->add('save', 'submit', array('label' => 'Envoyer la newsletter'))
+            ->getForm();
+
+
+
+          $form->handleRequest($request);
+
+          if ($form->isSubmitted() && $form->isValid()) {
+
+            //getting the users for the newsletter
+            $listUsers = $this->getDoctrine()->getManager()->getRepository('BFUserBundle:User')->findBy(array('mailWeekly' => 1));
+
+            $data = $form->getData();
+
+            $video = $data['video'];
+            $message = $data['message'];
+            $subject = $data['subject'];
+
+            if($data['test'] === true){
+              //We send a test mail to my personal email.
+              $user = $this->container->get('security.context')->getToken()->getUser();
+              $mail = \Swift_Message::newInstance()
+                      ->setSubject($subject)
+                      ->setFrom('noreply@bestfootball.fr')
+                      ->setTo($user->getEmailCanonical())
+                      ->setBody(
+                        $this->renderView(
+                          // app/Resources/views/Emails/newsletter.html.twig
+                              'Emails/newsletter/lastvideo.html.twig',array(
+                                'subject' => $subject,
+                                'message' => $message,
+                                'user' => $user,
+                                'video' => $video
+                              )
+                        ),
+                        'text/html'
+                  );
+                $this->get('swiftmailer.mailer')->send($mail); 
+            }
+            else{
+              // Send the mail to all the users
+              foreach ($listUsers as $user) {
+              //send the message to the user.
+                  $mail = \Swift_Message::newInstance()
+                      ->setSubject($subject)
+                      ->setFrom('noreply@bestfootball.fr')
+                      ->setTo($user->getEmailCanonical())
+                      ->setBody(
+                        $this->renderView(
+                          // app/Resources/views/Emails/newsletter.html.twig
+                              'Emails/newsletter/lastvideo.html.twig',array(
+                                'subject' => $subject,
+                                'message' => $message,
+                                'user' => $user,
+                                'video' => $video
+                              )
+                        ),
+                        'text/html'
+                  );
+                $this->get('swiftmailer.mailer.spool')->send($mail); //using the spool mailing method
+                unset($mail); //resetting the memory variable back to null
+              }
+            }
+              $request->getSession()->getFlashBag()->add('notice', 'The mail has been send!');
+              return $this->redirect($this->generateUrl('bf_site_admin'));
+          }
+
+
+    
+
+      return $this->render('BFAdminBundle:Mail:newsletterLastVideo.html.twig',array(
         'form' => $form->createView(),
       ));
     }

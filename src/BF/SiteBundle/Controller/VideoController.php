@@ -138,7 +138,7 @@ class VideoController extends Controller
 			      $em = $this->getDoctrine()->getManager();
 
 
-			      //if the video is for an ambassador challenge
+			    //if the video is for an ambassador challenge
 		        if($challenge->getType() != 'normal'){
 		        	//we give the user 300 points
 		        	$video->setScore('0');
@@ -153,6 +153,9 @@ class VideoController extends Controller
 			      	if($two > $video->getRepetitions() && $video->getRepetitions() >= $one){$video->setScore('50');}
 			      	if($one > $video->getRepetitions()){$video->setScore('0');}
 		        }
+		        //call the service to check if the vidéo
+
+		        
 			
 			    //now we update the points of the user
 			    $points = $video->getScore() + $user->getPoints();
@@ -163,11 +166,11 @@ class VideoController extends Controller
 
 
 			    //we convert the video to the right size and with the watermark
-			      $exploded = explode('/', $video->getSource());
-				  $curl = curl_init();
-				  curl_setopt($curl, CURLOPT_URL, 'http://v.bestfootball.fr/test/convert.php?file='.$exploded[3]);
-				  $retour = curl_exec($curl);
-				  curl_close($curl);
+			    $exploded = explode('/', $video->getSource());
+				$curl = curl_init();
+				curl_setopt($curl, CURLOPT_URL, 'http://v.bestfootball.fr/test/convert.php?file='.$exploded[3]);
+				$retour = curl_exec($curl);
+				curl_close($curl);
 
 			    $this->addFlash('success', 'Your video was uploaded to our servers and you received '.$video->getScore().' points for this video.');
 

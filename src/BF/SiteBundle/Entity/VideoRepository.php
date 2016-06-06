@@ -335,5 +335,20 @@ class VideoRepository extends \Doctrine\ORM\EntityRepository
 	    ->getResult()
 	  ;
 	}
+	public function lowerRepetitionsVideos($challenge, $repetitions)
+	{
+		$qb = $this->createQueryBuilder('v');
+
+		$qb->Where('v.challenge = :challenge AND v.repetitions < :repetitions')
+		    ->setParameter('challenge', $challenge)
+		    ->setParameter('repetitions', $repetitions)
+		    ->orderBy('v.date', 'DESC')
+		;
+
+		return $qb
+			->getQuery()
+		    ->getResult()
+		;
+	}
 
 }

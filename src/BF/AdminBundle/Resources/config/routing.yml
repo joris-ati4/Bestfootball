@@ -98,7 +98,12 @@ bf_site_admin_video_delete:
 
 #Mailing url
 
-bf_site_admin_mail_newsletter:
-    path:     /{_locale}/admin/mail/newsletter
-    defaults: { _controller: BFAdminBundle:Mail:newsletter, _locale: fr }
+bf_site_admin_mail_newsletter_challenge:
+    path:     /{_locale}/admin/mail/newsletter/challenge
+    defaults: { _controller: BFAdminBundle:Mail:newsletterChallenge, _locale: fr }
+    methods:  [POST,GET]
+
+bf_site_admin_mail_newsletter_lastVideo:
+    path:     /{_locale}/admin/mail/newsletter/lastvideo
+    defaults: { _controller: BFAdminBundle:Mail:newsletterLastVideo, _locale: fr }
     methods:  [POST,GET]
