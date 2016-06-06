@@ -152,13 +152,13 @@ swiftmailer:
     mailers:
         default:
             transport: gmail
-            username:  "contact@bestfootball.fr"
-            password:  "Bestfootball1*"
+            username:  %mailer_user%
+            password:  %mailer_password%
             spool:     { type: memory }
         spool:
             transport: gmail
-            username:  "contact@bestfootball.fr"
-            password:  "Bestfootball1*"
+            username:  %mailer_user%
+            password:  %mailer_password%
             spool:
                 type: file
                 path: "%kernel.root_dir%"
