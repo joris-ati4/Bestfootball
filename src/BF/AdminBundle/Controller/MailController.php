@@ -44,7 +44,7 @@ class MailController extends Controller
               //send the message to the user.
                   $message = \Swift_Message::newInstance()
                       ->setSubject($subject)
-                      ->setFrom('noreply@bestfootball.fr')
+                      ->setFrom(array('noreply@bestfootball.fr' => 'Bestfootball'))
                       ->setTo($user->getEmailCanonical())
                       ->setBody(
                         $this->renderView(
@@ -116,7 +116,7 @@ class MailController extends Controller
               $user = $this->container->get('security.context')->getToken()->getUser();
               $mail = \Swift_Message::newInstance()
                       ->setSubject($subject)
-                      ->setFrom('noreply@bestfootball.fr')
+                      ->setFrom(array('noreply@bestfootball.fr' => 'Bestfootball'))
                       ->setTo($user->getEmailCanonical())
                       ->setBody(
                         $this->renderView(
@@ -144,7 +144,7 @@ class MailController extends Controller
                 //send the message to the user.
                   $mail = \Swift_Message::newInstance()
                       ->setSubject($subject)
-                      ->setFrom('noreply@bestfootball.fr')
+                      ->setFrom(array('noreply@bestfootball.fr' => 'Bestfootball'))
                       ->setTo($user->getEmailCanonical())
                       ->setBody(
                         $this->renderView(
