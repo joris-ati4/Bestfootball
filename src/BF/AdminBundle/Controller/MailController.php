@@ -90,6 +90,8 @@ class MailController extends Controller
             ->add('save', 'submit', array('label' => 'Envoyer la newsletter'))
             ->getForm();
 
+            
+
 
 
           $form->handleRequest($request);
@@ -105,6 +107,10 @@ class MailController extends Controller
             $message = $data['message'];
             $subject = $data['subject'];
 
+            //generate random 64 bit client id
+            $bytes = random_bytes(64);
+            $clientID = bindec($bytes);
+
             if($data['test'] === true){
               //We send a test mail to my personal email.
               $user = $this->container->get('security.context')->getToken()->getUser();
@@ -119,7 +125,8 @@ class MailController extends Controller
                                 'subject' => $subject,
                                 'message' => $message,
                                 'user' => $user,
-                                'video' => $video
+                                'video' => $video,
+                                'clientID' => $clientID
                               )
                         ),
                         'text/html'
@@ -129,7 +136,12 @@ class MailController extends Controller
             else{
               // Send the mail to all the users
               foreach ($listUsers as $user) {
-              //send the message to the user.
+
+                //generate random 64 bit client id
+                $bytes = random_bytes(64);
+                $clientID = bindec($bytes);
+                
+                //send the message to the user.
                   $mail = \Swift_Message::newInstance()
                       ->setSubject($subject)
                       ->setFrom('noreply@bestfootball.fr')
@@ -141,7 +153,8 @@ class MailController extends Controller
                                 'subject' => $subject,
                                 'message' => $message,
                                 'user' => $user,
-                                'video' => $video
+                                'video' => $video,
+                                'clientID' => $clientID
                               )
                         ),
                         'text/html'
