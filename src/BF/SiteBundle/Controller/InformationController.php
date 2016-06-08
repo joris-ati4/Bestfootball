@@ -49,4 +49,10 @@ class InformationController extends Controller
               
             ));
     }
+    public function reglementConcoursAction()
+    {
+        return $this->render('BFSiteBundle:Home:reglement_concours.html.twig', array(
+              
+            ));
+    }
 }

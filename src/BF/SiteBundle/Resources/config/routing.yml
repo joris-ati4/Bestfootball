@@ -133,6 +133,13 @@ bf_site_prices:
     requirements:
         _locale: en|fr
 
+bf_site_reglementConcours:
+    path:     /{_locale}/concours/reglement
+    defaults: { _controller: BFSiteBundle:Information:reglementConcours, _locale: fr }
+    methods:  [GET]
+    requirements:
+        _locale: en|fr
+
 bf_site_last_videos:
     path:     /{_locale}/videos
     defaults: { _controller: BFSiteBundle:Home:videos, _locale: fr }
