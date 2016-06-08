@@ -15,6 +15,10 @@ services:
         class: BF\SiteBundle\VideosPoints\BFVideosPoints
         arguments: [@doctrine.orm.entity_manager]
 
+    bf_site.challengeMailer:
+        class: BF\SiteBundle\ChallengeMailer\BFVideosPoints
+        arguments: [@doctrine.orm.entity_manager, @mailer, @templating]
+
     em:
         alias: doctrine.orm.entity_manager
 

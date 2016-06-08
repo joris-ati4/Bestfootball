@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<title>Email Template - Bestfootball</title>
+		<title>{{ subject }} - Bestfootball</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	</head>
 	<body>
@@ -21,7 +21,7 @@
 									</tr>
 									<tr>
 										<td style="padding-top: 10px; padding-right: 10px; padding-bottom: 8px; padding-left: 10px; text-align:center;">
-											<h1 style="color:#95cd36;font-family:helvetica;">THE SUBJECT OF THE MAIL</h1>
+											<h1 style="color:#95cd36;font-family:helvetica;">{{ subject }}</h1>
 										</td>
 									</tr>
 								</table>
@@ -34,47 +34,28 @@
 									<tbody>
 										<tr>
 											<td>
-												<h2 style="color:white;font-family:helvetica;">Salut Username,</h2>
+												<h2 style="color:white;font-family:helvetica;">Salut {{ user.username }},</h2>
 											</td>
 								 		</tr>
 								 		<tr>
 								  			<td>
 								   				<p style="color:white;font-family:helvetica;text-align:justify;">
-								   					Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tempus adipiscing felis, sit amet blandit ipsum volutpat sed. Morbi porttitor, eget accumsan dictum, nisi libero ultricies ipsum, in posuere mauris neque at erat.
+								   					{{ opponentVideo.user.username }} vient de participer au {{ opponentVideo.challenge.titleFR }} challenge et a dépassé votre nombre de répétitions. Pour regarder sa vidéo, clique sur le thumbnail à côté ou le bouton ci-dessous.
 								   				</p>
 								  			</td>
-								 		</tr>
-								 		<tr>
-											<td>
-												<h3 style="color:white;font-family:helvetica;">Les dernières vidéos</h3>
-											</td>
-								 		</tr>
-								 		<tr>
-								  			<td>
-								   				<!--Dernières vidéos -->
-								   				<table border="0" cellpadding="0" cellspacing="0" width="100%">
-													<tbody>
-														<tr>
-															<td width="260px">
-																<a href="">
-																	<img src="https://v.bestfootball.fr/thumbnail/17fcaaa6d3b6abef5e6fdd1bb9da0e48.jpg" alt="Thubmnail of..." width="260px" style="display: block;">
-																</a>
-															</td>
-															<td width="40px">
-																<!--Cellule vide-->
-																&nbsp;
-															</td>
-															<td width="260px">
-																<a href="">
-																	<img src="https://v.bestfootball.fr/thumbnail/17fcaaa6d3b6abef5e6fdd1bb9da0e48.jpg" alt="Thubmnail of..." width="260px" style="display: block;">
-																</a>
-															</td>
-
-												 		</tr>
-													</tbody>
-												</table>
+								  			<td valign="top" style="padding-left:15px;">
+								  				<!-- Thumbnail of the new video -->
+								  				<a href="http://bestfootball.fr{{ path('bf_site_video', {'code', opponentVideo.code })}}" target="_blank">			
+								  					<img src="{{ opponentVideo.thumbUrl }}" alt="{{ opponentVideo.thumbAlt }}" width="260px" style="display: block;">
+								  				</a>
 								  			</td>
 								 		</tr>
+								 		<tr>
+                                            <td colspan="2" style="text-align:center;">
+                                                <!-- Button -->
+                                                <a href="http://bestfootball.fr{{ path('bf_site_video', {'code': opponentVideo.code }) }}" target="_blank" class="btn btn-success" style="color: white;display: inline-block;padding: 6px 12px;margin-bottom: 0;font-size: 14px;font-weight: bold;line-height: 1.42857143;text-align: center;white-space: nowrap;vertical-align: middle;-ms-touch-action: manipulation;touch-action: manipulation;cursor: pointer;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;background-image: none;border: 1px solid transparent;border-radius: 4px;background-color: #5cb85c;border-color: #4cae4c;text-decoration: none;font-family:helvetica;">Vers la vidéo!</a>
+                                            </td>
+                                        </tr>
 									</tbody>
 								</table>
 							</td>

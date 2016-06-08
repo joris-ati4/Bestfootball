@@ -125,6 +125,16 @@
             </div>
           </div>
         </div>
+        {% if user.username == app.user.username %}
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <div class="row">
+                <p>Ton lien de parrainage: <b>http://bestfootball.fr/register/?parain={{ user.id }}</b></p>
+              </div>
+            </div>
+          </div>
+
+        {% endif %}
       </div>
     </div>
   </div>

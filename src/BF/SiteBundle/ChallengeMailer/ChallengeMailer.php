@@ -22,14 +22,14 @@ class BFChallengeMailer
   {
   	//Get all the videos that are under the current video repetitions
     $listVideos = $this->em->getRepository('BFSiteBundle:Video')->lowerRepetitionsVideos($challenge, $newVideo->getRepetitions());
-    if(!$listVideos){
+    if($listVideos !== null){
       $subject = "Nouvelle vidéo pour le challenge ".$challenge->getTitleFR()."!";
       foreach ($listVideos as $video) {
         //send a mail to the user to notice him the new video.
         $message = \Swift_Message::newInstance()
             ->setSubject($subject)
             ->setFrom('noreply@bestfootball.fr')
-            ->setTo($user->getEmailCanonical())
+            ->setTo($video->getUser()->getEmailCanonical())
             ->setBody(
               $this->renderView(
                 // app/Resources/views/Emails/newsletter.html.twig

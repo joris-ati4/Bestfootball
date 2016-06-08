@@ -172,6 +172,10 @@ class VideoController extends Controller
 				$retour = curl_exec($curl);
 				curl_close($curl);
 
+				//sending a mail to all lower repetitions
+				$challengeMailer = $this->container->get('bf_site.challengeMailer');
+      			$result = $challengeMailer->ChallengeMail($video, $video->getChallenge());
+
 			    $this->addFlash('success', 'Your video was uploaded to our servers and you received '.$video->getScore().' points for this video.');
 
 			    return $this->redirect($this->generateUrl('bf_site_videos'));
