@@ -22,7 +22,7 @@ set :keep_releases, 3 # Le nombre de releases à garder après un déploiement r
 
 ## Symfony2
 set :shared_files, ["app/config/parameters.yml"] # Les fichiers à conserver entre chaque déploiement
-set :shared_children, [app_path + "/logs", "vendor", web_path + "/uploads"] # Idem, mais pour les dossiers
+set :shared_children, [app_path + "/logs", "vendor", web_path + "/uploads",app_path + "/spool",] # Idem, mais pour les dossiers
 set :use_composer, true
 set :update_vendors, false # Il est conseillé de laisser a false et de ne pas faire de ‘composer update’ directement sur la prod
 #set :composer_options, "--verbose --prefer-dist" # Permet de spécifier des paramètres supplémentaires à composer, inutile dans notre cas
@@ -40,8 +40,12 @@ logger.level = Logger::MAX_LEVEL
 default_run_options[:pty] = true
 
 # Et enfin, si jamais vous rencontrez des erreurs de permissions, vous pouvez rajouter ces lignes suivantes :
-#after "deploy:finalize_update" do
-#run "chown -R joris:www-data #{latest_release}"
-#run "sudo chmod -R 777 #{latest_release}/#{cache_path}"
-#run "sudo chmod -R 777 #{latest_release}/#{log_path}"
-#end
+after "deploy:finalize_update" do
+run "sudo chown -R joris:www-data #{latest_release}"
+run "sudo chown -R joris:www-data #{latest_release}/app/spool"
+run "sudo chown -R joris:www-data #{latest_release}/app/logs/dev.log"
+run "sudo chown -R joris:www-data #{latest_release}/app/logs/prod.log"
+run "sudo chmod -R 777 #{latest_release}/#{cache_path}"
+run "sudo chmod -R 777 #{latest_release}/#{log_path}"
+run "sudo chmod -R 777 #{latest_release}/#{log_path}"
+end
