@@ -41,6 +41,7 @@ class ChallengeEditType extends AbstractType
             ->add('thirdPrizeTitleEN','text',array('required' => false))
             ->add('thirdPrizeTitleFR','text',array('required' => false))
             ->add('thirdPrizeLogo','text',array('required' => false))
+            ->add('active', 'checkbox',array('required' => false))
             ->add('save', 'submit')
         ;
     }

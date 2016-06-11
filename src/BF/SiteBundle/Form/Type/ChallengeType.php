@@ -42,6 +42,7 @@ class ChallengeType extends AbstractType
             ->add('thirdPrizeTitleFR','text',array('required' => false))
             ->add('thirdPrizeLogo','text',array('required' => false))
             ->add('file', 'file')
+            ->add('active','checkbox',array('required' => false))
             ->add('save', 'submit')
         ;
     }

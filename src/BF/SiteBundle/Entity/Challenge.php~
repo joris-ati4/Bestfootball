@@ -41,7 +41,7 @@ class Challenge
     private $id;
 
     /**
-    * @Gedmo\Slug(fields={"titleEN"})
+    * @Gedmo\Slug(fields={"titleFR"})
     * @ORM\Column(length=128, unique=true)
     */
     private $slug;
@@ -167,12 +167,12 @@ class Challenge
     private $lienPartner; 
 
     /**
-    * @ORM\Column(name="description_partner_EN", type="string", length=255, nullable=true)
+    * @ORM\Column(name="description_partner_EN", type="text", nullable=true)
     */
     private $descriptionPartnerEN;
 
     /**
-    * @ORM\Column(name="description_partner_FR", type="string", length=255, nullable=true)
+    * @ORM\Column(name="description_partner_FR", type="text", nullable=true)
     */
     private $descriptionPartnerFR;
 
@@ -225,6 +225,11 @@ class Challenge
     * @ORM\Column(name="type", type="string", length=255)
     */
     private $type;
+
+    /**
+    * @ORM\Column(name="active", type="boolean")
+    */
+    private $active;
 
      private $file;
 
@@ -911,5 +916,341 @@ class Challenge
     public function getEndDate()
     {
         return $this->endDate;
+    }
+
+    /**
+     * Set logoPartner
+     *
+     * @param string $logoPartner
+     *
+     * @return Challenge
+     */
+    public function setLogoPartner($logoPartner)
+    {
+        $this->logoPartner = $logoPartner;
+
+        return $this;
+    }
+
+    /**
+     * Get logoPartner
+     *
+     * @return string
+     */
+    public function getLogoPartner()
+    {
+        return $this->logoPartner;
+    }
+
+    /**
+     * Set nomPartner
+     *
+     * @param string $nomPartner
+     *
+     * @return Challenge
+     */
+    public function setNomPartner($nomPartner)
+    {
+        $this->nomPartner = $nomPartner;
+
+        return $this;
+    }
+
+    /**
+     * Get nomPartner
+     *
+     * @return string
+     */
+    public function getNomPartner()
+    {
+        return $this->nomPartner;
+    }
+
+    /**
+     * Set lienPartner
+     *
+     * @param string $lienPartner
+     *
+     * @return Challenge
+     */
+    public function setLienPartner($lienPartner)
+    {
+        $this->lienPartner = $lienPartner;
+
+        return $this;
+    }
+
+    /**
+     * Get lienPartner
+     *
+     * @return string
+     */
+    public function getLienPartner()
+    {
+        return $this->lienPartner;
+    }
+
+    /**
+     * Set descriptionPartnerEN
+     *
+     * @param string $descriptionPartnerEN
+     *
+     * @return Challenge
+     */
+    public function setDescriptionPartnerEN($descriptionPartnerEN)
+    {
+        $this->descriptionPartnerEN = $descriptionPartnerEN;
+
+        return $this;
+    }
+
+    /**
+     * Get descriptionPartnerEN
+     *
+     * @return string
+     */
+    public function getDescriptionPartnerEN()
+    {
+        return $this->descriptionPartnerEN;
+    }
+
+    /**
+     * Set descriptionPartnerFR
+     *
+     * @param string $descriptionPartnerFR
+     *
+     * @return Challenge
+     */
+    public function setDescriptionPartnerFR($descriptionPartnerFR)
+    {
+        $this->descriptionPartnerFR = $descriptionPartnerFR;
+
+        return $this;
+    }
+
+    /**
+     * Get descriptionPartnerFR
+     *
+     * @return string
+     */
+    public function getDescriptionPartnerFR()
+    {
+        return $this->descriptionPartnerFR;
+    }
+
+    /**
+     * Set firstPrizeTitleEN
+     *
+     * @param string $firstPrizeTitleEN
+     *
+     * @return Challenge
+     */
+    public function setFirstPrizeTitleEN($firstPrizeTitleEN)
+    {
+        $this->firstPrizeTitleEN = $firstPrizeTitleEN;
+
+        return $this;
+    }
+
+    /**
+     * Get firstPrizeTitleEN
+     *
+     * @return string
+     */
+    public function getFirstPrizeTitleEN()
+    {
+        return $this->firstPrizeTitleEN;
+    }
+
+    /**
+     * Set firstPrizeTitleFR
+     *
+     * @param string $firstPrizeTitleFR
+     *
+     * @return Challenge
+     */
+    public function setFirstPrizeTitleFR($firstPrizeTitleFR)
+    {
+        $this->firstPrizeTitleFR = $firstPrizeTitleFR;
+
+        return $this;
+    }
+
+    /**
+     * Get firstPrizeTitleFR
+     *
+     * @return string
+     */
+    public function getFirstPrizeTitleFR()
+    {
+        return $this->firstPrizeTitleFR;
+    }
+
+    /**
+     * Set firstPrizeLogo
+     *
+     * @param string $firstPrizeLogo
+     *
+     * @return Challenge
+     */
+    public function setFirstPrizeLogo($firstPrizeLogo)
+    {
+        $this->firstPrizeLogo = $firstPrizeLogo;
+
+        return $this;
+    }
+
+    /**
+     * Get firstPrizeLogo
+     *
+     * @return string
+     */
+    public function getFirstPrizeLogo()
+    {
+        return $this->firstPrizeLogo;
+    }
+
+    /**
+     * Set secondPrizeTitleEN
+     *
+     * @param string $secondPrizeTitleEN
+     *
+     * @return Challenge
+     */
+    public function setSecondPrizeTitleEN($secondPrizeTitleEN)
+    {
+        $this->secondPrizeTitleEN = $secondPrizeTitleEN;
+
+        return $this;
+    }
+
+    /**
+     * Get secondPrizeTitleEN
+     *
+     * @return string
+     */
+    public function getSecondPrizeTitleEN()
+    {
+        return $this->secondPrizeTitleEN;
+    }
+
+    /**
+     * Set secondPrizeTitleFR
+     *
+     * @param string $secondPrizeTitleFR
+     *
+     * @return Challenge
+     */
+    public function setSecondPrizeTitleFR($secondPrizeTitleFR)
+    {
+        $this->secondPrizeTitleFR = $secondPrizeTitleFR;
+
+        return $this;
+    }
+
+    /**
+     * Get secondPrizeTitleFR
+     *
+     * @return string
+     */
+    public function getSecondPrizeTitleFR()
+    {
+        return $this->secondPrizeTitleFR;
+    }
+
+    /**
+     * Set secondPrizeLogo
+     *
+     * @param string $secondPrizeLogo
+     *
+     * @return Challenge
+     */
+    public function setSecondPrizeLogo($secondPrizeLogo)
+    {
+        $this->secondPrizeLogo = $secondPrizeLogo;
+
+        return $this;
+    }
+
+    /**
+     * Get secondPrizeLogo
+     *
+     * @return string
+     */
+    public function getSecondPrizeLogo()
+    {
+        return $this->secondPrizeLogo;
+    }
+
+    /**
+     * Set thirdPrizeTitleEN
+     *
+     * @param string $thirdPrizeTitleEN
+     *
+     * @return Challenge
+     */
+    public function setThirdPrizeTitleEN($thirdPrizeTitleEN)
+    {
+        $this->thirdPrizeTitleEN = $thirdPrizeTitleEN;
+
+        return $this;
+    }
+
+    /**
+     * Get thirdPrizeTitleEN
+     *
+     * @return string
+     */
+    public function getThirdPrizeTitleEN()
+    {
+        return $this->thirdPrizeTitleEN;
+    }
+
+    /**
+     * Set thirdPrizeTitleFR
+     *
+     * @param string $thirdPrizeTitleFR
+     *
+     * @return Challenge
+     */
+    public function setThirdPrizeTitleFR($thirdPrizeTitleFR)
+    {
+        $this->thirdPrizeTitleFR = $thirdPrizeTitleFR;
+
+        return $this;
+    }
+
+    /**
+     * Get thirdPrizeTitleFR
+     *
+     * @return string
+     */
+    public function getThirdPrizeTitleFR()
+    {
+        return $this->thirdPrizeTitleFR;
+    }
+
+    /**
+     * Set thirdPrizeLogo
+     *
+     * @param string $thirdPrizeLogo
+     *
+     * @return Challenge
+     */
+    public function setThirdPrizeLogo($thirdPrizeLogo)
+    {
+        $this->thirdPrizeLogo = $thirdPrizeLogo;
+
+        return $this;
+    }
+
+    /**
+     * Get thirdPrizeLogo
+     *
+     * @return string
+     */
+    public function getThirdPrizeLogo()
+    {
+        return $this->thirdPrizeLogo;
     }
 }

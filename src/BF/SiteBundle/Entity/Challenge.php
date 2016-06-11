@@ -226,6 +226,11 @@ class Challenge
     */
     private $type;
 
+    /**
+    * @ORM\Column(name="active", type="boolean")
+    */
+    private $active;
+
      private $file;
 
     // On ajoute cet attribut pour y stocker le nom du fichier temporairement
@@ -1247,5 +1252,29 @@ class Challenge
     public function getThirdPrizeLogo()
     {
         return $this->thirdPrizeLogo;
+    }
+
+    /**
+     * Set active
+     *
+     * @param boolean $active
+     *
+     * @return Challenge
+     */
+    public function setActive($active)
+    {
+        $this->active = $active;
+
+        return $this;
+    }
+
+    /**
+     * Get active
+     *
+     * @return boolean
+     */
+    public function getActive()
+    {
+        return $this->active;
     }
 }

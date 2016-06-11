@@ -63,8 +63,10 @@
 				</div>
         		<!-- Begin of the challenges page -->
         		{% for challenge in listChallenges %}
-					{% include "BFSiteBundle:Challenge:Challengethumb.html.twig" with {"challenge": challenge} only %}
-				{% endfor %}
+              {% if challenge.active == true %}
+    					 {% include "BFSiteBundle:Challenge:Challengethumb.html.twig" with {"challenge": challenge} only %}
+              {% endif %}
+    				{% endfor %}
         		<!-- End of the challenges page -->
         	</div>
         </div>
