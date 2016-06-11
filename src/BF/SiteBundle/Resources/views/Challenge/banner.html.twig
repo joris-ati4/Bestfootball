@@ -61,7 +61,7 @@
                     </p>
               {% else %}
                   <figure>
-                  <img src="{{ challenge.firstPrizeLogo }}" alt="first prize for the {{ challenge.nomPartner }} challenge on Bestfootball" style="max-width:90%;" class="text-center"/>
+                  <img src="{{ challenge.firstPrizeLogo }}" alt="first prize for the {{ challenge.nomPartner }} challenge on Bestfootball" style="width:90%; max-width:220px;" class="text-center"/>
                   <figcaption>
                       {% if app.request.getLocale() == 'fr' %}      
                           {{ challenge.firstPrizeTitleFR }}
