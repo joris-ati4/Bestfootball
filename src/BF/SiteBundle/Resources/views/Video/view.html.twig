@@ -131,14 +131,14 @@
                               <img src="/img/unfollow.png" alt="Bestfootball follow pictogram" class="imagereactive" data-placement="top" data-toggle="tooltip" title="{{ 'Unfollow'|trans }}"/>
                             </a>
                             <!-- Button to duel the user -->
-                            <a href="{{ path('bf_site_duel_create', {'username': video.user.username }) }}" class="" >
+                            <a href="{{ path('bf_site_duel_create', {'username': video.user.username }) }}" class="">
                               <img src="/img/duel.png" alt="Bestfootball follow pictogram" class="imagereactive" data-placement="top" data-toggle="tooltip" title="{{ 'Duel me!'|trans }}"/>
                             </a>
                           {% endif %}
                         {% endif %}
 
                         {% if video.type == 'challenge' and predict is not null and 'now'|date('d-m-Y') < video.challenge.endDate|date('d-m-Y') %}
-                            <a id="predict">
+                            <a id="predict" rel="nofollow">
                               <img src="/img/predict.png" alt="Bestfootball predict pictogram" class="imagereactive"  data-placement="top" data-toggle="tooltip" title="{{ 'Predict for me to win the challenge!'|trans }}"/> 
                             </a>
                         {% endif %}
@@ -178,19 +178,19 @@
                     {% if video.type =='freestyle' and app.user is not null %}
                       {% if video.user.username != app.user.username %}
                         {% if like is not null %}
-                          <a href="#" id="likeSubmit">
+                          <a href="#" id="likeSubmit" rel="nofollow">
                             <img src="/img/like.png" alt="Bestfootball like button" style="width:45px;visibility:hidden;"/>
                           </a>
 
-                          <a href="#" id="likeDelete">
+                          <a href="#" id="likeDelete" rel="nofollow">
                             <img src="/img/unlike.png" alt="Bestfootball unlike button" style="width:45px;"/>
                           </a>                        
                         {% else %}
-                          <a href="#" id="likeSubmit">
+                          <a href="#" id="likeSubmit" rel="nofollow">
                             <img src="/img/like.png" alt="Bestfootball like button" style="width:45px;"/>
                           </a>
 
-                          <a href="#" id="likeDelete">
+                          <a href="#" id="likeDelete" rel="nofollow">
                             <img src="/img/unlike.png" alt="Bestfootball unlike button" style="width:45px;visibility:hidden;"/>
                           </a>
                         {% endif %}
@@ -208,7 +208,7 @@
 
 
                   {% if app.user is not null %}
-                    <a href="{{ path('bf_site_video_report', {'id': video.id}) }}">{{'report this video'|trans }}</a>
+                    <a href="{{ path('bf_site_video_report', {'id': video.id}) }}" rel="nofollow">{{'report this video'|trans }}</a>
                   {% endif %}
 
                   {% if video.type == 'challenge'%}
