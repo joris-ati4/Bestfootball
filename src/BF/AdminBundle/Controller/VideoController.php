@@ -63,11 +63,16 @@ class VideoController extends Controller
               foreach ($listReports as $report) {
                 $em->remove($comment);
               }
-              //deleting comments
+              //deleting comments and quotes
               $listComments = $video->getComments();
               foreach ($listComments as $comment) {
+                    $listQuotes = $comment->getQuotes();
+                    foreach ($listQuotes as $quote) {
+                      $em->remove($quote);
+                    }
                   $em->remove($comment);
               }
+
               //deleting likes
               $listLikes = $video->getLikes();
               foreach ($listLikes as $lik) {
