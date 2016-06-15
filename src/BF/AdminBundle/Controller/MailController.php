@@ -42,7 +42,7 @@ class MailController extends Controller
 
 
             if($data['test'] === true){
-             
+             $user = $this->container->get('security.context')->getToken()->getUser();
                   $message = \Swift_Message::newInstance()
                       ->setSubject($subject)
                       ->setFrom(array('noreply@bestfootball.fr' => 'Bestfootball'))
