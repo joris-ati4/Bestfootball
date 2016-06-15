@@ -18,6 +18,7 @@ class MailController extends Controller
                   'class' => 'BFSiteBundle:Challenge',
                   'choice_label' => 'titleFR',
               ))
+            ->add('test', 'checkbox', array('required' => false))
             ->add('save', 'submit', array('label' => 'Create Task'))
             ->getForm();
 
@@ -39,6 +40,32 @@ class MailController extends Controller
             $subject = $data['subject'];
 
 
+
+            if($data['test'] === true){
+             
+                  $message = \Swift_Message::newInstance()
+                      ->setSubject($subject)
+                      ->setFrom(array('noreply@bestfootball.fr' => 'Bestfootball'))
+                      ->setTo('joris.hart14@gmail.com')
+                      ->setBody(
+                        $this->renderView(
+                          // app/Resources/views/Emails/newsletter.html.twig
+                              'Emails/newsletter.html.twig',array(
+                                'subject' => $subject,
+                                'message' => $message,
+                                'user' => $user,
+                                'challenge' => $challenge,
+                              )
+                        ),
+                        'text/html'
+                  );
+                $this->get('swiftmailer.mailer.spool')->send($message); //using the spool mailing method
+                unset($message); //resetting the memory variable back to null
+
+              $request->getSession()->getFlashBag()->add('notice', 'The mail has been send!');
+              return $this->redirect($this->generateUrl('bf_site_admin'));
+            }
+            else{
               // Send the mail to all the users
               foreach ($listUsers as $user) {
               //send the message to the user.
@@ -64,6 +91,7 @@ class MailController extends Controller
 
               $request->getSession()->getFlashBag()->add('notice', 'The mail has been send!');
               return $this->redirect($this->generateUrl('bf_site_admin'));
+            }
           }
 
 
