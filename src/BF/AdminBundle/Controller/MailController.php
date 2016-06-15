@@ -53,9 +53,7 @@ class MailController extends Controller
                                 'subject' => $subject,
                                 'message' => $message,
                                 'user' => $user,
-                                'listVideos' => $listVideos,
                                 'challenge' => $challenge,
-                                'challengeMessage' => $challengeMessage
                               )
                         ),
                         'text/html'
