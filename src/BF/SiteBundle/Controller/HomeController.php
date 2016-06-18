@@ -153,7 +153,7 @@ class HomeController extends Controller
             // $data is a simply array with your form fields
             $data = $form->getData();
             $message = \Swift_Message::newInstance()
-                    ->setSubject('A new challenge proposition')
+                    ->setSubject('A new challenge proposition from '.$data['name'])
                     ->setFrom($data['email'])
                     ->setTo(array('joris.hart@ezwebcreation.fr','contact@bestfootball.fr'))
                     ->setBody(
