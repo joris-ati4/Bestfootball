@@ -43,7 +43,7 @@ class MailController extends Controller
 
             if($data['test'] === true){
              $user = $this->container->get('security.context')->getToken()->getUser();
-                  $message = \Swift_Message::newInstance()
+                  $mail = \Swift_Message::newInstance()
                       ->setSubject($subject)
                       ->setFrom(array('noreply@bestfootball.fr' => 'Bestfootball'))
                       ->setTo('joris.hart14@gmail.com')
@@ -59,8 +59,8 @@ class MailController extends Controller
                         ),
                         'text/html'
                   );
-                $this->get('swiftmailer.mailer.spool')->send($message); //using the spool mailing method
-                unset($message); //resetting the memory variable back to null
+                $this->get('swiftmailer.mailer.spool')->send($mail); //using the spool mailing method
+                unset($mail); //resetting the memory variable back to null
 
               $request->getSession()->getFlashBag()->add('notice', 'The mail has been send!');
               return $this->redirect($this->generateUrl('bf_site_admin'));
@@ -69,7 +69,7 @@ class MailController extends Controller
               // Send the mail to all the users
               foreach ($listUsers as $user) {
               //send the message to the user.
-                  $message = \Swift_Message::newInstance()
+                  $mail = \Swift_Message::newInstance()
                       ->setSubject($subject)
                       ->setFrom(array('noreply@bestfootball.fr' => 'Bestfootball'))
                       ->setTo($user->getEmailCanonical())
@@ -85,8 +85,8 @@ class MailController extends Controller
                         ),
                         'text/html'
                   );
-                $this->get('swiftmailer.mailer.spool')->send($message); //using the spool mailing method
-                unset($message); //resetting the memory variable back to null
+                $this->get('swiftmailer.mailer.spool')->send($mail); //using the spool mailing method
+                unset($mail); //resetting the memory variable back to null
               }
 
               $request->getSession()->getFlashBag()->add('notice', 'The mail has been send!');
