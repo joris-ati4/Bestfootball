@@ -36,15 +36,19 @@ bf_site_admin_user_view:
     methods:  [GET]
 
 bf_site_admin_user_mod:
-    path:     /{_locale}/admin/user/mod/{id}
+    path:     /{_locale}/admin/users/mod/{id}
     defaults: { _controller: BFAdminBundle:User:users, _locale: fr }
     methods:  [GET]
 
 bf_site_admin_user_online:
-    path:     /{_locale}/admin/user/online
+    path:     /{_locale}/admin/users/online
     defaults: { _controller: BFAdminBundle:User:whoIsOnline, _locale: fr }
     methods:  [GET]
 
+bf_site_admin_user_published:
+    path:     /{_locale}/admin/users/published
+    defaults: { _controller: BFAdminBundle:User:userPublished, _locale: fr }
+    methods:  [GET]
 
 #Video related routes
 bf_site_admin_videos:
@@ -61,8 +65,6 @@ bf_site_admin_video_del:
     path:     /{_locale}/admin/video/del/{id}
     defaults: { _controller: BFAdminBundle:Video:del, _locale: fr }
     methods:  [GET,POST]
-
-
 
 
 

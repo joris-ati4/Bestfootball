@@ -97,7 +97,7 @@ class Video
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
-     * @Assert\Length(min=5,max=20)
+     * @Assert\Length(min=5)
      */
     private $title;
 
@@ -136,7 +136,12 @@ class Video
     private $views;
 
     /**
-    * @Assert\File(maxSize="250M", mimeTypes={"video/mp4","video/avi","video/quicktime","video/3gpp"})
+    * @ORM\Column(name="youtube", type="boolean", nullable=true)
+    */
+    private $youtube;
+
+    /**
+    * @Assert\File(maxSize="250M", mimeTypes={"video/mp4","video/avi","video/3gpp"})
     */
     private $file;
 
@@ -720,5 +725,29 @@ class Video
     public function getLikes()
     {
         return $this->likes;
+    }
+
+    /**
+     * Set views
+     *
+     * @param integer $views
+     *
+     * @return Video
+     */
+    public function setViews($views)
+    {
+        $this->views = $views;
+
+        return $this;
+    }
+
+    /**
+     * Get views
+     *
+     * @return integer
+     */
+    public function getViews()
+    {
+        return $this->views;
     }
 }

@@ -123,4 +123,25 @@ class UserController extends Controller
             'users' => $users,
         ));
     }
+    public function userPublishedAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        //videos by différent users
+        $listVideos = $em->getRepository('BFSiteBundle:Video')->findBy(array(),array('user' => 'desc'));
+        $listUsers = array();
+        $oldUser = null;
+            foreach ($listVideos as $video){
+                if($oldUser == null){
+                    $oldUser = $video->getUser();
+                    array_push($listUsers, $video->getUser());
+                }
+                if($video->getUser()->getId() != $oldUser->getId()){
+                    $oldUser = $video->getUser();
+                    array_push($listUsers, $video->getUser());
+                }
+            }
+        return $this->render('BFAdminBundle:User:index.html.twig',array(
+            'listUsers' => $listUsers,
+        ));
+    }
 }

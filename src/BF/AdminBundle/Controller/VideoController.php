@@ -106,6 +106,75 @@ class VideoController extends Controller
         return $this->render('BFAdminBundle:Video:del.html.twig',array(
             'form' => $form->createView(),
         ));
-
     }
+    /* public function uploadYoutubeAction(request $request)
+    {
+      $em = $this->getDoctrine()->getManager();
+      $listVideos = $em->getRepository('BFSiteBundle:Video')->findBy(array('youtube' => 0), array("id" => "ASC"));
+
+
+      #accesing the OAuthclient
+      $OAUTH2_CLIENT_ID = '681480420896-do7git7anrsb663rqgut2ki8nm04qs05.apps.googleusercontent.com';
+      $OAUTH2_CLIENT_SECRET = 'Ldn3lBrzX6Wz3U1-DuS_82LP';
+
+      $client = new Google_Client();
+      $client->setClientId($OAUTH2_CLIENT_ID);
+      $client->setClientSecret($OAUTH2_CLIENT_SECRET);
+      $client->setScopes('https://www.googleapis.com/auth/youtube');
+      $redirect = 'http://bestfootball.fr/admin/youtube';
+      $client->setRedirectUri($redirect);
+
+      $youtube = new Google_Service_YouTube($client);
+      
+      if (null !== $request->query->get('code')) {
+        
+        $client->authenticate($request->query->get('code'));
+        $_SESSION['token'] = $client->getAccessToken();
+        header('Location: ' . $redirect);
+      }
+
+      if (null !== $_SESSION['token']) {
+        $client->setAccessToken($_SESSION['token']);
+      }
+
+      if ($client->getAccessToken()) {
+
+        foreach ($lisVideos as $vid) {
+            $videoPath = $vid->getSource();
+
+            $snippet = new Google_Service_YouTube_VideoSnippet();
+            $snippet->setTitle($vid->getTitleFR());
+            $snippet->setDescription($vid->getDescritpionFR());
+            $snippet->setTags(array("Bestfootball", "freestyle", "foot"));
+
+            // Numeric video category. See
+            // https://developers.google.com/youtube/v3/docs/videoCategories/list 
+            $snippet->setCategoryId("17");
+
+            // Set the video's status to "public". Valid statuses are "public",
+            // "private" and "unlisted".
+            $status = new Google_Service_YouTube_VideoStatus();
+            $status->privacyStatus = "public";
+
+            // Associate the snippet and status objects with a new video resource.
+            $video = new Google_Service_YouTube_Video();
+            $video->setSnippet($snippet);
+            $video->setStatus($status);
+
+            $client->setDefer(true);
+
+            $req = $youtube->videos->insert('status,snippet', $video);
+
+            $media = new Google_Http_MediaFileUpload($client, $req,'video/*', file_get_contents($videoPath));
+
+            $video = $client->execute($request);
+
+          #Putting the state of youtube to 1.
+          $video->setYoutube(1);
+          $em->persist($video);
+          $em->flush();
+          unset($vid);
+        }
+      } 
+    } */
 }
