@@ -34,6 +34,7 @@ class AppKernel extends Kernel
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new Presta\SitemapBundle\PrestaSitemapBundle(),
             new BF\AdminBundle\BFAdminBundle(),
+            new BF\ForumBundle\BFForumBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

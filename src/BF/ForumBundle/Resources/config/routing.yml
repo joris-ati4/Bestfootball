@@ -1,0 +1,3 @@
+bf_forum_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: BFForumBundle:Default:index }

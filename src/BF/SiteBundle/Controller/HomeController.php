@@ -73,7 +73,7 @@ class HomeController extends Controller
             0);
         $rankUsers = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video')->findBy(
             array('challenge' => $challenge),
-            array('repetitions' => 'desc'),
+            array('repetitions' => 'desc', 'date' => 'asc'),
             5,
             0);
 

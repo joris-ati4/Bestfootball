@@ -1,3 +1,7 @@
+bf_forum:
+    resource: "@BFForumBundle/Resources/config/routing.yml"
+    prefix:   /
+
 PrestaSitemapBundle:
     resource: "@PrestaSitemapBundle/Resources/config/routing.yml"
     prefix:   /
