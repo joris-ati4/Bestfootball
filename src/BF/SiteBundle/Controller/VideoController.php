@@ -409,15 +409,37 @@ class VideoController extends Controller
 	            $em->flush();
 
 	            if($oldVideo->getType() == 'challenge'){ //we need to update the users score
-	                $listChallenges = $em->getRepository('BFSiteBundle:Challenge')->findall();
-	                $points = 0;
+	                
+	            //get all the videos of the user.
+		      	$listVideos = $this->em->getRepository('BFSiteBundle:Video')->allVideos($user);
 
-	                foreach ( $listChallenges as $challenge) {
-	                  	$highestVideo =  $em->getRepository('BFSiteBundle:Video')->highestVideo($user, $challenge);
-	                  	if( $highestVideo !== null){
-	                    	$points = $points + $highestVideo->getScore();
-	                	}
-	                }
+		      	//recount the points of the user
+		      	$points = 0;
+		      	$oldvideo = null;
+		      	foreach ( $listVideos as $video) {
+			        //compter les likes pour la vidéo.
+			        $likePoints = count($video->getLikes()) * 5; // 5 points par like.
+			        $points = $points + $likePoints;
+
+			        //compter les points de la vidéo et éventuellement les 20 points d'entraînement
+			        if($oldvideo === null){
+			          $points = $points + $video->getScore();
+			        }
+			        elseif($oldvideo->getChallenge()->getId() == $video->getChallenge()->getId()){ //It's the same challenge.
+			          //Look for 20 points
+			          if($video->getScore() < $oldvideo->getScore()){
+			            //give 20 points for improvement.
+			            $points = $points + 20;
+			          }
+			        }
+			        elseif($oldvideo->getChallenge()->getId() != $video->getChallenge()->getId()){ //It's a new challenge.
+			         $points = $points + $video->getScore();
+			        }
+
+			        $oldvideo = $video;
+			    }
+      
+ 
 	            }
 	            
 	            $user->setPoints($points);
