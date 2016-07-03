@@ -131,8 +131,8 @@ class VideoController extends Controller
 
 			    $em = $this->getDoctrine()->getManager();
 
-		        $service = $this->container->get('bf_site.videospoints');
-            	$service->videoPoints($video);
+		        $service = $this->container->get('bf_admin.videopoints');
+        		$service->videoPoints($video);
 	
 			    //we convert the video to the right size and with the watermark
 			    $exploded = explode('/', $video->getSource());
@@ -142,8 +142,8 @@ class VideoController extends Controller
 				curl_close($curl);
 
 				//sending a mail to all lower repetitions
-				$challengeMailer = $this->container->get('bf_site.challengeMailer');
-      			$result = $challengeMailer->ChallengeMail($video, $video->getChallenge());
+				//$challengeMailer = $this->container->get('bf_site.challengeMailer');
+      			//$result = $challengeMailer->ChallengeMail($video, $video->getChallenge());
 
 			    $this->addFlash('success', 'Your video was uploaded to our servers and you received '.$video->getScore().' points for this video.');
 

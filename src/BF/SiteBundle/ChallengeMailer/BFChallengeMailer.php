@@ -34,7 +34,7 @@ class BFChallengeMailer
               ->setFrom('noreply@bestfootball.fr')
               ->setTo($video->getUser()->getEmailCanonical())
               ->setBody(
-                $this->templating->render(
+                $this->render(
                   // app/Resources/views/Emails/newsletter.html.twig
                       'Emails/challenge/ScorePassed.html.twig',array(
                         'subject' => $subject,
@@ -44,7 +44,7 @@ class BFChallengeMailer
                 ),
                 'text/html'
           );
-          $this->mailer->send($message)->send($message); //using the spool mailing method
+          $this->mailer->send($message); //using the spool mailing method
           unset($message);
         }
       }
