@@ -23,8 +23,15 @@ class LikeController extends Controller
             ->setDate(new \Datetime)
             ->setUser($user)
         ;
+
+        if($video->getType == 'challenge'){
+            $points = $user->getPoints();
+            $user->setPoints($points + 5);
+            $em->persist($user);
+        }
+        
         //we create a notification for the user of the video.
-        $message = $user->getUsername().' just liked your '.$video->getTitle().' video.';
+        $message = $user->getUsername().' vient d\'aimer ta vidéo.';
         $link = $this->generateUrl('bf_site_video', array('code' => $video->getCode()));
         $service = $this->container->get('bf_site.notification');
         $notification = $service->create($video->getUser(), $message, null, $link);
@@ -41,6 +48,13 @@ class LikeController extends Controller
         $user = $this->container->get('security.context')->getToken()->getUser();
         $video = $em->getRepository('BFSiteBundle:Video')->find($request->get('videoId'));
         $like = $em->getRepository('BFSiteBundle:Likes')->getLike($user, $video);
+
+        if($video->getType == 'challenge'){
+            $points = $user->getPoints();
+            $user->setPoints($points - 5);
+            $em->persist($user);
+        }
+
         
         $em->remove($like);
         $em->flush();

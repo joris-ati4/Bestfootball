@@ -350,5 +350,20 @@ class VideoRepository extends \Doctrine\ORM\EntityRepository
 		    ->getResult()
 		;
 	}
+	public function allVideos($user)
+	{
+		$qb = $this->createQueryBuilder('v');
 
+		$qb->Where('v.type = :type AND v.user = :user')
+		    ->setParameter('type', 'challenge')
+		    ->setParameter('user', $user)
+		    ->orderBy('v.challenge', 'DESC')
+		    ->addorderBy('v.repetitions', 'DESC')
+		;
+
+		return $qb
+			->getQuery()
+		    ->getResult()
+		;
+	}
 }

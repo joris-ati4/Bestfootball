@@ -114,41 +114,8 @@ class VideoController extends Controller
         $code = $service->generate('video');
         $video->setCode($code);
         
-        //if the user already uploaded a video to the same challenge we take the points of the last video.
-        $repository = $this->getDoctrine()->getManager()->getRepository('BFSiteBundle:Video');
-        $oldVideo = $repository->checkChallenge($user, $challenge);
-        if($oldVideo !== null){
-            //The user alreday has a video in the directory.
-            $oldScore=$oldVideo->getScore();
-            $points = $user->getPoints() - $oldScore;
-            $user->setPoints($points);
-        }
-       
-        if($challenge->getType() == 'normal'){
-            //we give the user 300 points
-            if($video->getRepetitions() >= $challenge->getSix()){$video->setScore('300');}
-            if($challenge->getSix() > $video->getRepetitions() && $video->getRepetitions() >= $challenge->getFive()){ $video->setScore('250');}
-            if($challenge->getFive() > $video->getRepetitions() && $video->getRepetitions() >= $challenge->getFour()){$video->setScore('200');}
-            if($challenge->getFour() > $video->getRepetitions() && $video->getRepetitions() >= $challenge->getThree()){$video->setScore('150');}
-            if($challenge->getThree() > $video->getRepetitions() && $video->getRepetitions() >= $challenge->getTwo()){$video->setScore('100');}
-            if($challenge->getTwo() > $video->getRepetitions() && $video->getRepetitions() >= $challenge->getOne()){$video->setScore('50');}
-            if($challenge->getOne() > $video->getRepetitions()){$video->setScore('0');}
-        }
-        else{
-            //the video is for a normal challenge.
-            $video->setScore('0');
-        }
-
-        //retrieving the points from the video and updating the points off the user.
-        $points = $video->getScore() + $user->getPoints();
-        $user->setPoints($points);
-        $score = $video->getScore();
-
-        //all the informations are set, we now proceed to convert the video etc.
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($video);
-        $em->persist($user);
-        $em->flush();
+        $service = $this->container->get('bf_admin.videopoints');
+        $service->videoPoints($video);
 
         //here we convert the video with the watermark
         $exploded = explode('/', $video->getSource());

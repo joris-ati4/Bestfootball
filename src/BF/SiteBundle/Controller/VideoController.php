@@ -119,13 +119,6 @@ class VideoController extends Controller
 		            $user->setPoints($points);
 		    }
 
-	    	$one = $challenge->getOne();
-	    	$two = $challenge->getTwo();
-	    	$three = $challenge->getThree();
-	    	$four = $challenge->getFour();
-	    	$five = $challenge->getFive();
-	    	$six = $challenge->getSix();
-
 	    	$video
 	    	->setDate(new \Datetime())
 	    	->setUser($user)
@@ -135,36 +128,12 @@ class VideoController extends Controller
 	    	$form = $this->get('form.factory')->create(new VideoType, $video);
 	    
 		    if ($form->handleRequest($request)->isValid()) {
-			      $em = $this->getDoctrine()->getManager();
 
+			    $em = $this->getDoctrine()->getManager();
 
-			    //if the video is for an ambassador challenge
-		        if($challenge->getType() != 'normal'){
-		        	//we give the user 300 points
-		        	$video->setScore('0');
-		        }
-		        else{
-		        	//the video is for a normal challenge.
-		        	if($video->getRepetitions() >= $six){$video->setScore('300');}
-			      	if($six > $video->getRepetitions() && $video->getRepetitions() >= $five){ $video->setScore('250');}
-			      	if($five > $video->getRepetitions() && $video->getRepetitions() >= $four){$video->setScore('200');}
-			      	if($four > $video->getRepetitions() && $video->getRepetitions() >= $three){$video->setScore('150');}
-			      	if($three > $video->getRepetitions() && $video->getRepetitions() >= $two){$video->setScore('100');}
-			      	if($two > $video->getRepetitions() && $video->getRepetitions() >= $one){$video->setScore('50');}
-			      	if($one > $video->getRepetitions()){$video->setScore('0');}
-		        }
-		        //call the service to check if the vidéo
-
-		        
-			
-			    //now we update the points of the user
-			    $points = $video->getScore() + $user->getPoints();
-			    $user->setPoints($points);
-			    $em->persist($user);
-			    $em->persist($video);
-			    $em->flush();
-
-
+		        $service = $this->container->get('bf_admin.videopoints');
+            	$service->videoPoints($video);
+	
 			    //we convert the video to the right size and with the watermark
 			    $exploded = explode('/', $video->getSource());
 				$curl = curl_init();

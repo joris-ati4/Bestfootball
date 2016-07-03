@@ -22,20 +22,36 @@ class RecountPointsCommand extends ContainerAwareCommand
 		$em = $this->getContainer()->get('doctrine.orm.entity_manager');
 	    $listUsers = $em->getRepository('BFUserBundle:User')->findBy(array("enabled" => 1));
 
-	    //recount the points of the user
-      	$listChallenges = $em->getRepository('BFSiteBundle:Challenge')->findall();
-      	
       	foreach ( $listUsers as $user) {
-      		$points = 0;
-		    foreach ( $listChallenges as $challenge) {
-		        $highestVideo =  $em->getRepository('BFSiteBundle:Video')->highestVideo($user, $challenge);
-		        if($highestVideo !== null){
-		          $points = $points + $highestVideo->getScore();
-		          $highestVideo = null; //Reset the value of the variable
-		        }
-		        
-		    }
+      		//get all the videos of the user.
+		    $listVideos = $em->getRepository('BFSiteBundle:Video')->allVideos($user);
 
+		    //recount the points of the user
+		    $points = 0;
+		    $oldvideo = null;
+		      foreach ( $listVideos as $video) {
+		        //compter les likes pour la vidéo.
+		        $likePoints = count($video->getLikes()) * 5; // 5 points par like.
+		        $points = $points + $likePoints;
+
+		        //compter les points de la vidéo et éventuellement les 20 points d'entraînement
+		        if($oldvideo === null){
+		          $points = $points + $video->getScore();
+		        }
+		        elseif($oldvideo->getChallenge()->getId() == $video->getChallenge()->getId()){ //It's the same challenge.
+		          //Look for 20 points
+		          if($video->getScore() < $oldvideo->getScore()){
+		            //give 20 points for improvement.
+		            $points = $points + 20;
+		          }
+		        }
+		        elseif($oldvideo->getChallenge()->getId() != $video->getChallenge()->getId()){ //It's a new challenge.
+		         $points = $points + $video->getScore();
+		        }
+
+		        $oldvideo = $video;
+		      }
+		      
 		    $user->setPoints($points);
 		    $em->persist($user);
 		  	$em->flush();

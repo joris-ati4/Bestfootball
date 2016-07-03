@@ -175,7 +175,7 @@
                 --><div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 vcenter row">
 
                     <!-- The like section -->
-                    {% if video.type =='freestyle' and app.user is not null %}
+                    {% if app.user is not null %}
                       {% if video.user.username != app.user.username %}
                         {% if like is not null %}
                           <a href="#" id="likeSubmit" rel="nofollow">
