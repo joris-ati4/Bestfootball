@@ -411,7 +411,7 @@ class VideoController extends Controller
 	            if($oldVideo->getType() == 'challenge'){ //we need to update the users score
 	                
 	            //get all the videos of the user.
-		      	$listVideos = $this->em->getRepository('BFSiteBundle:Video')->allVideos($user);
+		      	$listVideos = $em->getRepository('BFSiteBundle:Video')->allVideos($user);
 
 		      	//recount the points of the user
 		      	$points = 0;
