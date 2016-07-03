@@ -22,7 +22,14 @@ class BFVideosPoints
   	//we get the user
     $user = $video->getUser();
     $challenge = $video->getChallenge();
-    
+
+
+    //if the video is for an ambassador challenge
+    if($challenge->getType() != 'normal'){
+      //we give the user 0 points
+      $video->setScore('0');
+    }
+    else{
       if($video->getRepetitions() >= $challenge->getSix()){$video->setScore('300');}
       if($challenge->getSix() > $video->getRepetitions() && $video->getRepetitions() >= $challenge->getFive()){ $video->setScore('250');}
       if($challenge->getFive() > $video->getRepetitions() && $video->getRepetitions() >= $challenge->getFour()){$video->setScore('200');}
@@ -30,20 +37,43 @@ class BFVideosPoints
       if($challenge->getThree() > $video->getRepetitions() && $video->getRepetitions() >= $challenge->getTwo()){$video->setScore('100');}
       if($challenge->getTwo() > $video->getRepetitions() && $video->getRepetitions() >= $challenge->getOne()){$video->setScore('50');}
       if($challenge->getOne() > $video->getRepetitions()){$video->setScore('0');}
+    }
+
+    //we flush the video.
+      $this->em->persist($video);
+      $this->em->flush();
+
+      //get all the videos of the user.
+      $listVideos = $this->em->getRepository('BFSiteBundle:Video')->allVideos($user);
 
       //recount the points of the user
-      $listChallenges = $this->em->getRepository('BFSiteBundle:Challenge')->findall();
       $points = 0;
-      foreach ( $listChallenges as $challenge) {
-        $highestVideo =  $this->em->getRepository('BFSiteBundle:Video')->highestVideo($user, $challenge);
-        if($highestVideo !== null){
+      $oldvideo = null;
+      foreach ( $listVideos as $video) {
+        //compter les likes pour la vidéo.
+        $likePoints = count($video->getLikes()) * 5; // 5 points par like.
+        $points = $points + $likePoints;
+
+        //compter les points de la vidéo et éventuellement les 20 points d'entraînement
+        if($oldvideo === null){
           $points = $points + $video->getScore();
         }
+        elseif($oldvideo->getChallenge()->getId() == $video->getChallenge()->getId()){ //It's the same challenge.
+          //Look for 20 points
+          if($video->getScore() < $oldvideo->getScore()){
+            //give 20 points for improvement.
+            $points = $points + 20;
+          }
+        }
+        elseif($oldvideo->getChallenge()->getId() != $video->getChallenge()->getId()){ //It's a new challenge.
+         $points = $points + $video->getScore();
+        }
+
+        $oldvideo = $video;
       }
       
     $user->setPoints($points);
     $this->em->persist($user);
-    $this->em->persist($video);
 
     $this->em->flush();
     $done = true;

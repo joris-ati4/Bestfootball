@@ -131,7 +131,7 @@ class VideoController extends Controller
 
 			    $em = $this->getDoctrine()->getManager();
 
-		        $service = $this->container->get('bf_admin.videopoints');
+		        $service = $this->container->get('bf_site.videospoints');
             	$service->videoPoints($video);
 	
 			    //we convert the video to the right size and with the watermark
