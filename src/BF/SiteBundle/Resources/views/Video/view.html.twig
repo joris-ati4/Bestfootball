@@ -176,21 +176,13 @@
 
                         <!-- The like section -->
                         {% if like is not null %}
-                         
                             <img src="/img/like.png" alt="Bestfootball like button" class="likeSubmit" style="width:45px;display:none;cursor:pointer;"/>
-                         
-
-                        
                             <img src="/img/unlike.png" alt="Bestfootball unlike button" class="likeDelete" style="width:45px;cursor:pointer;"/>
-                                           
+                            <img src="/img/loading.gif" alt="" id="loading-image" style="height:30px;margin:2px;display:none;" />           
                         {% else %}
-                          
                             <img src="/img/like.png" alt="Bestfootball like button" class="likeSubmit" style="width:45px;cursor:pointer;"/>
-                         
-
-                     
                             <img src="/img/unlike.png" alt="Bestfootball unlike button" class="likeDelete" style="width:45px;display:none;cursor:pointer;"/>
-                         
+                            <img src="/img/loading.gif" alt="" id="loading-image" style="height:30px;margin:2px;display:none;" />
                         {% endif %}
                       
                       <p style="color:#95cd36;font-size:20px;">Likes : </p><p id="likes" style="color:#95cd36;font-size:20px;">{{ video.likes|length }}</p>
@@ -597,6 +589,10 @@
 
   $(".likeSubmit").click(function(e){
     e.preventDefault();
+    
+    $(".likeSubmit").hide();
+    $("#loading-image").show();
+    
     var DATA ='videoId=' + {{ video.id }};
 
     $.ajax({
@@ -605,7 +601,7 @@
               data: DATA,
               cache: false,
               success: function(){
-                $(".likeSubmit").hide();
+                $("#loading-image").hide();
                 $(".likeDelete").show();
                 //increment the likes
                 var likes = parseInt($('#likes').text());
@@ -617,6 +613,8 @@
 
   $(".likeDelete").click(function(e){
     e.preventDefault();
+    $(".likeDelete").hide();
+    $("#loading-image").show();
     var DATA ='videoId=' + {{ video.id }};
 
     $.ajax({
@@ -625,7 +623,7 @@
               data: DATA,
               cache: false,
               success: function(){
-                $(".likeDelete").hide();
+                $("#loading-image").hide();
                 $(".likeSubmit").show();
                 var likes = parseInt($('#likes').text());
                 likes = likes-1;
