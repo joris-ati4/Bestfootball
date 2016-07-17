@@ -174,27 +174,26 @@
                 </div><!--
                 --><div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 vcenter row">
 
-                    <!-- The like section -->
-                      {% if video.user.username != app.user.username %}
+                        <!-- The like section -->
                         {% if like is not null %}
-                          <a href="#" id="likeSubmit" rel="nofollow">
-                            <img src="/img/like.png" alt="Bestfootball like button" style="width:45px;display:none;"/>
-                          </a>
+                         
+                            <img src="/img/like.png" alt="Bestfootball like button" class="likeSubmit" style="width:45px;display:none;cursor:pointer;"/>
+                         
 
-                          <a href="#" id="likeDelete" rel="nofollow">
-                            <img src="/img/unlike.png" alt="Bestfootball unlike button" style="width:45px;"/>
-                          </a>                        
+                        
+                            <img src="/img/unlike.png" alt="Bestfootball unlike button" class="likeDelete" style="width:45px;cursor:pointer;"/>
+                                           
                         {% else %}
-                          <a href="#" id="likeSubmit" rel="nofollow">
-                            <img src="/img/like.png" alt="Bestfootball like button" style="width:45px;"/>
-                          </a>
+                          
+                            <img src="/img/like.png" alt="Bestfootball like button" class="likeSubmit" style="width:45px;cursor:pointer;"/>
+                         
 
-                          <a href="#" id="likeDelete" rel="nofollow">
-                            <img src="/img/unlike.png" alt="Bestfootball unlike button" style="width:45px;display:none;"/>
-                          </a>
+                     
+                            <img src="/img/unlike.png" alt="Bestfootball unlike button" class="likeDelete" style="width:45px;display:none;cursor:pointer;"/>
+                         
                         {% endif %}
-                      {% endif %}
-                      <p style="color:#95cd36;font-size:20px;">Likes : {{ video.likes|length }}</p>
+                      
+                      <p style="color:#95cd36;font-size:20px;">Likes : </p><p id="likes" style="color:#95cd36;font-size:20px;">{{ video.likes|length }}</p>
                   
 
                   <p style="color:#95cd36;font-size:16px;"><b>{{ 'Description:'|trans }}</b></p>
@@ -596,7 +595,7 @@
       });
   });
 
-  $("#likeSubmit").click(function(e){
+  $(".likeSubmit").click(function(e){
     e.preventDefault();
     var DATA ='videoId=' + {{ video.id }};
 
@@ -606,13 +605,17 @@
               data: DATA,
               cache: false,
               success: function(){
-                $("#likeSubmit").hide();
-                $("#likeDelete").show();
+                $(".likeSubmit").hide();
+                $(".likeDelete").show();
+                //increment the likes
+                var likes = parseInt($('#likes').text());
+                likes = likes+1;
+                $('#likes').text(likes);
               }
       });
   });
 
-  $("#likeDelete").click(function(e){
+  $(".likeDelete").click(function(e){
     e.preventDefault();
     var DATA ='videoId=' + {{ video.id }};
 
@@ -622,8 +625,11 @@
               data: DATA,
               cache: false,
               success: function(){
-                $("#likeDelete").hide();
-                $("#likeSubmit").show();
+                $(".likeDelete").hide();
+                $(".likeSubmit").show();
+                var likes = parseInt($('#likes').text());
+                likes = likes-1;
+                $('#likes').text(likes);
               }
       });
   });

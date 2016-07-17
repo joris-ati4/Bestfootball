@@ -12,12 +12,28 @@ use Doctrine\ORM\EntityRepository;
  */
 class LikesRepository extends \Doctrine\ORM\EntityRepository
 {
-	public function getLike($user, $video)
+	public function getLikeByUser($user, $video)
 	{
 	  $qb = $this->createQueryBuilder('l');
 
 	  $qb->where('l.user = :user')
 	       ->setParameter('user', $user)
+	     ->andWhere('l.video = :video')
+	       ->setParameter('video', $video)
+	     ->setMaxResults(1)
+	  	;
+
+	  return $qb
+	    ->getQuery()
+	    ->getOneOrNullResult()
+	  ;
+	}
+        public function getLikeByIP($ip, $video)
+	{
+	  $qb = $this->createQueryBuilder('l');
+
+	  $qb->where('l.ipAdress = :ip')
+	       ->setParameter('ip', $ip)
 	     ->andWhere('l.video = :video')
 	       ->setParameter('video', $video)
 	     ->setMaxResults(1)

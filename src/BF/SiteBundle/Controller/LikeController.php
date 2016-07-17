@@ -54,11 +54,21 @@ class LikeController extends Controller
         $em = $this->getDoctrine()->getManager();
         $user = $this->container->get('security.context')->getToken()->getUser();
         $video = $em->getRepository('BFSiteBundle:Video')->find($request->get('videoId'));
-        $like = $em->getRepository('BFSiteBundle:Likes')->getLike($user, $video);
-
-        $points = $user->getPoints();
-        $user->setPoints($points - 5);
-        $em->persist($user);
+        
+        
+        //check if the person already liked the vidéo.
+        if($this->container->get('security.context')->isGranted('IS_AUTHENTICATED_REMEMBERED') || $this->container->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY')){
+            $user = $this->container->get('security.context')->getToken()->getUser();
+            $like = $em->getRepository('BFSiteBundle:Likes')->getLikeByUser($user, $video);
+        }
+        else{
+            $user = null;
+            $like = $em->getRepository('BFSiteBundle:Likes')->getLikeByIP($this->container->get('request')->getClientIp(), $video);
+        }
+        
+        $points = $video->getUser()->getPoints();
+        $video->getUser()->setPoints($points - 5);
+        $em->persist($video->getUser());
         
         $em->remove($like);
         $em->flush();

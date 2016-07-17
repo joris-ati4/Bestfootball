@@ -73,7 +73,17 @@ class VideoController extends Controller
 
       	//getting the comments
       	$listComments = $video->getComments();
-      	$like = $em->getRepository('BFSiteBundle:Likes')->getLike($follower, $video);
+        
+        
+        
+        //check if the person already liked the vidéo.
+        if($this->container->get('security.context')->isGranted('IS_AUTHENTICATED_REMEMBERED') || $this->container->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY')){
+            $user = $this->container->get('security.context')->getToken()->getUser();
+            $like = $em->getRepository('BFSiteBundle:Likes')->getLikeByUser($user, $video);
+        }
+        else{
+            $like = $em->getRepository('BFSiteBundle:Likes')->getLikeByIP($this->container->get('request')->getClientIp(), $video);
+        }
 
 	    if (null === $video) {
 	      throw new NotFoundHttpException("La video n'existe pas.");
