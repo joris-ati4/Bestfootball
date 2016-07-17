@@ -8,13 +8,13 @@ use Doctrine\ORM\Mapping as ORM;
  * Likes
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="BF\SiteBundle\Entity\LikesRepository")
  */
 class Likes
 {
     /**
     * @ORM\ManyToOne(targetEntity="BF\UserBundle\Entity\User", inversedBy="likes")
-    * @ORM\JoinColumn(nullable=false)
+    * @ORM\JoinColumn(nullable=true)
     */
     private $user;
 
@@ -39,6 +39,13 @@ class Likes
      * @ORM\Column(name="date", type="datetime")
      */
     private $date;
+    
+    /**
+     * @var \String
+     *
+     * @ORM\Column(name="ip_adress", type="string", nullable=true)
+     */
+    private $ipAdress;
 
 
     /**
@@ -74,5 +81,52 @@ class Likes
     {
         return $this->date;
     }
-}
 
+    /**
+     * Set video
+     *
+     * @param \BF\SiteBundle\Entity\Video $video
+     *
+     * @return Likes
+     */
+    public function setVideo(\BF\SiteBundle\Entity\Video $video)
+    {
+        $this->video = $video;
+
+        return $this;
+    }
+
+    /**
+     * Get video
+     *
+     * @return \BF\SiteBundle\Entity\Video
+     */
+    public function getVideo()
+    {
+        return $this->video;
+    }
+
+    /**
+     * Set ipAdress
+     *
+     * @param string $ipAdress
+     *
+     * @return Likes
+     */
+    public function setIpAdress($ipAdress)
+    {
+        $this->ipAdress = $ipAdress;
+
+        return $this;
+    }
+
+    /**
+     * Get ipAdress
+     *
+     * @return string
+     */
+    public function getIpAdress()
+    {
+        return $this->ipAdress;
+    }
+}

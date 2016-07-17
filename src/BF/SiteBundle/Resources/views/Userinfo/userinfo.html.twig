@@ -2,7 +2,7 @@
   <div class="challengecontent row" style="margin: 0px 10px; margin-bottom:10px;">
     <h2 class="text-center">{{ rank.rankinfo.level }}</h2>
     <p>{{ user.points }} Points</p>
-    <div class="progress class="text-center"">
+    <div class="progress text-center">
       <div class="progress-bar {{ rank.rankinfo.style }} progress-bar-striped active" role="progressbar" aria-valuenow="{{ user.points }}" aria-valuemin="{{ rank.rankinfo.min }}" aria-valuemax="{{rank.rankinfo.max }}" style="width:{{ rank.rankinfo.percent }}%;">
       </div>
     </div>

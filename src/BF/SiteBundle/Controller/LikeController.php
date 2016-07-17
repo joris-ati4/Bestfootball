@@ -12,26 +12,33 @@ class LikeController extends Controller
     public function createAction(request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        //getting the user
-        $user = $this->container->get('security.context')->getToken()->getUser();
-        //getting the video
         $video = $em->getRepository('BFSiteBundle:Video')->find($request->get('videoId'));
 
+        //check if the person already liked the vidéo.
+        if($this->container->get('security.context')->isGranted('IS_AUTHENTICATED_REMEMBERED') || $this->container->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY')){
+            $user = $this->container->get('security.context')->getToken()->getUser();
+        }
+        else{
+            $user = null;
+        }
+    
         $like = new Likes();
         $like
             ->setVideo($video)
             ->setDate(new \Datetime)
-            ->setUser($user)
+            ->setIpAdress($this->container->get('request')->getClientIp())
+            ->setUser($user);
         ;
-
-        if($video->getType == 'challenge'){
-            $points = $user->getPoints();
-            $user->setPoints($points + 5);
-            $em->persist($user);
-        }
+        
+                
+        $userVideo = $video->getUser();
+        $points = $userVideo->getPoints();
+        $userVideo->setPoints($points + 5);
+        $em->persist($userVideo);
+        
         
         //we create a notification for the user of the video.
-        $message = $user->getUsername().' vient d\'aimer ta vidéo.';
+        $message = 'Tu as reçu un nouveau like sur ta vidéo.';
         $link = $this->generateUrl('bf_site_video', array('code' => $video->getCode()));
         $service = $this->container->get('bf_site.notification');
         $notification = $service->create($video->getUser(), $message, null, $link);
@@ -49,12 +56,9 @@ class LikeController extends Controller
         $video = $em->getRepository('BFSiteBundle:Video')->find($request->get('videoId'));
         $like = $em->getRepository('BFSiteBundle:Likes')->getLike($user, $video);
 
-        if($video->getType == 'challenge'){
-            $points = $user->getPoints();
-            $user->setPoints($points - 5);
-            $em->persist($user);
-        }
-
+        $points = $user->getPoints();
+        $user->setPoints($points - 5);
+        $em->persist($user);
         
         $em->remove($like);
         $em->flush();

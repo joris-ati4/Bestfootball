@@ -14,7 +14,7 @@ class Likes
 {
     /**
     * @ORM\ManyToOne(targetEntity="BF\UserBundle\Entity\User", inversedBy="likes")
-    * @ORM\JoinColumn(nullable=false)
+    * @ORM\JoinColumn(nullable=true)
     */
     private $user;
 
@@ -39,6 +39,13 @@ class Likes
      * @ORM\Column(name="date", type="datetime")
      */
     private $date;
+    
+    /**
+     * @var \String
+     *
+     * @ORM\Column(name="ip_adress", type="string", nullable=true)
+     */
+    private $ipAdress;
 
 
     /**
@@ -76,30 +83,6 @@ class Likes
     }
 
     /**
-     * Set user
-     *
-     * @param \BF\UserBundle\Entity\User $user
-     *
-     * @return Likes
-     */
-    public function setUser(\BF\UserBundle\Entity\User $user)
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    /**
-     * Get user
-     *
-     * @return \BF\UserBundle\Entity\User
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
-
-    /**
      * Set video
      *
      * @param \BF\SiteBundle\Entity\Video $video
@@ -121,5 +104,53 @@ class Likes
     public function getVideo()
     {
         return $this->video;
+    }
+
+    /**
+     * Set ipAdress
+     *
+     * @param string $ipAdress
+     *
+     * @return Likes
+     */
+    public function setIpAdress($ipAdress)
+    {
+        $this->ipAdress = $ipAdress;
+
+        return $this;
+    }
+
+    /**
+     * Get ipAdress
+     *
+     * @return string
+     */
+    public function getIpAdress()
+    {
+        return $this->ipAdress;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \BF\UserBundle\Entity\User $user
+     *
+     * @return Likes
+     */
+    public function setUser(\BF\UserBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \BF\UserBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }
