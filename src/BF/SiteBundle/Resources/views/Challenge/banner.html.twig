@@ -136,34 +136,37 @@
       				</div>
       			</div>
 
-      			<!-- The third Price -->
-      			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center" >
-      				<div class="row">
-      					<!--The number of the place -->
-      						<img src="/img/challenges/third.png" alt="" style="width:40%;max-width:85px;" class="text-center"/>
-      					<!--The gift-->
-      					{% if challenge.thirdPrizeLogo is null %}
-  							<p>
-  								{% if app.request.getLocale() == 'fr' %}			
-  			        				{{ challenge.thirdPrizeTitleFR }}
-  			        			{% else %}
-  			        				{{ challenge.thirdPrizeTitleEN }}
-  			        			{% endif %}
-  				        	</p>
-  						{% else %}
-  		    				<figure>
-  								<img src="{{ challenge.thirdPrizeLogo }}" alt="third prize for the {{ challenge.nomPartner }} challenge on Bestfootball" style="max-width:90%;max-height:200px;" class="text-center"/>
-  								<figcaption>
-  						  			{% if app.request.getLocale() == 'fr' %}			
-  				        				{{ challenge.thirdPrizeTitleFR }}
-  				        			{% else %}
-  				        				{{ challenge.thirdPrizeTitleEN }}
-  				        			{% endif %}
-  						  		</figcaption>
-  							</figure>
-  						{% endif %}
-      				</div>
-      			</div>
+      			{% if challenge.thirdPrizeTitleFR is not null %}
+	      			<!-- The third Price -->
+	      			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center" >
+	      				<div class="row">
+	      					<!--The number of the place -->
+	      						<img src="/img/challenges/third.png" alt="" style="width:40%;max-width:85px;" class="text-center"/>
+	      					<!--The gift-->
+	      					{% if challenge.thirdPrizeLogo is null %}
+	  							<p>
+	  								{% if app.request.getLocale() == 'fr' %}			
+	  			        				{{ challenge.thirdPrizeTitleFR }}
+	  			        			{% else %}
+	  			        				{{ challenge.thirdPrizeTitleEN }}
+	  			        			{% endif %}
+	  				        	</p>
+	  						{% else %}
+	  		    				<figure>
+	  								<img src="{{ challenge.thirdPrizeLogo }}" alt="third prize for the {{ challenge.nomPartner }} challenge on Bestfootball" style="max-width:90%;max-height:200px;" class="text-center"/>
+	  								<figcaption>
+	  						  			{% if app.request.getLocale() == 'fr' %}			
+	  				        				{{ challenge.thirdPrizeTitleFR }}
+	  				        			{% else %}
+	  				        				{{ challenge.thirdPrizeTitleEN }}
+	  				        			{% endif %}
+	  						  		</figcaption>
+	  							</figure>
+	  						{% endif %}
+	      				</div>
+	      			</div>
+      			{% endif %}
+
           {% endif %}
 
   				
